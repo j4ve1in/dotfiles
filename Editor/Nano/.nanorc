@@ -1,0 +1,6 @@
+set autoindent
+set smarthome
+set tabsize 4
+set tabstospaces
+set nowrap
+set softwrap

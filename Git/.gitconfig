@@ -1,0 +1,5 @@
+[core]
+    excludesfile = ~/.gitignore.global
+    editor = vim
+[include]
+    path = ~/.local/.gitconfig.local # ファイルが存在しないときは読み込まない
