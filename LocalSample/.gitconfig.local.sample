@@ -1,0 +1,6 @@
+[user]
+    name = USERNAME
+    email = EMAILADDRESS
+[credential]
+    #helper = !'WINSTOREPATH'
+    #helper = osxkeychain

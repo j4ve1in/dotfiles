@@ -1,0 +1,26 @@
+alias vi='vim'
+alias ls='ls -F'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -al'
+alias grep='grep --color'
+alias df='df -h'
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias less='less -N'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+
+# Cygwin
+if [ $OSTYPE = "cygwin" ]; then
+    source ~/.aliases.cygwin
+fi
+
+# Local
+if [ -e ~/.local/.aliases.local ]; then
+    source ~/.local/.aliases.local
+fi
