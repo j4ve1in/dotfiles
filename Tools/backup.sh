@@ -9,7 +9,7 @@ backup() {
     echo -e "\e[1;34mdone\e[m"
 
     # file
-    echo "Copy file"
+    echo "File"
     # 総数を計算
     max=0
     for dir_list in ${SETUP_DIR_LIST[@]}; do
@@ -34,7 +34,7 @@ backup() {
     done
 
     # dir
-    echo "Copy directory"
+    echo "Directory"
     count=1
     dirname=(".vim" ".vimrc.d" ".zshrc.d")
     for dir in ${dirname[@]}; do
