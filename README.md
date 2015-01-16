@@ -1,5 +1,5 @@
 # Javelin's Dotfiles
-![Screenshot](/Images/Terminal.png)
+![Screenshot](/Images/Screenshot.png)
 
 # Installation
 ## Using shell script
@@ -14,6 +14,7 @@ $ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsu
 ```
 
 # Configurations
+![dotsetup](/Images/dotsetup.png)
 ```bash
 $ dotsetup
 ```
