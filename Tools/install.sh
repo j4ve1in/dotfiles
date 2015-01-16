@@ -34,10 +34,9 @@ install() {
     mkdir -p ~/.vim/tmp/backup
     mkdir -p ~/.vim/tmp/undo
     echo -e "\e[1;34mdone\e[m"
-    printf "Installing neobundle.vim..."
+    echo "Installing neobundle.vim..."
     mkdir -p ~/.vim/bundle
     git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-    echo -e "\e[1;34mdone\e[m"
     printf "Installing plugin..."
     vim +NeoBundleInstall +qall
     echo -e "\e[1;34mdone\e[m"
