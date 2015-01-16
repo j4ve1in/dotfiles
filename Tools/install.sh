@@ -18,7 +18,7 @@ install() {
 
     # clone
     printf "Cloning dotfiles..."
-    git clone --recursive https://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} >/dev/null 2>&1
+    git clone https://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} >/dev/null 2>&1
     echo -e "\e[1;34mdone\e[m"
 
     # backup
@@ -28,11 +28,25 @@ install() {
     bash ~/.dotfiles/Tools/create_symlink.sh
 
     # Vim
+    echo "Vim Setting"
+    printf "Creating directory..."
     mkdir -p ~/.vim/tmp/swap
     mkdir -p ~/.vim/tmp/backup
     mkdir -p ~/.vim/tmp/undo
+    echo -e "\e[1;34mdone\e[m"
+    printf "Installing neobundle.vim..."
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+    echo -e "\e[1;34mdone\e[m"
+    printf "Installing plugin..."
+    vim +NeoBundleInstall +qall
+    echo -e "\e[1;34mdone\e[m"
+
     # Zsh
+    echo "Zsh Setting"
+    printf "Creating directory..."
     mkdir -p ~/.zsh/plugins
+    echo -e "\e[1;34mdone\e[m"
 
     #printf "設定用コマンドdotsetupを追加しますか (yes/no)? "
     printf "Do you want to use dotsetup command (yes/no)? "

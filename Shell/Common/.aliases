@@ -1,20 +1,31 @@
-alias vi='vim'
-alias tweetvim='vim +TweetVimHomeTimeline'
+# ls
 alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -al'
+
+# cd
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+
+# Vim
+alias vi='vim'
+alias tweetvim='vim +TweetVimHomeTimeline'
+alias agit='vim +Agit'
+alias ninst='vim +NeoBundleInstall +qall'
+alias nup='vim +NeoBundleUpdate +qall'
+alias ncl='vim +NeoBundleClean +qall'
+
+# Others
 alias grep='grep --color'
 alias df='df -h'
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias less='less -N'
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
 
 # Cygwin
 if [ $OSTYPE = "cygwin" ]; then

@@ -47,10 +47,6 @@ create_symlink() {
         ln -sf ${dir} ~/.vim
         count=$(expr ${count} + 1)
     done
-    ## NeoBundle
-    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vim/bundle
-    ln -sf ~/.dotfiles/Editor/Vim/.vim/bundle/neobundle.vim ~/.vim/bundle
-    count=$(expr ${count} + 1)
 
     ## .vimrc.d
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vimrc.d

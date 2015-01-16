@@ -1,3 +1,0 @@
-[submodule "Editor/Vim/.vim/bundle/neobundle.vim"]
-	path = Editor/Vim/.vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
