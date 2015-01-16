@@ -44,7 +44,7 @@ uninstall() {
         su -c "rm /usr/local/bin/dotsetup ; exit"
     fi
 
-    rm -rf ~/dotfiles
+    rm -rf ~/.dotfiles
 
     echo -e "\e[1;34mdone\e[m"
     
