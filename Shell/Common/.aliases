@@ -1,4 +1,5 @@
 alias vi='vim'
+alias tweetvim='vim +TweetVimHomeTimeline'
 alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
