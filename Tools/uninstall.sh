@@ -51,7 +51,7 @@ uninstall() {
     echo -e "Uninstalled\n"
 }
 
-if [ "$1" = "-r" ]; then
+if [ "$1" = "-y" ]; then
     uninstall
 else
     printf "Are you sure you want to continue (yes/no)? "
