@@ -50,6 +50,10 @@ NeoBundle 'basyura/bitly.vim'
 
 NeoBundle 'mattn/favstar-vim'
 
+NeoBundle 'Shougo/vimshell.vim'
+
+NeoBundle 'kmnk/vim-unite-giti'
+
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -59,5 +63,3 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-
-NeoBundle 'Shougo/vimshell.vim'
