@@ -84,22 +84,18 @@ install() {
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
 
-if [ "$1" = "-r" ]; then
-    install
-else
-    #echo "インストールすると設定が上書きされます。"
-    echo "If the file exists, it will be ruthlessly clobbered"
-    #printf "本当にインストールしてもよろしいですか？[Y/n]: "
-    printf "Are you sure you want to continue (yes/no)? "
-    read ANSWER
+#echo "インストールすると設定が上書きされます。"
+echo "If the file exists, it will be ruthlessly clobbered"
+#printf "本当にインストールしてもよろしいですか？[Y/n]: "
+printf "Are you sure you want to continue (yes/no)? "
+read ANSWER
 
-    ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
-    case $ANSWER in
-        ""|Y* )
-            install
-            ;;
-        *  )
-            echo
-            ;;
-    esac
-fi
+ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
+case $ANSWER in
+    ""|Y* )
+        install
+        ;;
+    *  )
+        echo
+        ;;
+esac
