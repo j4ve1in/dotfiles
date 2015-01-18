@@ -37,9 +37,8 @@ install() {
     echo "Installing neobundle.vim..."
     mkdir -p ~/.vim/bundle
     git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-    printf "Installing plugin..."
+    echo "Installing plugin"
     vim +NeoBundleInstall +qall
-    echo -e "\e[1;34mdone\e[m"
 
     # Zsh
     echo "Zsh Setting"
@@ -83,22 +82,18 @@ install() {
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
 
-if [ "$1" = "-y" ]; then
-    install
-else
-    #echo "インストールすると設定が上書きされます。"
-    echo "If the file exists, it will be ruthlessly clobbered"
-    #printf "本当にインストールしてもよろしいですか？[Y/n]: "
-    printf "Are you sure you want to continue (yes/no)? "
-    read ANSWER
+#echo "インストールすると設定が上書きされます。"
+echo "If the file exists, it will be ruthlessly clobbered"
+#printf "本当にインストールしてもよろしいですか？[Y/n]: "
+printf "Are you sure you want to continue (yes/no)? "
+read ANSWER
 
-    ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
-    case $ANSWER in
-        ""|Y* )
-            install
-            ;;
-        *  )
-            echo
-            ;;
-    esac
-fi
+ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
+case $ANSWER in
+    ""|Y* )
+        install
+        ;;
+    *  )
+        echo
+        ;;
+esac
