@@ -28,24 +28,40 @@ install() {
     bash ~/.dotfiles/Tools/create_symlink.sh
 
     # Vim
-    echo "Vim Setting"
-    printf "Creating directory..."
-    mkdir -p ~/.vim/tmp/swap
-    mkdir -p ~/.vim/tmp/backup
-    mkdir -p ~/.vim/tmp/undo
-    echo -e "\e[1;34mdone\e[m"
-    printf "Installing neobundle.vim..."
-    mkdir -p ~/.vim/bundle
-    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim >/dev/null 2>&1
-    echo -e "\e[1;34mdone\e[m"
-    echo -e "Installing plugin\n"
-    vim +NeoBundleInstall +qall
+    # check vim command
+    printf "Checking vim command..."
+    if [ $(which vim) ]; then
+        echo -e "\e[1;34mdone\e[m"
+        echo "Vim Setting"
+        printf "Creating directory..."
+        mkdir -p ~/.vim/tmp/swap
+        mkdir -p ~/.vim/tmp/backup
+        mkdir -p ~/.vim/tmp/undo
+        echo -e "\e[1;34mdone\e[m"
+        printf "Installing neobundle.vim..."
+        mkdir -p ~/.vim/bundle
+        git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim >/dev/null 2>&1
+        echo -e "\e[1;34mdone\e[m"
+        echo -e "Installing plugin\n"
+        vim +NeoBundleInstall +qall
+    else
+        echo
+        echo "Please install vim or update your path to include the vim executable"
+    fi
 
     # Zsh
-    echo "Zsh Setting"
-    printf "Creating directory..."
-    mkdir -p ~/.zsh/plugins
-    echo -e "\e[1;34mdone\e[m"
+    # check zsh command
+    printf "Checking zsh command..."
+    if [ $(which vim) ]; then
+        echo -e "\e[1;34mdone\e[m"
+        echo "Zsh Setting"
+        printf "Creating directory..."
+        mkdir -p ~/.zsh/plugins
+        echo -e "\e[1;34mdone\e[m"
+    else
+        echo
+        echo "Please install zsh or update your path to include the zsh executable"
+    fi
 
     #printf "設定用コマンドdotsetupを追加しますか (yes/no)? "
     printf "Do you want to use dotsetup command (yes/no)? "
