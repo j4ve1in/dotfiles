@@ -98,7 +98,7 @@ install() {
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
-
+TERM=xterm-256color
 #echo "インストールすると設定が上書きされます。"
 echo "If the file exists, it will be ruthlessly clobbered"
 #printf "本当にインストールしてもよろしいですか？[Y/n]: "
