@@ -14,6 +14,7 @@ alias ......='cd ../../../../../'
 # Vim
 alias vi='vim'
 alias tweetvim='vim +TweetVimHomeTimeline'
+alias tweet='vim +TweetVimCommandSay'
 alias agit='vim +Agit'
 alias ninst='vim +NeoBundleInstall +qall'
 alias nup='vim +NeoBundleUpdate +qall'
