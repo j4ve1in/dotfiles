@@ -17,6 +17,7 @@ alias tweetvim='vim +TweetVimHomeTimeline'
 alias tweet='vim +TweetVimCommandSay'
 alias agit='vim +Agit'
 alias ninst='vim +NeoBundleInstall +qall'
+alias nreinst='vim +NeoBundleReinstall +qall'
 alias nup='vim +NeoBundleUpdate +qall'
 alias ncl='vim +NeoBundleClean +qall'
 
