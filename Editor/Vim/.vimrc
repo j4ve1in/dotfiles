@@ -4,5 +4,5 @@
 source ~/.vimrc.plugin.neobundle
 
 " その他
-set rtp+=~/
+set runtimepath+=~/
 runtime! .vimrc.d/.vimrc.*
