@@ -17,7 +17,7 @@ source ~/.zshrc.d/.zshrc.history
 source ~/.aliases
 
 # TMUX
-source ~/.tmux
+source ~/.tmux.autoload
 
 # zstyle
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'

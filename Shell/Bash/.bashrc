@@ -28,4 +28,4 @@ set -o vi
 source ~/.bashrc.prompt
 
 # TMUX
-source ~/.tmux
+source ~/.tmux.autoload
