@@ -39,6 +39,9 @@ hi MoreMsg                          ctermbg=232  ctermfg=21
 hi NonText                          ctermbg=232  ctermfg=231
 hi Normal          cterm=none       ctermbg=232  ctermfg=251
 hi Operator        cterm=none                    ctermfg=239
+hi Pmenu                            ctermbg=233  ctermfg=255
+hi PmenuSel                         ctermbg=17   ctermfg=255
+hi PmenuSbar                        ctermbg=233  ctermfg=255
 hi PreProc         cterm=none                    ctermfg=231
 hi Question                                      ctermfg=21
 hi Search          cterm=none       ctermbg=21   ctermfg=232

@@ -43,7 +43,7 @@ NeoBundle 'tyru/open-browser.vim'
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
-NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle has('lua') ? 'Shougo/neocomplete.vim' : 'Shougo/neocomplcache.vim'
 
 NeoBundle 'surround.vim'
 
@@ -55,15 +55,18 @@ NeoBundle 'mattn/favstar-vim'
 
 NeoBundle 'Shougo/vimshell.vim'
 
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
 " NeoBundle 'itchyny/lightline.vim'
 
 " NeoBundle 'scrooloose/nerdcommenter'
 
 " NeoBundle 'plasticboy/vim-markdown'
-
-" なぜかエラーが表示される
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'cygwin' : 'make -f make_cygwin.mak',
-\    },
-\ }
