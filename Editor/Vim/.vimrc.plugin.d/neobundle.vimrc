@@ -5,7 +5,7 @@ set runtimepath+=~/.vim/bundle/neobundle.vim/ "bundleで管理するディレク
 
 call neobundle#begin(expand('~/.vim/bundle/')) "NeoBundleで読み込むプラグインを次の行からの記述で指定する
 
-source ~/.vimrc.d/.vimrc.plugins "NeoBundleで読み込むプラグインを指定する
+source ~/.vimrc.plugin.d/bundle_list.vimrc "NeoBundleで読み込むプラグインを指定する
 
 call neobundle#end() "NeoBundleで読み込むプラグインの指定を終了する
 
