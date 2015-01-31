@@ -1,6 +1,32 @@
+[alias]
+    ad = add
+    br = branch
+    ci = commit
+    co = checkout
+    ft = fetch
+    sh = show
+    so = remote show origin
+    st = status
+    rank = "shortlog -s -n --no-merges"
+    # log
+    lo = log --oneline
+    lp = log -p
+    ls = log -s
+    hi = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
+    history = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
+    # diff
+    dc = diff --cached
+
+[color]
+    ui = true
+
 [core]
     excludesfile = ~/.gitignore.global
     editor = vim
+    pager = less
     quotepath = off
+    autocrlf = input
+    safecrlf = true
+
 [include]
     path = ~/.local/.gitconfig.local # ファイルが存在しないときは読み込まない
