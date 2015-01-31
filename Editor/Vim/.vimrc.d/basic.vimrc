@@ -1,5 +1,3 @@
-set nocompatible  " Vi互換モードの無効にする(Vimの拡張機能を有効にする)
-
 set backspace=indent,eol,start " オートインデント、改行、インサートモード開始直後にバックスペースキーで削除できるようにする
 
 
