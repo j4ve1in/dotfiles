@@ -3,6 +3,15 @@
 " Credits: Inspiration from the dw_blue scheme.
 " Installation: Drop this file in your $VIMRUNTIME/colors/ directory.
 "--------------------------------------------------------------------
+
+set t_Co=256 " Enable 256 colors.
+set cursorline "Highlight the screen line of the cursor with CursorLine.
+syntax enable " Switch on syntax highlighting
+hi clear CursorLine " Reset CursorLine highlighting to the defaults.
+let g:colors_name="abyss" " global variable
+
+"--------------------------------------------------------------------
+
 hi Boolean                                       ctermfg=21
 hi cDefine                                       ctermfg=231
 hi cInclude                                      ctermfg=231
@@ -49,3 +58,5 @@ hi Type            cterm=none                    ctermfg=231
 hi VertSplit       cterm=none       ctermbg=232  ctermfg=231
 hi Visual                           ctermbg=26   ctermfg=232
 hi WarningMsg                       ctermbg=244  ctermfg=232
+
+"- end of colorscheme -----------------------------------------------  

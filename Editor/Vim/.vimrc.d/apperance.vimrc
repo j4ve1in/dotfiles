@@ -1,14 +1,8 @@
-set title " ウィンドウのタイトルバーにファイルのパス情報などを表示する
+set wrap " Lines longer than the width of the window will wrap and displaying continues on the next line.
 
-set wrap " 折り返し表示をする
+set linespace=4 " Number of pixel lines inserted between characters.
 
-set linespace=4 " 行間を設定する
-
-set laststatus=2 " ステータスラインを表示する
-
-set t_Co=256 " 256色表示する
-
-syntax on " 構文ごとに色分けする
+set laststatus=2 " the last window will always have a status line
 
 set showmatch " 括弧の対応をハイライトする
 
@@ -25,7 +19,7 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 hi NonText ctermfg=239
 
 
-"全角スペースをハイライト表示
+" 全角スペースをハイライト表示
 function! ZenkakuSpace()
     highlight ZenkakuSpace cterm=reverse ctermfg=blue gui=reverse guifg=blue
 endfunction
