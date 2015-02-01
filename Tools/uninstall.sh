@@ -17,6 +17,7 @@ remove_symlink() {
     ## Vim
     rm -rf ~/.vim
     rm -rf ~/.vimrc.d
+    rm -rf ~/.vimrc.plugin.d
 
     ## Zsh
     rm -rf ~/.zsh
