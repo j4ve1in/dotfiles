@@ -2,12 +2,20 @@
     ad = add
     br = branch
     co = checkout
+    col = config -l
+    cl = clone
     ft = fetch
+    me = merge
+    med = merge -d
+    rank = "shortlog -s -n --no-merges"
+    r = "shortlog -s -n --no-merges"
+    ra = remote add
+    rs = reset
     sh = show
     so = remote show origin
     st = status
-    rank = "shortlog -s -n --no-merges"
-    ra = "shortlog -s -n --no-merges"
+    ta = tag
+    tad = tag -d
     # commit
     ci = commit
     ca = commit --amend
