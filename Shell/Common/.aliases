@@ -28,6 +28,7 @@ alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias less='less -N'
+alias dsetup='dotsetup'
 
 # Cygwin
 if [ $OSTYPE = "cygwin" ]; then
