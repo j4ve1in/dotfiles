@@ -14,13 +14,22 @@ $ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsu
 ```
 
 # Configurations
+## Dotsetup
 ![dotsetup](/Images/dotsetup.png)
-```bash
-$ dotsetup
-```
 
-or
+    NAME
+        dotsetup - DOTfiles SETUP
 
-```bash
-$ bash ~/.dotfiles/Tools/setup.sh
-```
+    SYNOPSIS
+        dotsetup [options]
+        dsetup [options]
+
+    DESCRIPTION
+        Dotsetup is dotfile's setup command.
+
+    OPTIONS
+        --update      Update dotfiles
+        -b            Backup dotfiles
+        -d            Deploy local sample files
+        -r            Reinstall dotfiles
+        --uninstall   Uninstall dotfiles
