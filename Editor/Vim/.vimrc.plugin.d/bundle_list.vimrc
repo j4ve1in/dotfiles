@@ -1,3 +1,4 @@
+" Load Plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Filer
@@ -28,7 +29,20 @@ NeoBundle 'othree/html5.vim'
 
 NeoBundle 'hail2u/vim-css3-syntax'
 
-"Others
+" Completion
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
+if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundleFetch 'Shougo/neocomplcache.vim'
+else
+    NeoBundleFetch 'Shougo/neocomplete.vim'
+    NeoBundle 'Shougo/neocomplcache.vim'
+endif
+
+" Others
 NeoBundle 'Townk/vim-autoclose' "abbreviateで括弧に書き換える時支障が出る
 
 NeoBundle 'mattn/emmet-vim'
@@ -39,11 +53,15 @@ NeoBundle 'vim-scripts/vim-auto-save'
 
 NeoBundle 'kannokanno/previm'
 
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy "tyru/open-browser.vim", {
+\ 'autoload' : {
+\       'functions' : "OpenBrowser",
+\       'commands'  : ["OpenBrowser", "OpenBrowserSearch"],
+\       'mappings'  : "<Plug>(openbrowser-smart-search)"
+\    },
+\ }
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
-
-NeoBundle has('lua') ? 'Shougo/neocomplete.vim' : 'Shougo/neocomplcache.vim'
 
 NeoBundle 'surround.vim'
 
@@ -65,8 +83,23 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 
-" NeoBundle 'itchyny/lightline.vim'
+NeoBundleLazy 'itchyny/lightline.vim'
 
-" NeoBundle 'scrooloose/nerdcommenter'
+NeoBundleLazy 'scrooloose/nerdcommenter'
 
-" NeoBundle 'plasticboy/vim-markdown'
+NeoBundleLazy 'plasticboy/vim-markdown'
+
+" Load Plugins Settings
+source ~/.vimrc.plugin.d/netrw.vimrc
+
+source ~/.vimrc.plugin.d/tweetvim.vimrc
+
+source ~/.vimrc.plugin.d/autosave.vimrc
+
+source ~/.vimrc.plugin.d/indent_guides.vimrc
+
+if s:meet_neocomplete_requirements()
+    source ~/.vimrc.plugin.d/neocomplete.vimrc
+else
+    source ~/.vimrc.plugin.d/neocomplcache.vimrc
+endif

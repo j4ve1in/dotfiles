@@ -7,7 +7,6 @@ create_symlink() {
     echo "Getting ready"
     printf "Creating directory..."
     mkdir -p ~/.vim #作成したいファイルの下の階層のフォルダはあらかじめつくらないと余計なフォルダのリンクも作成されてしまう
-    mkdir -p ~/.vim/bundle
     echo -e "\e[1;34mdone\e[m"
 
     echo "Creating any symbolic link"
@@ -38,9 +37,9 @@ create_symlink() {
     # dir
     echo "Directory"
     ## .vim
-    ## .vim自体のシンボリックリンクを作成すると.vimにbundleを入れたとき、bundleフォルダも同期されてしまうので、リポジトリ内の.vimの中身だけリンクさせる。(最新版のプラグインを使うため、リポジトリにはbundleを入れていない。)
+    ## .vim自体のシンボリックリンクを作成するとtmpも同期されてしまうので、リポジトリ内の.vimの中身だけリンクさせる。
     count=1
-    vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1 ! -name "bundle")
+    vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1)
     max=$(expr ${#vimdir_list[@]} + 3)
     for dir in ${vimdir_list[@]}; do
         printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ${dir}

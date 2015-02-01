@@ -32,5 +32,3 @@ if has('syntax')
     augroup END
     call ZenkakuSpace()
 endif
-
-
