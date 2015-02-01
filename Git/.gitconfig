@@ -1,7 +1,6 @@
 [alias]
     ad = add
     br = branch
-    ci = commit
     co = checkout
     ft = fetch
     sh = show
@@ -9,10 +8,13 @@
     st = status
     rank = "shortlog -s -n --no-merges"
     ra = "shortlog -s -n --no-merges"
+    # commit
+    ci = commit
+    ca = commit --amend
     # log
     lo = log --oneline
     lp = log -p
-    ls = log -s
+    ls = log --stat
     history = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
     hi = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
     # diff
