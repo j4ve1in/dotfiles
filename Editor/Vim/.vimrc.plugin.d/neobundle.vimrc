@@ -1,4 +1,3 @@
-" NeoBundle
 if !1 | finish | endif "vim-tinyとvim-smallのときはエラーを防ぐため終了する
 
 set runtimepath+=~/.vim/bundle/neobundle.vim/ "bundleで管理するディレクトリを指定する

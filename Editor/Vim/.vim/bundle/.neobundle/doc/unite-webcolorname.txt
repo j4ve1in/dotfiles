@@ -1,0 +1,92 @@
+*unite-webcolorname.txt*	Unite webcolorname source
+
+Version: 0.1
+Author: Yuki <paselan@gmail.com>
+License: MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+CONTENTS					*unite-webcolorname-contents*
+
+Introduction		|unite-webcolorname-introduction|
+Usage			|unite-webcolorname-usage|
+Interface		|unite-webcolorname-interface|
+  Variables		  |unite-webcolorname-variables|
+  Actions		  |unite-webcolorname-actions|
+ToDo			|unite-webcolorname-todo|
+Changelog		|unite-webcolorname-changelog|
+
+==============================================================================
+INTRODUCTION				*unite-webcolorname-introduction*
+
+unite-webcolorname is a unite source plugin which provides "Web Color Names".
+It shows the list of web color names using syntax highlight. When you select
+a color name, you can insert/yank the name or formatted string such as
+"#rrggbb", "rgb(r,g,b)".
+
+==============================================================================
+USAGE						*unite-webcolorname-usage*
+
+:Unite webcolorname[:sort]
+
+Example:
+>
+	:Unite webcolorname
+<
+
+Arguments:
+	sort	Sort the list alphabetically.
+
+==============================================================================
+INTERFACE					*unite-webcolorname-interface*
+
+------------------------------------------------------------------------------
+VARIABLES					*unite-webcolorname-variables*
+
+There is no variable which can be used.
+
+------------------------------------------------------------------------------
+ACTIONS 					*unite-webcolorname-actions*
+
+All the actions of word kind are available.
+
+	See |unite-actions|.
+
+Extra actions of webcolorname
+	insert_hex		Insert HEX value such as "#rrggbb".
+
+	insert_rgb		Insert RGB value such as "rgb(r,g,b)".
+
+	yank_hex		Yank HEX value such as "#rrggbb".
+
+	yank_rgb		Yank RGB value such as "rgb(r,g,b)".
+
+==============================================================================
+TODO						*unite-webcolorname-todo*
+
+* Support user defined format
+
+==============================================================================
+CHANGELOG					*unite-webcolorname-changelog*
+
+2012-01-06 v0.1
+- First release.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:

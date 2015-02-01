@@ -38,12 +38,8 @@ install() {
         mkdir -p ~/.vim/tmp/backup
         mkdir -p ~/.vim/tmp/undo
         echo -e "\e[1;34mdone\e[m"
-        printf "Installing neobundle.vim..."
-        mkdir -p ~/.vim/bundle
-        git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim >/dev/null 2>&1
-        echo -e "\e[1;34mdone\e[m"
-        echo -e "Installing plugin\n"
-        vim +NeoBundleInstall +qall
+        echo -e "Updating plugin\n"
+        vim +NeoBundleUpdate +qall
     else
         echo
         echo "Please install vim or update your path to include the vim executable"
