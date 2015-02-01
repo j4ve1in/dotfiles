@@ -80,7 +80,7 @@ install() {
 }
 export TERM=xterm-256color
 
-if [ $DOTFILES_REINSTALL = "1" ]; then
+if [ "$DOTFILES_REINSTALL" = "1" ]; then
     install
 else
     #echo "インストールすると設定が上書きされます。"
