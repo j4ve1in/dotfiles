@@ -1,6 +1,5 @@
 #!/bin/bash
-READ_FILE_NAME="setup_list"
-SETUP_DIR_LIST=$(cat ~/.dotfiles/Tools/${READ_FILE_NAME})
+source ~/.dotfiles/Tools/load_list.sh
 
 remove_symlink() {
     printf "Removing any symbolic link..."
@@ -36,13 +35,7 @@ uninstall() {
     rm -rf ~/.dotfiles_backup
     rm -rf ~/.zsh/plugins
 
-    if [ $USER = "root" ] || [ $OSTYPE = "cygwin" ]; then
-        rm /usr/local/bin/dotsetup
-    else
-        INSTALL_USER=${USER}
-        printf "root Password: "
-        su -c "rm /usr/local/bin/dotsetup ; exit"
-    fi
+    rm ~/bin/dotsetup
 
     rm -rf ~/.dotfiles
 
@@ -51,7 +44,7 @@ uninstall() {
     echo -e "Uninstalled\n"
 }
 
-if [ "$1" = "-y" ]; then
+if [ $DOTFILES_REINSTALL = "1" ]; then
     uninstall
 else
     printf "Are you sure you want to continue (yes/no)? "

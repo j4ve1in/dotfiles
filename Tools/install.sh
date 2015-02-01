@@ -1,10 +1,6 @@
 #!/bin/bash
 install() {
     INSTALL_DIR=~/.dotfiles
-    if [ -e ${INSTALL_DIR} ]; then
-        echo "${INSTALL_DIR} already exists"
-        exit 1
-    fi
     
     # check git command
     printf "Checking git command..."
@@ -22,10 +18,10 @@ install() {
     echo -e "\e[1;34mdone\e[m"
 
     # backup
-    bash ~/.dotfiles/Tools/backup.sh
+    source ~/.dotfiles/Tools/backup.sh
 
     # create symbolic link
-    bash ~/.dotfiles/Tools/create_symlink.sh
+    source ~/.dotfiles/Tools/create_symlink.sh
 
     # Vim
     # check vim command
@@ -53,34 +49,17 @@ install() {
         echo "Zsh Setting"
         printf "Creating directory..."
         mkdir -p ~/.zsh/plugins
-        echo -e "\e[1;34mdone\e[m"
+        echo -e "\e[1;34mdone\e[m\n"
     else
         echo
         echo "Please install zsh or update your path to include the zsh executable"
     fi
 
-    #printf "設定用コマンドdotsetupを追加しますか (yes/no)? "
-    printf "Do you want to use dotsetup command (yes/no)? "
-    read ANSWER
-
-    ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
-    case $ANSWER in
-        ""|Y* )
-            if [ $USER = "root" ] || [ $OSTYPE = "cygwin" ]; then
-                chmod a+x ~/.dotfiles/Tools/setup.sh
-                cp -f ~/.dotfiles/Tools/setup.sh /usr/local/bin/dotsetup
-            else
-                INSTALL_USER=${USER}
-                #echo "rootユーザーのパスワードを入力してください"
-                printf "root Password: "
-                su -c "cp -f /home/${INSTALL_USER}/.dotfiles/Tools/setup.sh /usr/local/bin/dotsetup ; exit"
-            fi
-            echo -e "Deployed dotsetup\n"
-            ;;
-        *  )
-            echo
-            ;;
-    esac
+    printf "Deploying dotsetup..."
+    mkdir -p ~/bin
+    chmod a+x ~/.dotfiles/Tools/setup.sh
+    ln -sf ~/.dotfiles/Tools/setup.sh ~/bin/dotsetup
+    echo -e "\e[1;34mdone\e[m\n\n"
 
     Color="\e[1;36;44m"
     Color_Reset="\e[m"
@@ -94,19 +73,24 @@ install() {
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
-TERM=xterm-256color
-#echo "インストールすると設定が上書きされます。"
-echo "If the file exists, it will be ruthlessly clobbered"
-#printf "本当にインストールしてもよろしいですか？[Y/n]: "
-printf "Are you sure you want to continue (yes/no)? "
-read ANSWER
+export TERM=xterm-256color
 
-ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
-case $ANSWER in
-    ""|Y* )
-        install
-        ;;
-    *  )
-        echo
-        ;;
-esac
+if [ $DOTFILES_REINSTALL = "1" ]; then
+    install
+else
+    #echo "インストールすると設定が上書きされます。"
+    echo "If the file exists, it will be ruthlessly clobbered"
+    #printf "本当にインストールしてもよろしいですか？[Y/n]: "
+    printf "Are you sure you want to continue (yes/no)? "
+    read ANSWER
+
+    ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
+    case $ANSWER in
+        ""|Y* )
+            install
+            ;;
+        *  )
+            echo
+            ;;
+    esac
+fi

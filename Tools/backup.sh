@@ -1,6 +1,5 @@
 #!/bin/bash
-READ_FILE_NAME="setup_list"
-SETUP_DIR_LIST=$(cat ~/.dotfiles/Tools/${READ_FILE_NAME})
+source ~/.dotfiles/Tools/load_list.sh
 DATE=$(date +"%Y-%m-%d_%H%M%S")
 backup() {
     # ドットファイルすべてをバックアップする方法ではなく、ripositoryと重複するファイルだけバックアップする（競合しそうなファイルも一緒に移動させる）
