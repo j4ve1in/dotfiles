@@ -2,17 +2,25 @@
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Filer
-
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler', {
+\   'depends' : ['Shougo/unite.vim'],
+\   'autoload' : {
+\       'commands' : [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
+\   }
+\ }
 
 NeoBundle 'scrooloose/nerdtree'
 
 " Unite
-NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/unite.vim', {
+\   'autoload' : {
+\       'commands' : [ 'Unite' ]
+\   }
+\ }
 
 NeoBundle 'pasela/unite-webcolorname'
 
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite-outline'
 
 " Git
 NeoBundle 'cohama/agit.vim'
@@ -25,11 +33,17 @@ NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 
 " Syntax
-NeoBundle 'othree/html5.vim'
+NeoBundleLazy 'othree/html5.vim', {
+\   'autoload' : { 'filetypes' : ['html'] },
+\ }
 
-NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
+\   'autoload' : { 'filetypes' : ['css'] },
+\ }
 
 " Completion
+NeoBundle 'mattn/emmet-vim'
+
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
@@ -45,19 +59,17 @@ endif
 " Others
 NeoBundle 'Townk/vim-autoclose' "abbreviateで括弧に書き換える時支障が出る
 
-NeoBundle 'mattn/emmet-vim'
-
 NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'vim-scripts/vim-auto-save'
 
 NeoBundle 'kannokanno/previm'
 
-NeoBundleLazy "tyru/open-browser.vim", {
+NeoBundleLazy 'tyru/open-browser.vim', {
 \ 'autoload' : {
-\       'functions' : "OpenBrowser",
-\       'commands'  : ["OpenBrowser", "OpenBrowserSearch"],
-\       'mappings'  : "<Plug>(openbrowser-smart-search)"
+\       'functions' : 'OpenBrowser',
+\       'commands'  : ['OpenBrowser', 'OpenBrowserSearch'],
+\       'mappings'  : '<Plug>(openbrowser-smart-search)',
 \    },
 \ }
 
@@ -83,23 +95,35 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 
-NeoBundleLazy 'itchyny/lightline.vim'
+NeoBundleFetch 'itchyny/lightline.vim'
 
-NeoBundleLazy 'scrooloose/nerdcommenter'
+NeoBundleFetch 'scrooloose/nerdcommenter'
 
-NeoBundleLazy 'plasticboy/vim-markdown'
+NeoBundleFetch 'plasticboy/vim-markdown'
 
 " Load Plugins Settings
-source ~/.vimrc.plugin.d/netrw.vimrc
+if ! empty(neobundle#get('nerdtree'))
+    source ~/.vimrc.plugin.d/netrw.vimrc
+endif
 
-source ~/.vimrc.plugin.d/tweetvim.vimrc
+if ! empty(neobundle#get('TweetVim'))
+    source ~/.vimrc.plugin.d/tweetvim.vimrc
+endif
 
-source ~/.vimrc.plugin.d/autosave.vimrc
+if ! empty(neobundle#get('vim-auto-save'))
+    source ~/.vimrc.plugin.d/autosave.vimrc
+endif
 
-source ~/.vimrc.plugin.d/indent_guides.vimrc
+if ! empty(neobundle#get('vim-indent-guides'))
+    source ~/.vimrc.plugin.d/indent_guides.vimrc
+endif
 
 if s:meet_neocomplete_requirements()
-    source ~/.vimrc.plugin.d/neocomplete.vimrc
+    if ! empty(neobundle#get('neocomplete.vim'))
+        source ~/.vimrc.plugin.d/neocomplete.vimrc
+    endif
 else
-    source ~/.vimrc.plugin.d/neocomplcache.vimrc
+    if ! empty(neobundle#get('neocomplcache.vim'))
+        source ~/.vimrc.plugin.d/neocomplcache.vimrc
+    endif
 endif
