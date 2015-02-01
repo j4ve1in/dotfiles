@@ -36,7 +36,7 @@ create_symlink() {
     # dir
     echo "Directory"
     ## .vim
-    ## .vim自体のシンボリックリンクを作成するとtmpも同期されてしまうので、リポジトリ内の.vimの中身だけリンクさせる。
+    ## .vim自体のシンボリックリンクを作成すると余計なファイルも同期されてしまうので、リポジトリ内の.vimの中身だけリンクさせる。
     count=1
     vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1)
     max=$(expr ${#vimdir_list[@]} + 3)
