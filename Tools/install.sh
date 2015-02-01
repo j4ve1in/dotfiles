@@ -75,6 +75,8 @@ install() {
     echo -e ${Color}" Follow me at https://github.com/tetsuya00                                      "${Color_Reset}
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
+
+    exec $SHELL -l
 }
 export TERM=xterm-256color
 
