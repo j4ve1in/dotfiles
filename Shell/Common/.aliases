@@ -36,6 +36,6 @@ if [ $OSTYPE = "cygwin" ]; then
 fi
 
 # Local
-if [ -e ~/.local/.aliases.local ]; then
-    source ~/.local/.aliases.local
+if [ -e ~/.local.d/.aliases.local ]; then
+    source ~/.local.d/.aliases.local
 fi

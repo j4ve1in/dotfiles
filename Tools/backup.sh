@@ -1,7 +1,7 @@
 #!/bin/bash
 source ~/.dotfiles/Tools/load_list.sh
-DATE=$(date +"%Y-%m-%d_%H%M%S")
 backup() {
+    DATE=$(date +"%Y-%m-%d_%H%M%S")
     # ドットファイルすべてをバックアップする方法ではなく、ripositoryと重複するファイルだけバックアップする（競合しそうなファイルも一緒に移動させる）
     printf "Creating backup directory..."
     mkdir -p ~/.dotfiles_backup/${DATE}
