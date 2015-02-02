@@ -41,4 +41,4 @@
     safecrlf = true
 
 [include]
-    path = ~/.local/.gitconfig.local # ファイルが存在しないときは読み込まない
+    path = ~/.local.d/.gitconfig.local # ファイルが存在しないときは読み込まない

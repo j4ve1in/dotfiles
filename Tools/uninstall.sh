@@ -37,6 +37,9 @@ uninstall() {
     rm -rf ~/.zsh/plugins
 
     rm ~/bin/dotsetup
+    if [ ! -e ~/bin/* ]; then
+        rm -rf ~/bin
+    fi
 
     rm -rf ~/.dotfiles
 
