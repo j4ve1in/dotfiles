@@ -61,7 +61,7 @@ install() {
     printf "Deploying dotsetup..."
     mkdir -p ~/bin
     chmod a+x ~/.dotfiles/Tools/setup.sh
-    ln -sf ~/.dotfiles/Tools/setup.sh ~/bin/dotsetup
+    cp ~/.dotfiles/Tools/setup.sh ~/bin/dotsetup
     echo -e "\e[1;34mdone\e[m\n\n"
 
     Color="\e[1;36;44m"
