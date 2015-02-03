@@ -1,17 +1,17 @@
 # 基本設定
-source ~/.zshrc.d/.zshrc.basic
+source ~/.zshrc.d/basic.zshrc
 
 # プロンプト
-source ~/.zshrc.d/.zshrc.prompt
+source ~/.zshrc.d/prompt.zshrc
 
 # 色
-source ~/.zshrc.d/.zshrc.colors
+source ~/.zshrc.d/colors.zshrc
 
 # 補完
-source ~/.zshrc.d/.zshrc.completion
+source ~/.zshrc.d/completion.zshrc
 
 # 履歴
-source ~/.zshrc.d/.zshrc.history
+source ~/.zshrc.d/history.zshrc
 
 # alias
 source ~/.aliases
