@@ -95,6 +95,10 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 
+NeoBundle 'supermomonga/thingspast.vim'
+
+NeoBundle 'cocopon/colorswatch.vim'
+
 NeoBundleFetch 'itchyny/lightline.vim'
 
 NeoBundleFetch 'scrooloose/nerdcommenter'
