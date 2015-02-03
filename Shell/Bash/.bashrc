@@ -5,9 +5,6 @@ if [ "$OSTYPE" = "cygwin" ]; then
     fi
 fi
 
-# User specific aliases and functions
-export LANG=ja_JP.UTF-8
-
 # some cygwin related patches
 if [ "$OSTYPE" = "cygwin" ]; then
   if [ -x /usr/bin/tput ]; then
