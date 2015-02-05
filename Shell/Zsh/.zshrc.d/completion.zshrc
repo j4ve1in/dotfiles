@@ -1,8 +1,14 @@
-autoload -U compinit # 補完機能
-compinit -u # 補完を賢くする
-setopt autopushd # cdの履歴表示、cd - で一つ前のディレクトリへ
-setopt pushd_ignore_dups # 同ディレクトリを履歴に追加しない
-setopt auto_cd # ディレクトリ名のみでcd
-setopt list_packed # リストを詰めて表示
-setopt list_types # 補完一覧をファイル種別に表示
-setopt correct # コマンドのスペルチェックを有効に
+autoload -Uz compinit
+compinit -u
+setopt autopushd
+setopt pushd_ignore_dups
+setopt auto_cd
+function cd() {
+    builtin cd $@ && ls;
+}
+setopt list_packed
+setopt list_types
+setopt correct
+
+#allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD
