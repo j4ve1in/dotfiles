@@ -21,6 +21,7 @@ remove_symlink() {
 
     ## Zsh
     rm -rf ~/.zsh
+    rm -rf ~/.zsh.plugin.d
     rm -rf ~/.zshrc.d
 
     ## Emacs
