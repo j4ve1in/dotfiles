@@ -44,20 +44,6 @@ install() {
         echo "Please install vim or update your path to include the vim executable"
     fi
 
-    # Zsh
-    # check zsh command
-    printf "Checking zsh command..."
-    if [ $(which vim) ]; then
-        echo -e "\e[1;34mdone\e[m"
-        echo "Zsh Setting"
-        printf "Creating directory..."
-        mkdir -p ~/.zsh/plugins
-        echo -e "\e[1;34mdone\e[m\n"
-    else
-        echo
-        echo "Please install zsh or update your path to include the zsh executable"
-    fi
-
     printf "Deploying dotsetup..."
     mkdir -p ~/bin
     chmod a+x ~/.dotfiles/Tools/setup.bash
