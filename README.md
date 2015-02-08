@@ -5,12 +5,12 @@
 ## Using shell script
 ### via curl
 ```bash
-$ bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.sh)"
+$ bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.bash)"
 ```
 
 ### via wget
 ```bash
-$ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.sh -q -O -)"
+$ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.bash -q -O -)"
 ```
 
 # Configurations
