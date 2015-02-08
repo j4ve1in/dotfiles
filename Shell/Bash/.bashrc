@@ -1,28 +1,11 @@
-# Source global definitions
-if [ "$OSTYPE" = "cygwin" ]; then
-    if [ -f /etc/bashrc ]; then
-        /etc/bashrc
-    fi
-fi
-
-# some cygwin related patches
-if [ "$OSTYPE" = "cygwin" ]; then
-  if [ -x /usr/bin/tput ]; then
-    LINES=$(tput lines)
-    export LINES
-    COLUMNS=$(tput cols)
-    export COLUMNS 
-  fi
-fi
+# basic
+source ~/.bashrc.d/basic.bashrc
 
 # alias
 source ~/.aliases
 
-# viモードでコマンドラインを編集する
-set -o vi
-
 # Prompt
-source ~/.bashrc.prompt
+source ~/.bashrc.d/prompt.bashrc
 
 # TMUX
 source ~/.tmux.autoload

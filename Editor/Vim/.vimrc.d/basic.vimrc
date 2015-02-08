@@ -17,6 +17,8 @@ au BufRead,BufNewFile *.md set filetype=markdown " .mdをファイルタイプ�
 
 au BufRead,BufNewFile *.zshrc set filetype=zsh " .zshrcをファイルタイプをzshにする
 
+au BufRead,BufNewFile *.bashrc set filetype=sh " .bashrcをファイルタイプをshにする
+
 " 文字コードの自動認識
 
 set encoding=utf-8 " vimの内部で使用されるエンコーディングを指定する

@@ -56,9 +56,19 @@ create_symlink() {
     ln -sf ~/.dotfiles/Editor/Vim/.vimrc.plugin.d ~
     count=$(expr ${count} + 1)
 
+    ## .zsh.plugin.d
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh.plugin.d
+    ln -sf ~/.dotfiles/Shell/Zsh/.zsh.plugin.d ~
+    count=$(expr ${count} + 1)
+
     ## .zshrc.d
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zshrc.d
     ln -sf ~/.dotfiles/Shell/Zsh/.zshrc.d ~
+    count=$(expr ${count} + 1)
+
+    ## .bashrc.d
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.bashrc.d
+    ln -sf ~/.dotfiles/Shell/Bash/.bashrc.d ~
     count=$(expr ${count} + 1)
 }
 create_symlink

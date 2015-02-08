@@ -14,7 +14,7 @@ install() {
 
     # clone
     printf "Cloning dotfiles..."
-    git clone https://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} >/dev/null 2>&1
+    git clone https://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
     echo -e "\e[1;34mdone\e[m"
 
     # backup

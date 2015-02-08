@@ -1,8 +1,8 @@
+# Plugin
+source ~/.zshrc.d/plugin/plugin_list.zshrc
+
 # 基本設定
 source ~/.zshrc.d/basic.zshrc
-
-# プロンプト
-source ~/.zshrc.d/prompt.zshrc
 
 # 色
 source ~/.zshrc.d/colors.zshrc
@@ -31,6 +31,6 @@ tored() {
 alias -g E='2> >(tored)'
 
 # zman
-function zman() {
-    PAGER="less -g -s '+/^       "$1"'" man zshall
-}
+# function zman() {
+#     PAGER="less -g -s '+/^       "$1"'" man zshall
+# }
