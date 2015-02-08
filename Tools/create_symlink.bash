@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.dotfiles/Tools/load_list.sh
+source ~/.dotfiles/Tools/load_list.bash
 
 create_symlink() {
     # ready

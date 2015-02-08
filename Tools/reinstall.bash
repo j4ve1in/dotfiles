@@ -7,8 +7,8 @@ ANSWER=$(echo $ANSWER | tr y Y | tr -d '[\[\]]')
 case $ANSWER in
     ""|Y* )
         export DOTFILES_REINSTALL="1"
-        source ~/.dotfiles/Tools/uninstall.sh
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.sh)"
+        source ~/.dotfiles/Tools/uninstall.bash
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.bash)"
         echo -e "Reinstalled\n"
         ;;
     *  )

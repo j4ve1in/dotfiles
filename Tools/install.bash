@@ -18,10 +18,10 @@ install() {
     echo -e "\e[1;34mdone\e[m"
 
     # backup
-    source ~/.dotfiles/Tools/backup.sh
+    source ~/.dotfiles/Tools/backup.bash
 
     # create symbolic link
-    source ~/.dotfiles/Tools/create_symlink.sh
+    source ~/.dotfiles/Tools/create_symlink.bash
 
     # Vim
     # check vim command
@@ -60,8 +60,8 @@ install() {
 
     printf "Deploying dotsetup..."
     mkdir -p ~/bin
-    chmod a+x ~/.dotfiles/Tools/setup.sh
-    cp ~/.dotfiles/Tools/setup.sh ~/bin/dotsetup
+    chmod a+x ~/.dotfiles/Tools/setup.bash
+    cp ~/.dotfiles/Tools/setup.bash ~/bin/dotsetup
     echo -e "\e[1;34mdone\e[m\n\n"
 
     Color="\e[1;36;44m"

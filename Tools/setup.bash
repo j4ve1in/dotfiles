@@ -13,23 +13,23 @@ menu() {
     select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6"; do
         case $REPLY in
             1)
-                source ~/.dotfiles/Tools/update.sh
+                source ~/.dotfiles/Tools/update.bash
                 break
                 ;;
             2)
-                source ~/.dotfiles/Tools/backup.sh
+                source ~/.dotfiles/Tools/backup.bash
                 break
                 ;;
             3)
-                source ~/.dotfiles/Tools/deploy.sh
+                source ~/.dotfiles/Tools/deploy.bash
                 break
                 ;;
             4)
-                source ~/.dotfiles/Tools/reinstall.sh
+                source ~/.dotfiles/Tools/reinstall.bash
                 break
                 ;;
             5)
-                source ~/.dotfiles/Tools/uninstall.sh
+                source ~/.dotfiles/Tools/uninstall.bash
                 break
                 ;;
             6)
@@ -46,15 +46,15 @@ menu() {
 }
 
 if [ "$1" = "--update" ]; then
-    source ~/.dotfiles/Tools/update.sh
+    source ~/.dotfiles/Tools/update.bash
 elif [ "$1" = "-b" ]; then
-    source ~/.dotfiles/Tools/backup.sh
+    source ~/.dotfiles/Tools/backup.bash
 elif [ "$1" = "-d" ]; then
-    source ~/.dotfiles/Tools/deploy.sh
+    source ~/.dotfiles/Tools/deploy.bash
 elif [ "$1" = "-r" ]; then
-    source ~/.dotfiles/Tools/reinstall.sh
+    source ~/.dotfiles/Tools/reinstall.bash
 elif [ "$1" = "--uninstall" ]; then
-    source ~/.dotfiles/Tools/uninstall.sh
+    source ~/.dotfiles/Tools/uninstall.bash
 elif [ "$1" = "" ]; then
     menu
 else
