@@ -27,7 +27,7 @@ create_symlink() {
     for dir_list in ${SETUP_DIR_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
         for file in ${filename[@]}; do
-            printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ${file##*/}
+            printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/${file##*/}
             ln -sf ${file} ~/${file##*/}
             count=$(expr ${count} + 1)
         done
@@ -41,7 +41,7 @@ create_symlink() {
     vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1)
     max=$(expr ${#vimdir_list[@]} + 3)
     for dir in ${vimdir_list[@]}; do
-        printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ${dir}
+        printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vim/${dir##*/}
         ln -sf ${dir} ~/.vim
         count=$(expr ${count} + 1)
     done
