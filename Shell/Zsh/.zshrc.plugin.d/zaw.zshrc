@@ -6,7 +6,7 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
-source ~/.zsh.plugin.d/zaw/zaw.zsh
+source ~/.zsh/plugin/zaw/zaw.zsh
 
 zstyle ':filter-select' case-insensitive yes
 

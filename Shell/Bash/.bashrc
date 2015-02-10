@@ -1,11 +1,11 @@
-# basic
-source ~/.bashrc.d/basic.bashrc
+# Load ~/.bashrc.d/*.bashrc
+filepath="$HOME/.bashrc.d/*.bashrc"
+for file in ${filepath}; do
+    source ${file}
+done
 
 # alias
 source ~/.aliases
-
-# Prompt
-source ~/.bashrc.d/prompt.bashrc
 
 # TMUX
 source ~/.tmux.autoload

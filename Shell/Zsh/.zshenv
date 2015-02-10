@@ -1,5 +1,8 @@
 source ~/.env
 
+# ZDOTDIR
+export ZDOTDIR=$HOME/.zsh
+
 # Prompt
 ## Colors
 autoload colors
