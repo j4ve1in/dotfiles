@@ -4,7 +4,6 @@ source ~/.dotfiles/Tools/load_list.bash
 remove_symlink() {
     printf "Removing any symbolic link..."
     # file
-    # ドットファイル以外のリンクを作成しないようにする
     for dir_list in ${SETUP_DIR_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
         for file in ${filename[@]}; do
@@ -14,6 +13,12 @@ remove_symlink() {
 
 
     # dir
+    ## Bash
+    rm -rf ~/.bashrc.d
+    
+    ## Emacs
+    rm -rf ~/.emacs.d
+    
     ## Vim
     rm -rf ~/.vim
     rm -rf ~/.vimrc.d
@@ -24,9 +29,6 @@ remove_symlink() {
     rm -rf ~/.zsh.plugin.d
     rm -rf ~/.zshrc.d
 
-    ## Emacs
-    rm -rf ~/.emacs.d
-
     echo -e "\e[1;34mdone\e[m"
 
 }
@@ -34,14 +36,23 @@ remove_symlink() {
 uninstall() {
     remove_symlink
     printf "Removing any file and directory..."
-    rm -rf ~/.dotfiles_backup
-    rm -rf ~/.zsh/plugins
+    rm ~/.bash_history
+    rm -rf ~/.cache
+    rm ~/.chpwd-recent-dirs
+    rm ~/.lesshst
+    rm -rf ~/.tweetvim
+    rm ~/.viminfo
+    rm ~/.zcompdump
+    rm ~/.zsh_history
 
+    # dotsetup
     rm ~/bin/dotsetup
     if [ -e "~/bin/*" ]; then
         rm -rf ~/bin
     fi
 
+    # dotfiles*
+    rm -rf ~/.dotfiles_backup
     rm -rf ~/.dotfiles
 
     echo -e "\e[1;34mdone\e[m"
