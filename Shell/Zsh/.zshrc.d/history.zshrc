@@ -1,4 +1,4 @@
-HISTFILE=~/.zsh_history # historyファイル
+HISTFILE=~/.zsh/.zsh_history # historyファイル
 HISTFILESIZE=1000000
 HISTSIZE=1000000 # ファイルサイズ
 SAVEHIST=1000000 # saveする量

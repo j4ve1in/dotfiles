@@ -5,7 +5,9 @@ create_symlink() {
     # ready
     echo "Getting ready"
     printf "Creating directory..."
-    mkdir -p ~/.vim #作成したいファイルの下の階層のフォルダはあらかじめつくらないと余計なフォルダのリンクも作成されてしまう
+    # 作成したいファイルの下の階層のフォルダはあらかじめつくらないと余計なフォルダのリンクも作成されてしまう
+    mkdir -p ~/.vim
+    mkdir -p ~/.zsh
     echo -e "\e[1;34mdone\e[m"
 
     echo "Creating any symbolic link"
@@ -20,56 +22,74 @@ create_symlink() {
             max=$(expr ${max} + 1)
         done
     done
+    # ~/.zsh/.zshrc
+    max=$(expr ${max} + 1)
 
     # file
-    count=1
+    count=0
     # ドットファイル以外のリンクを作成しないようにする
     for dir_list in ${SETUP_DIR_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
         for file in ${filename[@]}; do
+            count=$(expr ${count} + 1)
             printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/${file##*/}
             ln -sf ${file} ~/${file##*/}
-            count=$(expr ${count} + 1)
         done
     done
+    # ~/.zsh/.zshrc
+    count=$(expr ${count} + 1)
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh/.zshrc
+    ln -sf ~/.dotfiles/Shell/Zsh/.zsh/.zshrc ~/.zsh/.zshrc
 
     # dir
     echo "Directory"
+    max=0
+    vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1 -type d)
+    zshdir_list=$(find ~/.dotfiles/Shell/Zsh/.zsh -maxdepth 1 -mindepth 1 -type d)
+    for file in ${vimdir_list[@]} ${zshdir_list[@]}; do
+        max=$(expr ${max} + 1)
+    done
+    max=$(expr ${max} + 5)
+    count=0
+
+    ## .bashrc.d
+    count=$(expr ${count} + 1)
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.bashrc.d
+    ln -sf ~/.dotfiles/Shell/Bash/.bashrc.d ~
+
     ## .vim
-    ## .vim自体のシンボリックリンクを作成すると余計なファイルも同期されてしまうので、リポジトリ内の.vimの中身だけリンクさせる。
-    count=1
-    vimdir_list=$(find ~/.dotfiles/Editor/Vim/.vim -maxdepth 1 -mindepth 1)
-    max=$(expr ${#vimdir_list[@]} + 3)
     for dir in ${vimdir_list[@]}; do
+        count=$(expr ${count} + 1)
         printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vim/${dir##*/}
         ln -sf ${dir} ~/.vim
-        count=$(expr ${count} + 1)
     done
 
     ## .vimrc.d
+    count=$(expr ${count} + 1)
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vimrc.d
     ln -sf ~/.dotfiles/Editor/Vim/.vimrc.d ~
-    count=$(expr ${count} + 1)
 
     ## .vimrc.plugin.d
+    count=$(expr ${count} + 1)
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.vimrc.plugin.d
     ln -sf ~/.dotfiles/Editor/Vim/.vimrc.plugin.d ~
-    count=$(expr ${count} + 1)
 
-    ## .zsh.plugin.d
-    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh.plugin.d
-    ln -sf ~/.dotfiles/Shell/Zsh/.zsh.plugin.d ~
-    count=$(expr ${count} + 1)
+    ## .zsh
+    for dir in ${zshdir_list[@]}; do
+        count=$(expr ${count} + 1)
+        printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh/${dir##*/}
+        ln -sf ${dir} ~/.zsh
+    done
 
     ## .zshrc.d
+    count=$(expr ${count} + 1)
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zshrc.d
     ln -sf ~/.dotfiles/Shell/Zsh/.zshrc.d ~
-    count=$(expr ${count} + 1)
 
-    ## .bashrc.d
-    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.bashrc.d
-    ln -sf ~/.dotfiles/Shell/Bash/.bashrc.d ~
+    ## .zshrc.plugin.d
     count=$(expr ${count} + 1)
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zshrc.plugin.d
+    ln -sf ~/.dotfiles/Shell/Zsh/.zshrc.plugin.d ~
 }
 create_symlink
 echo -e "Created symbolic link\n"

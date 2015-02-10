@@ -1,3 +1,3 @@
-[submodule "Shell/Zsh/.zsh.plugin.d/zaw"]
-	path = Shell/Zsh/.zsh.plugin.d/zaw
+[submodule "Shell/Zsh/.zsh/plugin/zaw"]
+	path = Shell/Zsh/.zsh/plugin/zaw
 	url = https://github.com/zsh-users/zaw.git
