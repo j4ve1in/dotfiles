@@ -99,6 +99,8 @@ NeoBundle 'supermomonga/thingspast.vim'
 
 NeoBundle 'cocopon/colorswatch.vim'
 
+NeoBundle 'editorconfig/editorconfig-vim'
+
 NeoBundleFetch 'itchyny/lightline.vim'
 
 NeoBundleFetch 'scrooloose/nerdcommenter'
