@@ -64,7 +64,6 @@ install() {
 
     exec $SHELL -l
 }
-export TERM=xterm-256color
 
 if [ "$DOTFILES_REINSTALL" = "1" ]; then
     install
