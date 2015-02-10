@@ -5,7 +5,7 @@ Editor/Nano
 Editor/Vim
 Git
 Multiplexer
+Shell
 Shell/Bash
 Shell/Zsh
-Shell/Common
 Others
