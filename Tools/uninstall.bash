@@ -39,12 +39,12 @@ uninstall() {
     rm ~/.bash_history
     rm -rf ~/.cache
     rm ~/.chpwd-recent-dirs
-    rm ~/.lesshst
+    if [ -e "~/.lesshst" ]; then
+        rm ~/.lesshst
+    fi
     rm -rf ~/.tweetvim
     rm ~/.viminfo
-    rm ~/.zcompdump
-    rm ~/.zsh_history
-
+    
     # dotsetup
     rm ~/bin/dotsetup
     if [ -e "~/bin/*" ]; then
