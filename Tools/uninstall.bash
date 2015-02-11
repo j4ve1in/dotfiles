@@ -15,10 +15,10 @@ remove_symlink() {
     # dir
     ## Bash
     rm -rf ~/.bashrc.d
-    
+
     ## Emacs
     rm -rf ~/.emacs.d
-    
+
     ## Vim
     rm -rf ~/.vim
     rm -rf ~/.vimrc.d
@@ -36,18 +36,31 @@ remove_symlink() {
 uninstall() {
     remove_symlink
     printf "Removing any file and directory..."
-    rm ~/.bash_history
-    rm -rf ~/.cache
-    rm ~/.chpwd-recent-dirs
-    if [ -e "~/.lesshst" ]; then
+    if [ -e ~/.bash_history ]; then
+        rm ~/.bash_history
+    fi
+    if [ -e ~/.cache ]; then
+        rm -rf ~/.cache
+    fi
+    if [ -e ~/.cdbookmark ]; then
+        rm ~/.cdbookmark
+    fi
+    if [ -e ~/.cdd ]; then
+        rm ~/.cdd
+    fi
+    if [ -e ~/.lesshst ]; then
         rm ~/.lesshst
     fi
-    rm -rf ~/.tweetvim
-    rm ~/.viminfo
-    
+    if [ -e ~/.lesshst ]; then
+        rm -rf ~/.tweetvim
+    fi
+    if [ -e ~/.lesshst ]; then
+        rm ~/.viminfo
+    fi
+
     # dotsetup
     rm ~/bin/dotsetup
-    if [ -e "~/bin/*" ]; then
+    if [ -e ~/bin/* ]; then
         rm -rf ~/bin
     fi
 
@@ -56,7 +69,7 @@ uninstall() {
     rm -rf ~/.dotfiles
 
     echo -e "\e[1;34mdone\e[m"
-    
+
     echo -e "Uninstalled\n"
 }
 
