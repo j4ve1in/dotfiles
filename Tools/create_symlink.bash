@@ -22,8 +22,8 @@ create_symlink() {
             max=$(expr ${max} + 1)
         done
     done
-    # ~/.zsh/.zshrc
-    max=$(expr ${max} + 1)
+    # ~/.zsh/.zshrc and ~/.zsh/.zshrc.zwc
+    max=$(expr ${max} + 2)
 
     # file
     count=0
@@ -40,6 +40,10 @@ create_symlink() {
     count=$(expr ${count} + 1)
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh/.zshrc
     ln -sf ~/.dotfiles/Shell/Zsh/.zsh/.zshrc ~/.zsh/.zshrc
+    # ~/.zsh/.zshrc.zwc
+    count=$(expr ${count} + 1)
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zsh/.zshrc.zwc
+    ln -sf ~/.dotfiles/Shell/Zsh/.zsh/.zshrc.zwc ~/.zsh/.zshrc.zwc
 
     # dir
     echo "Directory"
