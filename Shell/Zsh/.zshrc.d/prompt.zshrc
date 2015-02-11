@@ -4,6 +4,7 @@ autoload colors
 colors
 Blue='%{$fg_no_bold[blue]%}'          # Blue
 White='%{$fg_no_bold[white]%}'        # White
+
 ## SSH
 if [ -n "$SSH_CLIENT" ]; then
     ssh=":ssh-session"
@@ -21,7 +22,7 @@ else
 fi
 
 PROMPT="${Blue}[%f%n@%m${White}${ssh}%f %1~ ${White}${PS1_GIT_BRANCH}%f${Blue}][%f%D{%Y/%m/%d} %T${Blue}]%f
-${VIMODE}%B%(!.#.%%)%b "
+%B%(!.#.%%)%b "
 #RPROMPT="%T" # 右側に時間表示
 #setopt transient_rprompt # 右側まで入力がきたら時間表示を消す
 setopt prompt_subst # 変数展開など便利なプロント
