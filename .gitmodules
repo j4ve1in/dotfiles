@@ -1,3 +1,18 @@
 [submodule "Shell/Zsh/.zsh/plugin/zaw"]
 	path = Shell/Zsh/.zsh/plugin/zaw
 	url = https://github.com/zsh-users/zaw.git
+[submodule "Shell/Zsh/.zsh/function/cd-gitroot"]
+	path = Shell/Zsh/.zsh/function/cd-gitroot
+	url = https://github.com/mollifier/cd-gitroot.git
+[submodule "Shell/zsh/.zsh/function/cd-bookmark"]
+	path = Shell/zsh/.zsh/function/cd-bookmark
+	url = https://github.com/mollifier/cd-bookmark.git
+[submodule "Shell/Zsh/.zsh/plugin/cdd"]
+	path = Shell/Zsh/.zsh/plugin/cdd
+	url = https://github.com/m4i/cdd.git
+[submodule "Shell/Zsh/.zsh/plugin/zsh-bd"]
+	path = Shell/Zsh/.zsh/plugin/zsh-bd
+	url = https://github.com/Tarrasch/zsh-bd.git
+[submodule "Shell/Zsh/.zsh/plugin/zsh-autosuggestions"]
+	path = Shell/Zsh/.zsh/plugin/zsh-autosuggestions
+	url = https://github.com/tarruda/zsh-autosuggestions.git

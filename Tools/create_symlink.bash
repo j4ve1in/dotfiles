@@ -53,7 +53,7 @@ create_symlink() {
     for file in ${vimdir_list[@]} ${zshdir_list[@]}; do
         max=$(expr ${max} + 1)
     done
-    max=$(expr ${max} + 5)
+    max=$(expr ${max} + 6)
     count=0
 
     ## .bashrc.d
@@ -89,6 +89,11 @@ create_symlink() {
     count=$(expr ${count} + 1)
     printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zshrc.d
     ln -sf ~/.dotfiles/Shell/Zsh/.zshrc.d ~
+
+    ## .zshrc.function.d
+    count=$(expr ${count} + 1)
+    printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/.zshrc.function.d
+    ln -sf ~/.dotfiles/Shell/Zsh/.zshrc.function.d ~
 
     ## .zshrc.plugin.d
     count=$(expr ${count} + 1)
