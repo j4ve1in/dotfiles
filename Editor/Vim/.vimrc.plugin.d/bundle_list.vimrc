@@ -33,6 +33,17 @@ NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 
 " Syntax
+
+NeoBundle 'scrooloose/syntastic'
+
+NeoBundle 'cohama/vim-hier'
+
+NeoBundle 'dannyob/quickfixstatus'
+
+NeoBundle "osyo-manga/shabadou.vim"
+
+NeoBundle "osyo-manga/vim-watchdogs"
+
 NeoBundleLazy 'othree/html5.vim', {
 \   'autoload' : { 'filetypes' : ['html'] },
 \ }
@@ -45,15 +56,15 @@ NeoBundleLazy 'hail2u/vim-css3-syntax', {
 NeoBundle 'mattn/emmet-vim'
 
 function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+  return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 
 if s:meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete.vim'
-    NeoBundleFetch 'Shougo/neocomplcache.vim'
+  NeoBundle 'Shougo/neocomplete.vim'
+  NeoBundleFetch 'Shougo/neocomplcache.vim'
 else
-    NeoBundleFetch 'Shougo/neocomplete.vim'
-    NeoBundle 'Shougo/neocomplcache.vim'
+  NeoBundleFetch 'Shougo/neocomplete.vim'
+  NeoBundle 'Shougo/neocomplcache.vim'
 endif
 
 " Others
@@ -109,27 +120,27 @@ NeoBundleFetch 'plasticboy/vim-markdown'
 
 " Load Plugins Settings
 if ! empty(neobundle#get('nerdtree'))
-    source ~/.vimrc.plugin.d/netrw.vimrc
+  source ~/.vimrc.plugin.d/netrw.vimrc
 endif
 
 if ! empty(neobundle#get('TweetVim'))
-    source ~/.vimrc.plugin.d/tweetvim.vimrc
+  source ~/.vimrc.plugin.d/tweetvim.vimrc
 endif
 
 if ! empty(neobundle#get('vim-auto-save'))
-    source ~/.vimrc.plugin.d/autosave.vimrc
+  source ~/.vimrc.plugin.d/autosave.vimrc
 endif
 
 if ! empty(neobundle#get('vim-indent-guides'))
-    source ~/.vimrc.plugin.d/indent_guides.vimrc
+  source ~/.vimrc.plugin.d/indent_guides.vimrc
 endif
 
 if s:meet_neocomplete_requirements()
-    if ! empty(neobundle#get('neocomplete.vim'))
-        source ~/.vimrc.plugin.d/neocomplete.vimrc
-    endif
+  if ! empty(neobundle#get('neocomplete.vim'))
+    source ~/.vimrc.plugin.d/neocomplete.vimrc
+  endif
 else
-    if ! empty(neobundle#get('neocomplcache.vim'))
-        source ~/.vimrc.plugin.d/neocomplcache.vimrc
-    endif
+  if ! empty(neobundle#get('neocomplcache.vim'))
+    source ~/.vimrc.plugin.d/neocomplcache.vimrc
+  endif
 endif
