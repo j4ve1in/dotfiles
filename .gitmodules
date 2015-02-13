@@ -13,6 +13,3 @@
 [submodule "Shell/Zsh/.zsh/plugin/zsh-bd"]
 	path = Shell/Zsh/.zsh/plugin/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
-[submodule "Shell/Zsh/.zsh/plugin/zsh-autosuggestions"]
-	path = Shell/Zsh/.zsh/plugin/zsh-autosuggestions
-	url = https://github.com/tarruda/zsh-autosuggestions.git
