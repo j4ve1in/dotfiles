@@ -10,8 +10,6 @@ update() {
     git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/cdd submodule update > /dev/null 2>&1
     git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zaw submodule foreach 'git checkout master ; git pull' > /dev/null 2>&1
     git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zaw submodule update > /dev/null 2>&1
-    git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zsh-autosuggestions submodule foreach 'git checkout master ; git pull' > /dev/null 2>&1
-    git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zsh-autosuggestions submodule update > /dev/null 2>&1
     git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zsh-bd submodule foreach 'git checkout master ; git pull' > /dev/null 2>&1
     git -C ~/.dotfiles/Shell/Zsh/.zsh/plugin/zsh-bd submodule update > /dev/null 2>&1
     echo -e "\e[1;34mdone\e[m"
