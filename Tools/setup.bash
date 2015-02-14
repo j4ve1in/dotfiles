@@ -6,58 +6,76 @@ menu() {
     ans3="Deploy"
     ans4="Reinstall"
     ans5="Uninstall"
-    ans6="Exit"
+    ans6="Help"
+    ans7="Exit"
 
     echo "Menu"
-    #echo "実行したい処理を数字で指定してください"
-    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6"; do
+    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6" "$ans7"; do
+        echo
         case $REPLY in
-            1)
+            1 )
                 source ~/.dotfiles/Tools/update.bash
-                break
                 ;;
-            2)
+            2 )
                 source ~/.dotfiles/Tools/backup.bash
-                break
+                exit 0
                 ;;
-            3)
+            3 )
                 source ~/.dotfiles/Tools/deploy.bash
-                break
                 ;;
-            4)
+            4 )
                 source ~/.dotfiles/Tools/reinstall.bash
-                break
                 ;;
-            5)
+            5 )
                 source ~/.dotfiles/Tools/uninstall.bash
-                break
                 ;;
-            6)
+            6 )
+                source ~/.dotfiles/Tools/help.bash
+                menu
+                ;;
+            7 )
                 echo -e "exit\n"
                 exit 0
                 ;;
-            *)
+            * )
                 echo -e "\e[1;31mError\e[m\n"
-                #echo "範囲内の数字を入力してください"
                 menu
                 ;;
         esac
     done
 }
 
-if [ "$1" = "--update" ]; then
-    source ~/.dotfiles/Tools/update.bash
-elif [ "$1" = "-b" ]; then
-    source ~/.dotfiles/Tools/backup.bash
-elif [ "$1" = "-d" ]; then
-    source ~/.dotfiles/Tools/deploy.bash
-elif [ "$1" = "-r" ]; then
-    source ~/.dotfiles/Tools/reinstall.bash
-elif [ "$1" = "--uninstall" ]; then
-    source ~/.dotfiles/Tools/uninstall.bash
-elif [ "$1" = "" ]; then
-    menu
-else
-    echo -e "\e[1;31mError\e[m\n"
-    exit 1
-fi
+case "$1" in
+    "--update" )
+        source ~/.dotfiles/Tools/update.bash
+        ;;
+    "-b" )
+        source ~/.dotfiles/Tools/backup.bash
+        exit 0
+        ;;
+    "-d" )
+        source ~/.dotfiles/Tools/deploy.bash
+        ;;
+    "-r" )
+        source ~/.dotfiles/Tools/reinstall.bash
+        ;;
+    "--uninstall" )
+        source ~/.dotfiles/Tools/uninstall.bash
+        ;;
+    "-h" | "--help" )
+        source ~/.dotfiles/Tools/help.bash
+        ;;
+    "" )
+        menu
+        ;;
+    -* )
+        echo "dotsetup: illegal option -- '$(echo $1 | sed 's/^-*//')'"
+        echo -e "Try 'dotsetup --help' for more information.\n"
+        exit 1
+        ;;
+    * )
+        echo -e "\e[1;31mError\e[m"
+        echo -e "Try 'dotsetup --help' for more information.\n"
+        exit 1
+        ;;
+esac

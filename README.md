@@ -33,3 +33,4 @@ $ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsu
         -d            Deploy local sample files
         -r            Reinstall dotfiles
         --uninstall   Uninstall dotfiles
+        -h, --help    View help
