@@ -11,3 +11,5 @@ read GIT_EMAILADDRESS
 sed -e "s/EMAILADDRESS/${GIT_EMAILADDRESS}/g" ~/.local/.gitconfig.local
 
 echo -e "Deployed\n"
+
+exit 0
