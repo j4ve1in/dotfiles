@@ -1,18 +1,18 @@
-[submodule "Shell/Zsh/.zsh/plugin/zaw"]
+[submodule "zaw"]
 	path = Shell/Zsh/.zsh/plugin/zaw
 	url = https://github.com/zsh-users/zaw.git
-[submodule "Shell/Zsh/.zsh/function/cd-gitroot"]
+[submodule "cd-gitroot"]
 	path = Shell/Zsh/.zsh/function/cd-gitroot
 	url = https://github.com/mollifier/cd-gitroot.git
-[submodule "Shell/Zsh/.zsh/plugin/cdd"]
+[submodule "cdd"]
 	path = Shell/Zsh/.zsh/plugin/cdd
 	url = https://github.com/m4i/cdd.git
-[submodule "Shell/Zsh/.zsh/plugin/zsh-bd"]
+[submodule "zsh-bd"]
 	path = Shell/Zsh/.zsh/plugin/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
-[submodule "Shell/Zsh/.zsh/function/zsh-completions"]
+[submodule "zsh-completions"]
 	path = Shell/Zsh/.zsh/function/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "Shell/Zsh/.zsh/function/cd-bookmark"]
+[submodule "cd-bookmark"]
 	path = Shell/Zsh/.zsh/function/cd-bookmark
 	url = https://github.com/mollifier/cd-bookmark.git
