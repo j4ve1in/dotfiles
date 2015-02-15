@@ -64,7 +64,7 @@ uninstall() {
 
     ## dotsetup
     rm ~/bin/dotsetup
-    if [ -e ~/bin/* ]; then
+    if [ -z $(¥ls ~/bin) ]; then
         rm -rf ~/bin
     fi
 
