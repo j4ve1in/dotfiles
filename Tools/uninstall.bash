@@ -3,7 +3,7 @@ source ~/.dotfiles/Tools/load_list.bash
 
 remove_symlink() {
     # Remove symlink
-    printf "Removing any symbolic link"
+    echo "Removing any symbolic link"
     ## Calc max
     max=0
     for dir_list in ${SETUP_DIR_LIST[@]}; do
@@ -32,7 +32,7 @@ remove_symlink() {
 uninstall() {
     remove_symlink
     # Remove exception dotfiles
-    printf "Removing any file and directory..."
+    echo "Removing any file and directory"
 
     EXCEPTION_DOTFILES=(
         .bash_history
@@ -71,8 +71,6 @@ uninstall() {
     ## dotfiles*
     rm -rf ~/.dotfiles_backup
     rm -rf ~/.dotfiles
-
-    echo -e "\e[1;34mdone\e[m"
 
     echo -e "Uninstalled\n"
 }
