@@ -40,3 +40,7 @@
 
 [include]
     path = ~/.local.d/.gitconfig.local
+
+[url "https://github.com/"]
+    pushinsteadof = "git://github.com/"
+    pushinsteadof = "git@github.com:"
