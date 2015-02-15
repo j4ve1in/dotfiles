@@ -28,10 +28,11 @@ alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias less='less -N'
+alias gitsbi='git submodule foreach "echo -e \$name\\\n\$path\\\n\$sha1\\\n"'
 alias dsetup='dotsetup'
 
 # Cygwin
-if [ $OSTYPE = "cygwin" ]; then
+if [ $OSTYPE = cygwin ]; then
     source ~/.aliases.cygwin
 fi
 

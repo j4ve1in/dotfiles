@@ -3,4 +3,5 @@
     email = EMAILADDRESS
 [credential]
     #helper = !'WINSTOREPATH'
+    #helper = gnomekeyring
     #helper = osxkeychain
