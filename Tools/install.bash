@@ -5,7 +5,7 @@ install() {
     # check git command
     printf "Checking git command..."
     if [ $(which git) ]; then
-        echo -e "\e[1;34mdone\e[m"
+        echo -e "\033[1;36mdone\033[0;39m"
     else
         echo
         echo "Please install git or update your path to include the git executable"
@@ -15,7 +15,7 @@ install() {
     # clone
     printf "Cloning dotfiles..."
     git clone https://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
-    echo -e "\e[1;34mdone\e[m"
+    echo -e "\033[1;36mdone\033[0;39m"
 
     # backup
     source ~/.dotfiles/Tools/backup.bash
@@ -27,16 +27,16 @@ install() {
     # check vim command
     printf "Checking vim command..."
     if [ $(which vim) ]; then
-        echo -e "\e[1;34mdone\e[m"
+        echo -e "\033[1;36mdone\033[0;39m"
         echo "Vim Setting"
         printf "Creating directory..."
         mkdir -p ~/.vim/tmp/swap
         mkdir -p ~/.vim/tmp/backup
         mkdir -p ~/.vim/tmp/undo
-        echo -e "\e[1;34mdone\e[m"
+        echo -e "\033[1;36mdone\033[0;39m"
         printf "Installing neobundle.vim..."
         git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim >/dev/null 2>&1
-        echo -e "\e[1;34mdone\e[m"
+        echo -e "\033[1;36mdone\033[0;39m"
         echo -e "Installing plugin\n"
         vim +NeoBundleInstall +qall
     else
@@ -48,10 +48,10 @@ install() {
     mkdir -p ~/bin
     chmod a+x ~/.dotfiles/Tools/setup.bash
     cp ~/.dotfiles/Tools/setup.bash ~/bin/dotsetup
-    echo -e "\e[1;34mdone\e[m\n\n"
+    echo -e "\033[1;36mdone\033[0;39m"
 
-    Color="\e[1;36;44m"
-    Color_Reset="\e[m"
+    Color="\033[1;36;44m"
+    Color_Reset="\033[0;39m"
     echo -e ${Color}'     ____           __        ____   ______                      __     __      '${Color_Reset}
     echo -e ${Color}'    /  _/___  _____/ /_____ _/ / /  / ____/___  ____ ___  ____  / /__  / /____  '${Color_Reset}
     echo -e ${Color}'    / // __ \/ ___/ __/ __ `/ / /  / /   / __ \/ __ `__ \/ __ \/ / _ \/ __/ _ \ '${Color_Reset}
