@@ -74,7 +74,7 @@ case "$1" in
         exit 1
         ;;
     * )
-        echo -e "\e[1;31mError\e[m"
+        echo -e "\033[1;31mError\033[m"
         echo -e "Try 'dotsetup --help' for more information.\n"
         exit 1
         ;;

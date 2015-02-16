@@ -4,7 +4,7 @@ source ~/.dotfiles/Tools/load_list.bash
 DATE=$(date +"%Y-%m-%d_%H%M%S")
 printf "Creating backup directory..."
 mkdir -p ~/.dotfiles_backup/${DATE}
-echo -e "\e[1;34mdone\e[m"
+echo -e "\033[1;36mdone\033[0;39m"
 
 echo "Starting backup"
 
