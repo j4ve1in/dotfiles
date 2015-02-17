@@ -22,15 +22,14 @@ $ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsu
 
     SYNOPSIS
         dotsetup [options]
-        dsetup [options]
 
     DESCRIPTION
         Dotsetup is dotfile's setup command.
 
     OPTIONS
-        --update      Update dotfiles
-        -b            Backup dotfiles
-        -d            Deploy local sample files
-        -r            Reinstall dotfiles
-        --uninstall   Uninstall dotfiles
-        -h, --help    View help
+        -u, --update      Update dotfiles
+        -b, --backup      Backup dotfiles
+        -d, --deploy      Deploy local sample files
+        -r, --reinstall   Reinstall dotfiles
+        -U, --uninstall   Uninstall dotfiles
+        -h, --help        View help

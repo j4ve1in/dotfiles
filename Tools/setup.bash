@@ -46,20 +46,20 @@ menu() {
 }
 
 case "$1" in
-    "--update" )
+    "-u" | "--update" )
         source ~/.dotfiles/Tools/update.bash
         ;;
-    "-b" )
+    "-b" | "--backup" )
         source ~/.dotfiles/Tools/backup.bash
         exit 0
         ;;
-    "-d" )
+    "-d" | "--deploy" )
         source ~/.dotfiles/Tools/deploy.bash
         ;;
-    "-r" )
+    "-r" | "--reinstall" )
         source ~/.dotfiles/Tools/reinstall.bash
         ;;
-    "--uninstall" )
+    "-U" | "--uninstall" )
         source ~/.dotfiles/Tools/uninstall.bash
         ;;
     "-h" | "--help" )
