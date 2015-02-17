@@ -1,28 +1,28 @@
 # Compile
 ## ~/.zsh/.zshrc
 file=".zsh/.zshrc"
-if [ ! -f ~/.dotfiles/Shell/Zsh/${file}.zwc -o ~/.dotfiles/Shell/Zsh/${file} -nt ~/.dotfiles/Shell/Zsh/${file}.zwc ]; then
-    zcompile ~/.dotfiles/Shell/Zsh/${file}
+if [ ! -f ~/${file}.zwc -o ~/${file} -nt ~/${file}.zwc ]; then
+    zcompile ~/${file}
 fi
 
 ## ~/.zshrc.d/*.zshrc
 for file in .zshrc.d/*.zshrc; do
-    if [ ! -f ~/.dotfiles/Shell/Zsh/${file}.zwc -o ~/.dotfiles/Shell/Zsh/${file} -nt ~/.dotfiles/Shell/Zsh/${file}.zwc ]; then
-        zcompile ~/.dotfiles/Shell/Zsh/${file}
+    if [ ! -f ~/${file}.zwc -o ~/${file} -nt ~/${file}.zwc ]; then
+        zcompile ~/${file}
     fi
 done
 
 ## ~/.zshrc.function.d/*.zshrc
 for file in .zshrc.function.d/*.zshrc; do
-    if [ ! -f ~/.dotfiles/Shell/Zsh/${file}.zwc -o ~/.dotfiles/Shell/Zsh/${file} -nt ~/.dotfiles/Shell/Zsh/${file}.zwc ]; then
-        zcompile ~/.dotfiles/Shell/Zsh/${file}
+    if [ ! -f ~/${file}.zwc -o ~/${file} -nt ~/${file}.zwc ]; then
+        zcompile ~/${file}
     fi
 done
 
 ## ~/.zshrc.plugin.d/*.zshrc
 for file in .zshrc.plugin.d/*.zshrc; do
-    if [ ! -f ~/.dotfiles/Shell/Zsh/${file}.zwc -o ~/.dotfiles/Shell/Zsh/${file} -nt ~/.dotfiles/Shell/Zsh/${file}.zwc ]; then
-        zcompile ~/.dotfiles/Shell/Zsh/${file}
+    if [ ! -f ~/${file}.zwc -o ~/${file} -nt ~/${file}.zwc ]; then
+        zcompile ~/${file}
     fi
 done
 
