@@ -36,3 +36,7 @@ $ bash -c "$(wget --no-check-certificate https://raw.githubusercontent.com/tetsu
         -r, --reinstall   Reinstall dotfiles
         -U, --uninstall   Uninstall dotfiles
         -h, --help        View help
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tetsuya00/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
