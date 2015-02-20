@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/tetsuya00/Dotfiles.png?label=ready&title=Ready)](https://waffle.io/tetsuya00/Dotfiles)
 # Javelin's Dotfiles
 ![Screenshot](/Images/Screenshot.png)
 
