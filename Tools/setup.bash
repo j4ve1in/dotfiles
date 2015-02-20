@@ -38,7 +38,7 @@ menu() {
                 exit 0
                 ;;
             * )
-                echo -e "\e[1;31mError\e[m\n"
+                echo -e "\033[1;31mError\033[m"
                 menu
                 ;;
         esac
