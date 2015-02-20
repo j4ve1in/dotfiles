@@ -4,9 +4,6 @@
 [submodule "cd-gitroot"]
 	path = Shell/Zsh/.zsh/function/cd-gitroot
 	url = https://github.com/mollifier/cd-gitroot.git
-[submodule "cdd"]
-	path = Shell/Zsh/.zsh/plugin/cdd
-	url = https://github.com/m4i/cdd.git
 [submodule "zsh-bd"]
 	path = Shell/Zsh/.zsh/plugin/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
