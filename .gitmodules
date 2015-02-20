@@ -16,3 +16,6 @@
 [submodule "cd-bookmark"]
 	path = Shell/Zsh/.zsh/function/cd-bookmark
 	url = https://github.com/mollifier/cd-bookmark.git
+[submodule "Neobundle"]
+	path = Editor/Vim/.vim/bundle/neobundle.vim
+	url = git://github.com/Shougo/neobundle.vim.git
