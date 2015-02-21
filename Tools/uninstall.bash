@@ -6,7 +6,7 @@ remove_symlink() {
     echo "Removing any symbolic link"
     ## Calc max
     max=0
-    for dir_list in ${SETUP_DIR_LIST[@]}; do
+    for dir_list in ${DIR_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -name ".*")
         for file in ${filename[@]}; do
             if [ -e ~/${file##*/} ]; then
@@ -17,7 +17,7 @@ remove_symlink() {
 
     ## Remove
     count=0
-    for dir_list in ${SETUP_DIR_LIST[@]}; do
+    for dir_list in ${DIR_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -name ".*")
         for file in ${filename[@]}; do
             if [ -e ~/${file##*/} ]; then
@@ -34,19 +34,9 @@ uninstall() {
     # Remove exception dotfiles
     echo "Removing any file and directory"
 
-    EXCEPTION_DOTFILES=(
-        .bash_history
-        .cache
-        .cdbookmark
-        .cdd
-        .lesshst
-        .tweetvim
-        .viminfo
-    )
-
     ## Calc max
     max=0
-    for file in ${EXCEPTION_DOTFILES[@]}; do
+    for file in ${EXCEPTIONFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
             max=$(expr ${max} + 1)
         fi
@@ -54,7 +44,7 @@ uninstall() {
 
     ## Remove
     count=0
-    for file in ${EXCEPTION_DOTFILES[@]}; do
+    for file in ${EXCEPTIONFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
             count=$(expr ${count} + 1)
             printf "[%3d/%3d] Removing : %s\n" ${count} ${max} ~/${file}

@@ -7,7 +7,7 @@ echo "Creating symbolic link"
 echo "File"
 ## Calc max
 max=0
-for dir_list in ${SETUP_DIR_LIST[@]}; do
+for dir_list in ${DIR_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
     for file in ${filename[@]}; do
         max=$(expr ${max} + 1)
@@ -16,7 +16,7 @@ done
 
 ## Create
 count=0
-for dir_list in ${SETUP_DIR_LIST[@]}; do
+for dir_list in ${DIR_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
     for file in ${filename[@]}; do
         count=$(expr ${count} + 1)
@@ -29,7 +29,7 @@ done
 echo "Directory"
 ## Calc max
 max=0
-for dir_list in ${SETUP_DIR_LIST[@]}; do
+for dir_list in ${DIR_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type d -name ".*")
     for file in ${filename[@]}; do
         max=$(expr ${max} + 1)
@@ -38,7 +38,7 @@ done
 
 ## Create
 count=0
-for dir_list in ${SETUP_DIR_LIST[@]}; do
+for dir_list in ${DIR_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type d -name ".*")
     for file in ${filename[@]}; do
         count=$(expr ${count} + 1)
