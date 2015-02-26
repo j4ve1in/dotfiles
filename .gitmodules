@@ -16,3 +16,6 @@
 [submodule "Neobundle"]
 	path = Editor/Vim/.vim/bundle/neobundle.vim
 	url = git://github.com/Shougo/neobundle.vim.git
+[submodule "enhancd"]
+	path = Shell/Bash/.bash.plugin.d/enhancd
+	url = git://github.com/b4b4r07/enhancd.git
