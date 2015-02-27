@@ -24,18 +24,19 @@ install() {
     source ~/.dotfiles/tools/create_symlink.bash
 
     # Vim
+    echo "Setting vim"
     # check vim command
     printf "Checking vim command..."
     if [ $(which vim) ]; then
         echo -e "\033[1;36mdone\033[0;39m"
-        echo "Vim Setting"
         printf "Creating directory..."
         mkdir -p ~/.vim/tmp/swap
         mkdir -p ~/.vim/tmp/backup
         mkdir -p ~/.vim/tmp/undo
         echo -e "\033[1;36mdone\033[0;39m"
-        echo -e "Installing plugin\n"
+        printf "Installing plugin..."
         vim +NeoBundleInstall +qall
+        echo -e "\033[1;36mdone\033[0;39m"
     else
         echo
         echo "Please install vim or update your path to include the vim executable"

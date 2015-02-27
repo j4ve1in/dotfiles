@@ -1,7 +1,7 @@
 #!/bin/bash
 source ~/.dotfiles/tools/load_list.bash
 
-remove_symlink() {
+uninstall() {
     # Remove symlink
     echo "Removing any symbolic link"
     ## Calc max
@@ -27,10 +27,7 @@ remove_symlink() {
             fi
         done
     done
-}
 
-uninstall() {
-    remove_symlink
     # Remove exception dotfiles
     echo "Removing any file and directory"
 

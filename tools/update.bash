@@ -12,9 +12,15 @@ source ~/.dotfiles/tools/backup.bash
 # Create symlink
 source ~/.dotfiles/tools/create_symlink.bash
 
+# Dotsetup
+printf "Update dotsetup..."
 cp ~/.dotfiles/tools/setup.bash ~/bin/dotsetup
-echo "Vim Setting"
+echo -e "\033[1;36mdone\033[0;39m"
+
+# Vim
+printf "Update vim..."
 vim +NeoBundleUpdate +qall
+echo -e "\033[1;36mdone\033[0;39m"
 
 echo -e "Updated\n"
 
