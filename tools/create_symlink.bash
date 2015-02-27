@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.dotfiles/Tools/load_list.bash
+source ~/.dotfiles/tools/load_list.bash
 
 echo "Creating symbolic link"
 

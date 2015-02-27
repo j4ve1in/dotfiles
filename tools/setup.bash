@@ -14,23 +14,23 @@ menu() {
         echo
         case $REPLY in
             1 )
-                source ~/.dotfiles/Tools/update.bash
+                source ~/.dotfiles/tools/update.bash
                 ;;
             2 )
-                source ~/.dotfiles/Tools/backup.bash
+                source ~/.dotfiles/tools/backup.bash
                 exit 0
                 ;;
             3 )
-                source ~/.dotfiles/Tools/deploy.bash
+                source ~/.dotfiles/tools/deploy.bash
                 ;;
             4 )
-                source ~/.dotfiles/Tools/reinstall.bash
+                source ~/.dotfiles/tools/reinstall.bash
                 ;;
             5 )
-                source ~/.dotfiles/Tools/uninstall.bash
+                source ~/.dotfiles/tools/uninstall.bash
                 ;;
             6 )
-                source ~/.dotfiles/Tools/help.bash
+                source ~/.dotfiles/tools/help.bash
                 menu
                 ;;
             7 )
@@ -47,23 +47,23 @@ menu() {
 
 case "$1" in
     "-u" | "--update" )
-        source ~/.dotfiles/Tools/update.bash
+        source ~/.dotfiles/tools/update.bash
         ;;
     "-b" | "--backup" )
-        source ~/.dotfiles/Tools/backup.bash
+        source ~/.dotfiles/tools/backup.bash
         exit 0
         ;;
     "-d" | "--deploy" )
-        source ~/.dotfiles/Tools/deploy.bash
+        source ~/.dotfiles/tools/deploy.bash
         ;;
     "-r" | "--reinstall" )
-        source ~/.dotfiles/Tools/reinstall.bash
+        source ~/.dotfiles/tools/reinstall.bash
         ;;
     "-U" | "--uninstall" )
-        source ~/.dotfiles/Tools/uninstall.bash
+        source ~/.dotfiles/tools/uninstall.bash
         ;;
     "-h" | "--help" )
-        source ~/.dotfiles/Tools/help.bash
+        source ~/.dotfiles/tools/help.bash
         ;;
     "" )
         menu

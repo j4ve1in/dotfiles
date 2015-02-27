@@ -14,14 +14,14 @@ install() {
 
     # clone
     printf "Cloning dotfiles..."
-    git clone git://github.com/tetsuya00/Dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
+    git clone git://github.com/tetsuya00/dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
     echo -e "\033[1;36mdone\033[0;39m"
 
     # backup
-    source ~/.dotfiles/Tools/backup.bash
+    source ~/.dotfiles/tools/backup.bash
 
     # create symbolic link
-    source ~/.dotfiles/Tools/create_symlink.bash
+    source ~/.dotfiles/tools/create_symlink.bash
 
     # Vim
     # check vim command
@@ -43,8 +43,8 @@ install() {
 
     printf "Deploying dotsetup..."
     mkdir -p ~/bin
-    chmod a+x ~/.dotfiles/Tools/setup.bash
-    cp ~/.dotfiles/Tools/setup.bash ~/bin/dotsetup
+    chmod a+x ~/.dotfiles/tools/setup.bash
+    cp ~/.dotfiles/tools/setup.bash ~/bin/dotsetup
     echo -e "\033[1;36mdone\033[0;39m"
 
     Color="\033[1;36;44m"

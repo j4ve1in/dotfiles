@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.dotfiles/Tools/load_list.bash
+source ~/.dotfiles/tools/load_list.bash
 
 DATE=$(date +"%Y-%m-%d_%H%M%S")
 printf "Creating backup directory..."

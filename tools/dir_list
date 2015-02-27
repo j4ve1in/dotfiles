@@ -1,0 +1,11 @@
+downloader
+editor
+editor/emacs
+editor/nano
+editor/vim
+git
+multiplexer
+shell
+shell/bash
+shell/zsh
+others

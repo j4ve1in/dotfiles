@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p ~/.local
-cp ~/.dotfiles/LocalSample/.aliases.local.sample ~/.local/.aliases.local
-cp ~/.dotfiles/LocalSample/.gitconfig.local.sample ~/.local/.gitconfig.local
+cp ~/.dotfiles/sample/.aliases.local.sample ~/.local/.aliases.local
+cp ~/.dotfiles/sample/.gitconfig.local.sample ~/.local/.gitconfig.local
 echo "Git Settings"
 printf "Username: "
 read GIT_USERNAME

@@ -6,8 +6,8 @@ read ANSWER
 case $ANSWER in
     "Y" | "y" | "Yes" | "yes" )
         export DOTFILES_REINSTALL="1"
-        source ~/.dotfiles/Tools/uninstall.bash
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/Dotfiles/master/Tools/install.bash)"
+        source ~/.dotfiles/tools/uninstall.bash
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/tetsuya00/dotfiles/master/tools/install.bash)"
         export DOTFILES_REINSTALL=""
         echo -e "Reinstalled\n"
         ;;
