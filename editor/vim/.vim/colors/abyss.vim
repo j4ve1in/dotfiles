@@ -11,7 +11,6 @@ hi clear CursorLine " Reset CursorLine highlighting to the defaults.
 let g:colors_name="abyss" " global variable
 
 "--------------------------------------------------------------------
-
 hi Boolean                                       ctermfg=21
 hi cDefine                                       ctermfg=231
 hi cInclude                                      ctermfg=231
@@ -48,6 +47,7 @@ hi Search          cterm=none       ctermbg=21   ctermfg=232
 hi SignColumn                       ctermbg=8    ctermfg=231
 hi Special         cterm=none       ctermbg=232  ctermfg=231
 hi SpecialKey                       ctermbg=232  ctermfg=21
+hi SpellBad                         ctermbg=26   ctermfg=232
 hi Statement       cterm=bold                    ctermfg=26
 hi StatusLine      cterm=bold       ctermbg=17   ctermfg=231
 hi StatusLineNC    cterm=none       ctermbg=240  ctermfg=232
@@ -62,4 +62,4 @@ hi VertSplit       cterm=none       ctermbg=232  ctermfg=231
 hi Visual                           ctermbg=26   ctermfg=232
 hi WarningMsg                       ctermbg=244  ctermfg=232
 
-"- end of colorscheme -----------------------------------------------  
+"- end of colorscheme -----------------------------------------------
