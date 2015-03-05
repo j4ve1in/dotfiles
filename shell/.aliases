@@ -1,5 +1,4 @@
 # ls
-alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -al'
@@ -34,6 +33,18 @@ alias dsetup='dotsetup'
 # Cygwin
 if [ $OSTYPE = cygwin ]; then
     source ~/.aliases.cygwin
+fi
+
+# Darwin
+if [ $OSTYPE = darwin ]; then
+    export LSCOLORS=gxfxcxdxbxegedabagacad
+    alias ls='ls -F'
+else
+    eval "$(dircolors ~/.dir_colors)"
+    alias ls='ls -F --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # Local
