@@ -12,8 +12,8 @@ install() {
         exit 1;
     fi
 
-    # clone
-    printf "Cloning dotfiles..."
+    # Download
+    printf "Downloading dotfiles..."
     git clone git://github.com/tetsuya00/dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
     echo -e "\033[1;36mdone\033[0;39m"
 
