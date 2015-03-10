@@ -14,7 +14,7 @@ install() {
 
     # Download
     printf "Downloading dotfiles..."
-    git clone git://github.com/tetsuya00/dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
+    git clone git://github.com/j4ve1in/dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
     echo -e "\033[1;36mdone\033[0;39m"
 
     # backup
@@ -37,7 +37,7 @@ install() {
     echo -e ${Color}'  _/ // / / (__  ) /_/ /_/ / / /  / /___/ /_/ / / / / / / /_/ / /  __/ /_/  __/ '${Color_Reset}
     echo -e ${Color}' /___/_/ /_/____/\__/\__,_/_/_/   \____/\____/_/ /_/ /_/ .___/_/\___/\__/\___/  '${Color_Reset}
     echo -e ${Color}'                                                      /_/                       '${Color_Reset}
-    echo -e ${Color}" Follow me at https://github.com/tetsuya00                                      "${Color_Reset}
+    echo -e ${Color}" Follow me at https://github.com/j4ve1in                                        "${Color_Reset}
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
