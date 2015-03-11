@@ -26,7 +26,6 @@ alias df='df -h'
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias less='less -N'
 alias gitsbi='git submodule foreach "echo -e \$name\\\n\$path\\\n\$sha1\\\n"'
 alias dsetup='dotsetup'
 
