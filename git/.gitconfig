@@ -33,6 +33,7 @@
     ui = true
 
 [core]
+    attributesfile = ~/.gitattributes.global
     excludesfile = ~/.gitignore.global
     editor = vim
     pager = less
