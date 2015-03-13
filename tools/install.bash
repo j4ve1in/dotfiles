@@ -14,7 +14,7 @@ install() {
 
     # Download
     printf "Downloading dotfiles..."
-    git clone git://github.com/j4ve1in/dotfiles.git ${INSTALL_DIR} --recursive >/dev/null 2>&1
+    {sleep 1 ; git clone git://github.com/j4ve1in/dotfiles.git ${INSTALL_DIR} --recursive} | less -c -E
     echo -e "\033[1;36mdone\033[0;39m"
 
     # backup
