@@ -43,7 +43,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
     # Create backup dir
     DATE=$(date +"%Y-%m-%d_%H%M%S")
     printf "Creating backup directory..."
-    mkdir -p ~/.dotfiles_backup/${DATE}
+    mkdir -p ~/.dotfiles/backup/${DATE}
     echo -e "\033[1;36mdone\033[0;39m"
 
     # Start backup
@@ -58,7 +58,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
                     printf "[%3d/%3d] Copying: %s\n" ${count} ${filemax} ~/${file##*/}
-                    cp ~/${file##*/} ~/.dotfiles_backup/${DATE}
+                    cp ~/${file##*/} ~/.dotfiles/backup/${DATE}
                 fi
             done
         done
@@ -67,7 +67,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
             if [ -f ~/${file} ]; then
                 count=$(expr ${count} + 1)
                 printf "[%3d/%3d] Copying: %s\n" ${count} ${filemax} ~/${file}
-                cp ~/${file} ~/.dotfiles_backup/${DATE}
+                cp ~/${file} ~/.dotfiles/backup/${DATE}
             fi
         done
     fi
@@ -82,7 +82,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
                     printf "[%3d/%3d] Copying: %s\n" ${count} ${dirmax} ~/${file##*/}
-                    cp -r ~/${file##*/}/ ~/.dotfiles_backup/${DATE}
+                    cp -r ~/${file##*/}/ ~/.dotfiles/backup/${DATE}
                 fi
             done
         done
@@ -91,7 +91,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
             if [ -d ~/${file} ]; then
                 count=$(expr ${count} + 1)
                 printf "[%3d/%3d] Copying: %s\n" ${count} ${dirmax} ~/${file}
-                cp -r ~/${file}/ ~/.dotfiles_backup/${DATE}
+                cp -r ~/${file}/ ~/.dotfiles/backup/${DATE}
             fi
         done
     fi
