@@ -1,7 +1,0 @@
-[user]
-    name = USERNAME
-    email = EMAILADDRESS
-[credential]
-    #helper = !'WINSTOREPATH'
-    #helper = gnomekeyring
-    #helper = osxkeychain

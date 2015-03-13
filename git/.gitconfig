@@ -28,6 +28,11 @@
     # diff
     di = diff
     dc = diff --cached
+    # credential
+    winstore = !"git config -f ~/.local.d/gitconfig.credential.local credential.helper !git-credential-winstore"
+    gnomekeyring = !"git config -f ~/.local.d/gitconfig.credential.local credential.helper gnomekeyring"
+    osxkeychain = !"git config -f ~/.local.d/gitconfig.credential.local credential.helper osxkeychain"
+    unsetcredential = !"rm ~/.local.d/gitconfig.credential.local"
 
 [color]
     ui = true
@@ -40,7 +45,8 @@
     quotepath = off
 
 [include]
-    path = ~/.local.d/.gitconfig.local
+    path = ~/.local.d/gitconfig.local
+    path = ~/.local.d/gitconfig.credential.local
 
 [url "https://github.com/"]
     pushinsteadof = "git://github.com/"
