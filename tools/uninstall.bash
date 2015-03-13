@@ -55,8 +55,7 @@ uninstall() {
         rm -rf ~/bin
     fi
 
-    ## dotfiles*
-    rm -rf ~/.dotfiles_backup
+    ## dotfiles
     rm -rf ~/.dotfiles
 
     echo -e "Uninstalled\n"
