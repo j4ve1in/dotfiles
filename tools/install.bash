@@ -45,6 +45,7 @@ install() {
 if [ "$DOTFILES_REINSTALL" = "1" ]; then
     install
 else
+    clear
     echo "If the file exists, it will be ruthlessly clobbered"
     printf "Are you sure you want to continue (yes/no)? "
     read ANSWER
