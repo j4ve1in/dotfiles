@@ -9,12 +9,12 @@
 ## Using shell script
 ### via curl
 ```bash
-$ bash -c "$(curl -L https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
+$ exec bash -c "$(curl -L https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
 ```
 
 ### via wget
 ```bash
-$ bash -c "$(wget -qO - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
+$ exec bash -c "$(wget -qO - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
 ```
 
 # Configurations

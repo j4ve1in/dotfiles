@@ -40,6 +40,36 @@ install() {
     echo -e ${Color}" Follow me at https://github.com/j4ve1in                                        "${Color_Reset}
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
+
+    if [ $OSTYPE = cygwin ]; then
+        # Cygwin
+        printf "Do you want to restart cygwin (yes/no)? "
+        read ANSWER
+
+        case $ANSWER in
+            "Y" | "y" | "Yes" | "yes" )
+                echo "Restarting cygwin..."
+                cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -
+                ;;
+            * )
+                echo
+                ;;
+        esac
+    else
+        # ! Cygwin
+        printf "Do you want to restart shell (yes/no)? "
+        read ANSWER
+
+        case $ANSWER in
+            "Y" | "y" | "Yes" | "yes" )
+                echo "Restarting shell..."
+                $SHELL -l
+                ;;
+            * )
+                echo
+                ;;
+        esac
+    fi
 }
 
 if [ "$DOTFILES_REINSTALL" = "1" ]; then
