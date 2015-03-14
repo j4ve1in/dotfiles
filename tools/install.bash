@@ -1,7 +1,5 @@
 #!/bin/bash
 install() {
-    INSTALL_DIR=~/.dotfiles
-
     # check git command
     printf "Checking git command..."
     if [ $(which git) ]; then
@@ -14,7 +12,7 @@ install() {
 
     # Download
     printf "Downloading dotfiles..."
-    export LESS="-cE"; { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ${INSTALL_DIR} --recursive; } | less
+    export LESS="-cE"; { sleep 1; git clone --recursive git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
     echo -e "\033[1;36mdone\033[0;39m"
 
     # backup
