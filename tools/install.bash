@@ -1,5 +1,7 @@
 #!/bin/bash
 install() {
+    # Start install
+    echo "Starting install"
     # check git command
     printf "Checking git command..."
     if [ $(which git) ]; then

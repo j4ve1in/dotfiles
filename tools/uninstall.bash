@@ -2,6 +2,8 @@
 source ~/.dotfiles/tools/load_list.bash
 
 uninstall() {
+    # Start uninstall
+    echo "Starting uninstall"
     # Remove symlink
     echo "Removing any symbolic link"
     ## Calc max
@@ -51,7 +53,7 @@ uninstall() {
 
     ## dotsetup
     rm ~/bin/dotsetup
-    if [ -z "$(\ls ~/bin)" ]; then
+    if [ -z "$(ls ~/bin)" ]; then
         rm -rf ~/bin
     fi
 
