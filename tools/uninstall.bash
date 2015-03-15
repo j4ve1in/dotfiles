@@ -63,7 +63,7 @@ uninstall() {
     echo -e "Uninstalled\n"
 }
 
-if [ "$DOTFILES_REINSTALL" = "1" ]; then
+if [ "$ASSUME_YES" = "1" ]; then
     uninstall
 else
     printf "Are you sure you want to continue (yes/no)? "

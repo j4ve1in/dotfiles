@@ -40,7 +40,19 @@ install() {
     echo -e ${Color}" Follow me at https://github.com/j4ve1in                                        "${Color_Reset}
     echo
     #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
+}
 
+restart_cygwin() {
+    echo "Restarting cygwin..."
+    cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -
+}
+
+restart_shell() {
+    echo "Restarting shell..."
+    $SHELL -l
+}
+
+restart() {
     if [ $OSTYPE = cygwin ]; then
         # Cygwin
         printf "Do you want to restart cygwin (yes/no)? "
@@ -48,8 +60,7 @@ install() {
 
         case $ANSWER in
             "Y" | "y" | "Yes" | "yes" )
-                echo "Restarting cygwin..."
-                cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -
+                restart_cygwin
                 ;;
             * )
                 echo
@@ -62,8 +73,7 @@ install() {
 
         case $ANSWER in
             "Y" | "y" | "Yes" | "yes" )
-                echo "Restarting shell..."
-                $SHELL -l
+                restart_shell
                 ;;
             * )
                 echo
@@ -72,8 +82,16 @@ install() {
     fi
 }
 
-if [ "$DOTFILES_REINSTALL" = "1" ]; then
+if [ "$ASSUME_YES" = "1" ]; then
+    # Assume "yes" as answer to all prompts and run non-interactively.
+    # install
     install
+    # restart
+    if [ $OSTYPE = cygwin ]; then
+        restart_cygwin
+    else
+        restart_shell
+    fi
 else
     clear
     echo "If the file exists, it will be ruthlessly clobbered"
@@ -82,7 +100,10 @@ else
 
     case $ANSWER in
         "Y" | "y" | "Yes" | "yes" )
+            # install
             install
+            # restart
+            restart
             exit 0
             ;;
         * )
