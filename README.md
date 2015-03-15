@@ -14,7 +14,7 @@ $ exec bash -c "$(curl -L https://raw.githubusercontent.com/j4ve1in/dotfiles/mas
 
 ### via wget
 ```bash
-$ exec bash -c "$(wget -qO - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
+$ exec bash -c "$(wget -O - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
 ```
 
 # Configurations
