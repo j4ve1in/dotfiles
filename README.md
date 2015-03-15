@@ -6,16 +6,18 @@
 ![Screenshot](/img/screenshot.png "Screenshot")
 
 # Installation
-## Using shell script
-### via curl
+You can install by the following commands.
+## via curl
 ```bash
 $ exec bash -c "$(curl -L https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
 ```
 
-### via wget
+## via wget
 ```bash
 $ exec bash -c "$(wget -O - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
 ```
+
+**NOTE:** If you want to use automatic installation, type `export ASSUME_YES="1"` in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 # Configurations
 ## Dotsetup
