@@ -47,6 +47,6 @@ else
 fi
 
 # Local
-if [ -e ~/.local.d/aliases.local ]; then
-    source ~/.local.d/aliases.local
+if [ -e ~/.local.d/shell/aliases.local ]; then
+    source ~/.local.d/shell/aliases.local
 fi
