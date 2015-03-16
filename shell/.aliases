@@ -28,6 +28,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias gitsbi='git submodule foreach "echo -e \$name\\\n\$path\\\n\$sha1\\\n"'
 alias dsetup='dotsetup'
+alias dset='dotsetup'
 
 # Cygwin
 if [ $OSTYPE = cygwin ]; then
