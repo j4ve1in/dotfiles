@@ -10,5 +10,8 @@ done
 # alias
 source ~/.aliases
 
+# keychain
+source ~/.keychain.autoload
+
 # TMUX
 source ~/.tmux.autoload

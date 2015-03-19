@@ -1,0 +1,8 @@
+if [ $(which keychain) ]; then
+    keychain --nogui --quiet
+fi
+if [ $(which ssh) ]; then
+    if [ -f ~/.keychain/$HOST-sh ]; then
+        source ~/.keychain/$HOST-sh
+    fi
+fi
