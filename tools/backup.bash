@@ -5,8 +5,8 @@ source ~/.dotfiles/tools/load_list.bash
 printf "Checking backup file..."
 ## File
 filemax=0
-for dir_list in ${DIR_LIST[@]}; do
-    filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
+for dotpath in ${DOT_PATH_LIST[@]}; do
+    filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type f -name ".*")
     for file in ${filename[@]}; do
         if [ -e ~/${file##*/} ]; then
             filemax=$(expr ${filemax} + 1)
@@ -14,7 +14,7 @@ for dir_list in ${DIR_LIST[@]}; do
     done
 done
 
-for file in ${EXCEPTIONFILE_LIST[@]}; do
+for file in ${EX_DOTFILE_LIST[@]}; do
     if [ -f ~/${file} ]; then
         filemax=$(expr ${filemax} + 1)
     fi
@@ -22,8 +22,8 @@ done
 
 ## Directory
 dirmax=0
-for dir_list in ${DIR_LIST[@]}; do
-    filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type d -name ".*")
+for dotpath in ${DOT_PATH_LIST[@]}; do
+    filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type d -name ".*")
     for file in ${filename[@]}; do
         if [ -e ~/${file##*/} ]; then
             dirmax=$(expr ${dirmax} + 1)
@@ -31,7 +31,7 @@ for dir_list in ${DIR_LIST[@]}; do
     done
 done
 
-for file in ${EXCEPTIONFILE_LIST[@]}; do
+for file in ${EX_DOTFILE_LIST[@]}; do
     if [ -d ~/${file} ]; then
         dirmax=$(expr ${dirmax} + 1)
     fi
@@ -52,8 +52,8 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
     if [ ! "${filemax}" = "0" ]; then
         echo "File"
         count=0
-        for dir_list in ${DIR_LIST[@]}; do
-            filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type f -name ".*")
+        for dotpath in ${DOT_PATH_LIST[@]}; do
+            filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type f -name ".*")
             for file in ${filename[@]}; do
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
@@ -63,7 +63,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
             done
         done
 
-        for file in ${EXCEPTIONFILE_LIST[@]}; do
+        for file in ${EX_DOTFILE_LIST[@]}; do
             if [ -f ~/${file} ]; then
                 count=$(expr ${count} + 1)
                 printf "[%3d/%3d] Copying: %s\n" ${count} ${filemax} ~/${file}
@@ -76,8 +76,8 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
     if [ ! "${dirmax}" = "0" ]; then
         echo "Directory"
         count=0
-        for dir_list in ${DIR_LIST[@]}; do
-            filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -type d -name ".*")
+        for dotpath in ${DOT_PATH_LIST[@]}; do
+            filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type d -name ".*")
             for file in ${filename[@]}; do
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
@@ -87,7 +87,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
             done
         done
 
-        for file in ${EXCEPTIONFILE_LIST[@]}; do
+        for file in ${EX_DOTFILE_LIST[@]}; do
             if [ -d ~/${file} ]; then
                 count=$(expr ${count} + 1)
                 printf "[%3d/%3d] Copying: %s\n" ${count} ${dirmax} ~/${file}

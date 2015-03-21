@@ -8,8 +8,8 @@ uninstall() {
     echo "Removing any symbolic link"
     ## Calc max
     max=0
-    for dir_list in ${DIR_LIST[@]}; do
-        filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -name ".*")
+    for dotpath in ${DOT_PATH_LIST[@]}; do
+        filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -name ".*")
         for file in ${filename[@]}; do
             if [ -e ~/${file##*/} ]; then
                 max=$(expr ${max} + 1)
@@ -19,8 +19,8 @@ uninstall() {
 
     ## Remove
     count=0
-    for dir_list in ${DIR_LIST[@]}; do
-        filename=$(find ~/.dotfiles/${dir_list} -maxdepth 1 -name ".*")
+    for dotpath in ${DOT_PATH_LIST[@]}; do
+        filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -name ".*")
         for file in ${filename[@]}; do
             if [ -e ~/${file##*/} ]; then
                 count=$(expr ${count} + 1)
@@ -35,7 +35,7 @@ uninstall() {
 
     ## Calc max
     max=0
-    for file in ${EXCEPTIONFILE_LIST[@]}; do
+    for file in ${EX_DOTFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
             max=$(expr ${max} + 1)
         fi
@@ -43,7 +43,7 @@ uninstall() {
 
     ## Remove
     count=0
-    for file in ${EXCEPTIONFILE_LIST[@]}; do
+    for file in ${EX_DOTFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
             count=$(expr ${count} + 1)
             printf "[%3d/%3d] Removing : %s\n" ${count} ${max} ~/${file}

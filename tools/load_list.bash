@@ -1,3 +1,3 @@
 #!/bin//bash
-export DIR_LIST=$(cat ~/.dotfiles/tools/dir_list)
-export EXCEPTIONFILE_LIST=$(cat ~/.dotfiles/tools/exceptionfile_list)
+export DOT_PATH_LIST=$(cat ~/.dotfiles/tools/dot_path_list)
+export EX_DOTFILE_LIST=$(cat ~/.dotfiles/tools/ex_dotfile_list)
