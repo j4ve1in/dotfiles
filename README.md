@@ -35,7 +35,6 @@ $ exec bash -c "$(wget -O - https://raw.githubusercontent.com/j4ve1in/dotfiles/m
     OPTIONS
         -u, --update      Update dotfiles
         -b, --backup      Backup dotfiles
-        -d, --deploy      Deploy local sample files
         -r, --reinstall   Reinstall dotfiles
         -U, --uninstall   Uninstall dotfiles
         -h, --help        View help

@@ -3,14 +3,13 @@ menu() {
     PS3="> "
     ans1="Update"
     ans2="Backup"
-    ans3="Deploy"
-    ans4="Reinstall"
-    ans5="Uninstall"
-    ans6="Help"
-    ans7="Exit"
+    ans3="Reinstall"
+    ans4="Uninstall"
+    ans5="Help"
+    ans6="Exit"
 
     echo "Menu"
-    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6" "$ans7"; do
+    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6"; do
         echo
         case $REPLY in
             1 )
@@ -21,19 +20,16 @@ menu() {
                 exit 0
                 ;;
             3 )
-                source ~/.dotfiles/tools/deploy.bash
-                ;;
-            4 )
                 source ~/.dotfiles/tools/reinstall.bash
                 ;;
-            5 )
+            4 )
                 source ~/.dotfiles/tools/uninstall.bash
                 ;;
-            6 )
+            5 )
                 source ~/.dotfiles/tools/help.bash
                 menu
                 ;;
-            7 )
+            6 )
                 echo -e "exit\n"
                 exit 0
                 ;;
@@ -52,9 +48,6 @@ case "$1" in
     "-b" | "--backup" )
         source ~/.dotfiles/tools/backup.bash
         exit 0
-        ;;
-    "-d" | "--deploy" )
-        source ~/.dotfiles/tools/deploy.bash
         ;;
     "-r" | "--reinstall" )
         source ~/.dotfiles/tools/reinstall.bash
