@@ -8,9 +8,9 @@ case $ANSWER in
         export ASSUME_YES="1"
         source ~/.dotfiles/tools/uninstall.bash
         if [ $(which curl) ]; then
-            bash -c "$(curl -L https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
+            bash -c "$(curl -L dot.j4ve1in.com)"
         elif [ $(which wget) ]; then
-            bash -c "$(wget -O - https://raw.githubusercontent.com/j4ve1in/dotfiles/master/tools/install.bash)"
+            bash -c "$(wget -O - dot.j4ve1in.com)"
         fi
         export ASSUME_YES=""
         echo -e "Reinstalled\n"
