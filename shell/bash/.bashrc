@@ -1,5 +1,5 @@
 # Plugin
-source ~/.bash.plugin.d/enhancd/enhancd.sh
+source ~/.bashrc.d/plugin.bashrc
 
 # Load ~/.bashrc.d/*.bashrc
 filepath="$HOME/.bashrc.d/*.bashrc"
