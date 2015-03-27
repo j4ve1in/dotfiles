@@ -1,4 +1,4 @@
-if [ -d ~/.zsh/plugin/zaw ]; then
+if [ -f ~/.zsh/plugin/zaw/zaw.zsh ]; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
     add-zsh-hook chpwd chpwd_recent_dirs
     zstyle ':chpwd:*' recent-dirs-max 500
