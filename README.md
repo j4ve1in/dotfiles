@@ -6,20 +6,21 @@
 ![Screenshot](/img/screenshot.png "Screenshot")
 
 # Installation
-You can install Javelin's dotfiles by the following commands.
-## via curl
+You can install Javelin's dotfiles by the following installation command.
+## Installation command
+### via curl
 ```bash
 $ exec bash -c "$(curl -L dot.j4ve1in.com)"
 ```
 
-## via wget
+### via wget
 ```bash
 $ exec bash -c "$(wget -O - dot.j4ve1in.com)"
 ```
 
-**NOTE:** If you want to use full installation, type `export FULL_INSTALLATION="1"` in your terminal. When you use full installation, install shell and editor plugin, too.
+**NOTE:** If you want to use **full installation**, type `export FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
 
-**NOTE2:** If you want to use automatic installation, type `export ASSUME_YES="1"` in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
+**NOTE2:** If you want to use **automatic installation**, type `export ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 # Configurations
 ## Dotsetup
