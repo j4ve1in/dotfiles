@@ -15,7 +15,8 @@ install() {
     # Download
     printf "Downloading dotfiles..."
     if [ "$FULL_INSTALLATION" = "1" ]; then
-        export LESS="-cE"; { sleep 1; git clone --recursive git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
+        export LESS="-cE"; { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
+        source ~/.dotfiles/tools/install_plugin.bash
     else
         export LESS="-cE"; { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
     fi

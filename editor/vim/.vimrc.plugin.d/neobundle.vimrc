@@ -1,22 +1,6 @@
 if !1 | finish | endif "vim-tinyとvim-smallのときはエラーを防ぐため終了する
-command! NeoBundleInit try | call s:neobundle_init()
-      \| catch /^neobundleinit:/
-        \|   echohl ErrorMsg
-        \|   echomsg v:exception
-        \|   echohl None
-        \| endtry
 
-function! s:neobundle_init()
-  redraw | echo "Installing neobundle.vim..."
-  if executable('git')
-    call system('git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim')
-    echomsg 'Installed neobundle.vim'
-    if v:shell_error
-      throw 'neobundleinit: Git error.'
-    endif
-  endif
-endfunction
-
+" NeoBundle
 if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   set runtimepath+=~/.vim/bundle/neobundle.vim/ "bundleで管理するディレクトリを指定する
 

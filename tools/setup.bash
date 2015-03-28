@@ -5,11 +5,12 @@ menu() {
     ans2="Backup"
     ans3="Reinstall"
     ans4="Uninstall"
-    ans5="Help"
-    ans6="Exit"
+    ans5="Install plugin"
+    ans6="Help"
+    ans7="Exit"
 
     echo "Menu"
-    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6"; do
+    select ANS in "$ans1" "$ans2" "$ans3" "$ans4" "$ans5" "$ans6" "$ans7"; do
         echo
         case $REPLY in
             1 )
@@ -26,10 +27,14 @@ menu() {
                 source ~/.dotfiles/tools/uninstall.bash
                 ;;
             5 )
+                source ~/.dotfiles/tools/install_plugin.bash
+                exit 0
+                ;;
+            6 )
                 source ~/.dotfiles/tools/help.bash
                 menu
                 ;;
-            6 )
+            7 )
                 echo -e "exit\n"
                 exit 0
                 ;;
@@ -54,6 +59,10 @@ case "$1" in
         ;;
     "-U" | "--uninstall" )
         source ~/.dotfiles/tools/uninstall.bash
+        ;;
+    "--install-plugin" )
+        source ~/.dotfiles/tools/install_plugin.bash
+        exit 0
         ;;
     "-h" | "--help" )
         source ~/.dotfiles/tools/help.bash
