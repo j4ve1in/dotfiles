@@ -15,9 +15,11 @@ set whichwrap=b,s,[,],<,> "左右のカーソル移動で行間の移動を可�
 
 au BufRead,BufNewFile *.md set filetype=markdown " .mdをファイルタイプをmarkdownにする
 
-au BufRead,BufNewFile *.zshrc set filetype=zsh " .zshrcをファイルタイプをzshにする
-
 au BufRead,BufNewFile *.bashrc set filetype=sh " .bashrcをファイルタイプをshにする
+
+au BufRead,BufNewFile *.shrc set filetype=sh " .shrcをファイルタイプをshにする
+
+au BufRead,BufNewFile *.zshrc set filetype=zsh " .zshrcをファイルタイプをzshにする
 
 " 文字コードの自動認識
 

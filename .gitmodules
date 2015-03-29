@@ -14,5 +14,5 @@
 	path = shell/zsh/.zsh/function/cd-bookmark
 	url = git://github.com/mollifier/cd-bookmark.git
 [submodule "enhancd"]
-	path = shell/.plugin/enhancd
+	path = shell/.sh/plugin/enhancd
 	url = git://github.com/b4b4r07/enhancd.git

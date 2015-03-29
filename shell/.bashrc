@@ -8,10 +8,10 @@ for file in ${filepath}; do
 done
 
 # alias
-source ~/.aliases
+source ~/.shrc.d/aliases.shrc
 
 # keychain
-source ~/.keychain.autoload
+source ~/.shrc.d/keychain.autoload.shrc
 
 # TMUX
-source ~/.tmux.autoload
+source ~/.shrc.d/tmux.autoload.shrc

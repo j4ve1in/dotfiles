@@ -1,11 +1,6 @@
 downloader
 editor
-editor/emacs
-editor/nano
-editor/vim
 git
 mux
 shell
-shell/bash
-shell/zsh
 others

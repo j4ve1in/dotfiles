@@ -32,7 +32,7 @@ alias dset='dotsetup'
 
 # Cygwin
 if [ $OSTYPE = cygwin ]; then
-    source ~/.aliases.cygwin
+    source ~/.shrc.d/aliases.cygwin.shrc
 fi
 
 # Darwin
@@ -40,7 +40,7 @@ if [ $OSTYPE = darwin ]; then
     export LSCOLORS=gxfxcxdxbxegedabagacad
     alias ls='ls -F'
 else
-    eval "$(dircolors ~/.dir_colors)"
+    eval "$(dircolors ~/.shrc.d/dir_colors.shrc)"
     alias ls='ls -F --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
