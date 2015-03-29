@@ -22,6 +22,9 @@ $ exec bash -c "$(wget -O - dot.j4ve1in.com)"
 
 **NOTE2:** If you want to use **automatic installation**, type `export ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
+**Demo:**
+![Demo](/img/demo.gif "Demo")
+
 # Configurations
 ## Dotsetup
 ![dotsetup](/img/dotsetup.png "dotsetup")
