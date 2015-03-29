@@ -1,6 +1,4 @@
 #!/bin/bash
-# set -e
-set -u
 
 install() {
     # Start install
