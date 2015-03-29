@@ -24,7 +24,7 @@ uninstall() {
         for file in ${filename[@]}; do
             if [ -e ~/${file##*/} ]; then
                 count=$(expr ${count} + 1)
-                printf "[%3d/%3d] Removing : %s\n" ${count} ${max} ~/${file##*/}
+                printf "[%2d/%2d] Removing : %-35s | type: %s\n" ${count} ${max} ~/${file##*/} ${dotpath}
                 rm -rf ~/${file##*/}
             fi
         done
@@ -46,7 +46,7 @@ uninstall() {
     for file in ${EX_DOTFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
             count=$(expr ${count} + 1)
-            printf "[%3d/%3d] Removing : %s\n" ${count} ${max} ~/${file}
+            printf "[%2d/%2d] Removing : %-35s | type: %s\n" ${count} ${max} ~/${file} ${dotpath}
             rm -rf ~/${file}
         fi
     done
