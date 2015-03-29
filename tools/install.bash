@@ -1,4 +1,7 @@
 #!/bin/bash
+# set -e
+set -u
+
 install() {
     # Start install
     echo "Starting install"
