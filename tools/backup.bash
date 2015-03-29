@@ -50,14 +50,14 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
     echo "Starting backup"
     ## File
     if [ ! "${filemax}" = "0" ]; then
-        echo "File"
+        echo "Copy File"
         count=0
         for dotpath in ${DOT_PATH_LIST[@]}; do
             filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type f -name ".*")
             for file in ${filename[@]}; do
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
-                    printf "[%3d/%3d] Copying: %s\n" ${count} ${filemax} ~/${file##*/}
+                    printf "[%2d/%2d] Copying: %-35s | type: %s\n" ${count} ${filemax} ~/${file##*/} ${dotpath}
                     cp ~/${file##*/} ~/.dotfiles/backup/${DATE}
                 fi
             done
@@ -66,7 +66,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
         for file in ${EX_DOTFILE_LIST[@]}; do
             if [ -f ~/${file} ]; then
                 count=$(expr ${count} + 1)
-                printf "[%3d/%3d] Copying: %s\n" ${count} ${filemax} ~/${file}
+                printf "[%2d/%2d] Copying: %-35s | type: exdotfile\n" ${count} ${filemax} ~/${file}
                 cp ~/${file} ~/.dotfiles/backup/${DATE}
             fi
         done
@@ -74,14 +74,14 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
 
     ## Directory
     if [ ! "${dirmax}" = "0" ]; then
-        echo "Directory"
+        echo "Copy Directory"
         count=0
         for dotpath in ${DOT_PATH_LIST[@]}; do
             filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type d -name ".*")
             for file in ${filename[@]}; do
                 if [ -e ~/${file##*/} ]; then
                     count=$(expr ${count} + 1)
-                    printf "[%3d/%3d] Copying: %s\n" ${count} ${dirmax} ~/${file##*/}
+                    printf "[%2d/%2d] Copying: %-35s | type: %s\n" ${count} ${dirmax} ~/${file##*/} ${dotpath}
                     cp -r ~/${file##*/}/ ~/.dotfiles/backup/${DATE}
                 fi
             done
@@ -90,7 +90,7 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
         for file in ${EX_DOTFILE_LIST[@]}; do
             if [ -d ~/${file} ]; then
                 count=$(expr ${count} + 1)
-                printf "[%3d/%3d] Copying: %s\n" ${count} ${dirmax} ~/${file}
+                printf "[%2d/%2d] Copying: %-35s | type: exdotfile\n" ${count} ${dirmax} ~/${file}
                 cp -r ~/${file}/ ~/.dotfiles/backup/${DATE}
             fi
         done

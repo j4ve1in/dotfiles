@@ -20,7 +20,7 @@ for dotpath in ${DOT_PATH_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type f -name ".*")
     for file in ${filename[@]}; do
         count=$(expr ${count} + 1)
-        printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/${file##*/}
+        printf "[%2d/%2d] Creating symlink: %-35s | type: %s\n" ${count} ${max} ~/${file##*/} ${dotpath}
         ln -sf ${file} ~/${file##*/}
     done
 done
@@ -42,7 +42,7 @@ for dotpath in ${DOT_PATH_LIST[@]}; do
     filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -type d -name ".*")
     for file in ${filename[@]}; do
         count=$(expr ${count} + 1)
-        printf "[%3d/%3d] Creating symbolic link: %s\n" ${count} ${max} ~/${file##*/}
+        printf "[%2d/%2d] Creating symlink: %-35s | type: %s\n" ${count} ${max} ~/${file##*/} ${dotpath}
         ln -sf ${file} ~
     done
 done
