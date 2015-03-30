@@ -48,7 +48,3 @@
     path = ~/.local.d/git/userinfo.local
     path = ~/.local.d/git/credential.local
     path = ~/.local.d/git/proxy.local
-
-[user]
-	email = tetsuya0@outlook.jp
-	name = j4ve1in
