@@ -45,6 +45,8 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
     printf "Creating backup directory..."
     mkdir -p ~/.dotfiles/backup/${DATE}
     echo -e "\033[1;36mdone\033[0;39m"
+    # Display backup directory
+    echo "Backup directory > ~/.dotfiles/backup/${DATE}"
 
     # Start backup
     echo "Starting backup"

@@ -1,7 +1,7 @@
 #!/bin/bash
 source ~/.dotfiles/tools/load_list.bash
 
-echo "Creating symbolic link"
+echo "Start creating symbolic link"
 
 # File
 echo "File"

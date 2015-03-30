@@ -1,12 +1,12 @@
 #!/bin/bash
 restart_cygwin() {
-    echo "Restarting cygwin..."
+    printf "Restarting cygwin..."
     cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -
     echo -e "\033[1;36mdone\033[0;39m"
 }
 
 restart_shell() {
-    echo "Restarting shell..."
+    printf "Restarting shell..."
     $SHELL -l
     echo -e "\033[1;36mdone\033[0;39m"
 }
