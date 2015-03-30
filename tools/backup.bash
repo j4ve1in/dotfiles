@@ -83,6 +83,9 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
                     count=$(expr ${count} + 1)
                     printf "[%2d/%2d] Copying: %-35s | type: %s\n" ${count} ${dirmax} ~/${file##*/} ${dotpath}
                     cp -r ~/${file##*/}/ ~/.dotfiles/backup/${DATE}
+                    if [ ! -L ~/${file##*/} -a -d ~/${file##*/} ]; then
+                        rm -fr ~/${file##*/}/
+                    fi
                 fi
             done
         done
@@ -92,6 +95,9 @@ if [ ! "${filemax}" = "0" -o ! "${dirmax}" = "0" ]; then
                 count=$(expr ${count} + 1)
                 printf "[%2d/%2d] Copying: %-35s | type: exdotfile\n" ${count} ${dirmax} ~/${file}
                 cp -r ~/${file}/ ~/.dotfiles/backup/${DATE}
+                if [ ! -L ~/${file} -a -d ~/${file} ]; then
+                    rm -fr ~/${file}/
+                fi
             fi
         done
     fi
