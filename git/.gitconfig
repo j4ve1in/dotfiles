@@ -7,8 +7,8 @@
     ft = fetch
     me = merge
     med = merge -d
-    rank = "shortlog -s -n --no-merges"
-    r = "shortlog -s -n --no-merges"
+    rank = shortlog -s -n --no-merges
+    r = shortlog -s -n --no-merges
     ra = remote add
     rs = reset
     sh = show
@@ -29,10 +29,31 @@
     di = diff
     dc = diff --cached
     # credential
-    winstore = !"git config -f ~/.local.d/git/credential.local credential.helper !git-credential-winstore"
-    gnomekeyring = !"git config -f ~/.local.d/git/credential.local credential.helper gnomekeyring"
-    osxkeychain = !"git config -f ~/.local.d/git/credential.local credential.helper osxkeychain"
-    unsetcredential = !"rm ~/.local.d/git/credential.local"
+    winstore = !git config -f ~/.local.d/git/credential.local credential.helper !git-credential-winstore
+    gnomekeyring = !git config -f ~/.local.d/git/credential.local credential.helper gnomekeyring
+    osxkeychain = !git config -f ~/.local.d/git/credential.local credential.helper osxkeychain
+    unset-credential = !rm ~/.local.d/git/credential.local
+
+    # ssh-insteadof
+    ssh-instedof = "!\
+        git config -f ~/.local.d/git/sshinsteadof.local --add url.git@github.com:.insteadof git://github.com/;\
+        git config -f ~/.local.d/git/sshinsteadof.local --add git@github.com:.pushinsteadof https://github.com/\
+    "
+
+    # https-pushinsteadof
+    https-pushinsteadof = "!\
+        git config -f ~/.local.d/git/httpspushinsteadof.local --add url.https://github.com/.pushInsteadOf git://github.com/;\
+        git config -f ~/.local.d/git/httpspushinsteadof.local --add url.https://github.com/.pushinsteadof git@github.com:\
+    "
+
+    # unset-instedofoption
+    unset-instedofoption = "!\
+        rm -f ~/.local.d/git/sshinsteadof.local >/dev/null 2>&1;\
+        rm -f ~/.local.d/git/httpspushinsteadof.local >/dev/null 2>&1\
+    "
+
+    # submodule-info
+    submodule-info = "!git submodule foreach "echo -e '$name\n$path\n$sha1\n'""
 
 [color]
     ui = true
@@ -47,4 +68,6 @@
 [include]
     path = ~/.local.d/git/userinfo.local
     path = ~/.local.d/git/credential.local
+    path = ~/.local.d/git/sshinsteadof.local
+    path = ~/.local.d/git/httpspushinsteadof.local
     path = ~/.local.d/git/proxy.local
