@@ -48,7 +48,3 @@
     path = ~/.local.d/git/userinfo.local
     path = ~/.local.d/git/credential.local
     path = ~/.local.d/git/proxy.local
-
-[url "https://github.com/"]
-    pushinsteadof = "git://github.com/"
-    pushinsteadof = "git@github.com:"

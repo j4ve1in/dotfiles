@@ -6,7 +6,7 @@ restart_cygwin() {
 }
 
 restart_shell() {
-    printf "Restarting shell..."
+    echo "Restarting shell..."
     exec $SHELL -l
 }
 
