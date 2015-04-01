@@ -10,12 +10,12 @@ You can install Javelin's dotfiles by the following installation command.
 ## Installation command
 ### via curl
 ```bash
-$ exec bash -c "$(curl -L dot.j4ve1in.com)"
+$ bash -c "$(curl -L dot.j4ve1in.com)"
 ```
 
 ### via wget
 ```bash
-$ exec bash -c "$(wget -O - dot.j4ve1in.com)"
+$ bash -c "$(wget -O - dot.j4ve1in.com)"
 ```
 
 **NOTE:** If you want to use **full installation**, type `export FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.

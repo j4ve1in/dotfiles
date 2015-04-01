@@ -7,8 +7,7 @@ restart_cygwin() {
 
 restart_shell() {
     printf "Restarting shell..."
-    $SHELL -l
-    echo -e "\033[1;36mdone\033[0;39m"
+    exec $SHELL -l
 }
 
 restart() {
