@@ -68,3 +68,4 @@
 
     # submodule-info
     submodule-info = "!git submodule foreach 'echo Name: $name; echo Path: $path; echo Sha1: $sha1; echo'"
+    submodule-info-less = "!git submodule-info | less"
