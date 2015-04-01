@@ -8,7 +8,7 @@ fi
 # Note
 DATE=$(date +"%Y-%m-%d_%H%M%S")
 if [ -d DROPBOX_PATH ]; then
-    alias note='vi $DROPBOX_PATH{DATE}.md'
+    alias note='vi $DROPBOX_PATH${DATE}.md'
 else
     alias note="echo Directory Not Found"
 fi

@@ -16,18 +16,30 @@
     st = status
     ta = tag
     tad = tag -d
+
     # commit
     ci = commit
     ca = commit --amend
+
     # log
     lo = log --oneline
     lp = log -p
     ls = log --stat
-    history = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
-    hi = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
+
+    # log-custum
+    log-custum = "!\
+        git log --graph --date=short --decorate=short\
+        --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
+    "
+    lc = "!\
+        git log --graph --date=short --decorate=short\
+        --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
+    "
+
     # diff
     di = diff
     dc = diff --cached
+
     # credential
     winstore = !git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore
     gnomekeyring = !git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper gnomekeyring
@@ -51,6 +63,8 @@
         rm -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig >/dev/null 2>&1;\
         rm -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig >/dev/null 2>&1\
     "
+    # submodule-list
+    submodule-list = "!grep path .gitmodules | sed 's/.*= //'"
 
     # submodule-info
-    submodule-info = "!git submodule foreach "echo -e '$name\n$path\n$sha1\n'""
+    submodule-info = "!git submodule foreach 'echo Name: $name; echo Path: $path; echo Sha1: $sha1; echo'"
