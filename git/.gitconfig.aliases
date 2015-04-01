@@ -31,41 +31,67 @@
         git log --graph --date=short --decorate=short\
         --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
     "
-    lc = "!\
-        git log --graph --date=short --decorate=short\
-        --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
-    "
+    lc = "!git log-custum"
 
     # diff
     di = diff
     dc = diff --cached
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+    d10 = diff HEAD~~~~~~~~~~
 
     # credential
-    winstore = !git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore
-    gnomekeyring = !git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper gnomekeyring
-    osxkeychain = !git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper osxkeychain
+    credential-winstore = "!\
+        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore\
+    "
+    cws = "!git credential-winstore"
+    credential-gnomekeyring = "!\
+        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper gnomekeyring\
+    "
+    cgk = "!git credential-gnomekeyring"
+    credential-osxkeychain = "!\
+        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper osxkeychain\
+    "
+    cok = "!git credential-osxkeychain"
     unset-credential = !rm ~/.local.d/gitconfig.d/credential.gitconfig
+    uc = "!git unset-credential"
 
     # ssh-insteadof
-    ssh-instedof = "!\
+    ssh-instedof-all = "!\
         git config -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig --add url.git@github.com:.insteadof git://github.com/;\
         git config -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig --add git@github.com:.pushinsteadof https://github.com/\
     "
+    sia = "!git ssh-insteadof-all"
 
     # https-pushinsteadof
-    https-pushinsteadof = "!\
+    https-pushinsteadof-all = "!\
         git config -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushInsteadOf git://github.com/;\
         git config -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushinsteadof git@github.com:\
     "
+    hpa = "!git https-pushinsteadof-all"
 
     # unset-instedofoption
     unset-instedofoption = "!\
         rm -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig >/dev/null 2>&1;\
         rm -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig >/dev/null 2>&1\
     "
+    ui = "!git unset-instedofoption"
+
     # submodule-list
     submodule-list = "!grep path .gitmodules | sed 's/.*= //'"
+    sl = "!git submodule-list"
 
     # submodule-info
     submodule-info = "!git submodule foreach 'echo Name: $name; echo Path: $path; echo Sha1: $sha1; echo'"
+    si = "!git submodule-info"
     submodule-info-less = "!git submodule-info | less"
+    sil = "!git submodule-info-less"
+
+    # submodule-ls
+    submodule-ls = "!git submodule foreach 'ls; echo'"
+    sls = "!git submodule-ls"
+    submodule-ls-less = "!git submodule-ls | less"
+    slsl = "!git submodule-ls-less"
