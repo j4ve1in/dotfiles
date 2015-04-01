@@ -1,4 +1,4 @@
-source ~/.shrc.d/env.shrc
+source ~/.shrc.d/env.rc.sh
 
 # .bashrc
 if [ -f ~/.bashrc ]; then

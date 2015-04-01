@@ -1,17 +1,17 @@
 # Plugin
-source ~/.bashrc.d/plugin.bashrc
+source ~/.bashrc.d/plugin.rc.bash
 
-# Load ~/.bashrc.d/*.bashrc
-filepath="$HOME/.bashrc.d/*.bashrc"
+# Load ~/.bashrc.d/*.rc.bash
+filepath="$HOME/.bashrc.d/*.rc.bash"
 for file in ${filepath}; do
     source ${file}
 done
 
 # alias
-source ~/.shrc.d/aliases.shrc
+source ~/.shrc.d/aliases.rc.sh
 
 # keychain
-source ~/.shrc.d/keychain.autoload.shrc
+source ~/.shrc.d/keychain.autoload.rc.sh
 
 # TMUX
-source ~/.shrc.d/tmux.autoload.shrc
+source ~/.shrc.d/tmux.autoload.rc.sh

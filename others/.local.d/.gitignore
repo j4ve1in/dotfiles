@@ -1,4 +1,2 @@
-git/*
-!git/userinfo.local.sample
-shell/*
-!shell/aliases.local.sample
+gitconfig.d/*
+shrc.d/*

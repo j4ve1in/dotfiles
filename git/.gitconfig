@@ -1,60 +1,3 @@
-[alias]
-    ad = add
-    br = branch
-    co = checkout
-    col = config -l
-    cl = clone
-    ft = fetch
-    me = merge
-    med = merge -d
-    rank = shortlog -s -n --no-merges
-    r = shortlog -s -n --no-merges
-    ra = remote add
-    rs = reset
-    sh = show
-    so = remote show origin
-    st = status
-    ta = tag
-    tad = tag -d
-    # commit
-    ci = commit
-    ca = commit --amend
-    # log
-    lo = log --oneline
-    lp = log -p
-    ls = log --stat
-    history = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
-    hi = log --graph --date=short --decorate=short --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'
-    # diff
-    di = diff
-    dc = diff --cached
-    # credential
-    winstore = !git config -f ~/.local.d/git/credential.local credential.helper !git-credential-winstore
-    gnomekeyring = !git config -f ~/.local.d/git/credential.local credential.helper gnomekeyring
-    osxkeychain = !git config -f ~/.local.d/git/credential.local credential.helper osxkeychain
-    unset-credential = !rm ~/.local.d/git/credential.local
-
-    # ssh-insteadof
-    ssh-instedof = "!\
-        git config -f ~/.local.d/git/sshinsteadof.local --add url.git@github.com:.insteadof git://github.com/;\
-        git config -f ~/.local.d/git/sshinsteadof.local --add git@github.com:.pushinsteadof https://github.com/\
-    "
-
-    # https-pushinsteadof
-    https-pushinsteadof = "!\
-        git config -f ~/.local.d/git/httpspushinsteadof.local --add url.https://github.com/.pushInsteadOf git://github.com/;\
-        git config -f ~/.local.d/git/httpspushinsteadof.local --add url.https://github.com/.pushinsteadof git@github.com:\
-    "
-
-    # unset-instedofoption
-    unset-instedofoption = "!\
-        rm -f ~/.local.d/git/sshinsteadof.local >/dev/null 2>&1;\
-        rm -f ~/.local.d/git/httpspushinsteadof.local >/dev/null 2>&1\
-    "
-
-    # submodule-info
-    submodule-info = "!git submodule foreach "echo -e '$name\n$path\n$sha1\n'""
-
 [color]
     ui = true
 
@@ -66,8 +9,9 @@
     quotepath = off
 
 [include]
-    path = ~/.local.d/git/userinfo.local
-    path = ~/.local.d/git/credential.local
-    path = ~/.local.d/git/sshinsteadof.local
-    path = ~/.local.d/git/httpspushinsteadof.local
-    path = ~/.local.d/git/proxy.local
+    path = ~/.gitconfig.aliases
+    path = ~/.local.d/gitconfig.d/userinfo.gitconfig
+    path = ~/.local.d/gitconfig.d/credential.gitconfig
+    path = ~/.local.d/gitconfig.d/sshinsteadof.gitconfig
+    path = ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig
+    path = ~/.local.d/gitconfig.d/proxy.gitconfig
