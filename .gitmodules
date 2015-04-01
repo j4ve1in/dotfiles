@@ -1,11 +1,11 @@
 [submodule "cd-bookmark"]
-    path = shell/zsh/.zsh/function/cd-bookmark
+    path = shell/.zsh/function/cd-bookmark
     url = git://github.com/mollifier/cd-bookmark.git
 [submodule "cd-gitroot"]
-    path = shell/zsh/.zsh/function/cd-gitroot
+    path = shell/.zsh/function/cd-gitroot
     url = git://github.com/mollifier/cd-gitroot.git
 [submodule "zsh-completions"]
-    path = shell/zsh/.zsh/function/zsh-completions
+    path = shell/.zsh/function/zsh-completions
     url = git://github.com/zsh-users/zsh-completions.git
 [submodule "zaw"]
     path = shell/.zsh/plugin/zaw
