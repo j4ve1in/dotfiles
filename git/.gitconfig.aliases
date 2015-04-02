@@ -1,19 +1,24 @@
 [alias]
     ad = add
     br = branch
-    co = checkout
+    ch = checkout
+    co = config
     col = config -l
     cl = clone
-    ft = fetch
+    fe = fetch
+    fs = fsck
+    in = init
     me = merge
     med = merge -d
     rank = shortlog -s -n --no-merges
-    r = shortlog -s -n --no-merges
+    r = "!git rank"
     ra = remote add
     rs = reset
+    rv = revert
     sh = show
     so = remote show origin
     st = status
+    su = submodule
     ta = tag
     tad = tag -d
 
