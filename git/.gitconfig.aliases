@@ -14,6 +14,8 @@
     r = "!git rank"
     ra = remote add
     rs = reset
+    rsh = reset --hard
+    rss = reset --soft
     rv = revert
     sh = show
     so = remote show origin
