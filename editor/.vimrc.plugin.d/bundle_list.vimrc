@@ -76,13 +76,7 @@ NeoBundle 'vim-scripts/vim-auto-save'
 
 NeoBundle 'kannokanno/previm'
 
-NeoBundleLazy 'tyru/open-browser.vim', {
-\ 'autoload' : {
-\       'functions' : 'OpenBrowser',
-\       'commands'  : ['OpenBrowser', 'OpenBrowserSearch'],
-\       'mappings'  : '<Plug>(openbrowser-smart-search)',
-\    },
-\ }
+NeoBundle 'tyru/open-browser.vim'
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
