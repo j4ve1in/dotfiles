@@ -10,6 +10,8 @@
     in = init
     me = merge
     med = merge -d
+    pu = push
+    puom = push origin master
     rank = shortlog -s -n --no-merges
     r = "!git rank"
     rma = remote add
