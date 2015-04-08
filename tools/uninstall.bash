@@ -65,6 +65,7 @@ uninstall() {
 
 if [ "$ASSUME_YES" = "1" ]; then
     uninstall
+    unset ASSUME_YES
 else
     printf "Are you sure you want to continue (yes/no)? "
     read ANSWER

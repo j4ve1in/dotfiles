@@ -18,6 +18,7 @@ install() {
     if [ "$FULL_INSTALLATION" = "1" ]; then
         export LESS="-cE"; { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
         source ~/.dotfiles/tools/install_plugin.bash
+        unset FULL_INSTALLATION
     else
         export LESS="-cE"; { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | less
     fi
@@ -54,6 +55,7 @@ if [ "$ASSUME_YES" = "1" ]; then
     install
     # restart
     source ~/.dotfiles/tools/restart.bash
+    unset ASSUME_YES
 else
     clear
     echo "If the file exists, it will be ruthlessly clobbered"
