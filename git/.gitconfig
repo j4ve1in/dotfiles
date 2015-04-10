@@ -10,8 +10,8 @@
 
 [include]
     path = ~/.gitconfig.aliases
+    path = ~/.gitconfig.proxy
     path = ~/.local.d/gitconfig.d/userinfo.gitconfig
     path = ~/.local.d/gitconfig.d/credential.gitconfig
     path = ~/.local.d/gitconfig.d/sshinsteadof.gitconfig
     path = ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig
-    path = ~/.local.d/gitconfig.d/proxy.gitconfig
