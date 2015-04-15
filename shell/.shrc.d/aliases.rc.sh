@@ -35,7 +35,7 @@ if [ $OSTYPE = cygwin ]; then
 fi
 
 # Darwin
-if [ $OSTYPE = darwin ]; then
+if [ $(uname) = Darwin ]; then
     export LSCOLORS=gxfxcxdxbxegedabagacad
     alias ls='ls -F'
 else
