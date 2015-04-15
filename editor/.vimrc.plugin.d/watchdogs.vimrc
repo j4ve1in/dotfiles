@@ -1,13 +1,9 @@
-" vintコマンドが存在するときだけチェックを行うようにします
-let g:quickrun_config = {
-\    'vim/watchdogs_checker': {
-\     'type': executable('vint') ? 'watchdogs_checker/vint' : '',
-\    },
-\    "watchdogs_checker/vint" : {
-\       "command"   : "vint",
-\       "exec"      : "%c %o %s:p ",
-\   },
-\ }
+" 関数を呼び出すタイミングはユーザの g:quickrun_config 設定後
+call watchdogs#setup(g:quickrun_config)
 
-" ここはautogroup経由で定義するようにしないとvintに怒られます
-autocmd BufWritePost .vimrc,*.vim WatchdogsRunSilent
+" 書き込み後にシンタックスチェックを行う
+let g:watchdogs_check_BufWritePost_enables = 1
+
+" こっちは一定時間キー入力がなかった場合にシンタックスチェックを行う
+" バッファに書き込み後、1度だけ行われる
+let g:watchdogs_check_CursorHold_enables = 1

@@ -1,4 +1,5 @@
 ca quick QuickRun
+ca watchdogs WatchdogsRun
 ca tasks Tasks
 ca vsh VimShell
 ca unite Unite

@@ -1,1 +1,1 @@
-let g:auto_save = 1 "デフォルトで自動的に保存する
+let g:auto_save = 1 " enable AutoSave on Vim startup

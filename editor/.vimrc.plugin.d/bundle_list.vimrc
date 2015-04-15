@@ -34,15 +34,13 @@ NeoBundle 'basyura/twibill.vim'
 
 " Syntax
 
-NeoBundle 'scrooloose/syntastic'
+NeoBundle "osyo-manga/vim-watchdogs"
 
 NeoBundle 'cohama/vim-hier'
 
 NeoBundle 'dannyob/quickfixstatus'
 
 NeoBundle "osyo-manga/shabadou.vim"
-
-NeoBundle "osyo-manga/vim-watchdogs"
 
 NeoBundleLazy 'othree/html5.vim', {
 \   'autoload' : { 'filetypes' : ['html'] },
@@ -53,7 +51,9 @@ NeoBundleLazy 'hail2u/vim-css3-syntax', {
 \ }
 
 " Completion
-NeoBundle 'mattn/emmet-vim'
+NeoBundleLazy 'mattn/emmet-vim', {
+\   'autoload' : { 'filetypes' : ['html'] },
+\ }
 
 function! s:meet_neocomplete_requirements()
   return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -88,7 +88,11 @@ NeoBundle 'basyura/bitly.vim'
 
 NeoBundle 'mattn/favstar-vim'
 
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundleLazy 'Shougo/vimshell.vim', {
+\ 'autoload': {
+\   'commands': ['VimShell']
+\ }
+\}
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
