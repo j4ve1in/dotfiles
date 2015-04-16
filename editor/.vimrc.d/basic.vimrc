@@ -21,6 +21,8 @@ au BufRead,BufNewFile *gitconfig* set filetype=gitconfig " .gitconfigをファ�
 
 set encoding=utf-8 " vimの内部で使用されるエンコーディングを指定する
 
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+
 set fileformats=unix,dos,mac
 
 set termencoding=utf-8 " ターミナルの出力に用いられるエンコーディングを指定する
