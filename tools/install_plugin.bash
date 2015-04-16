@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start install plugin
-echo "Starting install plugin"
+echo -e "\033[4;39mStarting install plugin\033[0;39m"
 ## install shell plugin
 printf "Installing shell plugin..."
 export LESS="-cE"; { sleep 1; git submodule update --init; } | less

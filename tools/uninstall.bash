@@ -3,7 +3,7 @@ source ~/.dotfiles/tools/load_list.bash
 
 uninstall() {
     # Start uninstall
-    echo "Starting uninstall"
+    echo -e "\033[4;39mStarting uninstall\033[0;39m"
     # Remove symlink
     echo "Removing any symbolic link"
     ## Calc max
