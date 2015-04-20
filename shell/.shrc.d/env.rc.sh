@@ -7,4 +7,5 @@ export PAGER="less"
 export LESS="-ciMNR"
 export SVN_EDITOR="vim"
 export WWW_BROWSER="w3m"
+export CYGWIN="winsymlinks"
 export PATH=$PATH:$HOME/bin
