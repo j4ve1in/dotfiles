@@ -15,3 +15,6 @@
     path = ~/.local.d/gitconfig.d/credential.gitconfig
     path = ~/.local.d/gitconfig.d/sshinsteadof.gitconfig
     path = ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig
+
+[push]
+    default = simple

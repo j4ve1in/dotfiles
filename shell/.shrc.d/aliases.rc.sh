@@ -5,10 +5,13 @@ alias lla='ls -al'
 
 # cd
 alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
+
+# diff
+if which colordiff >/dev/null 2>&1; then
+    alias diff='colordiff -u'
+else
+    alias diff='diff -u'
+fi
 
 # Vim
 alias vi='vim'
