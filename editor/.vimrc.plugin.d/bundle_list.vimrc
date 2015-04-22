@@ -1,36 +1,53 @@
 " Load Plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Filer
-NeoBundleLazy 'Shougo/vimfiler', {
-\   'depends' : ['Shougo/unite.vim'],
-\   'autoload' : {
-\       'commands' : [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
-\   }
-\ }
-
-NeoBundle 'scrooloose/nerdtree'
-
 " Unite
 NeoBundleLazy 'Shougo/unite.vim', {
-\   'autoload' : {
-\       'commands' : [ 'Unite' ]
+\   'autoload': {
+\     'commands': [ 'Unite' ]
 \   }
 \ }
 
-NeoBundle 'pasela/unite-webcolorname'
+NeoBundleLazy 'Shougo/vimfiler', {
+\   'depends': [ 'Shougo/unite.vim' ],
+\   'autoload': {
+\       'commands': [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
+\   }
+\ }
 
-NeoBundle 'Shougo/unite-outline'
+NeoBundleLazy 'pasela/unite-webcolorname', {
+\   'depends': [ 'Shougo/unite.vim' ],
+\   'autoload': {
+\     'commands': [ 'Unite webcolorname' ]
+\   }
+\ }
+
+NeoBundle 'kmnk/vim-unite-giti', {
+\   'depends': [ 'Shougo/unite.vim' ],
+\   'autoload': {
+\     'commands': [ 'Unite' ]
+\   }
+\ }
 
 " Git
-NeoBundle 'cohama/agit.vim'
-
-NeoBundle 'kmnk/vim-unite-giti'
+NeoBundle 'cohama/agit.vim', {
+\   'autoload': {
+\     'commands': [ 'Agit', 'AgitFile' ]
+\   }
+\ }
 
 " Twitter
-NeoBundle 'basyura/TweetVim'
-
-NeoBundle 'basyura/twibill.vim'
+NeoBundle 'basyura/TweetVim', {
+\   'depends': [
+\     'tyru/open-browser.vim',
+\     'basyura/twibill.vim',
+\     'mattn/webapi-vim',
+\     'Shougo/unite-outline',
+\     'basyura/bitly.vim',
+\     'Shougo/unite.vim',
+\     'mattn/favstar-vim'
+\   ]
+\ }
 
 " Syntax
 
@@ -43,16 +60,16 @@ NeoBundle 'dannyob/quickfixstatus'
 NeoBundle "osyo-manga/shabadou.vim"
 
 NeoBundleLazy 'othree/html5.vim', {
-\   'autoload' : { 'filetypes' : ['html'] },
+\   'autoload': { 'filetypes': [ 'html' ] }
 \ }
 
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
-\   'autoload' : { 'filetypes' : ['css'] },
+\   'autoload': { 'filetypes': [ 'css' ] }
 \ }
 
 " Completion
 NeoBundleLazy 'mattn/emmet-vim', {
-\   'autoload' : { 'filetypes' : ['html'] },
+\   'autoload': { 'filetypes': [ 'html' ] }
 \ }
 
 function! s:meet_neocomplete_requirements()
@@ -74,7 +91,11 @@ NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'vim-scripts/vim-auto-save'
 
-NeoBundle 'kannokanno/previm'
+NeoBundle 'kannokanno/previm', {
+\   'depends': [
+\     'tyru/open-browser.vim',
+\   ]
+\ }
 
 NeoBundle 'tyru/open-browser.vim'
 
@@ -82,44 +103,36 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'surround.vim'
 
-NeoBundle 'mattn/webapi-vim'
-
-NeoBundle 'basyura/bitly.vim'
-
-NeoBundle 'mattn/favstar-vim'
-
 NeoBundleLazy 'Shougo/vimshell.vim', {
-\ 'autoload': {
-\   'commands': ['VimShell']
+\   'autoload': {
+\     'commands': [ 'VimShell' ]
+\   }
 \ }
-\}
 
 NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
+\   'build': {
+\     'windows': 'tools\\update-dll-mingw',
+\     'cygwin': 'make -f make_cygwin.mak',
+\     'mac': 'make -f make_mac.mak',
+\     'linux': 'make',
+\     'unix': 'gmake'
+\   }
 \ }
-
-NeoBundle 'supermomonga/thingspast.vim'
 
 NeoBundle 'cocopon/colorswatch.vim'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
-NeoBundleFetch 'itchyny/lightline.vim'
+NeoBundle 'scrooloose/nerdcommenter'
 
-NeoBundleFetch 'scrooloose/nerdcommenter'
+NeoBundleFetch 'supermomonga/thingspast.vim'
+
+NeoBundleFetch 'itchyny/lightline.vim'
 
 NeoBundleFetch 'plasticboy/vim-markdown'
 
 " Load Plugins Settings
-if ! empty(neobundle#get('nerdtree'))
-  source ~/.vimrc.plugin.d/netrw.vimrc
-endif
+source ~/.vimrc.plugin.d/netrw.vimrc
 
 if ! empty(neobundle#get('TweetVim'))
   source ~/.vimrc.plugin.d/tweetvim.vimrc
@@ -131,6 +144,10 @@ endif
 
 if ! empty(neobundle#get('vim-indent-guides'))
   source ~/.vimrc.plugin.d/indent_guides.vimrc
+endif
+
+if ! empty(neobundle#get('open-browser.vim'))
+  source ~/.vimrc.plugin.d/open_browser.vimrc
 endif
 
 if s:meet_neocomplete_requirements()

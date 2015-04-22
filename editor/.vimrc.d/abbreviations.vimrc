@@ -1,13 +1,13 @@
 ca quick QuickRun
 ca watchdogs WatchdogsRun
 ca tasks Tasks
+ca vf VimFiler
+ca vimfiler VimFiler
 ca vsh VimShell
+ca vimshell VimShell
 ca unite Unite
 ca tweetvim TweetVimHomeTimeline
 ca agit Agit
-" Filer
-ca nerdtree NERDTree
-ca vimfiler VimFiler
 " NeoBundle
 ca ninst NeoBundleInstall
 ca nup NeoBundleUpdate
