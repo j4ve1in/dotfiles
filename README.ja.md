@@ -8,16 +8,13 @@
 
 # インストール
 以下のインストールコマンドでインストールできます。
-## インストールコマンド
-### curlを使う
-```bash
-$ bash -c "$(curl -L dot.j4ve1in.com)"
-```
 
-### wgetを使う
-```bash
-$ bash -c "$(wget -O - dot.j4ve1in.com)"
-```
+| OS        | インストールコマンド                            |
+|:---------:|:-----------------------------------------------:|
+| GNU/Linux | `$ bash -c "$(curl -L dot.j4ve1in.com)"`        |
+|           | `$ bash -c "$(wget -O - dot.j4ve1in.com)"`      |
+| Cygwin    | `$ exec bash -c "$(curl -L dot.j4ve1in.com)"`   |
+|           | `$ exec bash -c "$(wget -O - dot.j4ve1in.com)"` |
 
 **参考:** **フルインストール**を利用する場合は`export FULL_INSTALLATION="1"`を実行した後、インストールコマンドを実行してください。フルインストールを使うとシェルとエディターのプラグインもインストールできます。
 
