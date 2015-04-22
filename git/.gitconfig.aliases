@@ -1,6 +1,6 @@
 [alias]
     ad = add
-    br = branch
+    ba = branch
     ch = checkout
     co = config
     col = config -l
@@ -106,3 +106,6 @@
     sls = "!git submodule-ls"
     submodule-ls-less = "!git submodule-ls | less"
     slsl = "!git submodule-ls-less"
+
+    # hub
+    bo =browse

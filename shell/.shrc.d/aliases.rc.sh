@@ -5,6 +5,13 @@ alias lla='ls -al'
 
 # cd
 alias ..='cd ..'
+alias ...='cd ~/.dotfiles'
+
+# git
+## hub
+if which hub >/dev/null 2>&1; then
+    eval "$(hub alias -s)"
+fi
 
 # diff
 if which colordiff >/dev/null 2>&1; then
@@ -31,6 +38,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias dsetup='dotsetup'
 alias dset='dotsetup'
+alias dsu='dotsetup'
 
 # Cygwin
 if [ $OSTYPE = cygwin ]; then
