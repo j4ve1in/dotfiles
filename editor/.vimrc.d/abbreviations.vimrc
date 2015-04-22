@@ -9,8 +9,9 @@ ca unite Unite
 ca tweetvim TweetVimHomeTimeline
 ca csg ColorSwatchGenerate
 ca agit Agit
+ca agitfile AgitFile
 " NeoBundle
-ca ninst NeoBundleInstall
+ca nin NeoBundleInstall
 ca nup NeoBundleUpdate
 ca ncl NeoBundleClean
-ca nlist NeoBundleList
+ca nli NeoBundleList

@@ -22,7 +22,7 @@ NeoBundleLazy 'pasela/unite-webcolorname', {
 \   }
 \ }
 
-NeoBundle 'kmnk/vim-unite-giti', {
+NeoBundleLazy 'kmnk/vim-unite-giti', {
 \   'depends': [ 'Shougo/unite.vim' ],
 \   'autoload': {
 \     'commands': [ 'Unite' ]
@@ -30,14 +30,14 @@ NeoBundle 'kmnk/vim-unite-giti', {
 \ }
 
 " Git
-NeoBundle 'cohama/agit.vim', {
+NeoBundleLazy 'cohama/agit.vim', {
 \   'autoload': {
 \     'commands': [ 'Agit', 'AgitFile' ]
 \   }
 \ }
 
 " Twitter
-NeoBundle 'basyura/TweetVim', {
+NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': [
 \     'tyru/open-browser.vim',
 \     'basyura/twibill.vim',
@@ -46,18 +46,46 @@ NeoBundle 'basyura/TweetVim', {
 \     'basyura/bitly.vim',
 \     'Shougo/unite.vim',
 \     'mattn/favstar-vim'
-\   ]
+\   ],
+\   'autoload': {
+\     'commands': [
+\       'TweetVimAccessToken',
+\       'TweetVimAddAccount',
+\       'TweetVimBitly',
+\       'TweetVimClearIcon',
+\       'TweetVimCommandSay',
+\       'TweetVimCurrentLineSay',
+\       'TweetVimHomeTimeLine',
+\       'TweetVimVimListStatuses',
+\       'TweetVimMentions',
+\       'TweetVimSay',
+\       'TweetVimSearch',
+\       'TweetVimSwitchAccount',
+\       'TweetVimUserStream',
+\       'TweetVimUserTimeline',
+\       'TweetVimVersion'
+\     ]
+\   }
 \ }
 
 " Syntax
 
-NeoBundle "osyo-manga/vim-watchdogs"
-
-NeoBundle 'cohama/vim-hier'
-
-NeoBundle 'dannyob/quickfixstatus'
-
-NeoBundle "osyo-manga/shabadou.vim"
+NeoBundleLazy "osyo-manga/vim-watchdogs", {
+\   'depends': [
+\     'thinca/vim-quickrun',
+\     'Shougo/vimproc.vim',
+\     'osyo-manga/shabadou.vim',
+\     'cohama/vim-hier',
+\     'dannyob/quickfixstatus'
+\   ],
+\   'autoload': {
+\     'commands': [
+\       'WatchdogsRun',
+\       'WatchdogsRunSilent',
+\       'WatchdogsRunSweep'
+\     ]
+\   }
+\ }
 
 NeoBundleLazy 'othree/html5.vim', {
 \   'autoload': { 'filetypes': [ 'html' ] }
@@ -91,10 +119,16 @@ NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'vim-scripts/vim-auto-save'
 
-NeoBundle 'kannokanno/previm', {
+NeoBundleLazy 'kannokanno/previm', {
 \   'depends': [
 \     'tyru/open-browser.vim',
-\   ]
+\   ],
+\   'autoload': {
+\     'commands': [
+\       'Previm',
+\       'PrevimOpen'
+\     ]
+\   }
 \ }
 
 NeoBundle 'tyru/open-browser.vim'
@@ -119,7 +153,11 @@ NeoBundle 'Shougo/vimproc.vim', {
 \   }
 \ }
 
-NeoBundle 'cocopon/colorswatch.vim'
+NeoBundleLazy 'cocopon/colorswatch.vim', {
+\   'autoload': {
+\     'commands': [ 'ColorSwatchGenerate' ]
+\   }
+\ }
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -128,8 +166,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundleFetch 'supermomonga/thingspast.vim'
 
 NeoBundleFetch 'itchyny/lightline.vim'
-
-NeoBundleFetch 'plasticboy/vim-markdown'
 
 " Load Plugins Settings
 source ~/.vimrc.plugin.d/netrw.vimrc
