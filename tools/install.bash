@@ -30,12 +30,6 @@ install() {
     # create symbolic link
     source ~/.dotfiles/tools/create_symlink.bash
 
-    printf "Deploying dotsetup..."
-    mkdir -p ~/bin
-    chmod a+x ~/.dotfiles/tools/setup.bash
-    cp ~/.dotfiles/tools/setup.bash ~/bin/dotsetup
-    echo -e "\033[1;36mdone\033[0;39m"
-
     Color="\033[1;36;44m"
     Color_Reset="\033[0;39m"
     echo -e ${Color}'     ____           __        ____   ______                      __     __      '${Color_Reset}

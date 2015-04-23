@@ -51,12 +51,6 @@ uninstall() {
         fi
     done
 
-    ## dotsetup
-    rm ~/bin/dotsetup
-    if [ -z "$(ls ~/bin)" ]; then
-        rm -rf ~/bin
-    fi
-
     ## dotfiles
     rm -rf ~/.dotfiles
 

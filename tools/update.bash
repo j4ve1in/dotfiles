@@ -11,11 +11,6 @@ source ~/.dotfiles/tools/backup.bash
 # Create symlink
 source ~/.dotfiles/tools/create_symlink.bash
 
-# Update Dotsetup
-printf "Update dotsetup..."
-cp ~/.dotfiles/tools/setup.bash ~/bin/dotsetup
-echo -e "\033[1;36mdone\033[0;39m"
-
 # Update plugin
 ## shell
 if [ -f ~/.plugin/enhancd/enhancd.sh ]; then
