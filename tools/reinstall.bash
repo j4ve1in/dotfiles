@@ -11,9 +11,9 @@ case $ANSWER in
         # Install
         printf "Downloading installer..."
         if [ $(which curl) ]; then
-            export LESS="-cE"; { sleep 1; curl -o ~/j4ve1in_dotfiles_install.bash -L dot.j4ve1in.com; } | less
+            { sleep 1; curl -o ~/j4ve1in_dotfiles_install.bash -L dot.j4ve1in.com; } | env LESS="-cE" less
         elif [ $(which wget) ]; then
-            export LESS="-cE"; { sleep 1; wget -O ~/j4ve1in_dotfiles_install.bash dot.j4ve1in.com; } | less
+            { sleep 1; wget -O ~/j4ve1in_dotfiles_install.bash dot.j4ve1in.com; } | env LESS="-cE" less
         fi
         echo -e "\033[1;36mdone\033[0;39m"
         export ASSUME_YES="1"

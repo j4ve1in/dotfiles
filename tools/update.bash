@@ -2,7 +2,7 @@
 
 # Pull remote repository
 printf "Checking repository..."
-export LESS="-cE"; { sleep 1; git -C ~/.dotfiles pull origin master; } | less
+{ sleep 1; git -C ~/.dotfiles pull origin master; } | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"
 
 # Backup
@@ -20,7 +20,7 @@ echo -e "\033[1;36mdone\033[0;39m"
 ## shell
 if [ -f ~/.plugin/enhancd/enhancd.sh ]; then
     printf "Update shell plugin..."
-    export LESS="-cE"; { sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master; git pull'; } | less
+    { sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master; git pull'; } | env LESS="-cE" less
     echo -e "\033[1;36mdone\033[0;39m"
 fi
 ## editor
