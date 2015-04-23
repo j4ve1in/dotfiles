@@ -21,15 +21,17 @@ else
 fi
 
 # Vim
-alias vi='vim'
-alias tweetvim='vim +TweetVimHomeTimeline'
-alias tweet='vim +TweetVimCommandSay'
-alias agit='vim +Agit'
-alias vf='vim +VimFiler'
-alias ninst='vim +NeoBundleInstall +qall'
-alias nreinst='vim +NeoBundleReinstall +qall'
-alias nup='vim +NeoBundleUpdate +qall'
-alias ncl='vim +NeoBundleClean +qall'
+if which vim >/dev/null 2>&1; then
+    alias vi='vim'
+    alias tweetvim='vim +TweetVimHomeTimeline'
+    alias tweet='vim +TweetVimCommandSay'
+    alias agit='vim +Agit'
+    alias vf='vim +VimFiler'
+    alias ninst='vim +NeoBundleInstall +qall'
+    alias nreinst='vim +NeoBundleReinstall +qall'
+    alias nup='vim +NeoBundleUpdate +qall'
+    alias ncl='vim +NeoBundleClean +qall'
+fi
 
 # Others
 alias grep='grep --color'
