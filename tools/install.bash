@@ -28,6 +28,9 @@ install() {
     source ~/.dotfiles/tools/backup.bash
 
     # create symbolic link
+    if [ $OSTYPE = cygwin ]; then
+        export CYGWIN="winsymlinks"
+    fi
     source ~/.dotfiles/tools/create_symlink.bash
 
     Color="\033[1;36;44m"
