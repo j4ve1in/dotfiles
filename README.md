@@ -16,9 +16,9 @@ You can install Javelin's dotfiles by the following installation command.
 | Cygwin    | exec bash -c "$(curl -L dot.j4ve1in.com)"   |
 |           | exec bash -c "$(wget -O - dot.j4ve1in.com)" |
 
-**NOTE:** If you want to use **full installation**, type `export FULL_INSTALLATION="1"` or `setenv FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
+**NOTE:** If you want to use **full installation**, run `export FULL_INSTALLATION="1"` or `setenv FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
 
-**NOTE2:** If you want to use **automatic installation**, type `export ASSUME_YES="1"` or `setenv ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
+**NOTE2:** If you want to use **automatic installation**, run `export ASSUME_YES="1"` or `setenv ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 **Demo:**
 ![Demo](/img/demo.gif "Demo")
