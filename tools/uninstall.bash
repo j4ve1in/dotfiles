@@ -6,7 +6,7 @@ uninstall() {
     echo -e "\033[4;39mStarting uninstall\033[0;39m"
     # Remove symlink
     echo "Removing any symbolic link"
-    ## Calc max
+    ## Count max
     max=0
     for dotpath in ${DOT_PATH_LIST[@]}; do
         filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -name ".*")
@@ -33,7 +33,7 @@ uninstall() {
     # Remove exception dotfiles
     echo "Removing any file and directory"
 
-    ## Calc max
+    ## Count max
     max=0
     for file in ${EX_DOTFILE_LIST[@]}; do
         if [ -e ~/${file} ]; then
