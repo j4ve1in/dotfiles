@@ -38,12 +38,16 @@ set directory=~/.vim/tmp/swap " swapファイルの作成場所の指定
 
 " backupファイル
 set backup
-set backupdir=~/.vim/tmp/backup " backupファイルの作成場所の指定
+set backupdir=~/.vim/var/tmp/backup " backupファイルの作成場所の指定
 
 
 " undoファイル
 set undofile
-set undodir=~/.vim/tmp/undo " undoファイルの作成場所の指定
+set undodir=~/.vim/var/tmp/undo " undoファイルの作成場所の指定
+
+
+" viminfo
+set viminfo+=n~/.vim/var/tmp/.viminfo
 
 
 " マウス
