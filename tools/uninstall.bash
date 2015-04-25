@@ -1,53 +1,46 @@
 #!/bin/bash
-source ~/.dotfiles/tools/load_list.bash
+source ~/.dotfiles/tools/load_dotpath.bash
+source ~/.dotfiles/tools/load_exdotfile.bash
 
 uninstall() {
     # Start uninstall
     echo -e "\033[4;39mStarting uninstall\033[0;39m"
-    # Remove symlink
-    echo "Removing any symbolic link"
-    ## Count max
-    max=0
-    for dotpath in ${DOT_PATH_LIST[@]}; do
-        filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -name ".*")
-        for file in ${filename[@]}; do
-            if [ -e ~/${file##*/} ]; then
-                max=$(expr ${max} + 1)
-            fi
-        done
+
+    # Count max
+    ## Dotfile
+    for file in ${DOTPATH[@]}; do
+        if [ -e ~/${file##*/} ]; then
+            max=$((max + 1))
+        fi
     done
 
-    ## Remove
-    count=0
-    for dotpath in ${DOT_PATH_LIST[@]}; do
-        filename=$(find ~/.dotfiles/${dotpath} -maxdepth 1 -name ".*")
-        for file in ${filename[@]}; do
-            if [ -e ~/${file##*/} ]; then
-                count=$(expr ${count} + 1)
-                printf "[%2d/%2d] Removing: %-35s | type: %s\n" ${count} ${max} ~/${file##*/} ${dotpath}
-                rm -rf ~/${file##*/}
-            fi
-        done
-    done
-
-    # Remove exception dotfiles
-    echo "Removing any file and directory"
-
-    ## Count max
-    max=0
-    for file in ${EX_DOTFILE_LIST[@]}; do
-        if [ -e ~/${file} ]; then
-            max=$(expr ${max} + 1)
+    # Exdotfile
+    N=$((${#EXDOTFILE[@]} - 1))
+    for i in $(seq 1 $N); do
+        if [ -e ~/${EXDOTFILE[$i]} ]; then
+            max=$((max + 1))
         fi
     done
 
     ## Remove
-    count=0
-    for file in ${EX_DOTFILE_LIST[@]}; do
-        if [ -e ~/${file} ]; then
-            count=$(expr ${count} + 1)
-            printf "[%2d/%2d] Removing: %-35s | type: exdotfile\n" ${count} ${max} ~/${file}
-            rm -rf ~/${file}
+    i=0
+    N=$((${#DOTDIR[@]} - 1))
+    for j in $(seq 1 $N); do
+        DOTPATH=$(find ~/.dotfiles/${DOTDIR[$j]} -maxdepth 1 -name ".*")
+        for file in ${DOTPATH[@]}; do
+            i=$((i + 1))
+            printf "[%2d/%2d] Removing: %-35s | type: %s\n" $i $max ~/${file##*/} ${DOTDIR_A[$j]}
+            rm -rf ~/${file##*/}
+        done
+    done
+
+    # Exdotfile
+    N=$((${#EXDOTFILE[@]} - 1))
+    for j in $(seq 1 $N); do
+        if [ -e ~/${EXDOTFILE[$j]} ]; then
+            i=$((i + 1))
+            printf "[%2d/%2d] Removing: %-35s | type: exdotfile\n" $i $max ~/$file
+            rm -rf ~/$file
         fi
     done
 
