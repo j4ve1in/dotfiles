@@ -2,8 +2,8 @@
 
 install() {
     # Start install
-    echo "Starting install"
-    # check git command
+    echo -e "\033[4;39mStarting install\033[0;39m"
+    # Check git command
     printf "Checking git command..."
     if [ $(which git) ]; then
         echo -e "\033[1;36mdone\033[0;39m"
@@ -24,14 +24,14 @@ install() {
     fi
     echo -e "\033[1;36mdone\033[0;39m"
 
-    # backup
+    # Backup
     source ~/.dotfiles/tools/backup.bash
 
-    # create symbolic link
+    # Deploy
     if [ $OSTYPE = cygwin ]; then
         export CYGWIN="winsymlinks"
     fi
-    source ~/.dotfiles/tools/create_symlink.bash
+    source ~/.dotfiles/tools/deploy.bash
 
     Color="\033[1;36;44m"
     Color_Reset="\033[0;39m"
@@ -48,9 +48,9 @@ install() {
 
 if [ "$ASSUME_YES" = "1" ]; then
     # Assume "yes" as answer to all prompts and run non-interactively.
-    # install
+    # Install
     install
-    # restart
+    # Restart
     source ~/.dotfiles/tools/restart.bash
     unset ASSUME_YES
 else
@@ -61,9 +61,9 @@ else
 
     case $ANSWER in
         "Y" | "y" | "Yes" | "yes" )
-            # install
+            # Install
             install
-            # restart
+            # Restart
             source ~/.dotfiles/tools/restart.bash
             exit 0
             ;;

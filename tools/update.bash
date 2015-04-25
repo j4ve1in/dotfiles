@@ -8,8 +8,8 @@ echo -e "\033[1;36mdone\033[0;39m"
 # Backup
 source ~/.dotfiles/tools/backup.bash
 
-# Create symlink
-source ~/.dotfiles/tools/create_symlink.bash
+# Deploy
+source ~/.dotfiles/tools/deploy.bash
 
 # Update plugin
 ## shell
