@@ -55,18 +55,18 @@
     d10 = diff HEAD~~~~~~~~~~
 
     # credential
-    credential-winstore = "!\
+    set-winstore = "!\
         git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore\
     "
-    cws = "!git credential-winstore"
-    credential-gnomekeyring = "!\
+    sws = "!git set-winstore"
+    set-gnomekeyring = "!\
         git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper gnomekeyring\
     "
-    cgk = "!git credential-gnomekeyring"
-    credential-osxkeychain = "!\
+    sgk = "!git set-gnomekeyring"
+    set-osxkeychain = "!\
         git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper osxkeychain\
     "
-    cok = "!git credential-osxkeychain"
+    sok = "!git set-osxkeychain"
     unset-credential = !rm ~/.local.d/gitconfig.d/credential.gitconfig
     uc = "!git unset-credential"
 
