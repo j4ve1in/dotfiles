@@ -24,14 +24,10 @@ uninstall() {
 
     ## Remove
     i=0
-    N=$((${#DOTDIR[@]} - 1))
-    for j in $(seq 1 $N); do
-        DOTPATH=$(find ~/.dotfiles/${DOTDIR[$j]} -maxdepth 1 -name ".*")
-        for file in ${DOTPATH[@]}; do
-            i=$((i + 1))
-            printf "[%2d/%2d] Removing: %-35s | type: %s\n" $i $max ~/${file##*/} ${DOTDIR_A[$j]}
-            rm -rf ~/${file##*/}
-        done
+    for file in ${DOTPATH[@]}; do
+        i=$((i + 1))
+        printf "[%2d/%2d] Removing: %-35s | type: %s\n" $i $max ~/${file##*/} ${DOTDIR_A[$j]}
+        rm -rf ~/${file##*/}
     done
 
     # Exdotfile
