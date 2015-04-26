@@ -15,12 +15,10 @@ install() {
 
     # Download
     printf "Downloading dotfiles..."
+    { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | env LESS="-cE" less
     if [ "$FULL_INSTALLATION" = "1" ]; then
-        { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | env LESS="-cE" less
         source ~/.dotfiles/tools/install_plugin.bash
         unset FULL_INSTALLATION
-    else
-        { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | env LESS="-cE" less
     fi
     echo -e "\033[1;36mdone\033[0;39m"
 

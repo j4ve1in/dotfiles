@@ -37,9 +37,10 @@ You can install Javelin's dotfiles by the following installation command.
         Dotsetup is dotfile's setup command.
 
     OPTIONS
-        -u, --update       Update dotfiles
-        -b, --backup       Backup dotfiles
-        -r, --reinstall    Reinstall dotfiles
-        -U, --uninstall    Uninstall dotfiles
-        -h, --help         View help
-        --install-plugin   Install shell and editor plugin
+        -u, --update         Update dotfiles
+        -b, --backup         Backup dotfiles
+        -r, --reinstall      Reinstall dotfiles
+        -U, --uninstall      Uninstall dotfiles
+        -h, --help           View help
+        --install-plugin     Install shell and editor plugin
+        --uninstall-plugin   Uninstall shell and editor plugin

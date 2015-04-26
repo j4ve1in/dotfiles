@@ -1,4 +1,4 @@
-if [ -f ~/.zsh/plugin/zaw/zaw.zsh ]; then
+if [ -f ~/.zsh/bundle/repos/*/zaw.zsh ]; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
     add-zsh-hook chpwd chpwd_recent_dirs
     zstyle ':chpwd:*' recent-dirs-max 500
@@ -7,7 +7,8 @@ if [ -f ~/.zsh/plugin/zaw/zaw.zsh ]; then
     zstyle ':completion:*' recent-dirs-insert both
     zstyle ':completion:*:*:cdr:*:*' menu selection
 
-    source ~/.zsh/plugin/zaw/zaw.zsh
+    # Reload zaw.zsh for antigen bug?
+    source ~/.zsh/bundle/repos/*/zaw.zsh
 
     zstyle ':filter-select' case-insensitive yes
 

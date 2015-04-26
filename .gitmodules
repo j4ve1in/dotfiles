@@ -1,18 +1,9 @@
-[submodule "cd-bookmark"]
-    path = shell/.zsh/function/cd-bookmark
-    url = git://github.com/mollifier/cd-bookmark.git
-[submodule "cd-gitroot"]
-    path = shell/.zsh/function/cd-gitroot
-    url = git://github.com/mollifier/cd-gitroot.git
-[submodule "zsh-completions"]
-    path = shell/.zsh/function/zsh-completions
-    url = git://github.com/zsh-users/zsh-completions.git
-[submodule "zaw"]
-    path = shell/.zsh/plugin/zaw
-    url = git://github.com/zsh-users/zaw.git
-[submodule "zsh-bd"]
-    path = shell/.zsh/plugin/zsh-bd
-    url = git://github.com/Tarrasch/zsh-bd.git
 [submodule "enhancd"]
     path = shell/.sh/plugin/enhancd
     url = git://github.com/b4b4r07/enhancd.git
+[submodule "antigen"]
+    path = shell/.zsh/bundle/antigen
+    url = git://github.com/zsh-users/antigen.git
+[submodule "neobundle"]
+    path = editor/.vim/bundle/neobundle.vim
+    url = git://github.com/Shougo/neobundle.vim
