@@ -2,6 +2,7 @@
 
 # DOTDIR
 i=0
+DOTDIR=()
 while read line; do
     DOTDIR[$i]=$(echo $line | cut -d ',' -f 1 | sed -e 's/"//g' - | cut -d"(" -f2 | cut -d")" -f1)
     i=$((i + 1))
@@ -10,6 +11,7 @@ export DOTDIR
 
 # DOTDIR_A
 i=0
+DOTDIR_A=()
 while read line; do
     DOTDIR_A[$i]=$(echo $line | cut -d ',' -f 1 | sed -e 's/"//g' - | cut -d"(" -f1)
     i=$((i + 1))
