@@ -18,6 +18,7 @@ export DOTDIR_A
 
 # DOTPATH
 N=$((${#DOTDIR[@]} - 1))
+DOTPATH=()
 for i in $(seq 1 $N); do
     DOTPATH+=($(find ~/.dotfiles/${DOTDIR[$i]} -maxdepth 1 -name ".*"))
 done
