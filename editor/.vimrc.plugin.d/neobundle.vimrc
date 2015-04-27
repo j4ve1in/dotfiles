@@ -1,7 +1,7 @@
 if !1 | finish | endif "vim-tinyとvim-smallのときはエラーを防ぐため終了する
 
 " NeoBundle
-if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
+if filereadable(expand('~/.vim/bundle/neobundle.vim/plugin/neobundle.vim'))
   set runtimepath+=~/.vim/bundle/neobundle.vim/ "bundleで管理するディレクトリを指定する
 
   let g:neobundle#log_filename = $HOME.'/.vim/var/tmp/plugin/neobundle.log'
