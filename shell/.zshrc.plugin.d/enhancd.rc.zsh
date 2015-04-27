@@ -1,3 +1,3 @@
-if [ -f ~/.sh/plugin/enhancd/enhancd.sh ]; then
-    source ~/.sh/plugin/enhancd/enhancd.sh
+if [ -f ~/.zsh/bundle/repos/*/enhancd.sh ]; then
+    source ~/.zsh/bundle/repos/*/enhancd.sh
 fi
