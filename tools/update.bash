@@ -12,10 +12,14 @@ source ~/.dotfiles/tools/backup.bash
 source ~/.dotfiles/tools/deploy.bash
 
 # Update plugin
+## plugin manager
+{ sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master; git pull'; } | env LESS="-cE" less
+
 ## shell
-if [ -f ~/.plugin/enhancd/enhancd.sh ]; then
-    printf "Update shell plugin..."
-    { sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master; git pull'; } | env LESS="-cE" less
+### zsh
+if [ -d ~/.zsh/bundle/repos ]; then
+    printf "Update zsh plugin..."
+    antigen update
     echo -e "\033[1;36mdone\033[0;39m"
 fi
 ## editor
