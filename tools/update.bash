@@ -19,7 +19,7 @@ source ~/.dotfiles/tools/deploy.bash
 ### zsh
 if [ -d ~/.zsh/bundle/repos ]; then
     printf "Update zsh plugin..."
-    antigen update
+    zsh ~/.dotfiles/tools/update_zsh_plugin.zsh
     echo -e "\033[1;36mdone\033[0;39m"
 fi
 ## editor
