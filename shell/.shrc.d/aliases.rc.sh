@@ -34,6 +34,7 @@ if which vim >/dev/null 2>&1; then
 fi
 
 # Others
+alias ysh='yum shell'
 alias grep='grep --color'
 alias df='df -h'
 alias rm='rm -iv'

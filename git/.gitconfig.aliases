@@ -55,6 +55,11 @@
     d10 = diff HEAD~~~~~~~~~~
 
     # credential
+
+    set-store = "!\
+        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper store\
+    "
+    ss = "!git set-store"
     set-winstore = "!\
         git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore\
     "
