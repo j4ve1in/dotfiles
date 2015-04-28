@@ -1,9 +1,22 @@
-# Javelin's Dotfiles
-[Japanese README](/README.ja.md)
+<p align="center">
+<img width=20% src="https://raw.githubusercontent.com/j4ve1in/dotfiles/master/img/dotfiles.png">
+</p>
+
+<p align="center">
+
+<b><a href="#javelin's-dotfiles">About</a></b>
+|
+<b><a href="#installation">Installation</a></b>
+|
+<b><a href="#configurations">Configurations</a></b>
+|
+<b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
+</p>
 
 [![Waffle.io](https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square "Waffle.io")](https://waffle.io/j4ve1in/dotfiles)
 [![Gitter](https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square "Gitter")](https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+# [Javelin](https://github.com/j4ve1in)'s Dotfiles
 ![Screenshot](/img/screenshot.png "Screenshot")
 
 # Installation
