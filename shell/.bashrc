@@ -4,7 +4,7 @@ source ~/.bashrc.d/plugin.rc.bash
 # Load ~/.bashrc.d/*.rc.bash
 filepath="$HOME/.bashrc.d/*.rc.bash"
 for file in ${filepath}; do
-    source ${file}
+  source ${file}
 done
 
 # alias

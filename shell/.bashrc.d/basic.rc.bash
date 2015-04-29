@@ -1,8 +1,8 @@
 # Source global definitions
 if [ "$OSTYPE" = "cygwin" ]; then
-    if [ -f /etc/bashrc ]; then
-        /etc/bashrc
-    fi
+  if [ -f /etc/bashrc ]; then
+    /etc/bashrc
+  fi
 fi
 
 # vimode

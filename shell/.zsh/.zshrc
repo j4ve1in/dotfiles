@@ -1,17 +1,17 @@
 # Load
 ## Plugin
 for file in ~/.zshrc.plugin.d/*.rc.zsh; do
-    source ${file}
+  source ${file}
 done
 
 ## Function
 for file in ~/.zshrc.function.d/*.rc.zsh; do
-    source ${file}
+  source ${file}
 done
 
 ## ~/.zshrc.d/*.rc.zsh
 for file in ~/.zshrc.d/*.rc.zsh; do
-    source ${file}
+  source ${file}
 done
 
 ## alias
