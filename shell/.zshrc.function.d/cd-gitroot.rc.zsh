@@ -1,1 +1,3 @@
-alias cdu='cd-gitroot'
+if [ -d ~/.zsh/bundle/repos ]; then
+  alias cdu='cd-gitroot'
+fi

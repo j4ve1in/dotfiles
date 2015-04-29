@@ -1,4 +1,3 @@
 bundle/*
-!bundle/neobundle.vim
 tmp/*
 var/tmp/*

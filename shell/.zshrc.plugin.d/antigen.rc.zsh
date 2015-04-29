@@ -1,4 +1,4 @@
-if [ -f ~/.zsh/bundle/antigen/antigen.zsh ]; then
+if [ -d ~/.zsh/bundle/antigen ]; then
   ADOTDIR=$HOME/.zsh/bundle
   source ~/.zsh/bundle/antigen/antigen.zsh
   # Plugin
