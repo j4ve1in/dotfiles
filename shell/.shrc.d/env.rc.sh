@@ -1,15 +1,22 @@
 export LANG="ja_JP.UTF-8"
 export KCODE="u"
 export TERM="xterm-256color"
-export EDITOR="vim"
-export FCEDIT="vim"
 export PAGER="less"
 export LESS="-ciMNR"
-export SVN_EDITOR="vim"
 export WWW_BROWSER="w3m"
 export CYGWIN="winsymlinks"
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.dotfiles/bin
+
+if which vim >/dev/null 2>&1; then
+    export EDITOR="vim"
+    export FCEDIT="vim"
+    export SVN_EDITOR="vim"
+else
+    export EDITOR="vi"
+    export FCEDIT="vi"
+    export SVN_EDITOR="vi"
+fi
 
 # man
 man() {
