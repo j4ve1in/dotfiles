@@ -8,7 +8,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   call neobundle#begin(expand('~/.vim/bundle/')) "NeoBundleで読み込むプラグインを次の行からの記述で指定する
 
-  source ~/.vimrc.plugin.d/bundle_list.vimrc "NeoBundleで読み込むプラグインを指定する
+  source ~/.vimrc.plugin.d/bundle-list.rc.vim "NeoBundleで読み込むプラグインを指定する
 
   call neobundle#end() "NeoBundleで読み込むプラグインの指定を終了する
 
