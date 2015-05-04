@@ -1,14 +1,29 @@
 root = true
-
 [*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
+    charset = utf-8
+    end_of_line = lf
+    insert_final_newline = true
+
+[*.bash]
+    indent_style = space
+    indent_size = 2
+
+[*.editorconfig]
+    indent_style = space
+    indent_size = 4
+
+[*.gitconfig]
+    indent_style = space
+    indent_size = 4
 
 [*.vim]
-indent_style = space
-indent_size = 2
+    indent_style = space
+    indent_size = 2
 
 [*.vimrc]
-indent_style = space
-indent_size = 2
+    indent_style = space
+    indent_size = 2
+
+[*.zsh]
+    indent_style = space
+    indent_size = 2

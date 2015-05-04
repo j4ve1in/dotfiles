@@ -8,11 +8,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # グローバルエイリアス
 tored() {
-    perl -pe 's/^/\e[0;38;5;161m/ && s/$/\e[m/'
+  perl -pe 's/^/\e[0;38;5;161m/ && s/$/\e[m/'
 }
 alias -g E='2> >(tored)'
 
 # zman
 function zman() {
-    PAGER="less -g -s '+/^       "$1"'" man zshall
+  PAGER="less -g -s '+/^       "$1"'" man zshall
 }

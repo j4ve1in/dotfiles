@@ -3,4 +3,3 @@
 .zsh_history
 .zshrc.zwc
 bundle/*
-!bundle/antigen

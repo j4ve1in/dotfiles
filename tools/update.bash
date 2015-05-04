@@ -12,22 +12,19 @@ source ~/.dotfiles/tools/backup.bash
 source ~/.dotfiles/tools/deploy.bash
 
 # Update plugin
-## plugin manager
-{ sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master; git pull'; } | env LESS="-cE" less
-
 ## shell
 ### zsh
 if [ -d ~/.zsh/bundle/repos ]; then
-    printf "Update zsh plugin..."
-    zsh ~/.dotfiles/tools/update_zsh_plugin.zsh
-    echo -e "\033[1;36mdone\033[0;39m"
+  printf "Update zsh plugin..."
+  zsh ~/.dotfiles/tools/update_zsh_plugin.zsh
+  echo -e "\033[1;36mdone\033[0;39m"
 fi
 ## editor
 ### vim
-if [ -f ~/.vim/bundle/neobundle.vim/plugin/neobundle.vim ]; then
-    printf "Update vim plugin..."
-    vim +NeoBundleUpdate +qall
-    echo -e "\033[1;36mdone\033[0;39m"
+if [ -d ~/.vim/bundle/neobundle.vim ]; then
+  printf "Update vim plugin..."
+  vim +NeoBundleUpdate +qall
+  echo -e "\033[1;36mdone\033[0;39m"
 fi
 
 echo -e "Updated\n"
