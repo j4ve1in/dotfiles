@@ -168,30 +168,28 @@ NeoBundleFetch 'supermomonga/thingspast.vim'
 NeoBundleFetch 'itchyny/lightline.vim'
 
 " Load Plugins Settings
-source ~/.vimrc.plugin.d/netrw.vimrc
-
 if ! empty(neobundle#get('TweetVim'))
-  source ~/.vimrc.plugin.d/tweetvim.vimrc
+  source ~/.vimrc.plugin.d/tweetvim.rc.vim
 endif
 
 if ! empty(neobundle#get('vim-auto-save'))
-  source ~/.vimrc.plugin.d/autosave.vimrc
+  source ~/.vimrc.plugin.d/autosave.rc.vim
 endif
 
 if ! empty(neobundle#get('vim-indent-guides'))
-  source ~/.vimrc.plugin.d/indent_guides.vimrc
+  source ~/.vimrc.plugin.d/indent-guides.rc.vim
 endif
 
 if ! empty(neobundle#get('open-browser.vim'))
-  source ~/.vimrc.plugin.d/open_browser.vimrc
+  source ~/.vimrc.plugin.d/open-browser.rc.vim
 endif
 
 if s:meet_neocomplete_requirements()
   if ! empty(neobundle#get('neocomplete.vim'))
-    source ~/.vimrc.plugin.d/neocomplete.vimrc
+    source ~/.vimrc.plugin.d/neocomplete.rc.vim
   endif
 else
   if ! empty(neobundle#get('neocomplcache.vim'))
-    source ~/.vimrc.plugin.d/neocomplcache.vimrc
+    source ~/.vimrc.plugin.d/neocomplcache.rc.vim
   endif
 endif
