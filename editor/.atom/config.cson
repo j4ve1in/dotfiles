@@ -1,0 +1,16 @@
+"*":
+  "exception-reporting":
+    userId: "caef9ac0-3654-7aab-866c-6c2747bd9ef7"
+  welcome:
+    showOnStartup: false
+  core: {}
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    fontFamily: "Migu 1M"
+    fontSize: 18
+    tabLength: 4
+  minimap:
+    plugins:
+      "git-diff": true

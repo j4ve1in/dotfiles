@@ -1,0 +1,11 @@
+'.platform-darwin':
+  'ctrl-cmd-p': 'project-manager:toggle'
+
+'.platform-win32':
+  'alt-shift-P': 'project-manager:toggle'
+
+'.platform-linux':
+  'alt-shift-P': 'project-manager:toggle'
+
+'.project-manager input':
+  'enter': 'core:confirm'
