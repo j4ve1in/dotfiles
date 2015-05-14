@@ -15,9 +15,9 @@ for ((i=0;i<N;i++)); do
   printf " "
   printf "Creating symlink: %s\n" ~/${DOT_NAME[$i]}
   if [ "${DOT_FILE_TYPE[$i]}" = "File" ]; then
-    ln -sf ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
+    ln -fs ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
   elif [ "${DOT_FILE_TYPE[$i]}" = "Directory" ]; then
-    ln -sf ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
+    ln -fns ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
   fi
 done
 
