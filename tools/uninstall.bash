@@ -22,7 +22,7 @@ uninstall() {
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Removing: %s\n" ~/${DOT_NAME[$i]}
-      rm -rf ~/${DOT_NAME[$i]}
+      unlink ~/${DOT_NAME[$i]}
     fi
   done
 

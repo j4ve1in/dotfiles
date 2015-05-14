@@ -24,7 +24,7 @@ if [ "$MAX" != "0" ]; then
   for ((i=0;i<N;i++)); do
     COLOR="\x1b[34m"
     COLOR_RESET="\x1b[0m"
-    if [ "${DOT_FILE_TYPE[$i]}" = "File" ]; then
+    if [ -f ~/${DOT_NAME[$i]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
       printf "%2d/%2d" $((i+1)) $MAX
@@ -32,7 +32,7 @@ if [ "$MAX" != "0" ]; then
       printf " "
       printf "Copying: %s\n" ~/${DOT_NAME[$i]}
       cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
-    elif [ "${DOT_FILE_TYPE[$i]}" = "Directory" ]; then
+    elif [ -d ~/${DOT_NAME[$i]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
       printf "%2d/%2d" $((i+1)) $MAX
