@@ -5,7 +5,7 @@ source ~/.dotfiles/tools/create_data.bash
 echo -e "\033[4;39mChecking backup file\033[0;39m"
 source ~/.dotfiles/tools/count_max.bash
 
-if [ "$N" != "0" ]; then
+if [ "$MAX" != "0" ]; then
   # Create backup dir
   DATE=$(date +"%Y-%m-%d_%H%M%S")
   printf " Creating backup directory..."
