@@ -49,6 +49,7 @@ uninstall() {
   echo -e "Uninstalled\n"
 }
 
+: ${ASSUME_YES:=0}
 if [ "$ASSUME_YES" = "1" ]; then
   uninstall
   unset ASSUME_YES

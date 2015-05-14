@@ -3,6 +3,16 @@
 install() {
   # Start install
   echo -e "\033[4;39mStarting install\033[0;39m"
+  if [ "$FULL_INSTALLATION" = "0" ]; then
+    echo -e " Full Installation: \033[1;31mdisable\033[m"
+  elif [ "$FULL_INSTALLATION" = "1" ]; then
+    echo -e " Full Installation: \033[1;36menable\033[0;39m"
+  fi
+  if [ "$ASSUME_YES" = "0" ]; then
+    echo -e " Option Assume yes: \033[1;31mdisable\033[m"
+  elif [ "$ASSUME_YES" = "1" ]; then
+    echo -e " Option Assume yes: \033[1;36menable\033[0;39m"
+  fi
   ## Check git command
   printf " Checking git command..."
   if [ $(which git) ]; then
@@ -46,6 +56,8 @@ install() {
   #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
 
+: ${FULL_INSTALLATION:=0}
+: ${ASSUME_YES:=0}
 if [ "$ASSUME_YES" = "1" ]; then
   # Assume "yes" as answer to all prompts and run non-interactively.
   # Install
