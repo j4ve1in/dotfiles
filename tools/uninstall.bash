@@ -5,6 +5,7 @@ uninstall() {
   # Count max
   echo -e "\033[4;39mChecking file\033[0;39m"
   source ~/.dotfiles/tools/count_max.bash
+  echo
 
   # Start uninstall
   echo -e "\033[4;39mStarting uninstall\033[0;39m"
