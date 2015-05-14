@@ -1,14 +1,18 @@
 #!/bin/bash
-echo "Usage: dotsetup [OPTIONS]                                 "
-echo "    This script is dotfile's setup command.               "
-echo "                                                          "
-echo "Options:                                                  "
-echo "    -u, --update         Update dotfiles                  "
-echo "    -b, --backup         Backup dotfiles                  "
-echo "    -d, --deploy         Deploy local sample files        "
-echo "    -r, --reinstall      Reinstall dotfiles               "
-echo "    -U, --uninstall      Uninstall dotfiles               "
-echo "    -h, --help           View help                        "
-echo "    --install-plugin     Install shell and editor plugin  "
-echo "    --uninstall-plugin   Uninstall shell and editor plugin"
-echo
+cat << EOT
+Usage: dotsetup [OPTIONS]
+    This script is dotfile's setup command.
+
+Options:
+    -u, --update          Update dotfiles
+    -b, --backup          Backup dotfiles
+    -d, --deploy          Deploy local sample files
+    -r, --reinstall       Reinstall dotfiles
+    -U, --uninstall       Uninstall dotfiles
+    -l, --list            View dotfile's list
+    -m, --directory-map   View dotfile's directory map
+    -h, --help            View help
+    --install-plugin      Install shell and editor plugin
+    --uninstall-plugin    Uninstall shell and editor plugin
+
+EOT

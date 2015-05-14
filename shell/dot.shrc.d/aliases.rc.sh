@@ -1,5 +1,6 @@
 # ls
 alias ll='ls -l'
+alias lly='ls -l --time-style=long-iso'
 alias la='ls -a'
 alias lla='ls -al'
 
