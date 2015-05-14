@@ -74,7 +74,7 @@ if [ "$MAX" != "0" ]; then
     fi
   done
 else
-  echo "Backup file doesn't exist"
+  echo " Backup file doesn't exist"
 fi
 
 echo
