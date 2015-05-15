@@ -54,7 +54,7 @@ for ((i=0;i<N;i++)); do
     if [ -f ${DOT_PATH[$i]} ]; then
       DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
     elif [ -d ${DOT_PATH[$i]} ]; then
-      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6"/"$7"-"%8}')
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6"/"$7"-"$8}')
     fi
   else
     LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
