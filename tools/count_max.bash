@@ -58,7 +58,7 @@ for ((i=0;i<N;i++)); do
   printf "%d directories, " $MAX_D
   printf "%d files" $MAX_F
   printf "${COLOR})${COLOR_RESET}"
-  if [ $OSTYPE = cygwin ]; then
+  if [ "$OSTYPE" = "cygwin" ] || [ "$(uname)" = "Darwin" ]; then
     :
   else
     usleep 10000
