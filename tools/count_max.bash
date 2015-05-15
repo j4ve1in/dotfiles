@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.dotfiles/tools/create_data.bash
+#source ~/.dotfiles/tools/create_data.bash
 # Count max
 MAX=0
 MAX_F=0

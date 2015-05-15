@@ -1,11 +1,51 @@
 #!/bin/bash
 source ~/.dotfiles/tools/create_data.bash
-source ~/.dotfiles/tools/create_list.bash
+
+# DOT_DIR_NAME
+N=${#DOT_NUM[@]}
+for ((i=0;i<N;i++)); do
+  tmp[$i]=${DOT_PATH[$i]%/*}
+done
+for ((i=0;i<${#tmp[@]};i++)); do
+  DOT_DIR_NAME[$i]=${tmp[$i]##*/}
+done
+
+# DOT_FILE_SIZE
+# Check file size
+N=${#DOT_NUM[@]}
+for ((i=0;i<N;i++)); do
+  if [ -f ${DOT_PATH[$i]} ]; then
+    DOT_FILE_SIZE[$i]=$(ls -hl ${DOT_PATH[$i]} | awk '{print $5}')
+  elif [ -d ${DOT_PATH[$i]} ]; then
+    DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | cut -f 1)
+  fi
+done
+
+# DOT_FILE_DATE
+# Check file last-modified date
+N=${#DOT_NUM[@]}
+for ((i=0;i<N;i++)); do
+  if [ $(uname) = Darwin ]; then
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6"/"$7"-"$8}')
+    fi
+  else
+    LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6}')
+    fi
+  fi
+done
 
 # Load first line
-CSV_FILE=~/.dotfiles/tools/dotfile.csv
-read FIRST_LINE < $CSV_FILE
-FIRST_LINE=($(echo $FIRST_LINE | sed -e 's/"//g' -e 's/,/ /g'))
+source ~/.dotfiles/tools/load_first_line.bash
+#CSV_FILE=~/.dotfiles/tools/dotfile.csv
+#read FIRST_LINE < $CSV_FILE
+#FIRST_LINE=($(echo $FIRST_LINE | sed -e 's/"//g' -e 's/,/ /g'))
 
 # Count max length
 N=${#FIRST_LINE[@]}

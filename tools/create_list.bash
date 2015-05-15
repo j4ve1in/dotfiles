@@ -7,14 +7,7 @@ CSV_FILE=~/.dotfiles/tools/dotfile.csv
 
 # Write csv file
 ## First line
-FIRST_LINE=(
-  'No.'
-  'Name'
-  'DirectoryName'
-  'FileType'
-  'Size'
-  'Last-Modified-Date'
-)
+source ~/.dotfiles/tools/load_first_line.bash
 {
   N=${#FIRST_LINE[@]}
   for ((i=0;i<N;i++)); do
