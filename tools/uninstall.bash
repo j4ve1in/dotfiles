@@ -11,6 +11,7 @@ uninstall() {
   echo -e "\033[4;39mStarting uninstall\033[0;39m"
 
   ## Remove
+  COUNT=0
   N=${#DOT_NAME[@]}
   for ((i=0;i<N;i++)); do
     if [ -e ~/${DOT_NAME[$i]} ]; then
@@ -18,11 +19,12 @@ uninstall() {
       COLOR_RESET="\x1b[0m"
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Removing: %s\n" ~/${DOT_NAME[$i]}
       unlink ~/${DOT_NAME[$i]}
+      ((COUNT=COUNT+1))
     fi
   done
 
@@ -34,12 +36,12 @@ uninstall() {
     if [ -e ~/${EXDOT_NAME[$j]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Removing: %s\n" ~/${EXDOT_NAME[$j]}
       rm -rf ~/${EXDOT_NAME[$j]}
-      ((i=i++))
+      ((COUNT=COUNT+1))
     fi
   done
 

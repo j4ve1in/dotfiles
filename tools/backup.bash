@@ -33,7 +33,7 @@ if [ "$MAX" != "0" ]; then
       printf " "
       printf "Copying: %s\n" ~/${DOT_NAME[$i]}
       cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
-      ((COUNT=COUNT++))
+      ((COUNT=COUNT+1))
     elif [ -d ~/${DOT_NAME[$i]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
@@ -45,7 +45,7 @@ if [ "$MAX" != "0" ]; then
       if [ ! -L ~/${DOT_NAME[$i]} -a -d ~/${DOT_NAME[$i]} ]; then
         rm -fr ~/${DOT_NAME[$i]}/
       fi
-      ((COUNT=COUNT++))
+      ((COUNT=COUNT+1))
     fi
   done
   ## Exdotfile
@@ -61,7 +61,7 @@ if [ "$MAX" != "0" ]; then
       printf " "
       printf "Copying: %s\n" ~/${EXDOT_NAME[$j]}
       cp ~/${EXDOT_NAME[$j]} ~/.dotfiles/backup/$DATE
-      ((COUNT=COUNT++))
+      ((COUNT=COUNT+1))
     elif [ "${EXDOT_FILE_TYPE[$j]}" = "Directory" ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
@@ -73,7 +73,7 @@ if [ "$MAX" != "0" ]; then
       if [ ! -L ~/${EXDOT_NAME[$j]} -a -d ~/${EXDOT_NAME[$j]} ]; then
         rm -fr ~/${EXDOT_NAME[$j]}/
       fi
-      ((COUNT=COUNT++))
+      ((COUNT=COUNT+1))
     fi
   done
 else
