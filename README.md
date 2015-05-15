@@ -10,6 +10,8 @@
 |
 <b><a href="#configurations">Configurations</a></b>
 |
+<b><a href="https://github.com/j4ve1in/dotfiles/wiki">Wiki</a></b>
+|
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
 </p>
 

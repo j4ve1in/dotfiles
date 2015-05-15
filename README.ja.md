@@ -10,6 +10,8 @@
 |
 <b><a href="#設定">設定</a></b>
 |
+<b><a href="https://github.com/j4ve1in/dotfiles/wiki">Wiki</a></b>
+|
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.md">English README</a></b>
 </p>
 
