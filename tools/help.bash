@@ -6,7 +6,6 @@ Usage: dotsetup [OPTIONS]
 Options:
     -u, --update          Update dotfiles
     -b, --backup          Backup dotfiles
-    -d, --deploy          Deploy local sample files
     -r, --reinstall       Reinstall dotfiles
     -U, --uninstall       Uninstall dotfiles
     -l, --list            View dotfile's list
