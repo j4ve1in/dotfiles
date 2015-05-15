@@ -24,8 +24,9 @@ install() {
   fi
 
   ## Download
+  URL="git://github.com/j4ve1in/dotfiles.git"
   printf " Downloading dotfiles..."
-  { sleep 1; git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles; } | env LESS="-cE" less
+  { sleep 1; git clone $URL ~/.dotfiles --recursive; } | env LESS="-cE" less
   if [ "$FULL_INSTALLATION" = "1" ]; then
     source ~/.dotfiles/tools/install_plugin.bash
     unset FULL_INSTALLATION
