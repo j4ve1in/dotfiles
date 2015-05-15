@@ -25,10 +25,10 @@ for ((i=0;i<N;i++)); do
   printf " Total: %d " $MAX
   printf "${COLOR}(${COLOR_RESET}"
   printf "%d directories, " $MAX_D
-  printf "%d files" $MAX_D
+  printf "%d files" $MAX_F
   printf "${COLOR})${COLOR_RESET}"
   if [ $OSTYPE = cygwin ]; then
-      :
+    :
   else
     usleep 10000
   fi
@@ -59,7 +59,7 @@ for ((i=0;i<N;i++)); do
   printf "%d files" $MAX_F
   printf "${COLOR})${COLOR_RESET}"
   if [ $OSTYPE = cygwin ]; then
-      :
+    :
   else
     usleep 10000
   fi
