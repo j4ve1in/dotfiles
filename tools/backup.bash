@@ -19,6 +19,7 @@ if [ "$MAX" != "0" ]; then
   echo -e "\033[4;39mStarting backup\033[0;39m"
   echo " \`dotfiles' -> \`~/.dotfiles/backup/$DATE'"
 
+  COUNT=0
   ## Dotfile
   N=${#DOT_NAME[@]}
   for ((i=0;i<N;i++)); do
@@ -27,15 +28,16 @@ if [ "$MAX" != "0" ]; then
     if [ -f ~/${DOT_NAME[$i]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Copying: %s\n" ~/${DOT_NAME[$i]}
       cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
+      ((COUNT=COUNT++))
     elif [ -d ~/${DOT_NAME[$i]} ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Copying: %s\n" ~/${DOT_NAME[$i]}
@@ -43,6 +45,7 @@ if [ "$MAX" != "0" ]; then
       if [ ! -L ~/${DOT_NAME[$i]} -a -d ~/${DOT_NAME[$i]} ]; then
         rm -fr ~/${DOT_NAME[$i]}/
       fi
+      ((COUNT=COUNT++))
     fi
   done
   ## Exdotfile
@@ -53,16 +56,16 @@ if [ "$MAX" != "0" ]; then
     if [ "${EXDOT_FILE_TYPE[$j]}" = "File" ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Copying: %s\n" ~/${EXDOT_NAME[$j]}
       cp ~/${EXDOT_NAME[$j]} ~/.dotfiles/backup/$DATE
-      ((i=i++))
+      ((COUNT=COUNT++))
     elif [ "${EXDOT_FILE_TYPE[$j]}" = "Directory" ]; then
       printf " "
       printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((i+1)) $MAX
+      printf "%2d/%2d" $((COUNT+1)) $MAX
       printf "${COLOR}]${COLOR_RESET}"
       printf " "
       printf "Copying: %s\n" ~/${EXDOT_NAME[$j]}
@@ -70,7 +73,7 @@ if [ "$MAX" != "0" ]; then
       if [ ! -L ~/${EXDOT_NAME[$j]} -a -d ~/${EXDOT_NAME[$j]} ]; then
         rm -fr ~/${EXDOT_NAME[$j]}/
       fi
-      ((i=i++))
+      ((COUNT=COUNT++))
     fi
   done
 else
