@@ -50,11 +50,19 @@ done
 # Check file last-modified date
 N=${#DOT_NUM[@]}
 for ((i=0;i<N;i++)); do
-  LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
-  if [ -f ${DOT_PATH[$i]} ]; then
-    DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
-  elif [ -d ${DOT_PATH[$i]} ]; then
-    DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6}')
+  if [ $(uname) = Darwin ]; then
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6"/"$7"-"%8}')
+    fi
+  else
+    LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]%/*} | grep -w dot${DOT_NAME[$i]} | awk '{print $6}')
+    fi
   fi
 done
 

@@ -1,3 +1,3 @@
-if [ "$(uname -o)" = "GNU/Linux" ]; then
+if [ $(uname) = Linux ]; then
   finger -l
 fi
