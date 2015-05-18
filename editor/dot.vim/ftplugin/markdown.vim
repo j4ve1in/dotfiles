@@ -1,7 +1,5 @@
-" todoリストを簡単に入力する
 abbreviate tl - [ ]
 
-" 入れ子のリストを折りたたむ
 setlocal foldmethod=expr foldexpr=MkdCheckboxFold(v:lnum) foldtext=MkdCheckboxFoldText()
 function! MkdCheckboxFold(lnum)
     let line = getline(a:lnum)
@@ -23,15 +21,12 @@ function! MkdCheckboxFoldText()
     return getline(v:foldstart) . ' (' . (v:foldend - v:foldstart) . ' lines) '
 endfunction
 
-" todoリストのon/offを切り替える
 nnoremap <buffer> <Leader><Leader> :call ToggleCheckbox()<CR>
 vnoremap <buffer> <Leader><Leader> :call ToggleCheckbox()<CR>
 
-" 選択行のチェックボックスを切り替える
 function! ToggleCheckbox()
   let l:line = getline('.')
   if l:line =~ '\-\s\[\s\]'
-    " 完了時刻を挿入する
     let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '') . ' [' . strftime("%Y/%m/%d (%a) %H:%M") . ']'
     call setline('.', l:result)
   elseif l:line =~ '\-\s\[x\]'

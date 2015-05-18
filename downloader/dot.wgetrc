@@ -1,8 +1,6 @@
-# タイムスタンプの使用
-timestamping = on
-
-# タイムアウトまでの時間
+# Time-out period
 timeout = 60
 
-# 1つのURLあたりの再試行回数
+# Others
+timestamping = on
 tries = 3

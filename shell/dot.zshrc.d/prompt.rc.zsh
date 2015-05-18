@@ -23,12 +23,10 @@ fi
 
 PROMPT="${Blue}[%f%n@%m${White}${ssh}%f %1~ ${White}${PS1_GIT_BRANCH}%f${Blue}][%f%D{%Y/%m/%d} %T${Blue}]%f
 %B%(!.#.%%)%b "
-#RPROMPT="%T" # 右側に時間表示
-#setopt transient_rprompt # 右側まで入力がきたら時間表示を消す
-setopt prompt_subst # 変数展開など便利なプロント
+setopt prompt_subst
 
-zmodload zsh/datetime # $EPOCHSECONDS, strftime等を利用可能に
+zmodload zsh/datetime
 reset_tmout() { TMOUT=$[60-EPOCHSECONDS%60] }
-precmd_functions=($precmd_functions reset_tmout) # プロンプト表示時に更新までの時間を再計算
-redraw_tmout() { zle reset-prompt; reset_tmout } # 時刻を更新
+precmd_functions=($precmd_functions reset_tmout)
+redraw_tmout() { zle reset-prompt; reset_tmout }
 TRAPALRM() { redraw_tmout }

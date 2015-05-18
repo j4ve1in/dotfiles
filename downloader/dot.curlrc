@@ -1,5 +1,5 @@
-# タイムアウトするまでの時間
+# time-out period
 connect-timeout = 30
 
-# エラーメッセージの表示
+# Display error message
 show-error

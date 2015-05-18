@@ -6,7 +6,6 @@ setopt no_beep
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# グローバルエイリアス
 tored() {
   perl -pe 's/^/\e[0;38;5;161m/ && s/$/\e[m/'
 }
