@@ -1,4 +1,4 @@
-export LANG="ja_JP.UTF-8"
+export LANG="en_US.UTF-8"
 export KCODE="u"
 export TERM="xterm-256color"
 export PAGER="less"
