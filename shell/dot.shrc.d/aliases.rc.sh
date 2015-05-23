@@ -21,6 +21,12 @@ else
   alias diff='diff -u'
 fi
 
+# Vagrant
+alias vh='vagrant halt'
+alias vr='vagrant reload'
+alias vs='vagrant ssh'
+alias vu='vagrant up'
+
 # Vim
 if which vim >/dev/null 2>&1; then
   alias vi='vim'
