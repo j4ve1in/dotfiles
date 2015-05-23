@@ -1,7 +1,5 @@
 if which keychain >/dev/null 2>&1; then
-  keychain --nogui --quiet
-fi
-if which ssh >/dev/null 2>&1; then
+  keychain --nogui --quiet >/dev/null 2>&1
   if [ -f ~/.keychain/$HOST-sh ]; then
     source ~/.keychain/$HOST-sh
   fi
