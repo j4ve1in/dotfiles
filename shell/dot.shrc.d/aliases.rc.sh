@@ -22,10 +22,15 @@ else
 fi
 
 # Vagrant
-alias vh='vagrant halt'
-alias vr='vagrant reload'
-alias vs='vagrant ssh'
-alias vu='vagrant up'
+alias vai='vagrant init'
+alias vah='vagrant halt'
+alias vap='vagrant package'
+alias varl='vagrant reload'
+alias vars='vagrant resume'
+alias vass='vagrant ssh'
+alias vast='vagrant status'
+alias vasu='vagrant suspend'
+alias vau='vagrant up'
 
 # Vim
 if which vim >/dev/null 2>&1; then
