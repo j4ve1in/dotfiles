@@ -1,6 +1,12 @@
 [color]
     ui = true
 
+[color "diff"]
+    meta = white bold
+    frag = cyan
+    old = red
+    new = green
+
 [core]
     attributesfile = ~/.gitattributes.global
     excludesfile = ~/.gitignore.global
