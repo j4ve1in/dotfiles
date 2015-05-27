@@ -20,7 +20,9 @@ done
 source ~/.shrc.d/aliases.rc.sh
 
 ## keychain
-source ~/.shrc.d/keychain.autoload.rc.sh
+if [ $OSTYPE != cygwin ]; then
+  source ~/.shrc.d/keychain.autoload.rc.sh
+fi
 
 ## TMUX
 if [ $OSTYPE != cygwin ]; then
