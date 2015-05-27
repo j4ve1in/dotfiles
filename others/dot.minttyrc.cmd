@@ -14,6 +14,5 @@ Term=xterm-256color
 Columns=80
 Rows=23
 CursorBlinks=yes
-OpaqueWhenFocused=yes
 FontSmoothing=default
 AllowBlinking=no
