@@ -11,4 +11,6 @@ source ~/.shrc.d/aliases.rc.sh
 source ~/.shrc.d/keychain.autoload.rc.sh
 
 # TMUX
-source ~/.shrc.d/tmux.autoload.rc.sh
+if [ $OSTYPE != cygwin ]; then
+  source ~/.shrc.d/tmux.autoload.rc.sh
+fi
