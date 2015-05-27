@@ -45,6 +45,13 @@ if which vim >/dev/null 2>&1; then
   alias ncl='vim +NeoBundleClean +qall'
 fi
 
+# keychain
+if which keychain >/dev/null 2>&1; then
+  if [ -f ~/.keychain/$HOST-sh ]; then
+    alias keychain='keychain --nogui --quiet >/dev/null 2>&1; source ~/.keychain/$HOST-sh'
+  fi
+fi
+
 # Others
 alias jman='env LANG="ja_JP.UTF-8" man'
 alias ysh='yum shell'
