@@ -53,6 +53,8 @@ if which keychain >/dev/null 2>&1; then
 fi
 
 # Others
+alias g=git
+alias r=rails
 alias jman='env LANG="ja_JP.UTF-8" man'
 alias ysh='yum shell'
 alias grep='grep --color'
