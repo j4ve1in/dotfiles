@@ -43,9 +43,6 @@ done
 
 # Load first line
 source ~/.dotfiles/tools/load_first_line.bash
-#CSV_FILE=~/.dotfiles/tools/dotfile.csv
-#read FIRST_LINE < $CSV_FILE
-#FIRST_LINE=($(echo $FIRST_LINE | sed -e 's/"//g' -e 's/,/ /g'))
 
 # Count max length
 N=${#FIRST_LINE[@]}
