@@ -22,15 +22,18 @@ else
 fi
 
 # Vagrant
-alias vai='vagrant init'
-alias vah='vagrant halt'
-alias vap='vagrant package'
-alias varl='vagrant reload'
-alias vars='vagrant resume'
-alias vass='vagrant ssh'
-alias vast='vagrant status'
-alias vasu='vagrant suspend'
-alias vau='vagrant up'
+if which vagrant >/dev/null 2>&1; then
+  alias vags='vagrant global-status'
+  alias vai='vagrant init'
+  alias vah='vagrant halt'
+  alias vap='vagrant package'
+  alias varl='vagrant reload'
+  alias vars='vagrant resume'
+  alias vass='vagrant ssh'
+  alias vast='vagrant status'
+  alias vasu='vagrant suspend'
+  alias vau='vagrant up'
+fi
 
 # Vim
 if which vim >/dev/null 2>&1; then
@@ -55,6 +58,8 @@ fi
 # Others
 alias g=git
 alias r=rails
+alias printpath='echo -e "${PATH//:/\n}"'
+alias path='echo -e "${PATH//:/\n}"'
 alias jman='env LANG="ja_JP.UTF-8" man'
 alias ysh='yum shell'
 alias grep='grep --color'
@@ -66,15 +71,19 @@ alias dsetup='dotsetup'
 alias dset='dotsetup'
 alias dsu='dotsetup'
 
+# Linux
+if [ $(uname) = Linux ]; then
+  source ~/.shrc.d/alias.linux.rc.sh
+fi
+
 # Cygwin
 if [ $OSTYPE = cygwin ]; then
   source ~/.shrc.d/aliases.cygwin.rc.sh
 fi
 
-# Darwin
+# OSX
 if [ $(uname) = Darwin ]; then
-  export LSCOLORS=gxfxcxdxbxegedabagacad
-  alias ls='ls -F'
+  source ~/.shrc.d/aliases.osx.rc.sh
 else
   eval "$(dircolors ~/.shrc.d/dir_colors.rc.sh)"
   alias ls='ls -F --color=auto'
