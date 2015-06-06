@@ -73,7 +73,7 @@ alias dsu='dotsetup'
 
 # Linux
 if [ $(uname) = Linux ]; then
-  source ~/.shrc.d/alias.linux.rc.sh
+  source ~/.shrc.d/aliases.linux.rc.sh
 fi
 
 # Cygwin
