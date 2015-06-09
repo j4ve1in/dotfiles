@@ -1,4 +1,4 @@
-alias xdg-open='xdo'
+alias xdo='xdg-open'
 
 # Browse
 alias google='xdg-open https://www.google.co.jp/'
