@@ -5,8 +5,14 @@ export PAGER="less"
 export LESS="-ciMNR"
 export WWW_BROWSER="w3m"
 export CYGWIN="winsymlinks"
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/.dotfiles/bin
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# rbenv
+if [ -f ~/.rbenv ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 if which vim >/dev/null 2>&1; then
     export EDITOR="vim"
