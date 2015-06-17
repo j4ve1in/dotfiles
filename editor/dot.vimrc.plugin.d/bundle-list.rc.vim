@@ -1,7 +1,7 @@
 " Load Plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Unite
+" Unite " {{{
 NeoBundleLazy 'Shougo/unite.vim', {
 \   'autoload': {
 \     'commands': [ 'Unite' ]
@@ -28,15 +28,17 @@ NeoBundleLazy 'kmnk/vim-unite-giti', {
 \     'commands': [ 'Unite' ]
 \   }
 \ }
+" }}}
 
-" Git
+" Git " {{{
 NeoBundleLazy 'cohama/agit.vim', {
 \   'autoload': {
 \     'commands': [ 'Agit', 'AgitFile' ]
 \   }
 \ }
+" }}}
 
-" Twitter
+" Twitter " {{{
 NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': [
 \     'tyru/open-browser.vim',
@@ -67,9 +69,9 @@ NeoBundleLazy 'basyura/TweetVim', {
 \     ]
 \   }
 \ }
+" }}}
 
-" Syntax
-
+" Syntax " {{{
 NeoBundleLazy "osyo-manga/vim-watchdogs", {
 \   'depends': [
 \     'thinca/vim-quickrun',
@@ -94,8 +96,9 @@ NeoBundleLazy 'othree/html5.vim', {
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
 \   'autoload': { 'filetypes': [ 'css' ] }
 \ }
+" }}}
 
-" Completion
+" Completion " {{{
 NeoBundleLazy 'mattn/emmet-vim', {
 \   'autoload': { 'filetypes': [ 'html' ] }
 \ }
@@ -111,8 +114,9 @@ else
   NeoBundleFetch 'Shougo/neocomplete.vim'
   NeoBundle 'Shougo/neocomplcache.vim'
 endif
+" }}}
 
-" Others
+" Others " {{{
 NeoBundle 'Townk/vim-autoclose' "abbreviateで括弧に書き換える時支障が出る
 
 NeoBundle 'thinca/vim-quickrun'
@@ -166,8 +170,9 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundleFetch 'supermomonga/thingspast.vim'
 
 NeoBundleFetch 'itchyny/lightline.vim'
+" }}}
 
-" Load Plugins Settings
+" Load Plugins Settings " {{{
 if ! empty(neobundle#get('TweetVim'))
   source ~/.vimrc.plugin.d/tweetvim.rc.vim
 endif
@@ -193,3 +198,4 @@ else
     source ~/.vimrc.plugin.d/neocomplcache.rc.vim
   endif
 endif
+" }}}

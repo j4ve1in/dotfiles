@@ -15,7 +15,9 @@ set whichwrap=b,s,[,],<,> "左右のカーソル移動で行間の移動を可�
 
 au BufRead,BufNewFile *.md set filetype=markdown " .mdをファイルタイプをmarkdownにする
 
-au BufRead,BufNewFile *gitconfig* set filetype=gitconfig " .gitconfigをファイルタイプをzshにする
+au BufRead,BufNewFile *.vim set foldmethod=marker
+
+au BufRead,BufNewFile *gitconfig* set filetype=gitconfig
 
 " 文字コードの自動認識
 
