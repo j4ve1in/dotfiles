@@ -9,7 +9,7 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # rbenv
-if [ -f ~/.rbenv ]; then
+if [ -d ~/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
