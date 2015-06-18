@@ -1,0 +1,15 @@
+! urxvt
+!! Basic
+URxvt.saveLines: 20000
+URxvt.scrollBar: false
+URxvt.urlLauncher: firefox
+! URxvt.urlLauncher: chromium
+
+!! Font
+URxvt.font: xft:Migu 1M:size=13:antialias=true
+URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true
+
+!! Color
+URxvt.depth: 32
+URxvt.foreground: rgba:ffff/ffff/ffff/ffff
+URxvt.background: rgba:0000/0000/0000/eeee
