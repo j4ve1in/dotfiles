@@ -1,3 +1,3 @@
-setlocal noexpandtab
-setlocal tabstop=4
-setlocal shiftwidth=4
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
