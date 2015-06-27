@@ -58,6 +58,7 @@ fi
 # Others
 alias g=git
 alias r=rails
+alias h=history
 alias printpath='echo -e "${PATH//:/\n}"'
 alias path='echo -e "${PATH//:/\n}"'
 alias jman='env LANG="ja_JP.UTF-8" man'
