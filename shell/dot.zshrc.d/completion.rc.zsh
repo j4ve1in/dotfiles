@@ -12,6 +12,11 @@ setopt COMPLETE_IN_WORD
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%F{cyan}Completing %B%d%b%f'
 
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+#zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+
 # auto_cd
 setopt auto_cd
 function chpwd() {
