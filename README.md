@@ -4,13 +4,13 @@
 
 <p align="center">
 
-<b><a href="#javelin's-dotfiles">About</a></b>
+<b><a href="#overview">Overview</a></b>
 |
 <b><a href="#installation">Installation</a></b>
 |
 <b><a href="#configurations">Configurations</a></b>
 |
-<b><a href="https://github.com/j4ve1in/dotfiles/wiki">Wiki</a></b>
+<b><a href="#wiki">Wiki</a></b>
 |
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
 </p>
@@ -18,7 +18,8 @@
 [![Waffle.io](https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square "Waffle.io")](https://waffle.io/j4ve1in/dotfiles)
 [![Gitter](https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square "Gitter")](https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# [Javelin](https://github.com/j4ve1in)'s Dotfiles
+# Overview
+This repository manage [my](https://github.com/j4ve1in) configuration files on Unix-type operating systems.
 ![Screenshot](/img/screenshot.png "Screenshot")
 
 # Installation
@@ -61,3 +62,6 @@ You can install Javelin's dotfiles by the following installation command.
         -h, --help            View help
         --install-plugin      Install shell and editor plugin
         --uninstall-plugin    Uninstall shell and editor plugin
+
+# Wiki
+Please have a look at the **[wiki](https://github.com/j4ve1in/dotfiles/wiki "Wiki")** for more information.
