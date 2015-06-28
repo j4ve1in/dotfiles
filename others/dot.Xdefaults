@@ -5,11 +5,32 @@ URxvt.scrollBar: false
 URxvt.urlLauncher: firefox
 ! URxvt.urlLauncher: chromium
 
-!! Font
-URxvt.font: xft:Migu 1M:size=13:antialias=true
-URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true
-
 !! Color
 URxvt.depth: 32
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt.background: rgba:0000/0000/0000/eeee
+
+!! Font
+URxvt.font: xft:Migu 1M:size=13:antialias=true
+URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true
+
+! xterm
+!! Basic
+XTerm*utf8 : 1
+XTerm*locale : true
+XTerm*utf8Title: true
+XTerm*scrollBar: false
+XTerm*metaSendsEscape: true
+XTerm*selectToClipboard : true
+XTerm*saveLines : 20000
+XTerm*geometry : 75x20+300+100
+
+!! Color
+XTerm*background : black
+XTerm*foreground : white
+
+!! Font
+XTerm*cjkWidth : true
+XTerm*faceSize : 13
+XTerm*faceName : 'Migu 1M'
+XTerm*faceNameDoublesize: 'Migu 1M'
