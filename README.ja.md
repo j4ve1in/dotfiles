@@ -20,6 +20,7 @@
 
 # 概要
 このリポジトリはUnix系OSの設定ファイルを管理しています。
+
 ![Screenshot](/img/screenshot.png "Screenshot")
 
 # インストール
