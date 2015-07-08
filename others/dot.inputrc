@@ -73,19 +73,39 @@
   #Space: magic-space
 #$endif
 
-set completion-ignore-case on
-set bell-style none
-set visible-stats on
-
-"\C-p":history-search-backward
-"\C-n":history-search-forward
-"\e[A":history-search-backward
-"\e[B":history-search-forward
-
+# Bash
 $if Bash
-    space: magic-space
-
-    "\C-x\C-p": " | percol"
-    "\C-^": "~/"
+  # Basic
+  set editing-mode vi
+  set completion-query-items 100
+  ## Filename completion/expansion
+  set completion-ignore-case on
+  ## Don't ring bell on completion
+  set bell-style none
+  ## or, don't beep at me - show me
+  set visible-stats on
+  ## Expand homedir name
+  set expand-tilde on
+  # 'Magic Space'
+  # Insert a space character then performs
+  # a history expansion in the line
+  space: magic-space
+  "\C-g": " | grep"
+  "\C-^": "~/"
+  # History
+  "\C-p":history-search-backward
+  "\C-n":history-search-forward
+  "\e[A":history-search-backward
+  "\e[B":history-search-forward
+  "\e[C":history-search-backward
+  "\e[D":history-search-forward
 $endif
-"\C-^": "~/"
+
+# MySQL
+$if mysql
+    "\C-xd": "show databases;"
+    "\C-xt": "show tables;"
+    "\C-xu": "select user,host,password from mysql.user order by user,host;"
+    "\C-xb": "select user,host,db       from mysql.db   order by user,host;"
+    "\C-xc": "show create table TN\\G"
+$endif
