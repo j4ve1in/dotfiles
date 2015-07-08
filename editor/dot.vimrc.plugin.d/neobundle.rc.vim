@@ -16,3 +16,18 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundleCheck " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする
 endif
+
+nnoremap [NeoBundle] <Nop>
+nmap <Space>n [NeoBundle]
+
+nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
+nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
+nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
+
+let g:unite_enable_start_insert = 1
+let g:unite_enable_auto_select = 0
+call unite#custom#profile('default', 'context', {
+  \ 'prompt_direction': 'top',
+  \ 'prompt': '> ',
+  \ 'candidate_icon': '- ',
+  \ 'hide_icon': 0 })

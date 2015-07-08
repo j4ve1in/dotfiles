@@ -8,10 +8,28 @@ NeoBundleLazy 'Shougo/unite.vim', {
 \   }
 \ }
 
+NeoBundle 'Shougo/neomru.vim', {
+\   'depends': [ 'Shougo/unite.vim' ]
+\ }
+
+NeoBundleLazy 'Shougo/unite-outline', {
+\   'depends': [ 'Shougo/unite.vim' ],
+\   'autoload': {
+\       'commands': [ 'Unite outline' ]
+\   }
+\ }
+
 NeoBundleLazy 'Shougo/vimfiler', {
 \   'depends': [ 'Shougo/unite.vim' ],
 \   'autoload': {
 \       'commands': [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
+\   }
+\ }
+
+NeoBundleLazy 'ujihisa/unite-colorscheme', {
+\   'depends': [ 'Shougo/unite.vim' ],
+\   'autoload': {
+\     'commands': [ 'Unite colorscheme' ]
 \   }
 \ }
 
@@ -39,7 +57,7 @@ NeoBundleLazy 'cohama/agit.vim', {
 " }}}
 
 " Twitter " {{{
-NeoBundleLazy 'basyura/TweetVim', {
+NeoBundle 'basyura/TweetVim', {
 \   'depends': [
 \     'tyru/open-browser.vim',
 \     'basyura/twibill.vim',
@@ -48,26 +66,7 @@ NeoBundleLazy 'basyura/TweetVim', {
 \     'basyura/bitly.vim',
 \     'Shougo/unite.vim',
 \     'mattn/favstar-vim'
-\   ],
-\   'autoload': {
-\     'commands': [
-\       'TweetVimAccessToken',
-\       'TweetVimAddAccount',
-\       'TweetVimBitly',
-\       'TweetVimClearIcon',
-\       'TweetVimCommandSay',
-\       'TweetVimCurrentLineSay',
-\       'TweetVimHomeTimeLine',
-\       'TweetVimVimListStatuses',
-\       'TweetVimMentions',
-\       'TweetVimSay',
-\       'TweetVimSearch',
-\       'TweetVimSwitchAccount',
-\       'TweetVimUserStream',
-\       'TweetVimUserTimeline',
-\       'TweetVimVersion'
-\     ]
-\   }
+\   ]
 \ }
 " }}}
 
@@ -100,7 +99,12 @@ NeoBundleLazy 'hail2u/vim-css3-syntax', {
 
 " Completion " {{{
 NeoBundleLazy 'mattn/emmet-vim', {
-\   'autoload': { 'filetypes': [ 'html' ] }
+\   'autoload': {
+\     'filetypes': [
+\       'html',
+\       'css'
+\     ]
+\   }
 \ }
 
 function! s:meet_neocomplete_requirements()
@@ -117,7 +121,7 @@ endif
 " }}}
 
 " Others " {{{
-NeoBundle 'Townk/vim-autoclose' "abbreviateで括弧に書き換える時支障が出る
+NeoBundle 'Townk/vim-autoclose'
 
 NeoBundle 'thinca/vim-quickrun'
 
@@ -173,6 +177,14 @@ NeoBundleFetch 'itchyny/lightline.vim'
 " }}}
 
 " Load Plugins Settings " {{{
+if ! empty(neobundle#get('unite.vim'))
+  source ~/.vimrc.plugin.d/unite.rc.vim
+endif
+
+if ! empty(neobundle#get('vimfiler'))
+  source ~/.vimrc.plugin.d/vimfiler.rc.vim
+endif
+
 if ! empty(neobundle#get('TweetVim'))
   source ~/.vimrc.plugin.d/tweetvim.rc.vim
 endif
