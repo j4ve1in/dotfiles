@@ -1,56 +1,54 @@
-set backspace=indent,eol,start " オートインデント、改行、インサートモード開始直後にバックスペースキーで削除できるようにする
+set backspace=indent,eol,start
 
+set hidden
 
-set hidden " バッファを保存しなくてもほかのバッファを表示できるようにする
+set nrformats=
 
-set clipboard+=unnamed "クリップボードを共有する
+"set clipboard+=unnamed
+set clipboard=unnamedplus
 
-set virtualedit=block "ビジュアルブロックモードでフリーカーソルを有効にする
+set virtualedit=block
 
-set noerrorbells "エラー音を無効にする
+set noerrorbells
 
-set novisualbell "ビジュアルベルを無効にする
+set novisualbell
 
-set whichwrap=b,s,[,],<,> "左右のカーソル移動で行間の移動を可能にする
-
-au BufRead,BufNewFile *.md set filetype=markdown " .mdをファイルタイプをmarkdownにする
+" set whichwrap=b,s,[,],<,>
 
 au BufRead,BufNewFile *.vim set foldmethod=marker
 
-au BufRead,BufNewFile *gitconfig* set filetype=gitconfig
-
-" 文字コードの自動認識
-
-set encoding=utf-8 " vimの内部で使用されるエンコーディングを指定する
+set encoding=utf-8
 
 set fileformats=unix,dos,mac
 
-set termencoding=utf-8 " ターミナルの出力に用いられるエンコーディングを指定する
+scriptencoding utf-8
+
+set termencoding=utf-8
 
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" swapファイル
+" swapfile
 set swapfile
-set directory=~/.vim/tmp/swap " swapファイルの作成場所の指定
+set directory=~/.vim/tmp/swap
 
 
-" backupファイル
+" backupfile
 set backup
-set backupdir=~/.vim/var/tmp/backup " backupファイルの作成場所の指定
+set backupdir=~/.vim/var/tmp/backup
 
 
-" undoファイル
+" undofile
 set undofile
-set undodir=~/.vim/var/tmp/undo " undoファイルの作成場所の指定
+set undodir=~/.vim/var/tmp/undo
 
 
 " viminfo
 set viminfo+=n~/.vim/var/tmp/.viminfo
 
 
-" マウス
-set mouse=a " マウス操作を有効にする
+" mouse
+set mouse=a
 
-set ttymouse=xterm2 " ドラッグを有効にする
+set ttymouse=xterm2

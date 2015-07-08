@@ -1,9 +1,9 @@
-set wrapscan " 最後まで検索したら先頭に戻る
+set wrapscan
 
-set ignorecase " 大文字と小文字を区別せずに検索する
+set ignorecase
 
-set smartcase " 大文字と小文字が混在している場合は区別して検索する
+set smartcase
 
-set incsearch " 検索ワードの最初の文字を入力した時点で検索を開始する
+set incsearch
 
-set hlsearch " 検索文字をハイライトする
+set hlsearch

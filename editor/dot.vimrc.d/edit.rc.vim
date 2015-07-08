@@ -1,5 +1,5 @@
-set softtabstop=4 "連続したスペースに対してタブキーやバックスペースキーでカーソルが動く幅をスペース4つ分にする
+set softtabstop=4
 
-set shiftwidth=4 "シフトオペレータ（>>）や自動インデントで挿入されるスペースを4つにする
+set shiftwidth=4
 
-set expandtab "タブ入力を複数の空白入力に置き換える
+set expandtab
