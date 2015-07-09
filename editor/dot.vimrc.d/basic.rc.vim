@@ -5,7 +5,7 @@ set hidden
 set nrformats=
 
 "set clipboard+=unnamed
-set clipboard=unnamedplus
+set clipboard=unnamedplus,autoselect
 
 set virtualedit=block
 

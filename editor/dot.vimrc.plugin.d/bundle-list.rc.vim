@@ -102,7 +102,9 @@ NeoBundleLazy 'mattn/emmet-vim', {
 \   'autoload': {
 \     'filetypes': [
 \       'html',
-\       'css'
+\       'css',
+\       'sass',
+\       'scss'
 \     ]
 \   }
 \ }
