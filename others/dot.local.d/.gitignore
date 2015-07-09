@@ -1,2 +1,4 @@
 gitconfig.d/*
+!.gitkeep
 shrc.d/*
+!.gitkeep

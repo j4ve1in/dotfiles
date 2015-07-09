@@ -3,3 +3,4 @@
 .zsh_history
 .zshrc.zwc
 bundle/*
+!.gitkeep
