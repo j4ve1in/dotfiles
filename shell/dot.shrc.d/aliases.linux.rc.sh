@@ -4,3 +4,7 @@ alias xdo='xdg-open'
 alias google='xdg-open https://www.google.co.jp/'
 alias github='xdg-open https://github.com/'
 alias wikipedia='xdg-open http://ja.wikipedia.org/'
+
+# Clipboard
+alias xs='xsel'
+alias xc='xclip'
