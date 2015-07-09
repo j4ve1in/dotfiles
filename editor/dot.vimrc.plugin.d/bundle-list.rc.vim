@@ -187,8 +187,24 @@ if ! empty(neobundle#get('vimfiler'))
   source ~/.vimrc.plugin.d/vimfiler.rc.vim
 endif
 
+if ! empty(neobundle#get('vimshell.vim'))
+  source ~/.vimrc.plugin.d/vimshell.rc.vim
+endif
+
+if ! empty(neobundle#get('vim-watchdogs'))
+  source ~/.vimrc.plugin.d/watchdogs.rc.vim
+endif
+
 if ! empty(neobundle#get('TweetVim'))
   source ~/.vimrc.plugin.d/tweetvim.rc.vim
+endif
+
+if ! empty(neobundle#get('agit.vim'))
+  source ~/.vimrc.plugin.d/agit.rc.vim
+endif
+
+if ! empty(neobundle#get('previm'))
+  source ~/.vimrc.plugin.d/previm.rc.vim
 endif
 
 if ! empty(neobundle#get('vim-auto-save'))
@@ -197,6 +213,10 @@ endif
 
 if ! empty(neobundle#get('vim-indent-guides'))
   source ~/.vimrc.plugin.d/indent-guides.rc.vim
+endif
+
+if ! empty(neobundle#get('colorswatch.vim'))
+  source ~/.vimrc.plugin.d/colorswatch.rc.vim
 endif
 
 if ! empty(neobundle#get('open-browser.vim'))

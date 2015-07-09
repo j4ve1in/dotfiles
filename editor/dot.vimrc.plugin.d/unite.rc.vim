@@ -16,3 +16,4 @@ nnoremap <silent> [Unite]n/l :<C-u>Unite<Space>neobundle/log<CR>
 nnoremap <silent> [Unite]n/L :<C-u>Unite<Space>neobundle/lazy<CR>
 nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
 nnoremap <silent> [Unite]t :<C-u>Unite<Space>tweetvim<CR>
+nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
