@@ -1,5 +1,8 @@
 [alias]
-    ad = add
+    a = add
+    aa = add -A
+    au = add -u
+    adot = add .
     ba = branch
     ch = checkout
     co = config
@@ -10,8 +13,10 @@
     in = init
     me = merge
     med = merge -d
-    pu = push
-    puom = push origin master
+    pl = pull
+    ps = push
+    psom = push origin master
+    psuom = push -u origin master
     rank = shortlog -s -n --no-merges
     r = "!git rank"
     rma = remote add
@@ -30,9 +35,13 @@
 
     # commit
     ci = commit
-    ca = commit --amend
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+    came = commit --amend
 
     # log
+    l = log
     lo = log --oneline
     lp = log -p
     ls = log --stat
