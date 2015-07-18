@@ -61,5 +61,6 @@ hi Type            cterm=none                    ctermfg=231
 hi VertSplit       cterm=none       ctermbg=232  ctermfg=231
 hi Visual                           ctermbg=26   ctermfg=232
 hi WarningMsg                       ctermbg=244  ctermfg=232
+hi WildMenu                         ctermbg=231  ctermfg=17
 
 "- end of colorscheme -----------------------------------------------

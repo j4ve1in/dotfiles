@@ -1,3 +1,3 @@
 set wildmenu
 
-set wildmode=list:list
+set wildmode=list:full
