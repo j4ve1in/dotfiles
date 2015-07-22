@@ -4,8 +4,7 @@ set hidden
 
 set nrformats=
 
-"set clipboard+=unnamed
-set clipboard=unnamedplus,autoselect
+set clipboard+=unnamed
 
 set virtualedit=block
 
@@ -13,7 +12,7 @@ set noerrorbells
 
 set novisualbell
 
-" set whichwrap=b,s,[,],<,>
+set whichwrap=b,s ",[,],<,>
 
 au BufRead,BufNewFile *.vim set foldmethod=marker
 

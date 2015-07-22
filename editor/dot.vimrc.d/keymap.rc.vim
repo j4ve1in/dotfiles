@@ -1,5 +1,5 @@
-nnoremap <C-h>      :<C-u>help<Space>
-nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <C-h><C-h>      :<C-u>help<Space>
+nnoremap <C-h><C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 nnoremap <Space>/ *
 noremap <Space>h ^
 noremap <Space>l $
