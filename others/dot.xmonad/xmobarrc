@@ -1,6 +1,6 @@
 -- -*- mode:haskell -*-
 Config {
-    font = "xft:Migu 1M:Bold",
+    font = "xft:Migu 1M:Regular",
     bgColor = "#1a1e1b",
     fgColor = "#676767",
     position = Top,
@@ -45,5 +45,5 @@ Config {
         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = " %StdinReader% }{%multicpu% %memory%  %wlan0%  %battery%  <fc=#c7a273>%date%</fc> "
+        , template = " %StdinReader% }{%multicpu% %memory%  %wlan0%  %battery%  <fc=#d3d7cf>%date%</fc> "
 }
