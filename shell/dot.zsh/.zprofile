@@ -29,6 +29,3 @@ for file in .zshrc.plugin.d/*.rc.zsh; do
     echo "Compiled ${file}"
   fi
 done
-
-# Display userinfo
-source ~/.shrc.d/load_userinfo.rc.sh
