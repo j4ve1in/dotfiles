@@ -1,12 +1,11 @@
-export LSCOLORS=gxfxcxdxbxegedabagacad
-alias ls='ls -F'
+if [ `uname` = Darwin ]; then
+  alias ls='ls -F'
+  alias op='open'
+  alias f='open .'
+  alias finder='open .'
 
-alias op='open'
-
-alias f='open .'
-alias finder='open .'
-
-# Browse
-alias google='open https://www.google.co.jp/'
-alias github='open https://github.com/'
-alias wikipedia='open http://ja.wikipedia.org/'
+  # Browse
+  alias google='open https://www.google.co.jp/'
+  alias github='open https://github.com/'
+  alias wikipedia='open http://ja.wikipedia.org/'
+fi

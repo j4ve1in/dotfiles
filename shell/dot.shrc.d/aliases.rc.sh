@@ -1,8 +1,14 @@
 # ls
+alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias lly='ls -l --time-style=long-iso'
 alias la='ls -a'
 alias lla='ls -al'
+
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # cd
 alias ..='cd ..'
@@ -11,7 +17,7 @@ alias ...='cd ~/.dotfiles'
 # git
 ## hub
 if which hub >/dev/null 2>&1; then
-  eval "$(hub alias -s)"
+  eval "`hub alias -s`"
 fi
 
 # diff
@@ -73,29 +79,3 @@ alias psu='source ~/.proxy/pset'
 alias dsetup='dotsetup'
 alias dset='dotsetup'
 alias dsu='dotsetup'
-
-# Linux
-if [ $(uname) = Linux ]; then
-  source ~/.shrc.d/aliases.linux.rc.sh
-fi
-
-# Cygwin
-if [ $OSTYPE = cygwin ]; then
-  source ~/.shrc.d/aliases.cygwin.rc.sh
-fi
-
-# OSX
-if [ $(uname) = Darwin ]; then
-  source ~/.shrc.d/aliases.osx.rc.sh
-else
-  eval "$(dircolors ~/.shrc.d/dir_colors.rc.sh)"
-  alias ls='ls -F --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# Local
-if [ -e ~/.local.d/shrc.d/aliases.rc.sh ]; then
-  source ~/.local.d/shrc.d/aliases.rc.sh
-fi

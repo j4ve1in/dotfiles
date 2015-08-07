@@ -7,8 +7,13 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # Cygwin
-if [ $OSTYPE = cygwin ]; then
+if [ "$OSTYPE" = "cygwin" ]; then
   export CYGWIN="winsymlinks"
+fi
+
+# OSX
+if [ `uname` = Darwin ]; then
+  export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
 # Node.js
@@ -20,7 +25,7 @@ export KCODE="u"
 ## rbenv
 if [ -d ~/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  eval "`rbenv init -`"
 fi
 
 # Editor
@@ -37,12 +42,12 @@ fi
 # man
 man() {
   env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    LESS_TERMCAP_mb=`printf "\e[1;31m"` \
+    LESS_TERMCAP_md=`printf "\e[1;31m"` \
+    LESS_TERMCAP_me=`printf "\e[0m"` \
+    LESS_TERMCAP_se=`printf "\e[0m"` \
+    LESS_TERMCAP_so=`printf "\e[1;44;33m"` \
+    LESS_TERMCAP_ue=`printf "\e[0m"` \
+    LESS_TERMCAP_us=`printf "\e[1;32m"` \
     man "$@"
 }

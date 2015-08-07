@@ -12,19 +12,9 @@ if [ -d ~/.zsh/bundle/antigen ]; then
 fi
 
 ## ~/.zshrc.d/*.rc.zsh
-for file in ~/.zshrc.d/*.rc.zsh; do
-  source ${file}
+for filepath in ~/.zshrc.d/*.rc.zsh; do
+  source ${filepath}
 done
 
-## alias
-source ~/.shrc.d/aliases.rc.sh
-
-## keychain
-if [ $OSTYPE != cygwin ]; then
-  source ~/.shrc.d/keychain.autoload.rc.sh
-fi
-
-## TMUX
-if [ $OSTYPE != cygwin ]; then
-  source ~/.shrc.d/tmux.autoload.rc.sh
-fi
+## ~/.shrc.d/*.rc.sh
+source ~/.shrc

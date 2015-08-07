@@ -1,0 +1,3 @@
+for filepath in ~/.shrc.d/*.rc.sh; do
+  source ${filepath}
+done
