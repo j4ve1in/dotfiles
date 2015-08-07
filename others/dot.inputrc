@@ -97,8 +97,6 @@ $if Bash
   "\C-n":history-search-forward
   "\e[A":history-search-backward
   "\e[B":history-search-forward
-  "\e[C":history-search-backward
-  "\e[D":history-search-forward
 $endif
 
 # MySQL

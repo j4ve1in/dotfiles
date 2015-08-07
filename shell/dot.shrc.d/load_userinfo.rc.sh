@@ -1,3 +1,5 @@
 if [ $(uname) = Linux ]; then
-  finger -l
+  if which finger >/dev/null 2>&1; then
+    finger -l
+  fi
 fi
