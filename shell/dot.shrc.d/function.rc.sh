@@ -25,3 +25,7 @@ set-urxvt-font-size() {
 
   echo "Set font: $new_name"
 }
+
+mcd() {
+  mkdir $1 && cd $1
+}
