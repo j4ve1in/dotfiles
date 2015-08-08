@@ -104,7 +104,8 @@ NeoBundleLazy 'mattn/emmet-vim', {
 \       'html',
 \       'css',
 \       'sass',
-\       'scss'
+\       'scss',
+\       'eruby'
 \     ]
 \   }
 \ }
