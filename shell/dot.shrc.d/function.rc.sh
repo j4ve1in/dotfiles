@@ -1,14 +1,16 @@
-ssh-add-key() {
-  ARGS=$@
-  if [ ! -z $ARGS ];then
-    if [ -z "$SSH_AUTH_SOCK" ]; then
-      echo Start ssh-agent
-      eval `ssh-agent`
-    elif [ -n "$SSH_AUTH_SOCK" ]; then
-      echo "\`SSH_AUTH_SOCK\` is exist"
-    fi
-    command ssh-add $ARGS
-  else
-    echo "Argument isn't exist"
+ssh-add() {
+  command ssh-add $@
+  if [ $? != 0 ] && [ -z "$SSH_AUTH_SOCK" ] && [ -z "$SSH_AGENT_PID" ]; then
+    printf "start ssh-aget (yes/no)? "
+    read ANSWER
+
+    case $ANSWER in
+      "Y" | "y" | "Yes" | "yes" )
+        echo Start ssh-agent
+        eval `ssh-agent`
+        ;;
+      * )
+        ;;
+    esac
   fi
 }

@@ -3,7 +3,9 @@ export TERM="xterm-256color"
 export PAGER="less"
 export LESS="-ciMNR"
 export WWW_BROWSER="w3m"
-export PATH="$PATH:$HOME/bin"
+if [ -d ~/bin ]; then
+  export PATH="$PATH:$HOME/bin"
+fi
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # Cygwin
@@ -18,10 +20,14 @@ fi
 
 # Node.js
 ## Nodebrew
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
+if [ -d ~/.nodebrew ]; then
+  export PATH="$HOME/.nodebrew/current/bin:$PATH"
+fi
 
 # Ruby
-export KCODE="u"
+if which ruby >/dev/null 2>&1; then
+  export KCODE="u"
+fi
 ## rbenv
 if [ -d ~/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
