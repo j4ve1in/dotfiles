@@ -1,5 +1,36 @@
 #!/bin/bash
 
+main() {
+  : ${FULL_INSTALLATION:=0}
+  : ${ASSUME_YES:=0}
+  if [ "$ASSUME_YES" = "1" ]; then
+    # Assume "yes" as answer to all prompts and run non-interactively.
+    # Install
+    install
+    # Restart
+    source ~/.dotfiles/tools/restart.bash
+    unset ASSUME_YES
+  else
+    clear
+    echo "If the file exists, it will be ruthlessly clobbered"
+    printf "Are you sure you want to continue (yes/no)? "
+    read ANSWER
+    case $ANSWER in
+      "Y" | "y" | "Yes" | "yes" )
+        # Install
+        install
+        # Restart
+        source ~/.dotfiles/tools/restart.bash
+        exit 0
+        ;;
+      * )
+        echo
+        exit 0
+        ;;
+    esac
+  fi
+}
+
 install() {
   # Start install
   echo -e "\033[4;39mStarting install\033[0;39m"
@@ -57,32 +88,4 @@ install() {
   #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
 
-: ${FULL_INSTALLATION:=0}
-: ${ASSUME_YES:=0}
-if [ "$ASSUME_YES" = "1" ]; then
-  # Assume "yes" as answer to all prompts and run non-interactively.
-  # Install
-  install
-  # Restart
-  source ~/.dotfiles/tools/restart.bash
-  unset ASSUME_YES
-else
-  clear
-  echo "If the file exists, it will be ruthlessly clobbered"
-  printf "Are you sure you want to continue (yes/no)? "
-  read ANSWER
-
-  case $ANSWER in
-    "Y" | "y" | "Yes" | "yes" )
-      # Install
-      install
-      # Restart
-      source ~/.dotfiles/tools/restart.bash
-      exit 0
-      ;;
-    * )
-      echo
-      exit 0
-      ;;
-  esac
-fi
+main
