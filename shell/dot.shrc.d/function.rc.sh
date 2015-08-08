@@ -14,3 +14,14 @@ ssh-add() {
     esac
   fi
 }
+
+set-urxvt-font-size() {
+  old_name=`grep -i '^\s*urxvt.font' ~/.Xdefaults | cut -d: -f2-`
+  new_name=`echo "$old_name" | sed 's/:\(pixel\)\?size=[0-9]\+/'":\1size=$1/"`
+
+  [ -n "$TMUX" ] && printf '\ePtmux;\e'
+  printf '\e]50;%s\007' "$new_name"
+  [ -n "$TMUX" ] && printf '\e\\'
+
+  echo "Set font: $new_name"
+}

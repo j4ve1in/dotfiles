@@ -45,4 +45,5 @@ if [ `uname` = Linux ]; then
   # Terminal
   alias gnt='gnome-terminal'
   alias urxvt='urxvt256c-ml'
+  alias urxvt-font='set-urxvt-font-size'
 fi
