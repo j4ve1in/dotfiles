@@ -29,3 +29,7 @@ set-urxvt-font-size() {
 mcd() {
   mkdir $1 && cd $1
 }
+
+fix_insecure_dir() {
+  compaudit | xargs chmod g-w
+}
