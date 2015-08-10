@@ -16,10 +16,12 @@
 <b><a href="#ライセンス">ライセンス</a></b>
 </p>
 
-[![Waffle.io](https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square "Waffle.io")](https://waffle.io/j4ve1in/dotfiles)
-[![Gitter](https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square "Gitter")](https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square "license")](https://github.com/j4ve1in/dotfiles/blob/master/LICENSE.md)
-[![platform](https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-blue.svg?style=flat-square "platform")](https://github.com/j4ve1in/dotfiles/wiki#my-environment)
+<p align="center">
+<a href="https://waffle.io/j4ve1in/dotfiles"><img src="https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square"></a>
+<a href="https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square"></a>
+<a href="https://github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
+<a href="https://github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+</p>
 
 # 概要
 このリポジトリはUnix系OSの設定ファイルを管理しています。
