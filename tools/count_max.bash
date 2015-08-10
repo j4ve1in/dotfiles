@@ -27,9 +27,7 @@ for ((i=0;i<N;i++)); do
   printf "%d directories, " $MAX_D
   printf "%d files" $MAX_F
   printf "${COLOR})${COLOR_RESET}"
-  if [ "$OSTYPE" = "cygwin" ] || [ "$(uname)" = "Darwin" ]; then
-    :
-  else
+  if which usleep >/dev/null 2>&1; then
     usleep 10000
   fi
   echo -e "\r\c"
@@ -58,9 +56,7 @@ for ((i=0;i<N;i++)); do
   printf "%d directories, " $MAX_D
   printf "%d files" $MAX_F
   printf "${COLOR})${COLOR_RESET}"
-  if [ "$OSTYPE" = "cygwin" ] || [ "$(uname)" = "Darwin" ]; then
-    :
-  else
+  if which usleep >/dev/null 2>&1; then
     usleep 10000
   fi
   echo -e "\r\c"
