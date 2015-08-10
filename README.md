@@ -3,7 +3,6 @@
 </p>
 
 <p align="center">
-
 <b><a href="#overview">Overview</a></b>
 |
 <b><a href="#installation">Installation</a></b>
@@ -14,12 +13,13 @@
 |
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
 |
-<b><a href="#License">License</a></b>
+<b><a href="#license">License</a></b>
 </p>
 
 [![Waffle.io](https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square "Waffle.io")](https://waffle.io/j4ve1in/dotfiles)
 [![Gitter](https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square "Gitter")](https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square "license")](https://github.com/j4ve1in/dotfiles/blob/master/LICENSE.md)
+[![platform](https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-blue.svg?style=flat-square "platform")](https://github.com/j4ve1in/dotfiles/wiki#my-environment)
 
 # Overview
 This repository manage **[my](https://github.com/j4ve1in)** configuration files on Unix-type operating systems.
