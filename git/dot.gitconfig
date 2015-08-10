@@ -17,10 +17,10 @@
 [include]
     path = ~/.gitconfig.aliases
     path = ~/.gitconfig.proxy
-    path = ~/.local.d/gitconfig.d/userinfo.gitconfig
-    path = ~/.local.d/gitconfig.d/credential.gitconfig
-    path = ~/.local.d/gitconfig.d/sshinsteadof.gitconfig
-    path = ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig
+    path = ~/.gitconfig.local.d/userinfo.gitconfig
+    path = ~/.gitconfig.local.d/credential.gitconfig
+    path = ~/.gitconfig.local.d/sshinsteadof.gitconfig
+    path = ~/.gitconfig.local.d/httpspushinsteadof.gitconfig
 
 [push]
     default = simple

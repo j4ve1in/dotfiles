@@ -66,42 +66,42 @@
     # credential
 
     set-store = "!\
-        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper store\
+        git config -f ~/.gitconfig.local.d/credential.gitconfig credential.helper store\
     "
     ss = "!git set-store"
     set-winstore = "!\
-        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper !git-credential-winstore\
+        git config -f ~/.gitconfig.local.d/credential.gitconfig credential.helper !git-credential-winstore\
     "
     sws = "!git set-winstore"
     set-gnomekeyring = "!\
-        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper gnomekeyring\
+        git config -f ~/.gitconfig.local.d/credential.gitconfig credential.helper gnomekeyring\
     "
     sgk = "!git set-gnomekeyring"
     set-osxkeychain = "!\
-        git config -f ~/.local.d/gitconfig.d/credential.gitconfig credential.helper osxkeychain\
+        git config -f ~/.gitconfig.local.d/credential.gitconfig credential.helper osxkeychain\
     "
     sok = "!git set-osxkeychain"
-    unset-credential = !rm ~/.local.d/gitconfig.d/credential.gitconfig
+    unset-credential = !rm ~/.gitconfig.local.d/credential.gitconfig
     uc = "!git unset-credential"
 
     # ssh-insteadof
     ssh-instedof-all = "!\
-        git config -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig --add url.git@github.com:.insteadof git://github.com/;\
-        git config -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig --add git@github.com:.pushinsteadof https://github.com/\
+        git config -f ~/.gitconfig.local.d/sshinsteadof.gitconfig --add url.git@github.com:.insteadof git://github.com/;\
+        git config -f ~/.gitconfig.local.d/sshinsteadof.gitconfig --add git@github.com:.pushinsteadof https://github.com/\
     "
     sia = "!git ssh-insteadof-all"
 
     # https-pushinsteadof
     https-pushinsteadof-all = "!\
-        git config -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushInsteadOf git://github.com/;\
-        git config -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushinsteadof git@github.com:\
+        git config -f ~/.gitconfig.local.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushInsteadOf git://github.com/;\
+        git config -f ~/.gitconfig.local.d/httpspushinsteadof.gitconfig --add url.https://github.com/.pushinsteadof git@github.com:\
     "
     hpa = "!git https-pushinsteadof-all"
 
     # unset-instedofoption
     unset-instedofoption = "!\
-        rm -f ~/.local.d/gitconfig.d/sshinsteadof.gitconfig >/dev/null 2>&1;\
-        rm -f ~/.local.d/gitconfig.d/httpspushinsteadof.gitconfig >/dev/null 2>&1\
+        rm -f ~/.gitconfig.local.d/sshinsteadof.gitconfig >/dev/null 2>&1;\
+        rm -f ~/.gitconfig.local.d/httpspushinsteadof.gitconfig >/dev/null 2>&1\
     "
     ui = "!git unset-instedofoption"
 
