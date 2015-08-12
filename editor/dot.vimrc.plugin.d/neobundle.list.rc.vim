@@ -1,6 +1,17 @@
 " Load Plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Important
+NeoBundle 'Shougo/vimproc.vim', {
+\   'build': {
+\     'windows': 'tools\\update-dll-mingw',
+\     'cygwin': 'make -f make_cygwin.mak',
+\     'mac': 'make -f make_mac.mak',
+\     'linux': 'make',
+\     'unix': 'gmake'
+\   }
+\ }
+
 " Unite " {{{
 NeoBundleLazy 'Shougo/unite.vim', {
 \   'autoload': {
@@ -154,16 +165,6 @@ NeoBundle 'surround.vim'
 NeoBundleLazy 'Shougo/vimshell.vim', {
 \   'autoload': {
 \     'commands': [ 'VimShell' ]
-\   }
-\ }
-
-NeoBundle 'Shougo/vimproc.vim', {
-\   'build': {
-\     'windows': 'tools\\update-dll-mingw',
-\     'cygwin': 'make -f make_cygwin.mak',
-\     'mac': 'make -f make_mac.mak',
-\     'linux': 'make',
-\     'unix': 'gmake'
 \   }
 \ }
 
