@@ -1,6 +1,9 @@
 #!/bin/bash
 
 main() {
+  if [ "$1" = "plugin" ]; then
+    install_plugin
+  fi
   : ${FULL_INSTALLATION:=0}
   : ${ASSUME_YES:=0}
   if [ "$ASSUME_YES" = "1" ]; then
@@ -46,7 +49,7 @@ install() {
   fi
   ## Check git command
   printf " Checking git command..."
-  if [ $(which git) ]; then
+  if which git >/dev/null 2>&1; then
     echo -e "\033[1;36mdone\033[0;39m"
   else
     echo
@@ -58,13 +61,12 @@ install() {
   URL="git://github.com/j4ve1in/dotfiles.git"
   printf " Downloading dotfiles..."
   { sleep 1; git clone $URL ~/.dotfiles --recursive; } | env LESS="-cE" less
+  echo -e "\033[1;36mdone\033[0;39m"
+  echo
   if [ "$FULL_INSTALLATION" = "1" ]; then
-    source ~/.dotfiles/tools/install_plugin.bash
+    install_plugin
     unset FULL_INSTALLATION
   fi
-  echo -e "\033[1;36mdone\033[0;39m"
-
-  echo
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -88,4 +90,54 @@ install() {
   #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
 
-main
+install_plugin() {
+  # Start download plugin manager
+  echo -e "\033[4;39mStarting download plugin manager\033[0;39m"
+
+  CSV_FILE=~/.dotfiles/tools/data/plugin-manager.csv
+  declare -a NAME=($(cat $CSV_FILE | cut -d ',' -f 1 | sed -e 's/"//g' -e '1d'))
+  declare -a URL=($(cat $CSV_FILE | cut -d ',' -f 2 | sed -e 's/"//g' -e '1d'))
+  declare -a DIR=($(cat $CSV_FILE | cut -d ',' -f 3 | sed -e 's/"//g' -e '1d'))
+  declare -i N=${#NAME[@]}
+
+  for ((i=0;i<N;i++)); do
+    printf " Downloading ${NAME[i]}..."
+    { sleep 1; git clone ${URL[i]} ~/${DIR[i]}; } | env LESS="-cE" less
+    echo -e "\033[1;36mdone\033[0;39m"
+  done
+
+  # Install plugin
+  if which vim >/dev/null 2>&1 && which zsh >/dev/null 2>&1 && which tmux >/dev/null 2>&1; then
+    echo -e "\033[4;39mStarting download plugin by plugin manager\033[0;39m"
+    ## Vim
+    if which vim >/dev/null 2>&1; then
+      echo " Vim"
+      printf "  Downloading vimproc..."
+      { sleep 1; git clone git://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim; } | env LESS="-cE" less
+      echo -e "\033[1;36mdone\033[0;39m"
+      make -C ~/.vim/bundle/vimproc.vim >/dev/null 2>&1
+      printf "  Downloading other plugin..."
+      { sleep 1; source ~/.vim/bundle/neobundle.vim/bin/neoinstall; } | env LESS="-cE" less
+      echo -e "\033[1;36mdone\033[0;39m"
+    fi
+
+    ## Zsh
+    if which zsh >/dev/null 2>&1; then
+      echo " Zsh"
+      printf "  Downloading plugin..."
+      { sleep 1; zsh ~/.zshrc.plugin.d/antigen.rc.zsh; } | env LESS="-cE" less
+      echo -e "\033[1;36mdone\033[0;39m"
+    fi
+
+    ## Tmux
+    if which tmux >/dev/null 2>&1; then
+      echo " Tmux"
+      printf "  Downloading plugin..."
+      { sleep 1; bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh; } | env LESS="-cE" less
+      echo -e "\033[1;36mdone\033[0;39m"
+    fi
+  fi
+  echo
+}
+
+main $@

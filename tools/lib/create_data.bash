@@ -27,7 +27,7 @@ for ((i=0;i<N;i++)); do
 done
 
 # EXDOT_NAME
-CSV_FILE=~/.dotfiles/tools/exdotfile.csv
+CSV_FILE=~/.dotfiles/tools/data/exdotfile.csv
 EXDOT_NAME=($(cat $CSV_FILE | cut -d ',' -f 2 | sed -e 's/"//g' -e '1d'))
 
 # EXDOT_FILE_TYPE

@@ -1,13 +1,13 @@
 #!/bin/bash
-source ~/.dotfiles/tools/create_data.bash
+source ~/.dotfiles/tools/lib/create_data.bash
 
 # Initialize csv file
-CSV_FILE=~/.dotfiles/tools/dotfile.csv
+CSV_FILE=~/.dotfiles/tools/data/dotfile.csv
 : > $CSV_FILE
 
 # Write csv file
 ## First line
-source ~/.dotfiles/tools/load_first_line.bash
+source ~/.dotfiles/tools/lib/load_first_line.bash
 {
   N=${#FIRST_LINE[@]}
   for ((i=0;i<N;i++)); do

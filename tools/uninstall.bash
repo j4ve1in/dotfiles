@@ -1,10 +1,10 @@
 #!/bin/bash
-source ~/.dotfiles/tools/create_data.bash
+source ~/.dotfiles/tools/lib/create_data.bash
 
 uninstall() {
   # Count max
   echo -e "\033[4;39mChecking file\033[0;39m"
-  source ~/.dotfiles/tools/count_max.bash
+  source ~/.dotfiles/tools/lib/count_max.bash
   echo
 
   # Start uninstall

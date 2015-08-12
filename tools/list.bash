@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.dotfiles/tools/create_data.bash
+source ~/.dotfiles/tools/lib/create_data.bash
 
 # DOT_DIR_NAME
 N=${#DOT_NUM[@]}
@@ -42,7 +42,7 @@ for ((i=0;i<N;i++)); do
 done
 
 # Load first line
-source ~/.dotfiles/tools/load_first_line.bash
+source ~/.dotfiles/tools/lib/load_first_line.bash
 
 # Count max length
 N=${#FIRST_LINE[@]}
