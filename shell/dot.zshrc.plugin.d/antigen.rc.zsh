@@ -33,18 +33,18 @@ if [ -z "$(ls ~/.zsh/bundle/repos)" ]; then
 else
   # Plugin
   for plugin in ${ANTIGEN_PLUGINS[@]}; do
-    printf " Downloading $plugin..."
+    printf " Loading $plugin..."
     antigen bundle $plugin
     echo -e "\033[1;36mdone\033[0;39m"
   done
   # Function
   for function in ${ANTIGEN_FUNCTIONS[@]}; do
-    printf " Downloading $function..."
+    printf " Loading $function..."
     antigen bundle $function
     echo -e "\033[1;36mdone\033[0;39m"
   done
   # Others
-  printf " Downloading zsh-users/zsh-completions..."
+  printf " Loading zsh-users/zsh-completions..."
   antigen bundle zsh-users/zsh-completions src
   echo -e "\033[1;36mdone\033[0;39m"
 fi
