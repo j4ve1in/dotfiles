@@ -11,6 +11,6 @@ declare -i N=${#NAME[@]}
 
 for ((i=0;i<N;i++)); do
   printf " Downloading ${NAME[i]}..."
-  { sleep 1; git clone ${URL[i]} ${DIR[i]}; } | env LESS="-cE" less
+  { sleep 1; git clone ${URL[i]} ~/${DIR[i]}; } | env LESS="-cE" less
   echo -e "\033[1;36mdone\033[0;39m"
 done
