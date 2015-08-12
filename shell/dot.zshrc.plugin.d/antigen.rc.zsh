@@ -2,13 +2,14 @@ ADOTDIR=$HOME/.zsh/bundle
 ANTIGEN_PLUGINS=(
   "zsh-users/zaw"
   "Tarrasch/zsh-bd"
+  "zsh-users/zsh-syntax-highlighting"
 )
 ANTIGEN_FUNCTIONS=(
   "mollifier/cd-bookmark"
   "mollifier/cd-gitroot"
 )
 
-if [ -z "$(ls ~/.zsh/bundle)" ]; then
+if [ ! -d ~/.zsh/bundle/repos ]; then
   source ~/.zsh/bundle/antigen/antigen.zsh
   # Plugin
   for plugin in ${ANTIGEN_PLUGINS[@]}; do

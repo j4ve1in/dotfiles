@@ -22,6 +22,7 @@ echo " Vim"
 printf "  Downloading vimproc..."
 { sleep 1; git clone git://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim; } | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"
+make -C ~/.vim/bundle/vimproc.vim
 printf "  Downloading other plugin..."
 { sleep 1; source ~/.vim/bundle/neobundle.vim/bin/neoinstall; } | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"
