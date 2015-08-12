@@ -45,5 +45,7 @@ else
 fi
 antigen apply
 echo
-sleep 1
+if which usleep >/dev/null 2>&1; then
+  usleep 500000
+fi
 clear
