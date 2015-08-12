@@ -16,14 +16,6 @@ set whichwrap=b,s ",[,],<,>
 
 au BufRead,BufNewFile *.vim set foldmethod=marker
 
-set encoding=utf-8
-
-set fileformats=unix,dos,mac
-
-scriptencoding utf-8
-
-set termencoding=utf-8
-
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
