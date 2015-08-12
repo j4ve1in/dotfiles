@@ -1,0 +1,4 @@
+"Name","URL","DIR"
+"NeoBundle","git://github.com/Shougo/neobundle.vim","~/.vim/bundle/neobundle.vim"
+"Antigen","git://github.com/zsh-users/antigen.git","~/.zsh/bundle/antigen"
+"TPM","git://github.com/tmux-plugins/tpm","~/.tmux/plugins/tpm"
