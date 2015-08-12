@@ -35,5 +35,5 @@ echo -e "\033[1;36mdone\033[0;39m"
 ## Tmux
 echo " Tmux"
 printf "  Downloading plugin..."
-{ sleep 1; source ~/.tmux/plugins/tpm/scripts/install_plugins.sh; } | env LESS="-cE" less
+{ sleep 1; bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh; } | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"

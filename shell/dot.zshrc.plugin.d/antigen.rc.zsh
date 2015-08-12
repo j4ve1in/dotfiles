@@ -8,29 +8,23 @@ ANTIGEN_FUNCTIONS=(
   "mollifier/cd-gitroot"
 )
 
-echo -e "\033[4;39mLoading Antigen\033[0;39m"
-source ~/.zsh/bundle/antigen/antigen.zsh
-
-if [ -z "$(ls ~/.zsh/bundle/repos)" ]; then
+if [ -z "$(ls ~/.zsh/bundle)" ]; then
+  source ~/.zsh/bundle/antigen/antigen.zsh
   # Plugin
   for plugin in ${ANTIGEN_PLUGINS[@]}; do
-    printf " Downloading $plugin..."
-    { sleep 1; antigen bundle $plugin; } | env LESS="-cE" less
-    echo -e "\033[1;36mdone\033[0;39m"
+    { sleep 1; echo "Download $plugin"; antigen bundle $plugin; } | env LESS="-cE" less
   done
 
   # Function
   for function in ${ANTIGEN_FUNCTIONS[@]}; do
-    printf " Downloading $function..."
-    { sleep 1; antigen bundle $function; } | env LESS="-cE" less
-    echo -e "\033[1;36mdone\033[0;39m"
+    { sleep 1; printf "Download $function"; antigen bundle $function; } | env LESS="-cE" less
   done
 
   # Others
-  printf " Downloading zsh-users/zsh-completions..."
-  { sleep 1; antigen bundle zsh-users/zsh-completions src; } | env LESS="-cE" less
-  echo -e "\033[1;36mdone\033[0;39m"
+  { sleep 1; printf "Download zsh-users/zsh-completions"; antigen bundle zsh-users/zsh-completions src; } | env LESS="-cE" less
 else
+  echo -e "\033[4;39mLoading Antigen\033[0;39m"
+  source ~/.zsh/bundle/antigen/antigen.zsh
   # Plugin
   for plugin in ${ANTIGEN_PLUGINS[@]}; do
     printf " Loading $plugin..."
