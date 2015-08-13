@@ -1,12 +1,16 @@
 FROM fedora:22
 MAINTAINER j4ve1in
 
-# Update and Install
+# Setup dnf
 RUN echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 RUN echo "timeout=10" >> /etc/dnf/dnf.conf
-RUN dnf update -yq
+
+# Update and Install packages
+# RUN dnf update -yq
 RUN dnf install -yq sudo
 RUN dnf install -yq passwd
+RUN dnf install -yq gcc
+RUN dnf install -yq make
 RUN dnf install -yq findutils
 RUN dnf install -yq git
 RUN dnf install -yq tmux
@@ -28,11 +32,14 @@ RUN echo "j4ve1in" | passwd --stdin j4ve1in
 USER j4ve1in
 WORKDIR /home/j4ve1in
 ENV HOME /home/j4ve1in
+ENV HOSTNAME docker
 ## Install dotfiles
 ENV TERM xterm-256color
-ENV FULL_INSTALLATION 1
+# ENV FULL_INSTALLATION 1
 ENV ASSUME_YES 1
-RUN bash -c "$(curl -L dot.j4ve1in.com)"
+RUN bash -c "$(curl -LsS dot.j4ve1in.com)" >/dev/null 2>&1
+RUN bash ~/.dotfiles/tools/install.bash plugin >/dev/null 2>&1
 
 # Login
-CMD ["echo", "Welcome"]
+ENTRYPOINT ["zsh"]
+CMD ["--login"]

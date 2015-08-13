@@ -9,6 +9,8 @@
 |
 <b><a href="#configurations">Configurations</a></b>
 |
+<b><a href="#test-with-docker">Test with Docker</a></b>
+|
 <b><a href="#wiki">Wiki</a></b>
 |
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
@@ -69,6 +71,13 @@ You can install Javelin's dotfiles by the following installation command.
         -h, --help            View help
         --install-plugin      Install shell and editor plugin
         --uninstall-plugin    Uninstall shell and editor plugin
+
+# Test with Docker
+Before running installation command to setup dotfiles, you can try my dotfiles in a Docker container as follows.
+```bash
+$ sudo docker pull j4ve1in/dotfiles
+$ sudo docker run -it --rm j4ve1in/dotfiles
+```
 
 # Wiki
 Please have a look at the **[wiki](https://github.com/j4ve1in/dotfiles/wiki "Wiki")** for more information.

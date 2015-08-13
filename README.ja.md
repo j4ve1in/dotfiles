@@ -9,6 +9,8 @@
 |
 <b><a href="#設定">設定</a></b>
 |
+<b><a href="#試行">試行</a></b>
+|
 <b><a href="#wiki">Wiki</a></b>
 |
 <b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.md">English README</a></b>
@@ -68,6 +70,13 @@
         -h, --help            ヘルプを表示する
         --install-plugin      シェルとエディターのプラグインをインストール
         --uninstall-plugin    シェルとエディターのプラグインをアンインストール
+
+# 試行
+インストールコマンドを使って、セットアップする前に、Dockerを使って試すことができます。
+```bash
+$ sudo docker pull j4ve1in/dotfiles
+$ sudo docker run -it --rm j4ve1in/dotfiles
+```
 
 # Wiki
 詳細については、**[wiki](https://github.com/j4ve1in/dotfiles/wiki "Wiki")**を見てください。
