@@ -7,15 +7,10 @@ RUN echo "timeout=10" >> /etc/dnf/dnf.conf
 
 # Update and Install packages
 # RUN dnf update -yq
-RUN dnf install -yq sudo
-RUN dnf install -yq passwd
-RUN dnf install -yq gcc
-RUN dnf install -yq make
-RUN dnf install -yq findutils
-RUN dnf install -yq git
-RUN dnf install -yq tmux
-RUN dnf install -yq vim
-RUN dnf install -yq zsh
+## Requirement
+RUN dnf install -yq sudo passwd gcc make findutils git
+## Option
+RUN dnf install -yq tmux vim zsh
 RUN dnf clean all -q
 
 # Ceate user
