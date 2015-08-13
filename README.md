@@ -27,7 +27,7 @@
 
 
 # Overview
-This repository manage **[my](https://github.com/j4ve1in)** configuration files on Unix-type operating systems.
+This repository manage **[my](https://github.com/j4ve1in "my")** configuration files on Unix-type operating systems.
 
 ![Screenshot](/img/screenshot.png "Screenshot")
 
