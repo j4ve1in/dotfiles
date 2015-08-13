@@ -72,7 +72,8 @@
         --uninstall-plugin    シェルとエディターのプラグインをアンインストール
 
 # 試行
-インストールコマンドを使って、セットアップする前に、Dockerを使って試すことができます。
+インストールコマンドを使って、セットアップする前に、**[イメージ](https://hub.docker.com/r/j4ve1in/dotfiles "イメージ")**を引っ張ってきて、Dockerのコンテナ内で試すことができます。
+
 ```bash
 $ sudo docker pull j4ve1in/dotfiles
 $ sudo docker run -it --rm j4ve1in/dotfiles

@@ -73,7 +73,7 @@ You can install Javelin's dotfiles by the following installation command.
         --uninstall-plugin    Uninstall shell and editor plugin
 
 # Test with Docker
-Before running installation command to setup dotfiles, you can try my dotfiles in a Docker container as follows.
+Before running installation command to setup dotfiles, you can pull an **[image](https://hub.docker.com/r/j4ve1in/dotfiles "image")** and try my dotfiles in a Docker container as follows.
 ```bash
 $ sudo docker pull j4ve1in/dotfiles
 $ sudo docker run -it --rm j4ve1in/dotfiles
