@@ -183,58 +183,66 @@ NeoBundleFetch 'supermomonga/thingspast.vim'
 NeoBundleFetch 'itchyny/lightline.vim'
 " }}}
 
-" Load Plugins Settings " {{{
-if ! empty(neobundle#get('unite.vim'))
-  source ~/.vimrc.plugin.d/unite.rc.vim
+" Source Plugins Settings " {{{
+"" NeoBundle
+nnoremap [NeoBundle] <Nop>
+nmap <Space>n [NeoBundle]
+
+nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
+nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
+nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
+
+if neobundle#tap('unite.vim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/unite.rc.vim'
 endif
 
-if ! empty(neobundle#get('vimfiler'))
-  source ~/.vimrc.plugin.d/vimfiler.rc.vim
+if neobundle#tap('vimfiler')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimfiler.rc.vim'
 endif
 
-if ! empty(neobundle#get('vimshell.vim'))
-  source ~/.vimrc.plugin.d/vimshell.rc.vim
+if neobundle#tap('vimshell.vim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimshell.rc.vim'
 endif
 
-if ! empty(neobundle#get('vim-watchdogs'))
-  source ~/.vimrc.plugin.d/watchdogs.rc.vim
+if neobundle#tap('vim-watchdogs')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/watchdogs.rc.vim'
 endif
 
-if ! empty(neobundle#get('TweetVim'))
-  source ~/.vimrc.plugin.d/tweetvim.rc.vim
+if neobundle#tap('TweetVim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/tweetvim.rc.vim'
 endif
 
-if ! empty(neobundle#get('agit.vim'))
-  source ~/.vimrc.plugin.d/agit.rc.vim
+if neobundle#tap('agit.vim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/agit.rc.vim'
 endif
 
-if ! empty(neobundle#get('previm'))
-  source ~/.vimrc.plugin.d/previm.rc.vim
+if neobundle#tap('previm')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/previm.rc.vim'
 endif
 
-if ! empty(neobundle#get('vim-auto-save'))
-  source ~/.vimrc.plugin.d/autosave.rc.vim
+if neobundle#tap('vim-auto-save')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/autosave.rc.vim'
 endif
 
-if ! empty(neobundle#get('vim-indent-guides'))
-  source ~/.vimrc.plugin.d/indent-guides.rc.vim
+if neobundle#tap('vim-indent-guides')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/indent-guides.rc.vim'
 endif
 
-if ! empty(neobundle#get('colorswatch.vim'))
-  source ~/.vimrc.plugin.d/colorswatch.rc.vim
+if neobundle#tap('colorswatch.vim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/colorswatch.rc.vim'
 endif
 
-if ! empty(neobundle#get('open-browser.vim'))
-  source ~/.vimrc.plugin.d/open-browser.rc.vim
+if neobundle#tap('open-browser.vim')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/open-browser.rc.vim'
 endif
 
 if s:meet_neocomplete_requirements()
-  if ! empty(neobundle#get('neocomplete.vim'))
-    source ~/.vimrc.plugin.d/neocomplete.rc.vim
+  if neobundle#tap('neocomplete.vim')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplete.rc.vim'
   endif
 else
-  if ! empty(neobundle#get('neocomplcache.vim'))
-    source ~/.vimrc.plugin.d/neocomplcache.rc.vim
+  if neobundle#tap('neocomplcache.vim')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplcache.rc.vim'
   endif
 endif
 " }}}

@@ -43,3 +43,7 @@ set viminfo+=n~/.vim/var/tmp/.viminfo
 set mouse=a
 
 set ttymouse=xterm2
+
+" .vimrc
+command! Ev edit $MYVIMRC
+command! Rv source $MYVIMRC

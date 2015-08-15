@@ -17,3 +17,11 @@ nnoremap <silent> [Unite]n/L :<C-u>Unite<Space>neobundle/lazy<CR>
 nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
 nnoremap <silent> [Unite]t :<C-u>Unite<Space>tweetvim<CR>
 nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
+
+let g:unite_enable_start_insert = 1
+let g:unite_enable_auto_select = 0
+call unite#custom#profile('default', 'context', {
+  \ 'prompt_direction': 'top',
+  \ 'prompt': '> ',
+  \ 'candidate_icon': '- ',
+  \ 'hide_icon': 0 })
