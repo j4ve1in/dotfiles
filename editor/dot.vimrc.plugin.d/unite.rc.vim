@@ -20,8 +20,3 @@ nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
 
 let g:unite_enable_start_insert = 1
 let g:unite_enable_auto_select = 0
-call unite#custom#profile('default', 'context', {
-  \ 'prompt_direction': 'top',
-  \ 'prompt': '> ',
-  \ 'candidate_icon': '- ',
-  \ 'hide_icon': 0 })

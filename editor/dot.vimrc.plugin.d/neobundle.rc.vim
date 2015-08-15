@@ -12,6 +12,12 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   call neobundle#end()
 
+  call unite#custom#profile('default', 'context', {
+    \ 'prompt_direction': 'top',
+    \ 'prompt': '> ',
+    \ 'candidate_icon': '- ',
+    \ 'hide_icon': 0 })
+
   filetype plugin indent on
 
   NeoBundleCheck
