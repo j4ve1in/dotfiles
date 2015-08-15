@@ -5,5 +5,5 @@ if [ `uname` = Linux ]; then
 fi
 
 if [ ! `uname` = Darwin ]; then
-  eval `dircolors ~/.dir_colors`
+  eval `dircolors -b ~/.dir_colors`
 fi

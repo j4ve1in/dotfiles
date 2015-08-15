@@ -33,3 +33,30 @@ mcd() {
 fix_insecure_dir() {
   compaudit | xargs chmod g-w
 }
+
+function man {
+  local p
+  local m
+  if [ "$PAGER" != "" ];then
+    p="$PAGER"
+  fi
+  if [ "$MANPAGER" != "" ];then
+    m="$MNNPAGER"
+  fi
+  unset PAGER
+  unset MANPAGER
+  val=$(command man $* 2>&1)
+  ret=$?
+  if [ $ret -eq 0 ];then
+    echo "$val"|col -bx|vim -R -c 'set ft=man' -
+  else
+    echo "$val"
+  fi
+  if [ "$p" != "" ];then
+    export PAGER="$p"
+  fi
+  if [ "$m" != "" ];then
+    export MANPAGER="$m"
+  fi
+  return $ret
+}

@@ -24,8 +24,8 @@ set termencoding=utf-8
 
 set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+autocmd FileType man set nolist
 hi NonText ctermfg=239
-
 
 function! ZenkakuSpace()
     highlight ZenkakuSpace cterm=reverse ctermfg=blue gui=reverse guifg=blue

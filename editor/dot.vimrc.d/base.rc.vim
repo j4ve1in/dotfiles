@@ -16,6 +16,8 @@ set whichwrap=b,s ",[,],<,>
 
 au BufRead,BufNewFile *.vim set foldmethod=marker
 
+autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
+
 if exists('&ambiwidth')
   set ambiwidth=double
 endif

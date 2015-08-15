@@ -19,9 +19,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # auto_cd
 setopt auto_cd
+
 function chpwd() {
-ls_abbrev
+  ls_abbrev
 }
+
 ls_abbrev() {
   if [[ ! -r $PWD ]]; then
     return
