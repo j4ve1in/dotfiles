@@ -30,10 +30,9 @@ ENV HOME /home/j4ve1in
 ENV HOSTNAME docker
 ## Install dotfiles
 ENV TERM xterm-256color
-# ENV FULL_INSTALLATION 1
+ENV FULL_INSTALLATION 1
 ENV ASSUME_YES 1
 RUN bash -c "$(curl -LsS dot.j4ve1in.com)" >/dev/null 2>&1
-RUN bash ~/.dotfiles/tools/install.bash plugin >/dev/null 2>&1
 
 # Login
 ENTRYPOINT ["zsh"]

@@ -63,10 +63,6 @@ install() {
   { sleep 1; git clone $URL ~/.dotfiles --recursive; } | env LESS="-cE" less
   echo -e "\033[1;36mdone\033[0;39m"
   echo
-  if [ "$FULL_INSTALLATION" = "1" ]; then
-    install_plugin
-    unset FULL_INSTALLATION
-  fi
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -76,6 +72,12 @@ install() {
     export CYGWIN="winsymlinks"
   fi
   source ~/.dotfiles/tools/deploy.bash
+
+  # Install plugin
+  if [ "$FULL_INSTALLATION" = "1" ]; then
+    install_plugin
+    unset FULL_INSTALLATION
+  fi
 
   Color="\033[1;36;44m"
   Color_Reset="\033[0;39m"
