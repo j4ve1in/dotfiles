@@ -3,6 +3,7 @@
 main() {
   if [ "$1" = "plugin" ]; then
     install_plugin
+    exit 0
   fi
   : ${FULL_INSTALLATION:=0}
   : ${ASSUME_YES:=0}
