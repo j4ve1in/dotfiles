@@ -12,10 +12,19 @@ if [ -d ~/.zsh/bundle/repos ]; then
 
   zstyle ':filter-select' case-insensitive yes
 
+  bindkey '^X^A' zaw-applications
   bindkey '^@' zaw-cdr
   bindkey '^R' zaw-history
   bindkey '^X^F' zaw-git-files
   bindkey '^X^B' zaw-git-branches
   bindkey '^X^P' zaw-process
-  bindkey '^A' zaw-tmux
+  bindkey '^S' zaw-ssh-hosts
+  bindkey '^T' zaw-tmux
+
+  zstyle ':filter-select:highlight' selected bg=blue
+  zstyle ':filter-select:highlight' matched fg=cyan
+  zstyle ':filter-select' max-lines -10
+  zstyle ':filter-select' rotate-list yes
+  zstyle ':filter-select' case-insensitive yes
+  zstyle ':filter-select' extended-search yes
 fi
