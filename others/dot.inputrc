@@ -76,8 +76,15 @@
 # Bash
 $if Bash
   # Basic
-  set editing-mode vi
   set completion-query-items 100
+  # vi mode
+  set editing-mode vi
+  $if mode=vi
+    set keymap vi-command
+    Control-l: clear-screen
+    set keymap vi-insert
+    Control-l: clear-screen
+  $endif
   ## Filename completion/expansion
   set completion-ignore-case on
   ## Don't ring bell on completion
@@ -97,6 +104,9 @@ $if Bash
   "\C-n":history-search-forward
   "\e[A":history-search-backward
   "\e[B":history-search-forward
+  # Others
+  set show-all-if-ambiguous on
+  set show-all-if-unmodified on
 $endif
 
 # MySQL
