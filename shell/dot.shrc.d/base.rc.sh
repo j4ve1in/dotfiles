@@ -1,7 +1,24 @@
-if [ `uname` = Linux ]; then
-  if which finger >/dev/null 2>&1; then
-    finger -l
-  fi
+COLOR="\033[1;38;05;75m"
+COLOR_RESET="\033[0;39m"
+echo -en "${COLOR}Username: ${COLOR_RESET}"
+echo -n "$USER"
+echo -n "    "
+echo -en "${COLOR}Shell: ${COLOR_RESET}"
+if [ `uname` = Linux ] || [ "$OSTYPE" = "cygwin" ]; then
+  echo "$(basename $(readlink /proc/$$/exe))"
+elif [ `uname` = Darwin ]; then
+  echo "$0"
+fi
+echo -en "${COLOR}LastLogin: ${COLOR_RESET}"
+PORT=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 2)
+declare -i ATTRIBUTE=$(lastlog -u $USER | tail -1 | wc -w)
+if [ "$ATTRIBUTE" = "9" ]; then
+  FROM=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 3)
+  DATE=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 4-7,9)
+  echo "$DATE on $PORT from $FROM"
+elif [ "$ATTRIBUTE" = "8" ]; then
+  DATE=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 3-6,8)
+  echo "$DATE on $PORT"
 fi
 
 if [ `uname` != Darwin ]; then

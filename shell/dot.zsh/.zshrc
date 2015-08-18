@@ -1,12 +1,7 @@
 # Load
+## Plugin
 if [ -d ~/.zsh/bundle/antigen ]; then
-  ## Plugin
   for file in ~/.zshrc.plugin.d/*.rc.zsh; do
-    source ${file}
-  done
-
-  ## Function
-  for file in ~/.zshrc.function.d/*.rc.zsh; do
     source ${file}
   done
 fi
