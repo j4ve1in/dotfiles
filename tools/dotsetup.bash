@@ -1,53 +1,69 @@
 #!/bin/bash
+
+source_dotool() {
+  local file="$1"
+  local arg="$2"
+  local dotooldir="$HOME/.dotfiles/tools/"
+  source ${dotooldir}${file}.bash $arg
+}
+
+display_advice() {
+  echo -e "Try 'dotsetup --help' for more information.\n"
+}
+
 case "$1" in
   "-u" | "--update" )
-    source ~/.dotfiles/tools/update.bash
+    source_dotool update
+    ;;
+  "-d" | "--deploy" )
+    source_dotool deploy
     ;;
   "-b" | "--backup" )
-    source ~/.dotfiles/tools/backup.bash
+    source_dotool backup
     ;;
   "-r" | "--reinstall" )
-    source ~/.dotfiles/tools/reinstall.bash
+    source_dotool reinstall
     ;;
   "-U" | "--uninstall" )
-    source ~/.dotfiles/tools/uninstall.bash
+    source_dotool uninstall
     ;;
-  "--install-plugin" )
-    source ~/.dotfiles/tools/install.bash plugin
+  "-p" | "--install-plugin" )
+    source_dotool install plugin
     ;;
-  "--uninstall-plugin" )
-    source ~/.dotfiles/tools/uninstall_plugin.bash
+  "-P" | "--uninstall-plugin" )
+    source_dotool uninstall_plugin
     ;;
   "-l" | "--list" )
-    source ~/.dotfiles/tools/list.bash
+    source_dotool list
     ;;
-  "-m" | "--directory-map" )
-    source ~/.dotfiles/tools/map.bash
+  "-m" | "--map" )
+    source_dotool map
     ;;
   "-h" | "--help" )
-    echo "Usage: dotsetup [OPTIONS]                                  "
-    echo "    This script is dotfile's setup command.                "
-    echo "                                                           "
-    echo "Options:                                                   "
-    echo "    -u, --update          Update dotfiles                  "
-    echo "    -b, --backup          Backup dotfiles                  "
-    echo "    -r, --reinstall       Reinstall dotfiles               "
-    echo "    -U, --uninstall       Uninstall dotfiles               "
-    echo "    -l, --list            View dotfile's list              "
-    echo "    -m, --directory-map   View dotfile's directory map     "
-    echo "    -h, --help            View help                        "
-    echo "    --install-plugin      Install shell and editor plugin  "
-    echo "    --uninstall-plugin    Uninstall shell and editor plugin"
-    echo "                                                           "
+    echo "Usage: dotsetup [OPTIONS]                                             "
+    echo "    This script is dotfile's setup command.                           "
+    echo "                                                                      "
+    echo "Options:                                                              "
+    echo "    -u, --update             Backup and download dotfiles             "
+    echo "    -d, --deploy             Deploy dotfiles to home directory        "
+    echo "    -b, --backup             Backup dotfiles to backup directory      "
+    echo "    -r, --reinstall          Install dotfiles again after uninstalling"
+    echo "    -U, --uninstall          Uninstall dotfiles                       "
+    echo "    -l, --list               View dotfile's list                      "
+    echo "    -m, --map                View dotfile's directory map             "
+    echo "    -h, --help               View help                                "
+    echo "    -p, --install-plugin     Install shell and editor plugin          "
+    echo "    -P, --uninstall-plugin   Uninstall shell and editor plugin        "
+    echo "                                                                      "
     ;;
   -* )
     echo "dotsetup: illegal option -- '$(echo $1 | sed 's/^-*//')'"
-    echo -e "Try 'dotsetup --help' for more information.\n"
+    display_advice
     exit 1
     ;;
   * )
-    echo -e "\033[1;31mError\033[m"
-    echo -e "Try 'dotsetup --help' for more information.\n"
+    echo "dotsetup: illegal argument -- $(echo $1)"
+    display_advice
     exit 1
     ;;
 esac

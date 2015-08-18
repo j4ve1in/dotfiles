@@ -62,15 +62,16 @@ You can install Javelin's dotfiles by the following installation command.
         Dotsetup is dotfile's setup command.
 
     OPTIONS
-        -u, --update          Update dotfiles
-        -b, --backup          Backup dotfiles
-        -r, --reinstall       Reinstall dotfiles
-        -U, --uninstall       Uninstall dotfiles
-        -l, --list            View dotfile's list
-        -m, --directory-map   View dotfile's directory map
-        -h, --help            View help
-        --install-plugin      Install shell and editor plugin
-        --uninstall-plugin    Uninstall shell and editor plugin
+        -u, --update             Backup and download dotfiles
+        -d, --deploy             Deploy dotfiles to home directory
+        -b, --backup             Backup dotfiles to backup directory
+        -r, --reinstall          Install dotfiles again after uninstalling
+        -U, --uninstall          Uninstall dotfile
+        -l, --list               View dotfile's list
+        -m, --map                View dotfile's directory map
+        -h, --help               View help
+        -p, --install-plugin     Install shell and editor plugin
+        -P, --uninstall-plugin   Uninstall shell and editor plugin
 
 # Test with Docker
 Before running installation command to setup dotfiles, you can pull an **[image](https://hub.docker.com/r/j4ve1in/dotfiles "image")** and try my dotfiles in a Docker container as follows.
