@@ -58,7 +58,7 @@ install() {
 
   ## Check git command
   printf " Checking git command..."
-  if type git >/dev/null 2>&1; then
+  if has git; then
     cprint $CYAN "done"
   else
     cprint $RED "error"
@@ -123,10 +123,10 @@ install_plugin() {
   echo
 
   # Install plugin
-  if type vim >/dev/null 2>&1 && type zsh >/dev/null 2>&1 && type tmux >/dev/null 2>&1; then
+  if has vim && has zsh && has tmux; then
     cprint $UNDERLINE "Starting download plugin by plugin manager"
     ## Vim
-    if type vim >/dev/null 2>&1; then
+    if has vim; then
       echo " Vim"
       printf "  Downloading vimproc..."
       {
@@ -145,7 +145,7 @@ install_plugin() {
     fi
 
     ## Zsh
-    if type zsh >/dev/null 2>&1; then
+    if has zsh; then
       echo " Zsh"
       printf "  Downloading plugin..."
       {
@@ -157,7 +157,7 @@ install_plugin() {
     fi
 
     ## Tmux
-    if type tmux >/dev/null 2>&1; then
+    if has tmux; then
       echo " Tmux"
       printf "  Downloading plugin..."
       {
@@ -169,6 +169,10 @@ install_plugin() {
     fi
   fi
   echo
+}
+
+has() {
+  type $1 >/dev/null 2>&1
 }
 
 print() {
@@ -190,7 +194,7 @@ cprintf() {
 }
 
 interval() {
-  if which usleep >/dev/null 2>&1; then
+  if has usleep; then
     usleep 500000
   fi
 }
