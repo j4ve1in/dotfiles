@@ -37,6 +37,7 @@ check_status() {
       cprintf $RED "Not found\n"
     fi
   done
+  echo
 }
 
 check_maxlength() {

@@ -4,6 +4,9 @@ source ~/.dotfiles/tools/lib/create_data.bash
 echo -e "\033[4;39mStart creating symbolic link\033[0;39m"
 
 # Create
+if [ $OSTYPE = cygwin ]; then
+  export CYGWIN="winsymlinks"
+fi
 COUNT=0
 N=${#DOT_NAME[@]}
 for ((i=0;i<N;i++)); do
