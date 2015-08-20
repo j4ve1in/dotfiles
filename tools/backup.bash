@@ -1,4 +1,6 @@
 #!/bin/bash
+
+source ~/.dotfiles/tools/lib/base.bash
 source ~/.dotfiles/tools/lib/create_data.bash
 
 # Count max
@@ -81,3 +83,4 @@ else
 fi
 
 echo
+interval

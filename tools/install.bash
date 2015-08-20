@@ -54,6 +54,7 @@ install() {
     printf " Option Assume yes: "
     cprint $CYAN "enable"
   fi
+  interval
 
   ## Check git command
   printf " Checking git command..."
@@ -64,6 +65,7 @@ install() {
     echo " Please install git or update your path to include the git executable"
     exit 1;
   fi
+  interval
 
   ## Download
   printf " Downloading dotfiles..."
@@ -73,6 +75,7 @@ install() {
   } | env LESS="-cE" less
   cprint $CYAN "done"
   echo
+  interval
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -115,7 +118,9 @@ install_plugin() {
       git clone ${URL[i]} ~/${DIR[i]}
     } | env LESS="-cE" less
     cprint $CYAN "done"
+    interval
   done
+  echo
 
   # Install plugin
   if type vim >/dev/null 2>&1 && type zsh >/dev/null 2>&1 && type tmux >/dev/null 2>&1; then
@@ -136,6 +141,7 @@ install_plugin() {
         source ~/.vim/bundle/neobundle.vim/bin/neoinstall
       } | env LESS="-cE" less
       cprint $CYAN "done"
+      interval
     fi
 
     ## Zsh
@@ -147,6 +153,7 @@ install_plugin() {
         zsh ~/.zshrc.plugin.d/antigen.rc.zsh
       } | env LESS="-cE" less
       cprint $CYAN "done"
+      interval
     fi
 
     ## Tmux
@@ -158,6 +165,7 @@ install_plugin() {
         bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
       } | env LESS="-cE" less
       cprint $CYAN "done"
+      interval
     fi
   fi
   echo
@@ -179,6 +187,12 @@ cprintf() {
   local string="$2"
   local reset="\x1b[0m"
   printf "${color}${string}${reset}"
+}
+
+interval() {
+  if which usleep >/dev/null 2>&1; then
+    usleep 500000
+  fi
 }
 
 main $@
