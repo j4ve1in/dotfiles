@@ -16,8 +16,8 @@ ssh-add() {
 }
 
 set-urxvt-font-size() {
-  local old_name=`grep -i '^\s*urxvt.font' ~/.Xdefaults | cut -d: -f2-`
-  local new_name=`echo "$old_name" | sed 's/:\(pixel\)\?size=[0-9]\+/'":\1size=$1/"`
+  old_name=`grep -i '^\s*urxvt.font' ~/.Xdefaults | cut -d: -f2-`
+  new_name=`echo "$old_name" | sed 's/:\(pixel\)\?size=[0-9]\+/'":\1size=$1/"`
 
   [ -n "$TMUX" ] && printf '\ePtmux;\e'
   printf '\e]50;%s\007' "$new_name"
