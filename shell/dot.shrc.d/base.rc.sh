@@ -10,14 +10,14 @@ elif [ `uname` = Darwin ]; then
   echo "$0"
 fi
 echo -en "${COLOR}LastLogin: ${COLOR_RESET}"
-PORT=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 2)
-declare -i ATTRIBUTE=$(lastlog -u $USER | tail -1 | wc -w)
+PORT=$(lastlog -u $USER | sed '1d' | awk '{print $2}')
+declare -i ATTRIBUTE=$(lastlog -u $USER | sed '1d' | wc -w)
 if [ "$ATTRIBUTE" = "9" ]; then
-  FROM=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 3)
-  DATE=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 4-7,9)
+  FROM=$(lastlog -u $USER | sed '1d' | awk '{print $3')
+  DATE=$(lastlog -u $USER | sed '1d' | awk '{print $4,$5,$6,$7,$9')
   echo "$DATE on $PORT from $FROM"
 elif [ "$ATTRIBUTE" = "8" ]; then
-  DATE=$(echo $(lastlog -u $USER | tail -1) | cut -d ' ' -f 3-6,8)
+  DATE=$(lastlog -u $USER | sed '1d' | awk '{print $3,$4,$5,$6,$8}')
   echo "$DATE on $PORT"
 fi
 
