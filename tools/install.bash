@@ -106,9 +106,9 @@ install_plugin() {
   cprint $UNDERLINE "Starting download plugin manager"
 
   CSV_FILE=~/.dotfiles/tools/data/plugin-manager.csv
-  local readonly NAME=($(cat $CSV_FILE | cut -d ',' -f 1 | sed -e 's/"//g' -e '1d'))
-  local readonly URL=($(cat $CSV_FILE | cut -d ',' -f 2 | sed -e 's/"//g' -e '1d'))
-  local readonly DIR=($(cat $CSV_FILE | cut -d ',' -f 3 | sed -e 's/"//g' -e '1d'))
+  local readonly NAME=($(awk -F ',' '{print $1}' $CSV_FILE | sed '1d;s/"//g'))
+  local readonly URL=($(awk -F ',' '{print $2}' $CSV_FILE | sed '1d;s/"//g'))
+  local readonly DIR=($(awk -F ',' '{print $3}' $CSV_FILE | sed '1d;s/"//g'))
   local readonly N=${#NAME[@]}
 
   for ((i=0;i<N;i++)); do

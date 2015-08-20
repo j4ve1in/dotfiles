@@ -17,7 +17,7 @@ for ((i=0;i<N;i++)); do
   if [ -f ${DOT_PATH[$i]} ]; then
     DOT_FILE_SIZE[$i]=$(ls -hl ${DOT_PATH[$i]} | awk '{print $5}')
   elif [ -d ${DOT_PATH[$i]} ]; then
-    DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | cut -f 1)
+    DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | awk '{print $1}')
   fi
 done
 

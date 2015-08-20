@@ -28,7 +28,7 @@ done
 
 # EXDOT_NAME
 CSV_FILE=~/.dotfiles/tools/data/exdotfile.csv
-EXDOT_NAME=($(cat $CSV_FILE | cut -d ',' -f 2 | sed -e 's/"//g' -e '1d'))
+EXDOT_NAME=($(awk -F ',' '{print $2}' $CSV_FILE | sed '1d;s/"//g'))
 
 # EXDOT_FILE_TYPE
 # Check file type
