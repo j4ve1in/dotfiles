@@ -87,13 +87,13 @@ install() {
   fi
 
   # Display "Install Complete"
-  print $SKYBLUE '     ____           __        ____   ______                      __     __      '
-  print $SKYBLUE '    /  _/___  _____/ /_____ _/ / /  / ____/___  ____ ___  ____  / /__  / /____  '
-  print $SKYBLUE '    / // __ \/ ___/ __/ __ `/ / /  / /   / __ \/ __ `__ \/ __ \/ / _ \/ __/ _ \ '
-  print $SKYBLUE '  _/ // / / (__  ) /_/ /_/ / / /  / /___/ /_/ / / / / / / /_/ / /  __/ /_/  __/ '
-  print $SKYBLUE ' /___/_/ /_/____/\__/\__,_/_/_/   \____/\____/_/ /_/ /_/ .___/_/\___/\__/\___/  '
-  print $SKYBLUE '                                                      /_/                       '
-  print $SKYBLUE ' Follow me at https://github.com/j4ve1in                                        '
+  cprint $SKYBLUE '     ____           __        ____   ______                      __     __      '
+  cprint $SKYBLUE '    /  _/___  _____/ /_____ _/ / /  / ____/___  ____ ___  ____  / /__  / /____  '
+  cprint $SKYBLUE '    / // __ \/ ___/ __/ __ `/ / /  / /   / __ \/ __ `__ \/ __ \/ / _ \/ __/ _ \ '
+  cprint $SKYBLUE '  _/ // / / (__  ) /_/ /_/ / / /  / /___/ /_/ / / / / / / /_/ / /  __/ /_/  __/ '
+  cprint $SKYBLUE ' /___/_/ /_/____/\__/\__,_/_/_/   \____/\____/_/ /_/ /_/ .___/_/\___/\__/\___/  '
+  cprint $SKYBLUE '                                                      /_/                       '
+  cprint $SKYBLUE ' Follow me at https://github.com/j4ve1in                                        '
   echo
   #http://patorjk.com/software/taag/#p=display&f=Slant&t=Install%20Complete
 }
@@ -161,6 +161,10 @@ install_plugin() {
     fi
   fi
   echo
+}
+
+print() {
+  printf "$@\n"
 }
 
 cprint() {
