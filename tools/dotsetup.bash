@@ -1,11 +1,6 @@
 #!/bin/bash
 
-source_dotool() {
-  local file="$1"
-  local arg="$2"
-  local dotooldir="$HOME/.dotfiles/tools/"
-  source ${dotooldir}${file}.bash $arg
-}
+source ~/.dotfiles/tools/lib/base.bash
 
 display_advice() {
   echo -e "Try 'dotsetup --help' for more information.\n"
@@ -20,6 +15,9 @@ case "$1" in
     ;;
   "-b" | "--backup" )
     source_dotool backup
+    ;;
+  "-s" | "--status" )
+    source_dotool status
     ;;
   "-r" | "--reinstall" )
     source_dotool reinstall
@@ -47,6 +45,7 @@ case "$1" in
     echo "    -u, --update             Backup and download dotfiles             "
     echo "    -d, --deploy             Deploy dotfiles to home directory        "
     echo "    -b, --backup             Backup dotfiles to backup directory      "
+    echo "    -s, --status             Check installed commands                 "
     echo "    -r, --reinstall          Install dotfiles again after uninstalling"
     echo "    -U, --uninstall          Uninstall dotfiles                       "
     echo "    -l, --list               View dotfile's list                      "
