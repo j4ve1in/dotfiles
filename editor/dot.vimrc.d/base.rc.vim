@@ -18,8 +18,6 @@ set whichwrap=b,s ",[,],<,>
 
 autocmd FileType *  setlocal formatoptions-=ro
 
-au BufRead,BufNewFile *.vim set foldmethod=marker
-
 autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
 
 if exists('&ambiwidth')

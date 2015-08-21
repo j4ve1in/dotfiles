@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile .vimrc* setfiletype vim
+autocmd BufRead,BufNewFile *.vim set foldmethod=marker
