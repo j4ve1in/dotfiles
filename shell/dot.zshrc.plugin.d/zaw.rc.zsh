@@ -6,10 +6,8 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
-# Reload zaw.zsh for antigen bug?
+# Reload zaw.zsh for loading zaw-cdr(bug of Antigen or zaw?)
 source ~/.zsh/bundle/repos/*/zaw.zsh
-
-zstyle ':filter-select' case-insensitive yes
 
 bindkey '^X^A' zaw-applications
 bindkey '^@' zaw-cdr
