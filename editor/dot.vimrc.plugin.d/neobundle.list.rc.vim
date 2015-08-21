@@ -135,6 +135,12 @@ else
   NeoBundleFetch 'Shougo/neocomplete.vim'
   NeoBundle 'Shougo/neocomplcache.vim'
 endif
+
+NeoBundle 'Shougo/neosnippet'
+
+NeoBundle 'Shougo/neosnippet-snippets', {
+\   'depends': [ 'Shougo/neosnippet' ]
+\ }
 " }}}
 
 " Others " {{{
@@ -244,5 +250,9 @@ else
   if neobundle#tap('neocomplcache.vim')
     let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplcache.rc.vim'
   endif
+endif
+
+if neobundle#tap('neosnippet')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
 endif
 " }}}
