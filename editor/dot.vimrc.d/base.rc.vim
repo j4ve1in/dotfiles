@@ -22,6 +22,10 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+if !exists('loaded_matchit')
+  runtime macros/matchit.vim
+endif
+
 " swapfile
 set swapfile
 set directory=~/.vim/tmp/swap
