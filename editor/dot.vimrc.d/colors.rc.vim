@@ -1,4 +1,4 @@
-" colorscheme
+" Colorscheme
 colorscheme abyss
 
 " Syntaxinfo

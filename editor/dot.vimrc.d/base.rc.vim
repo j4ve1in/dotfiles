@@ -12,7 +12,11 @@ set noerrorbells
 
 set novisualbell
 
+set viminfo+=n~/.vim/var/tmp/.viminfo
+
 set whichwrap=b,s ",[,],<,>
+
+autocmd FileType *  setlocal formatoptions-=ro
 
 au BufRead,BufNewFile *.vim set foldmethod=marker
 
@@ -26,28 +30,38 @@ if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif
 
-" swapfile
+" Completion
+set wildmenu
+set wildmode=list:full
+
+" Indent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+
+" Search
+set wrapscan
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Swapfile
 set swapfile
 set directory=~/.vim/tmp/swap
 
-
-" backupfile
+" Backupfile
 set backup
 set backupdir=~/.vim/var/tmp/backup
 
-
-" undofile
+" Undofile
 set undofile
 set undodir=~/.vim/var/tmp/undo
 
-
-" viminfo
-set viminfo+=n~/.vim/var/tmp/.viminfo
-
-
-" mouse
+" Mouse
 set mouse=a
-
 set ttymouse=xterm2
 
 " .vimrc
