@@ -6,6 +6,9 @@ export WWW_BROWSER="w3m"
 if [ -d ~/bin ]; then
   export PATH="$PATH:$HOME/bin"
 fi
+if [ -d ~/.local/bin ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # Cygwin
