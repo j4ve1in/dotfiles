@@ -143,6 +143,16 @@ NeoBundle 'Shougo/neosnippet-snippets', {
 \ }
 " }}}
 
+
+" Rails " {{{
+NeoBundle 'tpope/vim-rails'
+
+NeoBundle 'basyura/unite-rails', {
+\   'depends': [ 'Shougo/unite.vim' ]
+\ }
+
+" }}}
+
 " Others " {{{
 NeoBundle 'Townk/vim-autoclose'
 
@@ -254,5 +264,9 @@ endif
 
 if neobundle#tap('neosnippet')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
+endif
+
+if neobundle#tap('vim-rails')
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vim-rails.rc.vim'
 endif
 " }}}
