@@ -3,5 +3,6 @@
 .zsh_history
 .zshrc.zwc
 .zprofile.zwc
+.zprof_result
 bundle/*
 !.gitkeep

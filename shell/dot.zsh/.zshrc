@@ -13,3 +13,8 @@ done
 
 ## ~/.shrc.d/*.rc.sh
 source ~/.shrc
+
+# Profiling configuration files of zsh
+# if (which zprof > /dev/null) ;then
+#   zprof > ~/.zsh/.zprof_result | less ~/.zsh/.zprof_result
+# fi
