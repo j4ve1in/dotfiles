@@ -1,5 +1,9 @@
 autoload -Uz compinit
-compinit -u
+if [ "$OSTYPE" != "cygwin" ]; then
+  compinit -u
+else
+  compinit -C
+fi
 setopt autopushd # auto directory pushd that you can get dirs list by cd -[tab]
 setopt pushd_ignore_dups
 setopt list_packed # compacked complete list display
