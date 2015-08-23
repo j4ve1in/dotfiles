@@ -7,6 +7,10 @@ restart_cygwin() {
 
 restart_shell() {
   echo "Restarting shell..."
+  if which usleep >/dev/null 2>&1; then
+    usleep 500000
+  fi
+  clear
   exec $SHELL -l
 }
 

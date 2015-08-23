@@ -14,12 +14,12 @@ main() {
     else
       echo "   If the file exists, it will be ruthlessly clobbered"
       printf "   Are you sure you want to continue (yes/no)? "; read ANSWER
+      echo
       case $ANSWER in
         "Y" | "y" | "Yes" | "yes" )
           install
           ;;
         * )
-          echo
           ;;
       esac
     fi
@@ -99,7 +99,7 @@ install() {
   fi
 
   # Restart
-  clear; source ~/.dotfiles/tools/restart.bash
+  source ~/.dotfiles/tools/restart.bash
 }
 
 install_plugin() {

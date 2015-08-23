@@ -22,7 +22,7 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
   }
 
   interval() {
-    if which usleep >/dev/null 2>&1; then
+    if has usleep; then
       usleep 500000
     fi
   }
