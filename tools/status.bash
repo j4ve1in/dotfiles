@@ -11,6 +11,7 @@ readonly COMMANDS=(
   "atom"
   "nano"
   "git"
+  "tig"
   "screen"
   "tmux"
   "dircolors"
