@@ -3,9 +3,9 @@
 : ${INCLUDE_GUARD:=0}
 
 if [ "$INCLUDE_GUARD" = "0" ]; then
-  has() { type $1 >/dev/null 2>&1 }
+  has() { type $1 >/dev/null 2>&1; }
 
-  print() { printf "$@\n" }
+  print() { printf "$@\n"; }
 
   cprint() {
     local string="$1"

@@ -172,13 +172,9 @@ install_plugin() {
   echo
 }
 
-has() {
-  type $1 >/dev/null 2>&1
-}
+has() { type $1 >/dev/null 2>&1; }
 
-print() {
-  printf "$@\n"
-}
+print() { printf "$@\n"; }
 
 set_color() {
   UNDERLINE="4;39;49"
