@@ -1,79 +1,49 @@
 #!/bin/bash
 
 source ~/.dotfiles/tools/lib/base.bash
-source ~/.dotfiles/tools/lib/create_data.bash
+source_dotool lib/create_data
 
 # Count max
-echo -e "\033[4;39mChecking backup file\033[0;39m"
-source ~/.dotfiles/tools/lib/count_max.bash
+cprint "Checking backup file" $UNDERLINE
+source_dotool lib/countup
 
 if [ "$MAX" != "0" ]; then
   # Create backup dir
   DATE=$(date +"%Y-%m-%d_%H%M%S")
   printf " Creating backup directory..."
   mkdir -p ~/.dotfiles/backup/$DATE
-  echo -e "\033[1;36mdone\033[0;39m"
+  cprint "done" $CYAN_B
   # Display backup directory
-  echo "  Backup directory: ~/.dotfiles/backup/$DATE"
+  cprintf "  Backup directory:" $COLOR_75_B; echo " ~/.dotfiles/backup/$DATE"
   echo
 
   # Start backup
-  echo -e "\033[4;39mStarting backup\033[0;39m"
-  echo " \`dotfiles' -> \`~/.dotfiles/backup/$DATE'"
+  cprint "Starting backup" $UNDERLINE
+  printf " \`dotfiles' "
+  cprintf "->" $BLUE
+  echo " \`~/.dotfiles/backup/$DATE'"
 
   COUNT=0
   ## Dotfile
   N=${#DOT_NAME[@]}
   for ((i=0;i<N;i++)); do
-    COLOR="\x1b[34m"
-    COLOR_RESET="\x1b[0m"
     if [ -f ~/${DOT_NAME[$i]} ]; then
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
+      cprintf " [" $BLUE
       printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Copying: %s\n" ~/${DOT_NAME[$i]}
+      cprintf "] " $BLUE
+      cprintf "Copying:" $COLOR_75_B
+      printf " %s\n" ~/${DOT_NAME[$i]}
       cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
       ((COUNT=COUNT+1))
     elif [ -d ~/${DOT_NAME[$i]} ]; then
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
+      cprintf " [" $BLUE
       printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Copying: %s\n" ~/${DOT_NAME[$i]}
+      cprintf "] " $BLUE
+      cprintf "Copying:" $COLOR_75_B
+      printf " %s\n" ~/${DOT_NAME[$i]}
       cp -r ~/${DOT_NAME[$i]}/ ~/.dotfiles/backup/$DATE
       if [ ! -L ~/${DOT_NAME[$i]} -a -d ~/${DOT_NAME[$i]} ]; then
         rm -fr ~/${DOT_NAME[$i]}/
-      fi
-      ((COUNT=COUNT+1))
-    fi
-  done
-  ## Exdotfile
-  N=${#EXDOT_NAME[@]}
-  for ((j=0;j<N;j++)); do
-    COLOR="\x1b[34m"
-    COLOR_RESET="\x1b[0m"
-    if [ "${EXDOT_FILE_TYPE[$j]}" = "File" ]; then
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Copying: %s\n" ~/${EXDOT_NAME[$j]}
-      cp ~/${EXDOT_NAME[$j]} ~/.dotfiles/backup/$DATE
-      ((COUNT=COUNT+1))
-    elif [ "${EXDOT_FILE_TYPE[$j]}" = "Directory" ]; then
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Copying: %s\n" ~/${EXDOT_NAME[$j]}
-      cp -r ~/${EXDOT_NAME[$j]}/ ~/.dotfiles/backup/$DATE
-      if [ ! -L ~/${EXDOT_NAME[$j]} -a -d ~/${EXDOT_NAME[$j]} ]; then
-        rm -fr ~/${EXDOT_NAME[$j]}/
       fi
       ((COUNT=COUNT+1))
     fi
@@ -83,4 +53,4 @@ else
 fi
 
 echo
-interval
+interval 500000

@@ -63,7 +63,7 @@ install() {
     printf " Option Assume yes: "
     cprint "enable" $CYAN
   fi
-  interval
+  interval 500000
 
   ## Check git command
   printf " Checking git command..."
@@ -74,7 +74,7 @@ install() {
     echo " Please install git or update your path to include the git executable"
     exit 1;
   fi
-  interval
+  interval 500000
 
   ## Download
   printf " Downloading dotfiles..."
@@ -84,7 +84,7 @@ install() {
   } | env LESS="-cE" less
   cprint "done" $CYAN_B
   echo
-  interval
+  interval 500000
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -119,7 +119,7 @@ install_plugin() {
       git clone ${URL[i]} ~/${DIR[i]}
     } | env LESS="-cE" less
     cprint "done" $CYAN_B
-    interval
+    interval 500000
   done
   echo
 
@@ -142,7 +142,7 @@ install_plugin() {
         source ~/.vim/bundle/neobundle.vim/bin/neoinstall
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      interval
+      interval 500000
     fi
 
     ## Zsh
@@ -154,7 +154,7 @@ install_plugin() {
         zsh ~/.zshrc.plugin.d/antigen.rc.zsh
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      interval
+      interval 500000
     fi
 
     ## Tmux
@@ -166,7 +166,7 @@ install_plugin() {
         bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      interval
+      interval 500000
     fi
   fi
   echo
@@ -180,7 +180,6 @@ set_color() {
   UNDERLINE="4;39;49"
   RED_B="1;31;49"
   CYAN_B="1;36;49"
-  SKYBLUE="1;36;44"
   DARKGRAY="90"
   COLOR_32_B="\x1b[1;38;5;32;49m"
   COLOR_75_B="1;38;5;75;49"
@@ -203,7 +202,7 @@ cprintf() {
 
 interval() {
   if has usleep; then
-    usleep 500000
+    usleep $1
   fi
 }
 

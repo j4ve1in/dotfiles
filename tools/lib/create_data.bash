@@ -25,19 +25,3 @@ for ((i=0;i<N;i++)); do
     DOT_FILE_TYPE[$i]=Directory
   fi
 done
-
-# EXDOT_NAME
-CSV_FILE=~/.dotfiles/tools/data/exdotfile.csv
-EXDOT_NAME=($(awk -F ',' '{print $2}' $CSV_FILE | sed '1d;s/"//g'))
-
-# EXDOT_FILE_TYPE
-# Check file type
-N=${#EXDOT_NAME[@]}
-for ((i=0;i<N;i++)); do
-  if [ -f ~/${EXDOT_NAME[$i]} ]; then
-    EXDOT_FILE_TYPE[$i]=File
-  elif [ -d ~/${EXDOT_NAME[$i]} ]; then
-    EXDOT_FILE_TYPE[$i]=Directory
-  fi
-done
-

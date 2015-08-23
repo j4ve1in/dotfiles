@@ -4,7 +4,7 @@ source ~/.dotfiles/tools/lib/create_data.bash
 uninstall() {
   # Count max
   echo -e "\033[4;39mChecking file\033[0;39m"
-  source ~/.dotfiles/tools/lib/count_max.bash
+  source ~/.dotfiles/tools/lib/countup.bash
   echo
 
   # Start uninstall
@@ -24,23 +24,6 @@ uninstall() {
       printf " "
       printf "Removing: %s\n" ~/${DOT_NAME[$i]}
       unlink ~/${DOT_NAME[$i]}
-      ((COUNT=COUNT+1))
-    fi
-  done
-
-  ## Exdotfile
-  N=${#EXDOT_NAME[@]}
-  for ((j=0;j<N;j++)); do
-    COLOR="\x1b[34m"
-    COLOR_RESET="\x1b[0m"
-    if [ -e ~/${EXDOT_NAME[$j]} ]; then
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Removing: %s\n" ~/${EXDOT_NAME[$j]}
-      rm -rf ~/${EXDOT_NAME[$j]}
       ((COUNT=COUNT+1))
     fi
   done

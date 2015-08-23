@@ -7,6 +7,12 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
 
   print() { printf "$@\n"; }
 
+  BLUE="34"
+  RED_B="1;31;49"
+  CYAN_B="1;36;49"
+  UNDERLINE="4;39;49"
+  COLOR_75_B="1;38;5;75;49"
+
   cprint() {
     local string="$1"
     local color="\x1b[${2}m"
@@ -23,7 +29,7 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
 
   interval() {
     if has usleep; then
-      usleep 500000
+      usleep $1
     fi
   }
 
