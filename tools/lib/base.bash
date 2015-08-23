@@ -3,25 +3,21 @@
 : ${INCLUDE_GUARD:=0}
 
 if [ "$INCLUDE_GUARD" = "0" ]; then
-  has() {
-    type $1 >/dev/null 2>&1
-  }
+  has() { type $1 >/dev/null 2>&1 }
 
-  print() {
-    printf "$@\n"
-  }
+  print() { printf "$@\n" }
 
   cprint() {
-    local color="$1"
-    local string="$2"
-    local reset="\x1b[0m"
+    local string="$1"
+    local color="\x1b[${2}m"
+    local reset="\x1b[0;39;49m"
     print "${color}${string}${reset}"
   }
 
   cprintf() {
-    local color="$1"
-    local string="$2"
-    local reset="\x1b[0m"
+    local string="$1"
+    local color="\x1b[${2}m"
+    local reset="\x1b[0;39;49m"
     printf "${color}${string}${reset}"
   }
 

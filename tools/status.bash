@@ -32,9 +32,9 @@ check_status() {
   for ((i=0;i<N;i++)); do
     printf "%-$((${MAX_LENGTH}+3))s: " ${COMMANDS[$i]}
     if has ${COMMANDS[$i]}; then
-      cprintf $GREEN "Active\n"
+      cprintf "Active\n" $GREEN
     else
-      cprintf $RED "Not found\n"
+      cprintf "Not found\n" $RED
     fi
   done
   echo
