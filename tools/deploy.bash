@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ~/.dotfiles/tools/lib/base.bash
-source ~/.dotfiles/tools/lib/create_data.bash
+source_dotool lib/dot
 
 echo -e "\033[4;39mStart creating symbolic link\033[0;39m"
 

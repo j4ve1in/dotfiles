@@ -1,4 +1,5 @@
 #!/bin/bash
+
 restart_cygwin() {
   printf "Restarting cygwin..."
   cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -

@@ -2,7 +2,7 @@
 
 source ~/.dotfiles/tools/lib/base.bash
 
-source_dotool lib/create_data
+source_dotool lib/dot
 
 MAX=0
 MAX_F=0

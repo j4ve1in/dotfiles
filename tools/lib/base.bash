@@ -12,6 +12,7 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
   CYAN_B="1;36;49"
   UNDERLINE="4;39;49"
   COLOR_75_B="1;38;5;75;49"
+  COLOR_93_B="1;38;5;93;49"
 
   cprint() {
     local string="$1"

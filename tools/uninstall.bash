@@ -1,5 +1,6 @@
 #!/bin/bash
-source ~/.dotfiles/tools/lib/create_data.bash
+
+source ~/.dotfiles/tools/lib/dot.bash
 
 uninstall() {
   # Count max
