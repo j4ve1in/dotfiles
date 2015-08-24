@@ -13,23 +13,23 @@
 |
 <b><a href="#wiki">Wiki</a></b>
 |
-<b><a href="https://github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
+<b><a href="//github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
 |
 <b><a href="#license">License</a></b>
 </p>
 
 <p align="center">
-<a href="https://waffle.io/j4ve1in/dotfiles"><img src="https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square"></a>
-<a href="https://gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square"></a>
-<a href="https://github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="https://github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+<a href="//waffle.io/j4ve1in/dotfiles"><img src="https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square"></a>
+<a href="//gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square"></a>
+<a href="//github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
+<a href="//github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
 </p>
 
 
 # Overview
-This repository manage **[my](https://github.com/j4ve1in "my")** configuration files on Unix-type operating systems.
+This repository manage **[my]** configuration files on Unix-type operating systems.
 
-![Screenshot](/img/screenshot.png "Screenshot")
+![Screenshot]
 
 # Installation
 You can install Javelin's dotfiles by the following installation command.
@@ -46,11 +46,11 @@ You can install Javelin's dotfiles by the following installation command.
 **NOTE2:** If you want to use **automatic installation**, run `export ASSUME_YES="1"` or `setenv ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 **Demo:**
-[![Demo](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg.png)](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg)
+[![](/img/demo.png)][asciinema]
 
 # Configurations
 ## Dotsetup
-![dotsetup](/img/dotsetup.png "dotsetup")
+![dotsetup]
 
     NAME
         dotsetup - DOTfiles SETUP
@@ -75,15 +75,23 @@ You can install Javelin's dotfiles by the following installation command.
         -P, --uninstall-plugin   Uninstall shell and editor plugin
 
 # Test with Docker
-Before running installation command to setup dotfiles, you can pull an **[image](https://hub.docker.com/r/j4ve1in/dotfiles "image")** and try my dotfiles in a Docker container as follows.
+Before running installation command to setup dotfiles, you can pull an **[image]** and try my dotfiles in a Docker container as follows.
 ```bash
 $ sudo docker pull j4ve1in/dotfiles
 $ sudo docker run -it --rm j4ve1in/dotfiles
 ```
 
 # Wiki
-Please have a look at the **[wiki](https://github.com/j4ve1in/dotfiles/wiki "Wiki")** for more information.
+Please have a look at the **[wiki]** for more information.
 
 # License
 Copyright (c) 2015 j4ve1in
-Released under the MIT License, see **[LICENSE.md](https://github.com/j4ve1in/dotfiles/blob/master/LICENSE.md "LICENSE.md")**.
+Released under the MIT License, see **[LICENSE.md]**.
+
+[my]: //github.com/j4ve1in
+[Screenshot]: /img/screenshot.png
+[asciinema]: //asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg
+[dotsetup]: /img/dotsetup.png
+[image]: //hub.docker.com/r/j4ve1in/dotfiles
+[wiki]: //github.com/j4ve1in/dotfiles/wiki
+[LICENSE.md]: //github.com/j4ve1in/dotfiles/blob/master/LICENSE.md
