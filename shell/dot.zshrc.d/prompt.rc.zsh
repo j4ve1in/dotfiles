@@ -1,7 +1,5 @@
 # Prompt
 ## Colors
-autoload colors
-colors
 Blue='%{$fg_no_bold[blue]%}'          # Blue
 White='%{$fg_no_bold[white]%}'        # White
 
