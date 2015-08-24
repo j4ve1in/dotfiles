@@ -26,16 +26,14 @@ main() {
 }
 
 check_status() {
-  local readonly RED="\x1b[1;31m"
-  local readonly GREEN="\x1b[1;32m"
   local readonly MAX_LENGTH="$(check_maxlength)"
   local readonly N="${#COMMANDS[@]}"
   for ((i=0;i<N;i++)); do
     printf "%-$((${MAX_LENGTH}+3))s: " ${COMMANDS[$i]}
     if has ${COMMANDS[$i]}; then
-      cprintf "Active\n" $GREEN
+      cprintf "Active\n" $COLOR_46_B
     else
-      cprintf "Not found\n" $RED
+      cprintf "Not found\n" $RED_B
     fi
   done
   echo

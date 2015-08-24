@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.base
+source ~/.dotfiles/tools/lib/base.bash
 
 printf "Are you sure you want to continue (yes/no)? "; read ANSWER
 
@@ -25,9 +25,9 @@ case $ANSWER in
     cprint "done" $CYAN_B
     export ASSUME_YES="1"
     if [ $OSTYPE = cygwin ]; then
-      exec source ~/install.bash && rm -f ~/install.bash
+      exec source ~/install.bash
     else
-      source ~/install.bash && rm -f ~/install.bash
+      source ~/install.bash
     fi
     ;;
   * )

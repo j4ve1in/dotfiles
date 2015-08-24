@@ -45,6 +45,7 @@ restart() {
   fi
 }
 
+rm -f ~/install.bash
 if [ "$ASSUME_YES" = "1" ]; then
   if [ $OSTYPE = cygwin ]; then
     restart_cygwin

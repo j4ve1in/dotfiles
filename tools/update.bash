@@ -2,10 +2,16 @@
 
 # Pull remote repository
 printf "Checking repository..."
-{ sleep 1; git -C ~/.dotfiles pull origin master; } | env LESS="-cE" less
+{
+  sleep 1
+  git -C ~/.dotfiles pull origin master
+} | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"
 printf "Checking submodule..."
-{ sleep 1; git -C ~/.dotfiles submodule foreach 'git checkout master ; git pull'; } | env LESS="-cE" less
+{
+  sleep 1
+  git -C ~/.dotfiles submodule foreach 'git checkout master ; git pull'
+} | env LESS="-cE" less
 echo -e "\033[1;36mdone\033[0;39m"
 
 # Backup
@@ -30,6 +36,4 @@ if [ -d ~/.vim/bundle/neobundle.vim ]; then
   echo -e "\033[1;36mdone\033[0;39m"
 fi
 
-echo -e "Updated\n"
-
-exit 0
+echo

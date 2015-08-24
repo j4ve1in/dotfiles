@@ -61,7 +61,7 @@ install() {
     cprint "disable" $RED_B
   elif [ "$ASSUME_YES" = "1" ]; then
     printf " Option Assume yes: "
-    cprint "enable" $CYAN
+    cprint "enable" $CYAN_B
   fi
   interval 500000
 
