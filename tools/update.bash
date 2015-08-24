@@ -39,7 +39,7 @@ fi
 ## Tmux
 if [ -d ~/.tmux/plugins/tpm ]; then
   printf "Update Tmux plugin..."
-  bash ~/.tmux/plugins/tpm/scripts/update_plugin_prompt.sh
+  bash ~/.tmux/plugins/tpm/bindings/update_plugins
   cprint "done" $CYAN_B
 fi
 echo

@@ -163,7 +163,7 @@ install_plugin() {
       printf "  Downloading plugin..."
       {
         sleep 1
-        bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+        bash ~/.tmux/plugins/tpm/bindings/install_plugins
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       interval 500000
