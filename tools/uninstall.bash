@@ -1,56 +1,74 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/dot.bash
+source ~/.dotfiles/tools/lib/base.bash
+source_dotool lib/dot
+
+main() {
+  if [ "$1" != "plugin" ]; then
+    : ${ASSUME_YES:=0}
+    if [ "$ASSUME_YES" = "1" ]; then
+      uninstall
+      unset ASSUME_YES
+    else
+      printf "Are you sure you want to continue (yes/no)? "; read ANSWER
+      case $ANSWER in
+        "Y" | "y" | "Yes" | "yes" )
+          uninstall
+          ;;
+        * )
+          ;;
+      esac
+    fi
+    echo
+  else
+    uninstall_plugin; echo
+  fi
+}
 
 uninstall() {
   # Count max
-  echo -e "\033[4;39mChecking file\033[0;39m"
-  source ~/.dotfiles/tools/lib/countup.bash
+  cprint "Checking file" $UNDERLINE
+  source_dotool lib/countup
   echo
 
   # Start uninstall
-  echo -e "\033[4;39mStarting uninstall\033[0;39m"
+  cprint "Starting uninstall" $UNDERLINE
 
-  ## Remove
-  COUNT=0
+  # Remove
+  ## dotfiles
   N=${#DOT_NAME[@]}
   for ((i=0;i<N;i++)); do
     if [ -e ~/${DOT_NAME[$i]} ]; then
-      COLOR="\x1b[34m"
-      COLOR_RESET="\x1b[0m"
-      printf " "
-      printf "${COLOR}[${COLOR_RESET}"
-      printf "%2d/%2d" $((COUNT+1)) $MAX
-      printf "${COLOR}]${COLOR_RESET}"
-      printf " "
-      printf "Removing: %s\n" ~/${DOT_NAME[$i]}
+      cprintf " [" $BLUE
+      printf "%2d/%2d" $((i+1)) $MAX
+      cprintf "] " $BLUE
+      cprintf "Removing:" $COLOR_75_B
+      printf " %s\n" ~/${DOT_NAME[$i]}
       unlink ~/${DOT_NAME[$i]}
-      ((COUNT=COUNT+1))
     fi
   done
 
-  ## dotfiles
+  ## dotfiles directory
   rm -rf ~/.dotfiles
-
-  echo -e "Uninstalled\n"
 }
 
-: ${ASSUME_YES:=0}
-if [ "$ASSUME_YES" = "1" ]; then
-  uninstall
-  unset ASSUME_YES
-else
-  printf "Are you sure you want to continue (yes/no)? "
-  read ANSWER
+uninstall_plugin() {
+  # Remove
+  ## Zsh
+  ### Antigen
+  rm -rf ~/.zsh/bundle/antigen
+  ### Others
+  rm -rf ~/.zsh/bundle/repos
+  rm -f ~/.zsh/bundle/revert-info
 
-  case $ANSWER in
-    "Y" | "y" | "Yes" | "yes" )
-      uninstall
-      exit 0
-      ;;
-    * )
-      echo
-      exit 0
-      ;;
-  esac
-fi
+  ## Vim
+  ### NeoBundle
+  rm -rf ~/.vim/bundle/.neobundle
+  ### Others
+  ls ~/.vim/bundle | xargs rm -rf
+
+  ## Tmux
+  ls ~/.tmux/plugins | xargs rm -rf
+}
+
+main $@

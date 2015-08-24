@@ -24,7 +24,7 @@ main() {
       esac
     fi
   else
-    install_plugin
+    install_plugin; echo
   fi
 }
 
@@ -169,7 +169,6 @@ install_plugin() {
       interval 500000
     fi
   fi
-  echo
 }
 
 has() { type $1 >/dev/null 2>&1; }

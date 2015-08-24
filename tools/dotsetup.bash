@@ -29,7 +29,7 @@ case "$1" in
     source_dotool install plugin
     ;;
   "-P" | "--uninstall-plugin" )
-    source_dotool uninstall_plugin
+    source_dotool uninstall plugin
     ;;
   "-l" | "--list" )
     source_dotool list
