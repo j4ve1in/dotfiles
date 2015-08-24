@@ -24,21 +24,22 @@ source ~/.dotfiles/tools/backup.bash
 source ~/.dotfiles/tools/deploy.bash
 
 # Update plugin
+cprint "Start updating plugin by plugin manager" $UNDERLINE
 ## Zsh
 if [ -d ~/.zsh/bundle/antigen ]; then
-  printf "Update Zsh plugin..."
+  printf " Update Zsh plugin..."
   zsh ~/.dotfiles/tools/update_zsh_plugin.zsh
   cprint "done" $CYAN_B
 fi
 ## Vim
 if [ -d ~/.vim/bundle/neobundle.vim ]; then
-  printf "Update Vim plugin..."
+  printf " Update Vim plugin..."
   vim +NeoBundleUpdate +qall
   cprint "done" $CYAN_B
 fi
 ## Tmux
 if [ -d ~/.tmux/plugins/tpm ]; then
-  printf "Update Tmux plugin..."
+  printf " Update Tmux plugin..."
   bash ~/.tmux/plugins/tpm/bindings/update_plugins
   cprint "done" $CYAN_B
 fi

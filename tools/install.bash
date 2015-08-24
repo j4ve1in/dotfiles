@@ -125,7 +125,7 @@ install_plugin() {
 
   # Install plugin
   if has vim && has zsh && has tmux; then
-    cprint "Starting download plugin by plugin manager" $UNDERLINE
+    cprint "Start download plugin by plugin manager" $UNDERLINE
     ## Vim
     if has vim; then
       echo " Vim"
@@ -136,7 +136,7 @@ install_plugin() {
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       make -C ~/.vim/bundle/vimproc.vim >/dev/null 2>&1
-      printf "  Downloading other plugin..."
+      printf "  Downloading other plugin by NeoBundle..."
       {
         sleep 1
         source ~/.vim/bundle/neobundle.vim/bin/neoinstall
@@ -148,7 +148,7 @@ install_plugin() {
     ## Zsh
     if has zsh; then
       echo " Zsh"
-      printf "  Downloading plugin..."
+      printf "  Downloading plugin by Antigen..."
       {
         sleep 1
         zsh ~/.zshrc.plugin.d/antigen.rc.zsh
@@ -160,7 +160,7 @@ install_plugin() {
     ## Tmux
     if has tmux; then
       echo " Tmux"
-      printf "  Downloading plugin..."
+      printf "  Downloading plugin by TPM..."
       {
         sleep 1
         bash ~/.tmux/plugins/tpm/bindings/install_plugins
