@@ -46,7 +46,7 @@ You can install Javelin's dotfiles by the following installation command.
 **NOTE2:** If you want to use **automatic installation**, run `export ASSUME_YES="1"` or `setenv ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 **Demo:**
-![Demo](/img/demo.gif "Demo")
+[![Demo](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg.png)](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg)
 
 # Configurations
 ## Dotsetup

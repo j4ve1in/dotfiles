@@ -45,7 +45,7 @@
 **参考2:** **オートインストール**を利用する場合は`export ASSUME_YES="1"`か`setenv ASSUME_YES="1"`を実行した後、インストールコマンドを実行してください。オートインストールを使うと確認があったときすべて`yes`で進め、非対話的に実行します。
 
 **デモ:**
-![Demo](/img/demo.gif "Demo")
+[![Demo](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg.png)](https://asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg)
 
 # 設定
 ## Dotsetup
