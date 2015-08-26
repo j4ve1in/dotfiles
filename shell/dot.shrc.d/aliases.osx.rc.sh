@@ -3,6 +3,8 @@ if [ `uname` = Darwin ]; then
   alias op='open'
   alias f='open .'
   alias finder='open .'
+  alias pbc='pbcopy'
+  alias pbp='pbpaste'
 
   # Browse
   alias google='open https://www.google.co.jp/'
