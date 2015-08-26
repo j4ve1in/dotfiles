@@ -5,6 +5,7 @@ ANTIGEN_PLUGINS=(
   "mollifier/cd-bookmark"
   "mollifier/cd-gitroot"
   "zsh-users/zsh-syntax-highlighting"
+  "unixorn/autoupdate-antigen.zshplugin"
 )
 
 local BLUE="\x1b[34m"
