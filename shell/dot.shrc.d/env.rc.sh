@@ -28,8 +28,9 @@ if [ -d ~/.nodebrew ]; then
 fi
 
 # Ruby
-if which ruby >/dev/null 2>&1; then
+if type ruby >/dev/null 2>&1; then
   export KCODE="u"
+  export RUBYGEMS_GEMDEPS=-
 fi
 ## rbenv
 if [ -d ~/.rbenv ]; then
@@ -38,7 +39,7 @@ if [ -d ~/.rbenv ]; then
 fi
 
 # Editor
-if which vim >/dev/null 2>&1; then
+if type vim >/dev/null 2>&1; then
   export EDITOR="vim"
   export FCEDIT="vim"
   export SVN_EDITOR="vim"
