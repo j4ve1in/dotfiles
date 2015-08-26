@@ -1,5 +1,6 @@
 .chpwd-recent-dirs
 .zcompdump
+.zcompcache
 .zsh_history
 .zshrc.zwc
 .zprofile.zwc

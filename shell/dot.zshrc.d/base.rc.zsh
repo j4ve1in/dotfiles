@@ -1,4 +1,6 @@
 setopt no_beep
+setopt print_eight_bit
+setopt interactive_comments
 autoload -U colors && colors
 
 # vi mode

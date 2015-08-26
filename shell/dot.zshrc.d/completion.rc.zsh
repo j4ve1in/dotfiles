@@ -4,22 +4,34 @@ if [ "$OSTYPE" != "cygwin" ]; then
 else
   compinit -C
 fi
-setopt autopushd # auto directory pushd that you can get dirs list by cd -[tab]
+
+setopt auto_pushd
 setopt pushd_ignore_dups
-setopt list_packed # compacked complete list display
+setopt list_packed
 setopt list_types
-setopt correct # command correct edition before each completion attempt
+setopt correct
+setopt complete_in_word
 
-#allow tab completion in the middle of a word
-setopt COMPLETE_IN_WORD
+local DEFAULT=$'%{\x1b[m%}'
+local RED=$'%{\x1b[1;31m%}'
+local COLOR_46_B=$'%{\x1b[1;38;5;46;49m%}'
+local COLOR_75_B=$'%{\x1b[1;38;5;75;49m%}'
+local COLOR_93_B=$'%{\x1b[1;38;5;93;49m%}'
 
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%F{cyan}Completing %B%d%b%f'
-
-zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-#zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=1;34'
+zstyle ':completion:*:messages' format $COLOR_46_B'%d'$DEFAULT
+zstyle ':completion:*:warnings' format $RED'No matches for:'$DEFAULT' %d'
+zstyle ':completion:*:corrections' format $COLOR_93_B'%B%d '$RED'(errors: %e)%b'$DEFAULT
+zstyle ':completion:*:descriptions' format $COLOR_75_B'Completing %B%d%b%f'$DEFAULT
 
 if [ "$OSTYPE" != "cygwin" ]; then
   # auto_cd

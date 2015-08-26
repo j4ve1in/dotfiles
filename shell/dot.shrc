@@ -22,8 +22,7 @@ fi
 USERINFO=`lastlog -u $USER | sed '1d'`
 if [ "$OSTYPE" != "cygwin" ] ; then
   echo -en "${COLOR}LastLogin: ${COLOR_RESET}"
-  echo $USERINFO | grep '\*\*Never logged in\*\*' >/dev/null 2>&1
-  [ "$?" = "0" ] && echo "Never logged in"
+  echo $USERINFO | grep -o 'Never logged in'
   PORT=`echo $USERINFO | awk '{print $2}'`
   declare -i ATTRIBUTE=`echo $USERINFO | wc -w`
   if [ "$ATTRIBUTE" = "9" ]; then
