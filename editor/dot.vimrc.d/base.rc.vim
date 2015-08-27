@@ -12,6 +12,8 @@ set noerrorbells
 
 set novisualbell
 
+set display=lastline
+
 set viminfo+=n~/.vim/var/tmp/.viminfo
 
 set whichwrap=b,s ",[,],<,>
