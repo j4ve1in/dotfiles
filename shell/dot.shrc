@@ -7,24 +7,17 @@ done
 COLOR="\033[1;38;05;75m"
 COLOR_RESET="\033[0;39m"
 ## Username
-echo -en "${COLOR}Username: ${COLOR_RESET}"
-echo -n "$USER"
-echo -n "    "
+printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
 ## Shell
-echo -en "${COLOR}Shell: ${COLOR_RESET}"
-if [ `uname` = Linux ] || [ "$OSTYPE" = "cygwin" ]; then
-  CURRENT_SHELL_PATH=`readlink /proc/$$/exe`
-  echo "`basename $CURRENT_SHELL_PATH`"
-elif [ `uname` = Darwin ]; then
-  echo "$0"
-fi
+printf "${COLOR}Shell: ${COLOR_RESET}"
+ps -p $$ | awk 'NR==2{print $4}'
 ## LastLogin
-USERINFO=`lastlog -u $USER | sed '1d'`
-if [ "$OSTYPE" != "cygwin" ] ; then
-  echo -en "${COLOR}LastLogin: ${COLOR_RESET}"
+if type lastlog >/dev/null 2>&1; then
+  USERINFO=`lastlog -u $USER | sed '1d'`
+  printf "${COLOR}LastLogin: ${COLOR_RESET}"
   echo $USERINFO | grep -o 'Never logged in'
   PORT=`echo $USERINFO | awk '{print $2}'`
-  declare -i ATTRIBUTE=`echo $USERINFO | wc -w`
+  ATTRIBUTE=`echo $USERINFO | wc -w`
   if [ "$ATTRIBUTE" = "9" ]; then
     FROM=`echo $USERINFO | awk '{print $3}'`
     DATE=`echo $USERINFO | awk '{print $4,$5,$6,$7,$9}'`
