@@ -1,0 +1,2 @@
+xrdb ~/.Xdefaults
+xmodmap ~/.Xmodmap
