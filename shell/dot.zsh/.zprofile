@@ -3,6 +3,7 @@ ZFILE=(
   ".zshenv"
   ".zsh/.zprofile"
   ".zsh/.zshrc"
+  ".zsh/.zlogin"
   .zshrc.d/*.rc.zsh
   .zshrc.plugin.d/*.rc.zsh
 )
