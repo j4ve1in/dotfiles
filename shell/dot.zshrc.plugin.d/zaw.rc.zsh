@@ -10,10 +10,11 @@ zstyle ':completion:*:*:cdr:*:*' menu selection
 source ~/.zsh/bundle/repos/*/zaw.zsh
 
 bindkey '^X^A' zaw-applications
+bindkey '^X^B' zaw-bookmark
 bindkey '^@' zaw-cdr
 bindkey '^R' zaw-history
 bindkey '^X^F' zaw-git-files
-bindkey '^X^B' zaw-git-branches
+bindkey '^X^C' zaw-git-branches
 bindkey '^X^P' zaw-process
 bindkey '^S' zaw-ssh-hosts
 bindkey '^T' zaw-tmux

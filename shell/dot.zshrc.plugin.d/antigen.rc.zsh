@@ -2,7 +2,6 @@ readonly ADOTDIR=$HOME/.zsh/bundle
 ANTIGEN_PLUGINS=(
   "zsh-users/zaw"
   "Tarrasch/zsh-bd"
-  "mollifier/cd-bookmark"
   "mollifier/cd-gitroot"
   "zsh-users/zsh-syntax-highlighting"
   "unixorn/autoupdate-antigen.zshplugin"
