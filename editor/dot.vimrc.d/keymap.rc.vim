@@ -10,3 +10,5 @@ nnoremap <Leader>d :bdelete<CR>
 nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>p :tabprev<CR>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
