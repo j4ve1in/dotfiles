@@ -1,6 +1,7 @@
-source ~/.shrc.d/env.rc.sh
+# ~/.shenv
+source ~/.shenv
 
-# .bashrc
+# ~/.bashrc
 if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
