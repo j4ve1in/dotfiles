@@ -8,7 +8,7 @@ RUN echo "timeout=10" >> /etc/dnf/dnf.conf
 # Update and Install packages
 # RUN dnf update -yq
 ## Requirement
-RUN dnf install -yq sudo passwd gcc make findutils tree git
+RUN dnf install -yq sudo passwd gcc make findutils tree git procps-ng
 ## Option
 RUN dnf install -yq tmux vim zsh
 RUN dnf clean all -q
