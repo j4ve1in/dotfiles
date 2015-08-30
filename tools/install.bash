@@ -151,7 +151,7 @@ install_plugin() {
       printf "  Downloading plugin by Antigen..."
       {
         sleep 1
-        zsh ~/.zshrc.plugin.d/antigen.rc.zsh
+        zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       interval 500000

@@ -5,7 +5,6 @@ ZFILE=(
   ~/.zsh/.zshrc
   ~/.zsh/.zlogin
   ~/.zshrc.d/*.rc.zsh
-  ~/.zshrc.plugin.d/*.rc.zsh
 )
 local BLUE="\x1b[34m"
 local SKYBLUE="\033[1;38;05;75m"
@@ -31,7 +30,7 @@ if [ "$N" != "0" ]; then
   for file in ${ZFILE[@]}; do
     if [ ! -f ${file}.zwc ] || [ ${file} -nt ${file}.zwc ]; then
       cprintf $BLUE " ["
-      printf "%d/%d" $i $N
+      printf "%2d/%2d" $i $N
       cprintf $BLUE "] "
       printf "Compile ${file}..."
       if zcompile ${file}; then

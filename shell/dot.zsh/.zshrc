@@ -1,14 +1,19 @@
 # Load
 ## Plugin
 if [ -d ~/.zsh/bundle/antigen ]; then
-  for file in ~/.zshrc.plugin.d/*.rc.zsh; do
-    source ${file}
-  done
+  source ~/.zshrc.d/plugins.rc.zsh
 fi
 
 ## ~/.zshrc.d/*.rc.zsh
-for filepath in ~/.zshrc.d/*.rc.zsh; do
-  source ${filepath}
+ZFILE=(
+  "aliases.rc.zsh"
+  "base.rc.zsh"
+  "completion.rc.zsh"
+  "history.rc.zsh"
+  "prompt.rc.zsh"
+)
+for file in ${ZFILE[@]}; do
+  source ~/.zshrc.d/$file
 done
 
 ## ~/.shrc.d/*.rc.sh
