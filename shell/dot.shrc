@@ -10,20 +10,20 @@ COLOR_RESET="\033[0;39m"
 printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
 ## Shell
 printf "${COLOR}Shell: ${COLOR_RESET}"
-ps -p $$ | awk 'NR==2{print $4}'
+ps -p $$ -o comm | sed '1d'
 ## LastLogin
 if type lastlog >/dev/null 2>&1; then
-  USERINFO=`lastlog -u $USER | sed '1d'`
+  LASTLOG=`lastlog -u $USER | sed '1d'`
   printf "${COLOR}LastLogin: ${COLOR_RESET}"
-  echo $USERINFO | grep -o 'Never logged in'
-  PORT=`echo $USERINFO | awk '{print $2}'`
-  ATTRIBUTE=`echo $USERINFO | wc -w`
+  echo $LASTLOG | grep -o 'Never logged in'
+  PORT=`echo $LASTLOG | awk '{print $2}'`
+  ATTRIBUTE=`echo $LASTLOG | wc -w`
   if [ "$ATTRIBUTE" = "9" ]; then
-    FROM=`echo $USERINFO | awk '{print $3}'`
-    DATE=`echo $USERINFO | awk '{print $4,$5,$6,$7,$9}'`
+    FROM=`echo $LASTLOG | awk '{print $3}'`
+    DATE=`echo $LASTLOG | awk '{print $4,$5,$6,$7,$9}'`
     echo "$DATE on $PORT from $FROM"
   elif [ "$ATTRIBUTE" = "8" ]; then
-    DATE=`echo $USERINFO | awk '{print $3,$4,$5,$6,$8}'`
+    DATE=`echo $LASTLOG | awk '{print $3,$4,$5,$6,$8}'`
     echo "$DATE on $PORT"
   fi
 fi

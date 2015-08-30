@@ -121,6 +121,7 @@ fi
 # Others
 alias g=git
 alias h=history
+alias z=zsh
 alias printpath='echo -e "${PATH//:/\n}"'
 alias path='echo -e "${PATH//:/\n}"'
 alias jman='env LANG="ja_JP.UTF-8" man'
@@ -131,6 +132,7 @@ alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias mysql='mysql --pager="less -iFMnSX"'
+alias reload='exec $SHELL -l'
 
 ## Linux
 if [ `uname` = Linux ]; then
