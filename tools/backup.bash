@@ -24,19 +24,23 @@ if [ "$MAX" != "0" ]; then
   cprintf "->" $COLOR_93_B
   echo " \`~/.dotfiles/backup/$DATE'"
   N=${#DOT_NAME[@]}
+  j=1
   for ((i=0;i<N;i++)); do
-    cprintf " [" $BLUE
-    printf "%2d/%2d" $((i+1)) $MAX
-    cprintf "] " $BLUE
-    cprintf "Copying:" $COLOR_75_B
-    printf " %s\n" ~/${DOT_NAME[$i]}
-    if [ -f ~/${DOT_NAME[$i]} ]; then
-      cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
-    elif [ -d ~/${DOT_NAME[$i]} ]; then
-      cp -r ~/${DOT_NAME[$i]}/ ~/.dotfiles/backup/$DATE
-      if [ ! -L ~/${DOT_NAME[$i]} -a -d ~/${DOT_NAME[$i]} ]; then
-        rm -fr ~/${DOT_NAME[$i]}/
+    if [ -f ~/${DOT_NAME[$i]} ] || [ -d ~/${DOT_NAME[$i]} ]; then
+      cprintf " [" $BLUE
+      printf "%2d/%2d" $j $MAX
+      cprintf "] " $BLUE
+      cprintf "Copying:" $COLOR_75_B
+      printf " %s\n" ~/${DOT_NAME[$i]}
+      if [ -f ~/${DOT_NAME[$i]} ]; then
+        cp ~/${DOT_NAME[$i]} ~/.dotfiles/backup/$DATE
+      elif [ -d ~/${DOT_NAME[$i]} ]; then
+        cp -r ~/${DOT_NAME[$i]}/ ~/.dotfiles/backup/$DATE
+        if [ ! -L ~/${DOT_NAME[$i]} -a -d ~/${DOT_NAME[$i]} ]; then
+          rm -fr ~/${DOT_NAME[$i]}/
+        fi
       fi
+      ((j++))
     fi
   done
 else
