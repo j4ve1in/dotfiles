@@ -10,7 +10,7 @@ COLOR_RESET="\033[0;39m"
 printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
 ## Shell
 printf "${COLOR}Shell: ${COLOR_RESET}"
-ps -p $$ -o comm | sed '1d'
+ps -p $$ -o comm=
 ## LastLogin
 if type lastlog >/dev/null 2>&1; then
   LASTLOG=`lastlog -u $USER | sed '1d'`
