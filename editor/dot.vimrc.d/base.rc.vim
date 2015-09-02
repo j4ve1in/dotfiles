@@ -14,7 +14,7 @@ set novisualbell
 
 set display=lastline
 
-set viminfo+=n~/.vim/var/tmp/.viminfo
+set viminfo='50,\"1000,n~/.vim/var/tmp/.viminfo
 
 set whichwrap=b,s ",[,],<,>
 

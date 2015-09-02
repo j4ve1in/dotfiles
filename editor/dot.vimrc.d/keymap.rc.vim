@@ -12,3 +12,4 @@ nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>p :tabprev<CR>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>

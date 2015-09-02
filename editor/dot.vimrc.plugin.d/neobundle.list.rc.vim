@@ -23,46 +23,10 @@ NeoBundle 'Shougo/neomru.vim', {
 \   'depends': [ 'Shougo/unite.vim' ]
 \ }
 
-NeoBundleLazy 'Shougo/unite-outline', {
-\   'depends': [ 'Shougo/unite.vim' ],
-\   'autoload': {
-\       'commands': [ 'Unite outline' ]
-\   }
-\ }
-
 NeoBundleLazy 'Shougo/vimfiler', {
 \   'depends': [ 'Shougo/unite.vim' ],
 \   'autoload': {
 \       'commands': [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
-\   }
-\ }
-
-NeoBundleLazy 'ujihisa/unite-colorscheme', {
-\   'depends': [ 'Shougo/unite.vim' ],
-\   'autoload': {
-\     'commands': [ 'Unite colorscheme' ]
-\   }
-\ }
-
-NeoBundleLazy 'pasela/unite-webcolorname', {
-\   'depends': [ 'Shougo/unite.vim' ],
-\   'autoload': {
-\     'commands': [ 'Unite webcolorname' ]
-\   }
-\ }
-
-NeoBundleLazy 'kmnk/vim-unite-giti', {
-\   'depends': [ 'Shougo/unite.vim' ],
-\   'autoload': {
-\     'commands': [ 'Unite' ]
-\   }
-\ }
-" }}}
-
-" Git " {{{
-NeoBundleLazy 'cohama/agit.vim', {
-\   'autoload': {
-\     'commands': [ 'Agit', 'AgitFile' ]
 \   }
 \ }
 " }}}
@@ -136,29 +100,23 @@ else
   NeoBundle 'Shougo/neocomplcache.vim'
 endif
 
-NeoBundle 'Shougo/neosnippet'
-
 NeoBundle 'Shougo/neosnippet-snippets', {
 \   'depends': [ 'Shougo/neosnippet' ]
 \ }
 " }}}
 
-
-" Rails " {{{
-NeoBundle 'tpope/vim-rails'
-
-NeoBundle 'basyura/unite-rails', {
-\   'depends': [ 'Shougo/unite.vim' ]
-\ }
-
-" }}}
-
 " Others " {{{
+NeoBundle 'surround.vim'
+
 NeoBundle 'Townk/vim-autoclose'
 
-NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/nerdcommenter'
 
 NeoBundle 'vim-scripts/vim-auto-save'
+
+NeoBundle 'editorconfig/editorconfig-vim'
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundleLazy 'kannokanno/previm', {
 \   'depends': [
@@ -172,101 +130,102 @@ NeoBundleLazy 'kannokanno/previm', {
 \   }
 \ }
 
-NeoBundle 'tyru/open-browser.vim'
-
-NeoBundle 'nathanaelkane/vim-indent-guides'
-
-NeoBundle 'surround.vim'
-
-NeoBundleLazy 'Shougo/vimshell.vim', {
-\   'autoload': {
-\     'commands': [ 'VimShell' ]
-\   }
-\ }
-
-NeoBundleLazy 'cocopon/colorswatch.vim', {
-\   'autoload': {
-\     'commands': [ 'ColorSwatchGenerate' ]
-\   }
-\ }
-
-NeoBundle 'editorconfig/editorconfig-vim'
-
-NeoBundle 'scrooloose/nerdcommenter'
-
-NeoBundleFetch 'supermomonga/thingspast.vim'
-
 NeoBundleFetch 'itchyny/lightline.vim'
 " }}}
 
 " Source Plugins Settings " {{{
-"" NeoBundle
+" NeoBundle " {{{
 nnoremap [NeoBundle] <Nop>
 nmap <Space>n [NeoBundle]
 
 nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
 nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
 nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
+" }}}
 
+" Unite " {{{
 if neobundle#tap('unite.vim')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/unite.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
+" VimFiler " {{{
 if neobundle#tap('vimfiler')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimfiler.rc.vim'
-endif
+  nnoremap [VimFiler] <Nop>
+  nmap <Space>f [VimFiler]
 
-if neobundle#tap('vimshell.vim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimshell.rc.vim'
+  nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
+  nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
+  nnoremap <silent> [VimFiler]e :<C-u>VimFilerExplorer<CR>
+  call neobundle#untap()
 endif
+" }}}
 
+" Watchdogs " {{{
 if neobundle#tap('vim-watchdogs')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/watchdogs.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
+" TweetVim " {{{
 if neobundle#tap('TweetVim')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/tweetvim.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
-if neobundle#tap('agit.vim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/agit.rc.vim'
-endif
-
+" Previm " {{{
 if neobundle#tap('previm')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/previm.rc.vim'
-endif
+  nnoremap [Previm] <Nop>
+  nmap <Space>p [Previm]
 
+  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+  call neobundle#untap()
+endif
+" }}}
+
+" auto-save " {{{
 if neobundle#tap('vim-auto-save')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/autosave.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
+" indent-guides " {{{
 if neobundle#tap('vim-indent-guides')
+" }}}
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/indent-guides.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
-if neobundle#tap('colorswatch.vim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/colorswatch.rc.vim'
-endif
-
+" open-browser " {{{
 if neobundle#tap('open-browser.vim')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/open-browser.rc.vim'
+  call neobundle#untap()
 endif
+" }}}
 
+" NeoComplete and NeoComplcache " {{{
 if s:meet_neocomplete_requirements()
   if neobundle#tap('neocomplete.vim')
     let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplete.rc.vim'
+    call neobundle#untap()
   endif
 else
   if neobundle#tap('neocomplcache.vim')
     let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplcache.rc.vim'
+    call neobundle#untap()
   endif
 endif
+" }}}
 
+" NeoSnippet " {{{
 if neobundle#tap('neosnippet')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
+  call neobundle#untap()
 endif
-
-if neobundle#tap('vim-rails')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vim-rails.rc.vim'
-endif
+" }}}
 " }}}
