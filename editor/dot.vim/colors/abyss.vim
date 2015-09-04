@@ -53,9 +53,9 @@ hi Statement       cterm=bold                    ctermfg=75
 hi StatusLine      cterm=bold       ctermbg=17   ctermfg=231
 hi StatusLineNC    cterm=none       ctermbg=240  ctermfg=232
 hi String          cterm=none                    ctermfg=39
-hi TabLine         cterm=none       ctermbg=240  ctermfg=232
-hi TabLineFill     cterm=underline  ctermbg=232  ctermfg=231
-hi TabLineSel      cterm=none       ctermbg=19   ctermfg=232
+hi TabLine         cterm=none       ctermbg=240  ctermfg=231
+hi TabLineFill     cterm=underline  ctermbg=232  ctermfg=240
+hi TabLineSel      cterm=none       ctermbg=19   ctermfg=231
 hi Title           cterm=none                    ctermfg=27
 hi Todo            cterm=none       ctermbg=232  ctermfg=196
 hi Type            cterm=none                    ctermfg=231
