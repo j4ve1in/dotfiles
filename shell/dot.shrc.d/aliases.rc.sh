@@ -72,16 +72,11 @@ fi
 
 # Vim
 if type vim >/dev/null 2>&1; then
-  alias v='vim'
-  alias vi='vim'
+  alias v='vim -p'
+  alias vi='vim -p'
   alias tweetvim='vim +TweetVimHomeTimeline'
   alias tweet='vim +TweetVimCommandSay'
-  alias agit='vim +Agit'
-  alias vf='vim +VimFiler'
-  alias ninst='vim +NeoBundleInstall +qall'
-  alias nreinst='vim +NeoBundleReinstall +qall'
-  alias nup='vim +NeoBundleUpdate +qall'
-  alias ncl='vim +NeoBundleClean +qall'
+  alias vimfiler='vim +VimFiler'
 else
   alias v='vi'
 fi
