@@ -10,7 +10,9 @@ set virtualedit=block
 
 set noerrorbells
 
-set novisualbell
+set visualbell t_vb=
+
+set noerrorbells
 
 set display=lastline
 
