@@ -27,11 +27,37 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       Unite file_rec/async
     endif
   endfunction
-
   let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
-
   call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
   call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
+
+  " NeoBundle
+  let neobundle_toggle = { 'is_selectable': 1 }
+  function! neobundle_toggle.func(candidates)
+    for candidate in a:candidates
+      let bundle = candidate.action__bundle_name
+      let cmd = neobundle#is_sourced(bundle) ?
+      \ 'NeoBundleDisable ' : 'NeoBundleSource '
+      exec cmd . bundle
+    endfor
+  endfunction
+  call unite#custom#action('neobundle', 'source', neobundle_toggle)
+  call unite#custom#default_action('neobundle', 'source')
+  " }}}
+
+  " vim-submode " {{{
+  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+  call submode#map('winsize', 'n', '', '>', '<C-w>>')
+  call submode#map('winsize', 'n', '', '<', '<C-w><')
+  call submode#map('winsize', 'n', '', '+', '<C-w>-')
+  call submode#map('winsize', 'n', '', '-', '<C-w>+')
+  " }}}
+
+  " VimFiler " {{{
+  call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
   " }}}
 
   filetype plugin indent on

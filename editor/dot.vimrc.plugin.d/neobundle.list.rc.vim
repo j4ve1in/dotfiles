@@ -23,11 +23,8 @@ NeoBundle 'Shougo/neomru.vim', {
 \   'depends': [ 'Shougo/unite.vim' ]
 \ }
 
-NeoBundleLazy 'Shougo/vimfiler', {
-\   'depends': [ 'Shougo/unite.vim' ],
-\   'autoload': {
-\       'commands': [ 'VimFilerTab', 'VimFiler', 'VimFilerExplorer' ]
-\   }
+NeoBundle 'Shougo/vimfiler', {
+\   'depends': [ 'Shougo/unite.vim' ]
 \ }
 " }}}
 
@@ -108,6 +105,8 @@ NeoBundle 'Shougo/neosnippet-snippets', {
 " Others " {{{
 NeoBundle 'surround.vim'
 
+NeoBundle 'kana/vim-submode'
+
 NeoBundle 'Townk/vim-autoclose'
 
 NeoBundle 'scrooloose/nerdcommenter'
@@ -157,7 +156,10 @@ if neobundle#tap('vimfiler')
 
   nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
   nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
+  nnoremap <silent> [VimFiler]b :<C-u>VimFilerBufferDir<CR>
+  nnoremap <silent> [VimFiler]d :<C-u>VimFilerDouble<CR>
   nnoremap <silent> [VimFiler]e :<C-u>VimFilerExplorer<CR>
+  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimfiler.rc.vim'
   call neobundle#untap()
 endif
 " }}}
