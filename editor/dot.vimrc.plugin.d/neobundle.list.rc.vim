@@ -111,6 +111,10 @@ NeoBundle 'Townk/vim-autoclose'
 
 NeoBundle 'rhysd/accelerated-jk'
 
+NeoBundle 'haya14busa/incsearch.vim'
+
+NeoBundle 'easymotion/vim-easymotion'
+
 NeoBundle 'scrooloose/nerdcommenter'
 
 NeoBundle 'vim-scripts/vim-auto-save'
@@ -236,6 +240,15 @@ endif
 " Accelerated-jk " {{{
 if neobundle#tap('accelerated-jk')
   let neobundle#hooks.on_source = '~/.vimrc.plugin.d/accelerated-jk.rc.vim'
+  call neobundle#untap()
+endif
+" }}}
+
+" Accelerated-jk " {{{
+if neobundle#tap('incsearch.vim')
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
   call neobundle#untap()
 endif
 " }}}
