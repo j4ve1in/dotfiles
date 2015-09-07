@@ -27,6 +27,13 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       Unite file_rec/async
     endif
   endfunction
+  function! DispatchUniteFileRecAsyncOrGitTab()
+    if isdirectory(getcwd()."/.git")
+      Unite file_rec/git -default-action=tabopen
+    else
+      Unite file_rec/async -default-action=tabopen
+    endif
+  endfunction
   let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
   call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
   call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
@@ -54,6 +61,14 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   call submode#map('winsize', 'n', '', '<', '<C-w><')
   call submode#map('winsize', 'n', '', '+', '<C-w>-')
   call submode#map('winsize', 'n', '', '-', '<C-w>+')
+  call submode#enter_with('ex-move', 'nv', '', '<Space><Space>', '<Nop>')
+  call submode#leave_with('ex-move', 'nv', '', '<Space>')
+  call submode#map('ex-move', 'nv', '', 'j', '<C-f>zz')
+  call submode#map('ex-move', 'nv', '', 'k', '<C-b>zz')
+  call submode#map('ex-move', 'nv', '', 'n', '5jzz')
+  call submode#map('ex-move', 'nv', '', 'm', '5kzz')
+  call submode#map('ex-move', 'nv', '', 'l', '}zz')
+  call submode#map('ex-move', 'nv', '', 'h', '{zz')
   " }}}
 
   " VimFiler " {{{

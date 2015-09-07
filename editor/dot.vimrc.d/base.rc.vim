@@ -65,7 +65,3 @@ set undodir=~/.vim/var/tmp/undo
 " Mouse
 set mouse=a
 set ttymouse=xterm2
-
-" .vimrc
-command! Ev edit $MYVIMRC
-command! Rv source $MYVIMRC
