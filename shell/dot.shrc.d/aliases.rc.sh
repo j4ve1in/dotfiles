@@ -1,3 +1,5 @@
+has() { type $1 >/dev/null 2>&1; }
+
 # ls
 alias l='ls -F --color=auto'
 alias ls='ls -F --color=auto'
@@ -12,8 +14,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # make
-alias mi='make install'
-alias mc='make clean'
+if has make; then
+  alias mi='make install'
+  alias mc='make clean'
+fi
 
 # cd
 alias c='cd'
@@ -22,19 +26,19 @@ alias ...='cd ~/.dotfiles'
 
 # git
 ## hub
-if type hub >/dev/null 2>&1; then
+if has hub; then
   eval "`hub alias -s`"
 fi
 
 # diff
-if type colordiff >/dev/null 2>&1; then
+if has colordiff; then
   alias diff='colordiff -u'
 else
   alias diff='diff -u'
 fi
 
 # Ansible
-if type ansible >/dev/null 2>&1; then
+if has ansible; then
   an='ansible'
   anp='ansible-playbook'
 fi
@@ -49,7 +53,7 @@ alias dset='dotsetup'
 alias dsu='dotsetup'
 
 # Vagrant
-if type vagrant >/dev/null 2>&1; then
+if has vagrant; then
   alias vags='vagrant global-status'
   alias vai='vagrant init'
   alias vah='vagrant halt'
@@ -63,7 +67,7 @@ if type vagrant >/dev/null 2>&1; then
 fi
 
 # Tmux
-if type tmux >/dev/null 2>&1; then
+if has tmux; then
   alias t='tmux'
   alias ta='tmux attach'
   alias tat='tmux attach -t 0'
@@ -72,7 +76,7 @@ if type tmux >/dev/null 2>&1; then
 fi
 
 # Vim
-if type vim >/dev/null 2>&1; then
+if has vim; then
   alias v='vim -p'
   alias vi='vim -p'
   alias tweetvim='vim +TweetVimHomeTimeline'
@@ -83,15 +87,15 @@ else
 fi
 
 # Ruby
-if type ruby >/dev/null 2>&1; then
+if has ruby; then
   alias ru=ruby
   ## Bundler
-  if type bundle >/dev/null 2>&1; then
+  if has bundle; then
     alias b=bundle
     alias be='bundle exec'
   fi
   ## Rake
-  if type rake >/dev/null 2>&1; then
+  if has rake; then
     alias rr='rake routes'
     alias rd='rake db'
     alias rdc='rake db:create'
@@ -99,7 +103,7 @@ if type ruby >/dev/null 2>&1; then
     alias rds='rake db:seed'
   fi
   ## Rails
-  if type rails >/dev/null 2>&1; then
+  if has rails; then
     alias ra=rails
     alias ran='rails new'
     alias rag='rails generate'
@@ -108,18 +112,19 @@ if type ruby >/dev/null 2>&1; then
 fi
 
 # keychain
-if type keychain >/dev/null 2>&1; then
+if has keychain; then
   if [ -f ~/.keychain/$HOST-sh ]; then
     alias keychain='keychain --nogui --quiet >/dev/null 2>&1; source ~/.keychain/$HOST-sh'
   fi
 fi
 
 # Others
-alias g=git
+has git && alias g=git
+has zsh && alias z=zsh
+has mysql && alias mysql='mysql --pager="less -iFMnSX"'
 alias h=history
 alias p=ps
 alias pw=pwd
-alias z=zsh
 alias r=rm
 alias m=mv
 alias le=less
@@ -130,7 +135,6 @@ alias df='df -h'
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias mysql='mysql --pager="less -iFMnSX"'
 alias reload='exec $SHELL -l'
 
 ## Linux
@@ -161,7 +165,7 @@ if [ `uname` = Linux ]; then
   alias gnwp='gnome-web-photo'
 
   # dnf
-  if type dnf >/dev/null 2>&1; then
+  if has; then
     alias dn=dnf
     alias dni='dnf install -y'
     alias dnu='dnf update -y'
@@ -230,3 +234,5 @@ if [ `uname` = Darwin ]; then
   alias github='open https://github.com/'
   alias wikipedia='open http://ja.wikipedia.org/'
 fi
+
+unset -f has
