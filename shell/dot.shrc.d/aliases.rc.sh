@@ -116,6 +116,7 @@ fi
 # Others
 alias g=git
 alias h=history
+alias l=less
 alias z=zsh
 alias printpath='echo -e "${PATH//:/\n}"'
 alias path='echo -e "${PATH//:/\n}"'
