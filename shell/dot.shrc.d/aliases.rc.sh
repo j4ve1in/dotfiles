@@ -1,4 +1,5 @@
 # ls
+alias l='ls -F --color=auto'
 alias ls='ls -F --color=auto'
 alias ll='ls -hl'
 alias lly='ls -hl --time-style=long-iso'
@@ -11,11 +12,11 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # make
-alias m=make
 alias mi='make install'
 alias mc='make clean'
 
 # cd
+alias c='cd'
 alias ..='cd ..'
 alias ...='cd ~/.dotfiles'
 
@@ -116,12 +117,14 @@ fi
 # Others
 alias g=git
 alias h=history
-alias l=less
+alias p=ps
+alias pw=pwd
 alias z=zsh
-alias printpath='echo -e "${PATH//:/\n}"'
+alias r=rm
+alias m=mv
+alias le=less
 alias path='echo -e "${PATH//:/\n}"'
 alias jman='env LANG="ja_JP.UTF-8" man'
-alias ysh='yum shell'
 alias grep='grep --color'
 alias df='df -h'
 alias rm='rm -iv'
@@ -156,6 +159,16 @@ if [ `uname` = Linux ]; then
   alias gnsm='gnome-system-monitor'
   alias gntt='gnome-tweak-tool'
   alias gnwp='gnome-web-photo'
+
+  # dnf
+  if type dnf >/dev/null 2>&1; then
+    alias dn=dnf
+    alias dni='dnf install -y'
+    alias dnu='dnf update -y'
+    alias sdn='sudo dnf'
+    alias sdni='sudo dnf install -y'
+    alias sdnu='sudo dnf update -y'
+  fi
 
   # Screenshot
   ## import
@@ -204,6 +217,7 @@ fi
 
 ## OSX
 if [ `uname` = Darwin ]; then
+  alias l='ls -F'
   alias ls='ls -F'
   alias op='open'
   alias f='open .'

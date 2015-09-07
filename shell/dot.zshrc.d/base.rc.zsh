@@ -22,8 +22,11 @@ bindkey '^K' kill-line
 # Delete overlapping environment variable
 typeset -U path cdpath fpath manpath
 
+# Fix insecure directory(Cygwin)
+fix-insecure-dir() { compaudit | xargs chmod g-w; }
+
 # zman
-function zman() {
+zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 

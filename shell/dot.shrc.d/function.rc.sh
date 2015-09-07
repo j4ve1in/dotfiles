@@ -26,13 +26,7 @@ set-urxvt-font-size() {
   echo "Set font: $new_name"
 }
 
-mcd() {
-  mkdir $1 && cd $1
-}
-
-fix_insecure_dir() {
-  compaudit | xargs chmod g-w
-}
+mcd() { mkdir $1 && cd $1; }
 
 function man {
   local p
