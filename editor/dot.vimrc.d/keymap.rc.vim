@@ -18,20 +18,23 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent> <Space><Space>.  :<C-u>edit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
 nnoremap <silent> <Space><Space>..  :<C-u>source $MYVIMRC<CR>
 
-" Buffer and Tab
-nnoremap <Leader>btt :tab ball<CR>
-
 " Buffer
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-nnoremap <Leader>d :bdelete<CR>
+nnoremap [Buffer] <Nop>
+nmap <Leader>b [Buffer]
+nnoremap <silent> [Buffer] :buffers<CR>
+nnoremap [Buffer]e :buffer<Space>
+nnoremap <silent> [Buffer]n :bnext<CR>
+nnoremap <silent> [Buffer]p :bprevious<CR>
+nnoremap <silent> [Buffer]d :bdelete<CR>
+nnoremap <silent> [Buffer]t :tab ball<CR>
 
 " Tab
 nnoremap [Tab] <Nop>
 nmap <Leader>t [Tab]
 nnoremap <silent> [Tab] :tabs<CR>
 nnoremap [Tab]e :tabedit<Space>
-nnoremap [Tab]t :tabnext<Space>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
 nnoremap <silent> [Tab]n :tabnew<CR>
 nnoremap <silent> [Tab]c :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
