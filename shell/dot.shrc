@@ -31,7 +31,7 @@ fi
 # Load keychain
 if [ "$OSTYPE" != "cygwin" ]; then
   if type keychain >/dev/null 2>&1; then
-    keychain --nogui --quiet >/dev/null 2>&1
+    keychain --nogui --quiet
     if [ -f ~/.keychain/$HOST-sh ]; then
       source ~/.keychain/$HOST-sh
     fi

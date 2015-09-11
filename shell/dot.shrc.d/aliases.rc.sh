@@ -111,13 +111,6 @@ if has ruby; then
   fi
 fi
 
-# keychain
-if has keychain; then
-  if [ -f ~/.keychain/$HOST-sh ]; then
-    alias keychain='keychain --nogui --quiet >/dev/null 2>&1; source ~/.keychain/$HOST-sh'
-  fi
-fi
-
 # Others
 has git && alias g=git
 has zsh && alias z=zsh
