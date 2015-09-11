@@ -13,6 +13,7 @@ vnoremap <Space>k  <C-b>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap Y y$
 
 " .vimrc
 nnoremap <silent> <Space><Space>.  :<C-u>edit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
@@ -23,8 +24,8 @@ nnoremap [Buffer] <Nop>
 nmap <Leader>b [Buffer]
 nnoremap <silent> [Buffer] :buffers<CR>
 nnoremap [Buffer]e :buffer<Space>
-nnoremap <silent> [Buffer]n :bnext<CR>
-nnoremap <silent> [Buffer]p :bprevious<CR>
+nnoremap gb :bnext<CR>
+nnoremap gB :bprevious<CR>
 nnoremap <silent> [Buffer]d :bdelete<CR>
 nnoremap <silent> [Buffer]t :tab ball<CR>
 

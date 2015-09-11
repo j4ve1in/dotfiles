@@ -22,3 +22,5 @@ nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
 let g:unite_enable_start_insert = 1
 let g:unite_enable_auto_select = 0
+autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
+autocmd BufLeave \[unite\]* highlight! link CursorLine NONE

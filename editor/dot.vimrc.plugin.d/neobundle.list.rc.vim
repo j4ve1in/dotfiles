@@ -139,117 +139,119 @@ NeoBundleFetch 'itchyny/lightline.vim'
 " }}}
 
 " Source Plugins Settings " {{{
-" NeoBundle " {{{
-nnoremap [NeoBundle] <Nop>
-nmap <Space>n [NeoBundle]
+  " NeoBundle " {{{
+  nnoremap [NeoBundle] <Nop>
+  nmap <Space>n [NeoBundle]
 
-nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
-nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
-nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
-" }}}
+  nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
+  nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
+  nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
+  " }}}
 
-" Unite " {{{
-if neobundle#tap('unite.vim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/unite.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" VimFiler " {{{
-if neobundle#tap('vimfiler')
-  nnoremap [VimFiler] <Nop>
-  nmap <Space>f [VimFiler]
-
-  nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
-  nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
-  nnoremap <silent> [VimFiler]b :<C-u>VimFilerBufferDir<CR>
-  nnoremap <silent> [VimFiler]d :<C-u>VimFilerDouble<CR>
-  nnoremap <silent> [VimFiler]e :<C-u>VimFilerExplorer<CR>
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimfiler.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" Watchdogs " {{{
-if neobundle#tap('vim-watchdogs')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/watchdogs.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" TweetVim " {{{
-if neobundle#tap('TweetVim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/tweetvim.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" Previm " {{{
-if neobundle#tap('previm')
-  nnoremap [Previm] <Nop>
-  nmap <Space>p [Previm]
-
-  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
-  call neobundle#untap()
-endif
-" }}}
-
-" auto-save " {{{
-if neobundle#tap('vim-auto-save')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/autosave.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" indent-guides " {{{
-if neobundle#tap('vim-indent-guides')
-" }}}
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/indent-guides.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" open-browser " {{{
-if neobundle#tap('open-browser.vim')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/open-browser.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
-
-" NeoComplete and NeoComplcache " {{{
-if s:meet_neocomplete_requirements()
-  if neobundle#tap('neocomplete.vim')
-    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplete.rc.vim'
+  " Unite " {{{
+  if neobundle#tap('unite.vim')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/unite.rc.vim'
     call neobundle#untap()
   endif
-else
-  if neobundle#tap('neocomplcache.vim')
-    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplcache.rc.vim'
+  " }}}
+
+  " VimFiler " {{{
+  if neobundle#tap('vimfiler')
+    nnoremap [VimFiler] <Nop>
+    nmap <Space>f [VimFiler]
+
+    nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
+    nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
+    nnoremap <silent> [VimFiler]b :<C-u>VimFilerBufferDir<CR>
+    nnoremap <silent> [VimFiler]d :<C-u>VimFilerDouble<CR>
+    nnoremap <silent> [VimFiler]e :<C-u>VimFilerExplorer<CR>
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/vimfiler.rc.vim'
     call neobundle#untap()
   endif
-endif
-" }}}
+  " }}}
 
-" NeoSnippet " {{{
-if neobundle#tap('neosnippet')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
+  " Watchdogs " {{{
+  if neobundle#tap('vim-watchdogs')
+    nnoremap [Watchdogs] <Nop>
+    nmap <Space>W [Watchdogs]
 
-" Accelerated-jk " {{{
-if neobundle#tap('accelerated-jk')
-  let neobundle#hooks.on_source = '~/.vimrc.plugin.d/accelerated-jk.rc.vim'
-  call neobundle#untap()
-endif
-" }}}
+    nnoremap <silent> [Watchdogs] :<C-u>WatchdogsRun<CR>
+    call neobundle#untap()
+  endif
+  " }}}
 
-" Accelerated-jk " {{{
-if neobundle#tap('incsearch.vim')
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  call neobundle#untap()
-endif
-" }}}
+  " TweetVim " {{{
+  if neobundle#tap('TweetVim')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/tweetvim.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " Previm " {{{
+  if neobundle#tap('previm')
+    nnoremap [Previm] <Nop>
+    nmap <Space>p [Previm]
+
+    nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " auto-save " {{{
+  if neobundle#tap('vim-auto-save')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/autosave.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " indent-guides " {{{
+  if neobundle#tap('vim-indent-guides')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/indent-guides.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " open-browser " {{{
+  if neobundle#tap('open-browser.vim')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/open-browser.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " NeoComplete and NeoComplcache " {{{
+  if s:meet_neocomplete_requirements()
+    if neobundle#tap('neocomplete.vim')
+      let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplete.rc.vim'
+      call neobundle#untap()
+    endif
+  else
+    if neobundle#tap('neocomplcache.vim')
+      let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neocomplcache.rc.vim'
+      call neobundle#untap()
+    endif
+  endif
+  " }}}
+
+  " NeoSnippet " {{{
+  if neobundle#tap('neosnippet')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " Accelerated-jk " {{{
+  if neobundle#tap('accelerated-jk')
+    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/accelerated-jk.rc.vim'
+    call neobundle#untap()
+  endif
+  " }}}
+
+  " Accelerated-jk " {{{
+  if neobundle#tap('incsearch.vim')
+    map /  <Plug>(incsearch-forward)
+    map ?  <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+    call neobundle#untap()
+  endif
+  " }}}
 " }}}
