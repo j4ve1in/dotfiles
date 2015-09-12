@@ -246,7 +246,7 @@ NeoBundleFetch 'itchyny/lightline.vim'
   endif
   " }}}
 
-  " Accelerated-jk " {{{
+  " incsearch.vim " {{{
   if neobundle#tap('incsearch.vim')
     map /  <Plug>(incsearch-forward)
     map ?  <Plug>(incsearch-backward)
