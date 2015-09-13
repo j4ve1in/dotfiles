@@ -1,5 +1,0 @@
-# time-out period
-connect-timeout = 30
-
-# Display error message
-show-error

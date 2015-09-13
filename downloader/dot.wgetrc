@@ -1,6 +1,0 @@
-# Time-out period
-timeout = 60
-
-# Others
-timestamping = on
-tries = 3
