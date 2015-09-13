@@ -18,7 +18,7 @@ hi Comment                                       ctermfg=239
 hi Constant                                      ctermfg=99
 hi Cursor                           ctermbg=240  ctermfg=231
 hi CursorLine                       ctermbg=none
-hi CursorLineNr    cterm=none       ctermbg=0    ctermfg=none
+hi CursorLineNr    cterm=bold       ctermbg=0    ctermfg=none
 hi CursorColumn                     ctermbg=0
 hi DiffAdd                          ctermbg=248  ctermfg=27
 hi DiffChange                       ctermbg=248  ctermfg=27
@@ -31,7 +31,7 @@ hi Folded                           ctermbg=236  ctermfg=196
 hi Function                         ctermbg=232  ctermfg=27
 hi Identifier                       ctermbg=232  ctermfg=51
 hi IncSearch       cterm=none       ctermbg=20   ctermfg=232
-hi LineNr                           ctermbg=232  ctermfg=21
+hi LineNr                           ctermbg=232  ctermfg=27
 hi MatchParen      cterm=none       ctermbg=236  ctermfg=27
 hi ModeMsg                          ctermbg=232  ctermfg=27
 hi MoreMsg                          ctermbg=232  ctermfg=27
