@@ -6,7 +6,6 @@ nnoremap <C-S-Tab> gT
 
 " Colorscheme " {{{
 "--------------------------------------------------------------------
-" Name: dw_blue.vim.
 " Description: Designed against VIM 7.0 GUI
 " Credits: Inspiration from the brookstream and redblack schemes.
 "--------------------------------------------------------------------
