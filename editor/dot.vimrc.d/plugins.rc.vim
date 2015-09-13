@@ -150,6 +150,20 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \ }
 
   NeoBundleFetch 'itchyny/lightline.vim'
+
+  " NeoBundleLazy 'ujihisa/unite-colorscheme', {
+  " \   'depends': [ 'Shougo/unite.vim' ],
+  " \   'autoload': {
+  " \     'commands': [ 'Unite colorscheme' ]
+  " \   }
+  " \ }
+
+  " NeoBundleLazy 'pasela/unite-webcolorname', {
+  " \   'depends': [ 'Shougo/unite.vim' ],
+  " \   'autoload': {
+  " \     'commands': [ 'Unite webcolorname' ]
+  " \   }
+  " \ }
   " }}}
 
   " Source Plugins Settings " {{{
