@@ -109,8 +109,6 @@ NeoBundle 'kana/vim-submode'
 
 NeoBundle 'Townk/vim-autoclose'
 
-NeoBundle 'rhysd/accelerated-jk'
-
 NeoBundle 'haya14busa/incsearch.vim'
 
 NeoBundle 'easymotion/vim-easymotion'
@@ -235,13 +233,6 @@ NeoBundleFetch 'itchyny/lightline.vim'
   " NeoSnippet " {{{
   if neobundle#tap('neosnippet')
     let neobundle#hooks.on_source = '~/.vimrc.plugin.d/neosnippet.rc.vim'
-    call neobundle#untap()
-  endif
-  " }}}
-
-  " Accelerated-jk " {{{
-  if neobundle#tap('accelerated-jk')
-    let neobundle#hooks.on_source = '~/.vimrc.plugin.d/accelerated-jk.rc.vim'
     call neobundle#untap()
   endif
   " }}}
