@@ -171,9 +171,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     nnoremap [NeoBundle] <Nop>
     nmap <Space>n [NeoBundle]
 
-    nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleList<CR>
-    nnoremap <silent> [NeoBundle]L :<C-u>NeoBundleLog<CR>
-    nnoremap <silent> [NeoBundle]u :<C-u>NeoBundleUpdate<CR>
+    nnoremap <silent> [NeoBundle] :<C-u>NeoBundleUpdate<CR>
+    nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleLog<CR>
     " }}}
 
     " Unite " {{{
@@ -182,14 +181,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nmap <Space>u [Unite]
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
-      nnoremap <silent> [Unite]a :<C-u>UniteBookmarkAdd<CR>
       nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
-      nnoremap <silent> [Unite]B :<C-u>Unite<Space>bookmark<CR>
-      nnoremap <silent> [Unite]Bt :<C-u>Unite<Space>bookmark<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]f :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
-      nnoremap <silent> [Unite]ft :<C-u>call DispatchUniteFileRecAsyncOrGitTab()<CR>
+      nnoremap <silent> [Unite]F :<C-u>call DispatchUniteFileRecAsyncOrGitTab()<CR>
       nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
-      nnoremap <silent> [Unite]mt :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]r :<C-u>Unite<Space>register<CR>
       nnoremap <silent> [Unite]R :<C-u>UniteResume<CR>
       nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
