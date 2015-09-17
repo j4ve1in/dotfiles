@@ -449,14 +449,14 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     if isdirectory(getcwd()."/.git")
       Unite file_rec/git
     else
-      Unite file_rec/async
+      Unite file_rec/async:!
     endif
   endfunction
   function! DispatchUniteFileRecAsyncOrGitTab()
     if isdirectory(getcwd()."/.git")
       Unite file_rec/git -default-action=tabopen
     else
-      Unite file_rec/async -default-action=tabopen
+      Unite file_rec/async:! -default-action=tabopen
     endif
   endfunction
   let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
