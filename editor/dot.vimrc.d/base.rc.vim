@@ -1,24 +1,24 @@
-set backspace=indent,eol,start
-
 set hidden
 
 set nrformats=
 
-set clipboard+=unnamed
-
-set virtualedit=block
+set scrolloff=5
 
 set noerrorbells
 
 set visualbell t_vb=
 
-set noerrorbells
-
 set display=lastline
 
-set viminfo='50,\"1000,n~/.vim/var/tmp/.viminfo
+set virtualedit=block
+
+set clipboard+=unnamed
 
 set whichwrap=b,s ",[,],<,>
+
+set backspace=indent,eol,start
+
+set viminfo='50,\"1000,n~/.vim/var/tmp/.viminfo
 
 autocmd FileType *  setlocal formatoptions-=ro
 

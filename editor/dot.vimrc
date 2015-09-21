@@ -12,12 +12,7 @@ function! s:source_rc(path)
 endfunction
 
 " Source settings
-" Location:
-"   ~/.vimrc.d/plugins.rc.vim
-"   ~/.vimrc.d/apperance.rc.vim
-"   ~/.vimrc.d/base.rc.vim
-"   ~/.vimrc.d/colors.rc.vim
-"   ~/.vimrc.d/keymap.rc.vim
+" Location: ~/.vimrc.d/
 for rc_vim in rc_vim_list
   cal s:source_rc(rc_vim)
 endfor
