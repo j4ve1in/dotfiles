@@ -33,12 +33,24 @@
     ta = tag
     tad = tag -d
 
+    # alias
+    alias = "!\
+        git config --list |\
+        grep 'alias\\.' |\
+        sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' |\
+        sort\
+    "
+    al = "!git alias"
+
     # commit
     ci = commit
     ca = commit -a
     cm = commit -m
     cam = commit -am
     came = commit --amend
+
+    # hub
+    bo =browse
 
     # log
     l = log
@@ -112,14 +124,7 @@
     # submodule-info
     submodule-info = "!git submodule foreach 'echo Name: $name; echo Path: $path; echo Sha1: $sha1; echo'"
     si = "!git submodule-info"
-    submodule-info-less = "!git submodule-info | less"
-    sil = "!git submodule-info-less"
 
     # submodule-ls
     submodule-ls = "!git submodule foreach 'ls; echo'"
     sls = "!git submodule-ls"
-    submodule-ls-less = "!git submodule-ls | less"
-    slsl = "!git submodule-ls-less"
-
-    # hub
-    bo =browse
