@@ -68,8 +68,8 @@ nnoremap [Tab] <Nop>
 nmap <Leader>t [Tab]
 nnoremap <silent> [Tab] :tabs<CR>
 nnoremap [Tab]e :tabedit<Space>
-nnoremap <Tab> :tabnext<CR>
-nnoremap <S-Tab> :tabprevious<CR>
+nnoremap L :tabnext<CR>
+nnoremap H :tabprevious<CR>
 nnoremap <silent> [Tab]n :tabnew<CR>
 nnoremap <silent> [Tab]c :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>

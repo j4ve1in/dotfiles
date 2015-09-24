@@ -182,8 +182,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
       nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
-      nnoremap <silent> [Unite]f :Unite<Space>file_rec/async:!<CR>
-      nnoremap <silent> [Unite]F :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]f :Unite<Space>file_rec/async<CR>
+      nnoremap <silent> [Unite]F :Unite<Space>file_rec/async<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]g :Unite<Space>file_rec/git<CR>
+      nnoremap <silent> [Unite]G :Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
       nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]r :<C-u>Unite<Space>register<CR>
