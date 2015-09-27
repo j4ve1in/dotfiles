@@ -1,7 +1,9 @@
 # Load
 ## Plugin
-if [ -d ~/.zsh/bundle/antigen ]; then
-  source ~/.zshrc.d/plugins.rc.zsh
+if [ "$OSTYPE" != "cygwin" ]; then
+  if [ -d ~/.zsh/bundle/antigen ]; then
+    source ~/.zshrc.d/plugins.rc.zsh
+  fi
 fi
 
 ## ~/.zshrc.d/*.rc.zsh

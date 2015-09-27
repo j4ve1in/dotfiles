@@ -44,6 +44,7 @@ for plugin in ${ANTIGEN_PLUGINS[@]}; do
   fi
   antigen bundle $plugin && ((i=i+1))
 done
+
 # Others
 display_loading_plugin zsh-users/zsh-completions $((i+1)) N
 antigen bundle zsh-users/zsh-completions src && ((i=i+1))

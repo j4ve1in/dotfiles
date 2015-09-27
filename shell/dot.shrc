@@ -10,21 +10,28 @@ COLOR_RESET="\033[0;39m"
 printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
 ## Shell
 printf "${COLOR}Shell: ${COLOR_RESET}"
-ps -p $$ -o comm=
+if [ "$OSTYPE" != "cygwin" ]; then
+  ps -p $$ -o comm=
+else
+  CURRENT_SHELL_PATH=`readlink /proc/$$/exe`
+  echo "`basename $CURRENT_SHELL_PATH`"
+fi
 ## LastLogin
-if type lastlog >/dev/null 2>&1; then
-  LASTLOG=`lastlog -u $USER | sed '1d'`
-  printf "${COLOR}LastLogin: ${COLOR_RESET}"
-  echo $LASTLOG | grep -o 'Never logged in'
-  PORT=`echo $LASTLOG | awk '{print $2}'`
-  ATTRIBUTE=`echo $LASTLOG | wc -w`
-  if [ "$ATTRIBUTE" = "9" ]; then
-    FROM=`echo $LASTLOG | awk '{print $3}'`
-    DATE=`echo $LASTLOG | awk '{print $4,$5,$6,$7,$9}'`
-    echo "$DATE on $PORT from $FROM"
-  elif [ "$ATTRIBUTE" = "8" ]; then
-    DATE=`echo $LASTLOG | awk '{print $3,$4,$5,$6,$8}'`
-    echo "$DATE on $PORT"
+if [ "$OSTYPE" != "cygwin" ]; then
+  if type lastlog >/dev/null 2>&1; then
+    LASTLOG=`lastlog -u $USER | sed '1d'`
+    printf "${COLOR}LastLogin: ${COLOR_RESET}"
+    echo $LASTLOG | grep -o 'Never logged in'
+    PORT=`echo $LASTLOG | awk '{print $2}'`
+    ATTRIBUTE=`echo $LASTLOG | wc -w`
+    if [ "$ATTRIBUTE" = "9" ]; then
+      FROM=`echo $LASTLOG | awk '{print $3}'`
+      DATE=`echo $LASTLOG | awk '{print $4,$5,$6,$7,$9}'`
+      echo "$DATE on $PORT from $FROM"
+    elif [ "$ATTRIBUTE" = "8" ]; then
+      DATE=`echo $LASTLOG | awk '{print $3,$4,$5,$6,$8}'`
+      echo "$DATE on $PORT"
+    fi
   fi
 fi
 

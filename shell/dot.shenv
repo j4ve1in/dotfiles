@@ -17,8 +17,10 @@ if [ "$OSTYPE" = "cygwin" ]; then
 fi
 
 # OSX
-if [ `uname` = Darwin ]; then
-  export LSCOLORS="gxfxcxdxbxegedabagacad"
+if [ "$OSTYPE" != "cygwin" ]; then
+  if [ "`uname`" = "Darwin" ]; then
+    export LSCOLORS="gxfxcxdxbxegedabagacad"
+  fi
 fi
 
 # Node.js
