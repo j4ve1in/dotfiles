@@ -1,7 +1,18 @@
 # Load ~/.shrc.d/*.rc.sh
-for filepath in ~/.shrc.d/*.rc.sh; do
-  source ${filepath}
-done
+SHRC=(
+  "aliases"
+  "base"
+  "function"
+)
+for file in ${SHRC[@]}; do
+  file=~/.shrc.d/${file}.rc.sh
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done; unset -v SHRC file
+
+# Load ~/.shrc.d/local.rc.sh
+RCLOCAL=~/.shrc.d/local.rc.sh
+[ -r "$RCLOCAL" ] && [ -f "$RCLOCAL" ] && source "$RCLOCAL"
+unset -v RCLOCAL
 
 # Display user info
 COLOR="\033[1;38;05;75m"
