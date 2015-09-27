@@ -96,7 +96,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \       'css',
   \       'sass',
   \       'scss',
-  \       'eruby'
+  \       'eruby',
+  \       'markdown'
   \     ]
   \   }
   \ }

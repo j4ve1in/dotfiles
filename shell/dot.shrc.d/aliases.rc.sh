@@ -23,6 +23,10 @@ fi
 alias c='cd'
 alias ..='cd ..'
 alias ...='cd ~/.dotfiles'
+alias doc='cd ~/Documents'
+alias dow='cd ~/Downloads'
+alias dr='cd ~/Dropbox'
+alias so='cd ~/Source_code'
 
 # git
 ## hub
