@@ -85,7 +85,7 @@ $ sudo docker run -it --rm j4ve1in/dotfiles
 Please have a look at the **[wiki]** for more information.
 
 # License
-Copyright (c) 2015 j4ve1in
+Copyright (c) 2015 j4ve1in  
 Released under the MIT License, see **[LICENSE.md]**.
 
 [my]: //github.com/j4ve1in

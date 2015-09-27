@@ -42,3 +42,4 @@ if [ "$N" != "0" ]; then
     fi
   done
 fi
+unset ZFILE

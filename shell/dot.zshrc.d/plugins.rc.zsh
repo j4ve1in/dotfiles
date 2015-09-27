@@ -32,17 +32,17 @@ display_loading_plugin() {
 i=0
 N=$((${#ANTIGEN_PLUGINS[@]}+2))
 display_loading_plugin Antigen $((i+1)) N
+source ~/.zsh/bundle/antigen/antigen.zsh && ((i=i+1))
 if which usleep >/dev/null 2>&1; then
   usleep 100000
 fi
-source ~/.zsh/bundle/antigen/antigen.zsh && ((i=i+1))
 # Plugin
 for plugin in ${ANTIGEN_PLUGINS[@]}; do
   display_loading_plugin $plugin $((i+1)) N
+  antigen bundle $plugin && ((i=i+1))
   if which usleep >/dev/null 2>&1; then
     usleep 100000
   fi
-  antigen bundle $plugin && ((i=i+1))
 done
 
 # Others

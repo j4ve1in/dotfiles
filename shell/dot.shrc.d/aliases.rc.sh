@@ -23,6 +23,10 @@ fi
 alias c='cd'
 alias ..='cd ..'
 alias ...='cd ~/.dotfiles'
+alias doc='cd ~/Documents'
+alias dow='cd ~/Downloads'
+alias dr='cd ~/Dropbox'
+alias so='cd ~/Source_code'
 
 # git
 ## hub
@@ -82,8 +86,15 @@ if has vim; then
   alias tweetvim='vim +TweetVimHomeTimeline'
   alias tweet='vim +TweetVimCommandSay'
   alias vimfiler='vim +VimFiler'
+  alias vrc='vim ~/.vimrc'
+  alias virc='vim ~/.vimrc'
+  has zsh && alias zenv='vim ~/.zshenv'
+  has zsh && alias zrc='vim ~/.zsh/.zshrc'
+  has zsh && alias zrcd='vim ~/.zsh/.zshrc.d'
 else
-  alias v='vi'
+  alias v='vi -p'
+  alias vrc='vi ~/.vimrc'
+  alias virc='vi ~/.vimrc'
 fi
 
 # Ruby
