@@ -6,9 +6,15 @@
 
 set t_Co=256 " Enable 256 colors.
 set t_ut=
-set cursorline "Highlight the screen line of the cursor with CursorLine.
 syntax enable " Switch on syntax highlighting
-hi clear CursorLine " Reset CursorLine highlighting to the defaults.
+set cursorline "Highlight the screen line of the cursor with CursorLine.
+augroup vimrc_change_cursorline_color
+  autocmd!
+  " Set CursorLine highlighting.
+  autocmd InsertEnter * highlight CursorLine cterm=none ctermbg=17
+  " Reset CursorLine highlighting to the defaults.
+  autocmd VimEnter,InsertLeave * highlight clear CursorLine
+augroup END
 
 "--------------------------------------------------------------------
 hi Boolean                                       ctermfg=27
@@ -17,7 +23,6 @@ hi cInclude                                      ctermfg=231
 hi Comment                                       ctermfg=239
 hi Constant                                      ctermfg=99
 hi Cursor                           ctermbg=240  ctermfg=231
-hi CursorLine                       ctermbg=none
 hi CursorLineNr    cterm=bold       ctermbg=0    ctermfg=none
 hi CursorColumn                     ctermbg=0
 hi DiffAdd                          ctermbg=248  ctermfg=27
@@ -35,7 +40,7 @@ hi LineNr                           ctermbg=232  ctermfg=27
 hi MatchParen      cterm=none       ctermbg=236  ctermfg=27
 hi ModeMsg                          ctermbg=232  ctermfg=27
 hi MoreMsg                          ctermbg=232  ctermfg=27
-hi NonText                          ctermbg=232  ctermfg=231
+hi NonText                          ctermbg=232  ctermfg=239
 hi Normal          cterm=none       ctermbg=232  ctermfg=251
 hi Operator        cterm=none                    ctermfg=239
 hi Pmenu                            ctermbg=233  ctermfg=255

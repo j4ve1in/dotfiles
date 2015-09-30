@@ -8,6 +8,7 @@ nnoremap <Space>/ *
 noremap <Space>h ^
 noremap <Space>l $
 noremap <Space>m %
+nnoremap <Space>e :<C-u>edit!<CR>
 nnoremap <Space>j <C-f>
 vnoremap <Space>j <C-f>
 nnoremap <Space>k <C-b>
@@ -28,6 +29,13 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o><Tab>
 nnoremap j gj
 nnoremap k gk
 vnoremap v $h
+nnoremap <silent> <ESC><ESC>
+\  :<C-u>highlight CursorLine cterm=none ctermbg=24 ctermfg=24<CR> \|
+\  :<C-u>sleep 1ms<CR> \|
+\  :<C-u>highlight clear CursorLine<CR>
+\  :<C-u>highlight CursorLine cterm=none ctermbg=24 ctermfg=24<CR> \|
+\  :<C-u>sleep 1ms<CR> \|
+\  :<C-u>highlight clear CursorLine<CR>
 
 " Substitute
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
