@@ -1,8 +1,14 @@
-set guifont=Migu\ 1M\ 12
+" Font
+"" Linux
+" set guifont=Migu\ 1M\ 12
+" set guifontwide=Migu\ 1M\ 12
+set guifont=Monospace\ 12
+set guifontwide=Monospace\ 12
 set guioptions-=T
 set linespace=4
 nnoremap <C-Tab>   gt
 nnoremap <C-S-Tab> gT
+set visualbell t_vb=
 " Colorscheme " {{{
 "--------------------------------------------------------------------
 " Description: Designed against VIM 7.0 GUI
