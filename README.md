@@ -19,7 +19,6 @@
 </p>
 
 <p align="center">
-<a href="//waffle.io/j4ve1in/dotfiles"><img src="https://img.shields.io/badge/task-Waffle.io-blue.svg?style=flat-square"></a>
 <a href="//gitter.im/j4ve1in/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://img.shields.io/badge/chat-Gitter-lightgrey.svg?style=flat-square"></a>
 <a href="//github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
 <a href="//github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
