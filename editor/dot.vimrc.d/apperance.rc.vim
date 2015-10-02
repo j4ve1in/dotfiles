@@ -18,30 +18,60 @@ scriptencoding utf-8
 set termencoding=utf-8
 
 " List
-set list
-set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set list listchars=tab:▸\ ,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 autocmd FileType man set nolist
 
 " Statusline
 set laststatus=2
 set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V%8P
 function! g:Date()
-    return strftime("%x %H:%M")
+  return strftime("%x %H:%M")
 endfunction
 set statusline+=\ \%{g:Date()}
 
+" When insert mode, change statusline.
+let g:hi_insert = 'hi StatusLine gui=None guifg=Black guibg=Yellow cterm=None ctermfg=231 ctermbg=24'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+
 " Hilighting double-byte space
 function! ZenkakuSpace()
-    highlight ZenkakuSpace cterm=reverse ctermfg=blue gui=reverse guifg=blue
+  highlight ZenkakuSpace cterm=reverse ctermfg=blue gui=reverse guifg=blue
 endfunction
 
 if has('syntax')
-    augroup ZenkakuSpace
-        autocmd!
-        autocmd ColorScheme       * call ZenkakuSpace()
-        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-    augroup END
-    call ZenkakuSpace()
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
 endif
 
 " Tabline

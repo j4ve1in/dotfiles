@@ -1,12 +1,10 @@
 set hidden
 
+set ttyfast
+
 set nrformats=
 
 set scrolloff=5
-
-set noerrorbells
-
-set visualbell t_vb=
 
 set display=lastline
 
@@ -17,6 +15,8 @@ set clipboard+=unnamed
 set whichwrap=b,s ",[,],<,>
 
 set backspace=indent,eol,start
+
+set noerrorbells visualbell t_vb=
 
 set viminfo='50,\"1000,n~/.vim/var/tmp/.viminfo
 
@@ -33,35 +33,22 @@ if !exists('loaded_matchit')
 endif
 
 " Completion
-set wildmenu
-set wildmode=list:full
+set wildmenu wildmode=list:full
 
 " Indent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
 
 " Search
-set wrapscan
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
+set wrapscan ignorecase smartcase incsearch hlsearch
 
 " Swapfile
-set swapfile
-set directory=~/.vim/tmp/swap
+set swapfile directory=~/.vim/tmp/swap
 
 " Backupfile
-set backup
-set backupdir=~/.vim/var/tmp/backup
+set backup backupdir=~/.vim/var/tmp/backup
 
 " Undofile
-set undofile
-set undodir=~/.vim/var/tmp/undo
+set undofile undodir=~/.vim/var/tmp/undo
 
 " Mouse
-set mouse=a
-set ttymouse=xterm2
+set mouse=a ttymouse=xterm2

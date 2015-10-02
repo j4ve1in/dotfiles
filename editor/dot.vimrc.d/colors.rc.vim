@@ -20,7 +20,7 @@ augroup END
 hi Boolean                                       ctermfg=27
 hi cDefine                                       ctermfg=231
 hi cInclude                                      ctermfg=231
-hi Comment                                       ctermfg=239
+hi Comment                                       ctermfg=245
 hi Constant                                      ctermfg=99
 hi Cursor                           ctermbg=240  ctermfg=231
 hi CursorLineNr    cterm=bold       ctermbg=0    ctermfg=none

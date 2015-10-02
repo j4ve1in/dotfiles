@@ -13,6 +13,8 @@ nnoremap <Space>j <C-f>
 vnoremap <Space>j <C-f>
 nnoremap <Space>k <C-b>
 vnoremap <Space>k <C-b>
+nnoremap H <C-i>
+nnoremap L <C-o>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-f> <Right>
@@ -29,7 +31,7 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o><Tab>
 nnoremap j gj
 nnoremap k gk
 vnoremap v $h
-nnoremap <silent> <ESC><ESC>
+nnoremap <silent> <ESC><ESC><ESC>
 \  :<C-u>highlight CursorLine cterm=none ctermbg=24 ctermfg=24<CR> \|
 \  :<C-u>sleep 1ms<CR> \|
 \  :<C-u>highlight clear CursorLine<CR>
@@ -76,8 +78,33 @@ nnoremap [Tab] <Nop>
 nmap <Leader>t [Tab]
 nnoremap <silent> [Tab] :tabs<CR>
 nnoremap [Tab]e :tabedit<Space>
-nnoremap L :tabnext<CR>
-nnoremap H :tabprevious<CR>
+nnoremap K :tabnext<CR>
+nnoremap J :tabprevious<CR>
 nnoremap <silent> [Tab]n :tabnew<CR>
 nnoremap <silent> [Tab]c :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
+
+if has('unix') && !has('gui_running')
+  " Use meta keys in console.
+  function! s:use_meta_keys()  " {{{
+    for i in map(
+    \   range(char2nr('a'), char2nr('z'))
+    \ + range(char2nr('A'), char2nr('Z'))
+    \ + range(char2nr('0'), char2nr('9'))
+    \ , 'nr2char(v:val)')
+      " <ESC>O do not map because used by arrow keys.
+      if i != 'O'
+        execute 'nmap <ESC>' . i '<M-' . i . '>'
+      endif
+    endfor
+  endfunction  " }}}
+
+  call s:use_meta_keys()
+  map <NUL> <C-Space>
+  map! <NUL> <C-Space>
+endif
+noremap <M-j> J
+noremap <M-h> K
+noremap <Space> :
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
+" cnoremap w!! w !sudo tee > /dev/null %<CR>

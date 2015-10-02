@@ -122,6 +122,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   " Others " {{{
   NeoBundle 'surround.vim'
 
+  NeoBundle 'vim-jp/vimdoc-ja'
+
   NeoBundle 'kana/vim-submode'
 
   NeoBundle 'Townk/vim-autoclose'
@@ -179,6 +181,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " Unite " {{{
     if neobundle#tap('unite.vim')
       nnoremap [Unite] <Nop>
+      nmap <C-Space> [Unite]
       nmap <Space>u [Unite]
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
