@@ -128,6 +128,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'Townk/vim-autoclose'
 
+  NeoBundle 'Shougo/vimshell.vim'
+
   NeoBundle 'haya14busa/incsearch.vim'
 
   NeoBundle 'easymotion/vim-easymotion'
@@ -224,6 +226,17 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
             \ nnoremap <buffer><silent>/ 
             \ :<C-u>Unite file -default-action=vimfiler<CR>
       autocmd FileType vimfiler setlocal statusline=VimFiler
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " VimShell " {{{
+    if neobundle#tap('vimshell.vim')
+      nnoremap [VimShell] <Nop>
+      nmap <Space>s [VimShell]
+
+      nnoremap <silent> [VimShell] :<C-u>VimShell<CR>
+      nnoremap <silent> [VimShell]t :<C-u>VimShellTab<CR>
       call neobundle#untap()
     endif
     " }}}
