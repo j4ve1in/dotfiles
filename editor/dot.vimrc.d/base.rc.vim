@@ -2,6 +2,8 @@ set hidden
 
 set ttyfast
 
+set autoread
+
 set nrformats=
 
 set scrolloff=5

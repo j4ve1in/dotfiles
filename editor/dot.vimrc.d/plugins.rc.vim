@@ -84,7 +84,17 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \   'autoload': { 'filetypes': [ 'css' ] }
   \ }
 
-  NeoBundle 'ekalinin/Dockerfile.vim'
+  NeoBundleLazy 'ekalinin/Dockerfile.vim', {
+  \   'autoload': { 'filetypes': [ 'dockerfile' ] }
+  \ }
+
+  NeoBundle 'slim-template/vim-slim'
+
+  " NeoBundleLazy 'slim-template/vim-slim', {
+  " \   'autoload': { 'filetypes': [ 'slim' ] }
+  " \ }
+
+  NeoBundle 'slim-template/vim-slim'
 
   " }}}
 
@@ -188,8 +198,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
       nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
-      nnoremap <silent> [Unite]f :Unite<Space>file_rec/async<CR>
-      nnoremap <silent> [Unite]F :Unite<Space>file_rec/async<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]f :Unite<Space>file_rec/async:!<CR>
+      nnoremap <silent> [Unite]F :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]g :Unite<Space>file_rec/git<CR>
       nnoremap <silent> [Unite]G :Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
@@ -206,6 +216,33 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let g:unite_enable_auto_select = 0
       autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
       autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
+      let s:hooks = neobundle#get_hooks("unite.vim")
+      function! s:hooks.on_source(bundle)
+        call unite#custom#profile('default', 'context', {
+          \ 'prompt_direction': 'top',
+          \ 'prompt': '> ',
+          \ 'candidate_icon': '- ',
+          \ 'hide_icon': 0 })
+
+        " ignore patterns
+        let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
+        call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
+        call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
+
+        " NeoBundle
+        let neobundle_toggle = { 'is_selectable': 1 }
+        function! neobundle_toggle.func(candidates)
+          for candidate in a:candidates
+            let bundle = candidate.action__bundle_name
+            let cmd = neobundle#is_sourced(bundle) ?
+            \ 'NeoBundleDisable ' : 'NeoBundleSource '
+            exec cmd . bundle
+          endfor
+        endfunction
+        call unite#custom#action('neobundle', 'source', neobundle_toggle)
+        call unite#custom#default_action('neobundle', 'source')
+      endfunction
+      unlet s:hooks
       call neobundle#untap()
     endif
     " }}}
@@ -226,6 +263,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
             \ nnoremap <buffer><silent>/ 
             \ :<C-u>Unite file -default-action=vimfiler<CR>
       autocmd FileType vimfiler setlocal statusline=VimFiler
+      let s:hooks = neobundle#get_hooks("vimfiler.vim")
+      function! s:hooks.on_source(bundle)
+        call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+      endfunction
+      unlet s:hooks
       call neobundle#untap()
     endif
     " }}}
@@ -452,58 +494,33 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       call neobundle#untap()
     endif
     " }}}
+
+    " vim-submode " {{{
+      let s:hooks = neobundle#get_hooks("vim-submode")
+      function! s:hooks.on_source(bundle)
+        call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+        call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+        call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+        call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+        call submode#map('winsize', 'n', '', '>', '<C-w>>')
+        call submode#map('winsize', 'n', '', '<', '<C-w><')
+        call submode#map('winsize', 'n', '', '+', '<C-w>-')
+        call submode#map('winsize', 'n', '', '-', '<C-w>+')
+        call submode#enter_with('ex-move', 'nv', '', '<Space><Space>', '<Nop>')
+        call submode#leave_with('ex-move', 'nv', '', '<Space>')
+        call submode#map('ex-move', 'nv', '', 'j', '<C-f>zz')
+        call submode#map('ex-move', 'nv', '', 'k', '<C-b>zz')
+        call submode#map('ex-move', 'nv', '', 'n', '5jzz')
+        call submode#map('ex-move', 'nv', '', 'm', '5kzz')
+        call submode#map('ex-move', 'nv', '', 'l', '}zz')
+        call submode#map('ex-move', 'nv', '', 'h', '{zz')
+      endfunction
+      unlet s:hooks
+    " }}}
+
   " }}}
 
   call neobundle#end()
-
-  " Unite " {{{
-  call unite#custom#profile('default', 'context', {
-    \ 'prompt_direction': 'top',
-    \ 'prompt': '> ',
-    \ 'candidate_icon': '- ',
-    \ 'hide_icon': 0 })
-
-  " ignore patterns
-  let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
-  call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
-  call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
-
-  " NeoBundle
-  let neobundle_toggle = { 'is_selectable': 1 }
-  function! neobundle_toggle.func(candidates)
-    for candidate in a:candidates
-      let bundle = candidate.action__bundle_name
-      let cmd = neobundle#is_sourced(bundle) ?
-      \ 'NeoBundleDisable ' : 'NeoBundleSource '
-      exec cmd . bundle
-    endfor
-  endfunction
-  call unite#custom#action('neobundle', 'source', neobundle_toggle)
-  call unite#custom#default_action('neobundle', 'source')
-  " }}}
-
-  " vim-submode " {{{
-  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
-  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
-  call submode#map('winsize', 'n', '', '>', '<C-w>>')
-  call submode#map('winsize', 'n', '', '<', '<C-w><')
-  call submode#map('winsize', 'n', '', '+', '<C-w>-')
-  call submode#map('winsize', 'n', '', '-', '<C-w>+')
-  call submode#enter_with('ex-move', 'nv', '', '<Space><Space>', '<Nop>')
-  call submode#leave_with('ex-move', 'nv', '', '<Space>')
-  call submode#map('ex-move', 'nv', '', 'j', '<C-f>zz')
-  call submode#map('ex-move', 'nv', '', 'k', '<C-b>zz')
-  call submode#map('ex-move', 'nv', '', 'n', '5jzz')
-  call submode#map('ex-move', 'nv', '', 'm', '5kzz')
-  call submode#map('ex-move', 'nv', '', 'l', '}zz')
-  call submode#map('ex-move', 'nv', '', 'h', '{zz')
-  " }}}
-
-  " VimFiler " {{{
-  call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
-  " }}}
 
   filetype plugin indent on
 
