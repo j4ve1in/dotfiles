@@ -40,6 +40,9 @@ if [ -d ~/.rbenv ]; then
   eval "`rbenv init -`"
 fi
 
+# VirtualBox
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
 # Editor
 if type vim >/dev/null 2>&1; then
   export EDITOR="vim"
