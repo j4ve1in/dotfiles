@@ -44,3 +44,6 @@
 ;; autosave
 (setq auto-save-file-name-transforms
   `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
+
+;; inhibit splash-screen
+(setq inhibit-splash-screen t)
