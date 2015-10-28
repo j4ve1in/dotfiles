@@ -1,8 +1,0 @@
-.apm
-.node-gyp
-.npm
-compile-cache
-nohup.out
-packages
-projects.cson
-storage
