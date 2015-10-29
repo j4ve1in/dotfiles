@@ -40,6 +40,10 @@ if [ -d ~/.rbenv ]; then
   eval "`rbenv init -`"
 fi
 
+# Go
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
 # VirtualBox
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
