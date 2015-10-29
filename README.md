@@ -48,7 +48,6 @@ You can install Javelin's dotfiles by the following installation command.
 
 # Configurations
 ## Dotsetup
-![dotsetup]
 
     NAME
         dotsetup - DOTfiles SETUP
@@ -72,6 +71,9 @@ You can install Javelin's dotfiles by the following installation command.
         -p, --install-plugin     Install shell and editor plugin
         -P, --uninstall-plugin   Uninstall shell and editor plugin
 
+![dotsetup1]
+![dotsetup2]
+
 # Test with Docker
 Before running installation command to setup dotfiles, you can pull an **[image]** and try my dotfiles in a Docker container as follows.
 ```bash
@@ -89,7 +91,8 @@ Released under the MIT License, see **[LICENSE.md]**.
 [my]: //github.com/j4ve1in
 [Screenshot]: /img/screenshot.png
 [asciinema]: //asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg
-[dotsetup]: /img/dotsetup.png
+[dotsetup1]: /img/dotsetup1.png
+[dotsetup2]: /img/dotsetup2.png
 [image]: //hub.docker.com/r/j4ve1in/dotfiles
 [wiki]: //github.com/j4ve1in/dotfiles/wiki
 [LICENSE.md]: //github.com/j4ve1in/dotfiles/blob/master/LICENSE.md

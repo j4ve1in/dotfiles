@@ -47,7 +47,6 @@
 
 # 設定
 ## Dotsetup
-![dotsetup]
 
     名前
         dotsetup - DOTfiles SETUP
@@ -71,6 +70,9 @@
         -p, --install-plugin     シェルとエディターのプラグインをインストール
         -P, --uninstall-plugin   シェルとエディターのプラグインをアンインストール
 
+![dotsetup1]
+![dotsetup2]
+
 # 試行
 インストールコマンドを使って、セットアップする前に、**[イメージ]**を引っ張ってきて、Dockerのコンテナ内で試すことができます。
 
@@ -88,7 +90,8 @@ MITライセンスのもとで公開されています。**[LICENSE.md]**を見�
 
 [Screenshot]: /img/screenshot.png
 [asciinema]: //asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg
-[dotsetup]: /img/dotsetup.png
+[dotsetup1]: /img/dotsetup1.png
+[dotsetup2]: /img/dotsetup2.png
 [イメージ]: //hub.docker.com/r/j4ve1in/dotfiles
 [wiki]: //github.com/j4ve1in/dotfiles/wiki
 [LICENSE.md]: //github.com/j4ve1in/dotfiles/blob/master/LICENSE.md
