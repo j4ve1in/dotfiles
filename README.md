@@ -90,7 +90,7 @@ Released under the MIT License, see **[LICENSE.md]**.
 
 [my]: //github.com/j4ve1in
 [Screenshot]: /img/screenshot.png
-[asciinema]: //asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg
+[asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
 [dotsetup1]: /img/dotsetup1.png
 [dotsetup2]: /img/dotsetup2.png
 [image]: //hub.docker.com/r/j4ve1in/dotfiles

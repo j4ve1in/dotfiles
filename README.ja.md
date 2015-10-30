@@ -89,7 +89,7 @@ Copyright (c) 2015 j4ve1in
 MITライセンスのもとで公開されています。**[LICENSE.md]**を見て下さい。
 
 [Screenshot]: /img/screenshot.png
-[asciinema]: //asciinema.org/a/5wpuq69gg9u1dl0pbfvxjntxg
+[asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
 [dotsetup1]: /img/dotsetup1.png
 [dotsetup2]: /img/dotsetup2.png
 [イメージ]: //hub.docker.com/r/j4ve1in/dotfiles
