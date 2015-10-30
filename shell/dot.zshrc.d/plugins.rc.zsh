@@ -6,16 +6,19 @@ ANTIGEN_PLUGINS=(
   "mollifier/cd-gitroot"
   "zsh-users/zsh-syntax-highlighting"
   "unixorn/autoupdate-antigen.zshplugin"
+  "zsh-users/zsh-completions src"
 )
 
 local BLUE="\x1b[34m"
+local RED="\x1b[1;31;49m"
 local SKYBLUE="\033[1;38;05;75m"
 
 cprintf() {
   local color="$1"
   local string="$2"
+  local args="$3"
   local reset="\x1b[0m"
-  printf "${color}${string}${reset}"
+  printf "${color}${string}${reset}" $args
 }
 
 display_loading_plugin() {
@@ -30,28 +33,34 @@ display_loading_plugin() {
 }
 
 i=0
-N=$((${#ANTIGEN_PLUGINS[@]}+2))
+N=$((${#ANTIGEN_PLUGINS[@]}+1))
 display_loading_plugin Antigen $((i+1)) N
 source ~/.zsh/bundle/antigen/antigen.zsh && ((i=i+1))
 if which usleep >/dev/null 2>&1; then
   usleep 100000
 fi
-# Plugin
 for plugin in ${ANTIGEN_PLUGINS[@]}; do
+  set -- ${=plugin}
+  plugin=$1
+  dir=$2
   display_loading_plugin $plugin $((i+1)) N
-  antigen bundle $plugin && ((i=i+1))
+  antigen bundle $plugin $dir && ((i=i+1))
   if which usleep >/dev/null 2>&1; then
     usleep 100000
   fi
 done
-
-# Others
-display_loading_plugin zsh-users/zsh-completions $((i+1)) N
-antigen bundle zsh-users/zsh-completions src && ((i=i+1))
-if [ "$((i-1))" = "$N" ]; then
-  echo -e "\nError"
+if [ "$i" = "$N" ]; then
+  echo
+else
+  cprintf $SKYBLUE "Loading plugin: "
+  cprintf $BLUE "("
+  cprintf $RED "%d" $i
+  printf "/%d" $N
+  cprintf $BLUE ") "
+  printf "\r\c"
+  cprintf $RED "\n Error:"
+  printf " loading failed\n"
 fi
-echo
 
 antigen apply
 

@@ -5,7 +5,7 @@
 "--------------------------------------------------------------------
 
 set t_Co=256 " Enable 256 colors.
-set t_ut=
+set t_ut= " Disable Background Color Erase
 set background=light
 syntax enable " Switch on syntax highlighting
 set cursorline "Highlight the screen line of the cursor with CursorLine.
