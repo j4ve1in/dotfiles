@@ -95,3 +95,9 @@ endif
 noremap <Space> :
 " cnoremap w!! w !sudo tee > /dev/null %<CR>
 " cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
+vmap <Space>y "+y
+vmap <Space>d "+d
+nmap <Space>p "+p
+nmap <Space>P "+P
+vmap <Space>p "+p
+vmap <Space>P "+P
