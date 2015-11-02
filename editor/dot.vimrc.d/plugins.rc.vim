@@ -198,22 +198,39 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
       nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
-      nnoremap <silent> [Unite]f :Unite<Space>file_rec/async:!<CR>
-      nnoremap <silent> [Unite]F :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]g :Unite<Space>file_rec/git<CR>
-      nnoremap <silent> [Unite]G :Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
-      nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]r :<C-u>Unite<Space>register<CR>
-      nnoremap <silent> [Unite]R :<C-u>UniteResume<CR>
+      nnoremap <silent> [Unite]rg :<C-u>Unite<Space>register<CR>
+      nnoremap <silent> [Unite]rs :<C-u>UniteResume<CR>
       nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
       nnoremap <silent> [Unite]w :<C-u>Unite<Space>window<CR>
 
-      nnoremap <silent> [Unite]n :<C-u>Unite<Space>neobundle<CR>
+      " file
+      nnoremap <silent> [Unite]f :Unite<Space>file<CR>
+      nnoremap <silent> [Unite]F :Unite<Space>file<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]n :Unite<Space>file/new<CR>
+      nnoremap <silent> [Unite]N :Unite<Space>file/new<Space>-default-action=tabopen<CR>
+
+      " directory
+      nnoremap <silent> [Unite]nd :Unite<Space>directory/new<CR>
+
+      " file_rec
+      nnoremap <silent> [Unite]r :Unite<Space>file_rec<CR>
+      nnoremap <silent> [Unite]R :Unite<Space>file_rec<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]r! :Unite<Space>file_rec/async:!<CR>
+      nnoremap <silent> [Unite]R! :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
+
+      " file_mru
+      nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
+      nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
+
+      " directory_mru
+      nnoremap <silent> [Unite]dm :<C-u>Unite<Space>directory_mru<CR>
+      nnoremap <silent> [Unite]dM :<C-u>Unite<Space>directory_mru<Space>-default-action=tabopen<CR>
+
+      nnoremap <silent> [Unite]nb :<C-u>Unite<Space>neobundle<CR>
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
-      let g:unite_enable_start_insert = 1
       let g:unite_enable_auto_select = 0
+      let g:unite_enable_start_insert = 1
       autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
       autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
       let s:hooks = neobundle#get_hooks("unite.vim")
