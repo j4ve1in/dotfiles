@@ -46,11 +46,6 @@ vnoremap gs :s///g<Left><Left><Left>
 " .vimrc
 nnoremap <silent> <Space>.  :<C-u>edit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
 nnoremap <silent> <Space>>  :<C-u>tabedit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
-if neobundle#tap('unite.vim')
-  nnoremap <silent> <Space><Space>.  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<CR>
-  nnoremap <silent> <Space><Space>>  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<Space>-default-action=tabopen<CR>
-  call neobundle#untap()
-endif
 nnoremap <silent> <Space><Space>.  :<C-u>edit ~/.vimrc.d<CR>
 nnoremap <silent> <Space><Space>>  :<C-u>tabedit ~/.vimrc.d<CR>
 nnoremap <silent> <Space><Space><Space>.  :<C-u>source $MYVIMRC<CR>

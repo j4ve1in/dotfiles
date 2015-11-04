@@ -229,6 +229,9 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]nb :<C-u>Unite<Space>neobundle<CR>
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
+      nnoremap <silent> <Space><Space>.  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<CR>
+      nnoremap <silent> <Space><Space>>  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<Space>-default-action=tabopen<CR>
+
       let g:unite_enable_auto_select = 0
       let g:unite_enable_start_insert = 1
       autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
