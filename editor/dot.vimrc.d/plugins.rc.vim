@@ -96,6 +96,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'slim-template/vim-slim'
 
+  NeoBundle 'kchmck/vim-coffee-script'
+
   " }}}
 
   " Completion " {{{
@@ -229,9 +231,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]nb :<C-u>Unite<Space>neobundle<CR>
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
-      nnoremap <silent> <Space><Space>.  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<CR>
-      nnoremap <silent> <Space><Space>>  :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<Space>-default-action=tabopen<CR>
-
       let g:unite_enable_auto_select = 0
       let g:unite_enable_start_insert = 1
       autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
@@ -356,7 +355,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let g:indent_guides_enable_on_vim_startup=1
       let g:indent_guides_color_change_percent=30
       let g:indent_guides_guide_size=1
-      let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler']
+      let g:indent_guides_exclude_filetypes = ['help', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler']
       call neobundle#untap()
     endif
     " }}}
