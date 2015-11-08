@@ -3,16 +3,10 @@
 source ~/.dotfiles/tools/lib/base.bash
 
 readonly COMMANDS=(
-  "wget"
-  "curl"
-  "emacs"
   "vim"
   "gvim"
-  "atom"
-  "nano"
   "git"
   "tig"
-  "screen"
   "tmux"
   "dircolors"
   "urxvt256c-ml"
