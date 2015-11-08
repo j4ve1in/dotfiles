@@ -1,5 +1,5 @@
-nnoremap <C-h><C-h> :<C-u>help<Space>
-nnoremap <silent> <C-h><C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <silent> <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <silent> <C-h><C-h><C-h> :<C-u>help<Space>
 nnoremap <silent> <Space>w :<C-u>w<CR>
 nnoremap <silent> <Space>q :<C-u>q<CR>
 nnoremap <silent> <Space>qa :<C-u>qa<CR>
@@ -46,9 +46,9 @@ vnoremap gs :s///g<Left><Left><Left>
 " .vimrc
 nnoremap <silent> <Space>.  :<C-u>edit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
 nnoremap <silent> <Space>>  :<C-u>tabedit $MYVIMRC \| :lcd ~/.vimrc.d<CR>
-nnoremap <silent> <Space><Space>.  :<C-u>edit ~/.vimrc.d<CR>
-nnoremap <silent> <Space><Space>>  :<C-u>tabedit ~/.vimrc.d<CR>
-nnoremap <silent> <Space><Space><Space>.  :<C-u>source $MYVIMRC<CR>
+nnoremap <silent> <Space>..  :<C-u>edit ~/.vimrc.d<CR>
+nnoremap <silent> <Space>>>  :<C-u>tabedit ~/.vimrc.d<CR>
+nnoremap <silent> <Space>...  :<C-u>source $MYVIMRC<CR>
 
 " Search
 " Current line at center of window and open the folding.
@@ -69,7 +69,7 @@ onoremap id i"
 
 " Buffer
 nnoremap [Buffer] <Nop>
-nmap <Leader>b [Buffer]
+nmap <Space>b [Buffer]
 nnoremap <silent> [Buffer] :buffers<CR>
 nnoremap [Buffer]e :buffer<Space>
 nnoremap <C-n> :bnext<CR>
@@ -79,7 +79,7 @@ nnoremap <silent> [Buffer]t :tab ball<CR>
 
 " Tab
 nnoremap [Tab] <Nop>
-nmap <Leader>t [Tab]
+nmap <Space>t [Tab]
 nnoremap <silent> [Tab] :tabs<CR>
 nnoremap [Tab]e :tabedit<Space>
 nnoremap K :tabnext<CR>
@@ -94,7 +94,6 @@ if has('unix') && !has('gui_running')
 endif
 " noremap <M-j> J
 " noremap <M-h> K
-noremap <Space> :
 " cnoremap w!! w !sudo tee > /dev/null %<CR>
 " cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 vmap <Space>y "+y
