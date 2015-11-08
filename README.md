@@ -62,6 +62,7 @@ You can install Javelin's dotfiles by the following installation command.
         -u, --update             Backup and download dotfiles
         -d, --deploy             Deploy dotfiles to home directory
         -b, --backup             Backup dotfiles to backup directory
+        -c, --check-update       Check update
         -s, --status             Check installed commands
         -r, --reinstall          Install dotfiles again after uninstalling
         -U, --uninstall          Uninstall dotfile
