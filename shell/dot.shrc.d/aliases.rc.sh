@@ -3,10 +3,9 @@ has() { type $1 >/dev/null 2>&1; }
 # ls
 alias l='ls -F --color=auto'
 alias ls='ls -F --color=auto'
-alias ll='ls -hl'
-alias lly='ls -hl --time-style=long-iso'
+alias ll='ls -hl --time-style=long-iso'
 alias la='ls -a'
-alias lla='ls -ahl'
+alias lla='ls -ahl --time-style=long-iso'
 
 # grep
 alias grep='grep --color=auto'
