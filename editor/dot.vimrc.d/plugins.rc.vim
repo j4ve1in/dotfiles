@@ -43,6 +43,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
 
+  NeoBundle 'kmnk/vim-unite-giti', {
+  \   'depends': [ 'Shougo/unite.vim' ]
+  \ }
+
   NeoBundle 'Shougo/unite-outline', {
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
@@ -50,6 +54,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   NeoBundle 'tsukkee/unite-help', {
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
+  " }}}
+
+  " Git " {{{
+  NeoBundle 'tpope/vim-fugitive'
   " }}}
 
   " Twitter " {{{
@@ -233,6 +241,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
       nnoremap <silent> [Unite]Fi :Unite<Space>find:.<Space>-default-action=tabopen<CR>
 
+      " ~/.vimrc.d/*
+      nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<CR>
+      nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<Space>-default-action=tabopen<CR>
+
+      " other plugin
       nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
@@ -314,6 +327,16 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
       nnoremap <silent> [VimShell] :<C-u>VimShell<CR>
       nnoremap <silent> [VimShellTab] :<C-u>VimShellTab<CR>
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " fugitive " {{{
+    if neobundle#tap('vim-fugitive')
+      nnoremap [fugitive] <Nop>
+      nmap <Space><Space>g [fugitive]
+
+      nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
       call neobundle#untap()
     endif
     " }}}
