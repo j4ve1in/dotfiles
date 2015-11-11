@@ -16,6 +16,9 @@ case "$1" in
   "-b" | "--backup" )
     source_dotool backup
     ;;
+  "-c" | "--check-update" )
+    source_dotool check_update
+    ;;
   "-s" | "--status" )
     source_dotool status
     ;;
@@ -45,6 +48,7 @@ case "$1" in
     echo "    -u, --update             Backup and download dotfiles             "
     echo "    -d, --deploy             Deploy dotfiles to home directory        "
     echo "    -b, --backup             Backup dotfiles to backup directory      "
+    echo "    -c, --check-update       Check update                             "
     echo "    -s, --status             Check installed commands                 "
     echo "    -r, --reinstall          Install dotfiles again after uninstalling"
     echo "    -U, --uninstall          Uninstall dotfiles                       "

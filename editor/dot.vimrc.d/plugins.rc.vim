@@ -42,6 +42,14 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   NeoBundle 'Shougo/vimfiler', {
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
+
+  NeoBundle 'Shougo/unite-outline', {
+  \   'depends': [ 'Shougo/unite.vim' ]
+  \ }
+
+  NeoBundle 'tsukkee/unite-help', {
+  \   'depends': [ 'Shougo/unite.vim' ]
+  \ }
   " }}}
 
   " Twitter " {{{
@@ -95,6 +103,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   " \ }
 
   NeoBundle 'slim-template/vim-slim'
+
+  NeoBundle 'kchmck/vim-coffee-script'
 
   " }}}
 
@@ -182,35 +192,24 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   " }}}
 
   " Source Plugins Settings " {{{
-    " NeoBundle " {{{
-    nnoremap [NeoBundle] <Nop>
-    nmap <Space>n [NeoBundle]
-
-    nnoremap <silent> [NeoBundle] :<C-u>NeoBundleUpdate<CR>
-    nnoremap <silent> [NeoBundle]l :<C-u>NeoBundleLog<CR>
-    " }}}
-
     " Unite " {{{
     if neobundle#tap('unite.vim')
       nnoremap [Unite] <Nop>
       nmap <C-Space> [Unite]
-      nmap <Space>u [Unite]
+      nmap <Space><Space>u [Unite]
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
       nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
+      nnoremap <silent> [Unite]B :<C-u>Unite<Space>buffer<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rg :<C-u>Unite<Space>register<CR>
       nnoremap <silent> [Unite]rs :<C-u>UniteResume<CR>
       nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
       nnoremap <silent> [Unite]w :<C-u>Unite<Space>window<CR>
+      nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
 
       " file
-      nnoremap <silent> [Unite]f :Unite<Space>file<CR>
-      nnoremap <silent> [Unite]F :Unite<Space>file<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]n :Unite<Space>file/new<CR>
-      nnoremap <silent> [Unite]N :Unite<Space>file/new<Space>-default-action=tabopen<CR>
-
-      " directory
-      nnoremap <silent> [Unite]nd :Unite<Space>directory/new<CR>
+      nnoremap <silent> [Unite]f :Unite<Space>file<Space>file/new<Space>directory/new<CR>
+      nnoremap <silent> [Unite]F :Unite<Space>file<Space>file/new<Space>directory/new<Space>-default-action=tabopen<CR>
 
       " file_rec
       nnoremap <silent> [Unite]r :Unite<Space>file_rec<CR>
@@ -226,13 +225,31 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]dm :<C-u>Unite<Space>directory_mru<CR>
       nnoremap <silent> [Unite]dM :<C-u>Unite<Space>directory_mru<Space>-default-action=tabopen<CR>
 
-      nnoremap <silent> [Unite]nb :<C-u>Unite<Space>neobundle<CR>
+      " help
+      nnoremap <silent> [Unite]h :<C-u>Unite<Space>help<CR>
+      nnoremap <silent> [Unite]H :<C-u>Unite<Space>help<Space>-default-action=tabopen<CR>
+
+      " find
+      nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
+      nnoremap <silent> [Unite]Fi :Unite<Space>find:.<Space>-default-action=tabopen<CR>
+
+      nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
       let g:unite_enable_auto_select = 0
       let g:unite_enable_start_insert = 1
       autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
       autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
+
+      " grep
+      nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
+      nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
+      if executable('hw')
+        let g:unite_source_grep_command = 'hw'
+        let g:unite_source_grep_default_opts = '--no-group --no-color'
+        let g:unite_source_grep_recursive_opt = ''
+      endif
+
       let s:hooks = neobundle#get_hooks("unite.vim")
       function! s:hooks.on_source(bundle)
         call unite#custom#profile('default', 'context', {
@@ -267,7 +284,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " VimFiler " {{{
     if neobundle#tap('vimfiler')
       nnoremap [VimFiler] <Nop>
-      nmap <Space>f [VimFiler]
+      nmap <Space><Space>f [VimFiler]
 
       nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
       nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
@@ -292,10 +309,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " VimShell " {{{
     if neobundle#tap('vimshell.vim')
       nnoremap [VimShell] <Nop>
-      nmap <Space>s [VimShell]
+      nmap <Space><Space>s [VimShell]
+      nmap <Space><Space>S [VimShellTab]
 
       nnoremap <silent> [VimShell] :<C-u>VimShell<CR>
-      nnoremap <silent> [VimShell]t :<C-u>VimShellTab<CR>
+      nnoremap <silent> [VimShellTab] :<C-u>VimShellTab<CR>
       call neobundle#untap()
     endif
     " }}}
@@ -303,7 +321,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " Watchdogs " {{{
     if neobundle#tap('vim-watchdogs')
       nnoremap [Watchdogs] <Nop>
-      nmap <Space>W [Watchdogs]
+      nmap <Space><Space>w [Watchdogs]
 
       nnoremap <silent> [Watchdogs] :<C-u>WatchdogsRun<CR>
       call neobundle#untap()
@@ -318,7 +336,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let g:tweetvim_config_dir = expand('~/.vim/var/tmp/plugin/tweetvim')
 
       nnoremap [TweetVim] <Nop>
-      nmap <Space>t [TweetVim]
+      nmap <Space><Space>t [TweetVim]
 
       nnoremap <silent> [TweetVim] :<C-u>TweetVimHomeTimeline<CR>
       nnoremap <silent> [TweetVim]m :<C-u>TwetVimMentions<CR>
@@ -330,7 +348,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " Previm " {{{
     if neobundle#tap('previm')
       nnoremap [Previm] <Nop>
-      nmap <Space>p [Previm]
+      nmap <Space><Space>p [Previm]
 
       nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
       call neobundle#untap()
@@ -353,7 +371,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let g:indent_guides_enable_on_vim_startup=1
       let g:indent_guides_color_change_percent=30
       let g:indent_guides_guide_size=1
-      let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler']
+      let g:indent_guides_exclude_filetypes = ['help', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler']
       call neobundle#untap()
     endif
     " }}}

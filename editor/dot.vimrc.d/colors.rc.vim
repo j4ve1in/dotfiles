@@ -14,7 +14,7 @@ augroup vimrc_change_cursorline_color
   " Set CursorLine highlighting.
   autocmd InsertEnter * highlight CursorLine cterm=none ctermbg=17
   " Reset CursorLine highlighting to the defaults.
-  autocmd VimEnter,InsertLeave * highlight clear CursorLine
+  autocmd VimEnter,SourcePre,InsertLeave * highlight clear CursorLine
 augroup END
 
 "--------------------------------------------------------------------
