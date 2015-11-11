@@ -47,15 +47,6 @@ if has ansible; then
   anp='ansible-playbook'
 fi
 
-# Pset
-alias pset='source ~/.proxy/pset'
-alias psu='source ~/.proxy/pset'
-
-# Dotsetup
-alias dsetup='dotsetup'
-alias dset='dotsetup'
-alias dsu='dotsetup'
-
 # Vagrant
 if has vagrant; then
   alias vags='vagrant global-status'
@@ -141,6 +132,7 @@ alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias reload='exec $SHELL -l'
+alias dsu='dotsetup'
 
 ## Linux
 if [ `uname` = Linux ]; then
