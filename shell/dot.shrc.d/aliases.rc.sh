@@ -27,12 +27,6 @@ alias dow='cd ~/Downloads'
 alias dr='cd ~/Dropbox'
 alias so='cd ~/Source_code'
 
-# git
-## hub
-if has hub; then
-  eval "`hub alias -s`"
-fi
-
 # diff
 if has colordiff; then
   alias diff='colordiff -u'

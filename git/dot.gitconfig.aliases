@@ -1,37 +1,20 @@
 [alias]
     a = add
     aa = add -A
-    au = add -u
-    adot = add .
     ba = branch
+    bo =browse # hub
     ch = checkout
     co = config
     col = config -l
     cl = clone
-    fe = fetch
-    fs = fsck
-    in = init
-    me = merge
-    med = merge -d
+    f = fetch
+    i = init
+    m = merge
     pl = pull
     ps = push
-    psom = push origin master
-    psuom = push -u origin master
-    rank = shortlog -s -n --no-merges
-    r = "!git rank"
-    rma = remote add
-    rmd = "!git rm $(git ls-files --deleted)"
-    rmso = remote show origin
-    rs = reset
-    rsh = reset --hard
-    rss = reset --soft
-    rv = revert
+    r = revert
     sw = show
-    sr = shortlog
-    st = status
-    su = submodule
-    ta = tag
-    tad = tag -d
+    s = status
 
     # alias
     alias = "!\
@@ -42,89 +25,41 @@
     "
     al = "!git alias"
 
+    # check-remote
+    check-remote = "!\
+        [ \"$(git log HEAD)\" = \"$(git log origin/HEAD)\" ] && \
+        echo \"up to date\n\" || echo \"local out of date\n\" \
+    "
+    cr = "!git check-remote"
+
     # commit
-    ci = commit
+    c = commit
     ca = commit -a
     cm = commit -m
     cam = commit -am
-    came = commit --amend
 
-    # hub
-    bo =browse
+    # diff
+    d = diff
+    dc = diff --cached
+    d1 = diff HEAD~
 
     # log
     l = log
-    lo = log --oneline
-    lp = log -p
-    ls = log --stat
-
-    # log-custum
     log-custum = "!\
         git log --graph --date=short --decorate=short\
         --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
     "
     lc = "!git log-custum"
 
-    # diff
-    di = diff
-    dc = diff --cached
-    d1 = diff HEAD~
-    d2 = diff HEAD~~
-    d3 = diff HEAD~~~
-    d4 = diff HEAD~~~~
-    d5 = diff HEAD~~~~~
-    d10 = diff HEAD~~~~~~~~~~
-
-    # credential
-
-    set-store = "!\
-        git config -f ~/.gitconfig.local.d/credential.conf credential.helper store\
-    "
-    ss = "!git set-store"
-    set-winstore = "!\
-        git config -f ~/.gitconfig.local.d/credential.conf credential.helper !git-credential-winstore\
-    "
-    sws = "!git set-winstore"
-    set-gnomekeyring = "!\
-        git config -f ~/.gitconfig.local.d/credential.conf credential.helper gnomekeyring\
-    "
-    sgk = "!git set-gnomekeyring"
-    set-osxkeychain = "!\
-        git config -f ~/.gitconfig.local.d/credential.conf credential.helper osxkeychain\
-    "
-    sok = "!git set-osxkeychain"
-    unset-credential = !rm ~/.gitconfig.local.d/credential.conf
-    uc = "!git unset-credential"
-
-    # ssh-insteadof
-    ssh-instedof-all = "!\
-        git config -f ~/.gitconfig.local.d/sshinsteadof.conf --add url.git@github.com:.insteadof git://github.com/;\
-        git config -f ~/.gitconfig.local.d/sshinsteadof.conf --add git@github.com:.pushinsteadof https://github.com/\
-    "
-    sia = "!git ssh-insteadof-all"
-
-    # https-pushinsteadof
-    https-pushinsteadof-all = "!\
-        git config -f ~/.gitconfig.local.d/httpspushinsteadof.conf --add url.https://github.com/.pushInsteadOf git://github.com/;\
-        git config -f ~/.gitconfig.local.d/httpspushinsteadof.conf --add url.https://github.com/.pushinsteadof git@github.com:\
-    "
-    hpa = "!git https-pushinsteadof-all"
-
-    # unset-instedofoption
-    unset-instedofoption = "!\
-        rm -f ~/.gitconfig.local.d/sshinsteadof.conf >/dev/null 2>&1;\
-        rm -f ~/.gitconfig.local.d/httpspushinsteadof.conf >/dev/null 2>&1\
-    "
-    ui = "!git unset-instedofoption"
-
-    # submodule-list
+    # submodule
+    ## submodule-list
     submodule-list = "!grep path .gitmodules | sed 's/.*= //'"
-    sl = "!git submodule-list"
+    sml = "!git submodule-list"
 
-    # submodule-info
+    ## submodule-info
     submodule-info = "!git submodule foreach 'echo Name: $name; echo Path: $path; echo Sha1: $sha1; echo'"
-    si = "!git submodule-info"
+    smi = "!git submodule-info"
 
-    # submodule-ls
+    ## submodule-ls
     submodule-ls = "!git submodule foreach 'ls; echo'"
-    sls = "!git submodule-ls"
+    smls = "!git submodule-ls"

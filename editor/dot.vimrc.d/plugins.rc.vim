@@ -124,6 +124,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \       'css',
   \       'sass',
   \       'scss',
+  \       'slim',
   \       'eruby',
   \       'markdown'
   \     ]
@@ -248,6 +249,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       " other plugin
       nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
+      nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
+      nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
+      nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
+      nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
 
       let g:unite_enable_auto_select = 0
       let g:unite_enable_start_insert = 1
@@ -336,7 +341,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap [fugitive] <Nop>
       nmap <Space><Space>g [fugitive]
 
-      nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
+      nnoremap [fugitive]c :<C-u>Gcommit<Space>
+      nnoremap [fugitive]p :<C-u>Git<Space>push<Space>
       call neobundle#untap()
     endif
     " }}}

@@ -1,3 +1,10 @@
+[core]
+    attributesfile = ~/.gitattributes.global
+    excludesfile = ~/.gitignore.global
+    editor = vim
+    pager = less
+    quotepath = off
+
 [color]
     ui = true
 
@@ -7,23 +14,12 @@
     old = red
     new = green
 
-[core]
-    attributesfile = ~/.gitattributes.global
-    excludesfile = ~/.gitignore.global
-    editor = vim
-    pager = less
-    quotepath = off
-
-[include]
-    path = ~/.gitconfig.aliases
-    path = ~/.gitconfig.proxy
-    path = ~/.gitconfig.local.d/userinfo.conf
-    path = ~/.gitconfig.local.d/credential.conf
-    path = ~/.gitconfig.local.d/sshinsteadof.conf
-    path = ~/.gitconfig.local.d/httpspushinsteadof.conf
-
 [push]
     default = simple
 
 [help]
     autocorrect = 30
+
+[include]
+    path = ~/.gitconfig.aliases
+    path = ~/.gitconfig.local

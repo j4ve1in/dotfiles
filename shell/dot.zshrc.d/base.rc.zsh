@@ -25,6 +25,9 @@ typeset -U path cdpath fpath manpath
 # Fix insecure directory(Cygwin)
 fix-insecure-dir() { compaudit | xargs chmod g-w; }
 
+# git
+git() {hub "$@";}
+
 # zman
 zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall

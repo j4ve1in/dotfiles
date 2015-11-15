@@ -8,6 +8,7 @@ fi
 # vimode
 set -o vi
 
+# shopt
 shopt -s autocd
 shopt -s cdable_vars
 shopt -s cdspell
@@ -16,3 +17,8 @@ shopt -s extglob
 shopt -s globstar
 shopt -s nocaseglob
 shopt -s nocasematch
+
+# alias
+if has hub; then
+  eval "`hub alias -s`"
+fi
