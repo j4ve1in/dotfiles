@@ -158,7 +158,7 @@ install_plugin() {
     fi
 
     ## Tmux
-    if has tmux; then
+    if has tmux && [ -n "$TMUX" ]; then
       echo " Tmux"
       printf "  Downloading plugin by TPM..."
       {
