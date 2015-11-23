@@ -39,7 +39,7 @@ if [ -d ~/.zsh/bundle/antigen ] || [ -d ~/.vim/bundle/neobundle.vim ] || [ -d ~/
     cprint "done" $CYAN_B
   fi
   ## Tmux
-  if [ -d ~/.tmux/plugins/tpm ]; then
+  if [ -d ~/.tmux/plugins/tpm ] && [ -n "$TMUX" ]; then
     printf " Update Tmux plugin..."
     bash ~/.tmux/plugins/tpm/bindings/update_plugins
     cprint "done" $CYAN_B
