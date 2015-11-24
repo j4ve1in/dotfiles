@@ -104,13 +104,14 @@ zstyle ':completion:*:*:cdr:*:*' menu selection
 # Reload zaw.zsh for loading zaw-cdr(bug of Antigen or zaw?)
 source ~/.zsh/bundle/repos/*/zaw.zsh
 
-bindkey '^X^A' zaw-applications
-bindkey '^Xb' zaw-bookmark
+bindkey '^Y' zaw-applications
+bindkey '^^' zaw-bookmark
+bindkey '^O' zaw-open-file
 bindkey '^@' zaw-cdr
 bindkey '^R' zaw-history
-bindkey '^Xg' zaw-git-files
-bindkey '^XG' zaw-git-branches
-bindkey '^Xp' zaw-process
+bindkey '^]' zaw-git-files
+bindkey '^\' zaw-git-branches
+bindkey '^Q' zaw-process
 bindkey '^S' zaw-ssh-hosts
 bindkey '^T' zaw-tmux
 
