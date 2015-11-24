@@ -19,6 +19,6 @@ shopt -s nocaseglob
 shopt -s nocasematch
 
 # alias
-if has hub; then
+if has hub >/dev/null 2>&1; then
   eval "`hub alias -s`"
 fi
