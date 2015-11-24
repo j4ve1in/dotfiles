@@ -15,15 +15,16 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "${SUB_COLOR2}< %c%u%b%f"
+zstyle ':vcs_info:*' formats " ${SUB_COLOR2}< %c%u%b%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 vcs_info='${vcs_info_msg_0_}'
-PROMPT="${MAIN_COLOR}["
-PROMPT+="%f%n${SUB_COLOR1}@${RESET_COLOR}%m${ssh} %f"
-PROMPT+="%1~ ${RESET_COLOR}${vcs_info}%f${RESET_COLOR}"
+PROMPT="${MAIN_COLOR}[%f"
+PROMPT+="%n${SUB_COLOR1}@${RESET_COLOR}%m${ssh}"
+PROMPT+=" %1~${RESET_COLOR}${vcs_info}${RESET_COLOR}"
 PROMPT+="${MAIN_COLOR}]"
-PROMPT+="[%f%D{%Y/%m/%d} %T${MAIN_COLOR}]%f
+PROMPT+="[%f%D{%m/%d} %T${MAIN_COLOR}]"
+PROMPT+="%f
 %B%(!.#.%%)%b "
 
 zmodload zsh/datetime

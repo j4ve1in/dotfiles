@@ -13,7 +13,7 @@ set_prompt () {
   fi
   ## Git
   init-prompt-git-branch() {
-  git symbolic-ref HEAD 2>/dev/null >/dev/null && echo "< $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
+  git symbolic-ref HEAD 2>/dev/null >/dev/null && echo " < $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
 }
 
 if which git 2>/dev/null >/dev/null ; then
@@ -21,9 +21,9 @@ if which git 2>/dev/null >/dev/null ; then
 else
   export PS1_GIT_BRANCH=
 fi
-PS1="${Blue}[${Color_Off}\u@\h${White}${ssh} ${Color_Off}\W ${White}${PS1_GIT_BRANCH}${Blue}]"
+PS1="${Blue}[${Color_Off}\u@\h${White}${ssh} ${Color_Off}\W${White}${PS1_GIT_BRANCH}${Blue}]"
 ## Date
-PS1+="[${Color_Off}\D{%Y/%m/%d} \t${Blue}]"
+PS1+="[${Color_Off}\D{%m/%d} \t${Blue}]"
 ## Newline
 PS1+="\n"
 
