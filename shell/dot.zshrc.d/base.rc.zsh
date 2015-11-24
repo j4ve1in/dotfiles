@@ -26,7 +26,9 @@ typeset -U path cdpath fpath manpath
 fix-insecure-dir() { compaudit | xargs chmod g-w; }
 
 # git
-git() {hub "$@";}
+if type hub >/dev/null 2>&1; then
+  git() {hub "$@";}
+fi
 
 # zman
 zman() {
