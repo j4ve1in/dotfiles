@@ -65,6 +65,10 @@ if has tmux; then
 fi
 
 # Vim
+if has nvim; then
+  alias nv='nvim -p'
+  alias nvi='nvim -p'
+fi
 if has vim; then
   alias v='vim -p'
   alias vi='vim -p'
@@ -118,6 +122,7 @@ alias r=rm
 alias m=mv
 alias le=less
 alias path='echo -e "${PATH//:/\n}"'
+alias user='echo "$USER"'
 alias jman='env LANG="ja_JP.UTF-8" man'
 alias grep='grep --color'
 alias df='df -h'

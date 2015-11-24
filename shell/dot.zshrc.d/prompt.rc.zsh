@@ -1,27 +1,30 @@
 # Prompt
+setopt prompt_subst
 ## Colors
-Blue='%{$fg_no_bold[blue]%}'          # Blue
-White='%{$fg_no_bold[white]%}'        # White
+MAIN_COLOR='%{$fg[blue]%}' # Blue
+SUB_COLOR1='%{[1;38;05;75m%}'  # Skyblue
+SUB_COLOR2='%{[1;38;05;245m%}'  # Gray
+RESET_COLOR='%{$reset_color%}' # Reset
 
 ## SSH
 if [ -n "$SSH_CLIENT" ]; then
   ssh=":ssh-session"
 fi
 
-## Git
-init-prompt-git-branch() {
-  git symbolic-ref HEAD 2>/dev/null >/dev/null && echo "< $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
-}
-
-if which git 2>/dev/null >/dev/null ; then
-  export PS1_GIT_BRANCH='$(init-prompt-git-branch)'
-else
-  export PS1_GIT_BRANCH=
-fi
-
-PROMPT="${Blue}[%f%n@%m${White}${ssh}%f %1~ ${White}${PS1_GIT_BRANCH}%f${Blue}][%f%D{%Y/%m/%d} %T${Blue}]%f
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "${SUB_COLOR2}< %c%u%b%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+vcs_info='${vcs_info_msg_0_}'
+PROMPT="${MAIN_COLOR}["
+PROMPT+="%f%n${SUB_COLOR1}@${RESET_COLOR}%m${ssh} %f"
+PROMPT+="%1~ ${RESET_COLOR}${vcs_info}%f${RESET_COLOR}"
+PROMPT+="${MAIN_COLOR}]"
+PROMPT+="[%f%D{%Y/%m/%d} %T${MAIN_COLOR}]%f
 %B%(!.#.%%)%b "
-setopt prompt_subst
 
 zmodload zsh/datetime
 reset_tmout() { TMOUT=$[60-EPOCHSECONDS%60] }
