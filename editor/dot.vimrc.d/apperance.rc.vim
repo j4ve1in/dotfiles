@@ -24,10 +24,12 @@ autocmd FileType man set nolist
 " Statusline
 set laststatus=2
 set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V%8P
-function! g:Date()
-  return strftime("%x %H:%M")
-endfunction
-set statusline+=\ \%{g:Date()}
+"set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{fugitive#statusline()}%=%l/%L,%c%V%8P
+"set statusline+=%{fugitive#statusline()}
+" function! g:Date()
+"   return strftime("%x %H:%M")
+" endfunction
+" set statusline+=\ \%{g:Date()}
 
 " When insert mode, change statusline.
 let g:hi_insert = 'hi StatusLine gui=None guifg=Black guibg=Yellow cterm=None ctermfg=231 ctermbg=24'
