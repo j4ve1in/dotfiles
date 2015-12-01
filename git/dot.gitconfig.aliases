@@ -16,7 +16,9 @@
     sw = show
     s = status
     st = stash
+    stl = stash list
     stp = stash pop
+    sts = stash show
 
     # alias
     alias = "!\
