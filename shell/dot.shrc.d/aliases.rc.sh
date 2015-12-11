@@ -1,8 +1,7 @@
 has() { type $1 >/dev/null 2>&1; }
 
 # ls
-alias l='ls -F --color=auto'
-alias ls='ls -F --color=auto'
+alias l{,s}='ls -F --color=auto'
 alias ll='ls -hl --time-style=long-iso'
 alias la='ls -a'
 alias lla='ls -ahl --time-style=long-iso'
@@ -59,31 +58,20 @@ fi
 if has tmux; then
   alias t='tmux'
   alias ta='tmux attach'
-  alias tat='tmux attach -t 0'
   alias tls='tmux list-session'
   alias tlc='tmux list-clients'
 fi
 
-# Vim
+# Vi
 if has nvim; then
-  alias nv='nvim -p'
-  alias nvi='nvim -p'
+  alias nv{,i}='nvim -p'
 fi
 if has vim; then
-  alias v='vim -p'
-  alias vi='vim -p'
+  alias v{,i,im}='vim -p'
   alias tweetvim='vim +TweetVimHomeTimeline'
   alias tweet='vim +TweetVimCommandSay'
-  alias vimfiler='vim +VimFiler'
-  alias vrc='vim ~/.vimrc'
-  alias virc='vim ~/.vimrc'
-  has zsh && alias zenv='vim ~/.zshenv'
-  has zsh && alias zrc='vim ~/.zsh/.zshrc'
-  has zsh && alias zrcd='vim ~/.zsh/.zshrc.d'
-else
-  alias v='vi -p'
-  alias vrc='vi ~/.vimrc'
-  alias virc='vi ~/.vimrc'
+elif has vi; then
+  alias v{,i}='vi -p'
 fi
 
 # Ruby
@@ -132,102 +120,79 @@ alias mv='mv -iv'
 alias reload='exec $SHELL -l'
 alias dsu='dotsetup'
 
-## Linux
-if [ `uname` = Linux ]; then
-  alias xdo='xdg-open'
-  alias xrr='xrandr'
+case "$(uname -s)" in
+  Linux)
+    alias xdo='xdg-open'
+    alias xrr='xrandr'
 
-  # Browse
-  alias google='xdg-open https://www.google.co.jp/'
-  alias github='xdg-open https://github.com/'
-  alias wikipedia='xdg-open http://ja.wikipedia.org/'
+    # Browse
+    alias google='xdg-open https://www.google.co.jp/'
+    alias github='xdg-open https://github.com/'
+    alias wikipedia='xdg-open http://ja.wikipedia.org/'
 
-  # Clipboard
-  alias xs='xsel'
-  alias xc='xclip'
+    # Clipboard
+    alias xs='xsel'
+    alias xc='xclip'
 
-  # Gnome
-  alias gnb='gnome-boxes'
-  alias gncl='gnome-clocks'
-  alias gnca='gnome-calculator'
-  alias gncc='gnome-control-center'
-  alias gnd='gnome-disks'
-  alias gnf='gnome-font-viewer'
-  alias gnh='gnome-help'
-  alias gns='gnome-software'
-  alias gnsm='gnome-system-monitor'
-  alias gntt='gnome-tweak-tool'
-  alias gnwp='gnome-web-photo'
+    # dnf
+    if has dnf; then
+      alias dn=dnf
+      alias dni='dnf install -y'
+      alias dnu='dnf update -y'
+      alias sdn='sudo dnf'
+      alias sdni='sudo dnf install -y'
+      alias sdnu='sudo dnf update -y'
+    fi
 
-  # dnf
-  if has; then
-    alias dn=dnf
-    alias dni='dnf install -y'
-    alias dnu='dnf update -y'
-    alias sdn='sudo dnf'
-    alias sdni='sudo dnf install -y'
-    alias sdnu='sudo dnf update -y'
-  fi
+    # Screenshot
+    ## import
+    alias imp='import'
 
-  # Screenshot
-  ## import
-  alias imp='import'
+    ## xwd
+    alias xwd='xwd | convert - screenshot.png; rm screenshot.xwd'
 
-  ## xwd
-  alias xwd='xwd | convert - screenshot.png; rm screenshot.xwd'
+    ## scrot
+    alias scr='scrot'
 
-  ## Gnome-screenshot
-  alias gns='gnome-screenshot'
-  alias gnsa='gnome-screenshot --area'
-  alias gnsad='gnome-screenshot --area --delay=3'
-  alias gnsw='gnome-screenshot --window'
-  alias gnswd='gnome-screenshot --window --delay=3'
-  alias gnsd='gnome-screenshot --delay=3'
+    # Terminal
+    alias gnt='gnome-terminal'
+    alias urxvt='urxvt256c-ml'
+    alias urxvt-font='set-urxvt-font-size'
+    ;;
+  CYGWIN*|MSYS*)
+    case "$(uname -s)" in
+      CYGWIN*)
+        ;;
+      MSYS*)
+        ;;
+    esac
+    alias cy='mintty -t Cygwin -i /Cygwin-Terminal.ico -'
+    alias cyc='cygcheck'
+    alias cyp='cygpath'
+    alias cys='cygstart'
+    alias rcy='exec cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -'
+    alias e='cygstart .'
 
-  ## scrot
-  alias scr='scrot'
+    # PowerShell
+    alias {pwsh,powershell}='cygstart powershell'
 
-  # Terminal
-  alias gnt='gnome-terminal'
-  alias urxvt='urxvt256c-ml'
-  alias urxvt-font='set-urxvt-font-size'
-fi
+    # Browse
+    alias google='cygstart https://www.google.co.jp/'
+    alias github='cygstart https://github.com/'
+    alias wikipedia='cygstart http://ja.wikipedia.org/'
+    ;;
+  Darwin)
+    alias l{,s}='ls -F'
+    alias op='open'
+    alias f='open .'
+    alias pbc='pbcopy'
+    alias pbp='pbpaste'
 
-## Cygwin
-if [ "$OSTYPE" = "cygwin" ]; then
-  alias cy='mintty -t Cygwin -i /Cygwin-Terminal.ico -'
-  alias cyc='cygcheck'
-  alias cyp='cygpath'
-  alias cys='cygstart'
-  alias rcy='exec cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -'
-
-  alias e='cygstart .'
-  alias explorer='cygstart .'
-
-  # PowerShell
-  alias powershell='cygstart powershell'
-  alias pwsh='cygstart pwsh'
-
-  # Browse
-  alias google='cygstart https://www.google.co.jp/'
-  alias github='cygstart https://github.com/'
-  alias wikipedia='cygstart http://ja.wikipedia.org/'
-fi
-
-## OSX
-if [ `uname` = Darwin ]; then
-  alias l='ls -F'
-  alias ls='ls -F'
-  alias op='open'
-  alias f='open .'
-  alias finder='open .'
-  alias pbc='pbcopy'
-  alias pbp='pbpaste'
-
-  # Browse
-  alias google='open https://www.google.co.jp/'
-  alias github='open https://github.com/'
-  alias wikipedia='open http://ja.wikipedia.org/'
-fi
+    # Browse
+    alias google='open https://www.google.co.jp/'
+    alias github='open https://github.com/'
+    alias wikipedia='open http://ja.wikipedia.org/'
+    ;;
+esac
 
 unset -f has
