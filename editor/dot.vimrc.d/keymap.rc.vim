@@ -31,7 +31,7 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o><Tab>
 nnoremap j gj
 nnoremap k gk
 vnoremap v $h
-nnoremap <silent> <ESC><ESC><ESC>
+nnoremap <silent> <Space><ESC>
 \  :<C-u>highlight CursorLine cterm=none ctermbg=24 ctermfg=24<CR> \|
 \  :<C-u>sleep 1ms<CR> \|
 \  :<C-u>highlight clear CursorLine<CR>
