@@ -80,7 +80,7 @@ install() {
   printf " Downloading dotfiles..."
   {
     sleep 1
-    git clone git://github.com/j4ve1in/dotfiles.git ~/.dotfiles --recursive
+    git clone https://github.com/j4ve1in/dotfiles.git ~/.dotfiles --recursive
   } | env LESS="-cE" less
   cprint "done" $CYAN_B
   echo
@@ -132,7 +132,7 @@ install_plugin() {
       printf "  Downloading vimproc..."
       {
         sleep 1
-        git clone git://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+        git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       make -C ~/.vim/bundle/vimproc.vim >/dev/null 2>&1
