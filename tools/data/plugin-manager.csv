@@ -1,4 +1,4 @@
 "Name","URL","DIR"
-"NeoBundle","https://github.com/Shougo/neobundle.vim",".vim/bundle/neobundle.vim"
+"NeoBundle","https://github.com/Shougo/neobundle.vim.git",".vim/bundle/neobundle.vim"
 "Antigen","https://github.com/zsh-users/antigen.git",".zsh/bundle/antigen"
-"TPM","https://github.com/tmux-plugins/tpm",".tmux/plugins/tpm"
+"TPM","https://github.com/tmux-plugins/tpm.git",".tmux/plugins/tpm"
