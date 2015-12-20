@@ -260,9 +260,9 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
       nnoremap <silent> [Unite]Fi :Unite<Space>find:.<Space>-default-action=tabopen<CR>
 
-      " ~/.vimrc.d/*
-      nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<CR>
-      nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.vimrc.d<Space>-default-action=tabopen<CR>
+      " ~/.vim/rc/*
+      nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.vim/rc<CR>
+      nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.vim/rc<Space>-default-action=tabopen<CR>
 
       " other plugin
       nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle

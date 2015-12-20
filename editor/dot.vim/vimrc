@@ -8,11 +8,11 @@ let rc_vim_list = [
 \ ]
 
 function! s:source_rc(path)
-  execute 'source' fnameescape(expand('~/.vimrc.d/' . a:path . '.rc.vim'))
+  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path . '.vim'))
 endfunction
 
 " Source settings
-" Location: ~/.vimrc.d/
+" Location: ~/.vim/rc/
 for rc_vim in rc_vim_list
   cal s:source_rc(rc_vim)
 endfor
