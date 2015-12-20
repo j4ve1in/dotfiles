@@ -20,7 +20,7 @@ set backspace=indent,eol,start
 
 set noerrorbells visualbell t_vb=
 
-set viminfo='50,\"1000,n~/.vim/var/tmp/.viminfo
+set viminfo='50,<1000,s100,n~/.vim/var/tmp/.viminfo
 
 autocmd FileType *  setlocal formatoptions-=ro
 
