@@ -1,10 +1,8 @@
-.chpwd-recent-dirs
+*.zwc
 .zcompdump
 .zcompcache
 .zsh_history
-.zshrc.zwc
-.zprofile.zwc
-.zlogin.zwc
 .zprof_result
+.chpwd-recent-dirs
 bundle/*
 !.gitkeep

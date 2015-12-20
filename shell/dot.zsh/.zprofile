@@ -4,7 +4,7 @@ ZFILE=(
   ~/.zsh/.zprofile
   ~/.zsh/.zshrc
   ~/.zsh/.zlogin
-  ~/.zshrc.d/*.rc.zsh
+  ~/.zsh/rc/*.zsh
 )
 local BLUE="\x1b[34m"
 local SKYBLUE="\033[1;38;05;75m"

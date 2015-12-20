@@ -1,11 +1,11 @@
 # Load
 ## Plugin
 ANTIGENDIR=~/.zsh/bundle/antigen
-ZRCPLUGIN=~/.zshrc.d/plugins.rc.zsh
+ZRCPLUGIN=~/.zsh/rc/plugins.zsh
 [ "$OSTYPE" != "cygwin" ] && [ -d "$ANTIGENDIR" ] &&  source "$ZRCPLUGIN"
 unset -v ANTIGENDIR ZRCPLUGIN
 
-## ~/.zshrc.d/*.rc.zsh
+## ~/.zsh/rc/*.zsh
 ZRC=(
   "aliases"
   "base"
@@ -14,12 +14,12 @@ ZRC=(
   "prompt"
 )
 for file in ${ZRC[@]}; do
-  file=~/.zshrc.d/${file}.rc.zsh
+  file=~/.zsh/rc/${file}.zsh
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done; unset -v ZRC file
 
-## ~/.zshrc.d/local.rc.zsh
-ZRCLOCAL=~/.zshrc.d/local.rc.zsh
+## ~/.zsh/rc/local.zsh
+ZRCLOCAL=~/.zsh/rc/local.zsh
 [ -r "$ZRCLOCAL" ] && [ -f "$ZRCLOCAL" ] && source "$ZRCLOCAL"
 unset -v ZRCLOCAL
 
