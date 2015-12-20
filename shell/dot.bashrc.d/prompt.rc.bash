@@ -1,10 +1,10 @@
 set_prompt () {
   # Colors
   ## Reset
-  Color_Off='\[\e[0m\]'       # Text Reset
+  Color_Off='\[\033[0m\]'       # Text Reset
   ## Regular Colors
-  Blue='\[\e[0;34m\]'         # Blue
-  White='\[\e[0;37m\]'        # White
+  Blue='\[\033[0;34m\]'         # Blue
+  White='\[\033[0;37m\]'        # White
 
   # PROMPT1
   ## SSH
@@ -13,11 +13,11 @@ set_prompt () {
   fi
   ## Git
   init-prompt-git-branch() {
-  git symbolic-ref HEAD 2>/dev/null >/dev/null && echo " < $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
+  git symbolic-ref HEAD >/dev/null 2>&1 && echo " < $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
 }
 
-if which git 2>/dev/null >/dev/null ; then
-  export PS1_GIT_BRANCH='\[$(init-prompt-git-branch)'
+if type git >/dev/null 2>&1; then
+  export PS1_GIT_BRANCH="\$(init-prompt-git-branch)"
 else
   export PS1_GIT_BRANCH=
 fi
