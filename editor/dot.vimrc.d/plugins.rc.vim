@@ -54,6 +54,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   NeoBundle 'tsukkee/unite-help', {
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
+
+  NeoBundle 'basyura/unite-rails', {
+  \   'depends': [ 'Shougo/unite.vim' ]
+  \ }
   " }}}
 
   " Git " {{{
@@ -104,16 +108,21 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \   'autoload': { 'filetypes': [ 'dockerfile' ] }
   \ }
 
-  NeoBundle 'slim-template/vim-slim'
+  NeoBundleLazy 'slim-template/vim-slim', {
+  \   'autoload': { 'filetypes': [ 'slim' ] }
+  \ }
 
-  " NeoBundleLazy 'slim-template/vim-slim', {
-  " \   'autoload': { 'filetypes': [ 'slim' ] }
-  " \ }
+  NeoBundleLazy 'kchmck/vim-coffee-script', {
+  \   'autoload': { 'filetypes': [ 'coffee' ] }
+  \ }
 
-  NeoBundle 'slim-template/vim-slim'
+  " }}}
 
-  NeoBundle 'kchmck/vim-coffee-script'
 
+  " textobj " {{{
+  NeoBundle 'kana/vim-textobj-user'
+
+  NeoBundle 'rhysd/vim-textobj-ruby'
   " }}}
 
   " Completion " {{{
@@ -122,7 +131,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \     'filetypes': [
   \       'html',
   \       'css',
-  \       'sass',
   \       'scss',
   \       'slim',
   \       'eruby',
@@ -191,6 +199,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'dhruvasagar/vim-table-mode'
 
+  NeoBundle 'cohama/vim-smartinput-endwise', {
+  \   'depends': [ 'kana/vim-smartinput' ]
+  \ }
+
   " NeoBundleLazy 'ujihisa/unite-colorscheme', {
   " \   'depends': [ 'Shougo/unite.vim' ],
   " \   'autoload': {
@@ -255,10 +267,20 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       " other plugin
       nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
+
+      "" giti
       nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
       nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
       nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
       nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
+
+      "" Rails
+      nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails<CR>
+      nnoremap <silent> [Unite]raa :<C-u>Unite<Space>rails/asset<CR>
+      nnoremap <silent> [Unite]ram :<C-u>Unite<Space>rails/model<CR>
+      nnoremap <silent> [Unite]rav :<C-u>Unite<Space>rails/view<CR>
+      nnoremap <silent> [Unite]rac :<C-u>Unite<Space>rails/controller<CR>
+      nnoremap <silent> [Unite]rah :<C-u>Unite<Space>rails/helper<CR>
 
       let g:unite_enable_auto_select = 0
       let g:unite_enable_start_insert = 1
@@ -420,6 +442,32 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
+    " vim-smartinput " {{{
+    if neobundle#tap('vim-smartinput')
+      let s:hooks = neobundle#get_hooks("vim-smartinput")
+      function! s:hooks.on_source(bundle)
+      endfunction
+      unlet s:hooks
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " vim-smartinput-endwise " {{{
+    if neobundle#tap('vim-smartinput-endwise')
+      let s:hooks = neobundle#get_hooks("vim-smartinput-endwise")
+      function! s:hooks.on_source(bundle)
+        call smartinput_endwise#define_default_rules()
+        call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)','<BS>','<BS>')
+        call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)','<BS>','<C-h>')
+        call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)','<Enter>','<Enter>')
+        imap <expr><BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+        imap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
+      endfunction
+      unlet s:hooks
+      call neobundle#untap()
+    endif
+    " }}}
+
     " NeoComplete and NeoComplcache " {{{
     if s:meet_neocomplete_requirements()
     " NeoComplete " {{{
@@ -446,11 +494,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         inoremap <expr><C-g>     neocomplete#undo_completion()
         inoremap <expr><C-l>     neocomplete#complete_common_string()
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-        inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-        inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+        " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+        " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
         inoremap <expr><C-y>  neocomplete#close_popup()
         inoremap <expr><C-e>  neocomplete#cancel_popup()
-
         inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
         function! s:my_cr_function()
           return neocomplete#close_popup() . "\<CR>"

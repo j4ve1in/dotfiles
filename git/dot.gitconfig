@@ -1,6 +1,6 @@
 [core]
-    attributesfile = ~/.gitattributes.global
-    excludesfile = ~/.gitignore.global
+    attributesfile = ~/.gitconf.d/attributes.conf
+    excludesfile = ~/.gitconf.d/ignore.conf
     editor = vim
     pager = less
     quotepath = off
@@ -23,6 +23,62 @@
 [help]
     autocorrect = 30
 
+[alias]
+    a = add
+    aa = add -A
+    ba = branch
+    bo =browse # hub
+    ch = checkout
+    co = config
+    col = config -l
+    cl = clone
+    f = fetch
+    i = init
+    m = merge
+    pl = pull
+    ps = push
+    r = revert
+    sw = show
+    s = status
+    st = stash
+    stl = stash list
+    stp = stash pop
+    sts = stash show
+
+    # alias
+    alias = "!\
+        git config --list |\
+        grep 'alias\\.' |\
+        sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' |\
+        sort\
+    "
+    al = "!git alias"
+
+    # check-remote
+    check-remote = "!\
+        [ \"$(git log HEAD)\" = \"$(git log origin/HEAD)\" ] && \
+        echo \"up to date\n\" || echo \"local out of date\n\" \
+    "
+    cr = "!git check-remote"
+
+    # commit
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+
+    # diff
+    d = diff
+    dc = diff --cached
+    d1 = diff HEAD~
+
+    # log
+    l = log
+    log-custum = "!\
+        git log --graph --date=short --decorate=short\
+        --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
+    "
+    lc = "!git log-custum"
+
 [include]
-    path = ~/.gitconfig.aliases
-    path = ~/.gitconfig.local
+    path = ~/.gitconf.d/local.conf

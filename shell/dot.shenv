@@ -3,13 +3,10 @@ export TERM="xterm-256color"
 export PAGER="less"
 export LESS="-ciMNR"
 export WWW_BROWSER="w3m"
-if [ -d ~/bin ]; then
-  export PATH="$PATH:$HOME/bin"
-fi
-if [ -d ~/.local/bin ]; then
-  export PATH="$PATH:$HOME/.local/bin"
-fi
-export PATH="$PATH:$HOME/.dotfiles/bin"
+[ -d ~/bin ] && export PATH="$PATH:$HOME/bin"
+[ -d ~/.local/bin ] && export PATH="$PATH:$HOME/.local/bin"
+[ -d ~/.dotfiles/bin ] && export PATH="$PATH:$HOME/.dotfiles/bin"
+[ -d /usr/local/heroku ] && export PATH="$PATH:/usr/local/heroku/bin"
 
 # Cygwin
 if [ "$OSTYPE" = "cygwin" ]; then
@@ -25,9 +22,7 @@ fi
 
 # Node.js
 ## Nodebrew
-if [ -d ~/.nodebrew ]; then
-  export PATH="$HOME/.nodebrew/current/bin:$PATH"
-fi
+[ -d ~/.nodebrew ] && export PATH="$HOME/.nodebrew/current/bin:$PATH"
 
 # Ruby
 if type ruby >/dev/null 2>&1; then
@@ -35,14 +30,12 @@ if type ruby >/dev/null 2>&1; then
   export RUBYGEMS_GEMDEPS=-
 fi
 ## rbenv
-if [ -d ~/.rbenv ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "`rbenv init -`"
-fi
+[ -d ~/.rbenv ] && export PATH="$HOME/.rbenv/bin:$PATH"
+[ -d ~/.rbenv ] && eval "`rbenv init -`"
 
 # Go
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
+[ -d ~/.local/src/go ] && export GOPATH=$HOME/.local/src/go
+[ -n $GOPATH ] && export PATH=$PATH:$GOPATH/bin
 
 # VirtualBox
 export VAGRANT_DEFAULT_PROVIDER=virtualbox

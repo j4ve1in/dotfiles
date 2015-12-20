@@ -97,6 +97,10 @@ if has ruby; then
     alias rag='rails generate'
     alias ras='rails server -b 0.0.0.0'
   fi
+  ## Rails
+  if has rspec; then
+    alias rspec='rspec --color'
+  fi
 fi
 
 # Others

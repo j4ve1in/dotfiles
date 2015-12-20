@@ -25,9 +25,6 @@ nnoremap Y y$
 inoremap jj <Esc>
 nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
 nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
-inoremap {<Enter> {}<Left><CR><ESC><S-o><Tab>
-inoremap [<Enter> []<Left><CR><ESC><S-o><Tab>
-inoremap (<Enter> ()<Left><CR><ESC><S-o><Tab>
 nnoremap j gj
 nnoremap k gk
 vnoremap v $h
