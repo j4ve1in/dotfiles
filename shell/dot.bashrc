@@ -1,8 +1,13 @@
 # Load
-##  ~/.bashrc.d/*.rc.bash
-for filepath in ~/.bashrc.d/*.rc.bash; do
+##  ~/.bash/rc/*.bash
+for filepath in ~/.bash/rc/*.bash; do
   source ${filepath}
 done
+
+## ~/.bash/rc/local.bash
+BRCLOCAL=~/.bash/rc/local.bash
+[ -r "$BRCLOCAL" ] && [ -f "$BRCLOCAL" ] && source "$BRCLOCAL"
+unset -v BRCLOCAL
 
 ## ~/.shrc.d/*.rc.sh
 source ~/.shrc
