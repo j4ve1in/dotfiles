@@ -23,8 +23,8 @@ ZRCLOCAL=~/.zsh/rc/local.zsh
 [ -r "$ZRCLOCAL" ] && [ -f "$ZRCLOCAL" ] && source "$ZRCLOCAL"
 unset -v ZRCLOCAL
 
-## ~/.shrc.d/*.rc.sh
-[ -r ~/.shrc ] && [ -f ~/.shrc ] && source ~/.shrc
+## ~/.shrc.d/*.sh
+[ -r ~/.shrc.d/base.sh ] && [ -f ~/.shrc.d/base.sh ] && source ~/.shrc.d/base.sh
 
 # Profiling configuration files of zsh
 # if (which zprof > /dev/null) ;then

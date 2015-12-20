@@ -9,5 +9,5 @@ BRCLOCAL=~/.bash/rc/local.bash
 [ -r "$BRCLOCAL" ] && [ -f "$BRCLOCAL" ] && source "$BRCLOCAL"
 unset -v BRCLOCAL
 
-## ~/.shrc.d/*.rc.sh
-source ~/.shrc
+## ~/.shrc.d/*.sh
+source ~/.shrc.d/base.sh

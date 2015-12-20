@@ -1,1 +1,1 @@
-source ~/.shlogin
+source ~/.shrc.d/login.sh
