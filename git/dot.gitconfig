@@ -80,5 +80,17 @@
     "
     lc = "!git log-custum"
 
+[url "https://"]
+    insteadOf = git://
+
+[url "https://github.com/"]
+    insteadOf = git@github.com:
+
+[url "https://gitlab.com/"]
+    insteadOf = git@gitlab.com:
+
+[url "https://bitbucket.org/"]
+    insteadOf = git@bitbucket.org:
+
 [include]
     path = ~/.gitconf.d/local.conf
