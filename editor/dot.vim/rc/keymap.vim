@@ -15,6 +15,8 @@ nnoremap <Space>k <C-b>
 vnoremap <Space>k <C-b>
 nnoremap H <C-i>
 nnoremap L <C-o>
+nnoremap <C-k> {
+nnoremap <C-j> }
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-f> <Right>
