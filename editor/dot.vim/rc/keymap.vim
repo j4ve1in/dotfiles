@@ -25,8 +25,8 @@ cnoremap <C-a> <C-b>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap Y y$
 inoremap jj <Esc>
-nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <silent><Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <silent><Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 nnoremap j gj
 nnoremap k gk
 vnoremap v $h

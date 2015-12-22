@@ -1,9 +1,9 @@
 ! urxvt
-!! Basic
+!! Base
+URxvt.title: Urxvt
 URxvt.saveLines: 20000
 URxvt.scrollBar: false
-URxvt.urlLauncher: firefox
-! URxvt.urlLauncher: chromium
+URxvt.urlLauncher: chromium
 URxvt*iso14755: false
 
 !! Color
@@ -12,8 +12,10 @@ URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt.background: rgba:0000/0000/0000/eeee
 
 !! Font
-URxvt.font: xft:Migu 1M:size=13:antialias=true
-URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true
+URxvt.font: xft:Migu 1M:size=13:antialias=true, \
+            xft:Monospace:size=9:antialias=true:hinting=true
+URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true, \
+                xft:Monospace:size=9:antialias=true:hinting=true
 
 ! xterm
 !! Basic
