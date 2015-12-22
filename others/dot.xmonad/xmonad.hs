@@ -1,5 +1,3 @@
--- default desktop configuration for Fedora
-
 import System.Posix.Env (getEnv)
 import Data.Maybe (maybe)
 
@@ -70,7 +68,7 @@ main = do
     -- xmonad  $ maybe desktopConfig desktop session
     let config = maybe desktopConfig desktop session
     xmonad $ config {
-        terminal = "urxvt256c-ml",
+        terminal = "urxvt",
         modMask = mod4Mask, -- mod4Mask = super key
         normalBorderColor  = "#dddddd",
         focusedBorderColor = "#3399ff",

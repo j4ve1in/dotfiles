@@ -42,10 +42,12 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # Editor
 if type vim >/dev/null 2>&1; then
+  export VISUAL="vim"
   export EDITOR="vim"
   export FCEDIT="vim"
   export SVN_EDITOR="vim"
 else
+  export VISUAL="vi"
   export EDITOR="vi"
   export FCEDIT="vi"
   export SVN_EDITOR="vi"
