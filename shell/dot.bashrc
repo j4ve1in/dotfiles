@@ -10,4 +10,4 @@ BRCLOCAL=~/.bash/rc/local.bash
 unset -v BRCLOCAL
 
 ## ~/.shrc.d/*.sh
-source ~/.shrc.d/base.sh
+source ~/.shrc.d/init.sh
