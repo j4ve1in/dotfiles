@@ -92,5 +92,8 @@
 [url "https://bitbucket.org/"]
     insteadOf = git@bitbucket.org:
 
+[rebase]
+    autostash = true
+
 [include]
     path = ~/.gitconf.d/local.conf
