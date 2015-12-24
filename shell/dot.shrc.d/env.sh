@@ -2,6 +2,7 @@ export LANG="en_US.UTF-8"
 export TERM="xterm-256color"
 export PAGER="less"
 export WWW_BROWSER="w3m"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
 # Ruby
 if type ruby >/dev/null 2>&1; then
@@ -9,49 +10,43 @@ if type ruby >/dev/null 2>&1; then
   export RUBYGEMS_GEMDEPS=-
 fi
 
-# VirtualBox
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
 # Editor
 if type vim >/dev/null 2>&1; then
-  export VISUAL="vim"
-  export EDITOR="vim"
-  export FCEDIT="vim"
-  export SVN_EDITOR="vim"
+  export {VISUAL,EDITOR,FCEDIT}="vim"
 else
-  export VISUAL="vi"
-  export EDITOR="vi"
-  export FCEDIT="vi"
-  export SVN_EDITOR="vi"
+  export {VISUAL,EDITOR,FCEDIT}="vi"
 fi
 
 # Less
 export LESS="-ciMNR"
-export LESS_TERMCAP_mb=`printf "\033[1;31m"`
-export LESS_TERMCAP_md=`printf "\033[1;31m"`
-export LESS_TERMCAP_me=`printf "\033[0m"`
-export LESS_TERMCAP_se=`printf "\033[0m"`
-export LESS_TERMCAP_so=`printf "\033[1;44m"`
-export LESS_TERMCAP_ue=`printf "\033[0m"`
-export LESS_TERMCAP_us=`printf "\033[1;36m"`
+LESS_TERMCAP_mb=`echo "\033[1;31m"`
+LESS_TERMCAP_md=`echo "\033[1;31m"`
+LESS_TERMCAP_me=`echo "\033[0m"`
+LESS_TERMCAP_se=`echo "\033[0m"`
+LESS_TERMCAP_so=`echo "\033[1;44m"`
+LESS_TERMCAP_ue=`echo "\033[0m"`
+LESS_TERMCAP_us=`echo "\033[1;36m"`
+export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # Path
-[ -d ~/.local/bin ] && export PATH="$PATH:$HOME/.local/bin"
-[ -d ~/.dotfiles/bin ] && export PATH="$PATH:$HOME/.dotfiles/bin"
-[ -d /usr/local/heroku ] && export PATH="$PATH:/usr/local/heroku/bin"
+[ -d ~/.local/bin ] && PATH+=":$HOME/.local/bin"
+[ -d ~/.dotfiles/bin ] && PATH+=":$HOME/.dotfiles/bin"
+[ -d /usr/local/heroku ] && PATH+=":/usr/local/heroku/bin"
 
 ## Node.js
 ### Nodebrew
-[ -d ~/.nodebrew ] && export PATH="$HOME/.nodebrew/current/bin:$PATH"
+[ -d ~/.nodebrew ] && PATH="$HOME/.nodebrew/current/bin:$PATH"
 
 ## Ruby
 ### rbenv
-[ -d ~/.rbenv ] && export PATH="$HOME/.rbenv/bin:$PATH"
+[ -d ~/.rbenv ] && PATH="$HOME/.rbenv/bin:$PATH"
 [ -d ~/.rbenv ] && eval "`rbenv init -`"
 
 ## Go
 [ -d ~/.local/src/go ] && export GOPATH=$HOME/.local/src/go
-[ -n $GOPATH ] && export PATH=$PATH:$GOPATH/bin
+[ -n $GOPATH ] && PATH+=":$GOPATH/bin"
+
+export PATH
 
 # Others
 case "$(uname -s)" in
