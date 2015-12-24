@@ -1,8 +1,3 @@
-# Load ~/.shrc.d/local.rc.sh
-RCLOCAL=~/.shrc.d/local.rc.sh
-[ -r "$RCLOCAL" ] && [ -f "$RCLOCAL" ] && source "$RCLOCAL"
-unset -v RCLOCAL
-
 # Display user info
 COLOR="\033[1;38;05;75m"
 COLOR_RESET="\033[0;39m"

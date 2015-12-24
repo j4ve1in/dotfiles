@@ -4,6 +4,7 @@ SHRC=(
   "aliases"
   "function"
   "last"
+  "local"
 )
 for file in ${SHRC[@]}; do
   file=~/.shrc.d/${file}.sh
