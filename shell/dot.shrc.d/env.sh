@@ -1,3 +1,5 @@
+has() { type $1 >/dev/null 2>&1; }
+
 export LANG="en_US.UTF-8"
 export TERM="xterm-256color"
 export PAGER="less"
@@ -5,13 +7,10 @@ export WWW_BROWSER="w3m"
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
 # Ruby
-if type ruby >/dev/null 2>&1; then
-  export KCODE="u"
-  export RUBYGEMS_GEMDEPS=-
-fi
+has ruby && export KCODE="u" RUBYGEMS_GEMDEPS="-"
 
 # Editor
-if type vim >/dev/null 2>&1; then
+if has vim; then
   export {VISUAL,EDITOR,FCEDIT}="vim"
 else
   export {VISUAL,EDITOR,FCEDIT}="vi"
@@ -57,3 +56,5 @@ case "$(uname -s)" in
     export LSCOLORS="gxfxcxdxbxegedabagacad"
     ;;
 esac
+
+unset -f has
