@@ -23,13 +23,11 @@ autocmd FileType man set nolist
 
 " Statusline
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V%8P
-"set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{fugitive#statusline()}%=%l/%L,%c%V%8P
-"set statusline+=%{fugitive#statusline()}
-" function! g:Date()
-"   return strftime("%x %H:%M")
-" endfunction
-" set statusline+=\ \%{g:Date()}
+"" Filename and fileencoding, fileformat, filetype
+set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y
+"" Git
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline+=%=%l/%L,%c%V\ %P
 
 " When insert mode, change statusline.
 let g:hi_insert = 'hi StatusLine gui=None guifg=Black guibg=Yellow cterm=None ctermfg=231 ctermbg=24'
