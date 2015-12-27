@@ -370,7 +370,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nmap <Space><Space>g [fugitive]
 
       nnoremap [fugitive]c :<C-u>Gcommit<Space>
-      nnoremap [fugitive]p :<C-u>Git<Space>push<Space>
+      nnoremap [fugitive]ps :<C-u>Git<Space>push<CR>
+      nnoremap [fugitive]pl :<C-u>Git<Space>pull<CR>
       call neobundle#untap()
     endif
     " }}}
