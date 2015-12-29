@@ -48,7 +48,7 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 export PATH
 
 # Others
-case "$(uname -s)" in
+case "`uname -s`" in
   CYGWIN*|MSYS*)
     export CYGWIN='winsymlinks'
     ;;

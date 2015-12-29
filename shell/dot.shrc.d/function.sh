@@ -87,7 +87,7 @@ set-urxvt-font-size() {
 
 mcd() { mkdir $1 && cd $1; }
 
-function man {
+man() {
   local p
   local m
   if [ "$PAGER" != "" ];then
