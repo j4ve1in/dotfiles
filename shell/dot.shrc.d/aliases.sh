@@ -113,7 +113,7 @@ alias pw=pwd
 alias r=rm
 alias m=mv
 alias le=less
-alias path='echo -e "${PATH//:/\n}"'
+alias path='echo -e ${PATH//:/\\n}'
 alias user='echo "$USER"'
 alias jman='env LANG="ja_JP.UTF-8" man'
 alias grep='grep --color'

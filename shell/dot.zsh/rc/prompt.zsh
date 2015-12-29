@@ -41,9 +41,12 @@ PROMPT+="$MAIN_COLOR"
 PROMPT+="][$RESET_COLOR"
 
 ## Time
-TMOUT=1
-TRAPALRM() { zle reset-prompt; }
-PROMPT+="%D{%m/%d %L:%M:%S}"
+re-prompt() {
+  zle .reset-prompt
+  zle .accept-line
+}
+zle -N accept-line re-prompt
+PROMPT+="%D{%m/%d %H:%M:%S}"
 
 ## Bracket
 PROMPT+="$MAIN_COLOR"

@@ -28,22 +28,22 @@ LESS_TERMCAP_us=`echo "\033[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # Path
-[ -d ~/.local/bin ] && PATH+=":$HOME/.local/bin"
-[ -d ~/.dotfiles/bin ] && PATH+=":$HOME/.dotfiles/bin"
-[ -d /usr/local/heroku ] && PATH+=':/usr/local/heroku/bin'
+[ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
+[ -d "${HOME}/.dotfiles/bin" ] && PATH+=":${HOME}/.dotfiles/bin"
+[ -d '/usr/local/heroku' ] && PATH+=':/usr/local/heroku/bin'
 
 ## Node.js
 ### Nodebrew
-[ -d ~/.nodebrew ] && PATH="$HOME/.nodebrew/current/bin:$PATH"
+[ -d "${HOME}/.nodebrew" ] && PATH="${HOME}/.nodebrew/current/bin:$PATH"
 
 ## Ruby
 ### rbenv
-[ -d ~/.rbenv ] && PATH="$HOME/.rbenv/bin:$PATH"
-[ -d ~/.rbenv ] && eval "`rbenv init -`"
+[ -d "${HOME}/.rbenv" ] && PATH="${HOME}/.rbenv/bin:$PATH"
+[ -d "${HOME}/.rbenv" ] && eval "`rbenv init -`"
 
 ## Go
-[ -d ~/.local/src/go ] && export GOPATH=$HOME/.local/src/go
-[ -n $GOPATH ] && PATH+=":$GOPATH/bin"
+[ -d "${HOME}/.local/src/go" ] && export GOPATH="${HOME}/.local/src/go"
+[ -n "$GOPATH" ] && PATH+=":${GOPATH}/bin"
 
 export PATH
 

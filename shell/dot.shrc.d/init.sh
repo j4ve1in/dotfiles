@@ -3,7 +3,6 @@ SHRC=(
   "base"
   "aliases"
   "function"
-  "last"
   "local"
 )
 for file in ${SHRC[@]}; do
