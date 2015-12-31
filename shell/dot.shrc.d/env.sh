@@ -24,7 +24,7 @@ LESS_TERMCAP_us=`echo "\033[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # Path
-[ -d "/usr/local/bin" ] && PATH+="/usr/local/bin:$PATH"
+[ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH"
 [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
 [ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
 [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
