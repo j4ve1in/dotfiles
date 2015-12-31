@@ -1,3 +1,4 @@
+[ -e '/etc/arch-release' ] && source ~/.zshenv
 # Compile
 ZFILE=(
   ~/.zshenv
