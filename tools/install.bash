@@ -80,7 +80,7 @@ install() {
   printf " Downloading dotfiles..."
   {
     sleep 1
-    git clone https://github.com/j4ve1in/dotfiles.git ~/.dotfiles --recursive
+    git clone https://github.com/j4ve1in/dotfiles.git ~/.dotfiles
   } | env LESS="-cE" less
   cprint "done" $CYAN_B
   echo

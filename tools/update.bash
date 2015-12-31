@@ -9,13 +9,6 @@ printf "Checking repository..."
   git -C ~/.dotfiles pull origin master
 } | env LESS="-cE" less
 cprint "done" $CYAN_B
-## Submodule
-printf "Checking submodule..."
-{
-  sleep 1
-  git -C ~/.dotfiles submodule foreach 'git checkout master ; git pull'
-} | env LESS="-cE" less
-cprint "done" $CYAN_B
 
 # Backup
 source ~/.dotfiles/tools/backup.bash
