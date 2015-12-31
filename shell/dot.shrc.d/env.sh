@@ -10,11 +10,7 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 has ruby && export KCODE='u' RUBYGEMS_GEMDEPS='-'
 
 # Editor
-if has vim; then
-  export {VISUAL,EDITOR,FCEDIT}='vim'
-else
-  export {VISUAL,EDITOR,FCEDIT}='vi'
-fi
+has vim && export EDITOR='vim' || export EDITOR='vi'
 
 # Less
 export LESS='-ciMNR'
@@ -52,12 +48,8 @@ export PATH
 
 # Others
 case "`uname -s`" in
-  CYGWIN*|MSYS*)
-    export CYGWIN='winsymlinks'
-    ;;
-  Darwin)
-    export LSCOLORS='gxfxcxdxbxegedabagacad'
-    ;;
+  CYGWIN*) export CYGWIN='winsymlinks' ;;
+  Darwin) export LSCOLORS='gxfxcxdxbxegedabagacad' ;;
 esac
 
 unset -f has
