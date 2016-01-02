@@ -118,6 +118,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   " }}}
 
+  " operator " {{{
+  NeoBundle 'kana/vim-operator-user'
+
+  NeoBundle 'haya14busa/vim-operator-flashy'
+  " }}}
 
   " textobj " {{{
   NeoBundle 'kana/vim-textobj-user'
@@ -600,6 +605,15 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       if has('conceal')
         set conceallevel=2 concealcursor=niv
       endif
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " vim-operator-flashy " {{{
+    if neobundle#tap('vim-operator-flashy')
+      map y <Plug>(operator-flashy)
+      nmap Y <Plug>(operator-flashy)$
+      highlight Flashy ctermfg=0 ctermbg=26 guifg=#000000 guibg=#FF0000
       call neobundle#untap()
     endif
     " }}}
