@@ -1,48 +1,44 @@
 Config {
-    font = "xft:Migu 1M:Regular",
-    bgColor = "#1a1e1b",
-    fgColor = "#676767",
-    position = Top,
+    font = "xft:Migu 1M:size=13",
+    bgColor = "black",
+    fgColor = "white",
+    position = TopSize C 100 20,
     lowerOnStart = False,
+    overrideRedirect = False,
+    border = NoBorder,
+    borderColor = "#26a69a",
     commands = [
-        Run Network "wlan0" [
-            "-t"       , " ⇩ <rx> : ⇧ <tx>",
-            "-L"       , "40",
-            "-H"       , "200",
-            "--normal" , "#d3d7cf",
-            "--high"   , "#88b986"
+        Run DynNetwork [
+            "--template" , "<dev>: ⇧<tx>kB/s ⇩<rx>kB/s ",
+            "--Low"      , "1000",
+            "--High"     , "5000",
+            "--low"      , "white",
+            "--normal"   , "white",
+            "--high"     , "darkred"
         ] 10,
-
-        Run MultiCpu        [
-            "-t"       , "<total0>.<total1>.<total2>.<total3>",
-            "-L"       , "40",
-            "-H"       , "85",
-            "--normal" , "#d3d7cf",
-            "--high"   , "#c16666"
-        ] 50,
-
-        Run Memory          [
-            "-t"       , "<usedratio>%",
-            "-L"       , "40",
-            "-H"       , "90",
-            "--normal" , "#d3d7cf",
-            "--high"   , "#c16666"
+        Run Memory [
+            "-t", " Mem: <usedratio>% ",
+            "-L", "40",
+            "-H", "90",
+            "-m", "2",
+            "--normal", "#ffffff",
+            "--high" , "#f44336"
         ] 10,
-        Run BatteryP        ["CMB1"]
-        [ "-t"       , "<acstatus>"
-        , "-L"       , "20"
-        , "-H"       , "80"
-        , "--low"    , "#c16666"
-        , "--normal" , "#d3d7cf"
-        , "--"
-        , "-o" , "<left>% (<timeleft>)"
-        , "-O" , "Charging <left>%"
-        , "-i" , "<left>%"
-        ] 50
-        , Run Date "%a %m/%d %H:%M" "date" 10
-        , Run StdinReader
-        ]
-        , sepChar = "%"
-        , alignSep = "}{"
-        , template = " %StdinReader% }{%multicpu% %memory%  %wlan0%  %battery%  <fc=#d3d7cf>%date%</fc> "
+        Run Battery [
+            "-t" , " Bat: <acstatus> ",
+            "-L", "20",
+            "-H", "80",
+            "--low", "#f44336",
+            "--normal", "#ffffff",
+            "--",
+            "-o", "<left>% (<timeleft>)",
+            "-O", "Charging <left>%",
+            "-i", "<left>%"
+        ] 10,
+        Run Date " %a %m/%d %H:%M" "date" 10,
+        Run StdinReader
+    ],
+    sepChar = "%",
+    alignSep = "}{",
+    template = " %StdinReader% }{ %dynnetwork%|%memory%|%battery%|%date% "
 }
