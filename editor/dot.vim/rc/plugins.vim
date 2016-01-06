@@ -168,6 +168,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'kana/vim-submode'
 
+  NeoBundle 'tpope/vim-dispatch'
+
   NeoBundle 'Townk/vim-autoclose'
 
   NeoBundle 'Shougo/vimshell.vim'
@@ -274,10 +276,12 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
 
       "" giti
+      let g:giti_git_command = executable('hub') ? 'hub' : 'git'
       nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
       nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
       nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
       nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
+      nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
 
       "" Rails
       nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails<CR>
@@ -371,12 +375,22 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " fugitive " {{{
     if neobundle#tap('vim-fugitive')
-      nnoremap [fugitive] <Nop>
-      nmap <Space><Space>g [fugitive]
+      let g:fugitive_git_executable = executable('hub') ? 'hub' : 'git'
+      nnoremap [git] <Nop>
+      nmap <Space><Space>g [git]
 
-      nnoremap [fugitive]c :<C-u>Gcommit<Space>
-      nnoremap [fugitive]ps :<C-u>Git<Space>push<CR>
-      nnoremap [fugitive]pl :<C-u>Git<Space>pull<CR>
+      nnoremap [git]c :<C-u>Gcommit<Space>
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " vim-dispatch " {{{
+    if neobundle#tap('vim-dispatch')
+      nnoremap [git] <Nop>
+      nmap <Space><Space>g [git]
+
+      nnoremap [git]ps :Dispatch git<Space>push<CR>
+      nnoremap [git]pl :Dispatch git<Space>pull<CR>
       call neobundle#untap()
     endif
     " }}}
