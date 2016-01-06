@@ -43,11 +43,9 @@ nnoremap gs :<C-u>%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
 
 " .vimrc
-nnoremap <silent> <Space>.  :<C-u>edit $MYVIMRC \| :lcd ~/.vim/rc<CR>
-nnoremap <silent> <Space>>  :<C-u>tabedit $MYVIMRC \| :lcd ~/.vim/rc<CR>
-nnoremap <silent> <Space>..  :<C-u>edit ~/.vim/rc<CR>
-nnoremap <silent> <Space>>>  :<C-u>tabedit ~/.vim/rc<CR>
-nnoremap <silent> <Space>...  :<C-u>source $MYVIMRC<CR>
+nnoremap <silent> <Space>.  :<C-u>edit ~/.vim/rc<CR>
+nnoremap <silent> <Space>>  :<C-u>tabedit ~/.vim/rc<CR>
+nnoremap <silent> <Space>..  :<C-u>source $MYVIMRC<CR>
 
 " Search
 " Current line at center of window and open the folding.
