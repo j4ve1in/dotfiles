@@ -97,3 +97,6 @@
 
 [include]
     path = ~/.gitconf.d/local.conf
+
+[fetch]
+    prune = true

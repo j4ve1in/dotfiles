@@ -85,7 +85,7 @@ case "`uname -s`" in
     alias cys='cygstart' e='cygstart .'
     ;;
   Darwin)
-    alias l{,s}='ls -F'
+    alias l{,s}='ls -FG'
     alias op='open' f='open .'
     alias pbc='pbcopy' pbp='pbpaste'
     ;;
