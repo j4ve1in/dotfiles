@@ -14,6 +14,9 @@
     old = red
     new = green
 
+[pager]
+    stash = false
+
 [diff]
     algorithm = histogram
 
@@ -26,8 +29,9 @@
 [alias]
     a = add
     aa = add -A
-    ba = branch
+    b = branch
     bo =browse # hub
+    cancel = reset --soft HEAD^
     ch = checkout
     co = config
     col = config -l
@@ -35,15 +39,17 @@
     f = fetch
     i = init
     m = merge
-    pl = pull
+    me = !git config --get-regexp user
+    p = pull
     ps = push
     r = revert
     sw = show
-    s = status
+    s = !"git status -s -b && git stash list"
     st = stash
     stl = stash list
     stp = stash pop
     sts = stash show
+    unstage = reset HEAD --
 
     # alias
     alias = "!\
@@ -95,8 +101,14 @@
 [rebase]
     autostash = true
 
-[include]
-    path = ~/.gitconf.d/local.conf
-
 [fetch]
     prune = true
+
+[merge]
+    ff = false
+
+[commit]
+    template = ~/.gitconf.d/message.txt
+
+[include]
+    path = ~/.gitconf.d/local.conf
