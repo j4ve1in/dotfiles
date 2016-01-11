@@ -1,11 +1,11 @@
 " Declare rc_vim_list and source_rc
 let rc_vim_list = [
-\   "plugins",
-\   "apperance",
-\   "base",
-\   "colors",
-\   "keymap",
-\   "local"
+\   'plugins',
+\   'apperance',
+\   'base',
+\   'colors',
+\   'keymap',
+\   'local'
 \ ]
 
 function! s:source_rc(path)
