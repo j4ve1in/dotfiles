@@ -418,6 +418,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     if neobundle#tap('vim-dispatch')
       nnoremap [dispatch] <Nop>
       nmap <Space>dp [dispatch]
+      nnoremap [dispatch] :<C-u>Dispatch<Space>
       nnoremap [dispatch]c :<C-u>Copen<CR>
       nnoremap [dispatch]r :<C-u>Start<Space>irb<CR>
       nnoremap [dispatch]h :<C-u>Start<Space>ghci<CR>
