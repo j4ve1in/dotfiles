@@ -61,6 +61,7 @@ fi
 
 # Others
 has git && alias g='git'
+has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
 has mysql && alias mysql='mysql --pager="less -iFMnSX"'
 alias h='history'

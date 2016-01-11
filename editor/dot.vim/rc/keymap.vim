@@ -17,11 +17,13 @@ noremap <Space>l $
 noremap <Space>m %
 nnoremap <Space>/ *
 noremap <Space>v 0v$h
+noremap <silent><Space>cd :<C-u>cd<CR>
+noremap <Space>cdd :<C-u>cd<Space>
 noremap <Space>pw :<C-u>pwd<CR>
 map <Space>i gg=<S-g><C-o><C-o>zz
 nnoremap <C-h>h :<C-u>help<Space>
 nnoremap <Space>e :<C-u>edit!<CR>
-nnoremap <Space>d :<C-u>!mkdir<Space>
+nnoremap <Space>md :<C-u>!clear<Space>&&<Space>mkdir<Space>
 nnoremap <Space>enc :<C-u>e ++encoding=""<Left>
 nnoremap <Space>ff  :<C-u>e ++fileformat=""<Left>
 nnoremap <Space>w! :w !sudo tee >/dev/null %<CR> :e!<CR>
@@ -105,6 +107,19 @@ if has('unix') && !has('gui_running')
   map <NUL> <C-Space>
   map! <NUL> <C-Space>
 endif
+
+" Follow symlink
+command! FollowSymlink call s:SwitchToActualFile()
+function! s:SwitchToActualFile()
+  let l:fname = resolve(expand('%:p'))
+  let l:pos = getpos('.')
+  let l:bufname = bufname('%')
+  enew
+  exec 'bw '. l:bufname
+  exec "e" . fname
+  call setpos('.', pos)
+endfunction
+nnoremap <silent> <Space>s :<C-u>FollowSymlink<CR>
 
 " for small devise
 nnoremap <silent> <Space>w :<C-u>w<CR>

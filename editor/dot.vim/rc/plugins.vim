@@ -301,7 +301,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
 
       "" giti
-      let g:giti_git_command = executable('hub') ? 'hub' : 'git'
       nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
       nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
       nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
@@ -378,13 +377,27 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " fugitive " {{{
     if neobundle#tap('vim-fugitive')
-      let g:fugitive_git_executable = executable('hub') ? 'hub' : 'git'
       nnoremap [git] <Nop>
       nmap <Space>g [git]
 
-      nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>""<Left>
-      nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>""<Left>
-      nnoremap [git]d :<C-u>Gcd<Space>
+      nnoremap [git]a :<C-u>Git<Space>add<Space>%:p<CR>
+      nnoremap [git]aa :<C-u>Git<Space>add<Space>-A<CR>
+      nnoremap [git]b :<C-u>Gbrowse<CR>
+      nnoremap [git]c :<C-u>Gcommit<CR>
+      nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>''<Left>
+      nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>''<Left>
+      nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
+      nnoremap [git]cd :<C-u>Gcd<CR>
+      nnoremap [git]in :<C-u>Git<Space>init<CR>
+      nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:h<Space>stash<Space>list<CR>
+      nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>show<CR>
+      nnoremap [git]st :<C-u>Git<Space>stash<CR>
+      nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
+      nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
+      nnoremap [git]w :<C-u>Gwrite
+      nnoremap [git]r :<C-u>Gread
+      nnoremap [git]rm :<C-u>Gremove
+      nnoremap [git]m :<C-u>Gmove
       call neobundle#untap()
     endif
     " }}}
@@ -403,11 +416,21 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " vim-dispatch " {{{
     if neobundle#tap('vim-dispatch')
+      nnoremap [dispatch] <Nop>
+      nmap <Space>dp [dispatch]
+      nnoremap [dispatch]c :<C-u>Copen<CR>
+      nnoremap [dispatch]r :<C-u>Start<Space>irb<CR>
+      nnoremap [dispatch]h :<C-u>Start<Space>ghci<CR>
+
       nnoremap [git] <Nop>
       nmap <Space>g [git]
 
-      nnoremap [git]ps :Dispatch git<Space>push<CR>
-      nnoremap [git]p :Dispatch git<Space>pull<CR>
+      nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>fetch<CR>
+      nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>pull<CR>
+      nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>push<CR>
+      nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>clone<Space>
+      nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>merge<Space>--no-ff<CR>
+      nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
       call neobundle#untap()
     endif
     " }}}
