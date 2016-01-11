@@ -95,5 +95,8 @@
 [rebase]
     autostash = true
 
+[ghq]
+    root = ~/.ghq
+
 [include]
     path = ~/.gitconf.d/local.conf

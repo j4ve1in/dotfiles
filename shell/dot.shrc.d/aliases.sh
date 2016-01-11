@@ -25,8 +25,8 @@ has colordiff && alias diff='colordiff -u' || alias diff='diff -u'
 if has vagrant; then
   alias vags='vagrant global-status'
   alias vah='vagrant halt'
-  alias varl='vagrant reload'
-  alias vass='vagrant ssh'
+  alias var='vagrant reload'
+  alias vas='vagrant ssh'
   alias vast='vagrant status'
   alias vau='vagrant up'
 fi
@@ -79,6 +79,7 @@ case "`uname -s`" in
   Linux)
     alias xdo='xdg-open'
     alias xs='xsel'
+    alias r='ranger'
     ;;
   CYGWIN*|MSYS*)
     alias cy='mintty -t Cygwin -i /Cygwin-Terminal.ico -'

@@ -4,7 +4,8 @@ let rc_vim_list = [
 \   "apperance",
 \   "base",
 \   "colors",
-\   "keymap"
+\   "keymap",
+\   "local"
 \ ]
 
 function! s:source_rc(path)
