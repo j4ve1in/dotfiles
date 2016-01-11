@@ -80,3 +80,6 @@ zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
+
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
