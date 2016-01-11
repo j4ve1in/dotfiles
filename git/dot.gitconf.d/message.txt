@@ -1,0 +1,12 @@
+# fix, add, changeといった事実ではなく、このcommitで実現する要件や仕様を書きましょう。（リファクタなどは除く）
+#
+# 例文）
+# - Fix typo in docs
+# - Remove unused code
+# - Remove use of deprecated method
+# - Update Modernizr to v1.6
+# - Make it possible to have IDs per request
+# - Make sure to reset default_url_options（必ずリセットする）
+# - Don't use "assert_not_nil"
+# - Allow the user to drag faster
+# - Remove methods to avoid warnings.
