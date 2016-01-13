@@ -9,7 +9,9 @@ let rc_vim_list = [
 \ ]
 
 function! s:source_rc(path)
-  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path . '.vim'))
+  if filereadable(expand('~/.vim/rc/' . a:path . '.vim'))
+    execute 'source' fnameescape(expand('~/.vim/rc/' . a:path . '.vim'))
+  endif
 endfunction
 
 " Source settings
