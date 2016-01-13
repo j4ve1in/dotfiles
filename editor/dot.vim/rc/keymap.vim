@@ -23,6 +23,7 @@ noremap <Space>pw :<C-u>pwd<CR>
 map <Space>i gg=<S-g><C-o><C-o>zz
 nnoremap <C-h>h :<C-u>help<Space>
 nnoremap <Space>e :<C-u>edit!<CR>
+nnoremap <Space>ed :<C-u>edit<Space>
 nnoremap <Space>md :<C-u>!clear<Space>&&<Space>mkdir<Space>
 nnoremap <Space>enc :<C-u>e ++encoding=""<Left>
 nnoremap <Space>ff  :<C-u>e ++fileformat=""<Left>
