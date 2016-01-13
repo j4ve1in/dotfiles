@@ -4,6 +4,8 @@ set ttyfast
 
 set autoread
 
+set history=50
+
 set nrformats=
 
 set scrolloff=5
@@ -20,9 +22,7 @@ set backspace=indent,eol,start
 
 set noerrorbells visualbell t_vb=
 
-set viminfo='50,<1000,s100,n~/.vim/var/tmp/.viminfo
-
-autocmd FileType *  setlocal formatoptions-=ro
+set viminfo='30,<50,s100,n~/.vim/viminfo
 
 autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
 
@@ -44,13 +44,13 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
 set wrapscan ignorecase smartcase incsearch hlsearch
 
 " Swapfile
-set swapfile directory=~/.vim/tmp/swap
+set swapfile directory=~/.vim/swap
 
 " Backupfile
-set backup backupdir=~/.vim/var/tmp/backup
+set backup backupdir=~/.vim/backup
 
 " Undofile
-set undofile undodir=~/.vim/var/tmp/undo
+set undofile undodir=~/.vim/undo
 
 " Mouse
-set mouse=a ttymouse=xterm2
+set mouse= ttymouse=xterm2

@@ -30,7 +30,7 @@
     a = add
     aa = add -A
     b = branch
-    bo =browse # hub
+    bo = browse # hub
     cancel = reset --soft HEAD^
     ch = checkout
     co = config
@@ -42,7 +42,6 @@
     me = !git config --get-regexp user
     p = pull
     ps = push
-    r = revert
     sw = show
     s = !"git status -s -b && git stash list"
     st = stash
@@ -107,8 +106,8 @@
 [merge]
     ff = false
 
-[commit]
-    template = ~/.gitconf.d/message.txt
+[ghq]
+    root = ~/.ghq
 
 [include]
     path = ~/.gitconf.d/local.conf

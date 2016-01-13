@@ -121,3 +121,6 @@ zstyle ':filter-select' max-lines -10
 zstyle ':filter-select' rotate-list yes
 zstyle ':filter-select' case-insensitive yes
 zstyle ':filter-select' extended-search yes
+
+# ghq
+fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))

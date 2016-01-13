@@ -25,8 +25,8 @@ has colordiff && alias diff='colordiff -u' || alias diff='diff -u'
 if has vagrant; then
   alias vags='vagrant global-status'
   alias vah='vagrant halt'
-  alias varl='vagrant reload'
-  alias vass='vagrant ssh'
+  alias var='vagrant reload'
+  alias vas='vagrant ssh'
   alias vast='vagrant status'
   alias vau='vagrant up'
 fi
@@ -61,6 +61,7 @@ fi
 
 # Others
 has git && alias g='git'
+has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
 has mysql && alias mysql='mysql --pager="less -iFMnSX"'
 alias h='history'
@@ -79,6 +80,7 @@ case "`uname -s`" in
   Linux)
     alias xdo='xdg-open'
     alias xs='xsel'
+    alias r='ranger'
     ;;
   CYGWIN*|MSYS*)
     alias cy='mintty -t Cygwin -i /Cygwin-Terminal.ico -'

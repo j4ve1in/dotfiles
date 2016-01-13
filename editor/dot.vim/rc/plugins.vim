@@ -2,7 +2,7 @@
 " Netrw
 let g:netrw_liststyle=3
 let b:netrw_islocal=0
-let g:netrw_home=$HOME.'/.vim/var/tmp/plugin'
+let g:netrw_home=$HOME.'/.vim/tmp'
 
 " NeoBundle
 if !1 | finish | endif
@@ -10,7 +10,7 @@ if !1 | finish | endif
 if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-  let g:neobundle#log_filename = $HOME.'/.vim/var/tmp/plugin/neobundle.log'
+  let g:neobundle#log_filename = $HOME.'/.vim/tmp/neobundle.log'
 
   call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -29,11 +29,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \ }
 
   " Unite " {{{
-  NeoBundleLazy 'Shougo/unite.vim', {
-  \   'autoload': {
-  \     'commands': [ 'Unite' ]
-  \   }
-  \ }
+  NeoBundle 'Shougo/unite.vim'
 
   NeoBundle 'Shougo/neomru.vim', {
   \   'depends': [ 'Shougo/unite.vim' ]
@@ -55,13 +51,44 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
 
+  NeoBundle 'sorah/unite-ghq', {
+  \   'depends': [ 'Shougo/unite.vim' ]
+  \ }
+
   NeoBundle 'basyura/unite-rails', {
   \   'depends': [ 'Shougo/unite.vim' ]
   \ }
+
+  NeoBundleLazy 'pasela/unite-webcolorname', {
+  \   'depends': [ 'Shougo/unite.vim' ],
+  \   'autoload': {
+  \     'commands': [ 'Unite webcolorname' ]
+  \   }
+  \ }
+
+  NeoBundleLazy 'osyo-manga/unite-highlight', {
+  \   'depends': [ 'Shougo/unite.vim' ],
+  \   'autoload': {
+  \     'commands': [ 'Unite highlight' ]
+  \   }
+  \ }
+
+  NeoBundleLazy 'majkinetor/unite-cmdmatch', {
+        \'depends': 'Shougo/unite.vim',
+        \'mappings': [['c', '<Plug>(unite_cmdmatch_complete)']] }
   " }}}
 
   " Git " {{{
   NeoBundle 'tpope/vim-fugitive'
+
+  NeoBundle 'airblade/vim-gitgutter'
+
+  NeoBundleLazy 'lambdalisue/vim-gista', {
+        \ 'autoload': {
+        \    'commands': ['Gista'],
+        \    'mappings': '<Plug>(gista-',
+        \    'unite_sources': 'gista',
+        \}}
   " }}}
 
   " Twitter " {{{
@@ -127,6 +154,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   " textobj " {{{
   NeoBundle 'kana/vim-textobj-user'
 
+  NeoBundle 'kana/vim-textobj-entire'
+
+  NeoBundle 'kana/vim-textobj-line'
+
   NeoBundle 'rhysd/vim-textobj-ruby'
   " }}}
 
@@ -164,6 +195,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   " Others " {{{
   NeoBundle 'surround.vim'
 
+  NeoBundle 'tyru/caw.vim'
+
   NeoBundle 'vim-jp/vimdoc-ja'
 
   NeoBundle 'kana/vim-submode'
@@ -172,15 +205,13 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'Townk/vim-autoclose'
 
-  NeoBundle 'Shougo/vimshell.vim'
-
   NeoBundle 'haya14busa/incsearch.vim'
 
   NeoBundle 'easymotion/vim-easymotion'
 
-  NeoBundle 'scrooloose/nerdcommenter'
-
   NeoBundle 'vim-scripts/vim-auto-save'
+
+  NeoBundle 'terryma/vim-multiple-cursors'
 
   NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -200,45 +231,27 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundleFetch 'itchyny/lightline.vim'
 
-  NeoBundleFetch 'AndrewRadev/sideways.vim'
+  NeoBundle 'deris/vim-shot-f'
 
-  NeoBundleFetch 'wellle/targets.vim'
+  NeoBundle 'wellle/targets.vim'
 
   NeoBundle 'dhruvasagar/vim-table-mode'
 
   NeoBundle 'cohama/vim-smartinput-endwise', {
   \   'depends': [ 'kana/vim-smartinput' ]
   \ }
-
-  " NeoBundleLazy 'ujihisa/unite-colorscheme', {
-  " \   'depends': [ 'Shougo/unite.vim' ],
-  " \   'autoload': {
-  " \     'commands': [ 'Unite colorscheme' ]
-  " \   }
-  " \ }
-
-  " NeoBundleLazy 'pasela/unite-webcolorname', {
-  " \   'depends': [ 'Shougo/unite.vim' ],
-  " \   'autoload': {
-  " \     'commands': [ 'Unite webcolorname' ]
-  " \   }
-  " \ }
   " }}}
 
   " Source Plugins Settings " {{{
     " Unite " {{{
     if neobundle#tap('unite.vim')
+      let g:unite_enable_auto_select = 0
       nnoremap [Unite] <Nop>
       nmap <C-Space> [Unite]
-      nmap <Space><Space>u [Unite]
 
       nnoremap <silent> [Unite] :<C-u>Unite<CR>
-      nnoremap <silent> [Unite]b :<C-u>Unite<Space>buffer<CR>
-      nnoremap <silent> [Unite]B :<C-u>Unite<Space>buffer<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rg :<C-u>Unite<Space>register<CR>
-      nnoremap <silent> [Unite]rs :<C-u>UniteResume<CR>
       nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
-      nnoremap <silent> [Unite]w :<C-u>Unite<Space>window<CR>
       nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
 
       " file
@@ -246,26 +259,34 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]F :Unite<Space>file<Space>file/new<Space>directory/new<Space>-default-action=tabopen<CR>
 
       " file_rec
-      nnoremap <silent> [Unite]r :Unite<Space>file_rec<CR>
-      nnoremap <silent> [Unite]R :Unite<Space>file_rec<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]r! :Unite<Space>file_rec/async:!<CR>
-      nnoremap <silent> [Unite]R! :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]fr :Unite<Space>file_rec/async<CR>
+      nnoremap <silent> [Unite]fR :Unite<Space>file_rec/async<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]fr! :Unite<Space>file_rec/async:!<CR>
+      nnoremap <silent> [Unite]fR! :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
+
+      " directory_rec
+      nnoremap <silent> [Unite]dr :<C-u>Unite<Space>directory_rec/async<CR>
+      nnoremap <silent> [Unite]Dr :<C-u>Unite<Space>directory_rec/async<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]dr! :<C-u>Unite<Space>directory_rec/async:!<CR>
+      nnoremap <silent> [Unite]Dr! :<C-u>Unite<Space>directory_rec/async:!<Space>-default-action=tabopen<CR>
+
+      " git
+      nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git<CR>
+      nnoremap <silent> [Unite]gF :<C-u>Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git:!<CR>
+      nnoremap <silent> [Unite]gF :<C-u>Unite<Space>file_rec/git:!<Space>-default-action=tabopen<CR>
 
       " file_mru
       nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
       nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
-
-      " directory_mru
-      nnoremap <silent> [Unite]dm :<C-u>Unite<Space>directory_mru<CR>
-      nnoremap <silent> [Unite]dM :<C-u>Unite<Space>directory_mru<Space>-default-action=tabopen<CR>
 
       " help
       nnoremap <silent> [Unite]h :<C-u>Unite<Space>help<CR>
       nnoremap <silent> [Unite]H :<C-u>Unite<Space>help<Space>-default-action=tabopen<CR>
 
       " find
-      nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
-      nnoremap <silent> [Unite]Fi :Unite<Space>find:.<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]s :Unite<Space>find:.<CR>
+      nnoremap <silent> [Unite]S :Unite<Space>find:.<Space>-default-action=tabopen<CR>
 
       " ~/.vim/rc/*
       nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.vim/rc<CR>
@@ -274,9 +295,12 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       " other plugin
       nnoremap <silent> [Unite]n :<C-u>Unite<CR>neobundle
       nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
+      nnoremap <silent> [Unite]w :<C-u>Unite<Space>webcolorname<CR>
+      nnoremap <silent> [Unite]hl :<C-u>Unite<Space>highlight<CR>
+      nnoremap <silent> [Unite]gi :<C-u>Unite<Space>gista<CR>
+      nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
 
       "" giti
-      let g:giti_git_command = executable('hub') ? 'hub' : 'git'
       nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
       nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
       nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
@@ -284,21 +308,17 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
 
       "" Rails
-      nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails<CR>
-      nnoremap <silent> [Unite]raa :<C-u>Unite<Space>rails/asset<CR>
-      nnoremap <silent> [Unite]ram :<C-u>Unite<Space>rails/model<CR>
-      nnoremap <silent> [Unite]rav :<C-u>Unite<Space>rails/view<CR>
-      nnoremap <silent> [Unite]rac :<C-u>Unite<Space>rails/controller<CR>
-      nnoremap <silent> [Unite]rah :<C-u>Unite<Space>rails/helper<CR>
-
-      let g:unite_enable_auto_select = 0
-      let g:unite_enable_start_insert = 1
-      autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
-      autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
+      nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
+      nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
+      nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
+      nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
+      nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
 
       " grep
       nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
       nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]/g :<C-u>Unite<Space>grep/git:.<CR>
+      nnoremap <silent> [Unite]?g :<C-u>Unite<Space>grep/git:.<Space>-default-action=tabopen<CR>
       if executable('hw')
         let g:unite_source_grep_command = 'hw'
         let g:unite_source_grep_default_opts = '--no-group --no-color'
@@ -308,6 +328,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let s:hooks = neobundle#get_hooks("unite.vim")
       function! s:hooks.on_source(bundle)
         call unite#custom#profile('default', 'context', {
+          \ 'start_insert': '1',
           \ 'prompt_direction': 'top',
           \ 'prompt': '> ',
           \ 'candidate_icon': '- ',
@@ -338,59 +359,94 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " VimFiler " {{{
     if neobundle#tap('vimfiler')
-      nnoremap [VimFiler] <Nop>
-      nmap <Space><Space>f [VimFiler]
-
-      nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
-      nnoremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
-      nnoremap <silent> [VimFiler]b :<C-u>VimFilerBufferDir<CR>
-      nnoremap <silent> [VimFiler]d :<C-u>VimFilerDouble<CR>
-      nnoremap <silent> [VimFiler]e :<C-u>VimFilerExplorer<CR>
       let g:vimfiler_as_default_explorer = 1
-      let g:vimfiler_enable_auto_cd = 1
       autocmd FileType vimfiler 
             \ nnoremap <buffer><silent>/ 
             \ :<C-u>Unite file -default-action=vimfiler<CR>
       autocmd FileType vimfiler setlocal statusline=VimFiler
       let s:hooks = neobundle#get_hooks("vimfiler.vim")
       function! s:hooks.on_source(bundle)
-        call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+        call vimfiler#custom#profile('default', 'context', {
+              \   'auto_cd' : 1
+              \ })
       endfunction
       unlet s:hooks
       call neobundle#untap()
     endif
     " }}}
 
-    " VimShell " {{{
-    if neobundle#tap('vimshell.vim')
-      nnoremap [VimShell] <Nop>
-      nmap <Space><Space>s [VimShell]
-      nmap <Space><Space>S [VimShellTab]
+    " fugitive " {{{
+    if neobundle#tap('vim-fugitive')
+      nnoremap [git] <Nop>
+      nmap <Space>g [git]
 
-      nnoremap <silent> [VimShell] :<C-u>VimShell<CR>
-      nnoremap <silent> [VimShellTab] :<C-u>VimShellTab<CR>
+      nnoremap [git]a :<C-u>Git<Space>add<Space>%:p<CR>
+      nnoremap [git]aa :<C-u>Git<Space>add<Space>-A<CR>
+      nnoremap [git]b :<C-u>Gbrowse<CR>
+      nnoremap [git]c :<C-u>Gcommit<CR>
+      nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>''<Left>
+      nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>''<Left>
+      nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
+      nnoremap [git]cd :<C-u>Gcd<CR>
+      nnoremap [git]in :<C-u>Git<Space>init<CR>
+      nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:h<Space>stash<Space>list<CR>
+      nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>show<CR>
+      nnoremap [git]st :<C-u>Git<Space>stash<CR>
+      nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
+      nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
+      nnoremap [git]w :<C-u>Gwrite
+      nnoremap [git]r :<C-u>Gread
+      nnoremap [git]rm :<C-u>Gremove
+      nnoremap [git]m :<C-u>Gmove
       call neobundle#untap()
     endif
     " }}}
 
-    " fugitive " {{{
-    if neobundle#tap('vim-fugitive')
-      let g:fugitive_git_executable = executable('hub') ? 'hub' : 'git'
+    " vim-gitgutter " {{{
+    if neobundle#tap('vim-gitgutter')
       nnoremap [git] <Nop>
-      nmap <Space><Space>g [git]
+      nmap <Space>g [git]
 
-      nnoremap [git]c :<C-u>Gcommit<Space>
+      nnoremap <silent> [git]g :<C-u>GitGutterToggle<CR>
+      let g:gitgutter_enabled = 0
+      highlight clear SignColumn
       call neobundle#untap()
     endif
     " }}}
 
     " vim-dispatch " {{{
     if neobundle#tap('vim-dispatch')
-      nnoremap [git] <Nop>
-      nmap <Space><Space>g [git]
+      nnoremap [dispatch] <Nop>
+      nmap <Space>dp [dispatch]
+      nnoremap [dispatch] :<C-u>Dispatch<Space>
+      nnoremap [dispatch]c :<C-u>Copen<CR>
+      nnoremap [dispatch]r :<C-u>Start<Space>irb<CR>
+      nnoremap [dispatch]h :<C-u>Start<Space>ghci<CR>
 
-      nnoremap [git]ps :Dispatch git<Space>push<CR>
-      nnoremap [git]pl :Dispatch git<Space>pull<CR>
+      nnoremap [git] <Nop>
+      nmap <Space>g [git]
+
+      nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>fetch<CR>
+      nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>pull<CR>
+      nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>push<CR>
+      nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>clone<Space>
+      nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>merge<Space>--no-ff<CR>
+      nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " vim-gista " {{{
+    if neobundle#tap('vim-gista')
+      nnoremap [git] <Nop>
+      nmap <Space>g [git]
+
+      nnoremap [git]i :<C-u>Gista<Space>--post<Space>--description<Space>''<Left>
+      nnoremap [git]ip :<C-u>Gista<Space>--post<Space>--public<Space>--description<Space>''<Left>
+      nnoremap [git]il :<C-u>Gista<Space>--list<CR>
+      nnoremap [git]ic :<C-u>tabedit<Space><Space>\|<Space>:set<Space>ro
+                  \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+      let g:gista#post_private = '1'
       call neobundle#untap()
     endif
     " }}}
@@ -398,7 +454,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " Watchdogs " {{{
     if neobundle#tap('vim-watchdogs')
       nnoremap [Watchdogs] <Nop>
-      nmap <Space><Space>w [Watchdogs]
+      nmap <Space>W [Watchdogs]
 
       nnoremap <silent> [Watchdogs] :<C-u>WatchdogsRun<CR>
       call neobundle#untap()
@@ -410,14 +466,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       let g:tweetvim_display_icon = 1
       let g:tweetvim_display_source = 1
       let g:tweetvim_tweet_per_page = 60
-      let g:tweetvim_config_dir = expand('~/.vim/var/tmp/plugin/tweetvim')
-
-      nnoremap [TweetVim] <Nop>
-      nmap <Space><Space>t [TweetVim]
-
-      nnoremap <silent> [TweetVim] :<C-u>TweetVimHomeTimeline<CR>
-      nnoremap <silent> [TweetVim]m :<C-u>TwetVimMentions<CR>
-      nnoremap <silent> [TweetVim]s :<C-u>TweetVimSay<CR>
+      let g:tweetvim_config_dir = expand('~/.vim/tmp/tweetvim')
       call neobundle#untap()
     endif
     " }}}
@@ -425,7 +474,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " Previm " {{{
     if neobundle#tap('previm')
       nnoremap [Previm] <Nop>
-      nmap <Space><Space>p [Previm]
+      nmap <Space>pv [Previm]
 
       nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
       call neobundle#untap()
@@ -501,7 +550,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         " Define dictionary.
         let g:neocomplete#sources#dictionary#dictionaries = {
               \ 'default' : '',
-              \ 'vimshell' : $HOME.'/.vimshell_hist',
               \ 'scheme' : $HOME.'/.gosh_completions'
               \ }
 
@@ -555,7 +603,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         " Define dictionary.
         let g:neocomplcache_dictionary_filetype_lists = {
               \ 'default' : '',
-              \ 'vimshell' : $HOME.'/.vimshell_hist',
               \ 'scheme' : $HOME.'/.gosh_completions'
               \ }
 
@@ -627,16 +674,46 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     if neobundle#tap('vim-operator-flashy')
       map y <Plug>(operator-flashy)
       nmap Y <Plug>(operator-flashy)$
-      highlight Flashy ctermfg=0 ctermbg=26 guifg=#000000 guibg=#FF0000
+      highlight Flashy ctermfg=0 ctermbg=26
       call neobundle#untap()
     endif
     " }}}
 
     " incsearch.vim " {{{
     if neobundle#tap('incsearch.vim')
+      let g:incsearch#no_inc_hlsearch = 1
       map /  <Plug>(incsearch-forward)
       map ?  <Plug>(incsearch-backward)
       map g/ <Plug>(incsearch-stay)
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " caw.vim " {{{
+    if neobundle#tap('caw.vim')
+      nmap <Space>c <Plug>(caw:i:toggle)
+      vmap <Space>c <Plug>(caw:i:toggle)
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " unite-cmdmatch " {{{
+    if neobundle#tap('unite-cmdmatch')
+      cmap <c-o> <Plug>(unite_cmdmatch_complete)
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " vim-table-mode " {{{
+    if neobundle#tap('vim-table-mode')
+      let g:loaded_table_mode = 1
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " editorconfig-vim " {{{
+    if neobundle#tap('editorconfig-vim')
+      let g:EditorConfig_exclude_patterns = ['gista:*', 'scp://.*']
       call neobundle#untap()
     endif
     " }}}

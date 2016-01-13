@@ -8,13 +8,12 @@ set t_Co=256 " Enable 256 colors.
 set t_ut= " Disable Background Color Erase
 set background=light
 syntax enable " Switch on syntax highlighting
-set cursorline "Highlight the screen line of the cursor with CursorLine.
 augroup vimrc_change_cursorline_color
   autocmd!
   " Set CursorLine highlighting.
-  autocmd InsertEnter * highlight CursorLine cterm=none ctermbg=17
+  autocmd InsertEnter,WinLeave * set cursorline | highlight CursorLine cterm=none ctermbg=17
   " Reset CursorLine highlighting to the defaults.
-  autocmd VimEnter,SourcePre,InsertLeave * highlight clear CursorLine
+  autocmd VimEnter,SourcePre,InsertLeave,WinEnter * set nocursorline | highlight clear CursorLine
 augroup END
 
 "--------------------------------------------------------------------
@@ -26,9 +25,9 @@ hi Constant                                      ctermfg=99
 hi Cursor                           ctermbg=240  ctermfg=231
 hi CursorLineNr    cterm=bold       ctermbg=0    ctermfg=none
 hi CursorColumn                     ctermbg=0
-hi DiffAdd                          ctermbg=248  ctermfg=27
-hi DiffChange                       ctermbg=248  ctermfg=27
-hi DiffDelete                       ctermbg=248  ctermfg=27
+hi DiffAdd                          ctermbg=46  ctermfg=232
+hi DiffChange                       ctermbg=190  ctermfg=232
+hi DiffDelete                       ctermbg=124  ctermfg=231
 hi DiffText                         ctermbg=248  ctermfg=231
 hi Directory                        ctermbg=232  ctermfg=27
 hi ErrorMsg                         ctermbg=231  ctermfg=232

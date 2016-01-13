@@ -41,8 +41,7 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 [ -d "${HOME}/.rbenv" ] && eval "`rbenv init -`"
 
 ## Go
-[ -d "${HOME}/.local/src/go" ] && export GOPATH="${HOME}/.local/src/go"
-[ -n "$GOPATH" ] && PATH+=":${GOPATH}/bin"
+[ -d "${HOME}/.local" ] && export GOPATH="${HOME}/.local"
 
 export PATH
 

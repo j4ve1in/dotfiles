@@ -30,7 +30,7 @@ set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=%=%l/%L,%c%V\ %P
 
 " When insert mode, change statusline.
-let g:hi_insert = 'hi StatusLine gui=None guifg=Black guibg=Yellow cterm=None ctermfg=231 ctermbg=24'
+let g:hi_insert = 'hi StatusLine cterm=None ctermfg=231 ctermbg=24'
 
 if has('syntax')
   augroup InsertHook
@@ -62,7 +62,7 @@ endfunction
 
 " Hilighting double-byte space
 function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=reverse ctermfg=blue gui=reverse guifg=blue
+  highlight ZenkakuSpace cterm=reverse ctermfg=blue
 endfunction
 
 if has('syntax')
