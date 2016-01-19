@@ -308,11 +308,21 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
 
       "" Rails
+      nnoremap <silent> [Unite]r :<C-u>Unite<CR>rails/
       nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
+      nnoremap <silent> [Unite]rA :<C-u>Unite<Space>rails/asset<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
+      nnoremap <silent> [Unite]rM :<C-u>Unite<Space>rails/model<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]rd :<C-u>Unite<Space>rails/db<CR>
+      nnoremap <silent> [Unite]rD :<C-u>Unite<Space>rails/db<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
+      nnoremap <silent> [Unite]rV :<C-u>Unite<Space>rails/view<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
+      nnoremap <silent> [Unite]rC :<C-u>Unite<Space>rails/controller<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]rco :<C-u>Unite<Space>rails/config<CR>
+      nnoremap <silent> [Unite]rcO :<C-u>Unite<Space>rails/config<Space>-default-action=tabopen<CR>
       nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
+      nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
 
       " grep
       nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
@@ -389,8 +399,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
       nnoremap [git]cd :<C-u>Gcd<CR>
       nnoremap [git]in :<C-u>Git<Space>init<CR>
-      nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:h<Space>stash<Space>list<CR>
-      nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:h<Space>show<CR>
+      nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>stash<Space>list<CR>
+      nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>show<CR>
       nnoremap [git]st :<C-u>Git<Space>stash<CR>
       nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
       nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
@@ -426,11 +436,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nnoremap [git] <Nop>
       nmap <Space>g [git]
 
-      nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>fetch<CR>
-      nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>pull<CR>
-      nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>push<CR>
-      nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>clone<Space>
-      nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:h<Space>merge<Space>--no-ff<CR>
+      nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>fetch<Space>--prune<CR>
+      nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>pull<Space>--prune<CR>
+      nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>push<CR>
+      nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>clone<Space>
+      nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>merge<Space>--no-ff<CR>
       nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
       call neobundle#untap()
     endif
