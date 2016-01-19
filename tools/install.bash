@@ -148,7 +148,7 @@ install_plugin() {
     ## Zsh
     if has zsh; then
       echo " Zsh"
-      printf "  Downloading plugin by Antigen..."
+      printf "  Downloading plugin by Zplug..."
       {
         sleep 1
         zsh ~/.dotfiles/tools/install_zsh_plugin.zsh

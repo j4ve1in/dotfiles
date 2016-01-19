@@ -1,32 +1,30 @@
-readonly ADOTDIR=$HOME/.zsh/bundle
-ANTIGEN_PLUGINS=(
-  "zsh-users/zaw"
-  "Tarrasch/zsh-bd"
-  "mollifier/cd-gitroot"
-  "zsh-users/zsh-syntax-highlighting"
-  "unixorn/autoupdate-antigen.zshplugin"
+ZPLUG_HOME="$HOME/.zsh/bundle"
+ZPLUG_PLUGINS=(
+  'b4b4r07/zplug'
+  'zsh-users/zaw'
+  'Tarrasch/zsh-bd'
+  'mollifier/cd-gitroot'
+  'zsh-users/zsh-completions'
+  'zsh-users/zsh-syntax-highlighting'
 )
 
-download_plugin() {
+load_plugin() {
   local plugin="$1"
-  local location="$2"
-  {
-    sleep 1
-    echo "Download $plugin"
-    antigen bundle $plugin $location
-  } | env LESS="-cE" less
+  zplug $plugin
 }
 
 if [ ! -d ~/.zsh/bundle/repos ]; then
-  source ~/.zsh/bundle/antigen/antigen.zsh
+  source ~/.zsh/bundle/zplug/zplug
+  zplug update --self
   # Plugin
-  for plugin in ${ANTIGEN_PLUGINS[@]}; do
-    download_plugin $plugin
+  for plugin in ${ZPLUG_PLUGINS[@]}; do
+    load_plugin $plugin
   done
-
-  # Others
-  download_plugin zsh-users/zsh-completions src
+  {
+    sleep 1
+    zplug install
+  } | env LESS="-cE" less
 fi
-ech
+echo
 
-antigen apply
+zplug load --verbose >/dev/null 2>&1
