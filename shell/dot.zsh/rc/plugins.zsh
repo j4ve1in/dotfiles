@@ -7,6 +7,8 @@ ZPLUG_PLUGINS=(
   'mollifier/cd-gitroot'
   'zsh-users/zsh-completions'
   'zsh-users/zsh-syntax-highlighting'
+  'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+  'junegunn/fzf, as:command, of:bin/fzf-tmux'
 )
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
@@ -51,8 +53,6 @@ for plugin in ${ZPLUG_PLUGINS[@]}; do
     usleep 100000
   fi
 done
-zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
-zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 if [ "$i" = "$N" ]; then
   echo
 else
