@@ -42,8 +42,8 @@ if which usleep >/dev/null 2>&1; then
   usleep 100000
 fi
 for plugin in ${ZPLUG_PLUGINS[@]}; do
-  set -- ${=plugin}
-  plugin=$1
+  #set -- ${=plugin}
+  #plugin="$1"
   # dir=$2
   display_loading_plugin $plugin $((i+1)) N
   zplug "$plugin" >/dev/null 2>&1 && ((i=i+1))
@@ -51,6 +51,8 @@ for plugin in ${ZPLUG_PLUGINS[@]}; do
     usleep 100000
   fi
 done
+zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 if [ "$i" = "$N" ]; then
   echo
 else
@@ -132,6 +134,13 @@ if zplug check 'zsh-users/zaw'; then
   zstyle ':filter-select' rotate-list yes
   zstyle ':filter-select' case-insensitive yes
   zstyle ':filter-select' extended-search yes
+fi
+
+if zplug check 'junegunn/fzf-bin'; then
+  export FZF_DEFAULT_OPTS='
+    --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
+    --color info:69,prompt:75,spinner:69,pointer:69,marker:69
+  '
 fi
 
 # ghq
