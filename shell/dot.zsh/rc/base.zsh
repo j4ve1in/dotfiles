@@ -40,6 +40,7 @@ setopt extended_glob
 
 typeset -A abbreviations
 abbreviations=(
+  "F"   "| fzf-tmux"
   "G"   "| grep"
   "X"   "| xargs"
   "T"   "| tail"

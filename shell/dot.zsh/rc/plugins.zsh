@@ -7,6 +7,7 @@ ZPLUG_PLUGINS=(
   'mollifier/cd-gitroot'
   'zsh-users/zsh-completions'
   'zsh-users/zsh-syntax-highlighting'
+  'mollifier/anyframe'
   'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
   'junegunn/fzf, as:command, of:bin/fzf-tmux'
 )
@@ -134,6 +135,33 @@ if zplug check 'zsh-users/zaw'; then
   zstyle ':filter-select' rotate-list yes
   zstyle ':filter-select' case-insensitive yes
   zstyle ':filter-select' extended-search yes
+fi
+
+if zplug check 'mollifier/anyframe'; then
+  if type tmux >/dev/null 2>&1; then
+    zstyle ":anyframe:selector:fzf:" command 'fzf-tmux'
+  fi
+  bindkey '^@' anyframe-widget-cdr
+  bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+  bindkey '^r' anyframe-widget-execute-history
+
+  bindkey '^xp' anyframe-widget-put-history
+  bindkey '^x^p' anyframe-widget-put-history
+
+  bindkey '^xg' anyframe-widget-cd-ghq-repository
+  bindkey '^x^g' anyframe-widget-cd-ghq-repository
+
+  bindkey '^xk' anyframe-widget-kill
+  bindkey '^x^k' anyframe-widget-kill
+
+  bindkey '^xi' anyframe-widget-insert-git-branch
+  bindkey '^x^i' anyframe-widget-insert-git-branch
+
+  bindkey '^xf' anyframe-widget-insert-filename
+  bindkey '^x^f' anyframe-widget-insert-filename
+
+  bindkey '^x;' anyframe-widget-select-widget
 fi
 
 if zplug check 'junegunn/fzf-bin'; then
