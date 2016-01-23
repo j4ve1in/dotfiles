@@ -88,28 +88,14 @@ set-urxvt-font-size() {
 mcd() { mkdir $1 && cd $1; }
 
 man() {
-  local p
-  local m
-  if [ "$PAGER" != "" ];then
-    p="$PAGER"
-  fi
-  if [ "$MANPAGER" != "" ];then
-    m="$MNNPAGER"
-  fi
-  unset PAGER
-  unset MANPAGER
-  val=$(command man $* 2>&1)
-  ret=$?
-  if [ $ret -eq 0 ];then
-    echo "$val"|col -bx|vim -R -c 'set ft=man' -
+  [ "$PAGER" != "" ] && local p="$PAGER" && unset PAGER
+  [ "$MANPAGER" != "" ] && local m="$MNNPAGER" && unset MANPAGER
+  if command man $* >/dev/null 2>&1;then
+    vim +"r !command man $* 2>&1 | col -bx" +"normal ggdd" +'set ft=man'
+    return 0
   else
-    echo "$val"
+    echo "$(command man $* 2>&1)"; return 1
   fi
-  if [ "$p" != "" ];then
-    export PAGER="$p"
-  fi
-  if [ "$m" != "" ];then
-    export MANPAGER="$m"
-  fi
-  return $ret
+  [ "$p" != "" ] && export PAGER="$p"
+  [ "$m" != "" ] && export MANPAGER="$m"
 }

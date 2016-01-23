@@ -24,8 +24,6 @@ set noerrorbells visualbell t_vb=
 
 set viminfo='30,<50,s100,n~/.vim/viminfo
 
-autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
-
 if exists('&ambiwidth')
   set ambiwidth=double
 endif

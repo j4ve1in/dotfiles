@@ -19,7 +19,6 @@ set termencoding=utf-8
 
 " List
 set list listchars=tab:▸\ ,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
-autocmd FileType man set nolist
 
 " Statusline
 set laststatus=2
