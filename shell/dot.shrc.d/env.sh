@@ -10,7 +10,7 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 has ruby && export KCODE='u' RUBYGEMS_GEMDEPS='-'
 
 # Editor
-has vim && export EDITOR='vim' || export EDITOR='vi'
+has vim && export EDITOR='vim -p' || export EDITOR='vi -p'
 
 # Less
 export LESS='-ciMNR'
