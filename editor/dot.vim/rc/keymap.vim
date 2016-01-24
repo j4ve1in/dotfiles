@@ -102,6 +102,10 @@ nnoremap J :tabprevious<CR>
 nnoremap <silent> [Tab]n :tabnew<CR>
 nnoremap <silent> [Tab]c :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
+nnoremap <silent> [Tab]m :tabmove<CR>
+nnoremap <silent> [Tab]0m :0tabmove<CR>
+nnoremap <silent> [Tab]> :tabmove<Space>+1<CR>
+nnoremap <silent> [Tab]< :tabmove<Space>-1<CR>
 
 " C-Space
 if has('unix') && !has('gui_running')
