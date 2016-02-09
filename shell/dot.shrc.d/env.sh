@@ -50,7 +50,7 @@ export PATH
 # Others
 case "`uname -s`" in
   CYGWIN*) export CYGWIN='winsymlinks' ;;
-  MSYS*) export MSYS='winsymlinks:nativestrict';;
+  MSYS*) export MSYS='winsymlinks';;
   Darwin) export LSCOLORS='gxfxcxdxbxegedabagacad' ;;
 esac
 

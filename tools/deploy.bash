@@ -8,7 +8,7 @@ echo -e "\033[4;39mStart creating symbolic link\033[0;39m"
 # Create
 case "`uname -s`" in
   CYGWIN*) export CYGWIN='winsymlinks' ;;
-  MSYS*) export MSYS='winsymlinks:nativestrict';;
+  MSYS*) export MSYS='winsymlinks';;
 esac
 COUNT=0
 N=${#DOT_NAME[@]}
