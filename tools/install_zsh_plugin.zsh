@@ -6,24 +6,19 @@ ZPLUG_PLUGINS=(
   'mollifier/cd-gitroot'
   'zsh-users/zsh-completions'
   'zsh-users/zsh-syntax-highlighting'
+  'mollifier/anyframe'
+  'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+  'junegunn/fzf, as:command, of:bin/fzf-tmux'
 )
-
-load_plugin() {
-  local plugin="$1"
-  zplug $plugin
-}
 
 if [ ! -d ~/.zsh/bundle/repos ]; then
   source ~/.zsh/bundle/zplug/zplug
   zplug update --self
   # Plugin
   for plugin in ${ZPLUG_PLUGINS[@]}; do
-    load_plugin $plugin
+    zplug "$plugin"
   done
-  {
-    sleep 1
-    zplug install
-  } | env LESS="-cE" less
+  zplug install
 fi
 echo
 

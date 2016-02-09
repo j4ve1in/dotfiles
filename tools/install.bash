@@ -136,9 +136,9 @@ install_plugin() {
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       if [ "`uname -s`" = "MSYS*" ]; then
-        make -f ~/.vim/bundle/vimproc.vim/make_cygwin.mak >/dev/null 2>&1
+        make -C "$HOME/.vim/bundle/vimproc.vim" -f 'make_cygwin.mak' >/dev/null 2>&1
       else
-        make -C ~/.vim/bundle/vimproc.vim >/dev/null 2>&1
+        make -C "$HOME/.vim/bundle/vimproc.vim" >/dev/null 2>&1
       fi
       printf "  Downloading other plugin by NeoBundle..."
       {
