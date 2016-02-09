@@ -1,1 +1,0 @@
-/home/j4ve1in/.localdotfiles/shell/local.sh
