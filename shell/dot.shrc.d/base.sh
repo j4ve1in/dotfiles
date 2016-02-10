@@ -11,14 +11,14 @@ COLOR_RESET="\033[0;39m"
 printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
 ## Shell
 printf "${COLOR}Shell: ${COLOR_RESET}"
-if [ "$OSTYPE" != "cygwin" ]; then
+if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
   ps -p $$ -o comm=
 else
   CURRENT_SHELL_PATH=`readlink /proc/$$/exe`
   echo "`basename $CURRENT_SHELL_PATH`"
 fi
 ## LastLogin
-if [ "$OSTYPE" != "cygwin" ]; then
+if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
   if has lastlog; then
     LASTLOG=`lastlog -u $USER | sed '1d'`
     printf "${COLOR}LastLogin: ${COLOR_RESET}"

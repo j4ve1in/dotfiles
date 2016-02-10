@@ -135,7 +135,11 @@ install_plugin() {
         git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      make -C ~/.vim/bundle/vimproc.vim >/dev/null 2>&1
+      if [ "$OSTYPE" = "msys" ]; then
+        make -C "$HOME/.vim/bundle/vimproc.vim" -f 'make_cygwin.mak' >/dev/null 2>&1
+      else
+        make -C "$HOME/.vim/bundle/vimproc.vim" >/dev/null 2>&1
+      fi
       printf "  Downloading other plugin by NeoBundle..."
       {
         sleep 1
