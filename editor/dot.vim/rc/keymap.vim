@@ -42,12 +42,12 @@ nnoremap <silent> <Space><ESC>
 
 " clipboard
 if has( "clipboard" )
-  vmap <Space>y "+y
-  vmap <Space>Y "+Y
-  vmap <Space>d "+d
-  vmap <Space>D "+D
-  vmap <Space>p "+p
-  vmap <Space>P "+P
+  xmap <Space>y "+y
+  xmap <Space>Y "+Y
+  xmap <Space>d "+d
+  xmap <Space>D "+D
+  xmap <Space>p "+p
+  xmap <Space>P "+P
   nmap <Space>y "+y
   nmap <Space>Y "+Y
   nmap <Space>d "+d
