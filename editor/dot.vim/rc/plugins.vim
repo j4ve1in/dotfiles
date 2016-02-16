@@ -206,6 +206,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'tyru/caw.vim'
 
+  NeoBundle 'fatih/vim-go'
+
   NeoBundle 'vim-jp/vimdoc-ja'
 
   NeoBundle 'kana/vim-submode'
@@ -598,6 +600,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+        let g:neocomplete#sources#omni#input_patterns      = {'go': '\h\w\.\w*'}
 
         if !exists('g:neocomplete#force_omni_input_patterns')
           let g:neocomplete#force_omni_input_patterns = {}
