@@ -214,6 +214,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
   NeoBundle 'Townk/vim-autoclose'
 
+  NeoBundle 'LeafCage/yankround.vim'
+
   NeoBundle 'haya14busa/incsearch.vim'
 
   NeoBundle 'easymotion/vim-easymotion'
@@ -766,6 +768,28 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         call submode#map('ex-move', 'nv', '', 'h', '{zz')
       endfunction
       unlet s:hooks
+    " }}}
+
+    " vim-multiple-cursors " {{{
+    if neobundle#tap('vim-multiple-cursors')
+      let g:multi_cursor_start_key='<C-s>'
+      call neobundle#untap()
+    endif
+    " }}}
+
+    " yankround.vim " {{{
+    if neobundle#tap('yankround.vim')
+      nmap p <Plug>(yankround-p)
+      xmap p <Plug>(yankround-p)
+      nmap P <Plug>(yankround-P)
+      nmap gp <Plug>(yankround-gp)
+      xmap gp <Plug>(yankround-gp)
+      nmap gP <Plug>(yankround-gP)
+      nmap <C-p> <Plug>(yankround-prev)
+      nmap <C-n> <Plug>(yankround-next)
+      let g:yankround_max_history = 5
+      call neobundle#untap()
+    endif
     " }}}
 
   " }}}
