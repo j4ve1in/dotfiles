@@ -89,6 +89,15 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         \    'mappings': '<Plug>(gista-',
         \    'unite_sources': 'gista',
         \}}
+
+  NeoBundle 'lambdalisue/vim-gista-unite', {
+        \ 'depends': [
+        \   'lambdalisue/vim-gista',
+        \   'Shougo/unite.vim',
+        \ ],
+        \ 'on_unite': ['gista', 'gista/file', 'gista/commit'],
+        \}
+
   " }}}
 
   " Twitter " {{{
