@@ -72,8 +72,7 @@ gapwidthR = 38
 keysToRemove x = [
         -- Unused gmrun binding
         (modm .|. shiftMask, xK_p),
-        -- Unused close window binding
-        (modm .|. shiftMask, xK_c),
+        -- Unused launch terminal
         (modm .|. shiftMask, xK_Return)
     ]
 
@@ -111,13 +110,13 @@ main = do
         -- Keymap: window operations
         `additionalKeys`
         [
+            -- Restart xmonad
+            ((modm              , xK_q     ), restart "xmonad" True),
             -- Shrink / Expand the focused window
             ((modm                , xK_comma  ), sendMessage Shrink),
             ((modm                , xK_period ), sendMessage Expand),
             ((modm                , xK_z      ), sendMessage MirrorShrink),
             ((modm                , xK_a      ), sendMessage MirrorExpand),
-            -- Close the focused window
-            ((modm                , xK_c      ), kill1),
             -- Toggle layout (Fullscreen mode)
             ((modm                , xK_f      ), sendMessage ToggleLayout),
             -- Move the focused window
@@ -172,8 +171,9 @@ main = do
         -- Keymap: custom commands
         `additionalKeys`
         [
+            ((modm                    , xK_c ), spawn "${HOME}/.xmonad/bin/calc"),
             -- Lock screen
-            ((mod1Mask .|. controlMask, xK_l      ), spawn "xscreensaver-command -lock"),
+            ((modm .|. controlMask, xK_l      ), spawn "dm-tool lock"),
             -- Launch terminal
             ((modm                    , xK_Return ), spawn "urxvtc"),
             -- Launch terminal with a float window
@@ -181,7 +181,8 @@ main = do
             -- Launch web browser
             ((modm                    , xK_w      ), spawn "luakit"),
             -- Launch dmenu for launching applicatiton
-            ((modm                    , xK_p      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
+            ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
+            ((modm                    , xK_p      ), spawn "${HOME}/.xmonad/bin/power"),
             -- Lauch websearch application (See https://github.com/ssh0/web_search)
             ((mod1Mask .|. controlMask, xK_f      ), spawn "websearch"),
             -- Play / Pause media keys
@@ -218,9 +219,10 @@ myLayout = spacing gapwidth $
 
 -- myStartupHook: Start up applications
 myStartupHook = do
-    spawn "$HOME/.dropbox-dist/dropboxd"
+    spawn "xbacklight -set 1"
+    spawn "nitrogen --restore"
+    spawn "compton &"
     spawn "urxvtd -q -f -o"
-    spawn "xbacklight -set 1%"
 
 -- myManageHookFloat: new window will created in Float mode
 myManageHookFloat = composeAll [

@@ -9,7 +9,7 @@ Config {
     borderColor = "#26a69a",
     commands = [
         Run DynNetwork [
-            "--template" , "<dev>: ⇧<tx>kB/s ⇩<rx>kB/s ",
+            "--template" , "<dev>: <icon=/home/ytet5uy4/.xmonad/icons/up.xbm/><tx>kB/s <icon=/home/ytet5uy4/.xmonad/icons/down.xbm/><rx>kB/s ",
             "--Low"      , "1000",
             "--High"     , "5000",
             "--low"      , "white",
@@ -17,7 +17,7 @@ Config {
             "--high"     , "darkred"
         ] 10,
         Run Memory [
-            "-t", " Mem: <usedratio>% ",
+            "-t", " <icon=/home/ytet5uy4/.xmonad/icons/mem.xbm/> <usedratio>% ",
             "-L", "40",
             "-H", "90",
             "-m", "2",
@@ -25,7 +25,7 @@ Config {
             "--high" , "#f44336"
         ] 10,
         Run Battery [
-            "-t" , " Bat: <acstatus> ",
+            "-t" , " <icon=/home/ytet5uy4/.xmonad/icons/battery.xbm/> <acstatus> ",
             "-L", "20",
             "-H", "80",
             "--low", "#f44336",
@@ -35,7 +35,7 @@ Config {
             "-O", "Charging <left>%",
             "-i", "<left>%"
         ] 10,
-        Run Date " %a %m/%d %H:%M" "date" 10,
+        Run Date " %a %m/%d %T" "date" 10,
         Run StdinReader
     ],
     sepChar = "%",
