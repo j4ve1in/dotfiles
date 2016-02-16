@@ -153,10 +153,7 @@ install_plugin() {
     if has zsh; then
       echo " Zsh"
       printf "  Downloading plugin by Zplug..."
-      {
-        sleep 1
-        zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
-      } | env LESS="-cE" less
+      zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
       cprint "done" $CYAN_B
       interval 500000
     fi

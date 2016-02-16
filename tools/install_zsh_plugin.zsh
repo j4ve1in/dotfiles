@@ -13,12 +13,15 @@ ZPLUG_PLUGINS=(
 
 if [ ! -d ~/.zsh/bundle/repos ]; then
   source ~/.zsh/bundle/zplug/zplug
-  zplug update --self
-  # Plugin
-  for plugin in ${ZPLUG_PLUGINS[@]}; do
-    zplug "$plugin"
-  done
-  zplug install
+  {
+    sleep 1
+    zplug update --self
+    # Plugin
+    for plugin in ${ZPLUG_PLUGINS[@]}; do
+      zplug "$plugin"
+    done
+    zplug install
+  } | env LESS="-cE" less
 fi
 echo
 
