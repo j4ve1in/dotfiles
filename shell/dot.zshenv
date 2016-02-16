@@ -6,3 +6,5 @@ source ~/.shrc.d/env.sh
 
 # ZDOTDIR
 export ZDOTDIR=$HOME/.zsh
+
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

@@ -99,3 +99,5 @@ man() {
   [ "$p" != "" ] && export PAGER="$p"
   [ "$m" != "" ] && export MANPAGER="$m"
 }
+
+xlb() { xbacklight -set ${@}0;}

@@ -1,4 +1,5 @@
 [ -e '/etc/arch-release' ] && source ~/.zshenv
+source ~/.shrc.d/profile.sh
 # Compile
 ZFILE=(
   ~/.zshenv
@@ -7,8 +8,8 @@ ZFILE=(
   ~/.zsh/.zlogin
   ~/.zsh/rc/*.zsh
 )
-local BLUE="\x1b[34m"
-local SKYBLUE="\033[1;38;05;75m"
+local BLUE="\x1b[1;34m"
+local SKYBLUE="\x1b[1;38;05;75m"
 cprintf() {
   local color="$1"
   local string="$2"

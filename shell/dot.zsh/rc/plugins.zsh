@@ -1,9 +1,8 @@
-if type zplug >/dev/null 2>&1; then
+if [ -d ~/.zsh/bundle/zplug ]; then
   # Zplug
   ZPLUG_HOME="$HOME/.zsh/bundle"
   ZPLUG_PLUGINS=(
     'b4b4r07/zplug'
-    'zsh-users/zaw'
     'Tarrasch/zsh-bd'
     'mollifier/cd-gitroot'
     'zsh-users/zsh-completions'
@@ -15,9 +14,9 @@ if type zplug >/dev/null 2>&1; then
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
 
-  local BLUE="\x1b[34m"
+  local BLUE="\x1b[1;34m"
   local RED="\x1b[1;31;49m"
-  local SKYBLUE="\033[1;38;05;75m"
+  local SKYBLUE="\x1b[1;38;05;75m"
 
   cprintf() {
     local color="$1"
@@ -28,43 +27,33 @@ if type zplug >/dev/null 2>&1; then
   }
 
   display_loading_plugin() {
-    local plugin="$1"
-    local numer="$2"
-    local denom="$3"
-    cprintf $SKYBLUE "Loading plugin: "
-    cprintf $BLUE "("
-    printf "%d/%d" $numer $denom
-    cprintf $BLUE ") "
+    local numer="$1"
+    local denom="$2"
+    cprintf "$SKYBLUE" "Loading plugin: "
+    cprintf "$BLUE" "("
+    printf "%d/%d" "$numer" "$denom"
+    cprintf "$BLUE" ") "
     printf "\r\c"
   }
 
   i=0
   N=$((${#ZPLUG_PLUGINS[@]}+1))
-  display_loading_plugin Zplug $((i+1)) N
+  display_loading_plugin "$((i+1))" "$N"
   source ~/.zsh/bundle/zplug/zplug && ((i=i+1))
-  if which usleep >/dev/null 2>&1; then
-    usleep 100000
-  fi
   for plugin in ${ZPLUG_PLUGINS[@]}; do
-    #set -- ${=plugin}
-    #plugin="$1"
-    # dir=$2
-    display_loading_plugin $plugin $((i+1)) N
+    display_loading_plugin "$((i+1))" "$N"
     zplug "$plugin" >/dev/null 2>&1 && ((i=i+1))
-    if which usleep >/dev/null 2>&1; then
-      usleep 100000
-    fi
   done
   if [ "$i" = "$N" ]; then
     echo
   else
-    cprintf $SKYBLUE "Loading plugin: "
-    cprintf $BLUE "("
-    cprintf $RED "%d" $i
-    printf "/%d" $N
-    cprintf $BLUE ") "
+    cprintf "$SKYBLUE" "Loading plugin: "
+    cprintf "$BLUE" "("
+    cprintf "$RED" "%d" "$i"
+    printf "/%d" "$N"
+    cprintf "$BLUE" ") "
     printf "\r\c"
-    cprintf $RED "\n Error:"
+    cprintf "$RED" "\n Error:"
     printf " loading failed\n"
   fi
 
@@ -111,36 +100,11 @@ if type zplug >/dev/null 2>&1; then
     ZSH_HIGHLIGHT_STYLES[assign]=none
   fi
 
-  # Zaw
-  if zplug check 'zsh-users/zaw'; then
-    zstyle ':chpwd:*' recent-dirs-max 500
-    zstyle ':chpwd:*' recent-dirs-default true
-    zstyle ':chpwd:*' recent-dirs-pushd true
-    zstyle ':completion:*' recent-dirs-insert both
-    zstyle ':completion:*:*:cdr:*:*' menu selection
-
-    bindkey '^Y' zaw-applications
-    bindkey '^^' zaw-bookmark
-    bindkey '^O' zaw-open-file
-    bindkey '^@' zaw-cdr
-    bindkey '^R' zaw-history
-    bindkey '^]' zaw-git-files
-    bindkey '^\' zaw-git-branches
-    bindkey '^Q' zaw-process
-    bindkey '^S' zaw-ssh-hosts
-    bindkey '^T' zaw-tmux
-
-    zstyle ':filter-select:highlight' selected bg=blue
-    zstyle ':filter-select:highlight' matched fg=cyan
-    zstyle ':filter-select' max-lines -10
-    zstyle ':filter-select' rotate-list yes
-    zstyle ':filter-select' case-insensitive yes
-    zstyle ':filter-select' extended-search yes
-  fi
-
   if zplug check 'mollifier/anyframe'; then
     if type tmux >/dev/null 2>&1; then
       zstyle ":anyframe:selector:fzf:" command 'fzf-tmux'
+    elif [ -z "$TMUX" ];then
+      zstyle ":anyframe:selector:fzf:" command 'fzf'
     fi
     bindkey '^@' anyframe-widget-cdr
     bindkey '^x^b' anyframe-widget-checkout-git-branch

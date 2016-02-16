@@ -37,11 +37,6 @@ if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
 fi
 
 if [ "$OSTYPE" != "cygwin" ]; then
-  # Load keychain
-  if has keychain; then
-    keychain --nogui --quiet
-    [ -f ~/.keychain/$HOST-sh ] && source ~/.keychain/$HOST-sh
-  fi
   # Load tmux
   if has tmux; then
     #if not inside a tmux session, and if no session is started, start a new session
