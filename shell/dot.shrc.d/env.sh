@@ -28,10 +28,10 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 [ "$OSTYPE" = "msys" ] && [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH"
 [ "$OSTYPE" = "cygwin" ] && [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
 [ "$OSTYPE" = "msys" ] && [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
-[ -d "${HOME}/.xmonad/bin" ] && PATH+=":${HOME}/.xmonad/bin"
-[ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
 [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
 [ -d "${HOME}/.dotfiles/bin" ] && PATH+=":${HOME}/.dotfiles/bin"
+[ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
+[ -d "${HOME}/.xmonad/bin" ] && PATH+=":${HOME}/.xmonad/bin"
 [ -d '/usr/local/heroku' ] && PATH+=':/usr/local/heroku/bin'
 
 ## Node.js
