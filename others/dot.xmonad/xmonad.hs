@@ -179,7 +179,7 @@ main = do
             -- Launch terminal with a float window
             ((modm .|. shiftMask      , xK_Return ), spawn "$HOME/bin/urxvt_float.sh"),
             -- Launch web browser
-            ((modm                    , xK_w      ), spawn "luakit"),
+            ((modm                    , xK_w      ), spawn "chromium"),
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "${HOME}/.xmonad/bin/power"),
