@@ -1,39 +1,40 @@
 has() { type $1 >/dev/null 2>&1; }
+cprintf() { printf "\x1b[${2}m${1}\x1b[0;39;49m"; }
 
 [ `uname` != Darwin ] && eval `dircolors -b ~/.dir_colors`
 
 stty stop undef
 
 # Display user info
-COLOR="\033[1;38;05;75m"
-COLOR_RESET="\033[0;39m"
+COLOR_75_B="1;38;05;75" # cyan
 ## Username
-printf "${COLOR}Username: ${COLOR_RESET}%s   " $USER
+cprintf "Username: " $COLOR_75_B
+printf "$USER   "
 ## Shell
-printf "${COLOR}Shell: ${COLOR_RESET}"
+cprintf 'Shell: ' $COLOR_75_B
 if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
-  ps -p $$ -o comm=
-else
-  CURRENT_SHELL_PATH=`readlink /proc/$$/exe`
-  echo "`basename $CURRENT_SHELL_PATH`"
-fi
-## LastLogin
-if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
+  SHELL=`ps -p $$ -o comm=`
+  echo "$SHELL"
+  ## LastLogin
   if has lastlog; then
     LASTLOG=`lastlog -u $USER | sed '1d'`
-    printf "${COLOR}LastLogin: ${COLOR_RESET}"
+    cprintf 'LastLogin: ' $COLOR_75_B
     echo $LASTLOG | grep -o 'Never logged in'
-    PORT=`echo $LASTLOG | awk '{print $2}'`
     ATTRIBUTE=`echo $LASTLOG | wc -w`
+    [ "$SHELL" = "bash" ] && set -- ${LASTLOG}
+    [ "$SHELL" = "zsh" ] && set -- "${=LASTLOG}"
+    PORT="$2"
     if [ "$ATTRIBUTE" = "9" ]; then
-      FROM=`echo $LASTLOG | awk '{print $3}'`
-      DATE=`echo $LASTLOG | awk '{print $4,$5,$6,$7,$9}'`
+      FROM="$3"
+      DATE="$4 $5 $6 $7 $9"
       echo "$DATE on $PORT from $FROM"
     elif [ "$ATTRIBUTE" = "8" ]; then
-      DATE=`echo $LASTLOG | awk '{print $3,$4,$5,$6,$8}'`
+      DATE="$3 $4 $5 $6 $8"
       echo "$DATE on $PORT"
     fi
   fi
+else
+  basename $(readlink /proc/$$/exe)
 fi
 
 if [ "$OSTYPE" != "cygwin" ]; then
@@ -46,4 +47,4 @@ if [ "$OSTYPE" != "cygwin" ]; then
   fi
 fi
 
-unset -f has
+unset -f has cprintf

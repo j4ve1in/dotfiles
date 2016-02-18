@@ -6,10 +6,11 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     'Tarrasch/zsh-bd'
     'mollifier/cd-gitroot'
     'zsh-users/zsh-completions'
-    'zsh-users/zsh-syntax-highlighting'
+    'zsh-users/zsh-syntax-highlighting, nice:10'
     'mollifier/anyframe'
-    'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
-    'junegunn/fzf, as:command, of:bin/fzf-tmux'
+    # run `sudo pacman -S fzf` if use arch linux
+    # 'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+    # 'junegunn/fzf, as:command, of:bin/fzf-tmux'
   )
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
@@ -21,9 +22,8 @@ if [ -d ~/.zsh/bundle/zplug ]; then
   cprintf() {
     local color="$1"
     local string="$2"
-    local args="$3"
     local reset="\x1b[0m"
-    printf "${color}${string}${reset}" $args
+    printf "${color}${string}${reset}"
   }
 
   display_loading_plugin() {
@@ -36,13 +36,13 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     printf "\r\c"
   }
 
-  i=0
-  N=$((${#ZPLUG_PLUGINS[@]}+1))
+  i='0'
+  N="$((${#ZPLUG_PLUGINS[@]}+1))"
   display_loading_plugin "$((i+1))" "$N"
-  source ~/.zsh/bundle/zplug/zplug && ((i=i+1))
+  source ~/.zsh/bundle/zplug/zplug && ((i++))
   for plugin in ${ZPLUG_PLUGINS[@]}; do
     display_loading_plugin "$((i+1))" "$N"
-    zplug "$plugin" >/dev/null 2>&1 && ((i=i+1))
+    zplug "$plugin" >/dev/null 2>&1 && ((i++))
   done
   if [ "$i" = "$N" ]; then
     echo
@@ -62,10 +62,10 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     if read -q; then
       echo; zplug install
     fi
+    echo
   fi
 
-  # zplug apply
-  zplug load --verbose >/dev/null 2>&1
+  zplug load
 
   # cd-gitroot
   if zplug check 'mollifier/cd-gitroot'; then

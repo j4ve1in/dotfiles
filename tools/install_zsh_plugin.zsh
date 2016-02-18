@@ -5,10 +5,10 @@ ZPLUG_PLUGINS=(
   'Tarrasch/zsh-bd'
   'mollifier/cd-gitroot'
   'zsh-users/zsh-completions'
-  'zsh-users/zsh-syntax-highlighting'
+  'zsh-users/zsh-syntax-highlighting, nice:10'
   'mollifier/anyframe'
-  'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
-  'junegunn/fzf, as:command, of:bin/fzf-tmux'
+  # 'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+  # 'junegunn/fzf, as:command, of:bin/fzf-tmux'
 )
 
 if [ ! -d ~/.zsh/bundle/repos ]; then
@@ -25,4 +25,4 @@ if [ ! -d ~/.zsh/bundle/repos ]; then
 fi
 echo
 
-zplug load --verbose >/dev/null 2>&1
+zplug load >/dev/null 2>&1
