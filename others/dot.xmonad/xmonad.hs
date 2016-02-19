@@ -183,6 +183,7 @@ main = do
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "${HOME}/.xmonad/bin/power"),
+            ((modm .|. shiftMask      , xK_g      ), spawn "gyazo"),
             -- Lauch websearch application (See https://github.com/ssh0/web_search)
             ((mod1Mask .|. controlMask, xK_f      ), spawn "websearch"),
             -- Play / Pause media keys
