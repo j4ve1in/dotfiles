@@ -8,6 +8,8 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     'zsh-users/zsh-completions'
     'zsh-users/zsh-syntax-highlighting, nice:10'
     'mollifier/anyframe'
+    # not working on linux
+    # 'b4b4r07/zsh-gomi, as:command, of:bin/gomi'
     # run `sudo pacman -S fzf` if use arch linux
     # 'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
     # 'junegunn/fzf, as:command, of:bin/fzf-tmux'
@@ -44,6 +46,7 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     display_loading_plugin "$((i+1))" "$N"
     zplug "$plugin" >/dev/null 2>&1 && ((i++))
   done
+
   if [ "$i" = "$N" ]; then
     echo
   else
@@ -129,12 +132,18 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     bindkey '^x;' anyframe-widget-select-widget
   fi
 
-  if zplug check 'junegunn/fzf-bin'; then
+  # if zplug check 'junegunn/fzf-bin'; then
     export FZF_DEFAULT_OPTS='
+      --ansi
+      --select-1
+      --exit-0
+      --extended
+      --cycle
+      --multi
       --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
       --color info:69,prompt:75,spinner:69,pointer:69,marker:69
     '
-  fi
+  # fi
 
   # ghq
   fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))
