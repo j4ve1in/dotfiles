@@ -37,6 +37,7 @@ import XMonad.Prompt.Window            -- pops up a prompt with window names
 import XMonad.Util.EZConfig            -- removeKeys, additionalKeys
 import XMonad.Util.Run
 import XMonad.Util.Run(spawnPipe)      -- spawnPipe, hPutStrLn
+import XMonad.Actions.Volume
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -90,7 +91,6 @@ main = do
        focusFollowsMouse  = True,
        normalBorderColor  = mynormalBorderColor,
        focusedBorderColor = myfocusedBorderColor,
-       startupHook        = myStartupHook,
        manageHook         = myManageHookFloat <+>
                               manageDocks,
        -- any time Full mode, avoid xmobar area
@@ -171,7 +171,7 @@ main = do
         -- Keymap: custom commands
         `additionalKeys`
         [
-            ((modm                    , xK_c ), spawn "${HOME}/.xmonad/bin/calc"),
+            ((modm                    , xK_c ), spawn "calc"),
             -- Lock screen
             ((modm .|. controlMask, xK_l      ), spawn "dm-tool lock"),
             -- Launch terminal
@@ -182,7 +182,7 @@ main = do
             ((modm                    , xK_w      ), spawn "chromium"),
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
-            ((modm                    , xK_p      ), spawn "${HOME}/.xmonad/bin/power"),
+            ((modm                    , xK_p      ), spawn "power"),
             ((modm .|. shiftMask      , xK_g      ), spawn "gyazo"),
             -- Lauch websearch application (See https://github.com/ssh0/web_search)
             ((mod1Mask .|. controlMask, xK_f      ), spawn "websearch"),
@@ -192,18 +192,16 @@ main = do
             ((shiftMask               , 0x1008ff18), spawn "streamradio pause"),
             ((shiftMask               , 0x1008ff14), spawn "streamradio pause"),
             -- Volume setting media keys
-            ((0                       , 0x1008ff13), spawn "bash $HOME/bin/sound_volume_change_wrapper.sh +"),
-            ((0                       , 0x1008ff11), spawn "bash $HOME/bin/sound_volume_change_wrapper.sh -"),
-            ((0                       , 0x1008ff12), spawn "bash $HOME/bin/sound_volume_change_wrapper.sh m"),
+            ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return ()),
+            ("<XF86AudioLowerVolume>", lowerVolume 4 >> return ()),
+            ("<XF86AudioMute>", toggleMute    >> return ()),
             -- Brightness Keys
-            ((0                       , 0x1008FF02), spawn "xbacklight + 1 -time 100 -steps 1"),
-            ((0                       , 0x1008FF03), spawn "xbacklight - 1 -time 100 -steps 1"),
+            ("<XF86MonBrightnessUp>", spawn "increase_brightness"),
+            ("<XF86MonBrightnessDown>", spawn "decrease_brightness"),
             -- Take a screenshot (whole window)
             ((0                       , 0xff61    ), spawn "$HOME/bin/screenshot.sh"),
             -- Take a screenshot (selected area)
             ((shiftMask               , 0xff61    ), spawn "$HOME/bin/screenshot_select.sh"),
-            -- Launch ipython qtconsole
-            ((0                       , 0x1008ff1d), spawn "ipython qtconsole --matplotlib=inline"),
             -- Toggle touchpad
             ((controlMask             , xK_Escape ), spawn "$HOME/bin/touchpad_toggle.sh"),
             -- Toggle trackpoint (Lenovo PC)
@@ -217,13 +215,6 @@ myLayout = spacing gapwidth $
              ||| (TwoPane (1/40) (1/2))
              ||| (ThreeColMid 1 (1/20) (16/35))
              ||| Simplest
-
--- myStartupHook: Start up applications
-myStartupHook = do
-    spawn "xbacklight -set 1"
-    spawn "nitrogen --restore"
-    spawn "compton &"
-    spawn "urxvtd -q -f -o"
 
 -- myManageHookFloat: new window will created in Float mode
 myManageHookFloat = composeAll [

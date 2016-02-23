@@ -1,5 +1,7 @@
-[ -f /etc/xprofile ] && source /etc/xprofile
-[ -f ~/.xprofile ] && source ~/.xprofile
+xbacklight -set 1
+nitrogen --restore &
+compton &
+urxvtd -q -f -o
 
 xrdb ~/.Xdefaults
 xmodmap ~/.Xmodmap
