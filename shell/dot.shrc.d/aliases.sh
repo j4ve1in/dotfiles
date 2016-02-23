@@ -80,6 +80,8 @@ alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l'
 alias dsu='dotsetup'
 alias ts='trash'
+alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
+alias uusb='sudo umount /mnt/usb'
 
 case "`uname -s`" in
   Linux)
