@@ -39,9 +39,9 @@ print_header() {
   printf "$COLOR_RESET"; echo
   # http://patorjk.com/software/taag/#p=display&h=1&f=Slant&t=dotfiles
 
-  cprint '                   github.com/j4ve1in/dotfiles   ' "$DARKGRAY"; echo
+  cprint '                   github.com/ytet5uy4/dotfiles   ' "$DARKGRAY"; echo
 
-  cprintf '   Author: '  "$COLOR_75_B"; printf "j4ve1in"
+  cprintf '   Author: '  "$COLOR_75_B"; printf "ytet5uy4"
   cprintf '   License: ' "$COLOR_75_B"; echo   "MIT"
   echo
 }
@@ -80,7 +80,7 @@ install() {
   printf " Downloading dotfiles..."
   {
     sleep 1
-    git clone https://github.com/j4ve1in/dotfiles.git ~/.dotfiles
+    git clone https://github.com/ytet5uy4/dotfiles.git ~/.dotfiles
   } | env LESS="-cE" less
   cprint "done" $CYAN_B
   echo
