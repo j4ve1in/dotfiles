@@ -100,4 +100,50 @@ man() {
   [ "$m" != "" ] && export MANPAGER="$m"
 }
 
-xlb() { xbacklight -set ${@}0;}
+xlb() { xbacklight -set ${1}0;}
+
+gyazo_markdown() {
+  local URL="`command gyazo | head -n 1`"
+  local IMAGE_URL="`echo ${URL}.png | sed 's/gyazo.com/i.gyazo.com/'`"
+  echo "[![alt属性](${IMAGE_URL})](${URL})" | xsel -bi
+}
+
+trash() {
+  TRASH_DIR="${HOME}/.local/share/Trash/files"
+  [ -e "$TRASH_DIR" ] || mkdir -p "$TRASH_DIR"
+  if [ "$1" = "-a" ]; then
+    if [ -n "`ls -A $TRASH_DIR`" ]; then
+      printf "trash: remove trash? "; read ANSWER
+      echo
+      case $ANSWER in
+        "Y" | "y" | "Yes" | "yes" )
+          /bin/rm -rf ${TRASH_DIR}/*
+          echo 'removed trash'
+          ;;
+        * )
+          ;;
+      esac
+    else
+      echo 'trash: $TRASH_DIR is empty'
+    fi
+    return 0
+  elif [ "$1" = "-s" ]; then
+    if [ -n "`ls -A $TRASH_DIR`" ]; then
+      ls -Ahl --time-style=long-iso $TRASH_DIR
+    else
+      echo 'trash: $TRASH_DIR is empty'
+    fi
+    return 0
+  fi
+
+  for file in $@; do
+    if [ ! -e "$file" ]; then
+      echo "trash: cannot stat \`${file}\`: No such file or directory"
+      NO_SUCH_FILE=1
+    fi
+  done
+  [ "$NO_SUCH_FILE" = "1" ] && return 1
+  mv -f --backup='numbered' --target-directory="$TRASH_DIR" "$@" >/dev/null 2>&1
+  echo "trash: removed ${@}"
+  return 0
+}

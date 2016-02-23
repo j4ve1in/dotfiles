@@ -3,8 +3,8 @@ has() { type $1 >/dev/null 2>&1; }
 # ls
 alias l{,s}='ls -F --color=auto'
 alias ll='ls -hl --time-style=long-iso'
-alias la='ls -a'
-alias lla='ls -ahl --time-style=long-iso'
+alias la='ls -A'
+alias lla='ls -Ahl --time-style=long-iso'
 
 # grep
 alias grep='grep --color=auto'
@@ -64,6 +64,8 @@ has git && alias g='git'
 has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
 has mysql && alias mysql='mysql --pager="less -iFMnSX"'
+has gyazo && alias gy='gyazo'
+has gyazo && alias gym='gyazo_markdown'
 alias h='history'
 alias p='ps'
 alias pw='pwd'
@@ -71,11 +73,13 @@ alias m='mv'
 alias d='diff'
 alias le='less'
 alias path='echo -e ${PATH//:/\\n}'
+alias fpath='echo -e ${FPATH//:/\\n}'
 alias jman='LANG="ja_JP.UTF-8" man'
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l'
 alias dsu='dotsetup'
+alias ts='trash'
 
 case "`uname -s`" in
   Linux)
