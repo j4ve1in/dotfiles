@@ -1,5 +1,5 @@
 FROM fedora:22
-MAINTAINER j4ve1in
+MAINTAINER ytet5uy4
 
 # Update and Install packages
 RUN echo "fastestmirror=True" >> /etc/dnf/dnf.conf && \
@@ -11,14 +11,14 @@ RUN echo "fastestmirror=True" >> /etc/dnf/dnf.conf && \
     dnf clean all -q
 
 # Ceate user
-RUN useradd -d /home/j4ve1in -m -s /bin/zsh j4ve1in && \
-    echo "j4ve1in" | passwd --stdin j4ve1in && \
-    echo "j4ve1in ALL=(ALL) ALL" >> /etc/sudoers
+RUN useradd -d /home/ytet5uy4 -m -s /bin/zsh ytet5uy4 && \
+    echo "ytet5uy4" | passwd --stdin ytet5uy4 && \
+    echo "ytet5uy4 ALL=(ALL) ALL" >> /etc/sudoers
 
 # Install dotfiles
-USER j4ve1in
-WORKDIR /home/j4ve1in
-ENV HOME=/home/j4ve1in \
+USER ytet5uy4
+WORKDIR /home/ytet5uy4
+ENV HOME=/home/ytet5uy4 \
     HOSTNAME=docker \
     TERM=xterm-256color \
     FULL_INSTALLATION=1 \
