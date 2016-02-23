@@ -1,5 +1,5 @@
 <p align="center">
-<img width=20% src="https://raw.githubusercontent.com/j4ve1in/dotfiles/master/img/dotfiles.png">
+<img width=20% src="https://raw.githubusercontent.com/ytet5uy4/dotfiles/master/img/dotfiles.png">
 </p>
 
 <p align="center">
@@ -13,14 +13,14 @@
 |
 <b><a href="#wiki">Wiki</a></b>
 |
-<b><a href="//github.com/j4ve1in/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
+<b><a href="//github.com/ytet5uy4/dotfiles/blob/master/README.ja.md">Japanese README</a></b>
 |
 <b><a href="#license">License</a></b>
 </p>
 
 <p align="center">
-<a href="//github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="//github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
 </p>
 
 
@@ -78,22 +78,22 @@ You can install Javelin's dotfiles by the following installation command.
 # Test with Docker
 Before running installation command to setup dotfiles, you can pull an **[image]** and try my dotfiles in a Docker container as follows.
 ```bash
-$ sudo docker pull j4ve1in/dotfiles
-$ sudo docker run -it --rm j4ve1in/dotfiles
+$ sudo docker pull ytet5uy4/dotfiles
+$ sudo docker run -it --rm ytet5uy4/dotfiles
 ```
 
 # Wiki
 Please have a look at the **[wiki]** for more information.
 
 # License
-Copyright (c) 2015 j4ve1in  
+Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
-[my]: //github.com/j4ve1in
+[my]: //github.com/ytet5uy4
 [Screenshot]: /img/screenshot.png
 [asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
 [dotsetup1]: /img/dotsetup1.png
 [dotsetup2]: /img/dotsetup2.png
-[image]: //hub.docker.com/r/j4ve1in/dotfiles
-[wiki]: //github.com/j4ve1in/dotfiles/wiki
-[LICENSE.md]: //github.com/j4ve1in/dotfiles/blob/master/LICENSE.md
+[image]: //hub.docker.com/r/ytet5uy4/dotfiles
+[wiki]: //github.com/ytet5uy4/dotfiles/wiki
+[LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md

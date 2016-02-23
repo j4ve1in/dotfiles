@@ -1,5 +1,5 @@
 <p align="center">
-<img width=20% src="https://raw.githubusercontent.com/j4ve1in/dotfiles/master/img/dotfiles.png">
+<img width=20% src="https://raw.githubusercontent.com/ytet5uy4/dotfiles/master/img/dotfiles.png">
 </p>
 
 <p align="center">
@@ -13,14 +13,14 @@
 |
 <b><a href="#wiki">Wiki</a></b>
 |
-<b><a href="//github.com/j4ve1in/dotfiles/blob/master/README.md">English README</a></b>
+<b><a href="//github.com/ytet5uy4/dotfiles/blob/master/README.md">English README</a></b>
 |
 <b><a href="#ライセンス">ライセンス</a></b>
 </p>
 
 <p align="center">
-<a href="//github.com/j4ve1in/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="//github.com/j4ve1in/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
 </p>
 
 # 概要
@@ -78,21 +78,21 @@
 インストールコマンドを使って、セットアップする前に、**[イメージ]**を引っ張ってきて、Dockerのコンテナ内で試すことができます。
 
 ```bash
-$ sudo docker pull j4ve1in/dotfiles
-$ sudo docker run -it --rm j4ve1in/dotfiles
+$ sudo docker pull ytet5uy4/dotfiles
+$ sudo docker run -it --rm ytet5uy4/dotfiles
 ```
 
 # Wiki
 詳細については、**[wiki]**を見てください。
 
 # ライセンス
-Copyright (c) 2015 j4ve1in  
+Copyright (c) 2015 ytet5uy4  
 MITライセンスのもとで公開されています。**[LICENSE.md]**を見て下さい。
 
 [Screenshot]: /img/screenshot.png
 [asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
 [dotsetup1]: /img/dotsetup1.png
 [dotsetup2]: /img/dotsetup2.png
-[イメージ]: //hub.docker.com/r/j4ve1in/dotfiles
-[wiki]: //github.com/j4ve1in/dotfiles/wiki
-[LICENSE.md]: //github.com/j4ve1in/dotfiles/blob/master/LICENSE.md
+[イメージ]: //hub.docker.com/r/ytet5uy4/dotfiles
+[wiki]: //github.com/ytet5uy4/dotfiles/wiki
+[LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
