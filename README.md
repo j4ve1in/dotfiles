@@ -34,10 +34,10 @@ You can install Javelin's dotfiles by the following installation command.
 
 | OS                | Installation command                   |
 |:-----------------:|:---------------------------------------|
-| GNU/Linux, Darwin | bash <(curl -L dot.j4ve1in.com)        |
-|                   | bash <(wget -O - dot.j4ve1in.com)      |
-| Cygwin            | exec bash <(curl -L dot.j4ve1in.com)   |
-|                   | exec bash <(wget -O - dot.j4ve1in.com) |
+| GNU/Linux, Darwin | bash <(curl -L d.ytet5uy4.com)         |
+|                   | bash <(wget -O - d.ytet5uy4.com)       |
+| Cygwin            | exec bash <(curl -L d.ytet5uy4.com)    |
+|                   | exec bash <(wget -O - d.ytet5uy4.com)  |
 
 **NOTE:** If you want to use **full installation**, run `export FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
 

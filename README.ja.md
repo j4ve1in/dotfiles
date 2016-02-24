@@ -33,10 +33,10 @@
 
 | OS                | インストールコマンド                   |
 |:-----------------:|:---------------------------------------|
-| GNU/Linux, Darwin | bash <(curl -L dot.j4ve1in.com)        |
-|                   | bash <(wget -O - dot.j4ve1in.com)      |
-| Cygwin            | exec bash <(curl -L dot.j4ve1in.com)   |
-|                   | exec bash <(wget -O - dot.j4ve1in.com) |
+| GNU/Linux, Darwin | bash <(curl -L d.ytet5uy4.com)         |
+|                   | bash <(wget -O - d.ytet5uy4.com)       |
+| Cygwin            | exec bash <(curl -L d.ytet5uy4.com)    |
+|                   | exec bash <(wget -O - d.ytet5uy4.com)  |
 
 **参考:** **フルインストール**を利用する場合は`export FULL_INSTALLATION="1"`を実行した後、インストールコマンドを実行してください。フルインストールを使うとシェルとエディターのプラグインもインストールできます。
 
