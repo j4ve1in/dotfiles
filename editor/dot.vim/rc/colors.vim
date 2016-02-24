@@ -36,12 +36,12 @@ hi Folded                           ctermbg=236  ctermfg=196
 hi Function                         ctermbg=232  ctermfg=27
 hi Identifier                       ctermbg=232  ctermfg=51
 hi IncSearch       cterm=none       ctermbg=20   ctermfg=232
-hi LineNr                           ctermbg=232  ctermfg=27
+hi LineNr                           ctermbg=0    ctermfg=27
 hi MatchParen      cterm=none       ctermbg=236  ctermfg=27
 hi ModeMsg                          ctermbg=232  ctermfg=27
 hi MoreMsg                          ctermbg=232  ctermfg=27
-hi NonText                          ctermbg=232  ctermfg=239
-hi Normal          cterm=none       ctermbg=232  ctermfg=251
+hi NonText                          ctermbg=none ctermfg=239
+hi Normal          cterm=none       ctermbg=none ctermfg=251
 hi Operator        cterm=none                    ctermfg=239
 hi Pmenu                            ctermbg=233  ctermfg=255
 hi PmenuSel                         ctermbg=17   ctermfg=255
@@ -49,7 +49,7 @@ hi PmenuSbar                        ctermbg=233  ctermfg=255
 hi PreProc         cterm=none                    ctermfg=231
 hi Question                                      ctermfg=27
 hi Search          cterm=none       ctermbg=21   ctermfg=15
-hi SignColumn                       ctermbg=8    ctermfg=231
+hi SignColumn                       ctermbg=none ctermfg=231
 hi Special         cterm=none       ctermbg=232  ctermfg=231
 hi SpecialKey                       ctermbg=232  ctermfg=27
 hi SpellBad                         ctermbg=26   ctermfg=232
@@ -63,7 +63,7 @@ hi TabLineSel      cterm=none       ctermbg=19   ctermfg=231
 hi Title           cterm=none                    ctermfg=27
 hi Todo            cterm=none       ctermbg=232  ctermfg=196
 hi Type            cterm=none                    ctermfg=231
-hi VertSplit       cterm=none       ctermbg=232  ctermfg=231
+hi VertSplit       cterm=none       ctermbg=none ctermfg=231
 hi Visual                           ctermbg=26   ctermfg=232
 hi WarningMsg                       ctermbg=244  ctermfg=232
 hi WildMenu                         ctermbg=231  ctermfg=17
