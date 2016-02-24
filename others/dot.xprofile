@@ -1,3 +1,7 @@
+xbacklight -set 1
+nitrogen --restore &
+compton &
+xss-lock -- dm-tool lock &
 type fcitx >/dev/null 2>&1 && export GTK_IM_MODULE="fcitx" QT_IM_MODULE="fcitx" XMODIFIERS="@im=fcitx"
 fcitx &
 [ -d "${HOME}/.xmonad/bin" ] && export PATH="${HOME}/.xmonad/bin:$PATH"

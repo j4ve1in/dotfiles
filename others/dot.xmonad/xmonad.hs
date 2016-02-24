@@ -173,7 +173,7 @@ main = do
         [
             ((modm                    , xK_c ), spawn "calc"),
             -- Lock screen
-            ((modm .|. controlMask, xK_l      ), spawn "dm-tool lock"),
+            ((modm .|. controlMask, xK_l      ), spawn "systemctl suspend"),
             -- Launch terminal
             ((modm                    , xK_Return ), spawn "urxvtc"),
             -- Launch terminal with a float window
