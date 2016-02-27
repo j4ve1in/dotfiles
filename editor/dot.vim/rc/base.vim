@@ -51,4 +51,4 @@ set backup backupdir=~/.vim/backup
 set undofile undodir=~/.vim/undo
 
 " Mouse
-set mouse= ttymouse=xterm2
+set mouse=a ttymouse=xterm2
