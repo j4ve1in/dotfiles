@@ -26,9 +26,11 @@ if has vagrant; then
   alias vags='vagrant global-status'
   alias vah='vagrant halt'
   alias var='vagrant reload'
+  alias vars='vagrant reload && vagrant ssh'
   alias vas='vagrant ssh'
   alias vast='vagrant status'
   alias vau='vagrant up'
+  alias vaus='vagrant up && vagrant ssh'
 fi
 
 # Tmux
