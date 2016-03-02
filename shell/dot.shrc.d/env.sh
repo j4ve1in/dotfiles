@@ -9,6 +9,9 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 # Ruby
 has ruby && export KCODE='u' RUBYGEMS_GEMDEPS='-'
 
+# Go
+has go && [ -d "${HOME}/.local" ] && export GOPATH="${HOME}/.local"
+
 # Editor
 has vim && export EDITOR='vim -p' || export EDITOR='vi -p'
 
@@ -34,17 +37,14 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 [ -d "${HOME}/.xmonad/bin" ] && PATH+=":${HOME}/.xmonad/bin"
 [ -d '/usr/local/heroku' ] && PATH+=':/usr/local/heroku/bin'
 
-## Node.js
-### Nodebrew
-[ -d "${HOME}/.nodebrew" ] && PATH="${HOME}/.nodebrew/current/bin:$PATH"
-
-## Ruby
-### rbenv
-[ -d "${HOME}/.rbenv" ] && PATH="${HOME}/.rbenv/bin:$PATH"
-[ -d "${HOME}/.rbenv" ] && eval "`rbenv init -`"
-
-## Go
-[ -d "${HOME}/.local" ] && export GOPATH="${HOME}/.local"
+## Anyenv
+if [ -d "${HOME}/.anyenv" ] ; then
+  PATH="${HOME}/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+  for D in `ls $HOME/.anyenv/envs`; do
+    PATH="${HOME}/.anyenv/envs/$D/shims:$PATH"
+  done
+fi
 
 export PATH
 
