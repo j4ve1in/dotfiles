@@ -24,10 +24,6 @@ set noerrorbells visualbell t_vb=
 
 set viminfo='30,<50,s100,n~/.vim/viminfo
 
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
-
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif

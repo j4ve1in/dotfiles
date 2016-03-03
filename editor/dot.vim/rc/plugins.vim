@@ -232,7 +232,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   \   }
   \ }
 
-  NeoBundleFetch 'itchyny/lightline.vim'
+  NeoBundle 'itchyny/lightline.vim'
 
   NeoBundle 'deris/vim-shot-f'
 
@@ -726,6 +726,118 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       nmap <C-n> <Plug>(yankround-next)
       let g:yankround_max_history = 5
       call neobundle#untap()
+    endif
+    " }}}
+
+    " lightline " {{{
+    if neobundle#tap('lightline.vim')
+      let s:white  = 255
+      let s:black  = 0
+      let s:blue   = 17
+      let s:lightblue = 26
+      let s:cyan = 6
+      let s:purple = 54
+      let s:gray = 235
+
+      let s:p = {
+            \ 'normal':   {},
+            \ 'inactive': {},
+            \ 'insert':   {},
+            \ 'replace':  {},
+            \ 'visual':   {},
+            \ 'tabline':  {}}
+
+      let s:p.normal.middle = [['', '', s:white, 'none']]
+      let s:p.normal.left = [
+            \ ['', '', s:white, s:blue],
+            \ ['', '', s:white, s:lightblue]]
+      let s:p.normal.right = [
+            \ ['', '', s:white, s:blue],
+            \ ['', '', s:white, s:lightblue]]
+
+      let s:p.inactive.middle = [['', '', s:white, s:gray]]
+      let s:p.inactive.right = [
+            \ s:p.inactive.middle[0],
+            \ s:p.inactive.middle[0]]
+      let s:p.inactive.left = [
+            \ s:p.inactive.middle[0],
+            \ s:p.inactive.middle[0]]
+
+      let s:p.insert.left = [
+            \ ['', '', s:black, s:white],
+            \ s:p.normal.left[1]]
+      let s:p.replace.left = [
+            \ ['', '', s:white, s:cyan],
+            \ s:p.normal.left[1]]
+      let s:p.visual.left = [
+            \ ['', '', s:white, s:purple],
+            \ s:p.normal.left[1]]
+
+      let s:p.tabline.middle = [['', '', s:white, 'none']]
+      let s:p.tabline.right = [
+            \ ['', '', s:white, s:blue],
+            \ ['', '', s:blue, 'none']]
+      let s:p.tabline.left = [['', '', s:white, s:black]]
+      let s:p.tabline.tabsel = [['', '', s:white, s:blue]]
+      let g:lightline#colorscheme#abisso#palette = s:p
+      let g:lightline = {
+            \ 'colorscheme': 'abisso',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
+            \ },
+            \ 'component_function': {
+            \   'fugitive': 'LightLineFugitive',
+            \   'modified': 'LightLineModified',
+            \   'fileformat': 'LightLineFileformat',
+            \   'filetype': 'LightLineFiletype',
+            \   'fileencoding': 'LightLineFileencoding',
+            \   'mode': 'LightLineMode'
+            \ },
+            \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+            \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+            \ }
+
+      function! LightLineModified()
+        if &filetype == "help"
+          return ""
+        elseif &modified
+          return "+"
+        elseif &modifiable
+          return ""
+        else
+          return ""
+        endif
+      endfunction
+
+      function! LightLineFugitive()
+        try
+          if exists('*fugitive#head')
+            let mark = "\ue0a0 "
+            let _ = fugitive#head()
+            return strlen(_) ? mark._ : ''
+          endif
+        catch
+        endtry
+        return ''
+      endfunction
+
+      function! LightLineFileformat()
+        return winwidth(0) > 70 ? &fileformat : ''
+      endfunction
+
+      function! LightLineFiletype()
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+      endfunction
+
+      function! LightLineFileencoding()
+        return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+      endfunction
+
+      function! LightLineMode()
+        return winwidth(0) > 60 ? lightline#mode() : ''
+      endfunction
+
+      set noshowmode
     endif
     " }}}
 
