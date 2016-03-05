@@ -103,9 +103,6 @@
 [fetch]
     prune = true
 
-[merge]
-    ff = false
-
 [ghq]
     root = ~/.ghq
 
