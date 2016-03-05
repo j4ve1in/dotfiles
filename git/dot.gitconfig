@@ -38,7 +38,7 @@
     cl = clone
     f = fetch
     i = init
-    m = merge
+    m = merge --no-ff
     me = !git config --get-regexp user
     p = pull
     ps = push
