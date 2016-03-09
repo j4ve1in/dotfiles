@@ -17,7 +17,11 @@ noremap <Space>l $
 noremap <Space>m %
 nnoremap <Space>/ *
 noremap <Space>v 0v$h
+noremap <Space>yf :let @+=expand( '%:t') \| echo "Filename copied"<CR>
+noremap <Space>yp :let @+=expand('%:p') \| echo "Pathname copied"<CR>
 noremap <silent><Space>cd :<C-u>cd<CR>
+noremap <silent><Space>cdh :<C-u>cd<Space>%:h<CR>
+noremap <silent><Space>lcdh :<C-u>lcd<Space>%:h<CR>
 noremap <Space>cdd :<C-u>cd<Space>
 noremap <Space>pw :<C-u>pwd<CR>
 map <Space>i gg=<S-g><C-o><C-o>zz
