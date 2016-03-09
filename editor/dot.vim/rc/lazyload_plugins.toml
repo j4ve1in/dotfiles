@@ -1,0 +1,71 @@
+# Unite {{{
+[[plugins]]
+repo = 'majkinetor/unite-cmdmatch'
+depends = 'Shougo/unite.vim'
+mappings = [['c', '<Plug>(unite_cmdmatch_complete)']]
+# }}}
+
+# Git {{{
+[[plugins]]
+repo = 'lambdalisue/vim-gista'
+on_cmd = 'Gista'
+# }}}
+
+# Syntax {{{
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+depends = [
+  'thinca/vim-quickrun',
+  'Shougo/vimproc.vim',
+  'osyo-manga/shabadou.vim',
+  'cohama/vim-hier',
+  'dannyob/quickfixstatus'
+]
+on_cmd = [
+  'WatchdogsRun',
+  'WatchdogsRunSilent',
+  'WatchdogsRunSweep'
+]
+# }}}
+
+# Syntax {{{
+[[plugins]]
+repo = 'othree/html5.vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = 'css'
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = 'dockerfile'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = 'slim'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+# }}}
+
+# Completion {{{
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = [
+  'html',
+  'css',
+  'scss',
+  'slim',
+  'eruby',
+  'markdown'
+]
+# }}}
+
+# Others {{{
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = 'tyru/open-browser.vim'
+on_cmd = ['Previm','PrevimOpen']
+# }}}

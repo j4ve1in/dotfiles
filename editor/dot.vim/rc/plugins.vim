@@ -10,240 +10,20 @@ if !1 | finish | endif
 if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 
+  let g:neobundle#cache_file = $HOME.'/.vim/tmp/neobundle_cache'
   let g:neobundle#log_filename = $HOME.'/.vim/tmp/neobundle.log'
 
   call neobundle#begin(expand('~/.vim/bundle/'))
 
   " Load Plugins
-  NeoBundleFetch 'Shougo/neobundle.vim'
+  if neobundle#load_cache()
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
-  " Important
-  NeoBundle 'Shougo/vimproc.vim', {
-  \   'build': {
-  \     'windows': 'tools\\update-dll-mingw',
-  \     'cygwin': 'make -f make_cygwin.mak',
-  \     'mac': 'make -f make_mac.mak',
-  \     'linux': 'make',
-  \     'unix': 'gmake'
-  \   }
-  \ }
+    call neobundle#load_toml(expand('~/.vim/rc/load_plugins.toml'))
+    call neobundle#load_toml(expand('~/.vim/rc/lazyload_plugins.toml'), {'lazy' : 1})
 
-  " Unite " {{{
-  NeoBundle 'Shougo/unite.vim'
-
-  NeoBundle 'Shougo/neomru.vim', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'Shougo/vimfiler', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'kmnk/vim-unite-giti', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'Shougo/unite-outline', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'tsukkee/unite-help', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'sorah/unite-ghq', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundle 'basyura/unite-rails', {
-  \   'depends': [ 'Shougo/unite.vim' ]
-  \ }
-
-  NeoBundleLazy 'pasela/unite-webcolorname', {
-  \   'depends': [ 'Shougo/unite.vim' ],
-  \   'autoload': {
-  \     'commands': [ 'Unite webcolorname' ]
-  \   }
-  \ }
-
-  NeoBundleLazy 'osyo-manga/unite-highlight', {
-  \   'depends': [ 'Shougo/unite.vim' ],
-  \   'autoload': {
-  \     'commands': [ 'Unite highlight' ]
-  \   }
-  \ }
-
-  NeoBundleLazy 'majkinetor/unite-cmdmatch', {
-        \'depends': 'Shougo/unite.vim',
-        \'mappings': [['c', '<Plug>(unite_cmdmatch_complete)']] }
-  " }}}
-
-  " Git " {{{
-  NeoBundle 'tpope/vim-fugitive'
-
-  NeoBundle 'airblade/vim-gitgutter'
-
-  NeoBundleLazy 'lambdalisue/vim-gista', {
-        \ 'autoload': {
-        \    'commands': ['Gista'],
-        \    'mappings': '<Plug>(gista-',
-        \    'unite_sources': 'gista',
-        \}}
-
-  NeoBundle 'lambdalisue/vim-gista-unite', {
-        \ 'depends': [
-        \   'lambdalisue/vim-gista',
-        \   'Shougo/unite.vim',
-        \ ],
-        \ 'on_unite': ['gista', 'gista/file', 'gista/commit'],
-        \}
-
-  " }}}
-
-  " Twitter " {{{
-  NeoBundle 'basyura/TweetVim', {
-  \   'depends': [
-  \     'tyru/open-browser.vim',
-  \     'basyura/twibill.vim',
-  \     'mattn/webapi-vim',
-  \     'Shougo/unite-outline',
-  \     'basyura/bitly.vim',
-  \     'Shougo/unite.vim',
-  \     'mattn/favstar-vim'
-  \   ]
-  \ }
-  " }}}
-
-  " Syntax " {{{
-  NeoBundleLazy "osyo-manga/vim-watchdogs", {
-  \   'depends': [
-  \     'thinca/vim-quickrun',
-  \     'Shougo/vimproc.vim',
-  \     'osyo-manga/shabadou.vim',
-  \     'cohama/vim-hier',
-  \     'dannyob/quickfixstatus'
-  \   ],
-  \   'autoload': {
-  \     'commands': [
-  \       'WatchdogsRun',
-  \       'WatchdogsRunSilent',
-  \       'WatchdogsRunSweep'
-  \     ]
-  \   }
-  \ }
-
-  NeoBundleLazy 'othree/html5.vim', {
-  \   'autoload': { 'filetypes': [ 'html' ] }
-  \ }
-
-  NeoBundleLazy 'hail2u/vim-css3-syntax', {
-  \   'autoload': { 'filetypes': [ 'css' ] }
-  \ }
-
-  NeoBundleLazy 'ekalinin/Dockerfile.vim', {
-  \   'autoload': { 'filetypes': [ 'dockerfile' ] }
-  \ }
-
-  NeoBundleLazy 'slim-template/vim-slim', {
-  \   'autoload': { 'filetypes': [ 'slim' ] }
-  \ }
-
-  NeoBundleLazy 'kchmck/vim-coffee-script', {
-  \   'autoload': { 'filetypes': [ 'coffee' ] }
-  \ }
-
-  " }}}
-
-  " operator " {{{
-  NeoBundle 'kana/vim-operator-user'
-
-  NeoBundle 'haya14busa/vim-operator-flashy'
-  " }}}
-
-  " textobj " {{{
-  NeoBundle 'kana/vim-textobj-user'
-
-  NeoBundle 'kana/vim-textobj-entire'
-
-  NeoBundle 'kana/vim-textobj-line'
-
-  NeoBundle 'rhysd/vim-textobj-ruby'
-  " }}}
-
-  " Completion " {{{
-  NeoBundleLazy 'mattn/emmet-vim', {
-  \   'autoload': {
-  \     'filetypes': [
-  \       'html',
-  \       'css',
-  \       'scss',
-  \       'slim',
-  \       'eruby',
-  \       'markdown'
-  \     ]
-  \   }
-  \ }
-
-  NeoBundle 'Shougo/neocomplete.vim'
-
-  NeoBundle 'Shougo/neosnippet-snippets', {
-  \   'depends': [ 'Shougo/neosnippet' ]
-  \ }
-  " }}}
-
-  " Others " {{{
-  NeoBundle 'surround.vim'
-
-  NeoBundle 'tyru/caw.vim'
-
-  NeoBundle 'fatih/vim-go'
-
-  NeoBundle 'vim-jp/vimdoc-ja'
-
-  NeoBundle 'kana/vim-submode'
-
-  NeoBundle 'tpope/vim-dispatch'
-
-  NeoBundle 'Townk/vim-autoclose'
-
-  NeoBundle 'LeafCage/yankround.vim'
-
-  NeoBundle 'haya14busa/incsearch.vim'
-
-  NeoBundle 'easymotion/vim-easymotion'
-
-  NeoBundle 'vim-scripts/vim-auto-save'
-
-  NeoBundle 'terryma/vim-multiple-cursors'
-
-  NeoBundle 'editorconfig/editorconfig-vim'
-
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-
-  NeoBundleLazy 'kannokanno/previm', {
-  \   'depends': [
-  \     'tyru/open-browser.vim',
-  \   ],
-  \   'autoload': {
-  \     'commands': [
-  \       'Previm',
-  \       'PrevimOpen'
-  \     ]
-  \   }
-  \ }
-
-  NeoBundle 'itchyny/lightline.vim'
-
-  NeoBundle 'deris/vim-shot-f'
-
-  NeoBundle 'wellle/targets.vim'
-
-  NeoBundle 'dhruvasagar/vim-table-mode'
-
-  NeoBundle 'cohama/vim-smartinput-endwise', {
-  \   'depends': [ 'kana/vim-smartinput' ]
-  \ }
-  " }}}
+    NeoBundleSaveCache
+  endif
 
   " Source Plugins Settings " {{{
     " Unite " {{{
@@ -822,11 +602,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       endfunction
 
       function! LightLineFileformat()
-        return winwidth(0) > 70 ? &fileformat : ''
+        return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
       endfunction
 
       function! LightLineFiletype()
-        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
       endfunction
 
       function! LightLineFileencoding()
@@ -840,7 +620,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       set noshowmode
     endif
     " }}}
-
   " }}}
 
   call neobundle#end()

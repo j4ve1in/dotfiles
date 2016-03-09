@@ -1,0 +1,167 @@
+# [[plugins]]
+# repo = 'Shougo/neobundle.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+  [plugins.build]
+    windows = 'tools\\update-dll-mingw'
+    cygwin = 'make -f make_cygwin.mak'
+    mac = 'make -f make_mac.mak'
+    linux = 'make'
+    unix = 'gmake'
+
+# Unite {{{
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'tsukkee/unite-help'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'sorah/unite-ghq'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'basyura/unite-rails'
+depends = 'Shougo/unite.vim'
+# }}}
+
+# Git {{{
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'lambdalisue/vim-gista-unite'
+depends = ['lambdalisue/vim-gista', 'Shougo/unite.vim']
+on_unite = ['gista', 'gista/file', 'gista/commit']
+# }}}
+
+# Twitter {{{
+[[plugins]]
+repo = 'basyura/TweetVim'
+depends = [
+  'tyru/open-browser.vim',
+  'basyura/twibill.vim',
+  'mattn/webapi-vim',
+  'Shougo/unite-outline',
+  'basyura/bitly.vim',
+  'Shougo/unite.vim',
+  'mattn/favstar-vim'
+]
+# }}}
+
+# operator {{{
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'haya14busa/vim-operator-flashy'
+# }}}
+
+# textobj {{{
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+# }}}
+
+# Completion {{{
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+depends = ['Shougo/neosnippet']
+# }}}
+
+# Others {{{
+[[plugins]]
+repo = 'surround.vim'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'deris/vim-shot-f'
+
+[[plugins]]
+repo = 'wellle/targets.vim'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+
+[[plugins]]
+repo = 'cohama/vim-smartinput-endwise'
+depends = ['kana/vim-smartinput']

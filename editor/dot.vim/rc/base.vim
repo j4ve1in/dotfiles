@@ -11,6 +11,7 @@ set whichwrap=b,~,[,],<,>
 set backspace=indent,eol,start
 set noerrorbells visualbell t_vb=
 set viminfo='30,<50,s100,n~/.vim/viminfo
+au BufNewFile,BufRead *load_plugins.toml set foldmethod=marker
 
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
