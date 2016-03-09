@@ -115,21 +115,27 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     bindkey '^r' anyframe-widget-execute-history
 
     bindkey '^xp' anyframe-widget-put-history
-    bindkey '^x^p' anyframe-widget-put-history
 
     bindkey '^xg' anyframe-widget-cd-ghq-repository
-    bindkey '^x^g' anyframe-widget-cd-ghq-repository
-
-    bindkey '^xk' anyframe-widget-kill
-    bindkey '^x^k' anyframe-widget-kill
 
     bindkey '^xi' anyframe-widget-insert-git-branch
-    bindkey '^x^i' anyframe-widget-insert-git-branch
 
     bindkey '^xf' anyframe-widget-insert-filename
-    bindkey '^x^f' anyframe-widget-insert-filename
 
     bindkey '^x;' anyframe-widget-select-widget
+
+    fzf-kill() {
+      if type tmux >/dev/null 2>&1; then
+        pid=$(ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}')
+      elif [ -z "$TMUX" ];then
+        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+      fi
+      if [ "x$pid" != "x" ]; then
+        kill -${1:-9} $pid
+      fi
+    }
+    zle -N fzf-kill
+    bindkey '^xk' fzf-kill
   fi
 
   # if zplug check 'junegunn/fzf-bin'; then
