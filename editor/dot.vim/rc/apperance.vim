@@ -18,7 +18,7 @@ scriptencoding utf-8
 set termencoding=utf-8
 
 " List
-set list listchars=tab:▸\ ,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
 
 " Statusline
 set laststatus=2
