@@ -19,8 +19,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
   if neobundle#load_cache()
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    call neobundle#load_toml(expand('~/.vim/rc/load_plugins.toml'))
-    call neobundle#load_toml(expand('~/.vim/rc/lazyload_plugins.toml'), {'lazy' : 1})
+    let s:toml = expand('~/.vim/rc/load_plugins.toml')
+    let s:lazy_toml = expand('~/.vim/rc/lazyload_plugins.toml')
+    call neobundle#load_toml(s:toml)
+    call neobundle#load_toml(s:lazy_toml, {'lazy' : 1})
 
     NeoBundleSaveCache
   endif

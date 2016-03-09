@@ -17,6 +17,7 @@ repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
@@ -25,22 +26,27 @@ depends = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'kmnk/vim-unite-giti'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'tsukkee/unite-help'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'sorah/unite-ghq'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
 depends = 'Shougo/unite.vim'
+on_path = '.*'
 # }}}
 
 # Git {{{
@@ -95,10 +101,14 @@ repo = 'rhysd/vim-textobj-ruby'
 # Completion {{{
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
+if = 'has("lua")'
+on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 depends = ['Shougo/neosnippet']
+on_i = 1
+on_ft = ['snippet']
 # }}}
 
 # Others {{{
@@ -125,6 +135,7 @@ repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
+on_i = 1
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'

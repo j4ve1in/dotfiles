@@ -3,6 +3,7 @@
 repo = 'majkinetor/unite-cmdmatch'
 depends = 'Shougo/unite.vim'
 mappings = [['c', '<Plug>(unite_cmdmatch_complete)']]
+on_path = '.*'
 # }}}
 
 # Git {{{
