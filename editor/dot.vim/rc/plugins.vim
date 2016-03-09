@@ -25,8 +25,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundleSaveCache
   endif
 
-  " Source Plugins Settings " {{{
-    " Unite " {{{
+  " Source Plugins Settings {{{
+    " Unite {{{
     if neobundle#tap('unite.vim')
       let g:unite_enable_auto_select = 0
       nnoremap [Unite] <Nop>
@@ -150,7 +150,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " VimFiler " {{{
+    " VimFiler {{{
     if neobundle#tap('vimfiler')
       let g:vimfiler_as_default_explorer = 1
       autocmd FileType vimfiler 
@@ -168,7 +168,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " fugitive " {{{
+    " fugitive {{{
     if neobundle#tap('vim-fugitive')
       nnoremap [git] <Nop>
       nmap <Space>g [git]
@@ -195,7 +195,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-gitgutter " {{{
+    " vim-gitgutter {{{
     if neobundle#tap('vim-gitgutter')
       nnoremap [git] <Nop>
       nmap <Space>g [git]
@@ -207,7 +207,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-dispatch " {{{
+    " vim-dispatch {{{
     if neobundle#tap('vim-dispatch')
       nnoremap [dispatch] <Nop>
       nmap <Space>dp [dispatch]
@@ -229,7 +229,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-gista " {{{
+    " vim-gista {{{
     if neobundle#tap('vim-gista')
       nnoremap [git] <Nop>
       nmap <Space>g [git]
@@ -244,7 +244,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " Watchdogs " {{{
+    " Watchdogs {{{
     if neobundle#tap('vim-watchdogs')
       nnoremap [Watchdogs] <Nop>
       nmap <Space>W [Watchdogs]
@@ -254,7 +254,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " TweetVim " {{{
+    " TweetVim {{{
     if neobundle#tap('TweetVim')
       let g:tweetvim_display_icon = 1
       let g:tweetvim_display_source = 1
@@ -264,7 +264,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " Previm " {{{
+    " Previm {{{
     if neobundle#tap('previm')
       nnoremap [Previm] <Nop>
       nmap <Space>pv [Previm]
@@ -274,7 +274,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " auto-save " {{{
+    " auto-save {{{
     if neobundle#tap('vim-auto-save')
       let g:auto_save = 1
       let g:auto_save_in_insert_mode = 0
@@ -282,7 +282,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " indent-guides " {{{
+    " indent-guides {{{
     if neobundle#tap('vim-indent-guides')
       let g:indent_guides_auto_colors=0
       autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=247
@@ -295,7 +295,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " open-browser " {{{
+    " open-browser {{{
     if neobundle#tap('open-browser.vim')
       let g:netrw_nogx = 1
       nmap gx <Plug>(openbrowser-smart-search)
@@ -304,7 +304,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-smartinput " {{{
+    " vim-smartinput {{{
     if neobundle#tap('vim-smartinput')
       let s:hooks = neobundle#get_hooks("vim-smartinput")
       function! s:hooks.on_source(bundle)
@@ -314,7 +314,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-smartinput-endwise " {{{
+    " vim-smartinput-endwise {{{
     if neobundle#tap('vim-smartinput-endwise')
       let s:hooks = neobundle#get_hooks("vim-smartinput-endwise")
       function! s:hooks.on_source(bundle)
@@ -330,7 +330,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " NeoComplete " {{{
+    " NeoComplete {{{
     if neobundle#tap('neocomplete.vim')
       let g:neocomplete#enable_at_startup = 1
       let g:neocomplete#enable_smart_case = 1
@@ -385,7 +385,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " NeoSnippet " {{{
+    " NeoSnippet {{{
     if neobundle#tap('neosnippet')
       " Plugin key-mappings.
       imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -408,7 +408,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " vim-operator-flashy " {{{
+    " vim-operator-flashy {{{
     if neobundle#tap('vim-operator-flashy')
       map y <Plug>(operator-flashy)
       nmap Y <Plug>(operator-flashy)$
@@ -417,7 +417,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " incsearch.vim " {{{
+    " incsearch.vim {{{
     if neobundle#tap('incsearch.vim')
       let g:incsearch#no_inc_hlsearch = 1
       map /  <Plug>(incsearch-forward)
@@ -427,7 +427,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " caw.vim " {{{
+    " caw.vim {{{
     if neobundle#tap('caw.vim')
       nmap <Space>c <Plug>(caw:i:toggle)
       vmap <Space>c <Plug>(caw:i:toggle)
@@ -435,28 +435,28 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " unite-cmdmatch " {{{
+    " unite-cmdmatch {{{
     if neobundle#tap('unite-cmdmatch')
       cmap <c-o> <Plug>(unite_cmdmatch_complete)
       call neobundle#untap()
     endif
     " }}}
 
-    " vim-table-mode " {{{
+    " vim-table-mode {{{
     if neobundle#tap('vim-table-mode')
       let g:loaded_table_mode = 1
       call neobundle#untap()
     endif
     " }}}
 
-    " editorconfig-vim " {{{
+    " editorconfig-vim {{{
     if neobundle#tap('editorconfig-vim')
       let g:EditorConfig_exclude_patterns = ['gista:*', 'scp://.*']
       call neobundle#untap()
     endif
     " }}}
 
-    " vim-submode " {{{
+    " vim-submode {{{
       let s:hooks = neobundle#get_hooks("vim-submode")
       function! s:hooks.on_source(bundle)
         call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
@@ -487,14 +487,14 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
       unlet s:hooks
     " }}}
 
-    " vim-multiple-cursors " {{{
+    " vim-multiple-cursors {{{
     if neobundle#tap('vim-multiple-cursors')
       let g:multi_cursor_start_key='<C-s>'
       call neobundle#untap()
     endif
     " }}}
 
-    " yankround.vim " {{{
+    " yankround.vim {{{
     if neobundle#tap('yankround.vim')
       nmap p <Plug>(yankround-p)
       xmap p <Plug>(yankround-p)
@@ -509,7 +509,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     endif
     " }}}
 
-    " lightline " {{{
+    " lightline {{{
     if neobundle#tap('lightline.vim')
       let s:white  = 255
       let s:black  = 0

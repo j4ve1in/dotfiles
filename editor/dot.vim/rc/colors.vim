@@ -1,4 +1,4 @@
-" Colorscheme " {{{
+" Colorscheme {{{
 "--------------------------------------------------------------------
 " Description: Vim colorscheme, designed against VIM 7.4
 " Credits: Inspiration from the dw_blue scheme.
