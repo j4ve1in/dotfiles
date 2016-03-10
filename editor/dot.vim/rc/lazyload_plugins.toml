@@ -39,6 +39,10 @@ repo = 'hail2u/vim-css3-syntax'
 on_ft = 'css'
 
 [[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+on_ft = 'javascript'
+
+[[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'dockerfile'
 
