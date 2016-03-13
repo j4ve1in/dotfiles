@@ -1,76 +1,185 @@
 # Unite {{{
 [[plugins]]
-repo = 'majkinetor/unite-cmdmatch'
-depends = 'Shougo/unite.vim'
-mappings = [['c', '<Plug>(unite_cmdmatch_complete)']]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
 on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+depends = 'unite.vim'
+on_map = '<Plug>'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'basyura/unite-rails'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'sorah/unite-ghq'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'lambdalisue/vim-gista-unite'
+on_source = ['unite.vim','lambdalisue/vim-gista']
+
+[[plugins]]
+repo = 'majkinetor/unite-cmdmatch'
+on_source = 'unite.vim'
 # }}}
 
-# Git {{{
+# Web {{{
 [[plugins]]
-repo = 'lambdalisue/vim-gista'
-on_cmd = 'Gista'
+repo = 'kannokanno/previm'
+depends = 'open-browser.vim'
+on_path = '.md'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'basyura/TweetVim'
+depends = [
+  'open-browser.vim',
+  'twibill.vim',
+  'webapi-vim',
+  'unite-outline',
+  'bitly.vim',
+  'unite.vim',
+  'favstar-vim'
+]
+on_cmd = ['TweetVimHomeTimeline']
+
+[[plugins]]
+repo = 'basyura/twibill.vim'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'basyura/bitly.vim'
+
+[[plugins]]
+repo = 'mattn/favstar-vim'
 # }}}
 
 # Syntax {{{
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
 depends = [
-  'thinca/vim-quickrun',
-  'Shougo/vimproc.vim',
-  'osyo-manga/shabadou.vim',
-  'cohama/vim-hier',
-  'dannyob/quickfixstatus'
+  'vim-quickrun',
+  'vimproc.vim',
+  'shabadou.vim',
+  'vim-hier',
+  'quickfixstatus'
 ]
 on_cmd = [
   'WatchdogsRun',
   'WatchdogsRunSilent',
   'WatchdogsRunSweep'
 ]
-# }}}
 
-# Syntax {{{
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'cohama/vim-hier'
+
+[[plugins]]
+repo = 'dannyob/quickfixstatus'
+
 [[plugins]]
 repo = 'othree/html5.vim'
-on_ft = 'html'
+# on_ft = 'html'
+on_path = '.html'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
-on_ft = 'css'
+# on_ft = 'css'
+on_path = '.css'
 
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
-on_ft = 'javascript'
+# on_ft = 'javascript'
+on_path = '.js'
 
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
-on_ft = 'dockerfile'
+# on_ft = 'dockerfile'
+on_path = 'Dockerfile'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
-on_ft = 'slim'
+# on_ft = 'slim'
+on_path = '.slim'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-on_ft = 'coffee'
+# on_ft = 'coffee'
+on_path = '.coffee'
 # }}}
 
 # Completion {{{
 [[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = 'has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = 'neosnippet-snippets'
+on_i = 1
+on_ft = 'snippet'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = [
-  'html',
-  'css',
-  'scss',
-  'slim',
-  'eruby',
-  'markdown'
+# on_ft?
+on_path = [
+  '.html',
+  '.css',
+  '.scss',
+  '.slim',
+  '.eruby',
+  '.markdown'
 ]
 # }}}
 
 # Others {{{
 [[plugins]]
-repo = 'kannokanno/previm'
-depends = 'tyru/open-browser.vim'
-on_cmd = ['Previm','PrevimOpen']
+repo = 'cohama/vim-smartinput-endwise'
+depends = 'vim-smartinput'
+on_i = 1
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+on_i = 1
+
+[[plugins]]
+repo = 'fatih/vim-go'
+# on_ft = 'go'
+on_path = '.go'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+on_i = 1
 # }}}

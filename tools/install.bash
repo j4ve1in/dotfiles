@@ -132,18 +132,19 @@ install_plugin() {
       printf "  Downloading vimproc..."
       {
         sleep 1
-        git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+        git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/repos/github.com/Shougo/vimproc.vim
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       if [ "$OSTYPE" = "msys" ]; then
-        make -C "$HOME/.vim/bundle/vimproc.vim" -f 'make_cygwin.mak' >/dev/null 2>&1
+        make -C "$HOME/.vim/bundle/repos/github.com/Shougo/vimproc.vim" -f 'make_cygwin.mak' >/dev/null 2>&1
       else
-        make -C "$HOME/.vim/bundle/vimproc.vim" >/dev/null 2>&1
+        make -C "$HOME/.vim/bundle/repos/github.com/Shougo/vimproc.vim" >/dev/null 2>&1
       fi
-      printf "  Downloading other plugin by NeoBundle..."
+      printf "  Downloading other plugin by Dein..."
       {
         sleep 1
-        source ~/.vim/bundle/neobundle.vim/bin/neoinstall
+        vim +qall
+        echo ''
       } | env LESS="-cE" less
       cprint "done" $CYAN_B
       interval 500000

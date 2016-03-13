@@ -1,5 +1,5 @@
-# [[plugins]]
-# repo = 'Shougo/neobundle.vim'
+[[plugins]]
+repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -10,45 +10,6 @@ repo = 'Shougo/vimproc.vim'
     linux = 'make'
     unix = 'gmake'
 
-# Unite {{{
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/vimfiler'
-depends = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'kmnk/vim-unite-giti'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'tsukkee/unite-help'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'sorah/unite-ghq'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'basyura/unite-rails'
-depends = 'Shougo/unite.vim'
-on_path = '.*'
-# }}}
-
 # Git {{{
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -57,23 +18,8 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'lambdalisue/vim-gista-unite'
-depends = ['lambdalisue/vim-gista', 'Shougo/unite.vim']
-on_unite = ['gista', 'gista/file', 'gista/commit']
-# }}}
-
-# Twitter {{{
-[[plugins]]
-repo = 'basyura/TweetVim'
-depends = [
-  'tyru/open-browser.vim',
-  'basyura/twibill.vim',
-  'mattn/webapi-vim',
-  'Shougo/unite-outline',
-  'basyura/bitly.vim',
-  'Shougo/unite.vim',
-  'mattn/favstar-vim'
-]
+repo = 'lambdalisue/vim-gista'
+if = 'has("python3")'
 # }}}
 
 # operator {{{
@@ -98,19 +44,6 @@ repo = 'kana/vim-textobj-line'
 repo = 'rhysd/vim-textobj-ruby'
 # }}}
 
-# Completion {{{
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = 'has("lua")'
-on_i = 1
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-depends = ['Shougo/neosnippet']
-on_i = 1
-on_ft = ['snippet']
-# }}}
-
 # Others {{{
 [[plugins]]
 repo = 'surround.vim'
@@ -119,29 +52,20 @@ repo = 'surround.vim'
 repo = 'tyru/caw.vim'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'kana/vim-submode'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
 repo = 'tpope/vim-dispatch'
-
-[[plugins]]
-repo = 'Townk/vim-autoclose'
-on_i = 1
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+depends = 'unite.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
@@ -157,6 +81,7 @@ repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
+if = 'has("python3")'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
@@ -172,7 +97,3 @@ repo = 'wellle/targets.vim'
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
-
-[[plugins]]
-repo = 'cohama/vim-smartinput-endwise'
-depends = ['kana/vim-smartinput']
