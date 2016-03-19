@@ -34,6 +34,14 @@ set undofile undodir=~/.vim/undo
 " Mouse
 set mouse=a ttymouse=xterm2
 
+" IM
+augroup IMToggle
+  autocmd!
+augroup END
+if executable('fcitx-remote')
+  autocmd IMToggle InsertLeave * call system('fcitx-remote -c')
+endif
+
 " File
 "" ftdetect
 augroup fileTypeDetect
