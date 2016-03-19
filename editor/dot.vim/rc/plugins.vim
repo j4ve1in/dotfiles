@@ -571,6 +571,23 @@ if isdirectory(s:dein_repo_dir)
       set noshowmode
     endif
     " }}}
+
+    " eskk {{{
+    if dein#tap('eskk.vim')
+      let g:eskk#directory = expand('$CACHE/eskk')
+      let g:eskk#large_dictionary = {
+        \   'path': '/usr/share/skk/SKK-JISYO.L',
+        \   'sorted': 1,
+        \   'encoding': 'euc-jp',
+        \}
+      let g:eskk#server = {
+        \ 'host': 'localhost',
+        \ 'port': 55100
+        \}
+      let g:eskk#marker_henkan = "\uf13a"
+      let g:eskk#marker_henkan_select = "\uf107"
+    endif
+    " }}}
   " }}}
 
   call dein#end()

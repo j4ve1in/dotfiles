@@ -99,3 +99,6 @@ repo = 'wellle/targets.vim'
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
+
+[[plugins]]
+repo = 'tyru/eskk.vim'

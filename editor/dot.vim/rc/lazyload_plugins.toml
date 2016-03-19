@@ -3,7 +3,16 @@
 # Unite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
+depends = [
+  'neomru.vim',
+  'unite-help',
+  'unite-outline',
+  'unite-rails',
+  'vim-unite-giti',
+  'unite-ghq',
+  'vim-gista-unite',
+  'unite-cmdmatch'
+]
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -17,31 +26,25 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'kmnk/vim-unite-giti'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'sorah/unite-ghq'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista-unite'
-on_source = ['unite.vim','lambdalisue/vim-gista']
+on_source = 'lambdalisue/vim-gista'
 
 [[plugins]]
 repo = 'majkinetor/unite-cmdmatch'
-on_source = 'unite.vim'
 # }}}
 
 # Web {{{
@@ -142,7 +145,6 @@ on_path = '.coffee'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = 'has("lua")'
-on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -174,7 +176,6 @@ on_i = 1
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
-on_i = 1
 
 [[plugins]]
 repo = 'fatih/vim-go'
