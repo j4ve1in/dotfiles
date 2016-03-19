@@ -29,6 +29,7 @@
 [alias]
     a = add
     aa = add -A
+    ap = add -p
     b = branch
     bo = browse # hub
     cancel = reset --soft HEAD^

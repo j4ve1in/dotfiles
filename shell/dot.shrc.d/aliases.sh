@@ -1,36 +1,29 @@
 has() { type $1 >/dev/null 2>&1; }
 
 # ls
-alias l{,s}='ls -F --color=auto'
-alias ll='ls -hl --time-style=long-iso'
-alias la='ls -A'
-alias lla='ls -Ahl --time-style=long-iso'
+alias l='ls -F --color=auto' ll='l -hl --time-style=long-iso'
+alias la='l -A' lla='ll -A'
 
 # grep
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
 # cd
 alias c='cd'
-alias ..='cd ..'
-alias ...='cd ~/.dotfiles'
+alias .='l' ..='cd ..' ...='cd ~/.dotfiles'
 alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
-alias dr='cd ~/Dropbox'
+alias d='cd ~/Dropbox'
 
 # diff
 has colordiff && alias diff='colordiff -u' || alias diff='diff -u'
+alias di='diff'
 
 # Vagrant
 if has vagrant; then
-  alias vags='vagrant global-status'
   alias vah='vagrant halt'
-  alias var='vagrant reload'
-  alias vars='vagrant reload && vagrant ssh'
   alias vas='vagrant ssh'
-  alias vast='vagrant status'
-  alias vau='vagrant up'
-  alias vaus='vagrant up && vagrant ssh'
+  alias vast='vagrant status' vags='vagrant global-status'
+  alias vau='vagrant up' vaus='vagrant up && vagrant ssh'
+  alias var='vagrant reload' vars='vagrant reload && vagrant ssh'
 fi
 
 # Tmux
@@ -41,51 +34,53 @@ fi
 
 # Vi
 if has vim; then
-  alias v{,i,im}='vim -p'
-  alias tweetvim='vim +TweetVimHomeTimeline'
-  alias tweet='vim +TweetVimCommandSay'
+  alias v='vim -p'
+  alias twv='vim +TweetVimHomeTimeline'
+  alias tw='vim +TweetVimCommandSay'
 elif has vi; then
-  alias v{,i}='vi -p'
+  alias v='vi -p'
 fi
 
 # Ruby
 if has ruby; then
   alias ru='ruby'
   ## Bundler
-  has bundle && alias b='bundle' be='bundle exec'
+  has bundle && alias b='bundle'
   ## Rake
   has rake && alias rk='rake' rkr='rake routes'
   ## Rails
-  has rails && alias ri=rails rid='rails db'
+  has rails && alias ri=rails rid='rails db' ric='rails c'
   ## Rails
-  has rspec && alias rspec='rspec --color'
+  has rspec && alias rs='rspec --color'
 fi
+
+# mount
+alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
+alias uusb='sudo umount /mnt/usb'
 
 # Others
 has git && alias g='git'
 has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
-has mysql && alias mysql='mysql --pager="less -iFMnSX"'
-has gyazo && alias gy='gyazo'
-has gyazo && alias gym='gyazo_markdown'
+has mysql && alias ms='mysql --pager="less -iFMnSX"'
+has gyazo && alias gy='gyazo' gym='gyazo_markdown'
 alias s='sudo -E '
 alias se='sudoedit -E '
+alias na='netctl-auto'
 alias h='history'
 alias p='ps'
 alias pw='pwd'
+has pacman && alias pm='pacman'
 alias m='mv'
-alias d='diff'
 alias le='less'
 alias path='echo -e ${PATH//:/\\n}'
 alias fpath='echo -e ${FPATH//:/\\n}'
 alias jman='LANG="ja_JP.UTF-8" man'
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
-alias reload='exec $SHELL -l'
+alias reload='exec $SHELL -l' rl='reload'
 alias dsu='dotsetup'
 alias ts='trash'
-alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
-alias uusb='sudo umount /mnt/usb'
 
 case "`uname -s`" in
   Linux)
@@ -93,12 +88,11 @@ case "`uname -s`" in
     alias xs='xsel'
     alias r='ranger'
     ;;
-  CYGWIN*|MSYS*)
-    alias cy='mintty -t Cygwin -i /Cygwin-Terminal.ico -'
-    alias cys='cygstart' e='cygstart .'
+  MSYS*)
+    alias st='start' e='start .'
     ;;
   Darwin)
-    alias l{,s}='ls -FG'
+    alias l='ls -FG'
     alias op='open' f='open .'
     alias pbc='pbcopy' pbp='pbpaste'
     ;;
