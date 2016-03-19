@@ -22,8 +22,8 @@ autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 PROMPT_GIT_BRANCH=`echo "\ue0a0"`
 PROMPT_GIT_CLEAN=`echo "\u2714"`
-PROMPT_GIT_STAGED=`echo "\u25CF"`
-PROMPT_GIT_UNSTAGED=`echo "\u271A"`
+PROMPT_GIT_STAGED=`echo "\uf111"`
+PROMPT_GIT_UNSTAGED=`echo "\uf067"`
 PROMPT_GIT_UNMARGED=`echo "\u2714"`
 zstyle ':vcs_info:*' formats " ${SUB_COLOR2}${PROMPT_GIT_BRANCH} %b%f%c%u"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
