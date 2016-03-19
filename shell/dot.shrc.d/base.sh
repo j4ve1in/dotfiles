@@ -5,17 +5,10 @@ cprintf() { printf "\x1b[${2}m${1}\x1b[0;39;49m"; }
 
 stty stop undef
 
-# Display user info
+# Display LastLogin
 COLOR_75_B="1;38;05;75" # cyan
-## Username
-cprintf "Username: " $COLOR_75_B
-printf "$USER   "
-## Shell
-cprintf 'Shell: ' $COLOR_75_B
 if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
   SHELL=`ps -p $$ -o comm=`
-  echo "$SHELL"
-  ## LastLogin
   if has lastlog; then
     LASTLOG=`lastlog -u $USER | sed '1d'`
     cprintf 'LastLogin: ' $COLOR_75_B
@@ -33,12 +26,10 @@ if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
       echo "$DATE on $PORT"
     fi
   fi
-else
-  basename $(readlink /proc/$$/exe)
 fi
 
+# Launch tmux
 if [ "$OSTYPE" != "cygwin" ]; then
-  # Load tmux
   if has tmux; then
     #if not inside a tmux session, and if no session is started, start a new session
     if [ -z "$TMUX" ];then
