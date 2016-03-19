@@ -87,6 +87,5 @@ augroup fileTypeIndent
 augroup END
 
 "" Others
-autocmd BufNewFile,BufRead *load_plugins.toml setlocal foldmethod=marker
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable nolist
