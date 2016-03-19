@@ -114,7 +114,6 @@ trash() {
   if [ "$1" = "-a" ]; then
     if [ -n "`ls -A $TRASH_DIR`" ]; then
       printf "trash: remove trash? "; read ANSWER
-      echo
       case $ANSWER in
         "Y" | "y" | "Yes" | "yes" )
           /bin/rm -rf ${TRASH_DIR}/*
@@ -124,7 +123,7 @@ trash() {
           ;;
       esac
     else
-      echo 'trash: $TRASH_DIR is empty'
+      echo "trash: $TRASH_DIR is empty"
     fi
     return 0
   elif [ "$1" = "-s" ]; then
@@ -133,6 +132,12 @@ trash() {
     else
       echo 'trash: $TRASH_DIR is empty'
     fi
+    return 0
+  elif [ "$1" = "-h" ]; then
+    echo "usage: trash [OPTION] [FILE]"
+    echo "  -s show status"
+    echo "  -a remove trash"
+    echo
     return 0
   fi
 
