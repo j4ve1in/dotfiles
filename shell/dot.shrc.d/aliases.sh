@@ -14,8 +14,7 @@ alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
 alias d='cd ~/Dropbox'
 
 # diff
-has colordiff && alias diff='colordiff -u' || alias diff='diff -u'
-alias di='diff'
+has colordiff && alias di='colordiff -u' || alias di='diff -u'
 
 # Vagrant
 if has vagrant; then
@@ -64,8 +63,7 @@ has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
 has gyazo && alias gy='gyazo' gym='gyazo_markdown'
-alias s='sudo -E '
-alias se='sudoedit -E '
+alias s='sudo -E ' se='sudoedit -E '
 alias na='netctl-auto'
 alias h='history'
 alias p='ps'
