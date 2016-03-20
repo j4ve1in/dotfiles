@@ -6,24 +6,28 @@ let g:netrw_home=$HOME.'/.vim/tmp'
 " Dein
 let s:dein_dir = expand('~/.vim/bundle')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-augroup rc_autocmd
-  autocmd!
-augroup END
 if isdirectory(s:dein_repo_dir)
   execute 'set runtimepath^=' . s:dein_repo_dir
 
-  call dein#begin(s:dein_dir)
-
   " Load Plugins
-  let s:toml = expand('~/.vim/rc/load_plugins.toml')
-  let s:lazy_toml = expand('~/.vim/rc/lazyload_plugins.toml')
-  if dein#load_cache([expand('<sfile>', s:toml, s:lazy_toml)])
+  if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+    let s:toml = expand('~/.vim/rc/load_plugins.toml')
+    let s:lazy_toml = expand('~/.vim/rc/lazyload_plugins.toml')
     call dein#load_toml(s:toml)
     call dein#load_toml(s:lazy_toml, {'lazy' : 1})
-    call dein#save_cache()
+    call dein#end()
+    call dein#save_state()
+  endif
+
+  if has('vim_starting') && dein#check_install()
+    call dein#install()
   endif
 
   " Plugins Settings {{{
+  augroup rc_autocmd
+    autocmd!
+  augroup END
     " Unite {{{
     if dein#tap('unite.vim')
       let g:unite_enable_auto_select = 0
@@ -589,10 +593,4 @@ if isdirectory(s:dein_repo_dir)
     endif
     " }}}
   " }}}
-
-  call dein#end()
-
-  if dein#check_install()
-    call dein#install()
-  endif
 endif
