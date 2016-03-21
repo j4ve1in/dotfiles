@@ -56,6 +56,7 @@ elif [ "$1" == "right" ]; then
     else
       printf "#[fg=colour231,bg=colour21]"
     fi
+    printf " $(printf '\\uf240')"
     echo -n " $Battery "
   fi
   # Date
