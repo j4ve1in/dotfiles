@@ -27,9 +27,7 @@ LESS_TERMCAP_us=`echo "\033[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # Path
-[ "$OSTYPE" = "cygwin" ] && [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH"
 [ "$OSTYPE" = "msys" ] && [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH"
-[ "$OSTYPE" = "cygwin" ] && [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
 [ "$OSTYPE" = "msys" ] && [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
 [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
 [ -d "${HOME}/.dotfiles/bin" ] && PATH+=":${HOME}/.dotfiles/bin"
@@ -50,7 +48,6 @@ export PATH
 
 # Others
 case "`uname -s`" in
-  CYGWIN*) export CYGWIN='winsymlinks' ;;
   MSYS*) export MSYS='winsymlinks';;
   Darwin) export LSCOLORS='gxfxcxdxbxegedabagacad' ;;
 esac

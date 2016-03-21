@@ -24,11 +24,7 @@ case $ANSWER in
     fi
     cprint "done" $CYAN_B
     export ASSUME_YES="1"
-    if [ $OSTYPE = cygwin ]; then
-      exec source ~/install.bash
-    else
-      source ~/install.bash
-    fi
+    source ~/install.bash
     ;;
   * )
     ;;

@@ -1,5 +1,5 @@
 # Source global definitions
-if [ "$OSTYPE" = "cygwin" ]; then
+if [ "$OSTYPE" = "msys" ]; then
   if [ -f /etc/bashrc ]; then
     /etc/bashrc
   fi

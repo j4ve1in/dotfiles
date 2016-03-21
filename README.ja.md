@@ -20,7 +20,7 @@
 
 <p align="center">
 <a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square"></a>
 </p>
 
 # 概要
@@ -31,12 +31,10 @@
 # インストール
 以下のインストールコマンドでインストールできます。
 
-| OS                | インストールコマンド                   |
-|:-----------------:|:---------------------------------------|
-| GNU/Linux, Darwin | bash <(curl -L d.ytet5uy4.com)         |
-|                   | bash <(wget -O - d.ytet5uy4.com)       |
-| Cygwin            | exec bash <(curl -L d.ytet5uy4.com)    |
-|                   | exec bash <(wget -O - d.ytet5uy4.com)  |
+|      | インストールコマンド                   |
+|:----:|:---------------------------------------|
+| cURL | bash <(curl -L d.ytet5uy4.com)         |
+| Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
 **参考:** **フルインストール**を利用する場合は`export FULL_INSTALLATION="1"`を実行した後、インストールコマンドを実行してください。フルインストールを使うとシェルとエディターのプラグインもインストールできます。
 

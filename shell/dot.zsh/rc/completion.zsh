@@ -1,5 +1,5 @@
 autoload -Uz compinit
-if [ "$OSTYPE" != "cygwin" ]; then
+if [ "$OSTYPE" != "msys" ]; then
   compinit -u
 else
   compinit -C
@@ -33,7 +33,7 @@ zstyle ':completion:*:warnings' format $RED'No matches for:'$DEFAULT' %d'
 zstyle ':completion:*:corrections' format $COLOR_93_B'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:descriptions' format $COLOR_75_B'Completing %B%d%b%f'$DEFAULT
 
-if [ "$OSTYPE" != "cygwin" ]; then
+if [ "$OSTYPE" != "msys" ]; then
   # auto_cd
   setopt auto_cd
 

@@ -20,7 +20,7 @@
 
 <p align="center">
 <a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20Cygwin-lightgrey.svg?style=flat-square"></a>
+<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square"></a>
 </p>
 
 
@@ -30,14 +30,12 @@ This repository manage **[my]** configuration files on Unix-type operating syste
 ![Screenshot]
 
 # Installation
-You can install Javelin's dotfiles by the following installation command.
+You can install dotfiles by the following installation command.
 
-| OS                | Installation command                   |
-|:-----------------:|:---------------------------------------|
-| GNU/Linux, Darwin | bash <(curl -L d.ytet5uy4.com)         |
-|                   | bash <(wget -O - d.ytet5uy4.com)       |
-| Cygwin            | exec bash <(curl -L d.ytet5uy4.com)    |
-|                   | exec bash <(wget -O - d.ytet5uy4.com)  |
+|      | Installation command                   |
+|:----:|:---------------------------------------|
+| cURL | bash <(curl -L d.ytet5uy4.com)         |
+| Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
 **NOTE:** If you want to use **full installation**, run `export FULL_INSTALLATION="1"` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
 

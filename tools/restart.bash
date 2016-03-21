@@ -1,11 +1,5 @@
 #!/bin/bash
 
-restart_cygwin() {
-  printf "Restarting cygwin..."
-  cygstart mintty -t "Cygwin" -i /Cygwin-Terminal.ico -
-  echo -e "\033[1;36mdone\033[0;39m"
-}
-
 restart_shell() {
   echo "Restarting shell..."
   if which usleep >/dev/null 2>&1; then
@@ -16,42 +10,22 @@ restart_shell() {
 }
 
 restart() {
-  if [ $OSTYPE = cygwin ]; then
-    # Cygwin
-    printf "Do you want to restart cygwin (yes/no)? "
-    read ANSWER
+  printf "Do you want to restart shell (yes/no)? "
+  read ANSWER
 
-    case $ANSWER in
-      "Y" | "y" | "Yes" | "yes" )
-        restart_cygwin
-        ;;
-      * )
-        echo
-        ;;
-    esac
-  else
-    # ! Cygwin
-    printf "Do you want to restart shell (yes/no)? "
-    read ANSWER
-
-    case $ANSWER in
-      "Y" | "y" | "Yes" | "yes" )
-        restart_shell
-        ;;
-      * )
-        echo
-        ;;
-    esac
-  fi
+  case $ANSWER in
+    "Y" | "y" | "Yes" | "yes" )
+      restart_shell
+      ;;
+    * )
+      echo
+      ;;
+  esac
 }
 
 rm -f ~/install.bash
 if [ "$ASSUME_YES" = "1" ]; then
-  if [ $OSTYPE = cygwin ]; then
-    restart_cygwin
-  else
-    restart_shell
-  fi
+  restart_shell
 else
   restart
 fi

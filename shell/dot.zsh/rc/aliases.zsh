@@ -54,8 +54,8 @@ fi
 ## Image
 if [ $(uname) = Linux ]; then
   alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
-elif [ "$OSTYPE" = "cygwin" ]; then
-  alias -s {gif,jpg,jpeg,png,bmp}=cygstart
+elif [ "$OSTYPE" = "msys" ]; then
+  alias -s {gif,jpg,jpeg,png,bmp}=start
 elif [ $(uname) = Darwin ]; then
   alias -s {gif,jpg,jpeg,png,bmp}=open
 fi

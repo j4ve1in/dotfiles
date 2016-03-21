@@ -7,7 +7,7 @@ stty stop undef
 
 # Display LastLogin
 COLOR_75_B="1;38;05;75" # cyan
-if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
+if [ "$OSTYPE" != "msys" ]; then
   SHELL=`ps -p $$ -o comm=`
   if has lastlog; then
     LASTLOG=`lastlog -u $USER | sed '1d'`
@@ -29,7 +29,7 @@ if [ "$OSTYPE" != "cygwin" ] && [ "$OSTYPE" != "msys" ]; then
 fi
 
 # Launch tmux
-if [ "$OSTYPE" != "cygwin" ]; then
+if [ "$OSTYPE" != "msys" ]; then
   if has tmux; then
     #if not inside a tmux session, and if no session is started, start a new session
     if [ -z "$TMUX" ];then
