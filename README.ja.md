@@ -1,24 +1,24 @@
-<p align="center">
-<img width=20% src="https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png">
+<p align='center'>
+<img width=20% src='https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png'>
 </p>
 
-<p align="center">
-<b><a href="#概要">概要</a></b>
+<p align='center'>
+<b><a href='#概要'>概要</a></b>
 |
-<b><a href="#インストール">インストール</a></b>
+<b><a href='#インストール'>インストール</a></b>
 |
-<b><a href="#設定">設定</a></b>
+<b><a href='#設定'>設定</a></b>
 |
-<b><a href="#試行">試行</a></b>
+<b><a href='#試行'>試行</a></b>
 |
-<b><a href="//github.com/ytet5uy4/dotfiles/blob/master/README.md">English README</a></b>
+<b><a href='//github.com/ytet5uy4/dotfiles/blob/master/README.md'>English README</a></b>
 |
-<b><a href="#ライセンス">ライセンス</a></b>
+<b><a href='#ライセンス'>ライセンス</a></b>
 </p>
 
-<p align="center">
-<a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square">
+<p align='center'>
+<a href='//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md'><img src='https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square'></a>
+<img src='https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square'>
 </p>
 
 # 概要
@@ -34,9 +34,9 @@
 | cURL | bash <(curl -L d.ytet5uy4.com)         |
 | Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
-**参考:** **フルインストール**を利用する場合は`export FULL_INSTALLATION="1"`を実行した後、インストールコマンドを実行してください。フルインストールを使うとシェルとエディターのプラグインもインストールできます。
+**参考:** **フルインストール**を利用する場合は`export FULL_INSTALLATION='1'`を実行した後、インストールコマンドを実行してください。フルインストールを使うとシェルとエディターのプラグインもインストールできます。
 
-**参考2:** **オートインストール**を利用する場合は`export ASSUME_YES="1"`を実行した後、インストールコマンドを実行してください。オートインストールを使うと確認があったときすべて`yes`で進め、非対話的に実行します。
+**参考2:** **オートインストール**を利用する場合は`export ASSUME_YES='1'`を実行した後、インストールコマンドを実行してください。オートインストールを使うと確認があったときすべて`yes`で進め、非対話的に実行します。
 
 **デモ:**
 [![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
