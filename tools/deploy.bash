@@ -3,13 +3,10 @@
 source ~/.dotfiles/tools/lib/base.bash
 source_dotool lib/dot
 
-echo -e "\033[4;39mStart creating symbolic link\033[0;39m"
+cprint "Create symbolic link" $UNDERLINE
 
 # Create
-case "`uname -s`" in
-  CYGWIN*) export CYGWIN='winsymlinks' ;;
-  MSYS*) export MSYS='winsymlinks';;
-esac
+[ "$OSTYPE" = "msys" ] && export MSYS='winsymlinks'
 COUNT=0
 N=${#DOT_NAME[@]}
 for ((i=0;i<N;i++)); do

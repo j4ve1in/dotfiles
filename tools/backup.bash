@@ -4,7 +4,7 @@ source ~/.dotfiles/tools/lib/base.bash
 source_dotool lib/dot
 
 # Count max
-cprint "Checking backup file" $UNDERLINE
+cprint "Check backup file" $UNDERLINE
 source_dotool lib/countup
 
 if [ "$MAX" != "0" ]; then
@@ -19,7 +19,7 @@ if [ "$MAX" != "0" ]; then
   echo
 
   # Start backup
-  cprint "Starting backup" $UNDERLINE
+  cprint "Start backup" $UNDERLINE
   printf " \`dotfiles' "
   cprintf "->" $COLOR_93_B
   echo " \`~/.dotfiles/backup/$DATE'"

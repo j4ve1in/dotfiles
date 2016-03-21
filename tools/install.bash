@@ -9,8 +9,8 @@ main() {
       install
       unset ASSUME_YES
     else
-      echo "   If the file exists, it will be ruthlessly clobbered"
-      printf "   Are you sure you want to continue (yes/no)? \n"; read ANSWER
+      echo '   If the file exists, it will be ruthlessly clobbered'
+      printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
       case $ANSWER in
         "Y" | "y" | "Yes" | "yes" ) install ;;
         * ) ;;
@@ -36,14 +36,14 @@ print_header() {
   cprintf '   License: ' "$COLOR_75_B"; echo   'MIT'
   cprintf '   Full Installation: ' "$COLOR_75_B"
   [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
-  cprintf " Option Assume yes: "
+  cprintf '   Option Assume yes: ' "$COLOR_75_B"
   [ "$ASSUME_YES" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
   echo
 }
 
 install() {
   # Start install
-  cprint "Starting install" $UNDERLINE
+  cprint "Download dotfiles" $UNDERLINE
   ## Check git command
   printf " Checking git command..."
   if has git; then
@@ -77,8 +77,7 @@ install() {
 }
 
 install_plugin() {
-  # Start download plugin manager
-  cprint "Starting download plugin manager" $UNDERLINE
+  cprint "Install plugin" $UNDERLINE
 
   local readonly NAME=('Dein' 'Zplug' 'TPM')
   local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
@@ -89,17 +88,21 @@ install_plugin() {
   )
   local readonly N=${#NAME[@]}
 
-  for ((i=0;i<N;i++)); do
-    printf " Downloading ${NAME[i]}..."
-    url=https://github.com/${REPO[i]}
-    { sleep 1; git clone $url ~/${DIR[i]}; } | env LESS="-cE" less
-    cprint "done" $CYAN_B
-  done
-  echo
+  printf " Download plugin manager..."
+  {
+    sleep 1
+    for ((i=0;i<N;i++)); do
+      cprint "Download ${NAME[i]}" $UNDERLINE
+      url=https://github.com/${REPO[i]}
+      git clone $url ~/${DIR[i]}
+      echo
+    done
+  } | env LESS="-cE" less
+  cprint "done" $CYAN_B
 
   # Install plugin
   if has vim && has zsh && has tmux; then
-    cprint "Start download plugin by plugin manager" $UNDERLINE
+    cprint " Install plugin by plugin manager" $UNDERLINE
     ## Vim
     if has vim; then
       echo " Vim"
