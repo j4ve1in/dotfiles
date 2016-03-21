@@ -34,9 +34,6 @@ case "$1" in
   "-l" | "--list" )
     source_dotool list
     ;;
-  "-m" | "--map" )
-    source_dotool map
-    ;;
   "-h" | "--help" )
     echo "Usage: dotsetup [OPTIONS]                                             "
     echo "    This script is dotfile's setup command.                           "
@@ -49,7 +46,6 @@ case "$1" in
     echo "    -r, --reinstall          Install dotfiles again after uninstalling"
     echo "    -U, --uninstall          Uninstall dotfiles                       "
     echo "    -l, --list               View dotfile's list                      "
-    echo "    -m, --map                View dotfile's directory map             "
     echo "    -h, --help               View help                                "
     echo "    -p, --install-plugin     Install shell and editor plugin          "
     echo "    -P, --uninstall-plugin   Uninstall shell and editor plugin        "

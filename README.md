@@ -62,7 +62,6 @@ You can install dotfiles by the following installation command.
         -r, --reinstall          Install dotfiles again after uninstalling
         -U, --uninstall          Uninstall dotfile
         -l, --list               View dotfile's list
-        -m, --map                View dotfile's directory map
         -h, --help               View help
         -p, --install-plugin     Install shell and editor plugin
         -P, --uninstall-plugin   Uninstall shell and editor plugin
