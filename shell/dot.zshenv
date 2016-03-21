@@ -1,8 +1,8 @@
 # Profiling configuration files of zsh
 # zmodload zsh/zprof && zprof
 
-# ~/.shrc.d/env.sh
-source ~/.shrc.d/env.sh
+# ~/.sh/env.sh
+source ~/.sh/env.sh
 
 # ZDOTDIR
 export ZDOTDIR=$HOME/.zsh

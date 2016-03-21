@@ -1,5 +1,5 @@
-# ~/.shrc.d/env.sh
-source ~/.shrc.d/env.sh
+# ~/.sh/env.sh
+source ~/.sh/env.sh
 
 # ~/.bashrc
 if [ -f ~/.bashrc ]; then

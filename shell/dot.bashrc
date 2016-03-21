@@ -1,13 +1,16 @@
 # Load
 ##  ~/.bash/rc/*.bash
-for filepath in ~/.bash/rc/*.bash; do
-  source ${filepath}
-done
+BRC=(
+  'base'
+  'history'
+  'prompt'
+  'local'
+)
+for file in ${BRC[@]}; do
+  file=~/.bash/rc/${file}.bash
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done; unset -v BRC file
 
-## ~/.bash/rc/local.bash
-BRCLOCAL=~/.bash/rc/local.bash
-[ -r "$BRCLOCAL" ] && [ -f "$BRCLOCAL" ] && source "$BRCLOCAL"
-unset -v BRCLOCAL
-
-## ~/.shrc.d/*.sh
-source ~/.shrc.d/init.sh
+## ~/.sh/*.sh
+INIT_SH=~/.sh/init.sh
+[ -r $INIT_SH ] && [ -f $INIT_SH ] && source $INIT_SH
