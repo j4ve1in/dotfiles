@@ -59,7 +59,6 @@ You can install dotfiles by the following installation command.
         -d, --deploy             Deploy dotfiles to home directory
         -b, --backup             Backup dotfiles to backup directory
         -c, --check-update       Check update
-        -s, --status             Check installed commands
         -r, --reinstall          Install dotfiles again after uninstalling
         -U, --uninstall          Uninstall dotfile
         -l, --list               View dotfile's list
