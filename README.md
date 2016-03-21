@@ -1,5 +1,5 @@
 <p align="center">
-<img width=20% src="https://raw.githubusercontent.com/ytet5uy4/dotfiles/master/img/dotfiles.png">
+<img width=20% src="https//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png">
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@ You can install dotfiles by the following installation command.
 **NOTE2:** If you want to use **automatic installation**, run `export ASSUME_YES="1"` and installation command in your terminal. When you use automatic installation, assume "yes" as answer to all prompts and run non-interactively.
 
 **Demo:**
-[![](/img/demo.png)][asciinema]
+[![](//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
 
 # Configurations
 ## Dotsetup
@@ -81,9 +81,9 @@ Copyright (c) 2015 ytet5uy4
 Released under the MIT License, see **[LICENSE.md]**.
 
 [my]: //github.com/ytet5uy4
-[Screenshot]: /img/screenshot.png
+[Screenshot]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
 [asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
-[dotsetup1]: /img/dotsetup1.png
-[dotsetup2]: /img/dotsetup2.png
+[dotsetup1]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
+[dotsetup2]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles
 [LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
