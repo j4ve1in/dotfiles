@@ -11,8 +11,6 @@
 |
 <b><a href="#試行">試行</a></b>
 |
-<b><a href="#wiki">Wiki</a></b>
-|
 <b><a href="//github.com/ytet5uy4/dotfiles/blob/master/README.md">English README</a></b>
 |
 <b><a href="#ライセンス">ライセンス</a></b>
@@ -20,7 +18,7 @@
 
 <p align="center">
 <a href="//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
-<a href="//github.com/ytet5uy4/dotfiles/wiki#my-environment"><img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square"></a>
+<img src="https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square">
 </p>
 
 # 概要
@@ -80,9 +78,6 @@ $ sudo docker pull ytet5uy4/dotfiles
 $ sudo docker run -it --rm ytet5uy4/dotfiles
 ```
 
-# Wiki
-詳細については、**[wiki]**を見てください。
-
 # ライセンス
 Copyright (c) 2015 ytet5uy4  
 MITライセンスのもとで公開されています。**[LICENSE.md]**を見て下さい。
@@ -92,5 +87,4 @@ MITライセンスのもとで公開されています。**[LICENSE.md]**を見�
 [dotsetup1]: /img/dotsetup1.png
 [dotsetup2]: /img/dotsetup2.png
 [イメージ]: //hub.docker.com/r/ytet5uy4/dotfiles
-[wiki]: //github.com/ytet5uy4/dotfiles/wiki
 [LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
