@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-  set_color
+  set_color_var
   if [ "$1" != "plugin" ]; then
     print_header
     if [ "$ASSUME_YES" = "1" ]; then
@@ -19,13 +19,13 @@ main() {
   else
     install_plugin
   fi
-  unset_color
+  unset_color_var
 }
 
 print_header() {
   clear
   # http://patorjk.com/software/taag/#p=display&h=1&f=Slant&t=dotfiles
-  printf "\n$COLOR_32_B"
+  printf "\n$MAIN_COLOR"
   echo '          __        __   ____ _  __              '
   echo '     ____/ /____   / /_ / __/(_)/ /___   _____   '
   echo '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
@@ -33,12 +33,12 @@ print_header() {
   echo '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf "$COLOR_RESET\n"
   cprint '                   github.com/ytet5uy4/dotfiles   \n' "$DARKGRAY"
-  cprintf '   Author: '  "$COLOR_75_B"; printf 'ytet5uy4'
-  cprintf '   License: ' "$COLOR_75_B"; echo   'MIT'
-  cprintf '   Full Installation: ' "$COLOR_75_B"
-  [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' "$COLOR_32_B" || print 'disable'
-  cprintf '   Option Assume yes: ' "$COLOR_75_B"
-  [ "$ASSUME_YES" = "1" ] && cprint 'enable' "$COLOR_32_B" || print 'disable'
+  cprintf '   Author: '  "$SUB_COLOR"; printf 'ytet5uy4'
+  cprintf '   License: ' "$SUB_COLOR"; echo   'MIT'
+  cprintf '   Full Installation: ' "$SUB_COLOR"
+  [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
+  cprintf '   Option Assume yes: ' "$SUB_COLOR"
+  [ "$ASSUME_YES" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
   echo
 }
 
@@ -48,9 +48,9 @@ install() {
   ## Check git command
   printf " Checking git command..."
   if has git; then
-    cprint "done" $CYAN_B
+    cprint "done" $SUCCESS_COLOR
   else
-    cprint "error" $RED_B
+    cprint "error" $ERROR_COLOR
     echo " Please install git or update your path to include the git executable"
     exit 1;
   fi
@@ -59,7 +59,7 @@ install() {
   printf " Downloading dotfiles..."
   DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
   { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | env LESS="-cE" less
-  cprint "done\n" $CYAN_B
+  cprint "done\n" $SUCCESS_COLOR
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -99,7 +99,7 @@ install_plugin() {
       echo
     done
   } | env LESS="-cE" less
-  cprint "done" $CYAN_B
+  cprint "done" $SUCCESS_COLOR
   echo
 
   # Install plugin
@@ -113,7 +113,7 @@ install_plugin() {
       VIMPROC_REPO='https://github.com/Shougo/vimproc.vim.git'
       VIMPROC_DIR="${HOME}/.vim/bundle/repos/github.com/Shougo/vimproc.vim"
       { sleep 1; git clone $VIMPROC_REPO $VIMPROC_DIR; } | env LESS="-cE" less
-      cprint "done" $CYAN_B
+      cprint "done" $SUCCESS_COLOR
       if [ "$OSTYPE" = "msys" ]; then
         make -C "$VIMPROC_DIR" -f 'make_cygwin.mak' >/dev/null 2>&1
       else
@@ -122,7 +122,7 @@ install_plugin() {
 
       printf "  Downloading other plugin by Dein..."
       { sleep 1; vim +qall; echo ''; } | env LESS="-cE" less
-      cprint "done" $CYAN_B
+      cprint "done" $SUCCESS_COLOR
     fi
 
     ## Zsh
@@ -130,7 +130,7 @@ install_plugin() {
       echo " Zsh"
       printf "  Downloading plugin by Zplug..."
       zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
-      cprint "done" $CYAN_B
+      cprint "done" $SUCCESS_COLOR
     fi
 
     ## Tmux
@@ -139,7 +139,7 @@ install_plugin() {
       printf "  Downloading plugin by TPM..."
       TPM_INSTALL_SCRIPT=~/.tmux/plugins/tpm/bindings/install_plugins
       { sleep 1; $TPM_INSTALL_SCRIPT; } | env LESS="-cE" less
-      cprint "done" $CYAN_B
+      cprint "done" $SUCCESS_COLOR
     fi
   fi
   echo
@@ -149,34 +149,28 @@ has() { type $1 >/dev/null 2>&1; }
 
 print() { printf "$@\n"; }
 
-set_color() {
-  UNDERLINE='4;39;49'
-  RED_B='1;31;49'
-  CYAN_B='1;36;49'
-  DARKGRAY='90'
-  COLOR_32_B='1;38;5;32;49'
-  COLOR_75_B='1;38;5;75;49'
-  COLOR_RESET='\x1b[0;39;49m'
+set_color_code() { echo "\x1b[${1}m"; }
+
+set_color_var() {
+  MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
+  SUB_COLOR="$(set_color_code '1;38;5;75;49')"
+  SUCCESS_COLOR="$(set_color_code '1;36;49')"
+  ERROR_COLOR="$(set_color_code '1;31;49')"
+  UNDERLINE="$(set_color_code '4;39;49')"
+  DARKGRAY="$(set_color_code '90')"
+  COLOR_RESET="$(set_color_code '0;39;49')"
 }
 
-unset_color() {
+unset_color_var() {
+  unset MAIN_COLOR SUB_COLOR
+  unset SUCCESS_COLOR ERROR_COLOR
   unset UNDERLINE
-  unset RED_B CYAN_B
   unset DARKGRAY
-  unset COLOR_32_B COLOR_75_B
   unset COLOR_RESET
 }
 
-cprint() {
-  local string="$1"
-  local color="\x1b[${2}m"
-  print "${color}${string}${COLOR_RESET}"
-}
+cprint() { print "${2}${1}${COLOR_RESET}"; }
 
-cprintf() {
-  local string="$1"
-  local color="\x1b[${2}m"
-  printf "${color}${string}${COLOR_RESET}"
-}
+cprintf() { printf "${2}${1}${COLOR_RESET}"; }
 
 main $@
