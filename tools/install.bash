@@ -19,6 +19,7 @@ main() {
   else
     install_plugin
   fi
+  unset_color
 }
 
 print_header() {
@@ -35,9 +36,9 @@ print_header() {
   cprintf '   Author: '  "$COLOR_75_B"; printf 'ytet5uy4'
   cprintf '   License: ' "$COLOR_75_B"; echo   'MIT'
   cprintf '   Full Installation: ' "$COLOR_75_B"
-  [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
+  [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' "$COLOR_32_B" || print 'disable'
   cprintf '   Option Assume yes: ' "$COLOR_75_B"
-  [ "$ASSUME_YES" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
+  [ "$ASSUME_YES" = "1" ] && cprint 'enable' "$COLOR_32_B" || print 'disable'
   echo
 }
 
@@ -99,6 +100,7 @@ install_plugin() {
     done
   } | env LESS="-cE" less
   cprint "done" $CYAN_B
+  echo
 
   # Install plugin
   if has vim && has zsh && has tmux; then
@@ -148,27 +150,33 @@ has() { type $1 >/dev/null 2>&1; }
 print() { printf "$@\n"; }
 
 set_color() {
-  UNDERLINE="4;39;49"
-  RED_B="1;31;49"
-  CYAN_B="1;36;49"
-  DARKGRAY="90"
-  COLOR_32_B="\x1b[1;38;5;32;49m"
-  COLOR_75_B="1;38;5;75;49"
-  COLOR_RESET="\x1b[0;39;49m"
+  UNDERLINE='4;39;49'
+  RED_B='1;31;49'
+  CYAN_B='1;36;49'
+  DARKGRAY='90'
+  COLOR_32_B='1;38;5;32;49'
+  COLOR_75_B='1;38;5;75;49'
+  COLOR_RESET='\x1b[0;39;49m'
+}
+
+unset_color() {
+  unset UNDERLINE
+  unset RED_B CYAN_B
+  unset DARKGRAY
+  unset COLOR_32_B COLOR_75_B
+  unset COLOR_RESET
 }
 
 cprint() {
   local string="$1"
   local color="\x1b[${2}m"
-  local reset="\x1b[0;39;49m"
-  print "${color}${string}${reset}"
+  print "${color}${string}${COLOR_RESET}"
 }
 
 cprintf() {
   local string="$1"
   local color="\x1b[${2}m"
-  local reset="\x1b[0;39;49m"
-  printf "${color}${string}${reset}"
+  printf "${color}${string}${COLOR_RESET}"
 }
 
 main $@
