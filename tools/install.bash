@@ -3,9 +3,6 @@
 main() {
   set_color
   if [ "$1" != "plugin" ]; then
-    : ${FULL_INSTALLATION:=0}
-    : ${ASSUME_YES:=0}
-    clear
     print_header
     if [ "$ASSUME_YES" = "1" ]; then
       # Assume "yes" as answer to all prompts and run non-interactively.
@@ -13,58 +10,40 @@ main() {
       unset ASSUME_YES
     else
       echo "   If the file exists, it will be ruthlessly clobbered"
-      printf "   Are you sure you want to continue (yes/no)? "; read ANSWER
-      echo
+      printf "   Are you sure you want to continue (yes/no)? \n"; read ANSWER
       case $ANSWER in
-        "Y" | "y" | "Yes" | "yes" )
-          install
-          ;;
-        * )
-          ;;
+        "Y" | "y" | "Yes" | "yes" ) install ;;
+        * ) ;;
       esac
     fi
   else
-    install_plugin; echo
+    install_plugin
   fi
 }
 
 print_header() {
-  echo
-  printf "$COLOR_32_B"
+  clear
+  # http://patorjk.com/software/taag/#p=display&h=1&f=Slant&t=dotfiles
+  printf "\n$COLOR_32_B"
   echo '          __        __   ____ _  __              '
   echo '     ____/ /____   / /_ / __/(_)/ /___   _____   '
   echo '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
   echo '   / /_/ // /_/ // /_ / __// // //  __/(__  )    '
   echo '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
-  printf "$COLOR_RESET"; echo
-  # http://patorjk.com/software/taag/#p=display&h=1&f=Slant&t=dotfiles
-
-  cprint '                   github.com/ytet5uy4/dotfiles   ' "$DARKGRAY"; echo
-
-  cprintf '   Author: '  "$COLOR_75_B"; printf "ytet5uy4"
-  cprintf '   License: ' "$COLOR_75_B"; echo   "MIT"
+  printf "$COLOR_RESET\n"
+  cprint '                   github.com/ytet5uy4/dotfiles   \n' "$DARKGRAY"
+  cprintf '   Author: '  "$COLOR_75_B"; printf 'ytet5uy4'
+  cprintf '   License: ' "$COLOR_75_B"; echo   'MIT'
+  cprintf '   Full Installation: ' "$COLOR_75_B"
+  [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
+  cprintf " Option Assume yes: "
+  [ "$ASSUME_YES" = "1" ] && cprint 'enable' $CYAN_B || cprint 'disable' $RED_B
   echo
 }
 
 install() {
   # Start install
   cprint "Starting install" $UNDERLINE
-  if [ "$FULL_INSTALLATION" = "0" ]; then
-    printf " Full Installation: "
-    cprint "disable" $RED_B
-  elif [ "$FULL_INSTALLATION" = "1" ]; then
-    printf " Full Installation: "
-    cprint "enable" $CYAN_B
-  fi
-  if [ "$ASSUME_YES" = "0" ]; then
-    printf " Option Assume yes: "
-    cprint "disable" $RED_B
-  elif [ "$ASSUME_YES" = "1" ]; then
-    printf " Option Assume yes: "
-    cprint "enable" $CYAN_B
-  fi
-  interval 500000
-
   ## Check git command
   printf " Checking git command..."
   if has git; then
@@ -74,17 +53,12 @@ install() {
     echo " Please install git or update your path to include the git executable"
     exit 1;
   fi
-  interval 500000
 
   ## Download
   printf " Downloading dotfiles..."
-  {
-    sleep 1
-    git clone https://github.com/ytet5uy4/dotfiles.git ~/.dotfiles
-  } | env LESS="-cE" less
-  cprint "done" $CYAN_B
-  echo
-  interval 500000
+  DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
+  { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | env LESS="-cE" less
+  cprint "done\n" $CYAN_B
 
   # Backup
   source ~/.dotfiles/tools/backup.bash
@@ -106,20 +80,20 @@ install_plugin() {
   # Start download plugin manager
   cprint "Starting download plugin manager" $UNDERLINE
 
-  CSV_FILE=~/.dotfiles/tools/data/plugin-manager.csv
-  local readonly NAME=($(awk -F ',' '{print $1}' $CSV_FILE | sed '1d;s/"//g'))
-  local readonly URL=($(awk -F ',' '{print $2}' $CSV_FILE | sed '1d;s/"//g'))
-  local readonly DIR=($(awk -F ',' '{print $3}' $CSV_FILE | sed '1d;s/"//g'))
+  local readonly NAME=('Dein' 'Zplug' 'TPM')
+  local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
+  local readonly DIR=(
+    '.vim/bundle/repos/github.com/Shougo/dein.vim'
+    '.zsh/bundle/zplug'
+    '.tmux/plugins/tpm'
+  )
   local readonly N=${#NAME[@]}
 
   for ((i=0;i<N;i++)); do
     printf " Downloading ${NAME[i]}..."
-    {
-      sleep 1
-      git clone ${URL[i]} ~/${DIR[i]}
-    } | env LESS="-cE" less
+    url=https://github.com/${REPO[i]}
+    { sleep 1; git clone $url ~/${DIR[i]}; } | env LESS="-cE" less
     cprint "done" $CYAN_B
-    interval 500000
   done
   echo
 
@@ -129,25 +103,21 @@ install_plugin() {
     ## Vim
     if has vim; then
       echo " Vim"
+
       printf "  Downloading vimproc..."
-      {
-        sleep 1
-        git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/repos/github.com/Shougo/vimproc.vim
-      } | env LESS="-cE" less
+      VIMPROC_REPO='https://github.com/Shougo/vimproc.vim.git'
+      VIMPROC_DIR="${HOME}/.vim/bundle/repos/github.com/Shougo/vimproc.vim"
+      { sleep 1; git clone $VIMPROC_REPO $VIMPROC_DIR; } | env LESS="-cE" less
       cprint "done" $CYAN_B
       if [ "$OSTYPE" = "msys" ]; then
-        make -C "$HOME/.vim/bundle/repos/github.com/Shougo/vimproc.vim" -f 'make_cygwin.mak' >/dev/null 2>&1
+        make -C "$VIMPROC_DIR" -f 'make_cygwin.mak' >/dev/null 2>&1
       else
-        make -C "$HOME/.vim/bundle/repos/github.com/Shougo/vimproc.vim" >/dev/null 2>&1
+        make -C "$VIMPROC_DIR" >/dev/null 2>&1
       fi
+
       printf "  Downloading other plugin by Dein..."
-      {
-        sleep 1
-        vim +qall
-        echo ''
-      } | env LESS="-cE" less
+      { sleep 1; vim +qall; echo ''; } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      interval 500000
     fi
 
     ## Zsh
@@ -156,21 +126,18 @@ install_plugin() {
       printf "  Downloading plugin by Zplug..."
       zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
       cprint "done" $CYAN_B
-      interval 500000
     fi
 
     ## Tmux
     if has tmux && [ -n "$TMUX" ]; then
       echo " Tmux"
       printf "  Downloading plugin by TPM..."
-      {
-        sleep 1
-        bash ~/.tmux/plugins/tpm/bindings/install_plugins
-      } | env LESS="-cE" less
+      TPM_INSTALL_SCRIPT=~/.tmux/plugins/tpm/bindings/install_plugins
+      { sleep 1; $TPM_INSTALL_SCRIPT; } | env LESS="-cE" less
       cprint "done" $CYAN_B
-      interval 500000
     fi
   fi
+  echo
 }
 
 has() { type $1 >/dev/null 2>&1; }
@@ -199,12 +166,6 @@ cprintf() {
   local color="\x1b[${2}m"
   local reset="\x1b[0;39;49m"
   printf "${color}${string}${reset}"
-}
-
-interval() {
-  if has usleep; then
-    usleep $1
-  fi
 }
 
 main $@
