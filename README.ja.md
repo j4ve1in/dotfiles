@@ -1,5 +1,5 @@
 <p align="center">
-<img width=20% src="https//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png">
+<img width=20% src="https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png">
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
 **参考2:** **オートインストール**を利用する場合は`export ASSUME_YES="1"`を実行した後、インストールコマンドを実行してください。オートインストールを使うと確認があったときすべて`yes`で進め、非対話的に実行します。
 
 **デモ:**
-[![](//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
+[![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
 
 # 設定
 ## Dotsetup
@@ -81,9 +81,9 @@ Copyright (c) 2015 ytet5uy4
 MITライセンスのもとで公開されています。**[LICENSE.md]**を見て下さい。
 
 
-[Screenshot]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
+[Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
 [asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
-[dotsetup1]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
-[dotsetup2]: //media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
+[dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
+[dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [イメージ]: //hub.docker.com/r/ytet5uy4/dotfiles
 [LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
