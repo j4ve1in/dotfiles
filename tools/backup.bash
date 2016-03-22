@@ -15,8 +15,9 @@ git branch | grep backup >/dev/null 2>&1
 if [ "$?" = "1" ]; then
   git checkout --orphan backup
 elif [ "$?" = "0" ]; then
-  BACKUP_BRANCH="backup/$(date +'%Y%m%d%H%M%S')"
+  BACKUP_BRANCH="tmp/$(date +'%Y%m%d%H%M%S')"
   git checkout --orphan "$BACKUP_BRANCH"
+  MERGE=1
 fi
 
 # add and commit
@@ -27,7 +28,7 @@ echo "  \$ cd $DOT_DIR"
 echo "  \$ git checkout backup && git log && git checkout -"
 
 # merge and remove backup branch
-if [ -n "$BACKUP_BRANCH" ]; then
+if [ "$MERGE" = "1" ]; then
   git checkout backup >/dev/null 2>&1
   git merge --no-ff "$BACKUP_BRANCH"
   git branch -D "$BACKUP_BRANCH"
