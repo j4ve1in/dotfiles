@@ -4,7 +4,7 @@
 DOT_DIR=~/.dotfiles
 
 # DOT_PATH
-DOT_PATH=($(find ${DOT_DIR}/*/ -maxdepth 1 -name "dot.*"))
+DOT_PATH=($(find ${DOT_DIR}/src/*/ -maxdepth 1 -name "dot.*"))
 
 # DOT_NUM
 DOT_NUM=${#DOT_PATH[@]}
