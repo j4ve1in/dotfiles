@@ -21,6 +21,4 @@ echo "  \$ git checkout backup && git log && git checkout -"
 git -C "$DOT_DIR" checkout master >/dev/null 2>&1
 git -C "$DOT_DIR" stash pop >/dev/null 2>&1
 unset GIT_{AUTHOR,COMMITTER}_NAME GIT_{AUTHOR,COMMITTER}_EMAIL
-
 echo
-interval 500000
