@@ -68,11 +68,11 @@ install() {
   { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | env LESS="-cE" less
   cprint "done\n" $SUCCESS_COLOR
 
-  # Deploy
-  source ~/.dotfiles/tools/deploy.bash
-
   # Backup
   source ~/.dotfiles/tools/backup.bash
+
+  # Deploy
+  source ~/.dotfiles/tools/deploy.bash
 
   # Install plugin
   [ "$FULL_INSTALLATION" = "1" ] && install_plugin && unset FULL_INSTALLATION
