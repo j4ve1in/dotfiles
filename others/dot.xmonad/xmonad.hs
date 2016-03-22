@@ -172,8 +172,9 @@ main = do
         `additionalKeys`
         [
             ((modm                    , xK_c ), spawn "calc"),
+            ((modm .|. controlMask, xK_v      ), spawn "virtualbox"),
             -- Lock screen
-            ((modm .|. controlMask, xK_l      ), spawn "systemctl suspend"),
+            ((modm .|. shiftMask, xK_l      ), spawn "systemctl suspend"),
             -- Launch terminal
             ((modm                    , xK_Return ), spawn "urxvtc"),
             -- Launch terminal with a float window
@@ -184,8 +185,6 @@ main = do
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "power"),
             ((modm .|. shiftMask      , xK_g      ), spawn "gyazo"),
-            -- Lauch websearch application (See https://github.com/ssh0/web_search)
-            ((mod1Mask .|. controlMask, xK_f      ), spawn "websearch"),
             -- Play / Pause media keys
             ((0                       , 0x1008ff18), spawn "sh $HOME/bin/cplay.sh"),
             ((0                       , 0x1008ff14), spawn "sh $HOME/bin/cplay.sh"),
@@ -203,9 +202,7 @@ main = do
             -- Take a screenshot (selected area)
             ((shiftMask               , 0xff61    ), spawn "$HOME/bin/screenshot_select.sh"),
             -- Toggle touchpad
-            ((controlMask             , xK_Escape ), spawn "$HOME/bin/touchpad_toggle.sh"),
-            -- Toggle trackpoint (Lenovo PC)
-            ((mod1Mask                , xK_Escape ), spawn "$HOME/bin/trackpoint_toggle.sh")
+            ((                        , xK_t ), spawn "touchpad_toggle")
         ]
 
 -- myLayout: Handle Window behaveior
