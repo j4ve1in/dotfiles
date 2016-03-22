@@ -4,8 +4,13 @@ source ~/.dotfiles/tools/lib/base.bash
 
 source_dotool lib/dot
 
-# Load first line
-source_dotool lib/load_first_line
+FIRST_LINE=(
+  'No.'
+  'Name'
+  'FileType'
+  'Size'
+  'Last-Modified-Date'
+)
 
 # Count max length
 N=${#FIRST_LINE[@]}
@@ -21,14 +26,12 @@ for ((i=0;i<DOT_NUM;i++)); do
     COL_MAX_LENGTH[0]=${#DOT_NUM[$i]}
   elif [ "${#DOT_NAME[$i]}" -gt "${COL_MAX_LENGTH[1]}" ]; then
     COL_MAX_LENGTH[1]=${#DOT_NAME[$i]}
-  elif [ "${#DOT_DIR_NAME[$i]}" -gt "${COL_MAX_LENGTH[2]}" ]; then
-    COL_MAX_LENGTH[2]=${#DOT_DIR_NAME[$i]}
-  elif [ "${#DOT_FILE_TYPE[$i]}" -gt "${COL_MAX_LENGTH[3]}" ]; then
-    COL_MAX_LENGTH[3]=${#DOT_FILE_TYPE[$i]}
-  elif [ "${#DOT_FILE_SIZE[$i]}" -gt "${COL_MAX_LENGTH[4]}" ]; then
-    COL_MAX_LENGTH[4]=${#DOT_FILE_SIZE[$i]}
-  elif [ "${#DOT_FILE_DATE[$i]}" -gt "${COL_MAX_LENGTH[5]}" ]; then
-    COL_MAX_LENGTH[5]=${#DOT_FILE_DATE[$i]}
+  elif [ "${#DOT_FILE_TYPE[$i]}" -gt "${COL_MAX_LENGTH[2]}" ]; then
+    COL_MAX_LENGTH[2]=${#DOT_FILE_TYPE[$i]}
+  elif [ "${#DOT_FILE_SIZE[$i]}" -gt "${COL_MAX_LENGTH[3]}" ]; then
+    COL_MAX_LENGTH[3]=${#DOT_FILE_SIZE[$i]}
+  elif [ "${#DOT_FILE_DATE[$i]}" -gt "${COL_MAX_LENGTH[4]}" ]; then
+    COL_MAX_LENGTH[4]=${#DOT_FILE_DATE[$i]}
   fi
 done
 
@@ -44,12 +47,11 @@ done
 printf "$COLOR_RESET"
 
 for ((i=0;i<DOT_NUM;i++)); do
-  printf "%-${COL_MAX_LENGTH[0]}s " $((i+1))
-  printf "%-${COL_MAX_LENGTH[1]}s " ${DOT_NAME[$i]}
-  printf "%-${COL_MAX_LENGTH[2]}s " ${DOT_DIR_NAME[$i]}
-  printf "%-${COL_MAX_LENGTH[3]}s " ${DOT_FILE_TYPE[$i]}
-  printf "%-${COL_MAX_LENGTH[4]}s " ${DOT_FILE_SIZE[$i]}
-  printf "%-${COL_MAX_LENGTH[5]}s\n" ${DOT_FILE_DATE[$i]}
+  printf "%-${COL_MAX_LENGTH[0]}s "  $((i+1))
+  printf "%-${COL_MAX_LENGTH[1]}s "  ${DOT_NAME[$i]}
+  printf "%-${COL_MAX_LENGTH[2]}s "  ${DOT_FILE_TYPE[$i]}
+  printf "%-${COL_MAX_LENGTH[3]}s "  ${DOT_FILE_SIZE[$i]}
+  printf "%-${COL_MAX_LENGTH[4]}s\n" ${DOT_FILE_DATE[$i]}
 done
 
 echo

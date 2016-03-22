@@ -2,38 +2,18 @@
 
 source ~/.dotfiles/tools/lib/base.bash
 
-display_advice() {
-  echo -e "Try 'dotsetup --help' for more information.\n"
-}
+display_advice() { echo -e "Try 'dotsetup --help' for more information.\n"; }
 
 case "$1" in
-  "-u" | "--update" )
-    source_dotool update
-    ;;
-  "-d" | "--deploy" )
-    source_dotool deploy
-    ;;
-  "-b" | "--backup" )
-    source_dotool backup
-    ;;
-  "-c" | "--check-update" )
-    source_dotool check_update
-    ;;
-  "-r" | "--reinstall" )
-    source_dotool reinstall
-    ;;
-  "-U" | "--uninstall" )
-    source_dotool uninstall
-    ;;
-  "-p" | "--install-plugin" )
-    source_dotool install plugin
-    ;;
-  "-P" | "--uninstall-plugin" )
-    source_dotool uninstall plugin
-    ;;
-  "-l" | "--list" )
-    source_dotool list
-    ;;
+  "-u" | "--update" ) source_dotool update ;;
+  "-d" | "--deploy" ) source_dotool deploy ;;
+  "-b" | "--backup" ) source_dotool backup ;;
+  "-c" | "--check-update" ) source_dotool check_update ;;
+  "-r" | "--reinstall" ) source_dotool reinstall ;;
+  "-U" | "--uninstall" ) source_dotool uninstall ;;
+  "-p" | "--install-plugin" ) source_dotool install plugin ;;
+  "-P" | "--uninstall-plugin" ) source_dotool uninstall plugin ;;
+  "-l" | "--list" ) source_dotool list ;;
   "-h" | "--help" )
     echo "Usage: dotsetup [OPTIONS]                                             "
     echo "    This script is dotfile's setup command.                           "

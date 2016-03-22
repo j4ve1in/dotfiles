@@ -26,6 +26,5 @@ case $ANSWER in
     export ASSUME_YES="1"
     source ~/install.bash
     ;;
-  * )
-    ;;
+  * ) ;;
 esac

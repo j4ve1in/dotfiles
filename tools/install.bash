@@ -5,19 +5,17 @@ main() {
   if [ "$1" != "plugin" ]; then
     print_header
     if [ "$ASSUME_YES" = "1" ]; then
-      # Assume "yes" as answer to all prompts and run non-interactively.
-      install
-      unset ASSUME_YES
+      install && unset ASSUME_YES
     else
-      echo '   If the file exists, it will be ruthlessly clobbered'
-      printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
-      case $ANSWER in
-        "Y" | "y" | "Yes" | "yes" ) install ;;
-        * ) ;;
-      esac
+      install_message
     fi
   else
     install_plugin
+  fi
+  if [ "$ASSUME_YES" = "1" ]; then
+    restart && unset ASSUME_YES
+  else
+    restart_message
   fi
   unset_color_var
 }
@@ -40,6 +38,15 @@ print_header() {
   cprintf '   Option Assume yes: ' "$SUB_COLOR"
   [ "$ASSUME_YES" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
   echo
+}
+
+install_message() {
+  echo '   If the file exists, it will be ruthlessly clobbered'
+  printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
+  case $ANSWER in
+    "Y" | "y" | "Yes" | "yes" ) install ;;
+    * ) ;;
+  esac
 }
 
 install() {
@@ -68,14 +75,18 @@ install() {
   source ~/.dotfiles/tools/deploy.bash
 
   # Install plugin
-  if [ "$FULL_INSTALLATION" = "1" ]; then
-    install_plugin
-    unset FULL_INSTALLATION
-  fi
-
-  # Restart
-  source ~/.dotfiles/tools/restart.bash
+  [ "$FULL_INSTALLATION" = "1" ] && install_plugin && unset FULL_INSTALLATION
 }
+
+restart_message() {
+  printf "Do you want to restart shell (yes/no)? "; read ANSWER
+  case $ANSWER in
+    "Y" | "y" | "Yes" | "yes" ) restart ;;
+    * ) echo ;;
+  esac
+}
+
+restart() { clear; exec $SHELL -l; }
 
 install_plugin() {
   cprint "Install plugin" $UNDERLINE

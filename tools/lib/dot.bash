@@ -12,14 +12,14 @@ DOT_NUM=${#DOT_PATH[@]}
 for ((i=0;i<DOT_NUM;i++)); do
   # DOT_NAME
   DOT_NAME[$i]=.${DOT_PATH[$i]##*dot.}
+
   # DOT_FILE_TYPE
   if [ -f ${DOT_PATH[$i]} ]; then
     DOT_FILE_TYPE[$i]=File
   elif [ -d ${DOT_PATH[$i]} ]; then
     DOT_FILE_TYPE[$i]=Directory
   fi
-  # DOT_DIR_NAME
-  DOT_DIR_NAME[$i]=$(basename ${DOT_PATH[$i]%/*})
+
   # DOT_FILE_SIZE
   # Check file size
   if [ -f ${DOT_PATH[$i]} ]; then
@@ -27,6 +27,7 @@ for ((i=0;i<DOT_NUM;i++)); do
   elif [ -d ${DOT_PATH[$i]} ]; then
     DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | awk '{print $1}')
   fi
+
   # DOT_FILE_DATE
   # Check file last-modified date
   if [ $(uname) = Darwin ]; then
