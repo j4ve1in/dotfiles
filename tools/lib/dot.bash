@@ -4,14 +4,14 @@
 DOT_DIR=~/.dotfiles
 
 # DOT_PATH
-DOT_PATH=($(find ${DOT_DIR}/src/*/ -maxdepth 1 -name "dot.*"))
+DOT_PATH=($(find ${DOT_DIR}/src -maxdepth 1 -name ".*"))
 
 # DOT_NUM
 DOT_NUM=${#DOT_PATH[@]}
 
 for ((i=0;i<DOT_NUM;i++)); do
   # DOT_NAME
-  DOT_NAME[$i]=.${DOT_PATH[$i]##*dot.}
+  DOT_NAME[$i]=${DOT_PATH[$i]##*/}
 
   # DOT_FILE_TYPE
   if [ -f ${DOT_PATH[$i]} ]; then
