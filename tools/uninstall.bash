@@ -23,13 +23,12 @@ uninstall_message() {
 
 uninstall() {
   # Count up
-  cprint "Check file" $UNDERLINE
+  cprint "Check dotfiles" $UNDERLINE
   source_dotool lib/countup
   echo
 
   # Remove
   cprint "Remove dotfiles" $UNDERLINE
-  ## dotfiles
   N=${#DOT_NAME[@]}
   for ((i=0;i<N;i++)); do
     if [ -e ~/${DOT_NAME[$i]} ]; then
@@ -41,26 +40,18 @@ uninstall() {
       unlink ~/${DOT_NAME[$i]}
     fi
   done
-
-  ## dotfiles directory
-  rm -rf ~/.dotfiles
+  rm -rf ~/.dotfiles ~/.zshenv.zwc
 }
 
 uninstall_plugin() {
   # Remove
-  ## Zsh
-  ### zplug
-  rm -f ~/.zsh/bundle/.cache
-  ### Others
-  ls ~/.zsh/bundle | xargs rm -rf
+  ## zsh
+  rm -f ~/.zsh/bundle/.cache && ls ~/.zsh/bundle | xargs rm -rf
 
-  ## Vim
-  ### Dein
-  rm -rf ~/.vim/bundle/.dein
-  ### Others
-  ls ~/.vim/bundle | xargs rm -rf
+  ## vim
+  rm -rf ~/.vim/bundle/.dein && ls ~/.vim/bundle | xargs rm -rf
 
-  ## Tmux
+  ## tmux
   ls ~/.tmux/plugins | xargs rm -rf
 }
 
