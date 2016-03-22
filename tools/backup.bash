@@ -11,28 +11,13 @@ git stash >/dev/null 2>&1
 git checkout master >/dev/null 2>&1
 
 # create branch
-git branch | grep backup >/dev/null 2>&1
-if [ "$?" = "1" ]; then
-  git checkout --orphan backup
-elif [ "$?" = "0" ]; then
-  BACKUP_BRANCH="tmp/$(date +'%Y%m%d%H%M%S')"
-  git checkout --orphan "$BACKUP_BRANCH"
-  MERGE=1
-fi
+BACKUP_BRANCH="backup/$(date +'%Y%m%d%H%M%S')"
+git checkout --orphan "$BACKUP_BRANCH" >/dev/null 2>&1
 
-# add and commit
-git add -A
-git commit -m "backup dotfiles $(date +'at %H:%M:%S on %B the %d, %Y')" | head -n 10
-echo 'Try the following command for more information.'
-echo "  \$ cd $DOT_DIR"
-echo "  \$ git checkout backup && git log && git checkout -"
-
-# merge and remove backup branch
-if [ "$MERGE" = "1" ]; then
-  git checkout backup >/dev/null 2>&1
-  git merge --no-ff "$BACKUP_BRANCH"
-  git branch -D "$BACKUP_BRANCH"
-fi
+# commit
+git commit -m "backup dotfiles" | head -n 10
+echo 'If you want to roll back, run the following command.'
+echo "  \$ git -C "$DOT_DIR" checkout $BACKUP_BRANCH"
 
 git checkout master >/dev/null 2>&1
 git stash pop >/dev/null 2>&1
