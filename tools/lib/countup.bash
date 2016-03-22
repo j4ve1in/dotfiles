@@ -22,7 +22,6 @@ for ((i=0;i<N;i++)); do
   printf "%d directories, " $MAX_D
   printf "%d files" $MAX_F
   cprintf ")" $BLUE
-  interval 10000
   echo -e "\r\c"
 done
 

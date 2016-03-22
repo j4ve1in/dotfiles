@@ -27,8 +27,6 @@ for ((i=0;i<N;i++)); do
     ln -fns ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
     ((COUNT=COUNT+1))
   fi
-  interval 5000
 done
 
 echo
-interval 500000

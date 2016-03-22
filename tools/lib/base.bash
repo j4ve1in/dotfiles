@@ -29,12 +29,6 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
     printf "${color}${string}${reset}"
   }
 
-  interval() {
-    if has usleep; then
-      usleep $1
-    fi
-  }
-
   source_dotool() {
     local file="$1"
     local arg="$2"
