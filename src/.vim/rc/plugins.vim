@@ -73,9 +73,16 @@ if isdirectory(s:dein_repo_dir)
       nnoremap <silent> [Unite]s :Unite<Space>find:.<CR>
       nnoremap <silent> [Unite]S :Unite<Space>find:.<Space>-default-action=tabopen<CR>
 
-      " ~/.vim/rc/*
-      nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.vim/rc<CR>
-      nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.vim/rc<Space>-default-action=tabopen<CR>
+      " grep
+      nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
+      nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]/g :<C-u>Unite<Space>grep/git:.<CR>
+      nnoremap <silent> [Unite]?g :<C-u>Unite<Space>grep/git:.<Space>-default-action=tabopen<CR>
+      if executable('hw')
+        let g:unite_source_grep_command = 'hw'
+        let g:unite_source_grep_default_opts = '--no-group --no-color'
+        let g:unite_source_grep_recursive_opt = ''
+      endif
 
       " other plugin
       nnoremap <silent> [Unite]d :<C-u>Unite<Space>dein<CR>
@@ -109,16 +116,13 @@ if isdirectory(s:dein_repo_dir)
       nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
       nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
 
-      " grep
-      nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
-      nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
-      nnoremap <silent> [Unite]/g :<C-u>Unite<Space>grep/git:.<CR>
-      nnoremap <silent> [Unite]?g :<C-u>Unite<Space>grep/git:.<Space>-default-action=tabopen<CR>
-      if executable('hw')
-        let g:unite_source_grep_command = 'hw'
-        let g:unite_source_grep_default_opts = '--no-group --no-color'
-        let g:unite_source_grep_recursive_opt = ''
-      endif
+      " others
+      nnoremap <silent> [Unite]v :<C-u>Unite<Space>menu:vim<CR>
+      nnoremap <silent> [Unite]V :<C-u>Unite<Space>menu:vim<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]b :<C-u>Unite<Space>menu:bash<CR>
+      nnoremap <silent> [Unite]U :<C-u>Unite<Space>menu:bash<Space>-default-action=tabopen<CR>
+      nnoremap <silent> [Unite]z :<C-u>Unite<Space>menu:zsh<CR>
+      nnoremap <silent> [Unite]Z :<C-u>Unite<Space>menu:zsh<Space>-default-action=tabopen<CR>
 
       function! s:unite() abort
         call unite#custom#profile('default', 'context', {
@@ -133,6 +137,46 @@ if isdirectory(s:dein_repo_dir)
         call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
         call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
 
+        let g:unite_source_menu_menus = {}
+        let g:unite_source_menu_menus.vim = {
+          \     'description' : 'Edit vim files'
+          \ }
+        let g:unite_source_menu_menus.vim.file_candidates = [
+          \       ['~/.vim/rc/apperance.vim'    , '~/.vim/rc/apperance.vim'],
+          \       ['~/.vim/rc/base.vim'    , '~/.vim/rc/base.vim'],
+          \       ['~/.vim/rc/colors.vim'    , '~/.vim/rc/colors.vim'],
+          \       ['~/.vim/rc/init.vim'    , '~/.vim/rc/init.vim'],
+          \       ['~/.vim/rc/keymap.vim'     , '~/.vim/rc/keymap.vim'],
+          \       ['~/.vim/rc/plugins.vim'     , '~/.vim/rc/plugins.vim'],
+          \       ['~/.vim/rc/lazyload_plugin.toml'     , '~/.vim/rc/lazyload_plugin.toml'],
+          \       ['~/.vim/rc/load_plugin.toml'     , '~/.vim/rc/load_plugin.toml']
+          \     ]
+        let g:unite_source_menu_menus.bash = {
+          \     'description' : 'Edit bash files'
+          \ }
+        let g:unite_source_menu_menus.bash.file_candidates = [
+          \       ['~/.bash_login'    , '~/.bash_login'],
+          \       ['~/.bash_profile'    , '~/.bash_profile'],
+          \       ['~/.bashrc'    , '~/.bashrc'],
+          \       ['~/.bash/rc/base.bash'    , '~/.bash/rc/base.bash'],
+          \       ['~/.bash/rc/history.bash'     , '~/.bash/rc/history.bash'],
+          \       ['~/.bash/rc/prompt.bash'     , '~/.bash/rc/prompt.bash']
+          \     ]
+        let g:unite_source_menu_menus.zsh = {
+          \     'description' : 'Edit zsh files'
+          \ }
+        let g:unite_source_menu_menus.zsh.file_candidates = [
+          \       ['~/.zshenv'    , '~/.zshenv'],
+          \       ['~/.zlogin'    , '~/.zsh/.zlogin'],
+          \       ['~/.zprofile'    , '~/.zsh/.zprofile'],
+          \       ['~/.zshrc'    , '~/.zsh/.zshrc'],
+          \       ['~/rc/alias.zsh'     , '~/.zsh/rc/alias.zsh'],
+          \       ['~/rc/base.zsh'     , '~/.zsh/rc/base.zsh'],
+          \       ['~/rc/completion.zsh'     , '~/.zsh/rc/completion.zsh'],
+          \       ['~/rc/history.zsh'     , '~/.zsh/rc/history.zsh'],
+          \       ['~/rc/plugins.zsh'     , '~/.zsh/rc/plugins.zsh'],
+          \       ['~/rc/prompt.zsh'     , '~/.zsh/rc/prompt.zsh']
+          \     ]
       endfunction
       execute 'autocmd rc_autocmd User' 'dein#source#' . g:dein#name 'call s:unite()'
     endif
