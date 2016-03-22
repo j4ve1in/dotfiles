@@ -30,6 +30,7 @@ repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
+on_map = '<Plug>'
 # }}}
 
 # textobj {{{
@@ -52,6 +53,7 @@ repo = 'surround.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
@@ -64,6 +66,7 @@ repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -71,6 +74,7 @@ depends = 'unite.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
