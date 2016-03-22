@@ -37,7 +37,8 @@ import XMonad.Prompt.Window            -- pops up a prompt with window names
 import XMonad.Util.EZConfig            -- removeKeys, additionalKeys
 import XMonad.Util.Run
 import XMonad.Util.Run(spawnPipe)      -- spawnPipe, hPutStrLn
-import XMonad.Actions.Volume
+import XMonad.Util.SpawnOnce
+-- import XMonad.Actions.Volume
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -87,10 +88,11 @@ main = do
     wsbar <- spawnPipe myWsBar
     xmonad $ ewmh defaultConfig {
        borderWidth        = borderwidth,
-       terminal           = "urxvtc",
+       terminal           = "urxvt_tmux",
        focusFollowsMouse  = True,
        normalBorderColor  = mynormalBorderColor,
        focusedBorderColor = myfocusedBorderColor,
+       startupHook        = myStartupHook,
        manageHook         = myManageHookFloat <+>
                               manageDocks,
        -- any time Full mode, avoid xmobar area
@@ -118,7 +120,7 @@ main = do
             ((modm                , xK_z      ), sendMessage MirrorShrink),
             ((modm                , xK_a      ), sendMessage MirrorExpand),
             -- Toggle layout (Fullscreen mode)
-            ((modm                , xK_f      ), sendMessage ToggleLayout),
+            ((modm .|. controlMask, xK_f      ), sendMessage ToggleLayout),
             -- Move the focused window
             ((modm .|. controlMask, xK_Right  ), withFocused (keysMoveWindow (2,0))),
             ((modm .|. controlMask, xK_Left   ), withFocused (keysMoveWindow (-2,0))),
@@ -172,15 +174,8 @@ main = do
         `additionalKeys`
         [
             ((modm                    , xK_c ), spawn "calc"),
-            ((modm .|. controlMask, xK_v      ), spawn "virtualbox"),
             -- Lock screen
             ((modm .|. shiftMask, xK_l      ), spawn "systemctl suspend"),
-            -- Launch terminal
-            ((modm                    , xK_Return ), spawn "urxvtc"),
-            -- Launch terminal with a float window
-            ((modm .|. shiftMask      , xK_Return ), spawn "$HOME/bin/urxvt_float.sh"),
-            -- Launch web browser
-            ((modm                    , xK_w      ), spawn "chromium"),
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "power"),
@@ -191,18 +186,26 @@ main = do
             ((shiftMask               , 0x1008ff18), spawn "streamradio pause"),
             ((shiftMask               , 0x1008ff14), spawn "streamradio pause"),
             -- Volume setting media keys
-            ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return ()),
-            ("<XF86AudioLowerVolume>", lowerVolume 4 >> return ()),
-            ("<XF86AudioMute>", toggleMute    >> return ()),
+            -- ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return ()),
+            -- ("<XF86AudioLowerVolume>", lowerVolume 4 >> return ()),
+            -- ("<XF86AudioMute>", toggleMute    >> return ()),
             -- Brightness Keys
-            ("<XF86MonBrightnessUp>", spawn "increase_brightness"),
-            ("<XF86MonBrightnessDown>", spawn "decrease_brightness"),
+            -- ("<XF86MonBrightnessUp>", spawn "increase_brightness"),
+            -- ("<XF86MonBrightnessDown>", spawn "decrease_brightness"),
             -- Take a screenshot (whole window)
             ((0                       , 0xff61    ), spawn "$HOME/bin/screenshot.sh"),
             -- Take a screenshot (selected area)
             ((shiftMask               , 0xff61    ), spawn "$HOME/bin/screenshot_select.sh"),
             -- Toggle touchpad
-            ((                        , xK_t ), spawn "touchpad_toggle")
+            ((modm .|. shiftMask      , xK_t ), spawn "touchpad_toggle"),
+            -- Launch web browser
+            ((modm                  , xK_w),     spawn "chromium"),
+            -- Launch virtualization software
+            ((modm                  , xK_v      ), spawn "virtualbox"),
+            -- Launch terminal
+            ((modm                  , xK_Return),   spawn "urxvt_tmux"),
+            ((modm                  , xK_t),     spawn "urxvtc -e htop"),
+            ((modm                  , xK_f),     spawn "urxvtc -e ranger")
         ]
 
 -- myLayout: Handle Window behaveior
@@ -212,6 +215,9 @@ myLayout = spacing gapwidth $
              ||| (TwoPane (1/40) (1/2))
              ||| (ThreeColMid 1 (1/20) (16/35))
              ||| Simplest
+
+myStartupHook = do
+        spawnOnce "urxvtd -q -f -o"
 
 -- myManageHookFloat: new window will created in Float mode
 myManageHookFloat = composeAll [
