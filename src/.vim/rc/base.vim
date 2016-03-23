@@ -50,6 +50,7 @@ augroup fileTypeDetect
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
   autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
   autocmd BufNewFile,BufRead *.coffee setlocal filetype=coffee
+  autocmd BufNewFile,BufRead *.jbuilder setlocal filetype=ruby
 augroup END
 
 "" Indent
