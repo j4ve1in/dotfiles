@@ -111,35 +111,48 @@ gyazo_markdown() {
 trash() {
   TRASH_DIR="${HOME}/.local/share/Trash/files"
   [ -e "$TRASH_DIR" ] || mkdir -p "$TRASH_DIR"
-  if [ "$1" = "-a" ]; then
-    if [ -n "`ls -A $TRASH_DIR`" ]; then
-      printf "trash: remove trash? "; read ANSWER
-      case $ANSWER in
-        "Y" | "y" | "Yes" | "yes" )
-          /bin/rm -rf ${TRASH_DIR}/*
-          echo 'removed trash'
-          ;;
-        * )
-          ;;
-      esac
-    else
-      echo "trash: $TRASH_DIR is empty"
-    fi
-    return 0
-  elif [ "$1" = "-s" ]; then
-    if [ -n "`ls -A $TRASH_DIR`" ]; then
-      ls -Ahl --time-style=long-iso $TRASH_DIR
-    else
-      echo 'trash: $TRASH_DIR is empty'
-    fi
-    return 0
-  elif [ "$1" = "-h" ]; then
-    echo "usage: trash [OPTION] [FILE]"
-    echo "  -s show status"
-    echo "  -a remove trash"
-    echo
-    return 0
-  fi
+  case "$1" in
+    '-a' )
+      if [ -n "`ls -A $TRASH_DIR`" ]; then
+        printf "trash: remove trash? "; read ANSWER
+        case $ANSWER in
+          "Y" | "y" | "Yes" | "yes" )
+            /bin/rm -rf ${TRASH_DIR}/*
+            echo 'removed trash'
+            ;;
+          * )
+            ;;
+        esac
+      else
+        echo "trash: $TRASH_DIR is empty"
+      fi
+      return 0
+      ;;
+    '-s' )
+      if [ -n "`ls -A $TRASH_DIR`" ]; then
+        ls -Ahl --time-style=long-iso $TRASH_DIR
+      else
+        echo 'trash: $TRASH_DIR is empty'
+      fi
+      return 0
+      ;;
+    '-h' )
+      echo "usage: trash [OPTION] [FILE]"
+      echo "  -s show status"
+      echo "  -a remove trash"
+      echo
+      return 0
+      ;;
+    -* )
+      echo "trash: illegal option -- '$(echo $1 | sed 's/^-*//')'"
+      echo -e "Try 'trash -h' for more information.\n"
+      return 0
+      ;;
+    '' )
+      echo -e "Try 'trash -h' for more information.\n"
+      return 0
+      ;;
+  esac
 
   for file in $@; do
     if [ ! -e "$file" ]; then
