@@ -175,7 +175,7 @@ main = do
         [
             ((modm                    , xK_c ), spawn "calc"),
             -- Lock screen
-            ((modm .|. shiftMask, xK_l      ), spawn "systemctl suspend"),
+            ((modm .|. controlMask, xK_l      ), spawn "systemctl suspend"),
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "power"),
@@ -186,12 +186,12 @@ main = do
             ((shiftMask               , 0x1008ff18), spawn "streamradio pause"),
             ((shiftMask               , 0x1008ff14), spawn "streamradio pause"),
             -- Volume setting media keys
-            -- ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return ()),
-            -- ("<XF86AudioLowerVolume>", lowerVolume 4 >> return ()),
-            -- ("<XF86AudioMute>", toggleMute    >> return ()),
+            ((0                       , 0x1008ff13), spawn "volume_up"),
+            ((0                       , 0x1008ff11), spawn "volume_down"),
+            ((0                       , 0x1008ff12), spawn "volume_mute"),
             -- Brightness Keys
-            -- ("<XF86MonBrightnessUp>", spawn "increase_brightness"),
-            -- ("<XF86MonBrightnessDown>", spawn "decrease_brightness"),
+            ((0                       , 0x1008FF02), spawn "increase_brightness"),
+            ((0                       , 0x1008FF03), spawn "decrease_brightness"),
             -- Take a screenshot (whole window)
             ((0                       , 0xff61    ), spawn "$HOME/bin/screenshot.sh"),
             -- Take a screenshot (selected area)
