@@ -165,3 +165,5 @@ trash() {
   echo "trash: removed ${@}"
   return 0
 }
+
+search() { find . -type f -print | xargs grep $1; }

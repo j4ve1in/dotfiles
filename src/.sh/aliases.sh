@@ -79,6 +79,7 @@ alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l' rl='reload'
 alias dsu='dotsetup'
 alias ts='trash'
+alias sa='search'
 
 case "`uname -s`" in
   Linux)
