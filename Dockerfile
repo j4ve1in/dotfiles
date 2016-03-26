@@ -7,7 +7,7 @@ RUN echo "fastestmirror=True" >> /etc/dnf/dnf.conf && \
     dnf install -yq \
         sudo passwd git \
         tmux vim zsh \
-        gcc make findutils tree procps-ng && \
+        gcc make findutils procps-ng && \
     dnf clean all -q
 
 # Ceate user
