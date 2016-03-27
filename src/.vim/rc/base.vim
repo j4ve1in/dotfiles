@@ -16,6 +16,10 @@ if !exists('loaded_matchit')
   runtime macros/matchit.vim
 endif
 
+if has('conceal')
+  set conceallevel=0 concealcursor=
+endif
+
 " Completion
 set wildmenu wildmode=list:full
 
