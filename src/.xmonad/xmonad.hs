@@ -233,7 +233,7 @@ myManageHookFloat = composeAll [
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 
 -- myWsBar: xmobar setting
-myWsBar = "xmobar $HOME/.xmonad/xmobarrc"
+myWsBar = "xmobar $HOME/.xmonad/xmobar.hs"
 wsPP = xmobarPP {
     ppOrder           = \(ws:l:t:_)  -> [ws,t],
     ppCurrent         = xmobarColor colorWhite colorBlue . wrap " " "* ",
