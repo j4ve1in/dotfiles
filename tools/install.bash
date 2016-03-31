@@ -65,7 +65,7 @@ install() {
   ## Download
   printf " Downloading dotfiles..."
   DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
-  { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | env LESS="-cE" less
+  { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | LESS='-cE' less
   cprint "done\n" $SUCCESS_COLOR
 
   # Backup
@@ -109,7 +109,7 @@ install_plugin() {
       git clone $url ~/${DIR[i]}
       echo
     done
-  } | env LESS="-cE" less
+  } | LESS='-cER' less
   cprint "done" $SUCCESS_COLOR
   echo
 
@@ -121,9 +121,9 @@ install_plugin() {
       echo " Vim"
 
       printf "  Downloading vimproc..."
-      VIMPROC_REPO='https://github.com/Shougo/vimproc.vim.git'
+      VIMPROC_REPO='https://github.com/Shougo/vimproc.vim'
       VIMPROC_DIR="${HOME}/.vim/bundle/repos/github.com/Shougo/vimproc.vim"
-      { sleep 1; git clone $VIMPROC_REPO $VIMPROC_DIR; } | env LESS="-cE" less
+      { sleep 1; git clone $VIMPROC_REPO $VIMPROC_DIR; } | LESS='-cE' less
       cprint "done" $SUCCESS_COLOR
       if [ "$OSTYPE" = "msys" ]; then
         make -C "$VIMPROC_DIR" -f 'make_cygwin.mak' >/dev/null 2>&1
@@ -132,7 +132,12 @@ install_plugin() {
       fi
 
       printf "  Downloading other plugin by Dein..."
-      { sleep 1; vim +qall; echo ''; } | env LESS="-cE" less
+      VIMRC="$HOME/.vim/vimrc"
+      {
+        sleep 1
+        vim -N -u $VIMRC -c "try | call dein#install() | finally | qall! | endtry" -i NONE -V1 -e -s
+        echo
+      } | LESS='-cE' less
       cprint "done" $SUCCESS_COLOR
     fi
 
@@ -149,7 +154,7 @@ install_plugin() {
       echo " Tmux"
       printf "  Downloading plugin by TPM..."
       TPM_INSTALL_SCRIPT=~/.tmux/plugins/tpm/bindings/install_plugins
-      { sleep 1; $TPM_INSTALL_SCRIPT; } | env LESS="-cE" less
+      { sleep 1; $TPM_INSTALL_SCRIPT; } | LESS='-cE' less
       cprint "done" $SUCCESS_COLOR
     fi
   fi

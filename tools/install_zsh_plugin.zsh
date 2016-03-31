@@ -23,7 +23,7 @@ if [ ! -d ~/.zsh/bundle/repos ]; then
       zplug "$plugin"
     done
     zplug install
-  } | env LESS="-cE" less
+  } | LESS='-cEr' less
 fi
 echo
 

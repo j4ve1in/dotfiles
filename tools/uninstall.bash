@@ -9,7 +9,7 @@ main() {
     [ "$ASSUME_YES" != "1" ] && uninstall_message
     echo
   else
-    uninstall_plugin; echo
+    uninstall_plugin
   fi
 }
 
@@ -44,15 +44,8 @@ uninstall() {
 }
 
 uninstall_plugin() {
-  # Remove
-  ## zsh
-  rm -f ~/.zsh/bundle/.cache && ls ~/.zsh/bundle | xargs rm -rf
-
-  ## vim
-  rm -rf ~/.vim/bundle/.dein && ls ~/.vim/bundle | xargs rm -rf
-
-  ## tmux
-  ls ~/.tmux/plugins | xargs rm -rf
+  echo -e 'Remove plugins\n'
+  rm -rf ~/.zsh/bundle/{.cache,*} ~/.vim/bundle/{.dein,*} ~/.tmux/plugins/*
 }
 
 main $@
