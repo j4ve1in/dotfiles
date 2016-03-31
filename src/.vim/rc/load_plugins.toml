@@ -15,13 +15,55 @@ repo = 'Shougo/vimproc.vim'
 # Git {{{
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+  nnoremap [git] <Nop>
+  nmap <Space>g [git]
+
+  nnoremap [git]a :<C-u>Git<Space>add<Space>%:p<CR>
+  nnoremap [git]aa :<C-u>Git<Space>add<Space>-A<CR>
+  nnoremap [git]b :<C-u>Gbrowse<CR>
+  nnoremap [git]c :<C-u>Gcommit<CR>
+  nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>''<Left>
+  nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>''<Left>
+  nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
+  nnoremap [git]cd :<C-u>Gcd<CR>
+  nnoremap [git]in :<C-u>Git<Space>init<CR>
+  nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>stash<Space>list<CR>
+  nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>show<CR>
+  nnoremap [git]st :<C-u>Git<Space>stash<CR>
+  nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
+  nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
+  nnoremap [git]w :<C-u>Gwrite
+  nnoremap [git]r :<C-u>Gread
+  nnoremap [git]rm :<C-u>Gremove
+  nnoremap [git]m :<C-u>Gmove
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  nnoremap [git] <Nop>
+  nmap <Space>g [git]
+
+  nnoremap <silent> [git]g :<C-u>GitGutterToggle<CR>
+  let g:gitgutter_enabled = 0
+  highlight clear SignColumn
+'''
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista'
 if = 'has("python3")'
+hook_add = '''
+  nnoremap [git] <Nop>
+  nmap <Space>g [git]
+
+  nnoremap [git]i :<C-u>Gista<Space>--post<Space>--description<Space>''<Left>
+  nnoremap [git]ip :<C-u>Gista<Space>--post<Space>--public<Space>--description<Space>''<Left>
+  nnoremap [git]il :<C-u>Gista<Space>--list<CR>
+  nnoremap [git]ic :<C-u>tabedit<Space><Space>\|<Space>:set<Space>ro
+              \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  let g:gista#post_private = '1'
+'''
 # }}}
 
 # operator {{{
@@ -30,7 +72,13 @@ repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
-on_map = '<Plug>'
+on_map = '<Plug>(operator-flashy'
+hook_add = '''
+  map y <Plug>(operator-flashy)
+  nmap Y <Plug>(operator-flashy)$
+  highlight Flashy ctermfg=0 ctermbg=26
+'''
+
 # }}}
 
 # textobj {{{
@@ -53,20 +101,79 @@ repo = 'surround.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-on_map = '<Plug>'
+on_map = '<Plug>(caw:i:toggle)'
+hook_add = '''
+  nmap <Space>c <Plug>(caw:i:toggle)
+  vmap <Space>c <Plug>(caw:i:toggle)
+'''
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'kana/vim-submode'
+hook_source = '''
+  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+  call submode#map('winsize', 'n', '', '>', '<C-w>>')
+  call submode#map('winsize', 'n', '', '<', '<C-w><')
+  call submode#map('winsize', 'n', '', '+', '<C-w>+')
+  call submode#map('winsize', 'n', '', '-', '<C-w>-')
+  call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+  call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+  call submode#map('changetab', 'n', '', 't', 'gt')
+  call submode#map('changetab', 'n', '', 'T', 'gT')
+  call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
+  call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
+  call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
+  call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
+  call submode#enter_with('ex-move', 'nv', '', '<Space><Space>', '<Nop>')
+  call submode#leave_with('ex-move', 'nv', '', '<Space>')
+  call submode#map('ex-move', 'nv', '', 'j', '<C-f>zz')
+  call submode#map('ex-move', 'nv', '', 'k', '<C-b>zz')
+  call submode#map('ex-move', 'nv', '', 'n', '5jzz')
+  call submode#map('ex-move', 'nv', '', 'm', '5kzz')
+  call submode#map('ex-move', 'nv', '', 'l', '}zz')
+  call submode#map('ex-move', 'nv', '', 'h', '{zz')
+'''
 
 [[plugins]]
 repo = 'tpope/vim-dispatch'
+hook_add = '''
+  nnoremap [dispatch] <Nop>
+  nmap <Space>dp [dispatch]
+  nnoremap [dispatch] :<C-u>Dispatch<Space>
+  nnoremap [dispatch]c :<C-u>Copen<CR>
+  nnoremap [dispatch]r :<C-u>Start<Space>irb<CR>
+  nnoremap [dispatch]h :<C-u>Start<Space>ghci<CR>
+
+  nnoremap [git] <Nop>
+  nmap <Space>g [git]
+
+  nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>fetch<Space>--prune<CR>
+  nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>pull<Space>--prune<CR>
+  nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>push<CR>
+  nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>clone<Space>
+  nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>merge<Space>--no-ff<CR>
+  nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
+'''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
-on_map = '<Plug>'
+on_map = '<Plug>(yankround-'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  xmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  xmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  let g:yankround_max_history = 5
+'''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -74,26 +181,154 @@ depends = 'unite.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
-on_map = '<Plug>'
+on_map = '<Plug>(incsearch-'
+hook_add = '''
+  let g:incsearch#no_inc_hlsearch = 1
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
 repo = 'vim-scripts/vim-auto-save'
-
-[[plugins]]
-repo = 'terryma/vim-multiple-cursors'
+hook_add = '''
+  let g:auto_save = 1
+  let g:auto_save_in_insert_mode = 0
+'''
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 if = 'has("python3")'
+hook_add = '''
+  let g:EditorConfig_exclude_patterns = ['gista:*', 'scp://.*']
+'''
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_auto_colors=0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=247
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=239
+  let g:indent_guides_enable_on_vim_startup=1
+  let g:indent_guides_color_change_percent=30
+  let g:indent_guides_guide_size=1
+  let g:indent_guides_exclude_filetypes = ['help', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler', 'diff']
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let s:white  = 255
+  let s:black  = 0
+  let s:blue   = 17
+  let s:lightblue = 26
+  let s:cyan = 6
+  let s:purple = 54
+  let s:gray = 235
+
+  let s:p = {
+        \ 'normal':   {},
+        \ 'inactive': {},
+        \ 'insert':   {},
+        \ 'replace':  {},
+        \ 'visual':   {},
+        \ 'tabline':  {}}
+
+  let s:p.normal.middle = [['', '', s:white, 'none']]
+  let s:p.normal.left = [
+        \ ['', '', s:white, s:blue],
+        \ ['', '', s:white, s:lightblue]]
+  let s:p.normal.right = [
+        \ ['', '', s:white, s:blue],
+        \ ['', '', s:white, s:lightblue]]
+
+  let s:p.inactive.middle = [['', '', s:white, s:gray]]
+  let s:p.inactive.right = [
+        \ s:p.inactive.middle[0],
+        \ s:p.inactive.middle[0]]
+  let s:p.inactive.left = [
+        \ s:p.inactive.middle[0],
+        \ s:p.inactive.middle[0]]
+
+  let s:p.insert.left = [
+        \ ['', '', s:black, s:white],
+        \ s:p.normal.left[1]]
+  let s:p.replace.left = [
+        \ ['', '', s:white, s:cyan],
+        \ s:p.normal.left[1]]
+  let s:p.visual.left = [
+        \ ['', '', s:white, s:purple],
+        \ s:p.normal.left[1]]
+
+  let s:p.tabline.middle = [['', '', s:white, 'none']]
+  let s:p.tabline.right = [
+        \ ['', '', s:white, s:blue],
+        \ ['', '', s:blue, 'none']]
+  let s:p.tabline.left = [['', '', s:white, s:black]]
+  let s:p.tabline.tabsel = [['', '', s:white, s:blue]]
+  let g:lightline#colorscheme#abisso#palette = s:p
+  let g:lightline = {
+        \ 'colorscheme': 'abisso',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'LightLineFugitive',
+        \   'modified': 'LightLineModified',
+        \   'fileformat': 'LightLineFileformat',
+        \   'filetype': 'LightLineFiletype',
+        \   'fileencoding': 'LightLineFileencoding',
+        \   'mode': 'LightLineMode'
+        \ },
+        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+        \ }
+
+  function! LightLineModified()
+    if &filetype == "help"
+      return ""
+    elseif &modified
+      return "+"
+    elseif &modifiable
+      return ""
+    else
+      return ""
+    endif
+  endfunction
+
+  function! LightLineFugitive()
+    try
+      if exists('*fugitive#head')
+        let mark = "\ue0a0 "
+        let _ = fugitive#head()
+        return strlen(_) ? mark._ : ''
+      endif
+    catch
+    endtry
+    return ''
+  endfunction
+
+  function! LightLineFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  endfunction
+
+  function! LightLineFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+
+  function! LightLineFileencoding()
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  endfunction
+
+  function! LightLineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+  endfunction
+
+  set noshowmode
+'''
 
 [[plugins]]
 repo = 'deris/vim-shot-f'
@@ -103,6 +338,31 @@ repo = 'wellle/targets.vim'
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
+hook_add = '''
+  let g:loaded_table_mode = 1
+'''
 
 [[plugins]]
 repo = 'tyru/eskk.vim'
+hook_add = '''
+  let g:eskk#directory = expand('$CACHE/eskk')
+  let g:eskk#large_dictionary = {
+    \   'path': '/usr/share/skk/SKK-JISYO.L',
+    \   'sorted': 1,
+    \   'encoding': 'euc-jp',
+    \}
+  let g:eskk#server = {
+    \ 'host': 'localhost',
+    \ 'port': 55100
+    \}
+  let g:eskk#marker_henkan = "\uf13a"
+  let g:eskk#marker_henkan_select = "\uf107"
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+# }}}

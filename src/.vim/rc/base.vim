@@ -47,16 +47,6 @@ if executable('fcitx-remote')
 endif
 
 " File
-"" ftdetect
-augroup fileTypeDetect
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal filetype=go
-  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
-  autocmd BufNewFile,BufRead *.coffee setlocal filetype=coffee
-  autocmd BufNewFile,BufRead *.jbuilder setlocal filetype=ruby
-augroup END
-
 "" Indent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
 augroup fileTypeIndent

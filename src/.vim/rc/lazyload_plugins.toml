@@ -13,16 +13,177 @@ depends = [
   'vim-gista-unite',
   'unite-cmdmatch'
 ]
+hook_add = '''
+  let g:unite_enable_auto_select = 0
+  nnoremap [Unite] <Nop>
+  nmap <C-Space> [Unite]
+
+  nnoremap <silent> [Unite] :<C-u>Unite<CR>
+  nnoremap <silent> [Unite]rg :<C-u>Unite<Space>register<CR>
+  nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
+  nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
+
+  " file
+  nnoremap <silent> [Unite]f :Unite<Space>file<Space>file/new<Space>directory/new<CR>
+  nnoremap <silent> [Unite]F :Unite<Space>file<Space>file/new<Space>directory/new<Space>-default-action=tabopen<CR>
+
+  " file_rec
+  nnoremap <silent> [Unite]fr :Unite<Space>file_rec/async<CR>
+  nnoremap <silent> [Unite]fR :Unite<Space>file_rec/async<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]fr! :Unite<Space>file_rec/async:!<CR>
+  nnoremap <silent> [Unite]fR! :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
+
+  " directory_rec
+  nnoremap <silent> [Unite]dr :<C-u>Unite<Space>directory_rec/async<CR>
+  nnoremap <silent> [Unite]Dr :<C-u>Unite<Space>directory_rec/async<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]dr! :<C-u>Unite<Space>directory_rec/async:!<CR>
+  nnoremap <silent> [Unite]Dr! :<C-u>Unite<Space>directory_rec/async:!<Space>-default-action=tabopen<CR>
+
+  " git
+  nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git<CR>
+  nnoremap <silent> [Unite]gF :<C-u>Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git:!<CR>
+  nnoremap <silent> [Unite]gF :<C-u>Unite<Space>file_rec/git:!<Space>-default-action=tabopen<CR>
+
+  " file_mru
+  nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
+  nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
+
+  " help
+  nnoremap <silent> [Unite]h :<C-u>Unite<Space>help<CR>
+  nnoremap <silent> [Unite]H :<C-u>Unite<Space>help<Space>-default-action=tabopen<CR>
+
+  " find
+  nnoremap <silent> [Unite]s :Unite<Space>find:.<CR>
+  nnoremap <silent> [Unite]S :Unite<Space>find:.<Space>-default-action=tabopen<CR>
+
+  " grep
+  nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
+  nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]/g :<C-u>Unite<Space>grep/git:.<CR>
+  nnoremap <silent> [Unite]?g :<C-u>Unite<Space>grep/git:.<Space>-default-action=tabopen<CR>
+  if executable('hw')
+    let g:unite_source_grep_command = 'hw'
+    let g:unite_source_grep_default_opts = '--no-group --no-color'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+
+  " other plugin
+  nnoremap <silent> [Unite]d :<C-u>Unite<Space>dein<CR>
+  nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
+  nnoremap <silent> [Unite]w :<C-u>Unite<Space>webcolorname<CR>
+  nnoremap <silent> [Unite]hl :<C-u>Unite<Space>highlight<CR>
+  nnoremap <silent> [Unite]gi :<C-u>Unite<Space>gista<CR>
+  nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
+
+  "" giti
+  nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
+  nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
+  nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
+  nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
+  nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
+
+  "" Rails
+  nnoremap <silent> [Unite]r :<C-u>Unite<CR>rails/
+  nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
+  nnoremap <silent> [Unite]rA :<C-u>Unite<Space>rails/asset<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
+  nnoremap <silent> [Unite]rM :<C-u>Unite<Space>rails/model<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rd :<C-u>Unite<Space>rails/db<CR>
+  nnoremap <silent> [Unite]rD :<C-u>Unite<Space>rails/db<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
+  nnoremap <silent> [Unite]rV :<C-u>Unite<Space>rails/view<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
+  nnoremap <silent> [Unite]rC :<C-u>Unite<Space>rails/controller<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rco :<C-u>Unite<Space>rails/config<CR>
+  nnoremap <silent> [Unite]rcO :<C-u>Unite<Space>rails/config<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
+  nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
+
+  " others
+  nnoremap <silent> [Unite]v :<C-u>Unite<Space>menu:vim<CR>
+  nnoremap <silent> [Unite]V :<C-u>Unite<Space>menu:vim<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]b :<C-u>Unite<Space>menu:bash<CR>
+  nnoremap <silent> [Unite]U :<C-u>Unite<Space>menu:bash<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]z :<C-u>Unite<Space>menu:zsh<CR>
+  nnoremap <silent> [Unite]Z :<C-u>Unite<Space>menu:zsh<Space>-default-action=tabopen<CR>
+
+  let g:unite_source_menu_menus = {}
+  let g:unite_source_menu_menus.vim = {
+    \     'description' : 'Edit vim files'
+    \ }
+  let g:unite_source_menu_menus.vim.file_candidates = [
+    \       ['~/.vim/rc/apperance.vim'    , '~/.vim/rc/apperance.vim'],
+    \       ['~/.vim/rc/base.vim'    , '~/.vim/rc/base.vim'],
+    \       ['~/.vim/rc/colors.vim'    , '~/.vim/rc/colors.vim'],
+    \       ['~/.vim/rc/init.vim'    , '~/.vim/rc/init.vim'],
+    \       ['~/.vim/rc/keymap.vim'     , '~/.vim/rc/keymap.vim'],
+    \       ['~/.vim/rc/plugins.vim'     , '~/.vim/rc/plugins.vim'],
+    \       ['~/.vim/rc/lazyload_plugin.toml'     , '~/.vim/rc/lazyload_plugin.toml'],
+    \       ['~/.vim/rc/load_plugin.toml'     , '~/.vim/rc/load_plugin.toml']
+    \     ]
+  let g:unite_source_menu_menus.bash = {
+    \     'description' : 'Edit bash files'
+    \ }
+  let g:unite_source_menu_menus.bash.file_candidates = [
+    \       ['~/.bash_login'    , '~/.bash_login'],
+    \       ['~/.bash_profile'    , '~/.bash_profile'],
+    \       ['~/.bashrc'    , '~/.bashrc'],
+    \       ['~/.bash/rc/base.bash'    , '~/.bash/rc/base.bash'],
+    \       ['~/.bash/rc/history.bash'     , '~/.bash/rc/history.bash'],
+    \       ['~/.bash/rc/prompt.bash'     , '~/.bash/rc/prompt.bash']
+    \     ]
+  let g:unite_source_menu_menus.zsh = {
+    \     'description' : 'Edit zsh files'
+    \ }
+  let g:unite_source_menu_menus.zsh.file_candidates = [
+    \       ['~/.zshenv'    , '~/.zshenv'],
+    \       ['~/.zlogin'    , '~/.zsh/.zlogin'],
+    \       ['~/.zprofile'    , '~/.zsh/.zprofile'],
+    \       ['~/.zshrc'    , '~/.zsh/.zshrc'],
+    \       ['~/rc/alias.zsh'     , '~/.zsh/rc/alias.zsh'],
+    \       ['~/rc/base.zsh'     , '~/.zsh/rc/base.zsh'],
+    \       ['~/rc/completion.zsh'     , '~/.zsh/rc/completion.zsh'],
+    \       ['~/rc/history.zsh'     , '~/.zsh/rc/history.zsh'],
+    \       ['~/rc/plugins.zsh'     , '~/.zsh/rc/plugins.zsh'],
+    \       ['~/rc/prompt.zsh'     , '~/.zsh/rc/prompt.zsh']
+    \     ]
+'''
+hook_source = '''
+  call unite#custom#profile('default', 'context', {
+    \ 'start_insert': '1',
+    \ 'prompt_direction': 'top',
+    \ 'prompt': '> ',
+    \ 'candidate_icon': '- ',
+    \ 'hide_icon': 0 })
+
+  " ignore patterns
+  let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
+  call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
+  call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
+'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_path = '.*'
+on_ft = '.*'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
 on_map = '<Plug>'
 on_path = '.*'
+hook_add = '''
+  let g:vimfiler_as_default_explorer = 1
+  autocmd FileType vimfiler 
+        \ nnoremap <buffer><silent>/ 
+        \ :<C-u>Unite file -default-action=vimfiler<CR>
+  autocmd FileType vimfiler setlocal statusline=VimFiler
+'''
+hook_source = '''
+  call vimfiler#custom#profile('default', 'context', {
+        \   'auto_cd' : 1
+        \ })
+'''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
@@ -45,18 +206,32 @@ on_source = 'lambdalisue/vim-gista'
 
 [[plugins]]
 repo = 'majkinetor/unite-cmdmatch'
-on_map = '<Plug>'
+on_map = '<Plug>(unite_cmdmatch_complete)'
+hook_add = '''
+  cmap <c-o> <Plug>(unite_cmdmatch_complete)
+'''
 # }}}
 
 # Web {{{
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = 'open-browser.vim'
-on_path = '.md'
+on_ft = 'md'
 on_map = '<Plug>'
+hook_add = '''
+  nnoremap [Previm] <Nop>
+  nmap <Space>pv [Previm]
+
+  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+hook_add = '''
+  let g:netrw_nogx = 1
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+'''
 
 [[plugins]]
 repo = 'basyura/TweetVim'
@@ -70,6 +245,12 @@ depends = [
   'favstar-vim'
 ]
 on_cmd = 'TweetVimHomeTimeline'
+hook_add = '''
+  let g:tweetvim_display_icon = 1
+  let g:tweetvim_display_source = 1
+  let g:tweetvim_tweet_per_page = 60
+  let g:tweetvim_config_dir = expand('~/.vim/tmp/tweetvim')
+'''
 
 [[plugins]]
 repo = 'basyura/twibill.vim'
@@ -99,6 +280,12 @@ on_cmd = [
   'WatchdogsRunSilent',
   'WatchdogsRunSweep'
 ]
+hook_add = '''
+  nnoremap [Watchdogs] <Nop>
+  nmap <Space>W [Watchdogs]
+
+  nnoremap <silent> [Watchdogs] :<C-u>WatchdogsRun<CR>
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -114,60 +301,124 @@ repo = 'dannyob/quickfixstatus'
 
 [[plugins]]
 repo = 'othree/html5.vim'
-# on_ft = 'html'
-on_path = '.html'
+on_ft = 'html'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
-# on_ft = 'css'
-on_path = '.css'
+on_ft = 'css'
 
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
-# on_ft = 'javascript'
-on_path = '.js'
+on_ft = 'javascript'
 
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
-# on_ft = 'dockerfile'
-on_path = 'Dockerfile'
+on_ft = 'dockerfile'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
-# on_ft = 'slim'
-on_path = '.slim'
+on_ft = 'slim'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-# on_ft = 'coffee'
-on_path = '.coffee'
+on_ft = 'coffee'
 # }}}
 
 # Completion {{{
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = 'has("lua")'
+depends = 'context_filetype.vim'
+hook_add = '''
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'default' : '',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g>     neocomplete#undo_completion()
+  inoremap <expr><C-l>     neocomplete#complete_common_string()
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y>  neocomplete#close_popup()
+  inoremap <expr><C-e>  neocomplete#cancel_popup()
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+  endfunction
+
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+  let g:neocomplete#sources#omni#input_patterns      = {'go': '\h\w\.\w*'}
+
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+  " Enable heavy omni completion.
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = 'neosnippet-snippets'
 on_i = 1
 on_ft = 'snippet'
-on_map = '<Plug>'
+on_map = '<Plug>(neosnippet_expand_'
+hook_add = '''
+  " Plugin key-mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+
+  " For conceal markers.
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-# on_ft?
-on_path = [
-  '.html',
-  '.css',
-  '.scss',
-  '.slim',
-  '.eruby',
-  '.markdown'
+on_ft = [
+  'html',
+  'css',
+  'scss',
+  'slim',
+  'eruby',
+  'markdown'
 ]
 # }}}
 
@@ -176,15 +427,26 @@ on_path = [
 repo = 'cohama/vim-smartinput-endwise'
 depends = 'vim-smartinput'
 on_i = 1
-on_map = '<Plug>'
+on_map = '<Plug>(smartinput_'
+hook_source = '''
+  call smartinput_endwise#define_default_rules()
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)','<BS>','<BS>')
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)','<BS>','<C-h>')
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)','<Enter>','<Enter>')
+  imap <expr><BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+  imap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
+'''
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
 
 [[plugins]]
 repo = 'fatih/vim-go'
-# on_ft = 'go'
-on_path = '.go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
