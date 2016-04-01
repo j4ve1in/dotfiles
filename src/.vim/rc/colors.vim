@@ -31,8 +31,8 @@ hi DiffDelete                       ctermbg=124  ctermfg=231
 hi DiffText                         ctermbg=248  ctermfg=231
 hi Directory                        ctermbg=232  ctermfg=27
 hi ErrorMsg                         ctermbg=231  ctermfg=232
-hi FoldColumn                       ctermbg=236  ctermfg=196
-hi Folded                           ctermbg=236  ctermfg=196
+hi FoldColumn                       ctermbg=236  ctermfg=27
+hi Folded                           ctermbg=236  ctermfg=27
 hi Function                         ctermbg=232  ctermfg=27
 hi Identifier                       ctermbg=232  ctermfg=51
 hi IncSearch       cterm=none       ctermbg=20   ctermfg=232

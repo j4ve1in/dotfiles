@@ -15,7 +15,7 @@ repo = 'Shougo/vimproc.vim'
 # Git {{{
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-hook_add = '''
+hook_add = ''' " {{{
   nnoremap [git] <Nop>
   nmap <Space>g [git]
 
@@ -37,23 +37,23 @@ hook_add = '''
   nnoremap [git]r :<C-u>Gread
   nnoremap [git]rm :<C-u>Gremove
   nnoremap [git]m :<C-u>Gmove
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-hook_add = '''
+hook_add = ''' " {{{
   nnoremap [git] <Nop>
   nmap <Space>g [git]
 
   nnoremap <silent> [git]g :<C-u>GitGutterToggle<CR>
   let g:gitgutter_enabled = 0
   highlight clear SignColumn
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista'
 if = 'has("python3")'
-hook_add = '''
+hook_add = ''' " {{{
   nnoremap [git] <Nop>
   nmap <Space>g [git]
 
@@ -63,7 +63,7 @@ hook_add = '''
   nnoremap [git]ic :<C-u>tabedit<Space><Space>\|<Space>:set<Space>ro
               \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
   let g:gista#post_private = '1'
-'''
+" }}} '''
 # }}}
 
 # operator {{{
@@ -73,12 +73,11 @@ repo = 'kana/vim-operator-user'
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
 on_map = '<Plug>(operator-flashy'
-hook_add = '''
+hook_add = ''' " {{{
   map y <Plug>(operator-flashy)
   nmap Y <Plug>(operator-flashy)$
   highlight Flashy ctermfg=0 ctermbg=26
-'''
-
+" }}} '''
 # }}}
 
 # textobj {{{
@@ -102,17 +101,17 @@ repo = 'surround.vim'
 [[plugins]]
 repo = 'tyru/caw.vim'
 on_map = '<Plug>(caw:i:toggle)'
-hook_add = '''
+hook_add = ''' " {{{
   nmap <Space>c <Plug>(caw:i:toggle)
   vmap <Space>c <Plug>(caw:i:toggle)
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'kana/vim-submode'
-hook_source = '''
+hook_source = ''' " {{{
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
   call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
   call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
@@ -137,11 +136,11 @@ hook_source = '''
   call submode#map('ex-move', 'nv', '', 'm', '5kzz')
   call submode#map('ex-move', 'nv', '', 'l', '}zz')
   call submode#map('ex-move', 'nv', '', 'h', '{zz')
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'tpope/vim-dispatch'
-hook_add = '''
+hook_add = ''' " {{{
   nnoremap [dispatch] <Nop>
   nmap <Space>dp [dispatch]
   nnoremap [dispatch] :<C-u>Dispatch<Space>
@@ -158,12 +157,12 @@ hook_add = '''
   nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>clone<Space>
   nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>merge<Space>--no-ff<CR>
   nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
 on_map = '<Plug>(yankround-'
-hook_add = '''
+hook_add = ''' " {{{
   nmap p <Plug>(yankround-p)
   xmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
@@ -173,7 +172,7 @@ hook_add = '''
   nmap <C-p> <Plug>(yankround-prev)
   nmap <C-n> <Plug>(yankround-next)
   let g:yankround_max_history = 5
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -182,33 +181,31 @@ depends = 'unite.vim'
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 on_map = '<Plug>(incsearch-'
-hook_add = '''
+hook_add = ''' " {{{
   let g:incsearch#no_inc_hlsearch = 1
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
 repo = 'vim-scripts/vim-auto-save'
-hook_add = '''
+hook_add = ''' " {{{
   let g:auto_save = 1
   let g:auto_save_in_insert_mode = 0
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 if = 'has("python3")'
-hook_add = '''
-  let g:EditorConfig_exclude_patterns = ['gista:*', 'scp://.*']
-'''
+hook_add = 'let g:EditorConfig_exclude_patterns = ['gista:*', 'scp://.*']'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
+hook_add = ''' " {{{
   let g:indent_guides_auto_colors=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=247
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=239
@@ -216,11 +213,11 @@ hook_add = '''
   let g:indent_guides_color_change_percent=30
   let g:indent_guides_guide_size=1
   let g:indent_guides_exclude_filetypes = ['help', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler', 'diff']
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = '''
+hook_add = ''' " {{{
   let s:white  = 255
   let s:black  = 0
   let s:blue   = 17
@@ -328,7 +325,7 @@ hook_add = '''
   endfunction
 
   set noshowmode
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'deris/vim-shot-f'
@@ -338,13 +335,11 @@ repo = 'wellle/targets.vim'
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
-hook_add = '''
-  let g:loaded_table_mode = 1
-'''
+hook_add = 'let g:loaded_table_mode = 1'
 
 [[plugins]]
 repo = 'tyru/eskk.vim'
-hook_add = '''
+hook_add = ''' " {{{
   let g:eskk#directory = expand('$CACHE/eskk')
   let g:eskk#large_dictionary = {
     \   'path': '/usr/share/skk/SKK-JISYO.L',
@@ -357,7 +352,7 @@ hook_add = '''
     \}
   let g:eskk#marker_henkan = "\uf13a"
   let g:eskk#marker_henkan_select = "\uf107"
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'

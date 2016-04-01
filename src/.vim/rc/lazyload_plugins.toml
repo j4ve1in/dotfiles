@@ -13,7 +13,7 @@ depends = [
   'vim-gista-unite',
   'unite-cmdmatch'
 ]
-hook_add = '''
+hook_add = ''' " {{{
   let g:unite_enable_auto_select = 0
   nnoremap [Unite] <Nop>
   nmap <C-Space> [Unite]
@@ -148,8 +148,8 @@ hook_add = '''
     \       ['~/rc/plugins.zsh'     , '~/.zsh/rc/plugins.zsh'],
     \       ['~/rc/prompt.zsh'     , '~/.zsh/rc/prompt.zsh']
     \     ]
-'''
-hook_source = '''
+" }}} '''
+hook_source = ''' " {{{
   call unite#custom#profile('default', 'context', {
     \ 'start_insert': '1',
     \ 'prompt_direction': 'top',
@@ -161,7 +161,7 @@ hook_source = '''
   let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
   call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
   call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -172,18 +172,16 @@ repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
 on_map = '<Plug>'
 on_path = '.*'
-hook_add = '''
+hook_add = ''' "{{{
   let g:vimfiler_as_default_explorer = 1
   autocmd FileType vimfiler 
         \ nnoremap <buffer><silent>/ 
         \ :<C-u>Unite file -default-action=vimfiler<CR>
   autocmd FileType vimfiler setlocal statusline=VimFiler
-'''
-hook_source = '''
-  call vimfiler#custom#profile('default', 'context', {
-        \   'auto_cd' : 1
-        \ })
-'''
+" }}} '''
+hook_source = ''' "{{{
+  call vimfiler#custom#profile('default', 'context', { 'auto_cd' : 1 })
+" }}} '''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
@@ -207,9 +205,7 @@ on_source = 'lambdalisue/vim-gista'
 [[plugins]]
 repo = 'majkinetor/unite-cmdmatch'
 on_map = '<Plug>(unite_cmdmatch_complete)'
-hook_add = '''
-  cmap <c-o> <Plug>(unite_cmdmatch_complete)
-'''
+hook_add = 'cmap <c-o> <Plug>(unite_cmdmatch_complete)'
 # }}}
 
 # Web {{{
@@ -218,20 +214,20 @@ repo = 'kannokanno/previm'
 depends = 'open-browser.vim'
 on_ft = 'md'
 on_map = '<Plug>'
-hook_add = '''
+hook_add = ''' "{{{
   nnoremap [Previm] <Nop>
   nmap <Space>pv [Previm]
 
   nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-hook_add = '''
+hook_add = ''' " {{{
   let g:netrw_nogx = 1
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'basyura/TweetVim'
@@ -245,12 +241,12 @@ depends = [
   'favstar-vim'
 ]
 on_cmd = 'TweetVimHomeTimeline'
-hook_add = '''
+hook_add = ''' " {{{
   let g:tweetvim_display_icon = 1
   let g:tweetvim_display_source = 1
   let g:tweetvim_tweet_per_page = 60
   let g:tweetvim_config_dir = expand('~/.vim/tmp/tweetvim')
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'basyura/twibill.vim'
@@ -280,12 +276,12 @@ on_cmd = [
   'WatchdogsRunSilent',
   'WatchdogsRunSweep'
 ]
-hook_add = '''
+hook_add = ''' " {{{
   nnoremap [Watchdogs] <Nop>
   nmap <Space>W [Watchdogs]
 
   nnoremap <silent> [Watchdogs] :<C-u>WatchdogsRun<CR>
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -329,7 +325,7 @@ on_ft = 'coffee'
 repo = 'Shougo/neocomplete.vim'
 if = 'has("lua")'
 depends = 'context_filetype.vim'
-hook_add = '''
+hook_add = ''' " {{{
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#enable_auto_select = 1
@@ -379,7 +375,7 @@ hook_add = '''
     let g:neocomplete#sources#omni#input_patterns = {}
   endif
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-'''
+" }}}} '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -387,7 +383,7 @@ depends = 'neosnippet-snippets'
 on_i = 1
 on_ft = 'snippet'
 on_map = '<Plug>(neosnippet_expand_'
-hook_add = '''
+hook_add = ''' " {{{
   " Plugin key-mappings.
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -405,7 +401,7 @@ hook_add = '''
   if has('conceal')
     set conceallevel=2 concealcursor=niv
   endif
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
@@ -428,14 +424,14 @@ repo = 'cohama/vim-smartinput-endwise'
 depends = 'vim-smartinput'
 on_i = 1
 on_map = '<Plug>(smartinput_'
-hook_source = '''
+hook_source = ''' " {{{
   call smartinput_endwise#define_default_rules()
   call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)','<BS>','<BS>')
   call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)','<BS>','<C-h>')
   call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)','<Enter>','<Enter>')
   imap <expr><BS> neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
   imap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
