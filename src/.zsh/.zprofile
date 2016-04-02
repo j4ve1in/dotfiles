@@ -5,7 +5,6 @@ ZFILE=(
   ~/.zshenv
   ~/.zsh/.zprofile
   ~/.zsh/.zshrc
-  ~/.zsh/.zlogin
   ~/.zsh/rc/*.zsh
 )
 local BLUE="\x1b[1;34m"
