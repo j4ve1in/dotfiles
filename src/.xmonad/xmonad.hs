@@ -189,9 +189,14 @@ main = do
             ((0                       , 0x1008ff13), spawn "volume_up"),
             ((0                       , 0x1008ff11), spawn "volume_down"),
             ((0                       , 0x1008ff12), spawn "volume_mute"),
+            ((modm .|. shiftMask      , xK_s      ), spawn "volume_up"),
+            ((modm .|. shiftMask      , xK_a      ), spawn "volume_down"),
+            ((modm .|. shiftMask      , xK_d      ), spawn "volume_mute"),
             -- Brightness Keys
             ((0                       , 0x1008FF02), spawn "increase_brightness"),
             ((0                       , 0x1008FF03), spawn "decrease_brightness"),
+            ((modm .|. shiftMask      , xK_e      ), spawn "increase_brightness"),
+            ((modm .|. shiftMask      , xK_w      ), spawn "decrease_brightness"),
             -- Take a screenshot (whole window)
             ((0                       , 0xff61    ), spawn "$HOME/bin/screenshot.sh"),
             -- Take a screenshot (selected area)
