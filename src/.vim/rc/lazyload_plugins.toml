@@ -445,6 +445,10 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
+
+[[plugins]]
 repo = 'Townk/vim-autoclose'
 on_i = 1
 # }}}
