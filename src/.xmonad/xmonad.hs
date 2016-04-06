@@ -210,8 +210,8 @@ main = do
             -- Launch terminal
             ((modm                  , xK_Return),   spawn "urxvt_tmux"),
             ((modm .|. shiftMask    , xK_f),   spawn "fcitx-configtool"),
-            ((modm                  , xK_t),     spawn "urxvtc -e htop"),
-            ((modm                  , xK_f),     spawn "urxvtc -e ranger")
+            ((modm                  , xK_t),     spawn "urxvtc --title htop -e htop"),
+            ((modm                  , xK_f),     spawn "urxvtc --title ranger --depth 0 -e ranger")
         ]
 
 -- myLayout: Handle Window behaveior
