@@ -1,7 +1,7 @@
 xbacklight -set 1
 nitrogen --restore &
 compton &
-xss-lock -- dm-tool lock &
+killall xss-lock; xss-lock -- dm-tool lock &
 if type fcitx; then
   export GTK_IM_MODULE="fcitx" QT_IM_MODULE="fcitx" XMODIFIERS="@im=fcitx"
   fcitx &
