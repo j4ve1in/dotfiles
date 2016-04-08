@@ -333,23 +333,6 @@ repo = 'dhruvasagar/vim-table-mode'
 hook_add = 'let g:loaded_table_mode = 1'
 
 [[plugins]]
-repo = 'tyru/eskk.vim'
-hook_add = ''' " {{{
-  let g:eskk#directory = expand('$CACHE/eskk')
-  let g:eskk#large_dictionary = {
-    \   'path': '/usr/share/skk/SKK-JISYO.L',
-    \   'sorted': 1,
-    \   'encoding': 'euc-jp',
-    \}
-  let g:eskk#server = {
-    \ 'host': 'localhost',
-    \ 'port': 55100
-    \}
-  let g:eskk#marker_henkan = "\uf13a"
-  let g:eskk#marker_henkan_select = "\uf107"
-" }}} '''
-
-[[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
 

@@ -38,14 +38,6 @@ set undofile undodir=~/.vim/undo
 " Mouse
 set mouse=a ttymouse=xterm2
 
-" IM
-augroup IMToggle
-  autocmd!
-augroup END
-if executable('fcitx-remote')
-  autocmd IMToggle InsertLeave * call system('fcitx-remote -c')
-endif
-
 " File
 "" Indent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
