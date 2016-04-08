@@ -229,7 +229,7 @@ hook_add = ''' " {{{
         \ 'visual':   {},
         \ 'tabline':  {}}
 
-  let s:p.normal.middle = [['', '', s:white, 'none']]
+  let s:p.normal.middle = [['', '', s:white, s:black]]
   let s:p.normal.left = [
         \ ['', '', s:white, s:blue],
         \ ['', '', s:white, s:lightblue]]
