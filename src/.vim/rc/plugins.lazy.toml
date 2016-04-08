@@ -119,8 +119,8 @@ hook_add = ''' " {{{
     \       ['~/.vim/rc/init.vim'    , '~/.vim/rc/init.vim'],
     \       ['~/.vim/rc/keymap.vim'     , '~/.vim/rc/keymap.vim'],
     \       ['~/.vim/rc/plugins.vim'     , '~/.vim/rc/plugins.vim'],
-    \       ['~/.vim/rc/lazyload_plugin.toml'     , '~/.vim/rc/lazyload_plugin.toml'],
-    \       ['~/.vim/rc/load_plugin.toml'     , '~/.vim/rc/load_plugin.toml']
+    \       ['~/.vim/rc/plugins.lazy.toml'     , '~/.vim/rc/plugins.lazy.toml'],
+    \       ['~/.vim/rc/plugins.toml'     , '~/.vim/rc/plugins.toml']
     \     ]
   let g:unite_source_menu_menus.bash = {
     \     'description' : 'Edit bash files'
@@ -165,12 +165,11 @@ hook_source = ''' " {{{
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_ft = '.*'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
-on_map = '<Plug>'
+on_map = [['n', '<Plug>']]
 on_path = '.*'
 hook_add = ''' "{{{
   let g:vimfiler_as_default_explorer = 1

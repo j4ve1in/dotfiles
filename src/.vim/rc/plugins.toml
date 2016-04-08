@@ -176,17 +176,17 @@ hook_add = ''' " {{{
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
-depends = 'unite.vim'
+depends = ['unite.vim', 'vimfiler']
 
-[[plugins]]
-repo = 'haya14busa/incsearch.vim'
-on_map = '<Plug>(incsearch-'
-hook_add = ''' " {{{
-  let g:incsearch#no_inc_hlsearch = 1
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-" }}} '''
+# [[plugins]]
+# repo = 'haya14busa/incsearch.vim'
+# on_map = '<Plug>(incsearch-'
+# hook_add = ''' " {{{
+#   let g:incsearch#no_inc_hlsearch = 1
+#   map /  <Plug>(incsearch-forward)
+#   map ?  <Plug>(incsearch-backward)
+#   map g/ <Plug>(incsearch-stay)
+# " }}} '''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
