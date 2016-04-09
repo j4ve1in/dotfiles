@@ -1,7 +1,7 @@
 has() { type $1 >/dev/null 2>&1; }
 
 # ls
-alias l='ls -F --color=auto' ll='l -hl --time-style=long-iso'
+alias l{,s}='ls -F --color=auto' ll='l -hl --time-style=long-iso'
 alias la='l -A' lla='ll -A'
 
 # grep
