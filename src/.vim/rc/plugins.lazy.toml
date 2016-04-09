@@ -317,6 +317,18 @@ on_ft = 'slim'
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
 # }}}
 
 # Completion {{{
@@ -434,18 +446,6 @@ hook_source = ''' " {{{
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'digitaltoad/vim-pug'
-on_ft = 'pug'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'

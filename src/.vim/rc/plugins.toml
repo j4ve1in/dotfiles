@@ -106,7 +106,7 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'kana/vim-submode'
-hook_source = ''' " {{{
+hook_add = ''' " {{{
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
   call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
   call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
@@ -115,10 +115,6 @@ hook_source = ''' " {{{
   call submode#map('winsize', 'n', '', '<', '<C-w><')
   call submode#map('winsize', 'n', '', '+', '<C-w>+')
   call submode#map('winsize', 'n', '', '-', '<C-w>-')
-  call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-  call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
-  call submode#map('changetab', 'n', '', 't', 'gt')
-  call submode#map('changetab', 'n', '', 'T', 'gT')
   call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
   call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
   call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
