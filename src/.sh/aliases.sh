@@ -9,9 +9,9 @@ alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
 # cd
 alias c='cd'
-alias .='l' ..='cd ..' ...='cd ~/.dotfiles'
+alias .='cd ~/.dotfiles' ..='cd ..'
 alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
-alias d='cd ~/Dropbox'
+alias dr='cd ~/Dropbox'
 
 # diff
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
@@ -63,6 +63,7 @@ has ghq && alias gh='ghq'
 has zsh && alias z='zsh'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
 has gyazo && alias gy='gyazo' gym='gyazo_markdown'
+has docker && alias d='docker'
 alias s='sudo -E ' se='sudoedit -E '
 alias na='netctl-auto'
 alias h='history'
