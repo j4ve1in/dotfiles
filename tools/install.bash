@@ -45,7 +45,7 @@ install_message() {
   printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
   case $ANSWER in
     "Y" | "y" | "Yes" | "yes" ) install ;;
-    * ) ;;
+    * ) exit 0 ;;
   esac
 }
 
