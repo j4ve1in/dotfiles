@@ -2,72 +2,72 @@
 
 if [ "$1" == "window-format" ]; then
   ## window index and flag
-  printf "#[fg=colour244,bg=black]  #I#F "
+  printf '#[fg=colour244,bg=black]  #I#F '
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour240,bg=black]$(printf '\\ue0b1')"
+    printf '#[fg=colour240,bg=black]\ue0b1'
   else
-    printf ":"
+    printf ':'
   fi
   ## window name
-  printf " #[fg=colour33]#W  "
+  printf ' #[fg=colour33]#W  '
 elif [ "$1" == "window-current-format" ]; then
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=black,bg=colour21]$(printf '\\ue0b0')"
+    printf '#[fg=black,bg=colour21]\ue0b0'
   fi
   ## Current window index and flag
-  printf "#[fg=colour117,bg=colour21] #I#F "
+  printf '#[fg=colour117,bg=colour21] #I#F '
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "$(printf '\\ue0b1')"
+    printf '\ue0b1'
   else
-    printf ":"
+    printf ':'
   fi
   ## Current window name
-  printf " #[fg=colour231,bg=colour21,bold]#W "
+  printf ' #[fg=colour231,bg=colour21,bold]#W '
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour21,bg=black]$(printf '\\ue0b0')"
+    printf '#[fg=colour21,bg=black]\ue0b0'
   fi
 elif [ "$1" == "left" ]; then
   ## Session
-  printf "#[fg=colour254,bg=colour26,bold]#{?client_prefix,#[reverse],} #S "
+  printf '#[fg=colour254,bg=colour26,bold]#{?client_prefix,#[reverse],} #S '
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour26,bg=black]#{?client_prefix,#[fg=colour233]#[bg=colour254],}$(printf '\\ue0b0')"
+    printf '#[fg=colour26,bg=black]#{?client_prefix,#[fg=colour233]#[bg=colour254],}\ue0b0'
   fi
 elif [ "$1" == "right" ]; then
   # Prefixkey
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour27,bg=black]$(printf '\\ue0b2')"
+    printf '#[fg=colour27,bg=black]\ue0b2'
   fi
   printf "#[fg=colour231,bg=colour27] $(tmux show-options -g prefix | tr -d 'prefix ') "
   # Battery
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour21,bg=colour27]$(printf '\\ue0b2')"
+    printf '#[fg=colour21,bg=colour27]\ue0b2'
   fi
   if type acpi >/dev/null 2>&1;then
     Battery="`acpi -b | grep -oE '[0-9]+%'`"
     if (( `echo "$Battery" | tr -d '%'` <= 20 )) ; then
-      printf "#[fg=colour196,bg=colour21,bold]"
+      printf '#[fg=colour196,bg=colour21,bold]'
     else
-      printf "#[fg=colour231,bg=colour21]"
+      printf '#[fg=colour231,bg=colour21]'
     fi
     echo -n " $Battery "
   fi
   # Date
   ## separator
   if type powerline >/dev/null 2>&1;then
-    printf "#[fg=colour17,bg=colour21]$(printf '\\ue0b2')"
+    printf '#[fg=colour17,bg=colour21]\ue0b2'
   fi
   printf "#[fg=colour231,bg=colour17] $(date +'%m/%d(%a)') "
   if type powerline >/dev/null 2>&1;then
-    printf "$(printf '\\ue0b3')"
+    printf '\ue0b3'
   else
-    printf "|"
+    printf '|'
   fi
   printf " $(date +'%H:%M:%S') "
 fi
