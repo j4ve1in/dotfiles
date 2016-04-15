@@ -13,7 +13,7 @@ set_prompt () {
   fi
   ## Git
   init-prompt-git-branch() {
-    git symbolic-ref HEAD >/dev/null 2>&1 && echo " < $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
+    git symbolic-ref HEAD >/dev/null 2>&1 && echo -e " \ue0a0 $(git symbolic-ref HEAD 2>/dev/null | sed 's/^refs\/heads\///')"
   }
 
   if type git >/dev/null 2>&1; then
