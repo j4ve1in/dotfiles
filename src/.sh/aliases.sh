@@ -92,7 +92,7 @@ case "`uname -s`" in
     alias st='start' e='start .'
     ;;
   Darwin)
-    alias l='ls -FG'
+    alias l{,s}='ls -FG' ll='l -hl'
     alias op='open' f='open .'
     alias pbc='pbcopy' pbp='pbpaste'
     ;;
