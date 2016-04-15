@@ -64,6 +64,7 @@ has zsh && alias z='zsh'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
 has gyazo && alias gy='gyazo' gym='gyazo_markdown'
 has docker && alias d='docker'
+has feednix && alias fn='feednix'
 alias s='sudo -E ' se='sudoedit -E '
 alias na='netctl-auto'
 alias h='history'
@@ -86,10 +87,10 @@ case "`uname -s`" in
   Linux)
     alias xdo='xdg-open'
     alias xs='xsel'
-    alias r='ranger'
+    alias f='ranger'
     ;;
   MSYS*)
-    alias st='start' e='start .'
+    alias st='start' f='start .'
     ;;
   Darwin)
     alias l{,s}='ls -FG' ll='l -hl'
