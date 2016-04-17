@@ -69,10 +69,10 @@ install() {
   cprint "done\n" $SUCCESS_COLOR
 
   # Backup
-  source ~/.dotfiles/tools/backup.bash
+  . ~/.dotfiles/tools/backup.bash
 
   # Deploy
-  source ~/.dotfiles/tools/deploy.bash
+  . ~/.dotfiles/tools/deploy.bash
 
   # Install plugin
   [ "$FULL_INSTALLATION" = "1" ] && install_plugin && unset FULL_INSTALLATION

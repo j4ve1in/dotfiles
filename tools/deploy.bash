@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.bash
-source_dotool lib/dot
+. ~/.dotfiles/tools/lib/base.bash
+source_lib dot
 
 cprint "Create symbolic link" $UNDERLINE
 

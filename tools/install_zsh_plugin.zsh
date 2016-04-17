@@ -14,7 +14,7 @@ ZPLUG_PLUGINS=(
 )
 
 if [ ! -d ~/.zsh/bundle/repos ]; then
-  source ~/.zsh/bundle/zplug/zplug
+  . ~/.zsh/bundle/zplug/zplug
   {
     sleep 1
     zplug update --self
