@@ -9,9 +9,8 @@ alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
 # cd
 alias c='cd'
-alias .='cd ~/.dotfiles' ..='cd ..'
+alias ..='cd ..'
 alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
-alias dr='cd ~/Dropbox'
 
 # diff
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
@@ -34,8 +33,7 @@ fi
 # Vi
 if has vim; then
   alias v='vim -p'
-  alias twv='vim +TweetVimHomeTimeline'
-  alias tw='vim +TweetVimCommandSay'
+  alias twv='vim +TweetVimHomeTimeline' tw='vim +TweetVimCommandSay'
 elif has vi; then
   alias v='vi -p'
 fi
@@ -43,13 +41,9 @@ fi
 # Ruby
 if has ruby; then
   alias ru='ruby'
-  ## Bundler
   has bundle && alias b='bundle'
-  ## Rake
   has rake && alias rk='rake' rkr='rake routes'
-  ## Rails
   has rails && alias ri=rails rid='rails db' ric='rails c'
-  ## Rails
   has rspec && alias rs='rspec --color'
 fi
 
@@ -64,13 +58,12 @@ has zsh && alias z='zsh'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
 has gyazo && alias gy='gyazo' gym='gyazo_markdown'
 has docker && alias d='docker'
+has pacman && alias pm='pacman'
 has feednix && alias fn='feednix'
 alias s='sudo -E ' se='sudoedit -E '
 alias na='netctl-auto'
 alias h='history'
 alias p='ps'
-alias pw='pwd'
-has pacman && alias pm='pacman'
 alias m='mv'
 alias le='less'
 alias path='echo -e ${PATH//:/\\n}'
