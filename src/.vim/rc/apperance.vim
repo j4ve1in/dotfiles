@@ -1,15 +1,12 @@
 set wrap
-
+set ruler
+set number
+set showcmd
 set showmatch
-
 set matchtime=1
 
-set showcmd
-
-set number
-
-set ruler
-
+" Fileformat
+set fileformat=unix
 set fileformats=unix,dos,mac
 
 " Encoding
