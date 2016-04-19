@@ -37,14 +37,14 @@ if [ "$INCLUDE_GUARD_DOT" = "0" ]; then
       if [ -f ${DOT_PATH[$i]} ]; then
         DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
       elif [ -d ${DOT_PATH[$i]} ]; then
-        DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]%/*} | grep dot${DOT_NAME[$i]} | awk 'NR==1{print $6"/"$7"-"$8}')
+        DOT_FILE_DATE[$i]=$(ls -Al ${DOT_PATH[$i]%/*} | grep ${DOT_DIR}/src | awk 'NR==1{print $6"/"$7"-"$8}')
       fi
     else
       LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
       if [ -f ${DOT_PATH[$i]} ]; then
         DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
       elif [ -d ${DOT_PATH[$i]} ]; then
-        DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]%/*} | grep dot${DOT_NAME[$i]} | awk 'NR==1{print $6}')
+        DOT_FILE_DATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION ${DOT_DIR}/src | grep ${DOT_NAME[$i]} | awk 'NR==1{print $6}')
       fi
     fi
   done
