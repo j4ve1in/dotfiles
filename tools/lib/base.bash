@@ -1,8 +1,8 @@
 #!/bin/bash
 
-: ${INCLUDE_GUARD:=0}
+: ${INCLUDE_GUARD_BASE:=0}
 
-if [ "$INCLUDE_GUARD" = "0" ]; then
+if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
   has() { type $1 >/dev/null 2>&1; }
 
   print() { printf "$@\n"; }
@@ -43,5 +43,5 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
     source ${dir}/${file}.bash $arg
   }
 
-  INCLUDE_GUARD="1"
+  INCLUDE_GUARD_BASE="1"
 fi
