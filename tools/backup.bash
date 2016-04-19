@@ -1,9 +1,9 @@
 #!/bin/bash
 
 . ~/.dotfiles/tools/lib/base.bash
-source_lib dot
 
 cprint "Backup dotfiles" $UNDERLINE
+DOT_DIR=~/.dotfiles
 cd "$DOT_DIR"
 export GIT_{AUTHOR,COMMITTER}_NAME='dotsetup'
 export GIT_{AUTHOR,COMMITTER}_EMAIL='dotsetup@example.com'
