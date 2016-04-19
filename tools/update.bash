@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.bash
+. ~/.dotfiles/tools/lib/base.bash
 
 # Pull remote repository
 printf "Checking repository..."
@@ -11,10 +11,10 @@ printf "Checking repository..."
 cprint "done" $CYAN_B
 
 # Backup
-source ~/.dotfiles/tools/backup.bash
+. ~/.dotfiles/tools/backup.bash
 
 # Deploy
-source ~/.dotfiles/tools/deploy.bash
+. ~/.dotfiles/tools/deploy.bash
 
 # Update plugin
 if [ -d ~/.zsh/bundle/antigen ] || [ -d ~/.vim/bundle/neobundle.vim ] || [ -d ~/.tmux/plugins/tpm ]; then
