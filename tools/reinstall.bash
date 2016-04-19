@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.bash
+. ~/.dotfiles/tools/lib/base.bash
 
 printf "Are you sure you want to continue (yes/no)? "; read ANSWER
 
@@ -8,7 +8,7 @@ case $ANSWER in
   "Y" | "y" | "Yes" | "yes" )
     # Uninstall
     export ASSUME_YES="1"
-    source ~/.dotfiles/tools/uninstall.bash
+    . ~/.dotfiles/tools/uninstall.bash
     # Install
     printf "Downloading installer..."
     if has curl; then
@@ -24,7 +24,7 @@ case $ANSWER in
     fi
     cprint "done" $CYAN_B
     export ASSUME_YES="1"
-    source ~/install.bash
+    . ~/install.bash
     ;;
   * ) ;;
 esac

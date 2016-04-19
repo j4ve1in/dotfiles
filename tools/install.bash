@@ -45,7 +45,7 @@ install_message() {
   printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
   case $ANSWER in
     "Y" | "y" | "Yes" | "yes" ) install ;;
-    * ) ;;
+    * ) exit 0 ;;
   esac
 }
 
@@ -69,10 +69,10 @@ install() {
   cprint "done\n" $SUCCESS_COLOR
 
   # Backup
-  source ~/.dotfiles/tools/backup.bash
+  . ~/.dotfiles/tools/backup.bash
 
   # Deploy
-  source ~/.dotfiles/tools/deploy.bash
+  . ~/.dotfiles/tools/deploy.bash
 
   # Install plugin
   [ "$FULL_INSTALLATION" = "1" ] && install_plugin && unset FULL_INSTALLATION

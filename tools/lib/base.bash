@@ -29,11 +29,18 @@ if [ "$INCLUDE_GUARD" = "0" ]; then
     printf "${color}${string}${reset}"
   }
 
+  source_lib() {
+    local file="$1"
+    local arg="$2"
+    local dir="$HOME/.dotfiles/tools/lib"
+    source ${dir}/${file}.bash $arg
+  }
+
   source_dotool() {
     local file="$1"
     local arg="$2"
-    local dotooldir="$HOME/.dotfiles/tools/"
-    source ${dotooldir}${file}.bash $arg
+    local dir="$HOME/.dotfiles/tools"
+    source ${dir}/${file}.bash $arg
   }
 
   INCLUDE_GUARD="1"

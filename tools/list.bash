@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.bash
+. ~/.dotfiles/tools/lib/base.bash
 
-source_dotool lib/dot
+source_lib dot
 
 FIRST_LINE=(
   'No.'

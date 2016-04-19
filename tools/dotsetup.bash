@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.dotfiles/tools/lib/base.bash
+. ~/.dotfiles/tools/lib/base.bash
 
 display_advice() { echo -e "Try 'dotsetup --help' for more information.\n"; }
 
