@@ -4,6 +4,8 @@ set autoread
 set history=50
 set nrformats=
 set scrolloff=5
+set winheight=8
+set noequalalways
 set display=lastline
 set virtualedit=block
 set clipboard+=unnamed
@@ -11,9 +13,8 @@ set grepprg=grep\ -inH
 set whichwrap=b,~,[,],<,>
 set backspace=indent,eol,start
 set noerrorbells visualbell t_vb=
+autocmd QuickFixCmdPost *grep* cwindow
 set viminfo='30,<50,s100,n~/.vim/viminfo
-set noequalalways
-set winheight=8
 
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
