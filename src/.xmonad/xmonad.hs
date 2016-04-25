@@ -67,8 +67,8 @@ myfocusedBorderColor = colorBlue
 gapwidth  = 9
 gapwidthU = 7
 gapwidthD = 8
-gapwidthL = 37
-gapwidthR = 38
+gapwidthL = 0
+gapwidthR = 0
 
 -- Define keys to remove
 keysToRemove x = [
