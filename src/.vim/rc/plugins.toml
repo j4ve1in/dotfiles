@@ -334,4 +334,7 @@ depends = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'jaxbot/github-issues.vim'
 # }}}

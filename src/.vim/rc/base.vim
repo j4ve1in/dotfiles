@@ -79,4 +79,4 @@ augroup END
 
 "" Others
 autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable nolist
+autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable

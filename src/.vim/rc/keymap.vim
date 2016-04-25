@@ -1,5 +1,3 @@
-nnoremap j gj
-nnoremap k gk
 nnoremap <C-g> 1<C-g>
 noremap <Space>h ^
 noremap <Space>l $
@@ -80,17 +78,6 @@ onoremap ar a]
 onoremap ir i]
 onoremap ad a"
 onoremap id i"
-
-" Tab
-nnoremap [Tab] <Nop>
-nmap <Space>t [Tab]
-nnoremap [Tab] :tabedit<Space>
-nnoremap [Tab]b :tabnew<Space>\|<Space>b<Space>
-nnoremap <silent> [Tab]o :tabonly<CR>
-nnoremap <silent> [Tab]m :tabmove<CR>
-nnoremap <silent> [Tab]0m :0tabmove<CR>
-nnoremap <silent> [Tab]> :tabmove<Space>+1<CR>
-nnoremap <silent> [Tab]< :tabmove<Space>-1<CR>
 
 " C-Space
 if has('unix') && !has('gui_running')
