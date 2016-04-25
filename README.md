@@ -23,7 +23,7 @@
 
 
 # Overview
-This repository manage **[my]** configuration files on Unix-type operating systems.
+This repository manage configuration files on Unix-type operating systems.
 
 ![Screenshot]
 
@@ -35,9 +35,14 @@ You can install dotfiles by the following installation command.
 | cURL | bash <(curl -L d.ytet5uy4.com)         |
 | Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
-**NOTE:** If you want to use **full installation**, run `export FULL_INSTALLATION='1'` and installation command in your terminal. When you use full installation, install shell and editor plugin, too.
+**NOTE:** If you want to use **full installation**, run
+`export FULL_INSTALLATION='1'` and installation command in your terminal.
+When you use full installation, install shell and editor plugin, too.
 
-**NOTE2:** If you want to use **automatic installation**, run `export ASSUME_YES='1'` and installation command in your terminal. When you use automatic installation, assume `yes` as answer to all prompts and run non-interactively.
+**NOTE2:** If you want to use **automatic installation**,
+run `export ASSUME_YES='1'` and installation command in your terminal.
+When you use automatic installation, assume `yes` as answer to all prompts and
+run non-interactively.
 
 **Demo:**
 [![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
@@ -70,7 +75,8 @@ You can install dotfiles by the following installation command.
 ![dotsetup2]
 
 # Test with Docker
-Before running installation command to setup dotfiles, you can pull an **[image]** and try my dotfiles in a Docker container as follows.
+Before running installation command to setup dotfiles, you can pull
+an **[image]** and try my dotfiles in a Docker container as follows.
 ```bash
 $ sudo docker pull ytet5uy4/dotfiles
 $ sudo docker run -it --rm ytet5uy4/dotfiles
@@ -80,7 +86,6 @@ $ sudo docker run -it --rm ytet5uy4/dotfiles
 Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
-[my]: //github.com/ytet5uy4
 [Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
 [asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
 [dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
