@@ -18,6 +18,8 @@ bindkey '^E' end-of-line
 bindkey '^F' forward-char
 bindkey '^B' backward-char
 bindkey '^K' kill-line
+bindkey '^[f' forward-word
+bindkey '^[b' backward-word
 
 # Delete overlapping environment variable
 typeset -U path cdpath fpath manpath

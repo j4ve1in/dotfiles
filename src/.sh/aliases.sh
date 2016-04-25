@@ -9,8 +9,7 @@ alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
 # cd
 alias c='cd'
-alias ..='cd ..'
-alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
+alias ..='cd ..' doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
 
 # diff
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
@@ -19,33 +18,13 @@ has colordiff && alias di='colordiff -u' || alias di='diff -u'
 if has vagrant; then
   alias vah='vagrant halt'
   alias vas='vagrant ssh'
-  alias vast='vagrant status' vags='vagrant global-status'
   alias vau='vagrant up' vaus='vagrant up && vagrant ssh'
   alias var='vagrant reload' vars='vagrant reload && vagrant ssh'
 fi
 
-# Tmux
-if has tmux; then
-  alias t='tmux'
-  alias ta='tmux attach'
-fi
-
 # Vi
-if has vim; then
-  alias v='vim -p'
-  alias twv='vim +TweetVimHomeTimeline' tw='vim +TweetVimCommandSay'
-elif has vi; then
-  alias v='vi -p'
-fi
-
-# Ruby
-if has ruby; then
-  alias ru='ruby'
-  has bundle && alias b='bundle'
-  has rake && alias rk='rake' rkr='rake routes'
-  has rails && alias ri=rails rid='rails db' ric='rails c'
-  has rspec && alias rs='rspec --color'
-fi
+has vi && alias v='vi -p'
+has vim && alias v='vim -p'
 
 # mount
 alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
@@ -53,43 +32,30 @@ alias uusb='sudo umount /mnt/usb'
 
 # Others
 has git && alias g='git'
-has ghq && alias gh='ghq'
-has zsh && alias z='zsh'
+has tmux && alias t='tmux'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
-has gyazo && alias gy='gyazo' gym='gyazo_markdown'
 has docker && alias d='docker'
 has pacman && alias pm='pacman'
+has yaourt && alias y='yaourt'
 has feednix && alias fn='feednix'
+has netctl-auto && alias n='netctl-auto'
+has thefuck && eval $(thefuck --alias)
 alias s='sudo -E ' se='sudoedit -E '
-alias na='netctl-auto'
-alias h='history'
-alias p='ps'
+alias p='ps aux'
 alias m='mv'
 alias le='less'
-alias path='echo -e ${PATH//:/\\n}'
-alias fpath='echo -e ${FPATH//:/\\n}'
-alias jman='LANG="ja_JP.UTF-8" man'
+alias path='echo -e ${PATH//:/\\n}' fpath='echo -e ${FPATH//:/\\n}'
+alias jman="LANG='ja_JP.UTF-8' man"
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l' rl='reload'
 alias dsu='dotsetup'
 alias ts='trash'
-alias sa='search'
 
 case "`uname -s`" in
-  Linux)
-    alias xdo='xdg-open'
-    alias xs='xsel'
-    alias f='ranger'
-    ;;
-  MSYS*)
-    alias st='start' f='start .'
-    ;;
-  Darwin)
-    alias l{,s}='ls -FG' ll='l -hl'
-    alias op='open' f='open .'
-    alias pbc='pbcopy' pbp='pbpaste'
-    ;;
+  Linux) alias f='ranger' ;;
+  MSYS*) alias st='start' f='start .' ;;
+  Darwin) alias l{,s}='ls -FG' ll='l -hl' op='open' f='open .' ;;
 esac
 
 unset -f has

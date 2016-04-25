@@ -74,39 +74,9 @@ ssh-add-with-lpass() {
   main $@
 }
 
-set-urxvt-font-size() {
-  old_name=`grep -i '^\s*urxvt.font' ~/.Xdefaults | cut -d: -f2-`
-  new_name=`echo "$old_name" | sed 's/:\(pixel\)\?size=[0-9]\+/'":\1size=$1/"`
-
-  [ -n "$TMUX" ] && printf '\ePtmux;\e'
-  printf '\e]50;%s\007' "$new_name"
-  [ -n "$TMUX" ] && printf '\e\\'
-
-  echo "Set font: $new_name"
-}
-
 mcd() { mkdir $1 && cd $1; }
 
-man() {
-  [ "$PAGER" != "" ] && local p="$PAGER" && unset PAGER
-  [ "$MANPAGER" != "" ] && local m="$MNNPAGER" && unset MANPAGER
-  if command man $* >/dev/null 2>&1;then
-    vim +"r !command man $* 2>&1 | col -bx" +"normal ggdd" +'set ft=man'
-    return 0
-  else
-    echo "$(command man $* 2>&1)"; return 1
-  fi
-  [ "$p" != "" ] && export PAGER="$p"
-  [ "$m" != "" ] && export MANPAGER="$m"
-}
-
 xlb() { xbacklight -set ${1}0;}
-
-gyazo_markdown() {
-  local URL="`command gyazo | head -n 1`"
-  local IMAGE_URL="`echo ${URL}.png | sed 's/gyazo.com/i.gyazo.com/'`"
-  echo "[![alt属性](${IMAGE_URL})](${URL})" | xsel -bi
-}
 
 trash() {
   TRASH_DIR="${HOME}/.local/share/Trash/files"
