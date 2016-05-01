@@ -21,6 +21,8 @@ URxvt.iso14755_52: false
 URxvt.depth: 32
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt.background: rgba:0000/0000/0000/eeee
+URxvt.cursorColor: blue
+URxvt.cursorColor2: white
 
 !! Font
 URxvt.font: xft:Migu 1M:size=12:antialias=true, \
