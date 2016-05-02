@@ -41,7 +41,7 @@ if [ -d ~/.zsh/bundle/zplug ]; then
   i='0'
   N="$((${#ZPLUG_PLUGINS[@]}+1))"
   display_loading_plugin "$((i+1))" "$N"
-  source ~/.zsh/bundle/zplug/zplug && ((i++))
+  . ~/.zsh/bundle/zplug/zplug && ((i++))
   for plugin in ${ZPLUG_PLUGINS[@]}; do
     display_loading_plugin "$((i+1))" "$N"
     zplug "$plugin" >/dev/null 2>&1 && ((i++))
