@@ -229,7 +229,7 @@ hook_add = ''' " {{{
 " }}} '''
 
 [[plugins]]
-repo = 'basyura/TweetVim'
+repo = 'basyura/Tweetvim'
 depends = [
   'open-browser.vim',
   'twibill.vim',
@@ -239,7 +239,8 @@ depends = [
   'unite.vim',
   'favstar-vim'
 ]
-on_cmd = 'TweetVimHomeTimeline'
+on_cmd = ['TweetVimHomeTimeline']
+on_source = 'unite.vim'
 hook_add = ''' " {{{
   let g:tweetvim_display_icon = 1
   let g:tweetvim_display_source = 1
