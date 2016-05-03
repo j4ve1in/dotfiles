@@ -1,9 +1,5 @@
 # Source global definitions
-if [ "$OSTYPE" = "msys" ]; then
-  if [ -f /etc/bashrc ]; then
-    /etc/bashrc
-  fi
-fi
+[ "$OSTYPE" = "msys" ] && [ -f /etc/bashrc ] && /etc/bashrc
 
 # vimode
 set -o vi
@@ -17,8 +13,3 @@ shopt -s extglob
 shopt -s globstar
 shopt -s nocaseglob
 shopt -s nocasematch
-
-# alias
-if has hub >/dev/null 2>&1; then
-  eval "`hub alias -s`"
-fi

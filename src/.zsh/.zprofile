@@ -7,12 +7,12 @@ ZFILE=(
   ~/.zsh/.zshrc
   ~/.zsh/rc/*.zsh
 )
-local BLUE="\x1b[1;34m"
-local SKYBLUE="\x1b[1;38;05;75m"
+local BLUE="\e[1;34m"
+local SKYBLUE="\e[1;38;05;75m"
 cprintf() {
   local color="$1"
   local string="$2"
-  local reset="\x1b[0m"
+  local reset="\e[0m"
   printf "${color}${string}${reset}"
 }
 ## Check
@@ -37,7 +37,7 @@ if [ "$N" != "0" ]; then
       if zcompile ${file}; then
         cprintf $BLUE "done\n"
       else
-        echo -e "\033[1;31merror\033[m"
+        echo -e "\e[1;31merror\e[m"
       fi
       ((i=i+1))
     fi

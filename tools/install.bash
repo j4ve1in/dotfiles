@@ -165,7 +165,7 @@ has() { type $1 >/dev/null 2>&1; }
 
 print() { printf "$@\n"; }
 
-set_color_code() { echo "\x1b[${1}m"; }
+set_color_code() { echo "\e[${1}m"; }
 
 set_color_var() {
   MAIN_COLOR="$(set_color_code '1;38;5;32;49')"

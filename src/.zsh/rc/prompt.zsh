@@ -1,9 +1,9 @@
 # Prompt
 setopt prompt_subst
 ## Colors
-MAIN_COLOR="%{`echo \"\033[1;34m\"`%}" # Blue
-SUB_COLOR1="%{`echo \"\033[1;38;05;75m\"`%}"  # Skyblue
-SUB_COLOR2="%{`echo \"\033[1;38;05;245m\"`%}"  # Gray
+MAIN_COLOR="%{`echo \"\e[1;34m\"`%}" # Blue
+SUB_COLOR1="%{`echo \"\e[1;38;05;75m\"`%}"  # Skyblue
+SUB_COLOR2="%{`echo \"\e[1;38;05;245m\"`%}"  # Gray
 RESET_COLOR='%{$reset_color%}' # Reset
 
 # set PROMPT

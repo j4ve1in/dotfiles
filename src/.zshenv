@@ -3,5 +3,5 @@
 
 . ~/.sh/env.sh
 
-export ZDOTDIR=$HOME/.zsh
+export ZDOTDIR="${HOME}/.zsh"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

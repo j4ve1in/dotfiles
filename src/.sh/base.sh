@@ -1,5 +1,5 @@
 has() { type $1 >/dev/null 2>&1; }
-cprintf() { printf "\x1b[${2}m${1}\x1b[0;39;49m"; }
+cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
 
 [ `uname` != Darwin ] && eval `dircolors -b ~/.dir_colors`
 
@@ -18,8 +18,7 @@ if [ "$OSTYPE" != "msys" ]; then
     [ "$SHELL" = "zsh" ] && set -- "${=LASTLOG}"
     PORT="$2"
     if [ "$ATTRIBUTE" = "9" ]; then
-      FROM="$3"
-      DATE="$4 $5 $6 $7 $9"
+      FROM="$3" DATE="$4 $5 $6 $7 $9"
       echo "$DATE on $PORT from $FROM"
     elif [ "$ATTRIBUTE" = "8" ]; then
       DATE="$3 $4 $5 $6 $8"
@@ -29,13 +28,10 @@ if [ "$OSTYPE" != "msys" ]; then
 fi
 
 # Launch tmux
-if [ "$OSTYPE" != "msys" ]; then
-  if has tmux; then
-    #if not inside a tmux session, and if no session is started, start a new session
-    if [ -z "$TMUX" ];then
-      tmux attach -d >/dev/null 2>&1 || tmux
-    fi
-  fi
+# if not inside a tmux session, and if no session is started,
+# start a new session
+if [ "$OSTYPE" != "msys" ] && has tmux && [ -z "$TMUX" ]; then
+  tmux attach -d >/dev/null 2>&1 || tmux
 fi
 
 unset -f has cprintf

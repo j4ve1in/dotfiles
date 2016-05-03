@@ -37,8 +37,8 @@ done
 
 # Display list
 N=${#FIRST_LINE[@]}
-REVERSE="\x1b[7;39;49m"
-COLOR_RESET="\x1b[0;39;49m"
+REVERSE="\e[7;39;49m"
+COLOR_RESET="\e[0;39;49m"
 printf "$REVERSE"
 for ((i=0;i<N;i++)); do
   printf "%-${COL_MAX_LENGTH[$i]}s" ${FIRST_LINE[$i]}
