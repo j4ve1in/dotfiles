@@ -39,7 +39,8 @@ has pacman && alias pm='pacman'
 has yaourt && alias y='yaourt'
 has feednix && alias fn='feednix'
 has netctl-auto && alias n='netctl-auto'
-has thefuck && eval $(thefuck --alias)
+has thefuck && eval "`thefuck --alias`"
+has hub && eval "`hub alias -s`"
 alias s='sudo -E ' se='sudoedit -E '
 alias p='ps aux'
 alias m='mv'

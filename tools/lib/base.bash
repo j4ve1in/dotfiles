@@ -17,15 +17,15 @@ if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
 
   cprint() {
     local string="$1"
-    local color="\x1b[${2}m"
-    local reset="\x1b[0;39;49m"
+    local color="\e[${2}m"
+    local reset="\e[0;39;49m"
     print "${color}${string}${reset}"
   }
 
   cprintf() {
     local string="$1"
-    local color="\x1b[${2}m"
-    local reset="\x1b[0;39;49m"
+    local color="\e[${2}m"
+    local reset="\e[0;39;49m"
     printf "${color}${string}${reset}"
   }
 

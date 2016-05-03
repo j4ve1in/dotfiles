@@ -17,13 +17,13 @@ has vim && export EDITOR='vim -p' || export EDITOR='vi -p'
 
 # Less
 export LESS='-ciMR'
-LESS_TERMCAP_mb=`echo "\033[1;31m"`
-LESS_TERMCAP_md=`echo "\033[1;38;05;75m"`
-LESS_TERMCAP_me=`echo "\033[0m"`
-LESS_TERMCAP_se=`echo "\033[0m"`
-LESS_TERMCAP_so=`echo "\033[1;44m"`
-LESS_TERMCAP_ue=`echo "\033[0m"`
-LESS_TERMCAP_us=`echo "\033[1;36m"`
+LESS_TERMCAP_mb=`echo "\e[1;31m"`
+LESS_TERMCAP_md=`echo "\e[1;38;05;75m"`
+LESS_TERMCAP_me=`echo "\e[0m"`
+LESS_TERMCAP_se=`echo "\e[0m"`
+LESS_TERMCAP_so=`echo "\e[1;44m"`
+LESS_TERMCAP_ue=`echo "\e[0m"`
+LESS_TERMCAP_us=`echo "\e[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # Path

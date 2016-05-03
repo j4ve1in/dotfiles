@@ -1,10 +1,10 @@
 set_prompt () {
   # Colors
   ## Reset
-  Color_Off='\[\033[0m\]'       # Text Reset
+  Color_Off='\[\e[0m\]'       # Text Reset
   ## Regular Colors
-  Blue='\[\033[0;34m\]'         # Blue
-  White='\[\033[0;37m\]'        # White
+  Blue='\[\e[0;34m\]'         # Blue
+  White='\[\e[0;37m\]'        # White
 
   # PROMPT1
   ## SSH

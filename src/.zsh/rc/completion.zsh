@@ -12,11 +12,11 @@ setopt list_types
 setopt correct
 setopt complete_in_word
 
-local DEFAULT=$'%{\x1b[m%}'
-local RED=$'%{\x1b[1;31m%}'
-local COLOR_46_B=$'%{\x1b[1;38;5;46;49m%}'
-local COLOR_75_B=$'%{\x1b[1;38;5;75;49m%}'
-local COLOR_93_B=$'%{\x1b[1;38;5;93;49m%}'
+local DEFAULT=$'%{\e[m%}'
+local RED=$'%{\e[1;31m%}'
+local COLOR_46_B=$'%{\e[1;38;5;46;49m%}'
+local COLOR_75_B=$'%{\e[1;38;5;75;49m%}'
+local COLOR_93_B=$'%{\e[1;38;5;93;49m%}'
 
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*' group-name ''

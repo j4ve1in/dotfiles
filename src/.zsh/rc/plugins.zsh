@@ -17,14 +17,14 @@ if [ -d ~/.zsh/bundle/zplug ]; then
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
 
-  local BLUE="\x1b[1;34m"
-  local RED="\x1b[1;31;49m"
-  local SKYBLUE="\x1b[1;38;05;75m"
+  local BLUE="\e[1;34m"
+  local RED="\e[1;31;49m"
+  local SKYBLUE="\e[1;38;05;75m"
 
   cprintf() {
     local color="$1"
     local string="$2"
-    local reset="\x1b[0m"
+    local reset="\e[0m"
     printf "${color}${string}${reset}"
   }
 
