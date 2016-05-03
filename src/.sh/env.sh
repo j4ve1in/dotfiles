@@ -3,7 +3,11 @@ has() { type $1 >/dev/null 2>&1; }
 export LANG='en_US.UTF-8'
 export TERM='xterm-256color'
 export PAGER='less'
-has w3m && export WWW_BROWSER='w3m'
+if [ -n "$DISPLAY" ]; then
+  has chromium && export BROWSER='chromium'
+else
+  has w3m && export BROWSER='w3m'
+fi
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # Ruby
