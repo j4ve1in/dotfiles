@@ -1,73 +1,82 @@
 #!/bin/bash
 
-if [ "$1" == "window-format" ]; then
-  ## window index and flag
-  printf '#[fg=colour244,bg=black]  #I#F '
-  ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour240,bg=black]\ue0b1'
-  else
-    printf ':'
+main() {
+  set-option status-left "`left`"
+  set-option status-right "`right`"
+  set-option status-left-length 50
+  set-option status-right-length 50
+
+  set-window-option window-status-format "`window-format`"
+  set-window-option window-status-current-format "`window-current-format`"
+}
+
+has() { type $1 >/dev/null 2>&1; }
+
+set-option() { tmux set-option -g "$@"; }
+
+set-window-option() { tmux set-window-option -g "$@"; }
+
+left() {
+  # Session
+  STATUS_L='#[fg=colour254,bg=colour26,bold]#{?client_prefix,#[reverse],} #S '
+  # separator
+  if has powerline;then
+    STATUS_L+='#[fg=colour26,bg=black]'
+    STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour254],}\ue0b0'
   fi
-  ## window name
-  printf ' #[fg=colour33]#W  '
-elif [ "$1" == "window-current-format" ]; then
-  ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=black,bg=colour21]\ue0b0'
-  fi
-  ## Current window index and flag
-  printf '#[fg=colour117,bg=colour21] #I#F '
-  ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '\ue0b1'
-  else
-    printf ':'
-  fi
-  ## Current window name
-  printf ' #[fg=colour231,bg=colour21,bold]#W '
-  ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour21,bg=black]\ue0b0'
-  fi
-elif [ "$1" == "left" ]; then
-  ## Session
-  printf '#[fg=colour254,bg=colour26,bold]#{?client_prefix,#[reverse],} #S '
-  ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour26,bg=black]#{?client_prefix,#[fg=colour233]#[bg=colour254],}\ue0b0'
-  fi
-elif [ "$1" == "right" ]; then
+  printf "$STATUS_L"
+}
+
+right() {
   # Prefixkey
   ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour27,bg=black]\ue0b2'
-  fi
-  printf "#[fg=colour231,bg=colour27] $(tmux show-options -g prefix | tr -d 'prefix ') "
+  has powerline && STATUS_R+='#[fg=colour27,bg=black]\ue0b2'
+  STATUS_R+="#[fg=colour231,bg=colour27]"
+  STATUS_R+=" $(tmux show-options -g prefix | tr -d 'prefix ') "
   # Battery
   ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour21,bg=colour27]\ue0b2'
-  fi
-  if type acpi >/dev/null 2>&1;then
-    Battery="`acpi -b | grep -oE '[0-9]+%'`"
-    if (( `echo "$Battery" | tr -d '%'` <= 20 )) ; then
-      printf '#[fg=colour196,bg=colour21,bold]'
+  has powerline && STATUS_R+='#[fg=colour21,bg=colour27]\ue0b2'
+  if has acpi;then
+    Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
+    if (( "$Battery" <= 20 )) ; then
+      STATUS_R+='#[fg=colour196,bg=colour21,bold]'
     else
-      printf '#[fg=colour231,bg=colour21]'
+      STATUS_R+='#[fg=colour231,bg=colour21]'
     fi
-    echo -n " $Battery "
+    STATUS_R+=" ${Battery}%% "
   fi
   # Date
   ## separator
-  if type powerline >/dev/null 2>&1;then
-    printf '#[fg=colour17,bg=colour21]\ue0b2'
-  fi
-  printf "#[fg=colour231,bg=colour17] $(date +'%m/%d(%a)') "
-  if type powerline >/dev/null 2>&1;then
-    printf '\ue0b3'
-  else
-    printf '|'
-  fi
-  printf " $(date +'%H:%M:%S') "
-fi
+  has powerline && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
+  STATUS_R+="#[fg=colour231,bg=colour17] $(date +'%m/%d(%a)') "
+  ## subseparator
+  has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  STATUS_R+=" $(date +'%H:%M:%S') "
+  printf "$STATUS_R"
+}
+
+window-format() {
+  # window index and flag
+  STATUS_WF='#[fg=colour244,bg=black]  #I#F '
+  # separator
+  has powerline && STATUS_WF+='#[fg=colour240,bg=black]\ue0b1' || STATUS_WF+=':'
+  # window name
+  STATUS_WF+=' #[fg=colour33]#W  '
+  printf "$STATUS_WF"
+}
+
+window-current-format() {
+  # separator
+  has powerline && STATUS_WCF+='#[fg=black,bg=colour21]\ue0b0'
+  # Current window index and flag
+  STATUS_WCF+='#[fg=colour117,bg=colour21] #I#F '
+  # separator
+  has powerline && STATUS_WCF+='\ue0b1' || STATUS_WCF+=':'
+  # Current window name
+  STATUS_WCF+=' #[fg=colour231,bg=colour21,bold]#W '
+  # separator
+  has powerline && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
+  printf "$STATUS_WCF"
+}
+
+main
