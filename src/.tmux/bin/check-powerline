@@ -1,2 +1,0 @@
-#!/bin/bash
-type powerline && exit 0 || exit 1

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-tmux if-shell 'check-powerline' " \
-  run-shell 'powerline-daemon -q'; \
-  if-shell 'env \"$POWERLINE_CONFIG_COMMAND\" tmux setup' '' \
-    'run-shell \"powerline-config tmux setup\"' \
-"
+if type powerline >/dev/null 2>&1;then
+  tmux run-shell 'powerline-daemon -q'
+  tmux if-shell 'env "$POWERLINE_CONFIG_COMMAND" tmux setup' '' \
+                'run-shell "powerline-config tmux setup"'
+fi
