@@ -48,10 +48,10 @@ right() {
   # Date
   ## separator
   has powerline && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
-  STATUS_R+="#[fg=colour231,bg=colour17] $(date +'%m/%d(%a)') "
+  STATUS_R+="#[fg=colour231,bg=colour17] #(date +'%%m/%%d(%%a)') "
   ## subseparator
   has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
-  STATUS_R+=" $(date +'%H:%M:%S') "
+  STATUS_R+=" #(date +'%%H:%%M:%%S') "
   printf "$STATUS_R"
 }
 
