@@ -62,14 +62,14 @@ run non-interactively.
     OPTIONS
         -u, --update             Backup and download dotfiles
         -d, --deploy             Deploy dotfiles to home directory
-        -b, --backup             Backup dotfiles to backup directory
+        -b, --backup             Backup dotfiles to backup branch
         -c, --check-update       Check update
         -r, --reinstall          Install dotfiles again after uninstalling
         -U, --uninstall          Uninstall dotfile
         -l, --list               View dotfile's list
         -h, --help               View help
-        -p, --install-plugin     Install shell and editor plugin
-        -P, --uninstall-plugin   Uninstall shell and editor plugin
+        -p, --install-plugin     Install vim, zsh and tmux plugin
+        -P, --uninstall-plugin   Uninstall vim, zsh and tmux plugin
 
 ![dotsetup1]
 ![dotsetup2]

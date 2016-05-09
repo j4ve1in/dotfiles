@@ -21,14 +21,14 @@ case "$1" in
     echo "Options:                                                              "
     echo "    -u, --update             Backup and download dotfiles             "
     echo "    -d, --deploy             Deploy dotfiles to home directory        "
-    echo "    -b, --backup             Backup dotfiles to backup directory      "
+    echo "    -b, --backup             Backup dotfiles to backup branch         "
     echo "    -c, --check-update       Check update                             "
     echo "    -r, --reinstall          Install dotfiles again after uninstalling"
     echo "    -U, --uninstall          Uninstall dotfiles                       "
     echo "    -l, --list               View dotfile's list                      "
     echo "    -h, --help               View help                                "
-    echo "    -p, --install-plugin     Install shell and editor plugin          "
-    echo "    -P, --uninstall-plugin   Uninstall shell and editor plugin        "
+    echo "    -p, --install-plugin     Install vim, zsh and tmux plugin         "
+    echo "    -P, --uninstall-plugin   Uninstall vim, zsh and tmux plugin       "
     echo "                                                                      "
     ;;
   -* )

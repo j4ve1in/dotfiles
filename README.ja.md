@@ -60,14 +60,14 @@
     オプション
         -u, --update             バックアップして、アップデート
         -d, --deploy             ホームディレクトリに展開
-        -b, --backup             バックアップディレクトリにバックアップ
+        -b, --backup             バックアップブランチにバックアップ
         -c, --check-update       アップデートできるか確認
         -r, --reinstall          アンインストールしてからインストールし直す
         -U, --uninstall          アンインストール
         -l, --list               ドットファイルの一覧表を見る
         -h, --help               ヘルプを表示する
-        -p, --install-plugin     シェルとエディターのプラグインをインストール
-        -P, --uninstall-plugin   シェルとエディターのプラグインをアンインストール
+        -p, --install-plugin     vimとzshとtmuxのプラグインをインストール
+        -P, --uninstall-plugin   vimとzshとtmuxのプラグインをアンインストール
 
 ![dotsetup1]
 ![dotsetup2]
