@@ -109,8 +109,9 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     elif [ -z "$TMUX" ];then
       zstyle ":anyframe:selector:fzf:" command 'fzf'
     fi
-    bindkey '^@' anyframe-widget-cdr
-    bindkey '^x^b' anyframe-widget-checkout-git-branch
+    bindkey '^xc' anyframe-widget-cdr
+
+    bindkey '^xb' anyframe-widget-checkout-git-branch
 
     bindkey '^r' anyframe-widget-execute-history
 
@@ -122,7 +123,7 @@ if [ -d ~/.zsh/bundle/zplug ]; then
 
     bindkey '^xf' anyframe-widget-insert-filename
 
-    bindkey '^x;' anyframe-widget-select-widget
+    bindkey '^@' anyframe-widget-select-widget
 
     fzf-kill() {
       if type tmux >/dev/null 2>&1; then
