@@ -16,27 +16,4 @@ cprint "done" $CYAN_B
 # Deploy
 . ~/.dotfiles/tools/deploy.bash
 
-# Update plugin
-if [ -d ~/.zsh/bundle/antigen ] || [ -d ~/.vim/bundle/neobundle.vim ] || [ -d ~/.tmux/plugins/tpm ]; then
-  cprint "Start updating plugin by plugin manager" $UNDERLINE
-  ## Zsh
-  if [ -d ~/.zsh/bundle/antigen ]; then
-    printf " Update Zsh plugin..."
-    zsh ~/.dotfiles/tools/update_zsh_plugin.zsh
-    cprint "done" $CYAN_B
-  fi
-  ## Vim
-  if [ -d ~/.vim/bundle/neobundle.vim ]; then
-    printf " Update Vim plugin..."
-    vim +NeoBundleUpdate +qall
-    cprint "done" $CYAN_B
-  fi
-  ## Tmux
-  if [ -d ~/.tmux/plugins/tpm ] && [ -n "$TMUX" ]; then
-    printf " Update Tmux plugin..."
-    bash ~/.tmux/plugins/tpm/bindings/update_plugins
-    cprint "done" $CYAN_B
-  fi
-fi
-
 echo

@@ -100,64 +100,12 @@ install_plugin() {
   )
   local readonly N=${#NAME[@]}
 
-  printf " Download plugin manager..."
-  {
-    sleep 1
-    for ((i=0;i<N;i++)); do
-      cprint "Download ${NAME[i]}" $UNDERLINE
-      url=https://github.com/${REPO[i]}
-      git clone $url ~/${DIR[i]}
-      echo
-    done
-  } | LESS='-cER' less
-  cprint "done" $SUCCESS_COLOR
-  echo
-
-  # Install plugin
-  if has vim && has zsh && has tmux; then
-    cprint " Install plugin by plugin manager" $UNDERLINE
-    ## Vim
-    if has vim; then
-      echo " Vim"
-
-      printf "  Downloading vimproc..."
-      VIMPROC_REPO='https://github.com/Shougo/vimproc.vim'
-      VIMPROC_DIR="${HOME}/.vim/bundle/repos/github.com/Shougo/vimproc.vim"
-      { sleep 1; git clone $VIMPROC_REPO $VIMPROC_DIR; } | LESS='-cE' less
-      cprint "done" $SUCCESS_COLOR
-      if [ "$OSTYPE" = "msys" ]; then
-        make -C "$VIMPROC_DIR" -f 'make_cygwin.mak' >/dev/null 2>&1
-      else
-        make -C "$VIMPROC_DIR" >/dev/null 2>&1
-      fi
-
-      printf "  Downloading other plugin by Dein..."
-      VIMRC="$HOME/.vim/vimrc"
-      {
-        sleep 1
-        vim -N -u $VIMRC -c "try | call dein#install() | finally | qall! | endtry" -i NONE -V1 -e -s
-        echo
-      } | LESS='-cE' less
-      cprint "done" $SUCCESS_COLOR
-    fi
-
-    ## Zsh
-    if has zsh; then
-      echo " Zsh"
-      printf "  Downloading plugin by Zplug..."
-      zsh ~/.dotfiles/tools/install_zsh_plugin.zsh
-      cprint "done" $SUCCESS_COLOR
-    fi
-
-    ## Tmux
-    if has tmux && [ -n "$TMUX" ]; then
-      echo " Tmux"
-      printf "  Downloading plugin by TPM..."
-      TPM_INSTALL_SCRIPT=~/.tmux/plugins/tpm/bindings/install_plugins
-      { sleep 1; $TPM_INSTALL_SCRIPT; } | LESS='-cE' less
-      cprint "done" $SUCCESS_COLOR
-    fi
-  fi
+  for ((i=0;i<N;i++)); do
+    cprint "Download ${NAME[i]}"
+    url=https://github.com/${REPO[i]}
+    git clone $url ~/${DIR[i]}
+    echo
+  done
   echo
 }
 
