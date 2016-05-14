@@ -109,7 +109,7 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     elif [ -z "$TMUX" ];then
       zstyle ":anyframe:selector:fzf:" command 'fzf'
     fi
-    bindkey '^xc' anyframe-widget-cdr
+    bindkey '^\' anyframe-widget-cdr
 
     bindkey '^xb' anyframe-widget-checkout-git-branch
 
