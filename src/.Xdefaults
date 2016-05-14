@@ -5,13 +5,18 @@ URxvt.saveLines: 20000
 URxvt.scrollBar: false
 URxvt.matcher.button: 1
 URxvt.url-launcher: chromium
-URxvt.resize-font.smaller: C-minus
-URxvt.resize-font.bigger: C-equal
-URxvt.keysym.C-S-C: eval:selection_to_clipboard
-URxvt.keysym.C-S-V: eval:paste_clipboard
+!! perl-ext
+URxvt.perl-ext-common: default,matcher,resize-font,selection,eval
+!!! resize-font
+URxvt.keysym.C-minus: perl:resize-font:smaller
+URxvt.keysym.C-plus:  perl:resize-font:bigger
+URxvt.keysym.C-equal: perl:resize-font:reset
+URxvt.keysym.C-slash: perl:resize-font:show
+!!! eval
+URxvt.keysym.C-S-C:  eval:selection_to_clipboard
+URxvt.keysym.C-S-V:  eval:paste_clipboard
 URxvt.keysym.S-Home: eval:scroll_to_top
 URxvt.keysym.S-End:  eval:scroll_to_bottom
-URxvt.perl-ext-common: default,matcher,resize-font,selection,eval
 
 !! iso
 URxvt.iso14755: false
