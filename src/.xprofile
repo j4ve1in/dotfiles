@@ -6,5 +6,4 @@ if type fcitx; then
   export GTK_IM_MODULE="fcitx" QT_IM_MODULE="fcitx" XMODIFIERS="@im=fcitx"
   fcitx &
 fi
-/usr/local/bin/google-ime-skk &
 [ -d "${HOME}/.xmonad/bin" ] && export PATH="${HOME}/.xmonad/bin:$PATH"
