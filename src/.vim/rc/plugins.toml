@@ -331,6 +331,7 @@ hook_add = 'let g:loaded_table_mode = 1'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
+hook_add = 'let g:precious_enable_switch_CursorMoved = { "*" : 1, "help" : 0 }'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

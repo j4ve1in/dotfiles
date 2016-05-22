@@ -51,7 +51,7 @@ hi Question                                      ctermfg=27
 hi Search          cterm=none       ctermbg=21   ctermfg=15
 hi SignColumn                       ctermbg=none ctermfg=231
 hi Special         cterm=none       ctermbg=232  ctermfg=231
-hi SpecialKey                       ctermbg=232  ctermfg=27
+hi SpecialKey                       ctermbg=232  ctermfg=245
 hi SpellBad                         ctermbg=26   ctermfg=232
 hi Statement       cterm=bold                    ctermfg=75
 hi StatusLine      cterm=bold       ctermbg=17   ctermfg=231
@@ -84,29 +84,21 @@ function! s:get_syn_attr(synid)
   let name = synIDattr(a:synid, "name")
   let ctermfg = synIDattr(a:synid, "fg", "cterm")
   let ctermbg = synIDattr(a:synid, "bg", "cterm")
-  let guifg = synIDattr(a:synid, "fg", "gui")
-  let guibg = synIDattr(a:synid, "bg", "gui")
   return {
   \   "name": name,
   \   "ctermfg": ctermfg,
-  \   "ctermbg": ctermbg,
-  \   "guifg": guifg,
-  \   "guibg": guibg
+  \   "ctermbg": ctermbg
   \ }
 endfunction
 function! s:get_syn_info()
   let baseSyn = s:get_syn_attr(s:get_syn_id(0))
   echo "name: " . baseSyn.name .
     \ " ctermfg: " . baseSyn.ctermfg .
-    \ " ctermbg: " . baseSyn.ctermbg .
-    \ " guifg: " . baseSyn.guifg .
-    \ " guibg: " . baseSyn.guibg
+    \ " ctermbg: " . baseSyn.ctermbg
   let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
   echo "link to"
   echo "name: " . linkedSyn.name .
     \ " ctermfg: " . linkedSyn.ctermfg .
-    \ " ctermbg: " . linkedSyn.ctermbg .
-    \ " guifg: " . linkedSyn.guifg .
-    \ " guibg: " . linkedSyn.guibg
+    \ " ctermbg: " . linkedSyn.ctermbg
 endfunction
 command! SyntaxInfo call s:get_syn_info()
