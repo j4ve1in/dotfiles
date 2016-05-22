@@ -27,45 +27,25 @@
     autocorrect = 30
 
 [alias]
-    a = add
-    aa = add -A
-    ap = add -p
     b = branch
     bo = browse # hub
-    cancel = reset --soft HEAD^
     ch = checkout
-    co = config
-    col = config -l
     cl = clone
-    f = fetch
     i = init
     m = merge --no-ff
-    me = !git config --get-regexp user
     p = pull
     ps = push
     sw = show
-    s = !"git status -s -b && git stash list"
+
+    # add
+    a = add
+    aa = add -A
+    ap = add -p
+
+    # stash
     st = stash
-    stl = stash list
     stp = stash pop
     sts = stash show
-    unstage = reset HEAD --
-
-    # alias
-    alias = "!\
-        git config --list |\
-        grep 'alias\\.' |\
-        sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' |\
-        sort\
-    "
-    al = "!git alias"
-
-    # check-remote
-    check-remote = "!\
-        [ \"$(git log HEAD)\" = \"$(git log origin/HEAD)\" ] && \
-        echo \"up to date\n\" || echo \"local out of date\n\" \
-    "
-    cr = "!git check-remote"
 
     # commit
     c = commit
@@ -78,13 +58,43 @@
     dc = diff --cached
     d1 = diff HEAD~
 
-    # log
-    l = log
-    log-custum = "!\
+    al = !"git alias"
+    cr = !"git check-remote"
+    ts = !"git tag"
+    bs = !"git branches"
+    l = !"git log-custum"
+    co = !"git config-custom"
+    s = !"git status-custom"
+
+    branches = branch -a
+    remotes = remote -v
+    stashes = stash list
+    tags = tag
+
+    cancel = reset --soft HEAD^
+    unstage = reset -q HEAD --
+    discard = checkout --
+    uncommit = reset --mixed HEAD~
+    unmerged = diff --name-only --diff-filter=U
+    amend = commit --amend
+    nevermind = !"git reset --hard HEAD && git clean -d -f"
+    precommit = diff --cached --diff-algorithm=minimal -w
+    alias = !"\
+        git config --list |\
+        grep 'alias\\.' |\
+        sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' |\
+        sort | less\
+    "
+    check-remote = !"\
+        [ \"$(git log HEAD)\" = \"$(git log origin/HEAD)\" ] && \
+        echo \"up to date\n\" || echo \"local out of date\n\" \
+    "
+    log-custum = !"\
         git log --graph --date=short --decorate=short\
         --pretty=format:'%C(blue)[%C(reset)%h%C(blue)]%C(reset)%C(blue)[%C(reset)%ad%C(blue)]%C(reset) %C(reset)%s %C(cyan)%d%C(reset) %C(black bold)%an'\
     "
-    lc = "!git log-custum"
+    cofig-custom = !"git config -l | less"
+    status-custom = !"git status -s -b && git stash list"
 
 [url "https://"]
     insteadOf = git://
