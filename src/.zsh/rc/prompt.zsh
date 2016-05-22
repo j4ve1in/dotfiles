@@ -6,13 +6,10 @@ SUB_COLOR1="%{`echo \"\e[1;38;05;75m\"`%}"  # Skyblue
 SUB_COLOR2="%{`echo \"\e[1;38;05;245m\"`%}"  # Gray
 RESET_COLOR='%{$reset_color%}' # Reset
 
-# set PROMPT
-PROMPT=""
 ## Bracket
-PROMPT+="$MAIN_COLOR"
-PROMPT+="[$RESET_COLOR"
+PROMPT="${MAIN_COLOR}[$RESET_COLOR"
 
-## Username and Hostname, Directoryname
+## Username and Hostname, Directoryname, sshinfo
 [ -n "$SSH_CLIENT" ] && ssh=":ssh-session"
 PROMPT+="%n@%m$ssh %1~"
 
@@ -37,14 +34,10 @@ vcs_info='${vcs_info_msg_0_}'
 PROMPT+="${RESET_COLOR}${vcs_info}$RESET_COLOR"
 
 ## Bracket
-PROMPT+="$MAIN_COLOR"
-PROMPT+="][$RESET_COLOR"
+PROMPT+="${MAIN_COLOR}][$RESET_COLOR"
 
 ## Time
-re-prompt() {
-  zle .reset-prompt
-  zle .accept-line
-}
+re-prompt() { zle .reset-prompt; zle .accept-line; }
 zle -N accept-line re-prompt
 PROMPT+="%D{%m/%d %H:%M:%S}"
 

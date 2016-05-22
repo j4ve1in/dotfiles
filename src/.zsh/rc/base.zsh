@@ -24,13 +24,8 @@ bindkey '^[b' backward-word
 # Delete overlapping environment variable
 typeset -U path cdpath fpath manpath
 
-# Fix insecure directory(Cygwin)
-fix-insecure-dir() { compaudit | xargs chmod g-w; }
-
 # zman
-zman() {
-  PAGER="less -g -s '+/^       "$1"'" man zshall
-}
+zman() { PAGER="less -g -s '+/^       "$1"'" man zshall; }
 
 # Abbreviation
 setopt extended_glob
@@ -58,9 +53,7 @@ magic-abbrev-expand() {
   zle self-insert
 }
 
-no-magic-abbrev-expand() {
-  LBUFFER+=' '
-}
+no-magic-abbrev-expand() { LBUFFER+=' '; }
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

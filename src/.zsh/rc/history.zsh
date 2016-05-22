@@ -1,7 +1,5 @@
-export HISTFILE=~/.zsh/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
-export HISTFILESIZE=10000
+export HISTFILE="${HOME}/.zsh/.zsh_history"
+export {HISTSIZE,SAVEHIST,HISTFILESIZE}=100
 setopt hist_reduce_blanks
 setopt share_history
 setopt EXTENDED_HISTORY

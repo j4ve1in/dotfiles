@@ -1,9 +1,5 @@
 autoload -Uz compinit
-if [ "$OSTYPE" != "msys" ]; then
-  compinit -u
-else
-  compinit -C
-fi
+[ "$OSTYPE" != "msys" ] && compinit -u || compinit -C
 
 setopt auto_pushd
 setopt pushd_ignore_dups
@@ -33,34 +29,25 @@ zstyle ':completion:*:warnings' format $RED'No matches for:'$DEFAULT' %d'
 zstyle ':completion:*:corrections' format $COLOR_93_B'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:descriptions' format $COLOR_75_B'Completing %B%d%b%f'$DEFAULT
 
+zmodload -i zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+
 if [ "$OSTYPE" != "msys" ]; then
-  # auto_cd
   setopt auto_cd
 
-  function chpwd() {
-    ls_abbrev
-  }
+  function chpwd() { ls_abbrev }
 
   ls_abbrev() {
-    if [[ ! -r $PWD ]]; then
-      return
-    fi
-    # -a : Do not ignore entries starting with ..
-    # -C : Force multi-column output.
-    # -F : Append indicator (one of */=>@|) to entries.
+    [[ ! -r $PWD ]] && return
     local cmd_ls='ls'
     local -a opt_ls
-    opt_ls=('-aCF' '--color=always')
-    case "${OSTYPE}" in
-      freebsd*|darwin*)
-        if type gls > /dev/null 2>&1; then
-          cmd_ls='gls'
-        else
-          # -G : Enable colorized output.
-          opt_ls=('-aCFG')
-        fi
-        ;;
-    esac
+    opt_ls=('-ACF' '--color=always')
+    if [ "`uname -s`" = 'Darwin' ]; then
+      type gls > /dev/null 2>&1 && cmd_ls='gls' || opt_ls=('-ACFG')
+    fi
 
     local ls_result
     ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')

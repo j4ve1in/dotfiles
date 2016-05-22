@@ -1,7 +1,7 @@
 has() { type $1 >/dev/null 2>&1; }
 
 # ls
-alias l{,s}='ls -F --color=auto' ll='l -hl --time-style=long-iso'
+alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
 alias la='l -A' lla='ll -A'
 
 # grep
@@ -50,6 +50,7 @@ alias jman="LANG='ja_JP.UTF-8' man"
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l' rl='reload'
+alias al='alias | less'
 alias dsu='dotsetup'
 alias ts='trash'
 

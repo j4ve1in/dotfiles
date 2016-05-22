@@ -11,7 +11,7 @@ fi
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # Ruby
-has ruby && export KCODE='u' RUBYGEMS_GEMDEPS='-'
+has ruby && export KCODE='u' # RUBYGEMS_GEMDEPS='-'
 
 # Go
 has go && [ -d "${HOME}/.local" ] && export GOPATH="${HOME}/.local"
