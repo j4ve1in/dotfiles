@@ -6,32 +6,19 @@ cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
 stty stop undef
 
 # Display LastLogin
-COLOR_75_B="1;38;05;75" # cyan
-if [ "$OSTYPE" != "msys" ]; then
+if has lastlog; then
+  cprintf 'LastLogin: ' "1;38;05;75" # cyan
+  LASTLOG=`last -R | sed -n 2p`
   SHELL=`ps -p $$ -o comm=`
-  if has lastlog; then
-    LASTLOG=`lastlog -u $USER | sed '1d'`
-    cprintf 'LastLogin: ' $COLOR_75_B
-    echo $LASTLOG | grep -o 'Never logged in'
-    ATTRIBUTE=`echo $LASTLOG | wc -w`
-    [ "$SHELL" = "bash" ] && set -- ${LASTLOG}
-    [ "$SHELL" = "zsh" ] && set -- "${=LASTLOG}"
-    PORT="$2"
-    if [ "$ATTRIBUTE" = "9" ]; then
-      FROM="$3" DATE="$4 $5 $6 $7 $9"
-      echo "$DATE on $PORT from $FROM"
-    elif [ "$ATTRIBUTE" = "8" ]; then
-      DATE="$3 $4 $5 $6 $8"
-      echo "$DATE on $PORT"
-    fi
-  fi
+  [ "$SHELL" = "bash" ] && set -- ${LASTLOG}
+  [ "$SHELL" = "zsh" ] && set -- "${=LASTLOG}"
+  PORT="$2" DATE="$3 $4 $5 $6"
+  echo "$DATE on $PORT"
 fi
 
 # Launch tmux
 # if not inside a tmux session, and if no session is started,
 # start a new session
-if [ "$OSTYPE" != "msys" ] && has tmux && [ -z "$TMUX" ]; then
-  tmux attach -d >/dev/null 2>&1 || tmux
-fi
+has tmux && [ -z "$TMUX" ] && tmux attach -d >/dev/null 2>&1 || tmux
 
 unset -f has cprintf
