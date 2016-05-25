@@ -1,78 +1,35 @@
 if [ -d ~/.zsh/bundle/zplug ]; then
   # Zplug
-  ZPLUG_HOME="$HOME/.zsh/bundle"
+  ZPLUG_HOME="$HOME/.zsh/bundle/"
+  ZPLUG_REPOS="$HOME/.zsh/bundle/repos/"
+  ZPLUG="${ZPLUG_HOME}zplug/zplug"
   ZPLUG_PLUGINS=(
     'b4b4r07/zplug'
     'Tarrasch/zsh-bd'
     'mollifier/cd-gitroot'
     'zsh-users/zsh-completions'
     'zsh-users/zsh-syntax-highlighting, nice:10'
-    'mollifier/anyframe'
-    # not working on linux
-    # 'b4b4r07/zsh-gomi, as:command, of:bin/gomi'
-    # run `sudo pacman -S fzf` if use arch linux
-    # 'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
-    # 'junegunn/fzf, as:command, of:bin/fzf-tmux'
+    'b4b4r07/zsh-gomi, as:command, use:bin/gomi'
+    'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+    'junegunn/fzf, as:command, use:bin/fzf-tmux'
+    'junegunn/fzf, use:shell'
   )
-  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-  add-zsh-hook chpwd chpwd_recent_dirs
 
-  local BLUE="\e[1;34m"
-  local RED="\e[1;31;49m"
-  local SKYBLUE="\e[1;38;05;75m"
-
-  cprintf() {
-    local color="$1"
-    local string="$2"
-    local reset="\e[0m"
-    printf "${color}${string}${reset}"
-  }
-
-  display_loading_plugin() {
-    local numer="$1"
-    local denom="$2"
-    cprintf "$SKYBLUE" "Loading plugin: "
-    cprintf "$BLUE" "("
-    printf "%d/%d" "$numer" "$denom"
-    cprintf "$BLUE" ") "
-    printf "\r\c"
-  }
-
-  i='0'
-  N="$((${#ZPLUG_PLUGINS[@]}+1))"
-  display_loading_plugin "$((i+1))" "$N"
-  . ~/.zsh/bundle/zplug/zplug && ((i++))
+  . $ZPLUG
   for plugin in ${ZPLUG_PLUGINS[@]}; do
-    display_loading_plugin "$((i+1))" "$N"
-    zplug "$plugin" >/dev/null 2>&1 && ((i++))
+    zplug "$plugin" >/dev/null 2>&1
   done
-
-  if [ "$i" = "$N" ]; then
-    echo
-  else
-    cprintf "$SKYBLUE" "Loading plugin: "
-    cprintf "$BLUE" "("
-    cprintf "$RED" "%d" "$i"
-    printf "/%d" "$N"
-    cprintf "$BLUE" ") "
-    printf "\r\c"
-    cprintf "$RED" "\n Error:"
-    printf " loading failed\n"
-  fi
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
-    echo
+    read -q && echo; zplug install; echo
   fi
 
   zplug load
 
   # cd-gitroot
   if zplug check 'mollifier/cd-gitroot'; then
-    fpath=(${HOME}/.zsh/bundle/repos/mollifier/cd-gitroot(N-/) $fpath)
+    fpath=(${ZPLUG_REPOS}/mollifier/cd-gitroot(N-/) $fpath)
     alias cdu='cd-gitroot'
   fi
 
@@ -103,43 +60,9 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     ZSH_HIGHLIGHT_STYLES[assign]=none
   fi
 
-  if zplug check 'mollifier/anyframe'; then
-    if type tmux >/dev/null 2>&1; then
-      zstyle ":anyframe:selector:fzf:" command 'fzf-tmux'
-    elif [ -z "$TMUX" ];then
-      zstyle ":anyframe:selector:fzf:" command 'fzf'
-    fi
-    bindkey '^\' anyframe-widget-cdr
+  zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
 
-    bindkey '^xb' anyframe-widget-checkout-git-branch
-
-    bindkey '^r' anyframe-widget-execute-history
-
-    bindkey '^xp' anyframe-widget-put-history
-
-    bindkey '^xg' anyframe-widget-cd-ghq-repository
-
-    bindkey '^xi' anyframe-widget-insert-git-branch
-
-    bindkey '^xf' anyframe-widget-insert-filename
-
-    bindkey '^@' anyframe-widget-select-widget
-
-    fzf-kill() {
-      if type tmux >/dev/null 2>&1; then
-        pid=$(ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}')
-      elif [ -z "$TMUX" ];then
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-      fi
-      if [ "x$pid" != "x" ]; then
-        kill -${1:-9} $pid
-      fi
-    }
-    zle -N fzf-kill
-    bindkey '^xk' fzf-kill
-  fi
-
-  # if zplug check 'junegunn/fzf-bin'; then
+  if zplug check 'junegunn/fzf-bin'; then
     export FZF_DEFAULT_OPTS='
       --ansi
       --select-1
@@ -150,8 +73,148 @@ if [ -d ~/.zsh/bundle/zplug ]; then
       --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
       --color info:69,prompt:75,spinner:69,pointer:69,marker:69
     '
-  # fi
 
-  # ghq
-  fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))
+    type tmux >/dev/null 2>&1 && SELECTOR='fzf-tmux'
+    [ -z "$TMUX" ] && SELECTOR='fzf'
+
+    FZF_WIDGETS=(
+      'edit-files'
+      'cd-dir'
+      'cd-ghq-repository'
+      'cdr'
+      'excute-history'
+      'git-add'
+      'checkout-git-branch'
+    )
+    fzf-select-widget() {
+      widget=$(echo $FZF_WIDGETS | tr ' ' '\n' | $SELECTOR)
+      [ -z "$widget" ] && return 1
+      if zle; then
+        BUFFER="fzf-${widget}-widget"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "fzf-${widget}-widget"
+      fi
+    }
+    zle -N fzf-select-widget
+    bindkey '^@' fzf-select-widget
+
+    fzf-cd-dir-widget() {
+      DIR=$(find * -type d | $SELECTOR)
+      if [ -d "$DIR" ]; then
+        if zle; then
+          BUFFER="cd $DIR"
+          CURSOR=$#BUFFER
+          zle accept-line
+          zle -R -c
+        else
+          print -z -f '%s' "cd $DIR"
+        fi
+      fi
+    }
+    zle -N fzf-cd-dir-widget
+    bindkey '^@c' fzf-cd-dir-widget
+
+    fzf-edit-files-widget() {
+      FILES=($(find * -type f | $SELECTOR))
+      [ -z "$FILES" ] && return 1
+      for file in ${FILES[@]}; do
+        [ ! -f "$file" ] && return 1
+      done
+      if zle; then
+        BUFFER="$EDITOR ${FILES[@]}"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "$EDITOR ${FILES[@]}"
+      fi
+    }
+    zle -N fzf-edit-files-widget
+    bindkey '^@e' fzf-edit-files-widget
+
+    fzf-cd-ghq-repository-widget() {
+      REPO=($(ghq list --full-path | $SELECTOR))
+      [ ! -d "$REPO" ] && return 1
+      if zle; then
+        BUFFER="cd -- $REPO"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "cd -- $REPO"
+      fi
+    }
+    zle -N fzf-cd-ghq-repository-widget
+    bindkey '^@g' fzf-cd-ghq-repository-widget
+
+    fzf-cdr-widget() {
+      autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+      add-zsh-hook chpwd chpwd_recent_dirs
+      DIR=($(cdr -l | sed 's/^[^ ][^ ]*  *//' | $SELECTOR))
+      [ -z "$DIR" ] && return 1
+      if zle; then
+        BUFFER="cd -- $DIR"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "cd -- $DIR"
+      fi
+    }
+    zle -N fzf-cdr-widget
+    bindkey '^\' fzf-cdr-widget
+
+    fzf-excute-history-widget() {
+      CMD=($(history -n -r 1 | awk '!a[$0]++' | $SELECTOR))
+      [ -z "$CMD" ] && return 1
+      if zle; then
+        BUFFER="$CMD"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "$CMD"
+      fi
+    }
+    zle -N fzf-excute-history-widget
+    bindkey '^r' fzf-excute-history-widget
+
+    fzf-git-add-widget() {
+      local base_path="$(git rev-parse --show-cdup | sed 's%/%\\/%g')"
+      FILES=($(git status --porcelain | sed "s/^\(..\) /\1\t${base_path}/" | grep "^.[MD?]" | $SELECTOR | awk '{print $2}'))
+      [ -z "$FILES" ] && return 1
+      for file in ${FILES[@]}; do
+        [ ! -f "$file" ] && return 1
+      done
+      if zle; then
+        BUFFER="git add -- ${FILES[@]}"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "git add -- ${FILES[@]}"
+      fi
+    }
+    zle -N fzf-git-add-widget
+    bindkey '^@ga' fzf-git-add-widget
+
+    fzf-checkout-git-branch-widget() {
+      git_option=("--list" "-v")
+      BRANCH=($(git branch $git_option | grep -v '^\*' | sed 's/^  *//' | $SELECTOR | awk '{print $1}'))
+      [ -z "$BRANCH" ] && return 1
+      if zle; then
+        BUFFER="git checkout $BRANCH"
+        CURSOR=$#BUFFER
+        zle accept-line
+        zle -R -c
+      else
+        print -z -f '%s' "git checkout $BRANCH"
+      fi
+    }
+    zle -N fzf-checkout-git-branch-widget
+    bindkey '^@gb' fzf-checkout-git-branch-widget
+  fi
 fi
