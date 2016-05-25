@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if check-tmux-version '^.+2\.[12]$'; then
+  tmux set-option -g mouse on
+  tmux bind-key -n WheelUpPane if-shell -F -t = '#{mouse_any_flag}' 'send-keys -M' \
+    "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
+elif  check-tmux-version '^.+(2\.0|1\.9a?)$'; then
+  ## versions earlier than 2.1
+  tmux set-window-option -g mode-mouse on
+  tmux set-option -g mouse-select-pane on
+  tmux set-option -g mouse-resize-pane on
+  tmux set-option -g mouse-select-window on
+fi
+exit 0
