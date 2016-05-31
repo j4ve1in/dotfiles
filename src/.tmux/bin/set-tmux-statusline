@@ -38,12 +38,9 @@ right() {
   has powerline && STATUS_R+='#[fg=colour21,bg=colour27]\ue0b2'
   if has acpi;then
     Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
-    if (( "$Battery" <= 20 )) ; then
-      STATUS_R+='#[fg=colour196,bg=colour21,bold]'
-    else
-      STATUS_R+='#[fg=colour231,bg=colour21]'
-    fi
-    STATUS_R+=" ${Battery}%% "
+    STATUS_R+='#[fg=colour231,bg=colour21]'
+    (( "$Battery" <= 20 )) && STATUS_R+='#[bold]'
+    STATUS_R+=" #(acpi -b | grep -oE '[0-9]+%%') #[default]"
   fi
   # Date
   ## separator
