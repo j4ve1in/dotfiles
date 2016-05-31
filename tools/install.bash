@@ -93,20 +93,20 @@ install_plugin() {
 
   local readonly NAME=('Dein' 'Zplug' 'TPM')
   local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
+  local readonly GITHUB_URL='https://github.com/'
   local readonly DIR=(
     '.vim/bundle/repos/github.com/Shougo/dein.vim'
     '.zsh/bundle/zplug'
     '.tmux/plugins/tpm'
   )
-  local readonly N=${#NAME[@]}
 
-  for ((i=0;i<N;i++)); do
-    cprint "Download ${NAME[i]}"
-    url=https://github.com/${REPO[i]}
-    git clone $url ~/${DIR[i]}
-    echo
-  done
-  echo
+  printf " Downloading ${NAME[*]}..."
+  _IFS="$IFS" IFS=$'\n'
+  paste -d ' ' <(echo "${REPO[*]}") <(echo "${DIR[*]}") \
+    | sed -e "s|^|${GITHUB_URL}|g" \
+    | xargs -L 1 -n 2 -P 3 git clone >/dev/null 2>&1
+  IFS="$_IFS"
+  cprint "done\n" $SUCCESS_COLOR
 }
 
 has() { type $1 >/dev/null 2>&1; }
