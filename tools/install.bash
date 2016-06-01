@@ -53,20 +53,14 @@ install() {
   # Start install
   cprint "Download dotfiles" $UNDERLINE
   ## Check git command
-  printf " Checking git command..."
-  if has git; then
-    cprint "done" $SUCCESS_COLOR
-  else
-    cprint "error" $ERROR_COLOR
+  if ! lprintf ' Checking git command' 'type git'; then
     echo " Please install git or update your path to include the git executable"
     exit 1;
   fi
 
   ## Download
-  printf " Downloading dotfiles..."
   DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
-  { sleep 1; git clone $DOTFILES_REPO ~/.dotfiles; } | LESS='-cE' less
-  cprint "done\n" $SUCCESS_COLOR
+  lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
 
   # Backup
   . ~/.dotfiles/tools/backup.bash
@@ -92,6 +86,12 @@ install_plugin() {
   cprint "Install plugin" $UNDERLINE
 
   local readonly NAME=('Dein' 'Zplug' 'TPM')
+
+  lprintf " Downloading ${NAME[*]}" 'download_plugin'
+  echo
+}
+
+download_plugin() {
   local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
   local readonly GITHUB_URL='https://github.com/'
   local readonly DIR=(
@@ -99,17 +99,12 @@ install_plugin() {
     '.zsh/bundle/zplug'
     '.tmux/plugins/tpm'
   )
-
-  printf " Downloading ${NAME[*]}..."
   _IFS="$IFS" IFS=$'\n'
   paste -d ' ' <(echo "${REPO[*]}") <(echo "${DIR[*]}") \
     | sed -e "s|^|${GITHUB_URL}|g" \
     | xargs -L 1 -n 2 -P 3 git clone >/dev/null 2>&1
   IFS="$_IFS"
-  cprint "done\n" $SUCCESS_COLOR
 }
-
-has() { type $1 >/dev/null 2>&1; }
 
 print() { printf "$@\n"; }
 
@@ -136,5 +131,35 @@ unset_color_var() {
 cprint() { print "${2}${1}${COLOR_RESET}"; }
 
 cprintf() { printf "${2}${1}${COLOR_RESET}"; }
+
+lprintf() {
+  MSG="$1"
+  CMD="${@:2}"
+  $CMD >/dev/null 2>&1 &
+  while :; do
+    jobs %1 > /dev/null 2>&1 || break
+    printf "\r%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".  "
+    sleep 0.7
+    jobs %1 > /dev/null 2>&1 || break
+    printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" "." ". "
+    sleep 0.7
+    jobs %1 > /dev/null 2>&1 || break
+    printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".." "."
+    sleep 0.7
+  done
+  wait $! && lprintf_success || lprintf_error
+}
+
+lprintf_success() {
+  printf "\r${MSG}..."
+  cprint 'done' "$SUCCESS_COLOR"
+  return 0
+}
+
+lprintf_error() {
+  printf "\r${MSG}..."
+  cprint 'error' "$ERROR_COLOR"
+  return 1
+}
 
 main $@

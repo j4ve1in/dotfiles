@@ -31,7 +31,7 @@ if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
 
   source_lib() {
     local file="$1"
-    local arg="$2"
+    local arg="${@:2}"
     local dir="$HOME/.dotfiles/tools/lib"
     source ${dir}/${file}.bash $arg
   }
@@ -41,6 +41,41 @@ if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
     local arg="$2"
     local dir="$HOME/.dotfiles/tools"
     source ${dir}/${file}.bash $arg
+  }
+
+  lprintf() {
+    MAIN_COLOR='\e[1;38;5;32;49m'
+    COLOR_RESET='\e[0;39;49m'
+
+    MSG="$1"
+    CMD="${@:2}"
+    $CMD >/dev/null 2>&1 &
+    while :; do
+      jobs %1 > /dev/null 2>&1 || break
+      printf "\r%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".  "
+      sleep 0.7
+      jobs %1 > /dev/null 2>&1 || break
+      printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" "." ". "
+      sleep 0.7
+      jobs %1 > /dev/null 2>&1 || break
+      printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".." "."
+      sleep 0.7
+    done
+    wait $! && lprintf_success || lprintf_error
+  }
+
+  lprintf_success() {
+    SUCCESS_COLOR='1;36;49'
+    printf "\r${MSG}..."
+    cprint 'done' "$SUCCESS_COLOR"
+    return 0
+  }
+
+  lprintf_error() {
+    ERROR_COLOR='1;31;49'
+    printf "\r${MSG}..."
+    cprint 'error' "$ERROR_COLOR"
+    return 1
   }
 
   INCLUDE_GUARD_BASE="1"

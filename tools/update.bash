@@ -3,12 +3,9 @@
 . ~/.dotfiles/tools/lib/base.bash
 
 # Pull remote repository
-printf "Checking repository..."
-{
-  sleep 1
-  git -C ~/.dotfiles pull origin master
-} | env LESS="-cE" less
-cprint "done" $CYAN_B
+cprint 'Update dotfiles' $UNDERLINE
+lprintf ' Checking repository' "git -C ${HOME}/.dotfiles pull origin master"
+echo
 
 # Backup
 . ~/.dotfiles/tools/backup.bash

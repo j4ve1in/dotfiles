@@ -2,7 +2,7 @@
 
 . ~/.dotfiles/tools/lib/base.bash
 
-cprint "Backup dotfiles" $UNDERLINE
+cprint 'Backup dotfiles' $UNDERLINE
 DOT_DIR=~/.dotfiles
 cd "$DOT_DIR"
 export GIT_{AUTHOR,COMMITTER}_NAME='dotsetup'
@@ -12,9 +12,7 @@ git checkout master >/dev/null 2>&1
 
 # create branch
 BACKUP_BRANCH="backup/$(date +'%Y%m%d%H%M%S')"
-printf ' Creating backup branch...'
-git checkout --orphan "$BACKUP_BRANCH" >/dev/null 2>&1
-cprint 'done' $CYAN_B
+lprintf ' Creating backup branch' "git checkout --orphan $BACKUP_BRANCH"
 cprintf '  Backup branch: ' $COLOR_75_B
 echo "$BACKUP_BRANCH"
 
