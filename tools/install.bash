@@ -102,7 +102,7 @@ download_plugin() {
   _IFS="$IFS" IFS=$'\n'
   paste -d ' ' <(echo "${REPO[*]}") <(echo "${DIR[*]}") \
     | sed -e "s|^|${GITHUB_URL}|g" \
-    | xargs -L 1 -n 2 -P 3 git clone >/dev/null 2>&1
+    | xargs -L 1 -n 2 -P "${#REPO[*]}" git clone >/dev/null 2>&1
   IFS="$_IFS"
 }
 
