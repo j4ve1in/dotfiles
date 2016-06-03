@@ -61,7 +61,6 @@ assume `yes` as answer to all prompts and run non-interactively.
         -u, --update             Backup and download dotfiles
         -d, --deploy             Deploy dotfiles to home directory
         -b, --backup             Backup dotfiles to backup branch
-        -c, --check-update       Check update
         -r, --reinstall          Install dotfiles again after uninstalling
         -U, --uninstall          Uninstall dotfile
         -l, --list               View dotfile's list
