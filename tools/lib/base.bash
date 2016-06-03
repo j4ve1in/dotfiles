@@ -16,39 +16,31 @@ if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
   COLOR_93_B="1;38;5;93;49"
 
   cprint() {
-    local string="$1"
-    local color="\e[${2}m"
-    local reset="\e[0;39;49m"
+    local readonly string="$1" color="\e[${2}m" reset="\e[0;39;49m"
     print "${color}${string}${reset}"
   }
 
   cprintf() {
-    local string="$1"
-    local color="\e[${2}m"
-    local reset="\e[0;39;49m"
+    local readonly string="$1" color="\e[${2}m" reset="\e[0;39;49m"
     printf "${color}${string}${reset}"
   }
 
   source_lib() {
-    local file="$1"
-    local arg="${@:2}"
-    local dir="$HOME/.dotfiles/tools/lib"
+    local readonly file="$1" arg="${@:2}" dir="$HOME/.dotfiles/tools/lib"
     source ${dir}/${file}.bash $arg
   }
 
   source_dotool() {
-    local file="$1"
-    local arg="$2"
-    local dir="$HOME/.dotfiles/tools"
+    local readonly file="$1" arg="$2" dir="$HOME/.dotfiles/tools"
     source ${dir}/${file}.bash $arg
   }
 
   lprintf() {
-    MAIN_COLOR='\e[1;38;5;32;49m'
-    COLOR_RESET='\e[0;39;49m'
-
-    MSG="$1"
-    CMD="${@:2}"
+    local readonly MAIN_COLOR='\e[1;38;5;32;49m'
+    local readonly COLOR_RESET='\e[0;39;49m'
+    local readonly SUCCESS_COLOR='1;36;49'
+    local readonly ERROR_COLOR='1;31;49'
+    local readonly MSG="$1" CMD="${@:2}"
     $CMD >/dev/null 2>&1 &
     while :; do
       jobs %1 > /dev/null 2>&1 || break
@@ -61,21 +53,15 @@ if [ "$INCLUDE_GUARD_BASE" = "0" ]; then
       printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".." "."
       sleep 0.7
     done
-    wait $! && lprintf_success || lprintf_error
-  }
-
-  lprintf_success() {
-    SUCCESS_COLOR='1;36;49'
-    printf "\r${MSG}..."
-    cprint 'done' "$SUCCESS_COLOR"
-    return 0
-  }
-
-  lprintf_error() {
-    ERROR_COLOR='1;31;49'
-    printf "\r${MSG}..."
-    cprint 'error' "$ERROR_COLOR"
-    return 1
+    if wait $!; then
+      printf "\r${MSG}..."
+      cprint 'done' "$SUCCESS_COLOR"
+      return 0
+    else
+      printf "\r${MSG}..."
+      cprint 'error' "$ERROR_COLOR"
+      return 1
+    fi
   }
 
   INCLUDE_GUARD_BASE="1"

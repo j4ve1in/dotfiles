@@ -1,33 +1,44 @@
 #!/bin/bash
 
 main() {
+  check_opt
   set_color_var
-  if [ "$1" != "plugin" ]; then
-    print_header
-    if [ "$ASSUME_YES" = "1" ]; then
-      install && unset ASSUME_YES
-    else
-      install_message
-    fi
-  else
-    install_plugin
-  fi
-  if [ "$ASSUME_YES" = "1" ]; then
-    restart && unset ASSUME_YES
-  else
-    restart_message
-  fi
-  unset_color_var
+  print_header
+  [ "$1" != "plugin" ] && install || install_plugin
+}
+
+check_opt() {
+  while (( $# > 0 )); do
+    case "$1" in
+      -*)
+        [[ "$1" =~ 'f' ]] && readonly FULL_INSTALLATION='1'
+        [[ "$1" =~ 'y' ]] && readonly ASSUME_YES='1'
+        shift
+        ;;
+      *) shift ;;
+    esac
+  done
+}
+
+set_color_code() { echo "\e[${1}m"; }
+
+set_color_var() {
+  readonly MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
+  readonly SUB_COLOR="$(set_color_code '1;38;5;75;49')"
+  readonly SUCCESS_COLOR="$(set_color_code '1;36;49')"
+  readonly ERROR_COLOR="$(set_color_code '1;31;49')"
+  readonly UNDERLINE="$(set_color_code '4;39;49')"
+  readonly DARKGRAY="$(set_color_code '90')"
+  readonly COLOR_RESET="$(set_color_code '0;39;49')"
 }
 
 print_header() {
   clear
-  # http://patorjk.com/software/taag/#p=display&h=1&f=Slant&t=dotfiles
   printf "\n$MAIN_COLOR"
-  echo '          __        __   ____ _  __              '
-  echo '     ____/ /____   / /_ / __/(_)/ /___   _____   '
+  echo '          __        __   ____ __ __              '
+  echo '     ____/ /____   / /_ / __//_// /___   _____   '
   echo '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
-  echo '   / /_/ // /_/ // /_ / __// // //  __/(__  )    '
+  echo '   / /_/ // /_/ // /_ / __// // //  __//__  /    '
   echo '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf "$COLOR_RESET\n"
   cprint '                   github.com/ytet5uy4/dotfiles   \n' "$DARKGRAY"
@@ -38,29 +49,22 @@ print_header() {
   cprintf '   Option Assume yes: ' "$SUB_COLOR"
   [ "$ASSUME_YES" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
   echo
+  [ "$ASSUME_YES" != "1" ] && warning
 }
 
-install_message() {
+warning() {
   echo '   If the file exists, it will be ruthlessly clobbered'
-  printf '   Are you sure you want to continue (yes/no)? '; read ANSWER; echo
+  printf '   Are you sure you want to continue (yes/no)? '
+  read -s -n 1 ANSWER; echo
   case $ANSWER in
-    "Y" | "y" | "Yes" | "yes" ) install ;;
+    'Y' | 'y' ) install ;;
     * ) exit 0 ;;
   esac
 }
 
 install() {
-  # Start install
-  cprint "Download dotfiles" $UNDERLINE
-  ## Check git command
-  if ! lprintf ' Checking git command' 'type git'; then
-    echo " Please install git or update your path to include the git executable"
-    exit 1;
-  fi
-
-  ## Download
-  DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
-  lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
+  # Download
+  download
 
   # Backup
   . ~/.dotfiles/tools/backup.bash
@@ -69,7 +73,21 @@ install() {
   . ~/.dotfiles/tools/deploy.bash
 
   # Install plugin
-  [ "$FULL_INSTALLATION" = "1" ] && install_plugin && unset FULL_INSTALLATION
+  [ "$FULL_INSTALLATION" = "1" ] && install_plugin
+
+  # Restart
+  [ "$ASSUME_YES" = "1" ] && restart || restart_message
+}
+
+download() {
+  cprint "Download dotfiles" $UNDERLINE
+  if ! lprintf ' Checking git command' 'type git'; then
+    echo ' Please install git or update your path to run git command'
+    exit 1;
+  fi
+
+  local readonly DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
+  lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
 }
 
 restart_message() {
@@ -108,33 +126,12 @@ download_plugin() {
 
 print() { printf "$@\n"; }
 
-set_color_code() { echo "\e[${1}m"; }
-
-set_color_var() {
-  MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
-  SUB_COLOR="$(set_color_code '1;38;5;75;49')"
-  SUCCESS_COLOR="$(set_color_code '1;36;49')"
-  ERROR_COLOR="$(set_color_code '1;31;49')"
-  UNDERLINE="$(set_color_code '4;39;49')"
-  DARKGRAY="$(set_color_code '90')"
-  COLOR_RESET="$(set_color_code '0;39;49')"
-}
-
-unset_color_var() {
-  unset MAIN_COLOR SUB_COLOR
-  unset SUCCESS_COLOR ERROR_COLOR
-  unset UNDERLINE
-  unset DARKGRAY
-  unset COLOR_RESET
-}
-
 cprint() { print "${2}${1}${COLOR_RESET}"; }
 
 cprintf() { printf "${2}${1}${COLOR_RESET}"; }
 
 lprintf() {
-  MSG="$1"
-  CMD="${@:2}"
+  local readonly MSG="$1" CMD="${@:2}"
   $CMD >/dev/null 2>&1 &
   while :; do
     jobs %1 > /dev/null 2>&1 || break
@@ -147,19 +144,15 @@ lprintf() {
     printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".." "."
     sleep 0.7
   done
-  wait $! && lprintf_success || lprintf_error
-}
-
-lprintf_success() {
-  printf "\r${MSG}..."
-  cprint 'done' "$SUCCESS_COLOR"
-  return 0
-}
-
-lprintf_error() {
-  printf "\r${MSG}..."
-  cprint 'error' "$ERROR_COLOR"
-  return 1
+  if wait $!; then
+    printf "\r${MSG}..."
+    cprint 'done' "$SUCCESS_COLOR"
+    return 0
+  else
+    printf "\r${MSG}..."
+    cprint 'error' "$ERROR_COLOR"
+    return 1
+  fi
 }
 
 main $@

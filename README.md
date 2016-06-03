@@ -35,14 +35,12 @@ You can install dotfiles by the following installation command.
 | cURL | bash <(curl -L d.ytet5uy4.com)         |
 | Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
-**NOTE:** If you want to use **full installation**, run
-`export FULL_INSTALLATION='1'` and installation command in your terminal.
+**NOTE:** If you want to use **full installation**, specify the `-f` option.
 When you use full installation, install shell and editor plugin, too.
 
 **NOTE2:** If you want to use **automatic installation**,
-run `export ASSUME_YES='1'` and installation command in your terminal.
-When you use automatic installation, assume `yes` as answer to all prompts and
-run non-interactively.
+specify the `-y` option. When you use automatic installation,
+assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
 [![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
