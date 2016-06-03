@@ -1,7 +1,7 @@
-# ~/.sh/env.sh
-source ~/.sh/env.sh
+. ~/.sh/env.sh
+. ~/.sh/profile.sh
 
 # ~/.bashrc
 if [ -f ~/.bashrc ]; then
-  source ~/.bashrc
+  . ~/.bashrc
 fi
