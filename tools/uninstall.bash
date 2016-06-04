@@ -4,20 +4,29 @@
 source_lib dot
 
 main() {
-  if [ "$1" != "plugin" ]; then
-    [ "$ASSUME_YES" = "1" ] && uninstall && unset ASSUME_YES
-    [ "$ASSUME_YES" != "1" ] && uninstall_message
-    echo
-  else
-    uninstall_plugin
-  fi
+  check_opt $@
+  [ "$PLUGIN_UNINSTALL" = "1" ] && uninstall_plugin; exit 0
+  [ "$ASSUME_YES" = "1" ] && uninstall || uninstall_message
+}
+
+check_opt() {
+  while (( $# > 0 )); do
+    case "$1" in
+      -*)
+        [[ "$1" =~ 'y' ]] && readonly ASSUME_YES='1'
+        [[ "$1" =~ 'P' ]] && readonly PLUGIN_UNINSTALL='1'
+        shift
+        ;;
+      *) shift ;;
+    esac
+  done
 }
 
 uninstall_message() {
   printf "Are you sure you want to continue (yes/no)? "
   read -s -n 1 ANSWER; echo -e '\n'
   case $ANSWER in
-    "Y" | "y" | "Yes" | "yes" ) uninstall ;;
+    "Y" | "y" ) uninstall ;;
     * ) exit 0 ;;
   esac
 }
@@ -61,11 +70,13 @@ uninstall() {
     fi
   done
   rm -rf ~/.dotfiles ~/.zshenv.zwc
+  echo
 }
 
 uninstall_plugin() {
   echo -e 'Remove plugins\n'
   rm -rf ~/.zsh/bundle/{.cache,*} ~/.vim/bundle/{.dein,*} ~/.tmux/plugins/*
+  echo
 }
 
 main $@

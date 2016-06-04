@@ -10,8 +10,8 @@ case "$1" in
   "-b" | "--backup" ) source_dotool backup ;;
   "-r" | "--reinstall" ) source_dotool reinstall ;;
   "-U" | "--uninstall" ) source_dotool uninstall ;;
-  "-p" | "--install-plugin" ) source_dotool install plugin ;;
-  "-P" | "--uninstall-plugin" ) source_dotool uninstall plugin ;;
+  "-p" | "--install-plugin" ) source_dotool install -p ;;
+  "-P" | "--uninstall-plugin" ) source_dotool uninstall -P ;;
   "-l" | "--list" ) source_dotool list ;;
   "-h" | "--help" )
     echo "Usage: dotsetup [OPTIONS]                                             "

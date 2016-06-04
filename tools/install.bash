@@ -3,8 +3,9 @@
 main() {
   check_opt $@
   set_color_var
+  [ "$PLUGIN_INSTALLATION" = "1" ] && install_plugin; exit 0
   print_header
-  [ "$1" != "plugin" ] && install || install_plugin
+  install
 }
 
 check_opt() {
@@ -13,6 +14,7 @@ check_opt() {
       -*)
         [[ "$1" =~ 'f' ]] && readonly FULL_INSTALLATION='1'
         [[ "$1" =~ 'y' ]] && readonly ASSUME_YES='1'
+        [[ "$1" =~ 'p' ]] && readonly PLUGIN_INSTALLATION='1'
         shift
         ;;
       *) shift ;;

@@ -2,29 +2,22 @@
 
 . ~/.dotfiles/tools/lib/base.bash
 
-printf "Are you sure you want to continue (yes/no)? "; read ANSWER
+printf "Are you sure you want to continue (yes/no)? "
+read -s -n 1 ANSWER; echo -e '\n'
 
 case $ANSWER in
-  "Y" | "y" | "Yes" | "yes" )
+  "Y" | "y" )
     # Uninstall
-    export ASSUME_YES="1"
-    . ~/.dotfiles/tools/uninstall.bash
+    source_dotool uninstall -y
+
+    clear
+
     # Install
-    printf "Downloading installer..."
     if has curl; then
-      {
-        sleep 1
-        curl -o ~/install.bash -L dot.j4ve1in.com
-      } | env LESS="-cE" less
+      bash (curl -L d.ytet5uy4.com) -y
     elif has wget; then
-      {
-        sleep 1
-        wget -O ~/install.bash dot.j4ve1in.com
-      } | env LESS="-cE" less
+      bash (wget -O - d.ytet5uy4.com) -y
     fi
-    cprint "done" $CYAN_B
-    export ASSUME_YES="1"
-    . ~/install.bash
     ;;
-  * ) ;;
+  * ) exit 0 ;;
 esac
