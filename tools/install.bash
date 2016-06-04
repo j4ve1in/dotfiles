@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-  check_opt
+  check_opt $@
   set_color_var
   print_header
   [ "$1" != "plugin" ] && install || install_plugin
@@ -93,7 +93,7 @@ download() {
 
 restart_message() {
   printf "Do you want to restart shell (yes/no)? "
-  read -s -n 1 ANSWER; echo
+  read -s -n 1 ANSWER; echo -e '\n'
   case $ANSWER in
     "Y" | "y" ) restart ;;
     * ) exit 0 ;;
