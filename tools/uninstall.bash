@@ -14,10 +14,11 @@ main() {
 }
 
 uninstall_message() {
-  printf "Are you sure you want to continue (yes/no)? "; read ANSWER
+  printf "Are you sure you want to continue (yes/no)? "
+  read -s -n 1 ANSWER; echo -e '\n'
   case $ANSWER in
     "Y" | "y" | "Yes" | "yes" ) uninstall ;;
-    * ) ;;
+    * ) exit 0 ;;
   esac
 }
 

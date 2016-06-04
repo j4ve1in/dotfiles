@@ -88,6 +88,7 @@ download() {
 
   local readonly DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
   lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
+  echo
 }
 
 restart_message() {
@@ -95,7 +96,7 @@ restart_message() {
   read -s -n 1 ANSWER; echo
   case $ANSWER in
     "Y" | "y" ) restart ;;
-    * ) echo ;;
+    * ) exit 0 ;;
   esac
 }
 
