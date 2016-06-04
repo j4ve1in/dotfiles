@@ -27,7 +27,7 @@ N=$i
 ## Start
 if [ "$N" != "0" ]; then
   i=1
-  cprintf $SKYBLUE "Compile zsh's configuration files\n"
+  cprintf $SKYBLUE "Compile configuration files of zsh\n"
   for file in ${ZFILE[@]}; do
     if [ ! -f ${file}.zwc ] || [ ${file} -nt ${file}.zwc ]; then
       cprintf $BLUE " ["

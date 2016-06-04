@@ -20,9 +20,19 @@ if [ -d ~/.zsh/bundle/zplug ]; then
     zplug "$plugin" >/dev/null 2>&1
   done
 
-  if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    read -q && echo; zplug install; echo
+  local SKYBLUE="\e[1;38;05;75m"
+  cprintf() {
+    local color="$1" string="$2" reset="\e[0m"
+    printf "${color}${string}${reset}"
+  }
+  if ! zplug check; then
+    cprintf $SKYBLUE "Check plugin status of zsh\n"
+    zplug check --verbose | sed -e 's/^/ /g'
+    printf ' Would you like to install (yes/no)? '
+    read -q ANSWER
+    echo
+    [[ "$ANSWER" =~ Y\|y ]] && zplug install | sed -e 's/^/  /g'
+    echo
   fi
 
   zplug load
