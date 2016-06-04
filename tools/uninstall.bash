@@ -74,8 +74,21 @@ uninstall() {
 }
 
 uninstall_plugin() {
-  echo -e 'Remove plugins\n'
-  rm -rf ~/.zsh/bundle/{.cache,*} ~/.vim/bundle/{.dein,*} ~/.tmux/plugins/*
+  echo -e 'Remove plugins'
+  DIR=(`echo ~/.{{zsh,vim}/bundle,tmux/plugins}`)
+  OPT='-maxdepth 1 -mindepth 1 ! -name .gitkeep'
+  PLUGIN_FILE=($(find ${DIR[@]} $OPT))
+  if [ -n "$PLUGIN_FILE" ]; then
+    printf '%s\n' ${PLUGIN_FILE[@]} | awk \
+      -v N="${#PLUGIN_FILE[@]}" \
+      -v B_S="$(cprintf "[" $BLUE)" \
+      -v B_E="$(cprintf "]" $BLUE)" \
+      -v MSG="$(cprintf "Removing:" $COLOR_75_B)" \
+      '{printf " %s%2d/%2d%s %s %s\n", B_S, NR, N, B_E, MSG, $0}'
+    rm -rf ${PLUGIN_FILE[@]}
+  else
+    echo ' Nothing'
+  fi
   echo
 }
 
