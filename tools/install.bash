@@ -23,13 +23,13 @@ check_opt() {
 set_color_code() { echo "\e[${1}m"; }
 
 set_color_var() {
-  readonly MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
-  readonly SUB_COLOR="$(set_color_code '1;38;5;75;49')"
-  readonly SUCCESS_COLOR="$(set_color_code '1;36;49')"
-  readonly ERROR_COLOR="$(set_color_code '1;31;49')"
-  readonly UNDERLINE="$(set_color_code '4;39;49')"
-  readonly DARKGRAY="$(set_color_code '90')"
-  readonly COLOR_RESET="$(set_color_code '0;39;49')"
+  MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
+  SUB_COLOR="$(set_color_code '1;38;5;75;49')"
+  SUCCESS_COLOR="$(set_color_code '1;36;49')"
+  ERROR_COLOR="$(set_color_code '1;31;49')"
+  UNDERLINE="$(set_color_code '4;39;49')"
+  DARKGRAY="$(set_color_code '90')"
+  COLOR_RESET="$(set_color_code '0;39;49')"
 }
 
 print_header() {
@@ -91,9 +91,10 @@ download() {
 }
 
 restart_message() {
-  printf "Do you want to restart shell (yes/no)? "; read ANSWER
+  printf "Do you want to restart shell (yes/no)? "
+  read -s -n 1 ANSWER; echo
   case $ANSWER in
-    "Y" | "y" | "Yes" | "yes" ) restart ;;
+    "Y" | "y" ) restart ;;
     * ) echo ;;
   esac
 }
