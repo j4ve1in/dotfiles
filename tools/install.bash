@@ -3,7 +3,7 @@
 main() {
   check_opt $@
   set_color_var
-  [ "$PLUGIN_INSTALLATION" = "1" ] && install_plugin; exit 0
+  [ "$PLUGIN_INSTALLATION" = "1" ] && install_plugin && exit 0
   print_header
   install
 }
