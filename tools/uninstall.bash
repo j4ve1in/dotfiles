@@ -5,7 +5,7 @@ source_lib dot
 
 main() {
   check_opt $@
-  [ "$PLUGIN_UNINSTALL" = "1" ] && uninstall_plugin; exit 0
+  [ "$PLUGIN_UNINSTALL" = "1" ] && uninstall_plugin && exit 0
   [ "$ASSUME_YES" = "1" ] && uninstall || uninstall_message
 }
 
