@@ -83,7 +83,10 @@ install() {
 
 download() {
   cprint "Download dotfiles" $UNDERLINE
-  if ! lprintf ' Checking git command' 'type git'; then
+  if lprintf ' Checking git command' 'type git'; then
+    cprintf '  Use: ' "$SUB_COLOR"
+    type -a git | tail -n 1 | awk '{print $3}'
+  else
     echo ' Please install git or update your path to run git command'
     exit 1;
   fi
@@ -121,11 +124,9 @@ download_plugin() {
     '.zsh/bundle/zplug'
     '.tmux/plugins/tpm'
   )
-  _IFS="$IFS" IFS=$'\n'
-  paste -d ' ' <(echo "${REPO[*]}") <(echo "${DIR[*]}") \
+  paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
     | sed -e "s|^|${GITHUB_URL}|g" \
     | xargs -L 1 -n 2 -P "${#REPO[*]}" git clone >/dev/null 2>&1
-  IFS="$_IFS"
 }
 
 print() { printf "$@\n"; }
