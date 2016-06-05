@@ -213,7 +213,7 @@ main = do
             ((modm                  , xK_t),     spawn "urxvtc --title htop -e htop"),
             -- Launch wps office
             ((modm .|. controlMask  , xK_w),     spawn "wps"),
-            ((modm .|. controlMask  , xK_e),     spawn "et"),
+            ((modm .|. controlMask  , xK_s),     spawn "et"),
             ((modm .|. controlMask  , xK_p),     spawn "wpp"),
             -- Launch File managers
             ((modm                  , xK_f),     spawn "urxvtc --title ranger --depth 0 -e ranger")
