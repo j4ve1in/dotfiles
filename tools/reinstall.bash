@@ -14,9 +14,9 @@ case $ANSWER in
 
     # Install
     if has curl; then
-      bash (curl -L d.ytet5uy4.com) -y
+      bash <(curl -L d.ytet5uy4.com) -y
     elif has wget; then
-      bash (wget -O - d.ytet5uy4.com) -y
+      bash <(wget -O - d.ytet5uy4.com) -y
     fi
     ;;
   * ) exit 0 ;;
