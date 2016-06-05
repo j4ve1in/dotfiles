@@ -36,7 +36,7 @@ You can install dotfiles by the following installation command.
 | Wget | bash <(wget -O - d.ytet5uy4.com)       |
 
 **NOTE:** If you want to use **full installation**, specify the `-f` option.
-When you use full installation, install shell and editor plugin, too.
+When you use full installation, install shell, editor and multiplexer plugin, too.
 
 **NOTE2:** If you want to use **automatic installation**,
 specify the `-y` option. When you use automatic installation,
