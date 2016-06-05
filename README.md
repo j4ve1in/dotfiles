@@ -75,8 +75,8 @@ assume `yes` as answer to all prompts and run non-interactively.
 Before running installation command to setup dotfiles, you can pull
 an **[image]** and try my dotfiles in a Docker container as follows.
 ```bash
-$ sudo docker pull ytet5uy4/dotfiles
-$ sudo docker run -it --rm ytet5uy4/dotfiles
+$ docker pull ytet5uy4/dotfiles
+$ docker run -it --rm ytet5uy4/dotfiles
 ```
 
 # License

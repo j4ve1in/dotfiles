@@ -76,8 +76,8 @@
 引っ張ってきて、Dockerのコンテナ内で試すことができます。
 
 ```bash
-$ sudo docker pull ytet5uy4/dotfiles
-$ sudo docker run -it --rm ytet5uy4/dotfiles
+$ docker pull ytet5uy4/dotfiles
+$ docker run -it --rm ytet5uy4/dotfiles
 ```
 
 # ライセンス
