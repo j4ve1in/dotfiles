@@ -93,6 +93,10 @@ download() {
 
   local readonly DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
   lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
+  cprintf '  Repository: ' "$SUB_COLOR"
+  echo "$DOTFILES_REPO"
+  cprintf '  Directory: ' "$SUB_COLOR"
+  echo "${HOME}/.dotfiles"
   echo
 }
 
