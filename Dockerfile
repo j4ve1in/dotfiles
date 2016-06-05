@@ -20,10 +20,8 @@ USER ytet5uy4
 WORKDIR /home/ytet5uy4
 ENV HOME=/home/ytet5uy4 \
     HOSTNAME=docker \
-    TERM=xterm-256color \
-    FULL_INSTALLATION=1 \
-    ASSUME_YES=1
-RUN bash -c "bash <(curl -LsS dot.j4ve1in.com) >/dev/null 2>&1"
+    TERM=xterm-256color
+RUN bash -c "bash <(curl -LsS d.ytet5uy4.com) -yf >/dev/null 2>&1"
 
 # Login
 ENTRYPOINT ["zsh"]
