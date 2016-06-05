@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$1" = "--select" ]; then
+  echo select
+  import ~/Pictures/Screenshots/screenshot_$(date +'%y-%m-%d_%I%M%S').png
+else
+  echo test
+  import -window root ~/Pictures/Screenshots/screenshot_$(date +'%y-%m-%d_%I%M%S').png
+fi

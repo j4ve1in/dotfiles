@@ -198,9 +198,9 @@ main = do
             ((modm .|. shiftMask      , xK_e      ), spawn "increase_brightness"),
             ((modm .|. shiftMask      , xK_w      ), spawn "decrease_brightness"),
             -- Take a screenshot (whole window)
-            ((0                       , 0xff61    ), spawn "$HOME/bin/screenshot.sh"),
+            ((0                       , 0xff61    ), spawn "screenshot"),
             -- Take a screenshot (selected area)
-            ((shiftMask               , 0xff61    ), spawn "$HOME/bin/screenshot_select.sh"),
+            ((shiftMask               , 0xff61    ), spawn "screenshot --select"),
             -- Toggle touchpad
             ((modm .|. shiftMask      , xK_t ), spawn "touchpad_toggle"),
             -- Launch web browser

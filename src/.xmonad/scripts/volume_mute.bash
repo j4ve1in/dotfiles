@@ -1,1 +1,0 @@
-pamixer --toggle-mute
