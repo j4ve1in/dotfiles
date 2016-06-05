@@ -8,7 +8,7 @@ read -s -n 1 ANSWER; echo -e '\n'
 case $ANSWER in
   "Y" | "y" )
     # Uninstall
-    source_dotool uninstall -y
+    bash ~/.dotfiles/tools/uninstall.bash -y
 
     clear
 
