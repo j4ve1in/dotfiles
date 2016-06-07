@@ -59,7 +59,6 @@
     d1 = diff HEAD~
 
     al = !"git alias"
-    cr = !"git check-remote"
     ts = !"git tag"
     bs = !"git branches"
     l = !"git log-custum"
@@ -84,10 +83,6 @@
         grep 'alias\\.' |\
         sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' |\
         sort | less\
-    "
-    check-remote = !"\
-        [ \"$(git log HEAD)\" = \"$(git log origin/HEAD)\" ] && \
-        echo \"up to date\n\" || echo \"local out of date\n\" \
     "
     log-custum = !"\
         git log --graph --date=short --decorate=short\
