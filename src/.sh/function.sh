@@ -60,7 +60,7 @@ ssh-add-with-lpass() {
   }
 
   identity-add() {
-    PASSPHRASE=$(lpass show --field=Passphrase ${REMOTE_HOST}\(${USER}@$(hostname -s)\))
+    PASSPHRASE=`lpass show --field=Passphrase ${REMOTE_HOST}\(${USER}@$(hostname -s)\)`
     SSH_KEY_PATH=${HOME}/.ssh/key/${REMOTE_HOST}
     expect -c "
     spawn ssh-add $SSH_KEY_PATH
@@ -114,7 +114,7 @@ trash() {
       return 0
       ;;
     -* )
-      echo "trash: illegal option -- '$(echo $1 | sed 's/^-*//')'"
+      echo "trash: illegal option -- '`echo $1 | sed 's/^-*//'`'"
       echo -e "Try 'trash -h' for more information.\n"
       return 0
       ;;

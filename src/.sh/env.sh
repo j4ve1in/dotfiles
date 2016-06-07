@@ -42,7 +42,7 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 ## Anyenv
 if [ -d "${HOME}/.anyenv" ] ; then
   PATH="${HOME}/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
+  eval "`anyenv init -`"
   for D in `ls $HOME/.anyenv/envs`; do
     PATH="${HOME}/.anyenv/envs/$D/shims:$PATH"
   done
