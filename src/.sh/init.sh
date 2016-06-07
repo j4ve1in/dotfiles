@@ -1,5 +1,6 @@
 # Load ~/.sh/*.sh
-SHRC=(
+[ "$OSTYPE" = "msys" ] && SHRC=('env')
+SHRC+=(
   'base'
   'aliases'
   'function'

@@ -36,6 +36,7 @@ export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
 [ -d "${HOME}/.dotfiles/bin" ] && PATH+=":${HOME}/.dotfiles/bin"
 [ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
+[ -d "${HOME}/.git.global/bin" ] && PATH+=":${HOME}/.git.global/bin"
 [ -d "${HOME}/.xmonad/bin" ] && PATH+=":${HOME}/.xmonad/bin"
 [ -d '/usr/local/heroku' ] && PATH+=':/usr/local/heroku/bin'
 
@@ -51,10 +52,6 @@ fi
 export PATH
 
 # Others
-case "`uname -s`" in
-  MSYS*) export MSYS='winsymlinks';;
-  Darwin) export LSCOLORS='gxfxcxdxbxegedabagacad' ;;
-esac
 export LS_COLORS='
 rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01
 or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44
@@ -77,5 +74,10 @@ ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31
 *.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36
 *.xspf=00;36
 '
+
+case "`uname -s`" in
+  MSYS*) export MSYS='winsymlinks';;
+  Darwin) export LSCOLORS='gxfxcxdxbxegedabagacad' ;;
+esac
 
 unset -f has

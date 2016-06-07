@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# git config --list | grep 'alias\.' | \
+git config --get-regexp alias | \
+  sed 's/alias\.\([^ ]*\) \(.*\)/\1\t => \2/' | \
+  sort | \
+  less
