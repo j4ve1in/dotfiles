@@ -4,7 +4,7 @@
 
 # Check dotfiles version
 cprint 'Check for updates' $UNDERLINE
-git fetch >/dev/null 2>&1
+git -C ~/.dotfiles fetch >/dev/null 2>&1
 LOCAL=$(git -C ~/.dotfiles rev-parse --short HEAD)
 REMOTE=$(git -C ~/.dotfiles rev-parse --short origin/HEAD)
 cprintf ' Dotfiles version: ' "$COLOR_75_B"

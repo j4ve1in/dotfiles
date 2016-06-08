@@ -13,7 +13,7 @@ if has lastlog; then
 fi
 
 # Check for updates
-git fetch >/dev/null 2>&1
+git -C ~/.dotfiles fetch >/dev/null 2>&1
 LOCAL=$(git -C ~/.dotfiles log HEAD)
 REMOTE=$(git -C ~/.dotfiles log origin/HEAD)
 cprintf 'Dotfiles version: ' "1;38;05;75" # cyan
