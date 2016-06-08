@@ -5,4 +5,3 @@
 .zprof_result
 .chpwd-recent-dirs
 bundle/*
-!.gitkeep
