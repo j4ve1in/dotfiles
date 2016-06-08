@@ -1,11 +1,6 @@
 bundle/*
-!.gitkeep
 swap/*
-!.gitkeep
 undo/*
-!.gitkeep
 backup/*
-!.gitkeep
 tmp/*
-!.gitkeep
 viminfo
