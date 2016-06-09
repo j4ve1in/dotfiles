@@ -179,7 +179,6 @@ main = do
             -- Launch dmenu for launching applicatiton
             ((modm                    , xK_r      ), spawn "exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe"),
             ((modm                    , xK_p      ), spawn "power"),
-            ((modm .|. shiftMask      , xK_g      ), spawn "gyazo"),
             -- Play / Pause media keys
             ((0                       , 0x1008ff18), spawn "sh $HOME/bin/cplay.sh"),
             ((0                       , 0x1008ff14), spawn "sh $HOME/bin/cplay.sh"),
@@ -210,13 +209,13 @@ main = do
             -- Launch terminal
             ((modm                  , xK_Return),   spawn "urxvt_tmux"),
             ((modm .|. shiftMask    , xK_f),   spawn "fcitx-configtool"),
-            ((modm                  , xK_t),     spawn "urxvtc --title htop -e htop"),
+            ((modm                  , xK_t),     spawn "urxvtc -T htop -e htop"),
             -- Launch wps office
             ((modm .|. controlMask  , xK_w),     spawn "wps"),
             ((modm .|. controlMask  , xK_s),     spawn "et"),
             ((modm .|. controlMask  , xK_p),     spawn "wpp"),
             -- Launch File managers
-            ((modm                  , xK_f),     spawn "urxvtc --title ranger --depth 0 -e ranger")
+            ((modm                  , xK_f),     spawn "urxvtc -T ranger -depth 0 -e ranger")
         ]
 
 -- myLayout: Handle Window behaveior
