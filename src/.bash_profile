@@ -2,6 +2,4 @@
 . ~/.sh/profile.sh
 
 # ~/.bashrc
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
+[ -f ~/.bashrc ] && . ~/.bashrc
