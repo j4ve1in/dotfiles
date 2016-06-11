@@ -113,40 +113,38 @@ hook_add = ''' " {{{
     \     'description' : 'Edit vim files'
     \ }
   let g:unite_source_menu_menus.vim.file_candidates = [
-    \       ['~/.vim/rc/apperance.vim'    , '~/.vim/rc/apperance.vim'],
-    \       ['~/.vim/rc/base.vim'    , '~/.vim/rc/base.vim'],
-    \       ['~/.vim/rc/colors.vim'    , '~/.vim/rc/colors.vim'],
-    \       ['~/.vim/rc/init.vim'    , '~/.vim/rc/init.vim'],
-    \       ['~/.vim/rc/keymap.vim'     , '~/.vim/rc/keymap.vim'],
-    \       ['~/.vim/rc/plugins.vim'     , '~/.vim/rc/plugins.vim'],
-    \       ['~/.vim/rc/plugins.lazy.toml'     , '~/.vim/rc/plugins.lazy.toml'],
-    \       ['~/.vim/rc/plugins.toml'     , '~/.vim/rc/plugins.toml']
+    \       [$HOME . '/.vim/rc/apperance.vim'    , $HOME . '/.vim/rc/apperance.vim'    ],
+    \       [$HOME . '/.vim/rc/base.vim'         , $HOME . '/.vim/rc/base.vim'         ],
+    \       [$HOME . '/.vim/rc/colors.vim'       , $HOME . '/.vim/rc/colors.vim'       ],
+    \       [$HOME . '/.vim/rc/init.vim'         , $HOME . '/.vim/rc/init.vim'         ],
+    \       [$HOME . '/.vim/rc/keymap.vim'       , $HOME . '/.vim/rc/keymap.vim'       ],
+    \       [$HOME . '/.vim/rc/plugins.vim'      , $HOME . '/.vim/rc/plugins.vim'      ],
+    \       [$HOME . '/.vim/rc/plugins.lazy.toml', $HOME . '/.vim/rc/plugins.lazy.toml'],
+    \       [$HOME . '/.vim/rc/plugins.toml'     , $HOME . '/.vim/rc/plugins.toml'     ]
     \     ]
   let g:unite_source_menu_menus.bash = {
     \     'description' : 'Edit bash files'
     \ }
   let g:unite_source_menu_menus.bash.file_candidates = [
-    \       ['~/.bash_login'    , '~/.bash_login'],
-    \       ['~/.bash_profile'    , '~/.bash_profile'],
-    \       ['~/.bashrc'    , '~/.bashrc'],
-    \       ['~/.bash/rc/base.bash'    , '~/.bash/rc/base.bash'],
-    \       ['~/.bash/rc/history.bash'     , '~/.bash/rc/history.bash'],
-    \       ['~/.bash/rc/prompt.bash'     , '~/.bash/rc/prompt.bash']
+    \       [$HOME . '/.bash_profile'        , $HOME . '/.bash_profile'        ],
+    \       [$HOME . '/.bash/rc/init.bash'   , $HOME . '/.bash/rc/init.bash'   ],
+    \       [$HOME . '/.bash/rc/base.bash'   , $HOME . '/.bash/rc/base.bash'   ],
+    \       [$HOME . '/.bash/rc/history.bash', $HOME . '/.bash/rc/history.bash'],
+    \       [$HOME . '/.bash/rc/prompt.bash' , $HOME . '/.bash/rc/prompt.bash' ]
     \     ]
   let g:unite_source_menu_menus.zsh = {
     \     'description' : 'Edit zsh files'
     \ }
   let g:unite_source_menu_menus.zsh.file_candidates = [
-    \       ['~/.zshenv'    , '~/.zshenv'],
-    \       ['~/.zlogin'    , '~/.zsh/.zlogin'],
-    \       ['~/.zprofile'    , '~/.zsh/.zprofile'],
-    \       ['~/.zshrc'    , '~/.zsh/.zshrc'],
-    \       ['~/rc/alias.zsh'     , '~/.zsh/rc/alias.zsh'],
-    \       ['~/rc/base.zsh'     , '~/.zsh/rc/base.zsh'],
-    \       ['~/rc/completion.zsh'     , '~/.zsh/rc/completion.zsh'],
-    \       ['~/rc/history.zsh'     , '~/.zsh/rc/history.zsh'],
-    \       ['~/rc/plugins.zsh'     , '~/.zsh/rc/plugins.zsh'],
-    \       ['~/rc/prompt.zsh'     , '~/.zsh/rc/prompt.zsh']
+    \       [$HOME . '/.zshenv'          , $HOME . '/.zshenv'],
+    \       [$HOME . '/.zprofile'        , $HOME . '/.zsh/.zprofile'],
+    \       [$HOME . '/rc/init.zsh'      , $HOME . '/.zsh/rc/init.zsh'],
+    \       [$HOME . '/rc/alias.zsh'     , $HOME . '/.zsh/rc/alias.zsh'],
+    \       [$HOME . '/rc/base.zsh'      , $HOME . '/.zsh/rc/base.zsh'],
+    \       [$HOME . '/rc/completion.zsh', $HOME . '/.zsh/rc/completion.zsh'],
+    \       [$HOME . '/rc/history.zsh'   , $HOME . '/.zsh/rc/history.zsh'],
+    \       [$HOME . '/rc/plugins.zsh'   , $HOME . '/.zsh/rc/plugins.zsh'],
+    \       [$HOME . '/rc/prompt.zsh'    , $HOME . '/.zsh/rc/prompt.zsh']
     \     ]
 " }}} '''
 hook_source = ''' " {{{
