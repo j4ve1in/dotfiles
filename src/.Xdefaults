@@ -1,6 +1,7 @@
 ! urxvt
 !! Base
-URxvt.title: Urxvt
+URxvt.title: urxvt
+URxvt.termName: rxvt-unicode-256color
 URxvt.saveLines: 20000
 URxvt.scrollBar: false
 URxvt.matcher.button: 1
