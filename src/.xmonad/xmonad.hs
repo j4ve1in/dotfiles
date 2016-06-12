@@ -173,7 +173,6 @@ main = do
         -- Keymap: custom commands
         `additionalKeys`
         [
-            ((modm                    , xK_c ), spawn "calc"),
             -- Lock screen
             ((modm .|. controlMask, xK_l      ), spawn "systemctl suspend"),
             -- Launch dmenu for launching applicatiton
