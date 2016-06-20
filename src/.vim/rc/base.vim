@@ -25,7 +25,7 @@ if has('conceal')
 endif
 
 " Completion
-set wildmenu wildmode=list:full
+set wildmenu wildmode=list,full
 
 " Search
 set wrapscan ignorecase smartcase incsearch hlsearch
