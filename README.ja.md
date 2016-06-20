@@ -86,7 +86,7 @@ MITライセンスのもとで公開されています。**[LICENSE.md]**を見�
 
 
 [Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
-[asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
+[asciinema]: //asciinema.org/a/48340
 [dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
 [dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [イメージ]: //hub.docker.com/r/ytet5uy4/dotfiles

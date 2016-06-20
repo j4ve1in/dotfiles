@@ -84,7 +84,7 @@ Copyright (c) 2015 ytet5uy4
 Released under the MIT License, see **[LICENSE.md]**.
 
 [Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
-[asciinema]: //asciinema.org/a/3pumub4jgh5rl6hfkj06nnbd5
+[asciinema]: //asciinema.org/a/48340
 [dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
 [dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles
