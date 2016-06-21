@@ -1,7 +1,6 @@
 has() { type $1 >/dev/null 2>&1; }
 
 export LANG='en_US.UTF-8'
-export TERM='rxvt-unicode-256color'
 
 export PAGER='less'
 if [ -n "$DISPLAY" ]; then
