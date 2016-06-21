@@ -43,7 +43,7 @@ specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
-[![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
+<a href="//asciinema.org/a/48340" target="_blank"><img src="//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
 
 # Configurations
 ## Dotsetup
@@ -84,7 +84,6 @@ Copyright (c) 2015 ytet5uy4
 Released under the MIT License, see **[LICENSE.md]**.
 
 [Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
-[asciinema]: //asciinema.org/a/48340
 [dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
 [dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles

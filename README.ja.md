@@ -43,7 +43,7 @@
 警告等を表示せず、非対話的に実行します。
 
 **デモ:**
-[![](https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png)][asciinema]
+<a href="//asciinema.org/a/48340" target="_blank"><img src="//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
 
 # 設定
 ## Dotsetup
@@ -86,7 +86,6 @@ MITライセンスのもとで公開されています。**[LICENSE.md]**を見�
 
 
 [Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
-[asciinema]: //asciinema.org/a/48340
 [dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
 [dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
 [イメージ]: //hub.docker.com/r/ytet5uy4/dotfiles
