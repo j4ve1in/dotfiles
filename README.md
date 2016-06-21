@@ -43,7 +43,7 @@ specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
-<a href="//asciinema.org/a/48340" target="_blank"><img src="//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
+<a href="//asciinema.org/a/48340" target="_blank"><img src="https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
 
 # Configurations
 ## Dotsetup

@@ -43,7 +43,7 @@
 警告等を表示せず、非対話的に実行します。
 
 **デモ:**
-<a href="//asciinema.org/a/48340" target="_blank"><img src="//media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
+<a href="//asciinema.org/a/48340" target="_blank"><img src="https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
 
 # 設定
 ## Dotsetup
