@@ -45,8 +45,8 @@ fi
 if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' max-exports 3
   zstyle ':vcs_info:git:*' enable git
-  zstyle ':vcs_info:git:*' formats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]} %b%f " '%c%u%m'
-  zstyle ':vcs_info:git:*' actionformats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]}%f %b " '%c%u%m' '!%a'
+  zstyle ':vcs_info:git:*' formats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]} %b%f" ' %c%u%m'
+  zstyle ':vcs_info:git:*' actionformats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]}%f %b" ' %c%u%m' '!%a'
   zstyle ':vcs_info:git:*' check-for-changes true
   zstyle ':vcs_info:git:*' stagedstr "${SUB_COLOR1}${PROMPT_GIT[STAGED]}%f"
   zstyle ':vcs_info:git:*' unstagedstr "%F{red}${PROMPT_GIT[UNSTAGED]}%f"
