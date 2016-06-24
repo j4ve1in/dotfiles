@@ -1,5 +1,5 @@
 [ -e '/etc/arch-release' ] && . ~/.zshenv
-. ~/.sh/profile.sh
+. ~/.sh/rc/profile.sh
 # Compile
 ZFILE=(
   ~/.zshenv

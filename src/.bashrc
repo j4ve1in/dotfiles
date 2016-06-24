@@ -12,5 +12,5 @@ for file in ${BRC[@]}; do
 done; unset -v BRC file
 
 ## ~/.sh/*.sh
-INIT_SH=~/.sh/init.sh
+INIT_SH=~/.sh/rc/init.sh
 [ -r $INIT_SH ] && [ -f $INIT_SH ] && source $INIT_SH

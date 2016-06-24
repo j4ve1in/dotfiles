@@ -1,4 +1,4 @@
-# Load ~/.sh/*.sh
+# Load ~/.sh/rc/*.sh
 [ "$OSTYPE" = "msys" ] && SHRC=('env')
 SHRC+=(
   'base'
@@ -7,6 +7,6 @@ SHRC+=(
   'local'
 )
 for file in ${SHRC[@]}; do
-  file=~/.sh/${file}.sh
+  file=~/.sh/rc/${file}.sh
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done; unset -v SHRC file

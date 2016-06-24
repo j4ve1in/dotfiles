@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for dir in {Documents,Music,Pictures,Videos,Source_code}; do
+  if [ ! -d "$dir" ] && [ ! -L "$dir" ]; then
+    ln -s "${HOME}/Dropbox/$dir" "$dir"
+  else
+    echo "$dir already exists."
+  fi
+done

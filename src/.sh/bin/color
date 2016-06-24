@@ -1,0 +1,145 @@
+#!/bin/bash
+
+main() {
+  if [ "$1" = "16" ]; then
+    color16
+  elif [ "$1" = "256" ]; then
+    color256
+  else
+    echo -e "\e[1;31mError\e[m"
+    echo -e "Try 'color 16' or 'color 256'.\n"
+  fi
+}
+
+color16() {
+  echo " On White(47)     On Black(40)     On Default     Color Code"
+
+  echo -e "\
+  \e[47m\e[1;37m  White        \e[0m  \
+  \e[40m\e[1;37m  White        \e[0m  \
+  \e[1;37m  White        \e[0m\
+    1;37\
+  "
+
+  echo -e "\
+  \e[47m\e[37m  Light Gray   \e[0m  \
+  \e[40m\e[37m  Light Gray   \e[0m  \
+  \e[37m  Light Gray   \e[0m  \
+  37\
+  "
+
+  echo -e "\
+  \e[47m\e[1;30m  Gray         \e[0m  \
+  \e[40m\e[1;30m  Gray         \e[0m  \
+  \e[1;30m  Gray         \e[0m  \
+  1;30\
+  "
+
+  echo -e "\
+  \e[47m\e[30m  Black        \e[0m  \
+  \e[40m\e[30m  Black        \e[0m  \
+  \e[30m  Black        \e[0m  \
+  30\
+  "
+
+  echo -e "\
+  \e[47m\e[31m  Red          \e[0m  \
+  \e[40m\e[31m  Red          \e[0m  \
+  \e[31m  Red          \e[0m  \
+  31\
+  "
+
+  echo -e "\
+  \e[47m\e[1;31m  Light Red    \e[0m  \
+  \e[40m\e[1;31m  Light Red    \e[0m  \
+  \e[1;31m  Light Red    \e[0m  \
+  1;31\
+  "
+
+  echo -e "\
+  \e[47m\e[32m  Green        \e[0m  \
+  \e[40m\e[32m  Green        \e[0m  \
+  \e[32m  Green        \e[0m  \
+  32\
+  "
+
+  echo -e "\
+  \e[47m\e[1;32m  Light Green  \e[0m  \
+  \e[40m\e[1;32m  Light Green  \e[0m  \
+  \e[1;32m  Light Green  \e[0m  \
+  1;32\
+  "
+
+  echo -e "\
+  \e[47m\e[33m  Brown        \e[0m  \
+  \e[40m\e[33m  Brown        \e[0m  \
+  \e[33m  Brown        \e[0m  \
+  33\
+  "
+
+  echo -e "\
+  \e[47m\e[1;33m  Yellow       \e[0m  \
+  \e[40m\e[1;33m  Yellow       \e[0m  \
+  \e[1;33m  Yellow       \e[0m  \
+  1;33\
+  "
+
+  echo -e "\
+  \e[47m\e[34m  Blue         \e[0m  \
+  \e[40m\e[34m  Blue         \e[0m  \
+  \e[34m  Blue         \e[0m  \
+  34\
+  "
+
+  echo -e "\
+  \e[47m\e[1;34m  Light Blue   \e[0m  \
+  \e[40m\e[1;34m  Light Blue   \e[0m  \
+  \e[1;34m  Light Blue   \e[0m  \
+  1;34\
+  "
+
+  echo -e "\
+  \e[47m\e[35m  Purple       \e[0m  \
+  \e[40m\e[35m  Purple       \e[0m  \
+  \e[35m  Purple       \e[0m  \
+  35\
+  "
+
+  echo -e "\
+  \e[47m\e[1;35m  Pink         \e[0m  \
+  \e[40m\e[1;35m  Pink         \e[0m  \
+  \e[1;35m  Pink         \e[0m  \
+  1;35\
+  "
+
+  echo -e "\
+  \e[47m\e[36m  Cyan         \e[0m  \
+  \e[40m\e[36m  Cyan         \e[0m  \
+  \e[36m  Cyan         \e[0m  \
+  36\
+  "
+
+  echo -e "\
+  \e[47m\e[1;36m  Light Cyan   \e[0m  \
+  \e[40m\e[1;36m  Light Cyan   \e[0m  \
+  \e[1;36m  Light Cyan   \e[0m  \
+  1;36\
+  "
+}
+
+color256() {
+  target_shell=$2
+
+  [ -z "$2" ] && target_shell=$(basename "$SHELL")
+
+  if [ "$target_shell" = "bash" ]; then
+      bash <<< 'for code in {0..255}; do echo -n "\e[38;05;${code}m $(printf %03d $code)"; [ $((${code} % 16)) -eq 15 ] && echo; done'
+  elif [ "$target_shell" = "zsh" ]; then
+      zsh  <<< 'for code in {000..255}; do print -nP -- "%F{$code}$code %f"; [ $((${code} % 16)) -eq 15 ] && echo; done'
+  else
+      echo "error: Invalid argument ($target)"
+      echo "Usage: $0 [bash|zsh]"
+  fi
+}
+
+main $@

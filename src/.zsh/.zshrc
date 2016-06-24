@@ -16,8 +16,8 @@ for file in ${ZRC[@]}; do
   [ -r "$file" ] && [ -f "$file" ] && . "$file"
 done; unset -v ZRC file
 
-## ~/.sh/*.sh
-INIT_SH=~/.sh/init.sh
+## ~/.sh/rc/*.sh
+INIT_SH=~/.sh/rc/init.sh
 [ -r $INIT_SH ] && [ -f $INIT_SH ] && . $INIT_SH
 
 # Profiling configuration files of zsh

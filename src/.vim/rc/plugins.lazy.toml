@@ -35,9 +35,9 @@ hook_add = ''' " {{{
 
   " directory_rec
   nnoremap <silent> [Unite]dr :<C-u>Unite<Space>directory_rec/async<CR>
-  nnoremap <silent> [Unite]Dr :<C-u>Unite<Space>directory_rec/async<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]dR :<C-u>Unite<Space>directory_rec/async<Space>-default-action=tabopen<CR>
   nnoremap <silent> [Unite]dr! :<C-u>Unite<Space>directory_rec/async:!<CR>
-  nnoremap <silent> [Unite]Dr! :<C-u>Unite<Space>directory_rec/async:!<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]dR! :<C-u>Unite<Space>directory_rec/async:!<Space>-default-action=tabopen<CR>
 
   " git
   nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git<CR>
@@ -54,8 +54,8 @@ hook_add = ''' " {{{
   nnoremap <silent> [Unite]H :<C-u>Unite<Space>help<Space>-default-action=tabopen<CR>
 
   " find
-  nnoremap <silent> [Unite]s :Unite<Space>find:.<CR>
-  nnoremap <silent> [Unite]S :Unite<Space>find:.<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
+  nnoremap <silent> [Unite]fI :Unite<Space>find:.<Space>-default-action=tabopen<CR>
 
   " grep
   nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
@@ -103,8 +103,10 @@ hook_add = ''' " {{{
   " others
   nnoremap <silent> [Unite]v :<C-u>Unite<Space>menu:vim<CR>
   nnoremap <silent> [Unite]V :<C-u>Unite<Space>menu:vim<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]s :<C-u>Unite<Space>menu:sh<CR>
+  nnoremap <silent> [Unite]S :<C-u>Unite<Space>menu:sh<Space>-default-action=tabopen<CR>
   nnoremap <silent> [Unite]b :<C-u>Unite<Space>menu:bash<CR>
-  nnoremap <silent> [Unite]U :<C-u>Unite<Space>menu:bash<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]B :<C-u>Unite<Space>menu:bash<Space>-default-action=tabopen<CR>
   nnoremap <silent> [Unite]z :<C-u>Unite<Space>menu:zsh<CR>
   nnoremap <silent> [Unite]Z :<C-u>Unite<Space>menu:zsh<Space>-default-action=tabopen<CR>
 
@@ -121,6 +123,18 @@ hook_add = ''' " {{{
     \       [$HOME . '/.vim/rc/plugins.vim'      , $HOME . '/.vim/rc/plugins.vim'      ],
     \       [$HOME . '/.vim/rc/plugins.lazy.toml', $HOME . '/.vim/rc/plugins.lazy.toml'],
     \       [$HOME . '/.vim/rc/plugins.toml'     , $HOME . '/.vim/rc/plugins.toml'     ]
+    \     ]
+  let g:unite_source_menu_menus.sh = {
+    \     'description' : 'Edit sh files'
+    \ }
+  let g:unite_source_menu_menus.sh.file_candidates = [
+    \       [$HOME . '/.sh/rc/init.sh'    , $HOME . '/.sh/rc/init.sh'    ],
+    \       [$HOME . '/.sh/rc/base.sh'    , $HOME . '/.sh/rc/base.sh'    ],
+    \       [$HOME . '/.sh/rc/alias.sh'   , $HOME . '/.sh/rc/alias.sh'   ],
+    \       [$HOME . '/.sh/rc/env.sh'     , $HOME . '/.sh/rc/env.sh'     ],
+    \       [$HOME . '/.sh/rc/function.sh', $HOME . '/.sh/rc/function.sh'],
+    \       [$HOME . '/.sh/rc/local.sh'   , $HOME . '/.sh/rc/local.sh'   ],
+    \       [$HOME . '/.sh/rc/profile.sh' , $HOME . '/.sh/rc/profile.sh' ]
     \     ]
   let g:unite_source_menu_menus.bash = {
     \     'description' : 'Edit bash files'

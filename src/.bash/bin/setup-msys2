@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# bash <(curl https://raw.githubusercontent.com/ytet5uy4/scripts/master/setup-msys2.bash)
+
+# Install packages
+PACKAGES=(
+  'gcc'
+  'git'
+  'make'
+  'openssh'
+  'ssh-pageant-git'
+  'tmux'
+  'unzip'
+  'vim'
+  'wget'
+  'zip'
+  'zsh'
+  'man'
+  'python'
+)
+echo "Install packages"
+pacman -S --noconfirm ${PACKAGES[@]}
+echo
+
+
+# Add fstab
+echo "Add fstab"
+DIRS=(
+  'Desktop'
+  'Documents'
+  'Downloads'
+  'OnlineStorage'
+)
+N=${#DIRS[@]}
+for ((i=0;i<N;i++)); do
+  printf " Add ${DIRS[i]}..."
+  TMP="C:\\Users\\${USER}\\${DIRS[i]} /home/${USER}/${DIRS[i]} ntfs  override,binary,auto 0 0"
+  TMP="$(echo $TMP)"
+  if ! grep -qF "$TMP" '/etc/fstab'; then
+    echo "$TMP" >> /etc/fstab
+    printf "done\n"
+  else
+    printf "skip\n"
+  fi
+done
+echo

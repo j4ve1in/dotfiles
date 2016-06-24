@@ -1,5 +1,5 @@
-. ~/.sh/env.sh
-. ~/.sh/profile.sh
+. ~/.sh/rc/env.sh
+. ~/.sh/rc/profile.sh
 
 # ~/.bashrc
 [ -f ~/.bashrc ] && . ~/.bashrc
