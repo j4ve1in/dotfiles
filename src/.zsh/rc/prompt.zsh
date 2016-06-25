@@ -45,8 +45,8 @@ fi
 if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' max-exports 3
   zstyle ':vcs_info:git:*' enable git
-  zstyle ':vcs_info:git:*' formats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]} %b%f" ' %c%u%m'
-  zstyle ':vcs_info:git:*' actionformats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]}%f %b" ' %c%u%m' '!%a'
+  zstyle ':vcs_info:git:*' formats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]} %b%f" '%c%u%m'
+  zstyle ':vcs_info:git:*' actionformats " ${SUB_COLOR2}${PROMPT_GIT[BRANCH]}%f %b" '%c%u%m' '!%a'
   zstyle ':vcs_info:git:*' check-for-changes true
   zstyle ':vcs_info:git:*' stagedstr "${SUB_COLOR1}${PROMPT_GIT[STAGED]}%f"
   zstyle ':vcs_info:git:*' unstagedstr "%F{red}${PROMPT_GIT[UNSTAGED]}%f"
@@ -56,9 +56,7 @@ if is-at-least 4.3.11; then
     zstyle ':vcs_info:git+set-message:*' hooks \
                                             git-hook-begin \
                                             git-untracked \
-                                            git-push-status \
-                                            git-nomerge-branch \
-                                            git-stash-count
+                                            git-status
 
     +vi-git-hook-begin() {
         if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
@@ -79,42 +77,25 @@ if is-at-least 4.3.11; then
         fi
     }
 
-    +vi-git-push-status() {
+    +vi-git-status() {
         [[ "$1" != "1" ]] && return 0
 
-        if [[ "${hook_com[branch]}" != "master" ]]; then
-            return 0
-        fi
+        local ahead behind stash
+        local -a gitstatus
 
-        local ahead
-        ahead=$(command git rev-list origin/master..master 2>/dev/null \
-            | wc -l \
-            | tr -d ' ')
+        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+        (( $ahead )) && gitstatus+=("${SUB_COLOR1}+${ahead}%f")
 
-        [[ "$ahead" -gt 0 ]] && hook_com[misc]+="(p${ahead})"
+        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+        (( $behind )) && gitstatus+=("%F{red}-${behind}%f")
+
+        gitstatus=("`echo ${(j:/:)gitstatus} | sed -e \"s|/|${SUB_COLOR2}/%f|g\"`")
+
+        stash=$(git stash list 2>/dev/null | wc -l)
+        (( $stash )) && gitstatus+=("${SUB_COLOR2}($stash stashed)%f")
+
+        [ -n "$gitstatus" ] && hook_com[misc]=" ${gitstatus[@]}"
     }
-
-    +vi-git-nomerge-branch() {
-        [[ "$1" != "1" ]] && return 0
-
-        if [[ "${hook_com[branch]}" == "master" ]]; then
-            return 0
-        fi
-
-        local nomerged
-        nomerged=$(command git rev-list master..${hook_com[branch]} 2>/dev/null | wc -l | tr -d ' ')
-
-        [[ "$nomerged" -gt 0 ]] && hook_com[misc]+="(m${nomerged})"
-    }
-
-    +vi-git-stash-count() {
-        [[ "$1" != "1" ]] && return 0
-
-        local stash
-        stash=$(command git stash list 2>/dev/null | wc -l | tr -d ' ')
-        [[ "${stash}" -gt 0 ]] && hook_com[misc]+=":S${stash}"
-    }
-
 fi
 
 precmd () { vcs_info }
