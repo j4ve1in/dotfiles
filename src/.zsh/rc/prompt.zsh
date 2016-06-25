@@ -56,29 +56,24 @@ if is-at-least 4.3.11; then
     zstyle ':vcs_info:git+set-message:*' hooks \
                                             git-hook-begin \
                                             git-untracked \
-                                            git-status
+                                            git-misc
 
     +vi-git-hook-begin() {
-        if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
-            return 1
-        fi
-
-        return 0
+        git rev-parse --is-inside-work-tree >/dev/null 2>&1 && return 0 || return 1
     }
 
     +vi-git-untracked() {
-        [[ "$1" != "1" ]] && return 0
+        [ "$1" != "1" ] && return 0
 
-        if command git status --porcelain 2> /dev/null \
+        if git status --porcelain 2>/dev/null \
             | awk '{print $1}' \
-            | command grep -F '??' > /dev/null 2>&1 ; then
-
+            | grep -F '??' >/dev/null 2>&1; then
             hook_com[unstaged]+="${SUB_COLOR3}${PROMPT_GIT[UNTRACKED]}%f"
         fi
     }
 
-    +vi-git-status() {
-        [[ "$1" != "1" ]] && return 0
+    +vi-git-misc() {
+        [ "$1" != "1" ] && return 0
 
         local ahead behind stash
         local -a gitstatus
@@ -98,9 +93,9 @@ if is-at-least 4.3.11; then
     }
 fi
 
-precmd () { vcs_info }
-vcs_info='${vcs_info_msg_0_}${vcs_info_msg_1_}${vcs_info_msg_2_}'
-PROMPT+="${RESET_COLOR}${vcs_info}$RESET_COLOR"
+add-zsh-hook precmd vcs_info
+vcs_info_msg='${vcs_info_msg_0_}${vcs_info_msg_1_}${vcs_info_msg_2_}'
+PROMPT+="${RESET_COLOR}${vcs_info_msg}$RESET_COLOR"
 
 ## Separator
 PROMPT+="${MAIN_COLOR}][$RESET_COLOR"
