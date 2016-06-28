@@ -31,6 +31,7 @@ alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
 alias uusb='sudo umount /mnt/usb'
 
 # Others
+has history && alias h='history'
 has git && alias g='git'
 has tmux && alias t='tmux'
 has mysql && alias ms='mysql --pager="less -iFMnSX"'
