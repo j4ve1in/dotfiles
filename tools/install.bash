@@ -124,9 +124,9 @@ download_plugin() {
   local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
   local readonly GITHUB_URL='https://github.com/'
   local readonly DIR=(
-    '.vim/bundle/repos/github.com/Shougo/dein.vim'
-    '.zsh/bundle/zplug'
-    '.tmux/plugins/tpm'
+    "$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim"
+    "$HOME/.zsh/bundle/zplug"
+    "$HOME/.tmux/plugins/tpm"
   )
   paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
     | sed -e "s|^|${GITHUB_URL}|g" \
