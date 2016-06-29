@@ -14,7 +14,7 @@ set whichwrap=b,~,[,],<,>
 set backspace=indent,eol,start
 set noerrorbells visualbell t_vb=
 autocmd QuickFixCmdPost *grep* cwindow
-set viminfo='30,<50,s100,n~/.vim/viminfo
+set viminfo='30,\"100,<50,s100,n~/.vim/viminfo
 
 if !exists('loaded_matchit')
   runtime macros/matchit.vim
