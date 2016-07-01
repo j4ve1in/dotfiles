@@ -1,27 +1,5 @@
 # vim: foldmethod=marker:
 
-# Web {{{
-[[plugins]]
-repo = 'kannokanno/previm'
-depends = 'open-browser.vim'
-on_ft = 'md'
-on_map = '<Plug>'
-hook_add = ''' "{{{
-  nnoremap [Previm] <Nop>
-  nmap <Space>pv [Previm]
-
-  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
-" }}} '''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = ''' " {{{
-  let g:netrw_nogx = 1
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-" }}} '''
-# }}}
-
 # Syntax {{{
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
@@ -201,4 +179,24 @@ hook_source = ''' "{{{
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = 'open-browser.vim'
+on_ft = 'md'
+on_map = '<Plug>'
+hook_add = ''' "{{{
+  nnoremap [Previm] <Nop>
+  nmap <Space>pv [Previm]
+
+  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+" }}} '''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = ''' " {{{
+  let g:netrw_nogx = 1
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+" }}} '''
 # }}}

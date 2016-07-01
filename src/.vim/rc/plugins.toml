@@ -17,9 +17,7 @@ hook_add = ''' " {{{
   nmap <C-Space> [Unite]
 
   nnoremap <silent> [Unite] :<C-u>Unite<CR>
-  nnoremap <silent> [Unite]rg :<C-u>Unite<Space>register<CR>
   nnoremap <silent> [Unite]t :<C-u>Unite<Space>tab<CR>
-  nnoremap <silent> [Unite]o :<C-u>Unite<Space>outline<CR>
 
   " file
   nnoremap <silent> [Unite]f :Unite<Space>file<Space>file/new<Space>directory/new<CR>
@@ -31,12 +29,6 @@ hook_add = ''' " {{{
   nnoremap <silent> [Unite]fr! :Unite<Space>file_rec/async:!<CR>
   nnoremap <silent> [Unite]fR! :Unite<Space>file_rec/async:!<Space>-default-action=tabopen<CR>
 
-  " directory_rec
-  nnoremap <silent> [Unite]dr :<C-u>Unite<Space>directory_rec/async<CR>
-  nnoremap <silent> [Unite]dR :<C-u>Unite<Space>directory_rec/async<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]dr! :<C-u>Unite<Space>directory_rec/async:!<CR>
-  nnoremap <silent> [Unite]dR! :<C-u>Unite<Space>directory_rec/async:!<Space>-default-action=tabopen<CR>
-
   " git
   nnoremap <silent> [Unite]gf :<C-u>Unite<Space>file_rec/git<CR>
   nnoremap <silent> [Unite]gF :<C-u>Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
@@ -46,10 +38,6 @@ hook_add = ''' " {{{
   " file_mru
   nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
   nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
-
-  " help
-  nnoremap <silent> [Unite]h :<C-u>Unite<Space>help<CR>
-  nnoremap <silent> [Unite]H :<C-u>Unite<Space>help<Space>-default-action=tabopen<CR>
 
   " find
   nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
@@ -65,38 +53,6 @@ hook_add = ''' " {{{
     let g:unite_source_grep_default_opts = '--no-group --no-color'
     let g:unite_source_grep_recursive_opt = ''
   endif
-
-  " other plugin
-  nnoremap <silent> [Unite]d :<C-u>Unite<Space>dein<CR>
-  nnoremap <silent> [Unite]T :<C-u>Unite<Space>tweetvim<CR>
-  nnoremap <silent> [Unite]w :<C-u>Unite<Space>webcolorname<CR>
-  nnoremap <silent> [Unite]hl :<C-u>Unite<Space>highlight<CR>
-  nnoremap <silent> [Unite]gi :<C-u>Unite<Space>gista<CR>
-  nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
-
-  "" giti
-  nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
-  nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
-  nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
-  nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
-  nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
-
-  "" Rails
-  nnoremap <silent> [Unite]r :<C-u>Unite<CR>rails/
-  nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
-  nnoremap <silent> [Unite]rA :<C-u>Unite<Space>rails/asset<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
-  nnoremap <silent> [Unite]rM :<C-u>Unite<Space>rails/model<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rd :<C-u>Unite<Space>rails/db<CR>
-  nnoremap <silent> [Unite]rD :<C-u>Unite<Space>rails/db<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
-  nnoremap <silent> [Unite]rV :<C-u>Unite<Space>rails/view<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
-  nnoremap <silent> [Unite]rC :<C-u>Unite<Space>rails/controller<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rco :<C-u>Unite<Space>rails/config<CR>
-  nnoremap <silent> [Unite]rcO :<C-u>Unite<Space>rails/config<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
-  nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
 
   " others
   nnoremap <silent> [Unite]v :<C-u>Unite<Space>menu:vim<CR>
@@ -179,23 +135,47 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'basyura/unite-rails'
 depends = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-help'
-depends = 'unite.vim'
+hook_add = ''' " {{{
+  nnoremap <silent> [Unite]r :<C-u>Unite<CR>rails/
+  nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
+  nnoremap <silent> [Unite]rA :<C-u>Unite<Space>rails/asset<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
+  nnoremap <silent> [Unite]rM :<C-u>Unite<Space>rails/model<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rd :<C-u>Unite<Space>rails/db<CR>
+  nnoremap <silent> [Unite]rD :<C-u>Unite<Space>rails/db<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
+  nnoremap <silent> [Unite]rV :<C-u>Unite<Space>rails/view<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
+  nnoremap <silent> [Unite]rC :<C-u>Unite<Space>rails/controller<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rco :<C-u>Unite<Space>rails/config<CR>
+  nnoremap <silent> [Unite]rcO :<C-u>Unite<Space>rails/config<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
+  nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
+" }}} '''
 
 [[plugins]]
 repo = 'kmnk/vim-unite-giti'
 depends = 'unite.vim'
+hook_add = ''' " {{{
+  nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
+  nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
+  nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
+  nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
+  nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
+" }}} '''
 
 [[plugins]]
 repo = 'sorah/unite-ghq'
 depends = 'unite.vim'
+hook_add = ''' " {{{
+  nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
+" }}} '''
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista-unite'
 depends = 'unite.vim'
 on_source = 'lambdalisue/vim-gista'
+hook_add = 'nnoremap <silent> [Unite]gi :<C-u>Unite<Space>gista<CR>'
 # }}}
 
 # Git {{{
@@ -241,7 +221,7 @@ hook_add = ''' " {{{
 " }}} '''
 # }}}
 
-# operator {{{
+# Operator {{{
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
@@ -256,7 +236,7 @@ hook_add = ''' " {{{
 " }}} '''
 # }}}
 
-# textobj {{{
+# Textobj {{{
 [[plugins]]
 repo = 'kana/vim-textobj-user'
 
@@ -488,10 +468,6 @@ repo = 'deris/vim-shot-f'
 
 [[plugins]]
 repo = 'wellle/targets.vim'
-
-[[plugins]]
-repo = 'dhruvasagar/vim-table-mode'
-hook_add = 'let g:loaded_table_mode = 1'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
