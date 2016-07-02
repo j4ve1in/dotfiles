@@ -1,6 +1,6 @@
 has() { type $1 >/dev/null 2>&1; }
 
-[ `uname` != Darwin ] && eval `dircolors -b ~/.dir_colors`
+[ `uname` != Darwin ] && eval `dircolors -b ~/.zsh/.dir_colors`
 
 stty stop undef
 
