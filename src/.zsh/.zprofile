@@ -1,5 +1,40 @@
 [ -e '/etc/arch-release' ] && . ~/.zshenv
-. ~/.sh/rc/profile.sh
+
+has() { type $1 >/dev/null 2>&1; }
+
+if [ "$OSTYPE" != "msys" ]; then
+  cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
+  # Display LastLogin
+  if has lastlog; then
+    cprintf 'LastLogin: ' "1;38;05;75" # cyan
+    LASTLOG=`last -R | sed -n 2p`
+    set -- "${=LASTLOG}"
+    PORT="$2" DATE="$3 $4 $5 $6"
+    echo "$DATE on $PORT"
+  fi
+
+  # Check for updates
+  git -C ~/.dotfiles fetch >/dev/null 2>&1
+  LOCAL=`git -C ~/.dotfiles log HEAD`
+  REMOTE=`git -C ~/.dotfiles log origin/HEAD`
+  cprintf 'Dotfiles version: ' "1;38;05;75" # cyan
+  if [ "$LOCAL" = "$REMOTE" ]; then
+    echo 'up to date'
+  else
+    echo 'local out of date'
+    printf ' Would you like to update (yes/no)? '
+    read -q ANSWER
+    echo
+    [[ "$ANSWER" =~ Y\|y ]] && echo && dotsetup -u
+  fi
+fi
+
+# Load keychain
+if has keychain; then
+  keychain --nogui --quiet
+  [ -f ~/.keychain/$HOST-sh ] && source ~/.keychain/$HOST-sh
+fi
+
 # Compile
 ZFILE=(
   ~/.zshenv

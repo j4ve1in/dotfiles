@@ -1,2 +1,0 @@
-export HISTFILE="${HOME}/.bash/.bash_history"
-export {HISTSIZE,SAVEHIST,HISTFILESIZE}='10000' HISTTIMEFORMAT='%F %T '
