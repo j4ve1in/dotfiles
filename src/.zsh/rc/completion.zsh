@@ -36,7 +36,6 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 setopt auto_cd
-cdpath=(~)
 if [ "$OSTYPE" != "msys" ]; then
   function chpwd() { ls_abbrev }
 
@@ -64,6 +63,3 @@ if [ "$OSTYPE" != "msys" ]; then
     fi
   }
 fi
-
-# ghq
-fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))

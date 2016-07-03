@@ -33,27 +33,39 @@ LESS_TERMCAP_ue=`echo "\e[0m"`
 LESS_TERMCAP_us=`echo "\e[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
-# Path
-[ "$OSTYPE" = "msys" ] && [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH"
-[ "$OSTYPE" = "msys" ] && [ -d "/usr/bin" ] && PATH="/usr/bin:$PATH"
-[ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
-[ -d "${HOME}/.dotfiles/bin" ] && PATH+=":${HOME}/.dotfiles/bin"
-[ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
-[ -d "${HOME}/.zsh/bin" ] && PATH+=":${HOME}/.zsh/bin"
-[ -d "${HOME}/.git.global/bin" ] && PATH+=":${HOME}/.git.global/bin"
-[ -d "${HOME}/.xmonad/bin" ] && PATH+=":${HOME}/.xmonad/bin"
-[ -d '/usr/local/heroku' ] && PATH+=':/usr/local/heroku/bin'
+# path
+if [ "$OSTYPE" = "msys" ]; then
+  path=(
+    /usr/local/bin(N-/)
+    /usr/bin(N-/)
+    $path
+  )
+fi
+path=(
+  $path
+  $HOME/.local/bin(N-/)
+  $HOME/.dotfiles/bin(N-/)
+  $HOME/.tmux/bin(N-/)
+  $HOME/.zsh/bin(N-/)
+  $HOME/.git.global/bin(N-/)
+  $HOME/.xmoand/bin(N-/)
+  /usr/local/heroku/bin(N-/)
+)
 
 ## Anyenv
 if [ -d "${HOME}/.anyenv" ] ; then
-  PATH="${HOME}/.anyenv/bin:$PATH"
+  path=($HOME/.anyenv/bin(N-/) $path)
   eval "`anyenv init -`"
   for D in `ls $HOME/.anyenv/envs`; do
-    PATH="${HOME}/.anyenv/envs/$D/shims:$PATH"
+    path=($HOME/.anyenv/envs/$D/shims(N-/) $path)
   done
 fi
 
-export PATH
+## fpath
+fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))
+
+## cdpath
+cdpath=(~)
 
 # Others
 export LS_COLORS='

@@ -1,8 +1,8 @@
 if [ -d ~/.zsh/bundle/zplug ]; then
   # Zplug
-  ZPLUG_HOME="$HOME/.zsh/bundle/"
-  ZPLUG_REPOS="$HOME/.zsh/bundle/repos/"
-  ZPLUG="${ZPLUG_HOME}zplug/zplug"
+  ZPLUG_HOME="$HOME/.zsh/bundle"
+  ZPLUG_REPOS="$HOME/.zsh/bundle/repos"
+  ZPLUG="$ZPLUG_HOME/zplug/zplug"
   ZPLUG_PLUGINS=(
     'b4b4r07/zplug'
     'Tarrasch/zsh-bd'
