@@ -57,7 +57,7 @@ print_header() {
 warning() {
   echo '   If the file exists, it will be ruthlessly clobbered'
   printf '   Are you sure you want to continue (yes/no)? '
-  read -s -n 1 ANSWER; echo -e '\n'
+  read -q ANSWER; echo
   case $ANSWER in
     'Y' | 'y' ) install ;;
     * ) exit 0 ;;
