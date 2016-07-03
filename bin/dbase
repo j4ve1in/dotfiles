@@ -28,7 +28,7 @@ lprintf() {
   local readonly SUCCESS_COLOR='1;36;49'
   local readonly ERROR_COLOR='1;31;49'
   local readonly MSG="$1" CMD="${@:2}"
-  $CMD >/dev/null 2>&1 &
+  ${=CMD} >/dev/null 2>&1 &
   while :; do
     jobs %1 > /dev/null 2>&1 || break
     printf "\r%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".  "

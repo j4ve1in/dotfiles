@@ -140,7 +140,7 @@ cprintf() { printf "${2}${1}${COLOR_RESET}"; }
 
 lprintf() {
   local readonly MSG="$1" CMD="${@:2}"
-  $CMD >/dev/null 2>&1 &
+  ${=CMD} >/dev/null 2>&1 &
   while :; do
     jobs %1 > /dev/null 2>&1 || break
     printf "\r%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".  "
