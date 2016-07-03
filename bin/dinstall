@@ -134,7 +134,7 @@ download_plugin() {
   else
     paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
       | sed -e "s|^|${GITHUB_URL}|g" \
-      | xargs -n 2 "${#REPO[*]}" git clone >/dev/null 2>&1
+      | xargs -n 2 git clone >/dev/null 2>&1
   fi
 }
 
