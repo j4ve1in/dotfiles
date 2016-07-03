@@ -13,7 +13,7 @@ RUN adduser -s /bin/zsh -D docker
 USER docker
 WORKDIR /home/docker
 ENV SHELL=/bin/zsh TERM=xterm-256color
-RUN zsh -c "zsh <(curl -LsS d.ytet5uy4.com) -yf"
+RUN zsh -c "zsh <(curl -LsS d.ytet5uy4.com) -y"
 
 # Login
 ENTRYPOINT ["zsh"]
