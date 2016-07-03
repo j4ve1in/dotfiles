@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/.dotfiles/tools/lib/base.bash
+. dbase
 
 cprint 'Backup dotfiles' $UNDERLINE
 DOT_DIR=~/.dotfiles

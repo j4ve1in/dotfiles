@@ -68,11 +68,10 @@ install() {
   # Download
   download
 
-  # Backup
-  . ~/.dotfiles/tools/backup.bash
+  PATH+="$PATH:$HOME/.dotfiles/bin"
 
-  # Deploy
-  . ~/.dotfiles/tools/deploy.bash
+  # Backup and Deploy
+  dbackup && ddeploy
 
   # Install plugin
   [ "$FULL_INSTALLATION" = "1" ] && install_plugin

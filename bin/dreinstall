@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/.dotfiles/tools/lib/base.bash
+. dbase
 
 printf "Are you sure you want to continue (yes/no)? "
 read -s -n 1 ANSWER; echo -e '\n'
@@ -8,7 +8,7 @@ read -s -n 1 ANSWER; echo -e '\n'
 case $ANSWER in
   "Y" | "y" )
     # Uninstall
-    bash ~/.dotfiles/tools/uninstall.bash -y
+    duninstall -y
 
     clear
 
