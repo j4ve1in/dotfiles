@@ -13,21 +13,21 @@ has() { type $1 >/dev/null 2>&1; }
 print() { printf "$@\n"; }
 
 cprint() {
-  local readonly string="$1" color="\e[${2}m" reset="\e[0;39;49m"
+  typeset -r string="$1" color="\e[${2}m" reset="\e[0;39;49m"
   print "${color}${string}${reset}"
 }
 
 cprintf() {
-  local readonly string="$1" color="\e[${2}m" reset="\e[0;39;49m"
+  typeset -r string="$1" color="\e[${2}m" reset="\e[0;39;49m"
   printf "${color}${string}${reset}"
 }
 
 lprintf() {
-  local readonly MAIN_COLOR='\e[1;38;5;32;49m'
-  local readonly COLOR_RESET='\e[0;39;49m'
-  local readonly SUCCESS_COLOR='1;36;49'
-  local readonly ERROR_COLOR='1;31;49'
-  local readonly MSG="$1" CMD="${@:2}"
+  typeset -r MAIN_COLOR='\e[1;38;5;32;49m'
+  typeset -r COLOR_RESET='\e[0;39;49m'
+  typeset -r SUCCESS_COLOR='1;36;49'
+  typeset -r ERROR_COLOR='1;31;49'
+  typeset -r MSG="$1" CMD="${@:2}"
   ${=CMD} >/dev/null 2>&1 &
   while :; do
     jobs %1 > /dev/null 2>&1 || break
