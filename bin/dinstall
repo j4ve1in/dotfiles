@@ -12,9 +12,9 @@ check_opt() {
   while (( $# > 0 )); do
     case "$1" in
       -*)
-        [[ "$1" =~ 'f' ]] && readonly FULL_INSTALLATION='1'
-        [[ "$1" =~ 'y' ]] && readonly ASSUME_YES='1'
-        [[ "$1" =~ 'p' ]] && readonly PLUGIN_INSTALLATION='1'
+        [[ "$1" =~ 'f' ]] && typeset -r FULL_INSTALLATION='1'
+        [[ "$1" =~ 'y' ]] && typeset -r ASSUME_YES='1'
+        [[ "$1" =~ 'p' ]] && typeset -r PLUGIN_INSTALLATION='1'
         shift
         ;;
       *) shift ;;
@@ -68,7 +68,7 @@ install() {
   # Download
   download
 
-  PATH+="$PATH:$HOME/.dotfiles/bin"
+  path=($path $HOME/.dotfiles/bin(N-/))
 
   # Backup and Deploy
   dbackup && ddeploy
@@ -90,7 +90,7 @@ download() {
     exit 1;
   fi
 
-  local readonly DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
+  typset -r DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
   lprintf ' Downloading dotfiles' "git clone $DOTFILES_REPO ${HOME}/.dotfiles"
   cprintf '  Repository: ' "$SUB_COLOR"
   echo "$DOTFILES_REPO"
@@ -101,7 +101,7 @@ download() {
 
 restart_message() {
   printf "Do you want to restart shell (yes/no)? "
-  read -s -n 1 ANSWER; echo -e '\n'
+  read -q ANSWER; echo
   case $ANSWER in
     "Y" | "y" ) restart ;;
     * ) exit 0 ;;
@@ -113,16 +113,16 @@ restart() { clear; exec $SHELL -l; }
 install_plugin() {
   cprint "Install plugin" $UNDERLINE
 
-  local readonly NAME=('Dein' 'Zplug' 'TPM')
+  typeset -ar NAME=('Dein' 'Zplug' 'TPM')
 
   lprintf " Downloading ${NAME[*]}" 'download_plugin'
   echo
 }
 
 download_plugin() {
-  local readonly REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
-  local readonly GITHUB_URL='https://github.com/'
-  local readonly DIR=(
+  typeset -ar REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
+  typeset -r GITHUB_URL='https://github.com/'
+  typeset -ar DIR=(
     "$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim"
     "$HOME/.zsh/bundle/zplug"
     "$HOME/.tmux/plugins/tpm"
@@ -139,7 +139,7 @@ cprint() { print "${2}${1}${COLOR_RESET}"; }
 cprintf() { printf "${2}${1}${COLOR_RESET}"; }
 
 lprintf() {
-  local readonly MSG="$1" CMD="${@:2}"
+  typeset -r MSG="$1" CMD="${@:2}"
   ${=CMD} >/dev/null 2>&1 &
   while :; do
     jobs %1 > /dev/null 2>&1 || break
