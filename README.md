@@ -32,8 +32,8 @@ You can install dotfiles by the following installation command.
 
 |      | Installation command                   |
 |:----:|:---------------------------------------|
-| cURL | bash <(curl -L d.ytet5uy4.com)         |
-| Wget | bash <(wget -O - d.ytet5uy4.com)       |
+| cURL | zsh <(curl -L d.ytet5uy4.com)          |
+| Wget | zsh <(wget -O - d.ytet5uy4.com)        |
 
 **NOTE:** If you want to use **full installation**, specify the `-f` option.
 When you use full installation, install shell, editor and multiplexer plugin, too.

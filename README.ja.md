@@ -31,8 +31,8 @@
 
 |      | インストールコマンド                   |
 |:----:|:---------------------------------------|
-| cURL | bash <(curl -L d.ytet5uy4.com)         |
-| Wget | bash <(wget -O - d.ytet5uy4.com)       |
+| cURL | zsh <(curl -L d.ytet5uy4.com)          |
+| Wget | zsh <(wget -O - d.ytet5uy4.com)        |
 
 **参考:** **フルインストール**を利用する場合はインストールコマンドに
 `-f`オプションを指定して実行して下さい。フルインストールを使うと
