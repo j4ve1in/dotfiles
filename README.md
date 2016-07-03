@@ -11,8 +11,6 @@
 |
 <b><a href='#test-with-docker'>Test with Docker</a></b>
 |
-<b><a href='//github.com/ytet5uy4/dotfiles/blob/master/README.ja.md'>Japanese README</a></b>
-|
 <b><a href='#license'>License</a></b>
 </p>
 
