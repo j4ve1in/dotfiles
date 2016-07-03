@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# bash <(curl https://raw.githubusercontent.com/ytet5uy4/scripts/master/setup-msys2.bash)
-
 # Install packages
 PACKAGES=(
   'gcc'

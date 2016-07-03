@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 for dir in {Documents,Music,Pictures,Videos,Source_code}; do
   if [ ! -d "$dir" ] && [ ! -L "$dir" ]; then

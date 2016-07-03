@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 : ${INCLUDE_GUARD_DOT:=0}
 
@@ -12,7 +12,7 @@ if [ "$INCLUDE_GUARD_DOT" = "0" ]; then
   # DOT_NUM
   DOT_NUM=${#DOT_PATH[@]}
 
-  for ((i=0;i<DOT_NUM;i++)); do
+  for ((i=1;i<=DOT_NUM;i++)); do
     # DOT_NAME
     DOT_NAME[$i]=${DOT_PATH[$i]##*/}
 

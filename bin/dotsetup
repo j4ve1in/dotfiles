@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 display_advice() { echo -e "Try 'dotsetup --help' for more information.\n"; }
 
