@@ -8,7 +8,7 @@ cprint "Create symbolic link" $UNDERLINE
 [ "$OSTYPE" = "msys" ] && export MSYS='winsymlinks'
 COUNT=0
 N=${#DOT_NAME[@]}
-for ((i=0;i<N;i++)); do
+for ((i=1;i<=N;i++)); do
   if [ "${DOT_FILE_TYPE[$i]}" = "File" ]; then
     cprintf " [" $BLUE
     printf "%2d/%2d" $((COUNT+1)) $N

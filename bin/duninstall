@@ -23,7 +23,7 @@ check_opt() {
 
 uninstall_message() {
   printf "Are you sure you want to continue (yes/no)? "
-  read -s -n 1 ANSWER; echo -e '\n'
+  read -q ANSWER; echo
   case $ANSWER in
     "Y" | "y" ) uninstall ;;
     * ) exit 0 ;;
@@ -39,7 +39,7 @@ uninstall() {
   BLUE="34"
   COLOR_75_B="1;38;5;75;49"
   N=${#DOT_NAME[@]}
-  for ((i=0;i<N;i++)); do
+  for ((i=1;i<=N;i++)); do
     if [ -f ~/${DOT_NAME[$i]} ]; then
       MAX_F=$((MAX_F+1))
     elif [ -d ~/${DOT_NAME[$i]} ]; then
@@ -58,7 +58,7 @@ uninstall() {
   # Remove
   cprint "Remove dotfiles" $UNDERLINE
   N=${#DOT_NAME[@]}
-  for ((i=0;i<N;i++)); do
+  for ((i=1;i<=N;i++)); do
     if [ -e ~/${DOT_NAME[$i]} ]; then
       cprintf " [" $BLUE
       printf "%2d/%2d" $((i+1)) $MAX

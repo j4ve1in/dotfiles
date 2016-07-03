@@ -142,13 +142,13 @@ lprintf() {
   typeset -r MSG="$1" CMD="${@:2}"
   ${=CMD} >/dev/null 2>&1 &
   while :; do
-    jobs %2 > /dev/null 2>&1 || break
+    jobs %% > /dev/null 2>&1 || break
     printf "\r%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".  "
     sleep 0.7
-    jobs %2 > /dev/null 2>&1 || break
+    jobs %% > /dev/null 2>&1 || break
     printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" "." ". "
     sleep 0.7
-    jobs %2 > /dev/null 2>&1 || break
+    jobs %% > /dev/null 2>&1 || break
     printf "\r%s%s${MAIN_COLOR}%s${COLOR_RESET}" "${MSG}" ".." "."
     sleep 0.7
   done
