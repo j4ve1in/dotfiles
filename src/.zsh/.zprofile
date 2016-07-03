@@ -1,4 +1,4 @@
-[ -e '/etc/arch-release' ] && . ~/.zshenv
+[ -e '/etc/arch-release' ] || [ -e '/etc/alpine-release' ] && . ~/.zshenv
 
 has() { type $1 >/dev/null 2>&1; }
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if check-tmux-version '^.+2\.[12]$'; then
   tmux set-option -g mouse on

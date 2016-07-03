@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if type powerline >/dev/null 2>&1;then
   tmux run-shell 'powerline-daemon -q'

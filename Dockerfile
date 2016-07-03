@@ -1,27 +1,18 @@
-FROM fedora:22
+FROM alpine:3.4
 MAINTAINER ytet5uy4
 
 # Update and Install packages
-RUN echo "fastestmirror=True" >> /etc/dnf/dnf.conf && \
-    dnf update -yq --setopt=deltarpm=no && \
-    dnf install -yq \
-        sudo passwd git \
-        tmux vim zsh \
-        gcc make findutils procps-ng && \
-    dnf clean all -q
+RUN apk update && apk upgrade && \
+    apk add --no-cache curl git zsh vim tmux gcc make coreutils
 
 # Ceate user
-RUN useradd -d /home/ytet5uy4 -m -s /bin/zsh ytet5uy4 && \
-    echo "ytet5uy4" | passwd --stdin ytet5uy4 && \
-    echo "ytet5uy4 ALL=(ALL) ALL" >> /etc/sudoers
+RUN adduser -s /bin/zsh -D docker
 
 # Install dotfiles
-USER ytet5uy4
-WORKDIR /home/ytet5uy4
-ENV HOME=/home/ytet5uy4 \
-    HOSTNAME=docker \
-    TERM=xterm-256color
-RUN bash -c "bash <(curl -LsS d.ytet5uy4.com) -yf >/dev/null 2>&1"
+USER docker
+WORKDIR /home/docker
+ENV SHELL=/bin/zsh TERM=xterm-256color
+RUN zsh -c "zsh <(curl -LsS d.ytet5uy4.com) -yf"
 
 # Login
 ENTRYPOINT ["zsh"]

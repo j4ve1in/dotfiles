@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 COMMIT_ID='%C(blue)[%C(reset)%h%C(blue)]%C(reset)'
 DATE='%C(blue)[%C(reset)%ad%C(blue)]%C(reset)'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 main() {
   set-option status-left "`left`"
