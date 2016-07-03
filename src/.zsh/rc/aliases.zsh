@@ -24,7 +24,7 @@ fi
 
 # Vi
 has vi && alias v='vi -p'
-has vim && alias v='vim -p' tw="vim +'Unite tweetvim'"
+has vim && alias v='vim -p'
 
 # mount
 alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
