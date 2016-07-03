@@ -12,8 +12,8 @@ check_opt() {
   while (( $# > 0 )); do
     case "$1" in
       -*)
-        [[ "$1" =~ 'y' ]] && typeset -r ASSUME_YES='1'
-        [[ "$1" =~ 'P' ]] && typeset -r PLUGIN_UNINSTALL='1'
+        [[ "$1" =~ 'y' ]] && typeset -gr ASSUME_YES='1'
+        [[ "$1" =~ 'P' ]] && typeset -gr PLUGIN_UNINSTALL='1'
         shift
         ;;
       *) shift ;;

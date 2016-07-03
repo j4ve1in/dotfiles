@@ -12,9 +12,9 @@ check_opt() {
   while (( $# > 0 )); do
     case "$1" in
       -*)
-        [[ "$1" =~ 'f' ]] && typeset -r FULL_INSTALLATION='1'
-        [[ "$1" =~ 'y' ]] && typeset -r ASSUME_YES='1'
-        [[ "$1" =~ 'p' ]] && typeset -r PLUGIN_INSTALLATION='1'
+        [[ "$1" =~ 'f' ]] && typeset -gr FULL_INSTALLATION='1'
+        [[ "$1" =~ 'y' ]] && typeset -gr ASSUME_YES='1'
+        [[ "$1" =~ 'p' ]] && typeset -gr PLUGIN_INSTALLATION='1'
         shift
         ;;
       *) shift ;;
@@ -25,13 +25,13 @@ check_opt() {
 set_color_code() { echo "\e[${1}m"; }
 
 set_color_var() {
-  MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
-  SUB_COLOR="$(set_color_code '1;38;5;75;49')"
-  SUCCESS_COLOR="$(set_color_code '1;36;49')"
-  ERROR_COLOR="$(set_color_code '1;31;49')"
-  UNDERLINE="$(set_color_code '4;39;49')"
-  DARKGRAY="$(set_color_code '90')"
-  COLOR_RESET="$(set_color_code '0;39;49')"
+  typeset -g MAIN_COLOR="$(set_color_code '1;38;5;32;49')"
+  typeset -g SUB_COLOR="$(set_color_code '1;38;5;75;49')"
+  typeset -g SUCCESS_COLOR="$(set_color_code '1;36;49')"
+  typeset -g ERROR_COLOR="$(set_color_code '1;31;49')"
+  typeset -g UNDERLINE="$(set_color_code '4;39;49')"
+  typeset -g DARKGRAY="$(set_color_code '90')"
+  typeset -g COLOR_RESET="$(set_color_code '0;39;49')"
 }
 
 print_header() {
