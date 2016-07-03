@@ -127,9 +127,15 @@ download_plugin() {
     "$HOME/.zsh/bundle/zplug"
     "$HOME/.tmux/plugins/tpm"
   )
-  paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
-    | sed -e "s|^|${GITHUB_URL}|g" \
-    | xargs -L 1 -n 2 -P "${#REPO[*]}" git clone >/dev/null 2>&1
+  if ! [ -e '/etc/alpine-release' ]; then
+    paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
+      | sed -e "s|^|${GITHUB_URL}|g" \
+      | xargs -L 1 -n 2 -P "${#REPO[*]}" git clone >/dev/null 2>&1
+  else
+    paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
+      | sed -e "s|^|${GITHUB_URL}|g" \
+      | xargs -n 2 "${#REPO[*]}" git clone >/dev/null 2>&1
+  fi
 }
 
 print() { printf "$@\n"; }
