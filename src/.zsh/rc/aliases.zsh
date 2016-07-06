@@ -1,7 +1,10 @@
 has() { type $1 >/dev/null 2>&1; }
+is_gnu() { [[ "$OSTYPE" =~ (linux|msys) ]]; }
+is_bsd() { [[ "$OSTYPE" =~ darwin ]]; }
 
 # ls
-alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
+is_gnu && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
+is_bsd && alias l{,s}='ls -FG' ll='l -hl'
 alias la='l -A' lla='ll -A'
 
 # grep
@@ -42,7 +45,11 @@ has feednix && alias fn='feednix'
 has netctl-auto && alias n='netctl-auto'
 has thefuck && eval "`thefuck --alias`"
 has hub && eval "`hub alias -s`"
-alias s='sudo -E ' se='sudoedit -E '
+has ranger && alias f='ranger'
+has start && alias st='start' f='start .'
+has sudo && alias s='sudo -E '
+has sudoedit && se='sudoedit -E '
+has open && op='open' f='open .'
 alias p='ps aux'
 alias m='mv'
 alias le='less'
@@ -55,63 +62,23 @@ alias al='alias | less'
 alias dsu='dotsetup'
 alias ts='trash'
 
-case "`uname -s`" in
-  Linux) alias f='ranger' ;;
-  MSYS*) alias st='start' f='start .' ;;
-  Darwin) alias l{,s}='ls -FG' ll='l -hl' op='open' f='open .' ;;
-esac
-
 # Suffix
-alias -s sh=sh
-alias -s bash=bash
+alias -s sh=sh bash=bash
 alias -s {md,txt}=cat
+has chromium && alias -s {html,css}=chromium
 
-## CoffeeScript
-if has coffee; then
-  alias -s coffee=coffee
-fi
-
-## Go
-if has go; then
-  alias -s go='go run'
-fi
-
-## Nodejs
-if has node; then
-  alias -s js=node
-fi
-
-## Python
-if has python; then
-  alias -s py=python
-fi
-
-## Ruby
-if has ruby; then
-  alias -s rb=ruby
-fi
-
-## Zsh
-if has zsh; then
-  alias -s zsh=zsh
-fi
-
-## Vim
-if has vim; then
-  alias -s vim=vim
-fi
+has coffee && alias -s coffee=coffee
+has go && alias -s go='go run'
+has node && alias -s js=node
+has python && alias -s py=python
+has ruby && alias -s rb=ruby
+has zsh && alias -s zsh=zsh
+has vim && alias -s vim=vim
 
 ## C
 if has gcc; then
   runc() { gcc $1 && shift && ./a.out $@ && rm -f a.out; }
   alias -s c=runc
-fi
-
-## Web
-if has chromium; then
-  alias -s {html,css}=chromium
-elif has firefox; then
-  alias -s {html,css}=firefox
 fi
 
 ## Image

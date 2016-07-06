@@ -1,8 +1,11 @@
-[ -e '/etc/arch-release' ] || [ -e '/etc/alpine-release' ] && . ~/.zshenv
+is_arch() { [ -e '/etc/arch-release' ]; }
+is_alpine() { [ -e '/etc/alpine-release' ]; }
+is_msys() { [ "$OSTYPE" = "msys" ]; }
+is_arch || is_alpine || is_msys && . ~/.zshenv
 
 has() { type $1 >/dev/null 2>&1; }
 
-if [ "$OSTYPE" != "msys" ]; then
+if ! is_msys; then
   cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
   # Display LastLogin
   if has lastlog; then
@@ -33,6 +36,13 @@ fi
 if has keychain; then
   keychain --nogui --quiet
   [ -f ~/.keychain/$HOST-sh ] && source ~/.keychain/$HOST-sh
+fi
+
+# Launch tmux
+# if not inside a tmux session, and if no session is started,
+# start a new session
+if has tmux && [ -z "$TMUX" ]; then
+  tmux attach -d >/dev/null 2>&1 || tmux
 fi
 
 # Compile
