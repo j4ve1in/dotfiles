@@ -112,4 +112,4 @@ PROMPT+="%D{%m/%d %H:%M:%S}"
 PROMPT+="${fg[main]}]%f"
 
 # Others
-PROMPT+=$'\n'"%B%(!.#.%%)%b "
+PROMPT+=$'\n'"%(!.#.%%) "
