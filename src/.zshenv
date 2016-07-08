@@ -37,6 +37,9 @@ LESS_TERMCAP_us=`echo "\e[1;36m"`
 export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # path
+## Delete overlapping environment variable
+typeset -U path cdpath fpath manpath
+
 path=(
   $path
   $HOME/.local/bin(N-/)

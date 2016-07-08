@@ -5,7 +5,10 @@ stty stop undef
 setopt no_beep
 setopt print_eight_bit
 setopt interactive_comments
-autoload -U colors && colors
+
+# help
+autoload -Uz run-help
+autoload -Uz run-help-git
 
 # vi mode
 bindkey -v
@@ -24,9 +27,6 @@ bindkey '^B' backward-char
 bindkey '^K' kill-line
 bindkey '^[f' forward-word
 bindkey '^[b' backward-word
-
-# Delete overlapping environment variable
-typeset -U path cdpath fpath manpath
 
 # zman
 zman() { PAGER="less -g -s '+/^       "$1"'" man zshall; }
