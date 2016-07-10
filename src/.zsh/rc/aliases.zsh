@@ -12,7 +12,7 @@ alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
 # cd
 alias c='cd'
-alias ..='cd ..' doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
+alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
 
 # diff
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
