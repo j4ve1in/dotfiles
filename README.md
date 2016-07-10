@@ -28,10 +28,9 @@ This repository manage configuration files on Unix-type operating systems.
 # Installation
 You can install dotfiles by the following installation command.
 
-|      | Installation command                   |
-|:----:|:---------------------------------------|
-| cURL | zsh <(curl -L d.ytet5uy4.com)          |
-| Wget | zsh <(wget -O - d.ytet5uy4.com)        |
+```zsh
+% zsh <(curl -L d.ytet5uy4.com)
+```
 
 **NOTE:** If you want to use **full installation**, specify the `-f` option.
 When you use full installation, install shell, editor and multiplexer plugin, too.
@@ -72,9 +71,9 @@ assume `yes` as answer to all prompts and run non-interactively.
 # Test with Docker
 Before running installation command to setup dotfiles, you can pull
 an **[image]** and try my dotfiles in a Docker container as follows.
-```bash
-$ docker pull ytet5uy4/dotfiles
-$ docker run -it --rm ytet5uy4/dotfiles
+```zsh
+% docker pull ytet5uy4/dotfiles
+% docker run -it --rm ytet5uy4/dotfiles
 ```
 
 # License
