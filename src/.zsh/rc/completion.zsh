@@ -1,5 +1,5 @@
 autoload -Uz compinit
-[ "$OSTYPE" != "msys" ] && compinit -u || compinit -C
+! is_msys && compinit -u || compinit -C
 
 setopt auto_pushd
 setopt pushd_ignore_dups

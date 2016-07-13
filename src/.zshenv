@@ -1,10 +1,9 @@
 # Profiling configuration files of zsh
 # zmodload zsh/zprof && zprof
 
-is_linux() { [[ "$OSTYPE" =~ linux ]]; }
-is_msys() { [ "$OSTYPE" = "msys" ]; }
-is_darwin() { [ "$OSTYPE" = "darwin" ]; }
-has() { type $1 >/dev/null 2>&1; }
+export ZDOTDIR="$HOME/.zsh"
+fpath=( $fpath $ZDOTDIR/functions/Lib(N-/) )
+autoload -Uz vital && vital set
 
 export LANG='en_US.UTF-8'
 
@@ -83,9 +82,8 @@ fi
 is_msys && export MSYS='winsymlinks'
 
 ## zsh
-export ZDOTDIR="$HOME/.zsh"
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST,HISTFILESIZE}=100
 
-unset -f has
+vital unset

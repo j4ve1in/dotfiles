@@ -1,6 +1,5 @@
 : "Prompt" && () {
   typeset -g PROMPT
-  has() { type $1 >/dev/null 2>&1; }
   setopt prompt_subst
   ## Colors
   typeset -A fg

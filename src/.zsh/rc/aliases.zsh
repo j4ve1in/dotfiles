@@ -1,7 +1,3 @@
-has() { type $1 >/dev/null 2>&1; }
-is_gnu() { [[ "$OSTYPE" =~ (linux|msys) ]]; }
-is_bsd() { [[ "$OSTYPE" =~ darwin ]]; }
-
 # ls
 is_gnu && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
 is_bsd && alias l{,s}='ls -FG' ll='l -hl'
@@ -104,5 +100,3 @@ extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-
-unset -f has

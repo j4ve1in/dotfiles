@@ -1,9 +1,6 @@
-is_arch() { [ -e '/etc/arch-release' ]; }
-is_alpine() { [ -e '/etc/alpine-release' ]; }
-is_msys() { [ "$OSTYPE" = "msys" ]; }
-is_arch || is_alpine || is_msys && . ~/.zshenv
+autoload -Uz vital && vital set
 
-has() { type $1 >/dev/null 2>&1; }
+is_arch || is_alpine || is_msys && . ~/.zshenv
 
 : "Display LastLogin and dotfiles status" && () {
   is_msys && return 1
@@ -35,18 +32,22 @@ has() { type $1 >/dev/null 2>&1; }
   fi
 }
 
-# Load keychain
-if has keychain; then
-  keychain --nogui --quiet
-  [ -f ~/.keychain/$HOST-sh ] && source ~/.keychain/$HOST-sh
-fi
+: "Load keychain" && () {
+  if has keychain; then
+    keychain --nogui --quiet
+    local KEYCHAIN_FILE=~/.keychain/$HOST-sh
+    [ -f "$KEYCHAIN_FILE" ] && source "$KEYCHAIN_FILE"
+  fi
+}
 
-# Launch tmux
-# if not inside a tmux session, and if no session is started,
-# start a new session
-if has tmux && [ -z "$TMUX" ]; then
-  tmux attach -d >/dev/null 2>&1 || tmux
-fi
+: "Launch tmux" && () {
+  is_msys && return 1
+  # if not inside a tmux session, and if no session is started,
+  # start a new session
+  if has tmux && [ -z "$TMUX" ]; then
+    tmux attach -d >/dev/null 2>&1 || tmux
+  fi
+}
 
 : "Compile configuration files of zsh" && () {
   typeset -a ZFILE
@@ -94,3 +95,5 @@ fi
     done
   fi
 }
+
+vital unset
