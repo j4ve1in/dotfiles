@@ -20,13 +20,13 @@ has vagrant && has virtualbox && export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 has ruby && export KCODE='u' # RUBYGEMS_GEMDEPS='-'
 
 # Go
-has go && [ -d "${HOME}/.local" ] && export GOPATH="${HOME}/.local"
+has go && [ -d "$HOME/.local" ] && export GOPATH="$HOME/.local"
 
 # Editor
 has vim && export EDITOR='vim -p' || export EDITOR='vi -p'
 
 # Less
-export LESS='-ciMR'
+export LESS='-ciMR' LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 LESS_TERMCAP_mb=`echo "\e[1;31m"`
 LESS_TERMCAP_md=`echo "\e[1;38;05;75m"`
 LESS_TERMCAP_me=`echo "\e[0m"`
@@ -34,7 +34,6 @@ LESS_TERMCAP_se=`echo "\e[0m"`
 LESS_TERMCAP_so=`echo "\e[1;44m"`
 LESS_TERMCAP_ue=`echo "\e[0m"`
 LESS_TERMCAP_us=`echo "\e[1;36m"`
-export LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 
 # path
 ## Delete overlapping environment variable
@@ -52,7 +51,7 @@ path=(
 )
 
 ## Anyenv
-if [ -d "${HOME}/.anyenv" ] ; then
+if [ -d "$HOME/.anyenv" ] ; then
   path=($HOME/.anyenv/bin(N-/) $path)
   eval "`anyenv init -`"
   for D in `ls $HOME/.anyenv/envs`; do
@@ -61,7 +60,13 @@ if [ -d "${HOME}/.anyenv" ] ; then
 fi
 
 ## fpath
-fpath=($fpath ${GOPATH}/src/*/*/ghq/zsh(N-/))
+fpath=(
+  $fpath
+  $GOPATH/src/*/*/ghq/zsh(N-/)
+  $ZDOTDIR/bundle/repos/mollifier/cd-gitroot(N-/)
+  $ZDOTDIR/functions/Selector(N-/)
+  $ZDOTDIR/functions/Misc(N-/)
+)
 
 ## cdpath
 cdpath=(~)
@@ -78,7 +83,9 @@ fi
 is_msys && export MSYS='winsymlinks'
 
 ## zsh
-export ZDOTDIR="${HOME}/.zsh"
+export ZDOTDIR="$HOME/.zsh"
+export HISTFILE="$ZDOTDIR/.zsh_history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export {HISTSIZE,SAVEHIST,HISTFILESIZE}=100
 
 unset -f has

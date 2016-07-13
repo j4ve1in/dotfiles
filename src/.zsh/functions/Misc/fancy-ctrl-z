@@ -1,0 +1,8 @@
+if [[ $#BUFFER -eq 0 ]]; then
+  BUFFER="fg"
+  zle accept-line
+else
+  zle push-input
+  zle clear-screen
+fi
+# vim: ft=zsh sw=2 ts=2 et

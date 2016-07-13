@@ -80,7 +80,6 @@ hook_add = ''' " {{{
     \       [$HOME . '/rc/alias.zsh'     , $HOME . '/.zsh/rc/alias.zsh'     ],
     \       [$HOME . '/rc/base.zsh'      , $HOME . '/.zsh/rc/base.zsh'      ],
     \       [$HOME . '/rc/completion.zsh', $HOME . '/.zsh/rc/completion.zsh'],
-    \       [$HOME . '/rc/history.zsh'   , $HOME . '/.zsh/rc/history.zsh'   ],
     \       [$HOME . '/rc/plugins.zsh'   , $HOME . '/.zsh/rc/plugins.zsh'   ],
     \       [$HOME . '/rc/prompt.zsh'    , $HOME . '/.zsh/rc/prompt.zsh'    ]
     \     ]

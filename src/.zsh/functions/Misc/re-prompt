@@ -1,0 +1,3 @@
+zle .reset-prompt
+zle .accept-line
+# vim: ft=zsh sw=2 ts=2 et

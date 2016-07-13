@@ -1,21 +1,22 @@
-# Load
-## ~/.zsh/rc/*.zsh
-### Plugin
-[ "$OSTYPE" != "msys" ] && ZRC=("plugins")
-### Others
-ZRC+=(
-  'aliases'
-  'base'
-  'completion'
-  'function'
-  'history'
-  'prompt'
-  'local'
-)
-for file in ${ZRC[@]}; do
-  file=~/.zsh/rc/${file}.zsh
-  [ -r "$file" ] && [ -f "$file" ] && . "$file"
-done; unset -v ZRC file
+: "Load ~/.zsh/rc/*.zsh" && () {
+  typeset file
+  typeset -a ZRC
+  # Plugin
+  [ "$OSTYPE" != "msys" ] && ZRC=("plugins")
+  # Others
+  ZRC+=(
+    'aliases'
+    'base'
+    'completion'
+    'function'
+    'prompt'
+    'local'
+  )
+  for file in ${ZRC[@]}; do
+    file=~/.zsh/rc/${file}.zsh
+    [ -r "$file" ] && [ -f "$file" ] && . "$file"
+  done
+}
 
 # Profiling configuration files of zsh
 # if (which zprof > /dev/null) ;then

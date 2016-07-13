@@ -61,6 +61,7 @@ alias reload='exec $SHELL -l' rl='reload'
 alias al='alias | less'
 alias dsu='dotsetup'
 alias ts='trash'
+autoload -Uz zmv && alias zmv='noglob zmv -W'
 
 # Suffix
 alias -s sh=sh bash=bash
@@ -82,13 +83,9 @@ if has gcc; then
 fi
 
 ## Image
-if [ $(uname) = Linux ]; then
-  alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
-elif [ "$OSTYPE" = "msys" ]; then
-  alias -s {gif,jpg,jpeg,png,bmp}=start
-elif [ $(uname) = Darwin ]; then
-  alias -s {gif,jpg,jpeg,png,bmp}=open
-fi
+has xdg-oepn && alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
+has start && alias -s {gif,jpg,jpeg,png,bmp}=start
+has open && alias -s {gif,jpg,jpeg,png,bmp}=open
 
 ## Extract
 extract() {
