@@ -1,13 +1,3 @@
-" Netrw
-let g:netrw_liststyle=3
-let g:netrw_keepdir=0
-let g:netrw_home=$HOME.'/.vim/tmp'
-"" Autostart
-autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | Explore | endif
-function! s:bufByte()
-  return line2byte(line('$') + 1) == -1 ? 0 : -1
-endfunction
-
 " Dein
 let s:dein_dir = expand('~/.vim/bundle')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -31,3 +21,13 @@ if isdirectory(s:dein_repo_dir)
     call dein#install()
   endif
 endif
+
+" Netrw
+let g:netrw_liststyle=3
+let g:netrw_keepdir=0
+let g:netrw_home=$HOME.'/.vim/tmp'
+"" Autostart
+autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | Explore | endif
+function! s:bufByte()
+  return line2byte(line('$') + 1) == -1 ? 0 : -1
+endfunction
