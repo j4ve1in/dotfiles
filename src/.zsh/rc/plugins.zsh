@@ -17,12 +17,12 @@
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
       'junegunn/fzf, use:shell'
     )
-  
+
     . $ZPLUG
     for plugin in ${ZPLUG_PLUGINS[@]}; do
       zplug "$plugin" >/dev/null 2>&1
     done
-  
+
     local SKYBLUE="\e[1;38;05;75m"
     cprintf() {
       local color="$1" string="$2" reset="\e[0m"
@@ -37,12 +37,12 @@
       [[ "$ANSWER" =~ Y\|y ]] && zplug install | sed -e 's/^/  /g'
       echo
     fi
-  
+
     zplug load
-  
+
     # cd-gitroot
     zplug check 'mollifier/cd-gitroot' && alias cdu='cd-gitroot'
-  
+
     # Syntax-highlighting
     if zplug check 'zsh-users/zsh-syntax-highlighting'; then
       ZSH_HIGHLIGHT_STYLES[default]=none
@@ -69,9 +69,9 @@
       ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
       ZSH_HIGHLIGHT_STYLES[assign]=none
     fi
-  
+
     zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
-  
+
     if zplug check 'junegunn/fzf-bin'; then
       export FZF_DEFAULT_OPTS='
         --ansi
@@ -83,26 +83,26 @@
         --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
         --color info:69,prompt:75,spinner:69,pointer:69,marker:69
       '
-  
+
       type tmux >/dev/null 2>&1 && export SELECTOR='fzf-tmux'
       [ -z "$TMUX" ] && export SELECTOR='fzf'
-  
+
       autoload -Uz selector-init && selector-init
-  
+
       bindkey '^@' fzf-select-widget
-  
+
       bindkey '^@c' fzf-cd-dir-widget
-  
+
       bindkey '^@e' fzf-edit-files-widget
-  
+
       bindkey '^@g' fzf-cd-ghq-repository-widget
-  
+
       bindkey '^\' fzf-cdr-widget
-  
+
       bindkey '^r' fzf-excute-history-widget
-  
+
       bindkey '^@ga' fzf-git-add-widget
-  
+
       bindkey '^@gb' fzf-checkout-git-branch-widget
     fi
   fi
