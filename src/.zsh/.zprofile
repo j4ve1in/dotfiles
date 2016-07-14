@@ -15,22 +15,6 @@ is_arch || is_alpine || is_msys && . ~/.zshenv
     PORT="$2" DATE="$3 $4 $5 $6"
     echo "$DATE on $PORT"
   fi
-
-  # Check for updates
-  git -C ~/.dotfiles fetch >/dev/null 2>&1
-  local LOCAL REMOTE
-  LOCAL=`git -C ~/.dotfiles log HEAD`
-  REMOTE=`git -C ~/.dotfiles log origin/HEAD`
-  cprintf 'Dotfiles status: ' "1;38;05;75" # cyan
-  if [ "$LOCAL" = "$REMOTE" ]; then
-    echo 'up to date'
-  else
-    echo 'local out of date'
-    printf ' Would you like to update (yes/no)? '
-    read -q ANSWER
-    echo
-    [[ "$ANSWER" =~ Y\|y ]] && echo && dotsetup -u
-  fi
 }
 
 : "Load keychain" && () {
@@ -75,7 +59,7 @@ is_arch || is_alpine || is_msys && . ~/.zshenv
     fi
   done
   N=$i
-  
+
   ## Start
   if [ "$N" != "0" ]; then
     i=1
