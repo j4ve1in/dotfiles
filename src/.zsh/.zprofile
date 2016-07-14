@@ -1,3 +1,4 @@
+fpath=( $fpath $ZDOTDIR/functions/Lib(N-/) )
 autoload -Uz vital && vital set
 
 is_arch || is_alpine || is_msys && . ~/.zshenv
