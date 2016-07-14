@@ -48,7 +48,7 @@ has hub && eval "`hub alias -s`"
 has ranger && alias f='ranger'
 has start && alias st='start' f='start .'
 has sudo && alias s='sudo -E '
-has sudoedit && se='sudoedit -E '
+has sudoedit && alias se='sudoedit -E '
 has open && op='open' f='open .'
 alias p='ps aux'
 alias m='mv'
