@@ -1,0 +1,11 @@
+REPO=($(ghq list --full-path | $SELECTOR))
+[ ! -d "$REPO" ] && return 1
+if zle; then
+  BUFFER="cd -- $REPO"
+  CURSOR=$#BUFFER
+  zle accept-line
+  zle -R -c
+else
+  print -z -f '%s' "cd -- $REPO"
+fi
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,0 +1,56 @@
+TRASH_DIR="${HOME}/.local/share/Trash/files"
+[ -e "$TRASH_DIR" ] || mkdir -p "$TRASH_DIR"
+case "$1" in
+  '-a' )
+    if [ -n "`ls -A $TRASH_DIR`" ]; then
+      printf "trash: remove trash? "; read ANSWER
+      case $ANSWER in
+        "Y" | "y" | "Yes" | "yes" )
+          /bin/rm -rf ${TRASH_DIR}/*
+          echo 'removed trash'
+          ;;
+        * )
+          ;;
+      esac
+    else
+      echo "trash: $TRASH_DIR is empty"
+    fi
+    return 0
+    ;;
+  '-s' )
+    if [ -n "`ls -A $TRASH_DIR`" ]; then
+      ls -Ahl --time-style=long-iso $TRASH_DIR
+    else
+      echo 'trash: $TRASH_DIR is empty'
+    fi
+    return 0
+    ;;
+  '-h' )
+    echo "usage: trash [OPTION] [FILE]"
+    echo "  -s show status"
+    echo "  -a remove trash"
+    echo
+    return 0
+    ;;
+  -* )
+    echo "trash: illegal option -- '`echo $1 | sed 's/^-*//'`'"
+    echo -e "Try 'trash -h' for more information.\n"
+    return 0
+    ;;
+  '' )
+    echo -e "Try 'trash -h' for more information.\n"
+    return 0
+    ;;
+esac
+
+for file in $@; do
+  if [ ! -e "$file" ]; then
+    echo "trash: cannot stat \`${file}\`: No such file or directory"
+    NO_SUCH_FILE=1
+  fi
+done
+[ "$NO_SUCH_FILE" = "1" ] && return 1
+mv -f --backup='numbered' --target-directory="$TRASH_DIR" "$@" >/dev/null 2>&1
+echo "trash: removed ${@}"
+return 0
+# vim: ft=zsh sw=2 ts=2 et

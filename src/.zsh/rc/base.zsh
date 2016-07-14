@@ -1,5 +1,3 @@
-has() { type $1 >/dev/null 2>&1; }
-
 stty stop undef
 
 setopt no_beep
@@ -28,53 +26,38 @@ bindkey '^K' kill-line
 bindkey '^[f' forward-word
 bindkey '^[b' backward-word
 
-# zman
-zman() { PAGER="less -g -s '+/^       "$1"'" man zshall; }
+# history
+setopt hist_expand
+setopt share_history
+setopt hist_no_store
+setopt extended_history
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt inc_append_history
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
-# Abbreviation
-setopt extended_glob
+# user-defined
+autoload -Uz mcd
+autoload -Uz search
+autoload -Uz ssh-add
+autoload -Uz ssh-add-with-lpass
+autoload -Uz trash
+autoload -Uz zman
 
-typeset -A abbreviations
-abbreviations=(
-  "F"   "| fzf-tmux"
-  "G"   "| grep"
-  "X"   "| xargs"
-  "T"   "| tail"
-  "H"   "| head"
-  "C"   "| cat"
-  "W"   "| wc"
-  "L"   "| less"
-  "A"   "| awk"
-  "S"   "| sed"
-  "E"   "2>&1 > /dev/null"
-  "N"   "> /dev/null"
-)
-
-magic-abbrev-expand() {
-  local MATCH
-  LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
-  LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
-  zle self-insert
-}
-
-no-magic-abbrev-expand() { LBUFFER+=' '; }
-
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
+## ctrl-z
+autoload -Uz fancy-ctrl-z
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+## Abbreviation
+setopt extended_glob
+autoload -Uz magic-abbrev-expand
+autoload -Uz no-magic-abbrev-expand
 zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
-
-autoload -Uz zmv
-alias zmv='noglob zmv -W'

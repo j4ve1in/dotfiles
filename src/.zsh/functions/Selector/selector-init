@@ -1,0 +1,24 @@
+autoload -Uz fzf-select-widget
+zle -N fzf-select-widget
+
+autoload -Uz fzf-cd-dir-widget
+zle -N fzf-cd-dir-widget
+
+autoload -Uz fzf-edit-files-widget
+zle -N fzf-edit-files-widget
+
+autoload -Uz fzf-cd-ghq-repository-widget
+zle -N fzf-cd-ghq-repository-widget
+
+autoload -Uz fzf-cdr-widget
+zle -N fzf-cdr-widget
+
+autoload -Uz fzf-excute-history-widget
+zle -N fzf-excute-history-widget
+
+autoload -Uz fzf-git-add-widget
+zle -N fzf-git-add-widget
+
+autoload -Uz fzf-checkout-git-branch-widget
+zle -N fzf-checkout-git-branch-widget
+# vim: ft=zsh sw=2 ts=2 et
