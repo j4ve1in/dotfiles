@@ -1,5 +1,5 @@
 <p align='center'>
-<img width=20% src='https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotfiles.png'>
+<img width=20% src='https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/dotfiles.png'>
 </p>
 
 <p align='center'>
@@ -40,7 +40,7 @@ specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
-<a href="//asciinema.org/a/48340" target="_blank"><img src="https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/demo.png"></a>
+<a href="//asciinema.org/a/48340" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
 
 # Configurations
 ## Dotsetup
@@ -80,8 +80,8 @@ an **[image]** and try my dotfiles in a Docker container as follows.
 Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
-[Screenshot]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/screenshot.png
-[dotsetup1]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup1.png
-[dotsetup2]: https://media.githubusercontent.com/media/ytet5uy4/img/master/dotfiles/dotsetup2.png
+[Screenshot]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/screenshot.png
+[dotsetup1]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/dotsetup1.png
+[dotsetup2]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/dotsetup2.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles
 [LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
