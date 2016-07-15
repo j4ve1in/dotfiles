@@ -204,4 +204,13 @@ hook_add = ''' " {{{
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
 " }}} '''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = '<Plug>(caw:hatpos:toggle)'
+hook_add = ''' " {{{
+  filetype plugin on
+  nmap <C-_> <Plug>(caw:hatpos:toggle)
+  vmap <C-_> <Plug>(caw:hatpos:toggle)
+" }}} '''
 # }}}
