@@ -198,6 +198,7 @@ hook_add = ''' "{{{
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+on_map = '<Plug>(openbrowser-smart-search)'
 hook_add = ''' " {{{
   let g:netrw_nogx = 1
   nmap gx <Plug>(openbrowser-smart-search)
