@@ -12,5 +12,3 @@
 *.py diff=python
 *.rb diff=ruby
 *.js diff=java
-
-*.png filter=lfs diff=lfs merge=lfs -text
