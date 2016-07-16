@@ -76,7 +76,7 @@ uninstall_plugin() {
   echo -e 'Remove plugins'
   DIR=(`echo ~/.{{zsh,vim}/bundle,tmux/plugins}`)
   OPT='-maxdepth 1 -mindepth 1 ! -name .gitkeep'
-  PLUGIN_FILE=($(find ${DIR[@]} $OPT))
+  PLUGIN_FILE=($(find ${DIR[@]} ${=OPT}))
   if [ -n "$PLUGIN_FILE" ]; then
     printf '%s\n' ${PLUGIN_FILE[@]} | awk \
       -v N="${#PLUGIN_FILE[@]}" \
