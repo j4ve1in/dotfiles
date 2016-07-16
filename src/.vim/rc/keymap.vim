@@ -84,3 +84,6 @@ if has('unix') && !has('gui_running')
   map <NUL> <C-Space>
   map! <NUL> <C-Space>
 endif
+
+" Others
+nnoremap <silent> <Space>s :call syntax#info()<CR>
