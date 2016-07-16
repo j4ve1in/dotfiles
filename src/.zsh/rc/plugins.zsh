@@ -1,11 +1,12 @@
 : "Plugin" && () {
   if [ -d ~/.zsh/bundle/zplug ]; then
     # Zplug
-    local ZPLUG_HOME ZPLUG_REPOS ZPLUG
+    local ZPLUG_BUNDLE ZPLUG_HOME ZPLUG_REPOS ZPLUG
     typeset -a ZPLUG_PLUGINS
-    ZPLUG_HOME="$ZDOTDIR/bundle"
-    ZPLUG_REPOS="$ZDOTDIR/bundle/repos"
-    ZPLUG="$ZPLUG_HOME/zplug/zplug"
+    ZSH_BUNDLE="$ZDOTDIR/bundle"
+    ZPLUG_HOME="$ZSH_BUNDLE/zplug"
+    ZPLUG_REPOS="$ZSH_BUNDLE/repos"
+    ZPLUG="$ZPLUG_HOME/zplug"
     ZPLUG_PLUGINS=(
       'b4b4r07/zplug'
       'Tarrasch/zsh-bd'
