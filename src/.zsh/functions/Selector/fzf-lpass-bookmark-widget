@@ -1,0 +1,10 @@
+typeset name
+name=$(lpass show --name ${LPASS_BOOKMARKS[@]} | $SELECTOR)
+[ -z "$name" ] && return 1
+
+BUFFER="lpass show -c --password \"$name\""
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

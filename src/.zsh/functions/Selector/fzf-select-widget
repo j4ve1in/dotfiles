@@ -6,15 +6,10 @@ FZF_WIDGETS=(
   'excute-history'
   'git-add'
   'checkout-git-branch'
+  'lpass-bookmark'
 )
 widget=$(echo $FZF_WIDGETS | tr ' ' '\n' | $SELECTOR)
 [ -z "$widget" ] && return 1
-if zle; then
-  BUFFER="fzf-${widget}-widget"
-  CURSOR=$#BUFFER
-  zle accept-line
-  zle -R -c
-else
-  print -z -f '%s' "fzf-${widget}-widget"
-fi
+fzf-${widget}-widget
+
 # vim: ft=zsh sw=2 ts=2 et

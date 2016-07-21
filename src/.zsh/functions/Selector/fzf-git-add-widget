@@ -4,12 +4,9 @@ FILES=($(git status --porcelain | sed "s/^\(..\) /\1\t${base_path}/" | grep "^.[
 for file in ${FILES[@]}; do
   [ ! -f "$file" ] && return 1
 done
-if zle; then
-  BUFFER="git add -- ${FILES[@]}"
-  CURSOR=$#BUFFER
-  zle accept-line
-  zle -R -c
-else
-  print -z -f '%s' "git add -- ${FILES[@]}"
-fi
+BUFFER="git add -- ${FILES[@]}"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
 # vim: ft=zsh sw=2 ts=2 et

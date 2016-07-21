@@ -2,12 +2,9 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 DIR=($(cdr -l | sed 's/^[^ ][^ ]*  *//' | $SELECTOR))
 [ -z "$DIR" ] && return 1
-if zle; then
-  BUFFER="cd -- $DIR"
-  CURSOR=$#BUFFER
-  zle accept-line
-  zle -R -c
-else
-  print -z -f '%s' "cd -- $DIR"
-fi
+BUFFER="cd -- $DIR"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
 # vim: ft=zsh sw=2 ts=2 et

@@ -21,4 +21,7 @@ zle -N fzf-git-add-widget
 
 autoload -Uz fzf-checkout-git-branch-widget
 zle -N fzf-checkout-git-branch-widget
+
+autoload -Uz fzf-lpass-bookmark-widget
+zle -N fzf-lpass-bookmark-widget
 # vim: ft=zsh sw=2 ts=2 et

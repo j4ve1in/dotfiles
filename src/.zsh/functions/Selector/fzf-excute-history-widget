@@ -1,11 +1,8 @@
 CMD=($(history -n -r 1 | awk '!a[$0]++' | $SELECTOR))
 [ -z "$CMD" ] && return 1
-if zle; then
-  BUFFER="$CMD"
-  CURSOR=$#BUFFER
-  zle accept-line
-  zle -R -c
-else
-  print -z -f '%s' "$CMD"
-fi
+BUFFER="$CMD"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
 # vim: ft=zsh sw=2 ts=2 et

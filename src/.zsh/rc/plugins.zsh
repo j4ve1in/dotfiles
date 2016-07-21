@@ -9,6 +9,7 @@
     ZPLUG="$ZPLUG_HOME/zplug"
     ZPLUG_PLUGINS=(
       'b4b4r07/zplug'
+      'hchbaw/opp.zsh'
       'Tarrasch/zsh-bd'
       'mollifier/cd-gitroot'
       'zsh-users/zsh-completions'
@@ -105,6 +106,8 @@
       bindkey '^@ga' fzf-git-add-widget
 
       bindkey '^@gb' fzf-checkout-git-branch-widget
+
+      bindkey '^@l' fzf-lpass-bookmark-widget
     fi
   fi
 }
