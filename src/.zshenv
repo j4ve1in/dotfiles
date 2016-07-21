@@ -65,6 +65,7 @@ fpath=(
   $ZDOTDIR/bundle/repos/mollifier/cd-gitroot(N-/)
   $ZDOTDIR/functions/Selector(N-/)
   $ZDOTDIR/functions/Misc(N-/)
+  $ZDOTDIR/functions/Local(N-/)
 )
 
 ## cdpath

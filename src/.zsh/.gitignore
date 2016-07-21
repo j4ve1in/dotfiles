@@ -5,3 +5,4 @@
 .zprof_result
 .chpwd-recent-dirs
 bundle/*
+functions/Local/*
