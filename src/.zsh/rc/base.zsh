@@ -4,27 +4,28 @@ setopt no_beep
 setopt print_eight_bit
 setopt interactive_comments
 
-# help
+# keybind
+## vi mode
+bindkey -v
+
+### emacs like
+bindkey -v '^G' send-break
+bindkey -v '^H' backward-delete-char
+bindkey -v '^W' backward-kill-word
+bindkey -v '^U' backward-kill-line
+bindkey -v '^D' delete-char-or-list
+bindkey -v '^A' beginning-of-line
+bindkey -v '^E' end-of-line
+bindkey -v '^F' forward-char
+bindkey -v '^B' backward-char
+
+## run-help
 autoload -Uz run-help
 autoload -Uz run-help-git
+bindkey -v '^[h' run-help
 
-# vi mode
-bindkey -v
-bindkey "^G" send-break
-bindkey '^?' backward-delete-char
-bindkey '^H' backward-delete-char
-bindkey '^D' delete-char-or-list
-bindkey '^W' backward-kill-word
-bindkey '^U' backward-kill-line
-bindkey '^[[Z' reverse-menu-complete
-bindkey '^[h' run-help
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^F' forward-char
-bindkey '^B' backward-char
-bindkey '^K' kill-line
-bindkey '^[f' forward-word
-bindkey '^[b' backward-word
+## others
+bindkey -v '^[[Z' reverse-menu-complete
 
 # history
 setopt hist_expand
