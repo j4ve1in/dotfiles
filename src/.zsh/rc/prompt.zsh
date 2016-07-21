@@ -16,7 +16,7 @@
 
   ## Username and Hostname, Directoryname, sshinfo
   PROMPT+="%n@%m"
-  [ -n "$SSH_CLIENT" ] && PROMPT+=":ssh-session"
+  [ -n "$SSH_CLIENT" ] && PROMPT+="${fg[sub2]}:ssh-session%f"
   PROMPT+=" %1~"
 
   ## VCS
