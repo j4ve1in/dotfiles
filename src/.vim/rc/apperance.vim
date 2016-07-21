@@ -4,6 +4,7 @@ set number
 set showcmd
 set showmatch
 set matchtime=1
+set showbreak=↪
 
 " Fileformat
 set fileformat=unix

@@ -8,7 +8,8 @@ set winheight=8
 set noequalalways
 set display=lastline
 set virtualedit=block
-set clipboard+=unnamed
+set clipboard&
+set clipboard^=unnamedplus
 set grepprg=grep\ -inH
 set whichwrap=b,~,[,],<,>
 set backspace=indent,eol,start
