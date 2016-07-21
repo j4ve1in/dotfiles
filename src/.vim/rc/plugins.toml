@@ -231,6 +231,9 @@ hook_add = ''' " {{{
   let g:neosnippet#disable_runtime_snippets = {'_' : 1}
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
 " }}} '''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
 # }}}
 
 # Git {{{
@@ -306,6 +309,50 @@ depends = 'vim-textobj-user'
 [[plugins]]
 repo = 'rhysd/vim-textobj-ruby'
 depends = 'vim-textobj-user'
+
+[[plugins]]
+repo = 'wellle/targets.vim'
+# }}}
+
+# Syntax Check {{{
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+depends = [
+  'vim-quickrun',
+  'vimproc.vim',
+  'shabadou.vim',
+  'vim-qfsigns',
+  'quickfixstatus'
+]
+hook_add = ''' " {{{
+let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_CursorHold_enable = 1
+" }}} '''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = ''' " {{{
+let g:quickrun_config = {
+\  'watchdogs_checker/_' : {
+\    'hook/qfsigns_update/enable_exit':   1,
+\    'hook/qfsigns_update/priority_exit': 3,
+\  },
+\}
+" }}} '''
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'dannyob/quickfixstatus'
+
+[[plugins]]
+repo = 'KazuakiM/vim-qfsigns'
+hook_add = ''' " {{{
+  highlight Signs cterm=bold ctermfg=196 ctermbg=0
+  let g:qfsigns#Config = {'id': '5051', 'name': 'QFSigns'}
+  sign define QFSigns linehl=NONE texthl=Signs text=>>
+" }}} '''
 # }}}
 
 # Others {{{
@@ -514,9 +561,6 @@ hook_add = ''' " {{{
 repo = 'deris/vim-shot-f'
 
 [[plugins]]
-repo = 'wellle/targets.vim'
-
-[[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
 hook_add = 'let g:precious_enable_switch_CursorMoved = { "*" : 1, "help" : 0 }'
@@ -528,44 +572,5 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'jaxbot/github-issues.vim'
 
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-depends = [
-  'vim-quickrun',
-  'vimproc.vim',
-  'shabadou.vim',
-  'vim-qfsigns',
-  'quickfixstatus'
-]
-hook_add = ''' " {{{
-let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_CursorHold_enable = 1
-" }}} '''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = ''' " {{{
-let g:quickrun_config = {
-\  'watchdogs_checker/_' : {
-\    'hook/qfsigns_update/enable_exit':   1,
-\    'hook/qfsigns_update/priority_exit': 3,
-\  },
-\}
-" }}} '''
-
-[[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
-repo = 'dannyob/quickfixstatus'
-
-[[plugins]]
-repo = 'KazuakiM/vim-qfsigns'
-hook_add = ''' " {{{
-  highlight Signs cterm=bold ctermfg=196 ctermbg=0
-  let g:qfsigns#Config = {'id': '5051', 'name': 'QFSigns'}
-  sign define QFSigns linehl=NONE texthl=Signs text=>>
-" }}} '''
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
+repo = 'b4b4r07/vim-shellutils'
 # }}}
