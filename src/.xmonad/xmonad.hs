@@ -203,6 +203,7 @@ main = do
             ((modm .|. shiftMask      , xK_t ), spawn "touchpad_toggle"),
             -- Launch web browser
             ((modm                  , xK_w),     spawn "chromium"),
+            ((modm .|. controlMask  , xK_a),     spawn "authy"),
             -- Launch virtualization software
             ((modm                  , xK_v      ), spawn "virtualbox"),
             -- Launch terminal
