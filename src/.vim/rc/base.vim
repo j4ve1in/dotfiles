@@ -8,8 +8,6 @@ set winheight=8
 set noequalalways
 set display=lastline
 set virtualedit=block
-set clipboard&
-set clipboard^=unnamedplus
 set grepprg=grep\ -inH
 set whichwrap=b,~,[,],<,>
 set backspace=indent,eol,start
@@ -23,6 +21,15 @@ endif
 
 if has('conceal')
   set conceallevel=0 concealcursor=
+endif
+
+" clipboard
+let OSTYPE = substitute(system('uname'), '\n', '', '')
+set clipboard&
+if OSTYPE == 'Linux'
+  set clipboard^=unnamedplus
+elseif OSTYPE == 'MSYS_NT-10.0'
+  set clipboard^=unnamed
 endif
 
 " Completion
