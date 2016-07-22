@@ -2,7 +2,7 @@ typeset name
 name=$(lpass show --name ${LPASS_BOOKMARKS[@]} | $SELECTOR)
 [ -z "$name" ] && return 1
 
-BUFFER="lpass show -c --password \"$name\""
+BUFFER="lpass show -c --password --field=Passphrase \"$name\""
 CURSOR=$#BUFFER
 zle accept-line
 zle -R -c
