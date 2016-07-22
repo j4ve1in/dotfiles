@@ -1,3 +1,6 @@
+filetype off
+filetype plugin indent off
+
 " Cache
 let $CACHE = expand('~/.cache')
 
@@ -26,3 +29,5 @@ endfunction
 for rc_vim in rc_vim_list
   cal s:source_rc(rc_vim)
 endfor
+
+filetype plugin indent on

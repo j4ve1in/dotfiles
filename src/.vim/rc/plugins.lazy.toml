@@ -14,10 +14,6 @@ repo = 'jelera/vim-javascript-syntax'
 on_ft = 'javascript'
 
 [[plugins]]
-repo = 'ekalinin/Dockerfile.vim'
-on_ft = 'dockerfile'
-
-[[plugins]]
 repo = 'slim-template/vim-slim'
 on_ft = 'slim'
 
@@ -88,7 +84,6 @@ hook_add = ''' " {{{
 repo = 'tyru/caw.vim'
 on_map = '<Plug>(caw:hatpos:toggle)'
 hook_add = ''' " {{{
-  filetype plugin on
   nmap <C-_> <Plug>(caw:hatpos:toggle)
   vmap <C-_> <Plug>(caw:hatpos:toggle)
 " }}} '''
