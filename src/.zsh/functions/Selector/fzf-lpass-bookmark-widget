@@ -1,8 +1,15 @@
-typeset name
+typeset name note_type
 name=$(lpass show --name ${LPASS_BOOKMARKS[@]} | $SELECTOR)
 [ -z "$name" ] && return 1
 
-BUFFER="lpass show -c --password --field=Passphrase \"$name\""
+note_type="$(lpass show --field=NoteType $name)"
+
+if [ "$note_type" = "SSH Key" ]; then
+  BUFFER="lpass show -c --field=Passphrase \"$name\""
+else
+  BUFFER="lpass show -c --password \"$name\""
+fi
+
 CURSOR=$#BUFFER
 zle accept-line
 zle -R -c
