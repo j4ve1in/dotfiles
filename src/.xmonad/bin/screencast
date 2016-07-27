@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if ! killall ffmpeg; then
+  file=~/Videos/Screencasts/screencast_$(date +'%y-%m-%d_%I%M%S').mkv
+  ffmpeg -f x11grab -s 1366x768 -i $DISPLAY -f alsa -i default -c:v libx264 -c:a aac "$file"
+  notify-send 'Recorded screen' "Saved to $file"
+fi

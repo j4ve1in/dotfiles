@@ -199,6 +199,8 @@ main = do
             ((0                       , 0xff61    ), spawn "screenshot"),
             -- Take a screenshot (selected area)
             ((shiftMask               , 0xff61    ), spawn "screenshot --select"),
+            -- Record screen
+            ((modm .|. shiftMask      , xK_r      ), spawn "screencast"),
             -- Toggle touchpad
             ((modm .|. shiftMask      , xK_t ), spawn "touchpad_toggle"),
             -- Launch web browser
