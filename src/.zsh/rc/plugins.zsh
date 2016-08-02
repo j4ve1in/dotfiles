@@ -9,7 +9,7 @@
     ZPLUG="$ZPLUG_HOME/zplug"
     ZPLUG_PLUGINS=(
       'b4b4r07/zplug'
-      'hchbaw/opp.zsh'
+      'hchbaw/opp.zsh, nice:11'
       'Tarrasch/zsh-bd'
       'mollifier/cd-gitroot'
       'zsh-users/zsh-completions'

@@ -41,7 +41,7 @@ has feednix && alias fn='feednix'
 has netctl-auto && alias n='netctl-auto'
 has thefuck && eval "`thefuck --alias`"
 has hub && eval "`hub alias -s`"
-has ranger && alias f='ranger'
+has ranger && disable r && alias f='ranger' r='rifle'
 has start && alias st='start' f='start .'
 has sudo && alias s='sudo -E '
 has sudoedit && alias se='sudoedit -E '
