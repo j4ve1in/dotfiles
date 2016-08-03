@@ -62,3 +62,10 @@ zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
+
+## notify
+autoload -Uz add-zsh-hook
+autoload -Uz remember-cmd
+autoload -Uz behind-window-notify
+add-zsh-hook preexec remember-cmd
+add-zsh-hook precmd behind-window-notify
