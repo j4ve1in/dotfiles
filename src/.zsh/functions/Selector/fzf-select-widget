@@ -7,6 +7,7 @@ FZF_WIDGETS=(
   'git-add'
   'checkout-git-branch'
   'lpass-bookmark'
+  'switch-network'
 )
 widget=$(echo $FZF_WIDGETS | tr ' ' '\n' | $SELECTOR)
 [ -z "$widget" ] && return 1

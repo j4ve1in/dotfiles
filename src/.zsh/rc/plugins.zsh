@@ -108,6 +108,8 @@
       bindkey '^@gb' fzf-checkout-git-branch-widget
 
       bindkey '^@l' fzf-lpass-bookmark-widget
+
+      bindkey '^@n' fzf-switch-network-widget
     fi
   fi
 }

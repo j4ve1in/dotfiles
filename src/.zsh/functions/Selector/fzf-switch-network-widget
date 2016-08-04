@@ -1,0 +1,10 @@
+typeset network
+network=$(netctl-auto list | sed -e 's/ //g' -e 's/*//g' | $SELECTOR)
+[ -z "$network" ] && return 1
+
+BUFFER="sudo netctl-auto switch-to $network"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et
