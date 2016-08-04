@@ -7,9 +7,9 @@
 |
 <b><a href='#installation'>Installation</a></b>
 |
-<b><a href='#configurations'>Configurations</a></b>
+<b><a href='#utility'>Utility</a></b>
 |
-<b><a href='#test-with-docker'>Test with Docker</a></b>
+<b><a href='#trial'>Trial</a></b>
 |
 <b><a href='#license'>License</a></b>
 </p>
@@ -42,33 +42,14 @@ assume `yes` as answer to all prompts and run non-interactively.
 **Demo:**
 <a href="//asciinema.org/a/48340" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
 
-# Configurations
-## Dotsetup
-
-    NAME
-        dotsetup - DOTfiles SETUP
-
-    SYNOPSIS
-        dotsetup [options]
-
-    DESCRIPTION
-        Dotsetup is dotfile's setup command.
-
-    OPTIONS
-        -u, --update             Backup and download dotfiles
-        -d, --deploy             Deploy dotfiles to home directory
-        -b, --backup             Backup dotfiles to backup branch
-        -r, --reinstall          Install dotfiles again after uninstalling
-        -U, --uninstall          Uninstall dotfile
-        -l, --list               View dotfile's list
-        -h, --help               View help
-        -p, --install-plugin     Install vim, zsh and tmux plugin
-        -P, --uninstall-plugin   Uninstall vim, zsh and tmux plugin
+# Utility
+You can manage dotfiles with `dotsetup` command if dotfiles was installed
+by the installation command.
 
 ![dotsetup1]
 ![dotsetup2]
 
-# Test with Docker
+# Trial
 Before running installation command to setup dotfiles, you can pull
 an **[image]** and try my dotfiles in a Docker container as follows.
 ```zsh
