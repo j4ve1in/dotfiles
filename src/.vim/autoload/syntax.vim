@@ -1,5 +1,3 @@
-command! SyntaxInfo call syntax#info()
-
 function! syntax#info()
   let baseSyn = s:get_syn_attr(s:get_syn_id(0))
   echo "name: " . baseSyn.name .
