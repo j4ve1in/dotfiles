@@ -85,6 +85,6 @@ is_msys && export MSYS='winsymlinks'
 ## zsh
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export {HISTSIZE,SAVEHIST,HISTFILESIZE}=100
+export {HISTSIZE,SAVEHIST}=1000
 
 vital unset
