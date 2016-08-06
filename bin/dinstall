@@ -15,6 +15,7 @@ check_opt() {
         [[ "$1" =~ 'f' ]] && typeset -gr FULL_INSTALLATION='1'
         [[ "$1" =~ 'y' ]] && typeset -gr ASSUME_YES='1'
         [[ "$1" =~ 'p' ]] && typeset -gr PLUGIN_INSTALLATION='1'
+        [[ "$1" =~ 'P' ]] && typeset -gr PROVISIONING='1'
         shift
         ;;
       *) shift ;;
@@ -46,6 +47,8 @@ print_header() {
   cprint '                   github.com/ytet5uy4/dotfiles   \n' "$DARKGRAY"
   cprintf '   Author: '  "$SUB_COLOR"; printf 'ytet5uy4'
   cprintf '   License: ' "$SUB_COLOR"; echo   'MIT'
+  cprintf '   Provisioning: ' "$SUB_COLOR"
+  [ "$PROVISIONING" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
   cprintf '   Full Installation: ' "$SUB_COLOR"
   [ "$FULL_INSTALLATION" = "1" ] && cprint 'enable' "$MAIN_COLOR" || print 'disable'
   cprintf '   Option Assume yes: ' "$SUB_COLOR"
@@ -57,7 +60,7 @@ print_header() {
 warning() {
   echo '   If the file exists, it will be ruthlessly clobbered'
   printf '   Are you sure you want to continue (yes/no)? '
-  read -q ANSWER; echo
+  read -q ANSWER; echo "\n"
   case $ANSWER in
     'Y' | 'y' ) install ;;
     * ) exit 0 ;;
@@ -65,6 +68,9 @@ warning() {
 }
 
 install() {
+  # Provisioning
+  [ "$PROVISIONING" = "1" ] && provisioning
+
   # Download
   download
 
@@ -78,6 +84,20 @@ install() {
 
   # Restart
   [ "$ASSUME_YES" = "1" ] && restart || restart_message
+}
+
+provisioning() {
+  cprint "Provision for installing dotfiles" $UNDERLINE
+  typeset -r ANSIBLE_DOTFILES_REPO='https://github.com/ytet5uy4/ansible-dotfiles/tarball/master'
+  typeset tempdir=`mktemp -d /tmp/dotfiles-XXXXXX`
+  echo ' Download playbook of ansible for dotfiles'
+  curl -sL $ANSIBLE_DOTFILES_REPO | tar xzC $tempdir --strip=1
+  cprintf '  Repository: ' "$SUB_COLOR"
+  echo "$ANSIBLE_DOTFILES_REPO"
+  cprintf '  Directory: ' "$SUB_COLOR"
+  echo $tempdir
+  lprintf ' Download playbook of ansible for dotfiles' "ansible-playbook $tempdir/site.yml"
+  echo
 }
 
 download() {
