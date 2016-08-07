@@ -43,7 +43,7 @@ import XMonad.Util.SpawnOnce
 import Graphics.X11.ExtraTypes.XF86
 
 -- local variables
-myWorkspaces = ["0", "1", "2", "3"]
+myWorkspaces = ["1", "2", "3"]
 modm = mod4Mask
 
 -- Color Setting
@@ -166,7 +166,7 @@ main = do
         -- Keymap: moving workspace by number
         `additionalKeys`
         [ ((modm .|. m, k), windows $ f i)
-          | (i, k) <- zip myWorkspaces [xK_0 .. xK_3]
+          | (i, k) <- zip myWorkspaces [xK_1 .. xK_3]
           , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
         ]
 
