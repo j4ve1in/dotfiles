@@ -19,11 +19,6 @@ bindkey -v '^E' end-of-line
 bindkey -v '^F' forward-char
 bindkey -v '^B' backward-char
 
-## run-help
-autoload -Uz run-help
-autoload -Uz run-help-git
-bindkey -v '^[h' run-help
-
 ## others
 bindkey -v '^[[Z' reverse-menu-complete
 

@@ -6,6 +6,7 @@ URxvt.saveLines: 20000
 URxvt.scrollBar: false
 URxvt.matcher.button: 1
 URxvt.url-launcher: chromium
+URxvt.searchable-scrollback: false
 !! perl-ext
 URxvt.perl-ext-common: default,matcher,resize-font,selection,eval
 !!! resize-font
@@ -15,8 +16,6 @@ URxvt.keysym.C-equal: perl:resize-font:reset
 !!! eval
 URxvt.keysym.C-S-C:  eval:selection_to_clipboard
 URxvt.keysym.C-S-V:  eval:paste_clipboard
-URxvt.keysym.S-Home: eval:scroll_to_top
-URxvt.keysym.S-End:  eval:scroll_to_bottom
 
 !! iso
 URxvt.iso14755: false

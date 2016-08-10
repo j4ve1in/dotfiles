@@ -211,13 +211,10 @@ main = do
             -- Launch terminal
             ((modm                  , xK_Return),   spawn "urxvt_tmux"),
             ((modm .|. shiftMask    , xK_f),   spawn "fcitx-configtool"),
-            ((modm                  , xK_t),     spawn "urxvtc -T htop -e htop"),
             -- Launch wps office
             ((modm .|. controlMask  , xK_w),     spawn "wps"),
             ((modm .|. controlMask  , xK_s),     spawn "et"),
-            ((modm .|. controlMask  , xK_p),     spawn "wpp"),
-            -- Launch File managers
-            ((modm                  , xK_f),     spawn "urxvtc -T ranger -depth 0 -e ranger")
+            ((modm .|. controlMask  , xK_p),     spawn "wpp")
         ]
 
 -- myLayout: Handle Window behaveior
@@ -230,6 +227,7 @@ myLayout = spacing gapwidth $
 
 myStartupHook = do
         spawnOnce "urxvtd -q -f -o"
+        spawnOnce "tmux new-session -s 0 -d"
 
 -- myManageHookFloat: new window will created in Float mode
 myManageHookFloat = composeAll [
