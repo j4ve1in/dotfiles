@@ -8,3 +8,4 @@ if type fcitx; then
 fi
 [ -d "${HOME}/.xmonad/bin" ] && export PATH="${HOME}/.xmonad/bin:$PATH"
 [ -d "${HOME}/.tmux/bin" ] && export PATH="${HOME}/.tmux/bin:$PATH"
+# vim: ft=zsh sw=2 ts=2 et
