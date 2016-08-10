@@ -47,9 +47,6 @@ set backup backupdir=~/.vim/backup
 " Undofile
 set undofile undodir=~/.vim/undo
 
-" Mouse
-set mouse=a ttymouse=xterm2
-
 " File
 "" Indent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent

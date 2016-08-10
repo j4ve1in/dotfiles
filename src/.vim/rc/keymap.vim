@@ -55,6 +55,8 @@ if has('unix')
 endif
 
 " Others
+nnoremap <Space>m :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
+nnoremap <Space>M :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>
 vnoremap v $h
 noremap <Space>v 0v$h
