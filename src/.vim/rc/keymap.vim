@@ -1,7 +1,3 @@
-" help
-nnoremap <C-h> :<C-u>help<Space>
-nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
-
 " emacs like
 inoremap <C-j> <CR><TAB>
 inoremap <C-a> <ESC>I
@@ -62,7 +58,7 @@ vnoremap v $h
 noremap <Space>v 0v$h
 nnoremap <Space>e :<C-u>edit!<CR>
 nnoremap <Space>w! :w !sudo tee >/dev/null %<CR> :e!<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> _ :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent><Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
 nnoremap <silent><Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
@@ -72,3 +68,7 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 nnoremap <silent> <Space>s :call syntax#info()<CR>
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
