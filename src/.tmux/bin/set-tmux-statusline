@@ -18,24 +18,21 @@ set-window-option() { tmux set-window-option -g "$@"; }
 
 left() {
   # Session
-  STATUS_L='#[fg=colour254,bg=colour26,bold]#{?client_prefix,#[reverse],} #S '
+  STATUS_L='#[fg=colour231,bg=colour17,bold]#{?client_prefix,#[reverse],} #S '
   # separator
   if has powerline;then
-    STATUS_L+='#[fg=colour26,bg=black]'
-    STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour254],}\ue0b0'
+    STATUS_L+='#[fg=colour17,bg=black]'
+    STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour231],}\ue0b0'
   fi
   echo -e "$STATUS_L"
 }
 
 right() {
   # Prefixkey
-  ## separator
-  has powerline && STATUS_R+='#[fg=colour27,bg=black]\ue0b2'
-  STATUS_R+='#[fg=colour231,bg=colour27]'
   STATUS_R+=" $(tmux show-options -g prefix | tr -d 'prefix ') "
   # Battery
   ## separator
-  has powerline && STATUS_R+='#[fg=colour21,bg=colour27]\ue0b2'
+  has powerline && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
   if has acpi;then
     Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
     STATUS_R+='#[fg=colour231,bg=colour21]'
@@ -45,7 +42,10 @@ right() {
   # Date
   ## separator
   has powerline && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
-  STATUS_R+='#[fg=colour231,bg=colour17] %m/%d(%a) '
+  STATUS_R+='#[fg=colour231,bg=colour17] %a '
+  ## subseparator
+  has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  STATUS_R+=' %m/%d '
   ## subseparator
   has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
   STATUS_R+=' %H:%M:%S '
@@ -66,11 +66,11 @@ window-current-format() {
   # separator
   has powerline && STATUS_WCF+='#[fg=black,bg=colour21]\ue0b0'
   # Current window index and flag
-  STATUS_WCF+='#[fg=colour117,bg=colour21] #I#F '
+  STATUS_WCF+='#[fg=colour231,bg=colour21] #I#F '
   # separator
   has powerline && STATUS_WCF+='\ue0b1' || STATUS_WCF+=':'
   # Current window name
-  STATUS_WCF+=' #[fg=colour231,bg=colour21,bold]#W '
+  STATUS_WCF+=' #[fg=colour231,bg=colour21]#W '
   # separator
   has powerline && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
   echo -e "$STATUS_WCF"
