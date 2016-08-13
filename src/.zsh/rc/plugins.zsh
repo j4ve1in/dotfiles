@@ -112,4 +112,7 @@
       bindkey '^@n' fzf-switch-network-widget
     fi
   fi
+
+  COMMAND_NOT_FOUND='/usr/share/doc/pkgfile/command-not-found.zsh'
+  [ -f "$COMMAND_NOT_FOUND" ] && source $COMMAND_NOT_FOUND
 }
