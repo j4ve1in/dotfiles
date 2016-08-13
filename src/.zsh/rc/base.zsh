@@ -42,7 +42,6 @@ autoload -Uz search
 autoload -Uz ssh-add
 autoload -Uz ssh-add-with-lpass
 autoload -Uz trash
-autoload -Uz zman
 
 ## ctrl-z
 autoload -Uz fancy-ctrl-z
