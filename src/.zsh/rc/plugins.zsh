@@ -15,7 +15,7 @@
       'zsh-users/zsh-completions'
       'zsh-users/zsh-syntax-highlighting, nice:10'
       'b4b4r07/zsh-gomi, as:command, use:bin/gomi'
-      'junegunn/fzf-bin, as:command, from:gh-r, file:fzf'
+      'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
       'junegunn/fzf, use:shell'
     )

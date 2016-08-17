@@ -40,12 +40,7 @@ typeset -U path cdpath fpath manpath
 
 path=(
   $path
-  $HOME/.local/bin(N-/)
-  $HOME/.dotfiles/bin(N-/)
-  $HOME/.tmux/bin(N-/)
-  $HOME/.zsh/bin(N-/)
-  $HOME/.git.global/bin(N-/)
-  $HOME/.xmoand/bin(N-/)
+  $HOME/.{local,dotfiles,tmux,zsh,git.global}/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
 
@@ -63,9 +58,7 @@ fpath=(
   $fpath
   $GOPATH/src/*/*/ghq/zsh(N-/)
   $ZDOTDIR/bundle/repos/mollifier/cd-gitroot(N-/)
-  $ZDOTDIR/functions/Selector(N-/)
-  $ZDOTDIR/functions/Misc(N-/)
-  $ZDOTDIR/functions/Local(N-/)
+  $ZDOTDIR/functions/*
 )
 
 ## cdpath
