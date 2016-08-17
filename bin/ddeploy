@@ -9,7 +9,7 @@ cprint "Create symbolic link" $UNDERLINE
 COUNT=0
 N=${#DOT_NAME[@]}
 for ((i=1;i<=N;i++)); do
-  if [ "${DOT_FILE_TYPE[$i]}" = "File" ]; then
+  if [ -f "${DOT_PATH[$i]}" ]; then
     cprintf " [" $BLUE
     printf "%2d/%2d" $((COUNT+1)) $N
     cprintf "] " $BLUE
@@ -17,7 +17,7 @@ for ((i=1;i<=N;i++)); do
     printf " %s\n" ~/${DOT_NAME[$i]}
     ln -fs ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
     ((COUNT=COUNT+1))
-  elif [ "${DOT_FILE_TYPE[$i]}" = "Directory" ]; then
+  elif [ -d "${DOT_PATH[$i]}" ]; then
     cprintf " [" $BLUE
     printf "%2d/%2d" $((COUNT+1)) $N
     cprintf "] " $BLUE

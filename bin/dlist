@@ -2,6 +2,40 @@
 
 . dbase && . dot
 
+for ((i=1;i<=DOT_NUM;i++)); do
+  # DOT_FILE_TYPE
+  if [ -f ${DOT_PATH[$i]} ]; then
+    DOT_FILE_TYPE[$i]=File
+  elif [ -d ${DOT_PATH[$i]} ]; then
+    DOT_FILE_TYPE[$i]=Directory
+  fi
+
+  # DOT_FILE_SIZE
+  # Check file size
+  if [ -f ${DOT_PATH[$i]} ]; then
+    DOT_FILE_SIZE[$i]=$(ls -hl ${DOT_PATH[$i]} | awk '{print $5}')
+  elif [ -d ${DOT_PATH[$i]} ]; then
+    DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | awk '{print $1}')
+  fi
+
+  # DOT_FILE_DATE
+  # Check file last-modified date
+  if [ $(uname) = Darwin ]; then
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -Al ${DOT_DIR}/src | grep ${DOT_NAME[$i]} | awk 'NR==1{print $6"/"$7"-"$8}')
+    fi
+  else
+    LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
+    if [ -f ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
+    elif [ -d ${DOT_PATH[$i]} ]; then
+      DOT_FILE_DATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION ${DOT_DIR}/src | grep ${DOT_NAME[$i]} | awk 'NR==1{print $6}')
+    fi
+  fi
+done
+
 FIRST_LINE=(
   'No.'
   'Name'
@@ -11,27 +45,18 @@ FIRST_LINE=(
 )
 
 # Count max length
-N=${#FIRST_LINE[@]}
-for ((i=1;i<=N;i++)); do
-  COL_MAX_LENGTH[$i]=${#FIRST_LINE[$i]}
-done
-
-if [ "${#DOT_NUM}" -gt "${COL_MAX_LENGTH[1]}" ]; then
+if ((${#DOT_NUM} < ${#FIRST_LINE[1]})); then
+  COL_MAX_LENGTH[1]=${#FIRST_LINE[1]}
+elif ((${#DOT_NUM} > ${#FIRST_LINE[1]})); then
   COL_MAX_LENGTH[1]=${#DOT_NUM}
 fi
-for ((i=1;i<=DOT_NUM;i++)); do
-  if [ "${#DOT_NUM[$i]}" -gt "${COL_MAX_LENGTH[1]}" ]; then
-    COL_MAX_LENGTH[1]=${#DOT_NUM[$i]}
-  elif [ "${#DOT_NAME[$i]}" -gt "${COL_MAX_LENGTH[2]}" ]; then
-    COL_MAX_LENGTH[2]=${#DOT_NAME[$i]}
-  elif [ "${#DOT_FILE_TYPE[$i]}" -gt "${COL_MAX_LENGTH[3]}" ]; then
-    COL_MAX_LENGTH[3]=${#DOT_FILE_TYPE[$i]}
-  elif [ "${#DOT_FILE_SIZE[$i]}" -gt "${COL_MAX_LENGTH[4]}" ]; then
-    COL_MAX_LENGTH[4]=${#DOT_FILE_SIZE[$i]}
-  elif [ "${#DOT_FILE_DATE[$i]}" -gt "${COL_MAX_LENGTH[5]}" ]; then
-    COL_MAX_LENGTH[5]=${#DOT_FILE_DATE[$i]}
-  fi
-done
+count-max() {
+  printf '%s\n' $@ | xargs -I{} expr length {} | sort -n | tail -n 1
+}
+COL_MAX_LENGTH[2]=`count-max ${FIRST_LINE[2]} ${DOT_NAME[@]}`
+COL_MAX_LENGTH[3]=`count-max ${FIRST_LINE[3]} ${DOT_FILE_TYPE[@]}`
+COL_MAX_LENGTH[4]=`count-max ${FIRST_LINE[4]} ${DOT_FILE_SIZE[@]}`
+COL_MAX_LENGTH[5]=`count-max ${FIRST_LINE[5]} ${DOT_FILE_DATE[@]}`
 
 # Display list
 N=${#FIRST_LINE[@]}
@@ -45,7 +70,7 @@ done
 printf "$COLOR_RESET"
 
 for ((i=1;i<=DOT_NUM;i++)); do
-  printf "%-${COL_MAX_LENGTH[1]}s "  $((i+1))
+  printf "%-${COL_MAX_LENGTH[1]}s "  $i
   printf "%-${COL_MAX_LENGTH[2]}s "  ${DOT_NAME[$i]}
   printf "%-${COL_MAX_LENGTH[3]}s "  ${DOT_FILE_TYPE[$i]}
   printf "%-${COL_MAX_LENGTH[4]}s "  ${DOT_FILE_SIZE[$i]}
