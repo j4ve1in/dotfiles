@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 xbacklight -set 1
 nitrogen --restore &
 compton &
@@ -6,6 +8,6 @@ if type fcitx; then
   export GTK_IM_MODULE="fcitx" QT_IM_MODULE="fcitx" XMODIFIERS="@im=fcitx"
   fcitx &
 fi
-[ -d "${HOME}/.xmonad/bin" ] && export PATH="${HOME}/.xmonad/bin:$PATH"
-[ -d "${HOME}/.tmux/bin" ] && export PATH="${HOME}/.tmux/bin:$PATH"
-# vim: ft=zsh sw=2 ts=2 et
+
+path=($path $HOME/.{tmux,xmonad}/bin(N-/))
+unclutter-toggle

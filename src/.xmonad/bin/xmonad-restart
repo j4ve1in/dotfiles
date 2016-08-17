@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+xmonad --recompile
+xmonad --restart
+notify-send "xmonad" "Compiled and Restarted xmonad"
