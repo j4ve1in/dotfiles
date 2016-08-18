@@ -32,6 +32,10 @@ You can install dotfiles by the following installation command.
 % zsh <(curl -L d.ytet5uy4.com)
 ```
 
+**Requirements:**
+* Git
+* Zsh
+
 **NOTE:** If you want to use **full installation**, specify the `-f` option.
 When you use full installation, install shell, editor and multiplexer plugin, too.
 
