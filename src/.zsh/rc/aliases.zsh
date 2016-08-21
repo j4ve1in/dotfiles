@@ -22,7 +22,7 @@ if has vagrant; then
 fi
 
 # Vi
-has vi && alias v='vi -p'
+has vi && alias v='vi'
 has vim && alias v='vim -p'
 
 # mount
@@ -43,8 +43,8 @@ has thefuck && eval "`thefuck --alias`"
 has hub && eval "`hub alias -s`"
 has ranger && disable r && alias f='ranger' r='rifle'
 has start && alias st='start' f='start .'
-has sudo && alias s='sudo -E '
-has sudoedit && alias se='sudoedit -E '
+has sudo && alias s='sudo '
+has sudoedit && alias se='sudoedit '
 has open && op='open' f='open .'
 alias p='ps aux'
 alias m='mv'
