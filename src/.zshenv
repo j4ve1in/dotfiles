@@ -5,8 +5,6 @@ export ZDOTDIR="$HOME/.zsh"
 fpath=( $fpath $ZDOTDIR/functions/Lib(N-/) )
 autoload -Uz vital && vital set
 
-export LANG='en_US.UTF-8'
-
 export PAGER='less'
 if [ -n "$DISPLAY" ]; then
   has chromium && export BROWSER='chromium'
@@ -79,5 +77,7 @@ is_msys && export MSYS='winsymlinks'
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
+
+[ -f ~/.zshenv.local ] && . ~/.zshenv.local
 
 vital unset
