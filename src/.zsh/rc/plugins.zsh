@@ -6,9 +6,9 @@
     ZSH_BUNDLE="$ZDOTDIR/bundle"
     ZPLUG_HOME="$ZSH_BUNDLE/zplug"
     ZPLUG_REPOS="$ZSH_BUNDLE/repos"
-    ZPLUG="$ZPLUG_HOME/zplug"
+    ZPLUG="$ZPLUG_HOME/init.zsh"
     ZPLUG_PLUGINS=(
-      'b4b4r07/zplug'
+      'zplug/zplug'
       'hchbaw/opp.zsh, nice:11'
       'Tarrasch/zsh-bd'
       'mollifier/cd-gitroot'

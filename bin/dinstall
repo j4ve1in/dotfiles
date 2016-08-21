@@ -140,7 +140,7 @@ install_plugin() {
 }
 
 download_plugin() {
-  typeset -ar REPO=('Shougo/dein.vim' 'b4b4r07/zplug' 'tmux-plugins/tpm')
+  typeset -ar REPO=('Shougo/dein.vim' 'zplug/zplug' 'tmux-plugins/tpm')
   typeset -r GITHUB_URL='https://github.com/'
   typeset -ar DIR=(
     "$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim"
