@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-typeset -g DROOT=~/.dotfiles
+typeset -g DROOT=~/.files
 typeset -g DREPO='https://github.com/ytet5uy4/dotfiles'
 
 main() {
