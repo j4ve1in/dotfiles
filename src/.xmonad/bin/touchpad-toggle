@@ -1,14 +1,14 @@
 #!/bin/zsh
 
-typeset DEVICE_NAME ID
-DEVICE_NAME='AlpsPS/2 ALPS GlidePoint'
-ID=`xinput list | grep $DEVICE_NAME | grep -Eo 'id\=[0-9]*' | grep -Eo '[0-9]*'`
+[ -z "$TOUCHPAD" ] && exit 1
+typeset ID
+ID=`xinput list | grep $TOUCHPAD | grep -Eo 'id\=[0-9]*' | grep -Eo '[0-9]*'`
 declare -i STATE
 STATE=`xinput list-props $ID | grep 'Device Enabled' | awk '{print $4}'`
 if [ $STATE -eq 1 ]; then
   xinput disable $ID
-  notify-send "$DEVICE_NAME" "Disabled touchpad"
+  notify-send "$TOUCHPAD" "Disabled touchpad"
 else
   xinput enable $ID
-  notify-send "$DEVICE_NAME" "Enabled Touchpad"
+  notify-send "$TOUCHPAD" "Enabled Touchpad"
 fi
