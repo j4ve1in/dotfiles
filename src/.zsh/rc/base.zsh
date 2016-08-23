@@ -39,9 +39,10 @@ bindkey "^N" history-beginning-search-forward-end
 # user-defined
 autoload -Uz mcd
 autoload -Uz search
-autoload -Uz ssh-add ssh-add-with-lpass
+autoload -Uz ssh-add{,-with-lpass}
 autoload -Uz trash
-autoload -Uz xrandr-extend xrandr-main xrandr-sub
+autoload -Uz xrandr-{extend,main,sub}
+autoload -Uz pctl
 
 ## ctrl-z
 autoload -Uz fancy-ctrl-z
