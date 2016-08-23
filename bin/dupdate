@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-. dbase
+. dbase && . dcore
 
 # Check dotfiles version
 cprint 'Check for updates' $UNDERLINE
-git -C ~/.dotfiles fetch >/dev/null 2>&1
-LOCAL=$(git -C ~/.dotfiles rev-parse --short HEAD)
-REMOTE=$(git -C ~/.dotfiles rev-parse --short origin/HEAD)
+git -C $DROOT fetch >/dev/null 2>&1
+LOCAL=$(git -C $DROOT rev-parse --short HEAD)
+REMOTE=$(git -C $DROOT rev-parse --short origin/HEAD)
 cprintf ' Dotfiles version: ' "$COLOR_75_B"
 if [ "$LOCAL" = "$REMOTE" ]; then
   echo -e 'up to date\n'
@@ -15,7 +15,7 @@ else
 
   # Pull remote repository
   cprint 'Update dotfiles' $UNDERLINE
-  lprintf ' Pull remote repository' "git -C ${HOME}/.dotfiles pull origin master"
+  lprintf ' Pull remote repository' "git -C $DROOT pull origin master"
   printf "  $LOCAL"
   cprintf ' -> ' $COLOR_93_B
   print "$REMOTE"

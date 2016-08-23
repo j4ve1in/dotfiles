@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-DOT_DIR=~/.dotfiles
-
-DOT_PATH=($(echo $DOT_DIR/src/.*))
-
-DOT_NAME=(${DOT_PATH##*/})
-
-DOT_NUM=${#DOT_PATH[@]}

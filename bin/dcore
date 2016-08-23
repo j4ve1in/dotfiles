@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+typeset -g DROOT=~/.dotfiles
+typeset -g DDIR=$DROOT/src
+typeset -g DPATH=($(echo $DDIR/.*))
+typeset -g DNAME=(${DPATH/$DDIR/~})
+typeset -g DNUM=$#DPATH

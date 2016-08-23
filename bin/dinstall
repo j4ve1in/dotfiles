@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+typeset -g DROOT=~/.dotfiles
+typeset -g DREPO='https://github.com/ytet5uy4/dotfiles'
+
 main() {
   check_opt $@
   set_color_var
@@ -44,7 +47,7 @@ print_header() {
   echo '   / /_/ // /_/ // /_ / __// // //  __//__  /    '
   echo '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf "$COLOR_RESET\n"
-  cprint '                   github.com/ytet5uy4/dotfiles   \n' "$DARKGRAY"
+  cprint '           $DREPO   \n' "$DARKGRAY"
   cprintf '   Author: '  "$SUB_COLOR"; printf 'ytet5uy4'
   cprintf '   License: ' "$SUB_COLOR"; echo   'MIT'
   cprintf '   Provisioning: ' "$SUB_COLOR"
@@ -74,7 +77,7 @@ install() {
   # Download
   download
 
-  path=($path $HOME/.dotfiles/bin(N-/))
+  path=($path $DROOT/bin(N-/))
 
   # Backup and Deploy
   dbackup && ddeploy
@@ -88,12 +91,12 @@ install() {
 
 provisioning() {
   cprint "Provision for installing dotfiles" $UNDERLINE
-  typeset -r ANSIBLE_DOTFILES_REPO='https://github.com/ytet5uy4/ansible-dotfiles/tarball/master'
+  typeset -r ANSIBLE_DREPO='https://github.com/ytet5uy4/ansible-dotfiles/tarball/master'
   typeset tempdir=`mktemp -d /tmp/dotfiles-XXXXXX`
   echo ' Download playbook of ansible for dotfiles'
-  curl -sL $ANSIBLE_DOTFILES_REPO | tar xzC $tempdir --strip=1
+  curl -sL $ANSIBLE_DREPO | tar xzC $tempdir --strip=1
   cprintf '  Repository: ' "$SUB_COLOR"
-  echo "$ANSIBLE_DOTFILES_REPO"
+  echo "$ANSIBLE_DREPO"
   cprintf '  Directory: ' "$SUB_COLOR"
   echo $tempdir
   lprintf ' Download playbook of ansible for dotfiles' "ansible-playbook $tempdir/site.yml"
@@ -107,15 +110,14 @@ download() {
     type -a git | tail -n 1 | awk '{print $3}'
   else
     echo ' Please install git or update your path to run git command'
-    exit 1;
+    exit 1
   fi
 
-  typeset -r DOTFILES_REPO='https://github.com/ytet5uy4/dotfiles.git'
-  lprintf ' Downloading dotfiles' "git clone --depth 1 $DOTFILES_REPO ${HOME}/.dotfiles"
+  lprintf ' Downloading dotfiles' "git clone --depth 1 $DREPO $DROOT"
   cprintf '  Repository: ' "$SUB_COLOR"
-  echo "$DOTFILES_REPO"
+  echo "$DREPO"
   cprintf '  Directory: ' "$SUB_COLOR"
-  echo "${HOME}/.dotfiles"
+  echo "$DROOT"
   echo
 }
 
@@ -145,7 +147,7 @@ download_plugin() {
   typeset -ar DIR=(
     "$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim"
     "$HOME/.zsh/bundle/zplug"
-    "$HOME/.tmux/plugins/tpm"
+    "$HOME/.tmux/bundle/tpm"
   )
   paste -d ' ' <(printf "%s\n" "${REPO[@]}") <(printf "%s\n" "${DIR[@]}") \
     | sed -e "s|^|${GITHUB_URL}|g" \

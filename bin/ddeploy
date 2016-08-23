@@ -1,29 +1,29 @@
 #!/bin/zsh
 
-. dbase && . dot
+. dbase && . dcore
 
 cprint "Create symbolic link" $UNDERLINE
 
 # Create
 [ "$OSTYPE" = "msys" ] && export MSYS='winsymlinks'
 COUNT=0
-N=${#DOT_NAME[@]}
+N=$DNUM
 for ((i=1;i<=N;i++)); do
-  if [ -f "${DOT_PATH[$i]}" ]; then
+  if [ -f "${DPATH[$i]}" ]; then
     cprintf " [" $BLUE
     printf "%2d/%2d" $((COUNT+1)) $N
     cprintf "] " $BLUE
     cprintf "Creating symlink:" $COLOR_75_B
-    printf " %s\n" ~/${DOT_NAME[$i]}
-    ln -fs ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
+    printf " %s\n" ${DNAME[$i]}
+    ln -fs ${DPATH[$i]} ${DNAME[$i]}
     ((COUNT=COUNT+1))
-  elif [ -d "${DOT_PATH[$i]}" ]; then
+  elif [ -d "${DPATH[$i]}" ]; then
     cprintf " [" $BLUE
     printf "%2d/%2d" $((COUNT+1)) $N
     cprintf "] " $BLUE
     cprintf "Creating symlink:" $COLOR_75_B
-    printf " %s\n" ~/${DOT_NAME[$i]}
-    ln -fns ${DOT_PATH[$i]} ~/${DOT_NAME[$i]}
+    printf " %s\n" ${DNAME[$i]}
+    ln -fns ${DPATH[$i]} ${DNAME[$i]}
     ((COUNT=COUNT+1))
   fi
 done

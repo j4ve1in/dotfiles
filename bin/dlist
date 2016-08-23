@@ -1,37 +1,31 @@
 #!/bin/zsh
 
-. dbase && . dot
+. dbase && . dcore
 
-for ((i=1;i<=DOT_NUM;i++)); do
-  # DOT_FILE_TYPE
-  if [ -f ${DOT_PATH[$i]} ]; then
-    DOT_FILE_TYPE[$i]=File
-  elif [ -d ${DOT_PATH[$i]} ]; then
-    DOT_FILE_TYPE[$i]=Directory
-  fi
+for ((i=1;i<=DNUM;i++)); do
+  [ -f "${DPATH[$i]}" ] && DTYPE[$i]=File
+  [ -d "${DPATH[$i]}" ] && DTYPE[$i]=Directory
 
-  # DOT_FILE_SIZE
   # Check file size
-  if [ -f ${DOT_PATH[$i]} ]; then
-    DOT_FILE_SIZE[$i]=$(ls -hl ${DOT_PATH[$i]} | awk '{print $5}')
-  elif [ -d ${DOT_PATH[$i]} ]; then
-    DOT_FILE_SIZE[$i]=$(du -hs ${DOT_PATH[$i]} | awk '{print $1}')
+  if [ -f "${DPATH[$i]}" ]; then
+    DSIZE[$i]=$(ls -hl ${DPATH[$i]} | awk '{print $5}')
+  elif [ -d "${DPATH[$i]}" ]; then
+    DSIZE[$i]=$(du -hs ${DPATH[$i]} | awk '{print $1}')
   fi
 
-  # DOT_FILE_DATE
   # Check file last-modified date
   if [ $(uname) = Darwin ]; then
-    if [ -f ${DOT_PATH[$i]} ]; then
-      DOT_FILE_DATE[$i]=$(ls -l ${DOT_PATH[$i]} | awk '{print $6"/"$7"-"$8}')
-    elif [ -d ${DOT_PATH[$i]} ]; then
-      DOT_FILE_DATE[$i]=$(ls -Al ${DOT_DIR}/src | grep ${DOT_NAME[$i]} | awk 'NR==1{print $6"/"$7"-"$8}')
+    if [ -f "${DPATH[$i]}" ]; then
+      DDATE[$i]=$(ls -l ${DPATH[$i]} | awk '{print $6"/"$7"-"$8}')
+    elif [ -d "${DPATH[$i]}" ]; then
+      DDATE[$i]=$(ls -Al $DDIR | grep ${DNAME[$i]##*/} | awk 'NR==1{print $6"/"$7"-"$8}')
     fi
   else
     LS_TIME_STYLE_OPTION="--time-style=+%Y/%m/%d-%H:%M:%S"
-    if [ -f ${DOT_PATH[$i]} ]; then
-      DOT_FILE_DATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DOT_PATH[$i]} | awk '{print $6}')
-    elif [ -d ${DOT_PATH[$i]} ]; then
-      DOT_FILE_DATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION ${DOT_DIR}/src | grep ${DOT_NAME[$i]} | awk 'NR==1{print $6}')
+    if [ -f "${DPATH[$i]}" ]; then
+      DDATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DPATH[$i]} | awk '{print $6}')
+    elif [ -d "${DPATH[$i]}" ]; then
+      DDATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION $DDIR | grep ${DNAME[$i]##*/} | awk 'NR==1{print $6}')
     fi
   fi
 done
@@ -45,18 +39,18 @@ FIRST_LINE=(
 )
 
 # Count max length
-if ((${#DOT_NUM} < ${#FIRST_LINE[1]})); then
+if ((${#DNUM} < ${#FIRST_LINE[1]})); then
   COL_MAX_LENGTH[1]=${#FIRST_LINE[1]}
-elif ((${#DOT_NUM} > ${#FIRST_LINE[1]})); then
-  COL_MAX_LENGTH[1]=${#DOT_NUM}
+elif ((${#DNUM} > ${#FIRST_LINE[1]})); then
+  COL_MAX_LENGTH[1]=${#DNUM}
 fi
 count-max() {
   printf '%s\n' $@ | xargs -I{} expr length {} | sort -n | tail -n 1
 }
-COL_MAX_LENGTH[2]=`count-max ${FIRST_LINE[2]} ${DOT_NAME[@]}`
-COL_MAX_LENGTH[3]=`count-max ${FIRST_LINE[3]} ${DOT_FILE_TYPE[@]}`
-COL_MAX_LENGTH[4]=`count-max ${FIRST_LINE[4]} ${DOT_FILE_SIZE[@]}`
-COL_MAX_LENGTH[5]=`count-max ${FIRST_LINE[5]} ${DOT_FILE_DATE[@]}`
+COL_MAX_LENGTH[2]=`count-max ${FIRST_LINE[2]} ${DNAME[@]}`
+COL_MAX_LENGTH[3]=`count-max ${FIRST_LINE[3]} ${DTYPE[@]}`
+COL_MAX_LENGTH[4]=`count-max ${FIRST_LINE[4]} ${DSIZE[@]}`
+COL_MAX_LENGTH[5]=`count-max ${FIRST_LINE[5]} ${DDATE[@]}`
 
 # Display list
 N=${#FIRST_LINE[@]}
@@ -64,17 +58,17 @@ REVERSE="\e[7;39;49m"
 COLOR_RESET="\e[0;39;49m"
 printf "$REVERSE"
 for ((i=1;i<=N;i++)); do
-  printf "%-${COL_MAX_LENGTH[$i]}s" ${FIRST_LINE[$i]}
+  printf "%-${COL_MAX_LENGTH[$i]}s" "${FIRST_LINE[$i]}"
   [ "$i" = "$N" ] && echo || printf " "
 done
 printf "$COLOR_RESET"
 
-for ((i=1;i<=DOT_NUM;i++)); do
-  printf "%-${COL_MAX_LENGTH[1]}s "  $i
-  printf "%-${COL_MAX_LENGTH[2]}s "  ${DOT_NAME[$i]}
-  printf "%-${COL_MAX_LENGTH[3]}s "  ${DOT_FILE_TYPE[$i]}
-  printf "%-${COL_MAX_LENGTH[4]}s "  ${DOT_FILE_SIZE[$i]}
-  printf "%-${COL_MAX_LENGTH[5]}s\n" ${DOT_FILE_DATE[$i]}
+for ((i=1;i<=DNUM;i++)); do
+  printf "%-${COL_MAX_LENGTH[1]}s "  "$i"
+  printf "%-${COL_MAX_LENGTH[2]}s "  "${DNAME[$i]}"
+  printf "%-${COL_MAX_LENGTH[3]}s "  "${DTYPE[$i]}"
+  printf "%-${COL_MAX_LENGTH[4]}s "  "${DSIZE[$i]}"
+  printf "%-${COL_MAX_LENGTH[5]}s\n" "${DDATE[$i]}"
 done
 
 echo

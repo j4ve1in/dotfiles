@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-. dbase && . dot
+. dbase && . dcore
 
 main() {
   check_opt $@
@@ -38,11 +38,11 @@ uninstall() {
   MAX_D=0
   BLUE="34"
   COLOR_75_B="1;38;5;75;49"
-  N=${#DOT_NAME[@]}
+  N=$DNUM
   for ((i=1;i<=N;i++)); do
-    if [ -f ~/${DOT_NAME[$i]} ]; then
+    if [ -f ${DNAME[$i]} ]; then
       MAX_F=$((MAX_F+1))
-    elif [ -d ~/${DOT_NAME[$i]} ]; then
+    elif [ -d ${DNAME[$i]} ]; then
       MAX_D=$((MAX_D+1))
     fi
     ((MAX=MAX_F+MAX_D))
@@ -57,18 +57,18 @@ uninstall() {
 
   # Remove
   cprint "Remove dotfiles" $UNDERLINE
-  N=${#DOT_NAME[@]}
+  N=$DNUM
   for ((i=1;i<=N;i++)); do
-    if [ -e ~/${DOT_NAME[$i]} ]; then
+    if [ -e ${DNAME[$i]} ]; then
       cprintf " [" $BLUE
       printf "%2d/%2d" $((i+1)) $MAX
       cprintf "] " $BLUE
       cprintf "Removing:" $COLOR_75_B
-      printf " %s\n" ~/${DOT_NAME[$i]}
-      unlink ~/${DOT_NAME[$i]}
+      printf " %s\n" ${DNAME[$i]}
+      unlink ${DNAME[$i]}
     fi
   done
-  rm -rf ~/.dotfiles ~/.zshenv.zwc
+  rm -rf $DROOT ~/.zshenv.zwc
   echo
 }
 
