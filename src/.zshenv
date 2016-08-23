@@ -38,7 +38,7 @@ typeset -U path cdpath fpath manpath
 
 path=(
   $path
-  $HOME/.{local,dotfiles,tmux,zsh,git.global}/bin(N-/)
+  $HOME/.{local,files,tmux,zsh,git.global}/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
 
