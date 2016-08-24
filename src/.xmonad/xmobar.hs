@@ -8,27 +8,22 @@ Config {
   border = NoBorder,
   commands = [
     Run DynNetwork [
-      "--template" , "<fc=#2e4bd4><icon=up.xbm/></fc> <tx>kB/s <fc=#2e4bd4><icon=down.xbm/></fc> <rx>kB/s",
-      "--Low"      , "1000",
+      "--template" , "<fc=royalblue><icon=up.xbm/></fc> <tx>kB/s <fc=royalblue><icon=down.xbm/></fc> <rx>kB/s",
       "--High"     , "5000",
-      "--low"      , "white",
       "--normal"   , "white",
-      "--high"     , "darkred"
+      "--high"     , "mediumpurple"
     ] 10,
     Run Memory [
-      "-t", "<fc=#2e4bd4><icon=mem.xbm/></fc> <usedratio>%",
-      "-L", "40",
+      "-t", "<fc=royalblue><icon=mem.xbm/></fc> <usedratio>%",
       "-H", "90",
-      "-m", "2",
-      "--normal", "#ffffff",
-      "--high" , "#f44336"
+      "--normal", "white",
+      "--high" , "mediumpurple"
     ] 10,
     Run Battery [
-      "-t" , "<fc=#2e4bd4><icon=battery.xbm/></fc> <acstatus>",
+      "-t" , "<fc=royalblue><icon=battery.xbm/></fc> <acstatus>",
       "-L", "20",
-      "-H", "80",
-      "--low", "#f44336",
-      "--normal", "#ffffff",
+      "--low", "mediumpurple",
+      "--normal", "white",
       "--",
       "-o", "<left>% (<timeleft>)",
       "-O", "Charging <left>%",

@@ -36,18 +36,18 @@ main = do
     `additionalKeysP` myAdditionalKeysP
 
 -- color
-black = "#000"
-white = "#fff"
-gray  = "#9fa8b1"
-blue  = "#2e4bd4"
+mainColor = "black"
+subColor1 = "white"
+subColor2  = "gray"
+accentColor  = "blue"
 
 myBorderWidth = 1
 myModMask = mod4Mask
 myTerminal = "urxvt-tmux"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
-myNormalBorderColor = black
-myFocusedBorderColor = blue
+myNormalBorderColor = mainColor
+myFocusedBorderColor = accentColor
 myEventHook = fullscreenEventHook
 
 -- layout
@@ -81,13 +81,13 @@ myManageHook = composeAll
 -- xmobar
 myWsBar = "xmobar -i ~/.xmonad/icons/ ~/.xmonad/xmobar.hs"
 wsPP = xmobarPP
-  { ppOrder           = \(ws:l:t:_)  -> [ws,t]
-  , ppCurrent         = xmobarColor white blue  . wrap " " "* "
-  , ppUrgent          = xmobarColor gray  black . wrap " " " "
-  , ppVisible         = xmobarColor gray  black . wrap " " " "
-  , ppHidden          = xmobarColor gray  black . wrap " " " "
-  , ppHiddenNoWindows = xmobarColor gray  black . wrap " " "- "
-  , ppTitle           = xmobarColor white black
+  { ppOrder           = \(ws:l:t:_)  -> [ws]
+  , ppCurrent         = xmobarColor subColor1 accentColor . wrap " " "* "
+  , ppUrgent          = xmobarColor subColor2 mainColor   . wrap " " " "
+  , ppVisible         = xmobarColor subColor2 mainColor   . wrap " " " "
+  , ppHidden          = xmobarColor subColor2 mainColor   . wrap " " " "
+  , ppHiddenNoWindows = xmobarColor subColor2 mainColor   . wrap " " "- "
+  , ppTitle           = xmobarColor subColor1 mainColor
   , ppOutput          = putStrLn
   , ppWsSep           = ""
   , ppSep             = " "
