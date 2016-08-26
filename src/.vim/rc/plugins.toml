@@ -55,44 +55,8 @@ hook_add = ''' " {{{
   endif
 
   " others
-  nnoremap <silent> [Unite]v :<C-u>Unite<Space>menu:vim<CR>
-  nnoremap <silent> [Unite]V :<C-u>Unite<Space>menu:vim<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]z :<C-u>Unite<Space>menu:zsh<CR>
-  nnoremap <silent> [Unite]Z :<C-u>Unite<Space>menu:zsh<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]t :<C-u>Unite<Space>menu:tmux<CR>
-  nnoremap <silent> [Unite]T :<C-u>Unite<Space>menu:tmux<Space>-default-action=tabopen<CR>
-
-  let g:unite_source_menu_menus = {}
-  let g:unite_source_menu_menus.vim = { 'description': 'Edit vim files' }
-  let g:unite_source_menu_menus.vim.file_candidates = [
-    \       [$HOME . '/.vim/rc/apperance.vim'    , $HOME . '/.vim/rc/apperance.vim'    ],
-    \       [$HOME . '/.vim/rc/base.vim'         , $HOME . '/.vim/rc/base.vim'         ],
-    \       [$HOME . '/.vim/rc/colors.vim'       , $HOME . '/.vim/rc/colors.vim'       ],
-    \       [$HOME . '/.vim/rc/init.vim'         , $HOME . '/.vim/rc/init.vim'         ],
-    \       [$HOME . '/.vim/rc/keymap.vim'       , $HOME . '/.vim/rc/keymap.vim'       ],
-    \       [$HOME . '/.vim/rc/plugins.vim'      , $HOME . '/.vim/rc/plugins.vim'      ],
-    \       [$HOME . '/.vim/rc/plugins.lazy.toml', $HOME . '/.vim/rc/plugins.lazy.toml'],
-    \       [$HOME . '/.vim/rc/plugins.toml'     , $HOME . '/.vim/rc/plugins.toml'     ]
-    \     ]
-  let g:unite_source_menu_menus.zsh = { 'description': 'Edit zsh files' }
-  let g:unite_source_menu_menus.zsh.file_candidates = [
-    \       [$HOME . '/.zshenv'          , $HOME . '/.zshenv'               ],
-    \       [$HOME . '/.zprofile'        , $HOME . '/.zsh/.zprofile'        ],
-    \       [$HOME . '/rc/init.zsh'      , $HOME . '/.zsh/rc/init.zsh'      ],
-    \       [$HOME . '/rc/alias.zsh'     , $HOME . '/.zsh/rc/alias.zsh'     ],
-    \       [$HOME . '/rc/base.zsh'      , $HOME . '/.zsh/rc/base.zsh'      ],
-    \       [$HOME . '/rc/completion.zsh', $HOME . '/.zsh/rc/completion.zsh'],
-    \       [$HOME . '/rc/plugins.zsh'   , $HOME . '/.zsh/rc/plugins.zsh'   ],
-    \       [$HOME . '/rc/prompt.zsh'    , $HOME . '/.zsh/rc/prompt.zsh'    ]
-    \     ]
-  let g:unite_source_menu_menus.tmux = { 'description': 'Edit tmux files' }
-  let g:unite_source_menu_menus.tmux.file_candidates = [
-    \       [$HOME . '/.tmux.conf'      , $HOME . '/.tmux.conf'          ],
-    \       [$HOME . '/conf/init.conf'   , $HOME . '/.tmux/conf/init.conf'   ],
-    \       [$HOME . '/conf/base.conf'   , $HOME . '/.tmux/conf/base.conf'   ],
-    \       [$HOME . '/conf/color.conf'  , $HOME . '/.tmux/conf/color.conf'  ],
-    \       [$HOME . '/conf/keybind.conf', $HOME . '/.tmux/conf/keybind.conf']
-    \     ]
+  nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.files/src<Space>-input=.<CR>
+  nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.files/src<Space>-input=.<Space>-default-action=tabopen<CR>
 " }}} '''
 hook_source = ''' " {{{
   call unite#custom#profile('default', 'context', {
@@ -286,6 +250,15 @@ hook_add = ''' " {{{
   nnoremap [git]ic :<C-u>tabedit<Space><Space>\|<Space>:set<Space>ro
               \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
   let g:gista#post_private = '1'
+" }}} '''
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+hook_add = ''' " {{{
+  nnoremap [git] <Nop>
+  nmap <Space><C-g> [Agit]
+
+  nnoremap [Agit] :<C-u>AgitFile<CR>
 " }}} '''
 # }}}
 

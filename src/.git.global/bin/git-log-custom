@@ -8,4 +8,4 @@ AUTHOR_NAME='%C(black bold)%an'
 
 CUSTOM_FORMAT="${COMMIT_ID}$DATE $COMMIT_MESSAGE $REF_NAME $AUTHOR_NAME"
 
-git log --graph --date=short --decorate=short --pretty=format:"$CUSTOM_FORMAT"
+git log --graph --date=short --decorate=short --pretty=format:"$CUSTOM_FORMAT" $*
