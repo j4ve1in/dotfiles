@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [ "$1" = 'lpass' ]; then
+  lpass login $LPASS_USERNAME
+elif [ "$1" = 'trans' ]; then
+  trans $* | $PAGER
+fi

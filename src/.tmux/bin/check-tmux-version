@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-[[ `tmux -V` =~ $1 ]] && exit 0 || exit 1

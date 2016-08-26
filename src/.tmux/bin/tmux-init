@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [ "$1" = "tpm" ]; then
+  ${TMUX_PLUGIN_MANAGER_PATH}tpm/tpm
+elif [ "$1" = "powerline" ]; then
+  if type powerline >/dev/null 2>&1;then
+    tmux run 'powerline-daemon -q'
+    tmux if 'env "$POWERLINE_CONFIG_COMMAND" tmux setup' '' \
+      'run "powerline-config tmux setup"'
+  fi
+fi

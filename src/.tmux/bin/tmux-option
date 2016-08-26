@@ -1,0 +1,119 @@
+#!/bin/zsh
+
+main() {
+  if [ "$1" = 'mouse' ]; then
+    set-mouse-option $2
+  elif [ "$1" = 'statusline' ]; then
+    set-statusline
+  fi
+}
+
+set-mouse-option() {
+  if check-version '^.+2\.[12]$'; then
+    tmux bind -n WheelUpPane if -Ft= '#{mouse_any_flag}' 'send -M' \
+      "if -Ft= '#{pane_in_mode}' 'send -M' 'copy-mode -e'"
+    if [ "$1" = 'on' ]; then
+      tmux set-option -g mouse on
+      tmux display 'Mouse: ON'
+    elif [ "$1" = 'off' ]; then
+      tmux set-option -g mouse off
+      tmux display 'Mouse: OFF'
+    fi
+  elif check-version '^.+(2\.0|1\.9a?)$'; then
+    ## versions earlier than 2.1
+    if [ "$1" = 'on' ]; then
+      tmux set-window-option -g mode-mouse on
+      tmux set-option -g mouse-select-pane on
+      tmux set-option -g mouse-resize-pane on
+      tmux set-option -g mouse-select-window on
+      tmux display 'Mouse: ON'
+    elif [ "$1" = 'off' ]; then
+      tmux set-window-option -g mode-mouse off
+      tmux set-option -g mouse-select-pane off
+      tmux set-option -g mouse-resize-pane off
+      tmux set-option -g mouse-select-window off
+      tmux display 'Mouse: OFF'
+    fi
+  fi
+}
+
+check-version() { [[ `tmux -V` =~ $1 ]] && return 0 || return 1; }
+
+set-statusline() {
+  set-statusline.left
+  set-statusline.right
+  set-statusline.window-format
+  set-statusline.window-current-format
+}
+
+set-statusline.left() {
+  typeset STATUS_L
+  # Session
+  STATUS_L='#[fg=colour231,bg=colour17,bold]#{?client_prefix,#[reverse],} #S '
+  # separator
+  if has powerline;then
+    STATUS_L+='#[fg=colour17,bg=black]'
+    STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour231],}\ue0b0'
+  fi
+  tmux set -g status-left "`echo -e $STATUS_L`"
+  tmux set -g status-left-length 50
+}
+
+set-statusline.right() {
+  typeset STATUS_R
+  # Prefixkey
+  STATUS_R+=" $(tmux show-options -g prefix | tr -d 'prefix ') "
+  # Battery
+  ## separator
+  has powerline && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
+  if has acpi;then
+    Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
+    STATUS_R+='#[fg=colour231,bg=colour21]'
+    (( "$Battery" <= 20 )) && STATUS_R+='#[bold]'
+    STATUS_R+=" #(acpi -b | grep -oE '[0-9]+%') #[default]"
+  fi
+  # Date
+  ## separator
+  has powerline && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
+  STATUS_R+='#[fg=colour231,bg=colour17] %a '
+  ## subseparator
+  has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  STATUS_R+=' %m/%d '
+  ## subseparator
+  has powerline && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  STATUS_R+=' %H:%M:%S '
+  tmux set -g status-right "`echo -e $STATUS_R`"
+  tmux set -g status-right-length 50
+}
+
+set-statusline.window-format() {
+  typeset STATUS_WF
+  # window index and flag
+  STATUS_WF='#[fg=colour244,bg=black]  #I#F '
+  # separator
+  has powerline && STATUS_WF+='#[fg=colour240,bg=black]\ue0b1' || STATUS_WF+=':'
+  # window name
+  STATUS_WF+=' #[fg=colour33]#W  '
+  tmux setw -g window-status-format "`echo -e $STATUS_WF`"
+}
+
+set-statusline.window-current-format() {
+  typeset STATUS_WCF
+  # separator
+  has powerline && STATUS_WCF+='#[fg=black,bg=colour21]\ue0b0'
+  # Current window index and flag
+  STATUS_WCF+='#[fg=colour231,bg=colour21] #I#F '
+  # separator
+  has powerline && STATUS_WCF+='\ue0b1' || STATUS_WCF+=':'
+  # Current window name
+  STATUS_WCF+=' #[fg=colour231,bg=colour21]#W '
+  # separator
+  has powerline && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
+  tmux setw -g window-status-current-format "`echo -e $STATUS_WCF`"
+}
+
+has() { type $1 >/dev/null 2>&1; }
+
+main $@
+
+exit 0

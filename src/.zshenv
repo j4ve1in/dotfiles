@@ -71,7 +71,6 @@ elif is_darwin; then
 fi
 
 # Others
-export TMUX_PLUGIN_MANAGER_PATH=~/.tmux/bundle/
 is_msys && export MSYS='winsymlinks'
 
 ## zsh
