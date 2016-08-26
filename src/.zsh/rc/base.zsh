@@ -13,6 +13,7 @@ bindkey -v '^G' send-break
 bindkey -v '^H' backward-delete-char
 bindkey -v '^W' backward-kill-word
 bindkey -v '^U' backward-kill-line
+bindkey -v '^K' kill-line
 bindkey -v '^D' delete-char-or-list
 bindkey -v '^A' beginning-of-line
 bindkey -v '^E' end-of-line

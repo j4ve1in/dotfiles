@@ -23,7 +23,7 @@ fi
 
 # Vi
 has vi && alias v='vi'
-has vim && alias v='vim -p'
+has vim && alias v='vim -p' agit='vim +AgitFile'
 
 # mount
 alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
@@ -38,7 +38,10 @@ has docker && alias d='docker'
 has pacman && alias pm='pacman'
 has yaourt && alias y='yaourt'
 has feednix && alias fn='feednix'
-has netctl-auto && alias n='netctl-auto'
+if has netctl-auto; then
+  alias n='netctl-auto'
+  alias ssid="netctl-auto list | grep '*' | sed 's/* //g'"
+fi
 has thefuck && eval "`thefuck --alias`"
 has hub && eval "`hub alias -s`"
 has ranger && disable r && alias f='ranger' r='rifle'

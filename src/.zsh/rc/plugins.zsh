@@ -97,6 +97,8 @@
 
       bindkey '^@e' fzf-edit-files-widget
 
+      bindkey '^@d' fzf-edit-dotfiles-widget
+
       bindkey '^@g' fzf-cd-ghq-repository-widget
 
       bindkey '^\' fzf-cdr-widget

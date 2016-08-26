@@ -7,6 +7,9 @@ zle -N fzf-cd-dir-widget
 autoload -Uz fzf-edit-files-widget
 zle -N fzf-edit-files-widget
 
+autoload -Uz fzf-edit-dotfiles-widget
+zle -N fzf-edit-dotfiles-widget
+
 autoload -Uz fzf-cd-ghq-repository-widget
 zle -N fzf-cd-ghq-repository-widget
 

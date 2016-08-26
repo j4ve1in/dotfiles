@@ -1,0 +1,8 @@
+FILES=($(find .* -maxdepth 0 | $SELECTOR))
+[ -z "$FILES" ] && return 1
+BUFFER="$EDITOR ${FILES[@]}"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et
