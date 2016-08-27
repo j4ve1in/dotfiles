@@ -17,14 +17,6 @@ is_arch || is_alpine || is_msys && . ~/.zshenv
   fi
 }
 
-: "Load keychain" && () {
-  if has keychain; then
-    keychain --nogui --quiet
-    local KEYCHAIN_FILE=~/.keychain/$HOST-sh
-    [ -f "$KEYCHAIN_FILE" ] && source "$KEYCHAIN_FILE"
-  fi
-}
-
 : "Launch tmux" && () {
   is_msys && return 1
   # if not inside a tmux session, and if no session is started,

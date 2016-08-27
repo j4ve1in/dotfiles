@@ -112,6 +112,8 @@
       bindkey '^@l' fzf-lpass-bookmark-widget
 
       bindkey '^@n' fzf-switch-network-widget
+
+      bindkey '^@s' fzf-ssh-widget
     fi
   fi
 

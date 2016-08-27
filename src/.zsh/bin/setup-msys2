@@ -6,7 +6,6 @@ PACKAGES=(
   'git'
   'make'
   'openssh'
-  'ssh-pageant-git'
   'tmux'
   'unzip'
   'vim'

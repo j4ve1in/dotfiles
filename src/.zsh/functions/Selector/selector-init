@@ -30,4 +30,7 @@ zle -N fzf-lpass-bookmark-widget
 
 autoload -Uz fzf-switch-network-widget
 zle -N fzf-switch-network-widget
+
+autoload -Uz fzf-ssh-widget
+zle -N fzf-ssh-widget
 # vim: ft=zsh sw=2 ts=2 et
