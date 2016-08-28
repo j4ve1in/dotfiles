@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-exe=`dmenu_run -nb black -fn 'Migu 1M:size=13.5'` && exec $exe

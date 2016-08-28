@@ -26,7 +26,7 @@ URxvt.iso14755_52: false
 !! Color
 URxvt.depth: 32
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
-URxvt.background: rgba:0000/0000/0000/eeee
+URxvt.background: rgba:0000/0000/0000/cccc
 URxvt.cursorColor: blue
 URxvt.cursorColor2: white
 

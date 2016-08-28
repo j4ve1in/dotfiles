@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+if [ "$1" = 'select' ]; then
+  [ -f ~/.dmenurc ] && . ~/.dmenurc || DMENU=''
+
+  RET=$(echo -e "halt\nreboot\nlogout" | dmenu -p 'Power' ${=DMENU})
+
+  case $RET in
+    halt) halt -p ;;
+    reboot) reboot ;;
+    logout) xdotool key "super+shift+q" ;;
+    *) ;;
+  esac
+elif [ "$1" = 'lock' ]; then
+  systemctl suspend
+elif [ "$1" = 'restart' ]; then
+  xmonad --recompile && xmonad --restart
+  notify-send "xmonad" "Compiled and Restarted xmonad"
+fi

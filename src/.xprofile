@@ -1,13 +1,6 @@
-xbacklight -set 1
-nitrogen --restore &
-compton &
-killall xss-lock; xss-lock -- dm-tool lock &
 if type fcitx; then
-  export GTK_IM_MODULE="fcitx" QT_IM_MODULE="fcitx" XMODIFIERS="@im=fcitx"
-  fcitx &
+  export GTK_IM_MODULE='fcitx' QT_IM_MODULE='fcitx' XMODIFIERS='@im=fcitx'
 fi
-
 [ -d $HOME/.tmux/bin ] && export PATH="$PATH:$HOME/.tmux/bin"
 [ -d $HOME/.xmonad/bin ] && export PATH="$PATH:$HOME/.xmonad/bin"
-unclutter-toggle
 # vim: ft=sh sw=2 ts=2 et

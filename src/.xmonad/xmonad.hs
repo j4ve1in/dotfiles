@@ -39,15 +39,16 @@ main = do
 mainColor = "black"
 subColor1 = "white"
 subColor2  = "gray"
-accentColor  = "blue"
+accentColor1  = "blue"
+accentColor2  = "#00008b"
 
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "urxvt-tmux"
+myTerminal = "xmonad-run terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
-myFocusedBorderColor = accentColor
+myFocusedBorderColor = accentColor1
 myEventHook = fullscreenEventHook
 
 -- layout
@@ -64,9 +65,12 @@ myLayout = avoidStruts
 
 -- startup
 myStartupHook = do
-  spawnOnce "urxvtd -q -f -o"
-  spawnOnce "tmux new-session -s 0 -d"
-  spawnOnce "touchpad-toggle"
+  spawnOnce "xmonad-system brightness ="
+  spawnOnce "xmonad-system wallpaper"
+  spawnOnce "xmonad-daemon {compton,urxvt,tmux}"
+  spawnOnce "xmonad-system mouse"
+  spawnOnce "xmonad-system lock-screen"
+  spawnOnce "xmonad-system im"
 
 -- loghook
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
@@ -82,11 +86,11 @@ myManageHook = composeAll
 myWsBar = "xmobar -i ~/.xmonad/icons/ ~/.xmonad/xmobar.hs"
 wsPP = xmobarPP
   { ppOrder           = \(ws:l:t:_)  -> [ws]
-  , ppCurrent         = xmobarColor subColor1 accentColor . wrap " " "* "
-  , ppUrgent          = xmobarColor subColor2 mainColor   . wrap " " " "
-  , ppVisible         = xmobarColor subColor2 mainColor   . wrap " " " "
-  , ppHidden          = xmobarColor subColor2 mainColor   . wrap " " " "
-  , ppHiddenNoWindows = xmobarColor subColor2 mainColor   . wrap " " "- "
+  , ppCurrent         = xmobarColor subColor1 accentColor2 . wrap " " "* "
+  , ppUrgent          = xmobarColor subColor2 mainColor    . wrap " " " "
+  , ppVisible         = xmobarColor subColor2 mainColor    . wrap " " " "
+  , ppHidden          = xmobarColor subColor2 mainColor    . wrap " " " "
+  , ppHiddenNoWindows = xmobarColor subColor2 mainColor    . wrap " " "- "
   , ppTitle           = xmobarColor subColor1 mainColor
   , ppOutput          = putStrLn
   , ppWsSep           = ""
@@ -96,6 +100,7 @@ wsPP = xmobarPP
 -- keybind
 myRemoveKeysP =
   [ "M-S-p"
+  , "M-n"
   ,"M-S-<Return>"
   ]
 
@@ -108,17 +113,17 @@ myAdditionalKeys =
 
 myAdditionalKeysP =
   -- Volume setting media keys
-  [ ("<XF86AudioRaiseVolume>",  spawn "volume +")
-  , ("<XF86AudioLowerVolume>",  spawn "volume -")
-  , ("<XF86AudioMute>",         spawn "volume m")
-  , ("M-S-s",                   spawn "volume +")
-  , ("M-S-a",                   spawn "volume -")
-  , ("M-S-d",                   spawn "volume m")
+  [ ("<XF86AudioRaiseVolume>",  spawn "xmonad-system volume +")
+  , ("<XF86AudioLowerVolume>",  spawn "xmonad-system volume -")
+  , ("<XF86AudioMute>",         spawn "xmonad-system volume m")
+  , ("M-S-s",                   spawn "xmonad-system volume +")
+  , ("M-S-a",                   spawn "xmonad-system volume -")
+  , ("M-S-d",                   spawn "xmonad-system volume m")
   -- Brightness Keys
-  , ("<XF86MonBrightnessUp>",   spawn "brightness +")
-  , ("<XF86MonBrightnessDown>", spawn "brightness -")
-  , ("M-S-e",                   spawn "brightness +")
-  , ("M-S-w",                   spawn "brightness -")
+  , ("<XF86MonBrightnessUp>",   spawn "xmonad-system brightness +")
+  , ("<XF86MonBrightnessDown>", spawn "xmonad-system brightness -")
+  , ("M-S-e",                   spawn "xmonad-system brightness +")
+  , ("M-S-w",                   spawn "xmonad-system brightness -")
   -- window operations
   , ("M-l",                     nextWS)
   , ("M-h",                     prevWS)
@@ -127,15 +132,15 @@ myAdditionalKeysP =
   , ("M-,",                     sendMessage Shrink)
   , ("M-.",                     sendMessage Expand)
   -- Others
-  , ("M-p",                     spawn "power")
-  , ("M-r",                     spawn "launcher")
-  , ("M-w",                     spawn "chromium")
+  , ("M-r",                     spawn "xmonad-run launcher")
+  , ("M-w",                     spawn "xmonad-run browser")
   , ("M-<Return>",              spawn myTerminal)
-  , ("M-C-r",                   spawn "screencast")
-  , ("M-S-r",                   spawn "screencast --select")
-  , ("<Print>",                 spawn "screenshot")
-  , ("S-<Print>",               spawn "screenshot --select")
-  , ("M-q",                     spawn "xmonad-restart")
-  , ("M-S-t",                   spawn "touchpad-toggle")
-  , ("M-C-l",                   spawn "systemctl suspend")
+  , ("M-C-r",                   spawn "xmonad-system screencast")
+  , ("M-S-r",                   spawn "xmonad-system screencast --select")
+  , ("<Print>",                 spawn "xmonad-system screenshot")
+  , ("S-<Print>",               spawn "xmonad-system screenshot --select")
+  , ("M-S-m",                   spawn "xmonad-system mouse")
+  , ("M-p",                     spawn "xmonad-power select")
+  , ("M-q",                     spawn "xmonad-power restart")
+  , ("M-C-l",                   spawn "xmonad-power lock")
   ]

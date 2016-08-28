@@ -1,0 +1,116 @@
+#!/bin/zsh
+
+main() {
+  if [ "$1" = 'mouse' ]; then
+    mouse
+  elif [ "$1" = 'volume' ]; then
+    volume $2
+  elif [ "$1" = 'brightness' ]; then
+    brightness $2
+  elif [ "$1" = 'wallpaper' ]; then
+    wallpaper
+  elif [ "$1" = 'im' ]; then
+    im
+  elif [ "$1" = 'lock-screen' ]; then
+    lock-screen
+  elif [ "$1" = 'screencast' ]; then
+    if ! killall ffmpeg; then
+      if [ "$2" = "--select" ]; then
+        if [ -f /tmp/unclutter.pid ]; then
+          mouse
+          screencast-select
+          mouse
+        else
+          screencast-select
+        fi
+      else
+        screencast-full
+      fi
+    fi
+  elif [ "$1" = 'screenshot' ]; then
+    file=~/Pictures/Screenshots/screenshot_$(date +'%y-%m-%d_%I%M%S').png
+    if [ -f /tmp/unclutter.pid ]; then
+      unclutter-toggle
+      [ "$2" = "--select" ] && maim -s "$file" || maim "$file"
+      unclutter-toggle
+    else
+      [ "$2" = "--select" ] && maim -s "$file" || maim "$file"
+    fi
+    notify-send 'Take a screenshot' "Saved to $file"
+  fi
+}
+
+mouse() {
+  # Unclutter
+  pidfile=/tmp/unclutter.pid
+  if [ ! -f "$pidfile" ]; then
+    unclutter -idle 1 -root -grab &
+    echo $! > "$pidfile"
+  else
+    killall unclutter
+    rm "$pidfile"
+  fi
+
+  # Others
+  [ -z "$MOUSE" ] && exit 1
+  typeset ID
+  ID=`xinput list | grep $MOUSE | grep -Eo 'id\=[0-9]*' | grep -Eo '[0-9]*'`
+  declare -i STATE
+  STATE=`xinput list-props $ID | grep 'Device Enabled' | awk '{print $4}'`
+  if [ $STATE -eq 1 ]; then
+    xinput disable $ID
+    notify-send "$MOUSE" "Disabled touchpad"
+  else
+    xinput enable $ID
+    notify-send "$MOUSE" "Enabled Touchpad"
+  fi
+}
+
+volume() {
+  SOUND_FILE="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+  if [ "$1" = 'm' ]; then
+    pamixer --toggle-mute
+  elif [ "$1" = '+' ]; then
+    pamixer --increase 1 && paplay $SOUND_FILE
+  elif [ "$1" = '-' ]; then
+    pamixer --decrease 1 && paplay $SOUND_FILE
+  fi
+}
+
+brightness() {
+  if [ "$1" = '+' ]; then
+    xbacklight + 1 -time 100 -steps 1
+  elif [ "$1" = '-' ]; then
+    xbacklight - 1 -time 100 -steps 1
+  elif [ "$1" = '=' ]; then
+    xbacklight = 1
+  fi
+}
+
+wallpaper() { nitrogen --restore &; }
+
+im() { fcitx &; }
+
+lock-screen() { xss-lock -- dm-tool lock &; }
+
+screencast() {
+  typeset size display file
+  size="$1"
+  display="$2"
+  file=~/Videos/Screencasts/screencast_$(date +'%y-%m-%d_%I%M%S').mkv
+  ffmpeg -f x11grab -s "$size" -i "$display" -f alsa -i default -c:v libx264 -c:a aac "$file"
+  notify-send 'Recorded screen' "Saved to $file"
+}
+
+screencast-full() {
+  typeset size
+  size=`xwininfo -root | awk '/-geo/{print $2}' | grep -Eo '^[0-9]*x[0-9]*'`
+  screencast "$size" "$DISPLAY"
+}
+
+screencast-select() {
+  eval $(slop)
+  screencast "$W"x"$H" :0.0+$X,$Y
+}
+
+main $@

@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+while (( $# > 0 )); do
+  case "$1" in
+    urxvt)
+      urxvtd -q -f -o
+      shift
+      ;;
+    tmux)
+      tmux new-session -s 0 -d
+      shift
+      ;;
+    compton)
+      compton -b --config ~/.compton.conf
+      shift
+      ;;
+    *) shift ;;
+  esac
+done

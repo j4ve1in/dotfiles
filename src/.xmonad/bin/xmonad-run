@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+if [ "$1" = 'launcher' ]; then
+  [ -f ~/.dmenurc ] && . ~/.dmenurc || DMENU=''
+
+  exe=`dmenu_run -p 'Launcher' ${=DMENU}` && exec $exe
+elif [ "$1" = 'browser' ]; then
+  chromium
+elif [ "$1" = 'terminal' ]; then
+  [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
+  [ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
+  urxvtc -e zsh -c 'tmux -q has-session >/dev/null 2>&1 && exec tmux attach -d >/dev/null 2>&1 || exec tmux'
+fi

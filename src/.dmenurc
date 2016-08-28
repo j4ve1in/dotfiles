@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+DMENU="-sb #00008b -nb black -fn Migu1M:size=13.5"
