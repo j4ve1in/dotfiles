@@ -1,17 +1,15 @@
 #!/bin/zsh
 
-typeset -g D{ROOT,REPO,AUTHOR,LICENSE}
-: ${DROOT:=~/.files}
-: ${DREPO:=https://github.com/ytet5uy4/dotfiles}
-: ${DAUTHOR:=ytet5uy4}
-: ${DLICENSE:=MIT}
+typeset -g D{ROOT,USER,REPO,AUTHOR,LICENSE}
+: ${DROOT:=~/.files} ${DUSER:=ytet5uy4}
+: ${DREPO:=https://github.com/${DUSER}/dotfiles}
+: ${DAUTHOR:=${DUSER}} ${DLICENSE:=MIT}
 
 typeset -grA fg=(
-  main      '\e[1;38;5;32;49m'
-  sub1      '\e[1;38;5;75;49m'
-  sub2      '\e[90m'
-  success   '\e[1;36;49m'
-  error     '\e[1;31;49m'
+  main      "${DMAINCOLOR:=75}"
+  sub       "${DSUBCOLOR:=240}"
+  success   "${DSUCCESSCOLOR:=32}"
+  error     "${DERRORCOLOR:=129}"
   underline '\e[4;39;49m'
   reset     '\e[0;39;49m'
 )
@@ -38,7 +36,7 @@ main() {
 
 print_header() {
   clear
-  printf  "\n$fg[main]"
+  printf  "\n\e[1;38;5;$fg[main];49m"
   echo    '          __        __   ____ __ __              '
   echo    '     ____/ /____   / /_ / __//_// /___   _____   '
   echo    '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
@@ -46,14 +44,14 @@ print_header() {
   echo    '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf  "$fg[reset]\n"
 
-  cprint  "           $DREPO   \n" "$fg[sub2]"
-  cprintf '   Author: '            "$fg[sub1]"; printf 'ytet5uy4'
-  cprintf '   License: '           "$fg[sub1]"; echo   'MIT'
-  cprintf '   Provisioning: '      "$fg[sub1]"
+  cprint  "           $DREPO   \n" "$fg[sub]"
+  cprintf '   Author: '            "$fg[main]"; printf "$DAUTHOR"
+  cprintf '   License: '           "$fg[main]"; echo   "$DLICENSE"
+  cprintf '   Provisioning: '      "$fg[main]"
   (( $opt[provision] )) && cprint 'enable' "$fg[main]" || print 'disable'
-  cprintf '   Full Installation: ' "$fg[sub1]"
+  cprintf '   Full Installation: ' "$fg[main]"
   (( $opt[full] )) && cprint 'enable' "$fg[main]" || print 'disable'
-  cprintf '   Option Assume yes: ' "$fg[sub1]"
+  cprintf '   Option Assume yes: ' "$fg[main]"
   (( $opt[yes] )) && cprint 'enable' "$fg[main]" || print 'disable'
   echo
 
@@ -91,24 +89,24 @@ install() {
 
 provisioning() {
   typeset ANSIBLE_DREPO tempdir
-  ANSIBLE_DREPO='https://github.com/ytet5uy4/ansible-dotfiles/tarball/master'
+  ANSIBLE_DREPO='https://github.com/${DUSER}/ansible-dotfiles/tarball/master'
   tempdir=`mktemp -d /tmp/dotfiles-XXXXXX`
 
-  cprint "Provision for installing dotfiles" $fg[underline]
+  underline "Provision for installing dotfiles"
   echo ' Download playbook of ansible for dotfiles'
   curl -sL $ANSIBLE_DREPO | tar xzC $tempdir --strip=1
-  cprintf '  Repository: ' "$fg[sub1]"
+  cprintf '  Repository: ' "$fg[main]"
   echo "$ANSIBLE_DREPO"
-  cprintf '  Directory: ' "$fg[sub1]"
+  cprintf '  Directory: ' "$fg[main]"
   echo $tempdir
   lprintf ' Download playbook of ansible for dotfiles' "ansible-playbook $tempdir/site.yml"
   echo
 }
 
 download() {
-  cprint "Download dotfiles" $fg[underline]
+  underline "Download dotfiles"
   if lprintf ' Checking git command' 'type git'; then
-    cprintf '  Use: ' "$fg[sub1]"
+    cprintf '  Use: ' "$fg[main]"
     type -a git | tail -n 1 | awk '{print $3}'
   else
     echo ' Please install git or update your path to run git command'
@@ -116,9 +114,9 @@ download() {
   fi
 
   lprintf ' Downloading dotfiles' "git clone --depth 1 $DREPO $DROOT"
-  cprintf '  Repository: ' "$fg[sub1]"
+  cprintf '  Repository: ' "$fg[main]"
   echo "$DREPO"
-  cprintf '  Directory: ' "$fg[sub1]"
+  cprintf '  Directory: ' "$fg[main]"
   echo "$DROOT"
   echo
 }
@@ -135,7 +133,7 @@ restart_message() {
 restart() { clear; exec $SHELL -l; }
 
 install_plugin() {
-  cprint "Install plugin" $fg[underline]
+  underline "Install plugin"
 
   typeset -ar NAME=('Dein' 'Zplug' 'TPM')
 
@@ -158,22 +156,24 @@ download_plugin() {
 
 print() { printf "$@\n"; }
 
-cprint() { print "${2}${1}${fg[reset]}"; }
+cprint() { print "%b%b%b" "\e[1;38;5;${2};49m" "$1" "$fg[reset]"; }
 
-cprintf() { printf "${2}${1}${fg[reset]}"; }
+cprintf() { printf "%b%b%b" "\e[1;38;5;${2};49m" "$1" "$fg[reset]"; }
+
+underline() { print "%b%b%b" "$fg[underline]" "$1" "$fg[reset]"; }
 
 lprintf() {
   typeset -r MSG="$1" CMD="${@:2}"
   ${=CMD} >/dev/null 2>&1 &
   while :; do
     jobs %% > /dev/null 2>&1 || break
-    printf "\r%s${fg[main]}%s${fg[reset]}" "${MSG}" ".  "
+    printf "\r%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" ".  "
     sleep 0.7
     jobs %% > /dev/null 2>&1 || break
-    printf "\r%s%s${fg[main]}%s${fg[reset]}" "${MSG}" "." ". "
+    printf "\r%s%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" "." ". "
     sleep 0.7
     jobs %% > /dev/null 2>&1 || break
-    printf "\r%s%s${fg[main]}%s${fg[reset]}" "${MSG}" ".." "."
+    printf "\r%s%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" ".." "."
     sleep 0.7
   done
   if wait $!; then

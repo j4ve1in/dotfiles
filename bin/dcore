@@ -2,6 +2,8 @@
 
 typeset -g DROOT=~/.files
 typeset -g DDIR=$DROOT/src
-typeset -g DPATH=($(echo $DDIR/.*))
+typeset -g DFILE=$DDIR/.ignore
+
+typeset -g DPATH=($(< $DFILE))
 typeset -g DNAME=(${DPATH/$DDIR/~})
 typeset -g DNUM=$#DPATH

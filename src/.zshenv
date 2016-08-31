@@ -73,6 +73,11 @@ fi
 # Others
 is_msys && export MSYS='winsymlinks'
 
+# dotfiles
+export DROOT=~/.files
+export DDIR=$DROOT/src
+export DFILE=$DDIR/.ignore
+
 ## zsh
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

@@ -4,6 +4,9 @@ setopt no_beep
 setopt print_eight_bit
 setopt interactive_comments
 
+# dotfiles
+printf '%s\n' $DDIR/.* | egrep -v '\.ignore|\.config|README' > $DFILE
+
 # keybind
 ## vi mode
 bindkey -v
