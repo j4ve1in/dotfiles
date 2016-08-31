@@ -11,6 +11,7 @@
       'zplug/zplug'
       'Tarrasch/zsh-bd'
       'mollifier/cd-gitroot'
+      'ytet5uy4/pctl'
       'zsh-users/zsh-completions'
       'zsh-users/zsh-syntax-highlighting, nice:10'
       'b4b4r07/zsh-gomi, as:command, use:bin/gomi'
