@@ -71,6 +71,7 @@ myStartupHook = do
   spawnOnce "xmonad-system mouse"
   spawnOnce "xmonad-system lock-screen"
   spawnOnce "xmonad-system im"
+  spawnOnce "xmonad-system xcape"
 
 -- loghook
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }

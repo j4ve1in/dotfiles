@@ -11,6 +11,8 @@ main() {
     wallpaper
   elif [ "$1" = 'im' ]; then
     im
+  elif [ "$1" = 'xcape' ]; then
+    type xcape && xcape
   elif [ "$1" = 'lock-screen' ]; then
     lock-screen
   elif [ "$1" = 'screencast' ]; then
