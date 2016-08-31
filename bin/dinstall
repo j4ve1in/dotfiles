@@ -170,10 +170,10 @@ lprintf() {
     printf "\r%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" ".  "
     sleep 0.7
     jobs %% > /dev/null 2>&1 || break
-    printf "\r%s%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" "." ". "
+    printf "\r%s%b%s%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" "." ". "
     sleep 0.7
     jobs %% > /dev/null 2>&1 || break
-    printf "\r%s%s%b%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" ".." "."
+    printf "\r%s%b%s%s${fg[reset]}" "${MSG}" "\e[1;38;5;${fg[main]};49m" ".." "."
     sleep 0.7
   done
   if wait $!; then
