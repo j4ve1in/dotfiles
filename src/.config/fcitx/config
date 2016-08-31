@@ -1,0 +1,10 @@
+[Hotkey]
+TriggerKey=ALT_SPACE
+SwitchKey=Disabled
+
+[Program]
+ShareStateAmongWindow=All
+
+[Output]
+
+[Appearance]

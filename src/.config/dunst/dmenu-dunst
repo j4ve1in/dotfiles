@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+[ -f ~/.dmenurc ] && . ~/.dmenurc || DMENU=''
+
+dmenu -p 'Dunst' ${=DMENU} $*
