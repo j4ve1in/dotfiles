@@ -1,0 +1,2 @@
+[ -z "$1" ] && vim +Agit || vim +AgitFile $1
+# vim: ft=zsh sw=2 ts=2 et

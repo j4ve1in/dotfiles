@@ -57,6 +57,7 @@ hook_add = ''' " {{{
   " others
   nnoremap <silent> [Unite]. :<C-u>Unite<Space>file<Space>-path=~/.files/src<Space>-input=.<CR>
   nnoremap <silent> [Unite]> :<C-u>Unite<Space>file<Space>-path=~/.files/src<Space>-input=.<Space>-default-action=tabopen<CR>
+  hi uniteCandidateSourceName ctermfg=255
 " }}} '''
 hook_source = ''' " {{{
   call unite#custom#profile('default', 'context', {
@@ -259,6 +260,19 @@ hook_add = ''' " {{{
   nmap <Space><C-g> [Agit]
 
   nnoremap [Agit] :<C-u>AgitFile<CR>
+
+  hi agitDiffAdd                          ctermbg=none  ctermfg=46
+  hi agitDiffRemove                       ctermbg=none  ctermfg=160
+  hi agitStatAdded                        ctermbg=none  ctermfg=46
+  hi agitStatRemoved                      ctermbg=none  ctermfg=160
+  hi agitStatMessage           cterm=bold ctermbg=none  ctermfg=75
+  hi agitStatFile                         ctermbg=none  ctermfg=251
+  hi agitDiffHeader            cterm=bold ctermbg=none  ctermfg=75
+  hi agitDiffIndex             cterm=bold ctermbg=none  ctermfg=75
+  hi agitDiffFileName                     ctermbg=none  ctermfg=251
+  hi agitTree                  cterm=bold ctermbg=none  ctermfg=75
+  hi agitDate                             ctermbg=none  ctermfg=245
+  hi agitAuthor                           ctermbg=none  ctermfg=99
 " }}} '''
 # }}}
 
@@ -425,7 +439,12 @@ hook_add = ''' " {{{
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_color_change_percent=30
   let g:indent_guides_guide_size=1
-  let g:indent_guides_exclude_filetypes = ['help', 'calendar', 'thumbnail', 'tweetvim', 'man', 'vimfiler', 'diff']
+  let g:indent_guides_exclude_filetypes = [
+        \ 'help',
+        \ 'vimfiler',
+        \ 'diff',
+        \ 'agit_diff',
+        \ 'agit_stat']
 " }}} '''
 
 [[plugins]]

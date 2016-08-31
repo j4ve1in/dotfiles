@@ -44,6 +44,7 @@ autoload -Uz ssh-add{,-with-lpass}
 autoload -Uz trash
 autoload -Uz xrandr-{extend,main,sub}
 autoload -Uz pctl
+autoload -Uz agit
 
 ## ctrl-z
 autoload -Uz fancy-ctrl-z

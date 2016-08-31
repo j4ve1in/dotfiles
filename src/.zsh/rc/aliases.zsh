@@ -23,11 +23,7 @@ fi
 
 # Vi
 has vi && alias v='vi'
-has vim && alias v='vim -p' agit='vim +AgitFile'
-
-# mount
-alias musb="sudo mount -w -o uid=${USER},iocharset=utf8 /dev/sdb1 /mnt/usb"
-alias uusb='sudo umount /mnt/usb'
+has vim && alias v='vim -p'
 
 # Others
 has history && alias h='history'
