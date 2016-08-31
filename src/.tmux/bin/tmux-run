@@ -4,4 +4,6 @@ if [ "$1" = 'lpass' ]; then
   lpass login $LPASS_USERNAME
 elif [ "$1" = 'trans' ]; then
   trans $* | $PAGER
+elif [ "$1" = 'wifi' ]; then
+  sudo wifi-menu -o
 fi

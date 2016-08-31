@@ -62,7 +62,7 @@ set-statusline.left() {
 set-statusline.right() {
   typeset STATUS_R
   # Prefixkey
-  STATUS_R+=" $(tmux show-options -g prefix | tr -d 'prefix ') "
+  STATUS_R="#[fg=colour231,bg=black]$(tmux show-options -g prefix | tr -d 'prefix ') "
   # Battery
   ## separator
   has powerline && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
