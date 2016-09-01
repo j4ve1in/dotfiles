@@ -35,7 +35,7 @@ hi Folded                         ctermbg=236  ctermfg=27
 hi Function                       ctermbg=none ctermfg=27
 hi Identifier                     ctermbg=none ctermfg=51
 hi IncSearch      cterm=none      ctermbg=20   ctermfg=232
-hi LineNr                         ctermbg=0    ctermfg=27
+hi LineNr                         ctermbg=none ctermfg=27
 hi MatchParen     cterm=none      ctermbg=none ctermfg=27
 hi ModeMsg                        ctermbg=none ctermfg=27
 hi MoreMsg                        ctermbg=none ctermfg=27
