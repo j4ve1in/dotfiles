@@ -6,10 +6,6 @@ alias la='l -A' lla='ll -A'
 # grep
 alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
 
-# cd
-alias c='cd'
-alias doc='cd ~/Documents' dow='cd ~/Downloads' so='cd ~/Source_code'
-
 # diff
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
 
@@ -26,14 +22,12 @@ has vi && alias v='vi'
 has vim && alias v='vim -p'
 
 # Others
-has history && alias h='history'
+alias c='cd'
 has git && alias g='git'
 has tmux && alias t='tmux'
-has mysql && alias ms='mysql --pager="less -iFMnSX"'
 has docker && alias d='docker'
-has pacman && alias pm='pacman'
+has pacman && alias p='pacman'
 has yaourt && alias y='yaourt'
-has feednix && alias fn='feednix'
 if has netctl-auto; then
   alias n='netctl-auto'
   alias ssid="netctl-auto list | grep '*' | sed 's/* //g'"
@@ -45,16 +39,14 @@ has start && alias st='start' f='start .'
 has sudo && alias s='sudo '
 has sudoedit && alias se='sudoedit '
 has open && op='open' f='open .'
-alias p='ps aux'
 alias m='mv'
 alias le='less'
-alias path='echo -e ${PATH//:/\\n}' fpath='echo -e ${FPATH//:/\\n}'
+alias path='echo ${PATH//:/"\n"}' fpath='echo ${FPATH//:/"\n"}'
 alias jman="LANG='ja_JP.UTF-8' man"
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
 alias reload='exec $SHELL -l' rl='reload'
-alias al='alias | less'
-alias dsu='dotsetup'
+alias a='alias | less'
 alias ts='trash'
 autoload -Uz zmv && alias zmv='noglob zmv -W'
 

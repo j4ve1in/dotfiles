@@ -1,0 +1,15 @@
+typeset CMDNAME=${0##*/}
+if [ -z "$1" ]; then
+  echo "$CMDNAME: missing device name"
+  return 1
+elif [ "$1" = usb ]; then
+  sudo umount /mnt/usb
+elif [ "$1" = nas ]; then
+  sudo umount /mnt/nas
+elif [ "$1" = hdd ]; then
+  sudo umount /mnt/hdd
+else
+  echo "$CMDNAME: illegal argument"
+  return 1
+fi
+# vim: ft=zsh sw=2 ts=2 et

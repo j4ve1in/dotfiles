@@ -43,8 +43,9 @@ autoload -Uz search
 autoload -Uz ssh-add{,-with-lpass}
 autoload -Uz trash
 autoload -Uz xrandr-{extend,main,sub}
-autoload -Uz pctl
 autoload -Uz agit
+autoload -Uz {,u}mnt
+autoload -Uz rename-all
 
 ## ctrl-z
 autoload -Uz fancy-ctrl-z
