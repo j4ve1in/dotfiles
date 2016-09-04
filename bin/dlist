@@ -25,7 +25,7 @@ for ((i=1;i<=DNUM;i++)); do
     if [ -f "${DPATH[$i]}" ]; then
       DDATE[$i]=$(ls -l $LS_TIME_STYLE_OPTION ${DPATH[$i]} | awk '{print $6}')
     elif [ -d "${DPATH[$i]}" ]; then
-      DDATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION $DDIR | grep ${DNAME[$i]##*/} | awk 'NR==1{print $6}')
+      DDATE[$i]=$(ls -Al $LS_TIME_STYLE_OPTION ${DPATH[$i]%/*} | grep ${DNAME[$i]##*/} | awk 'NR==1{print $6}')
     fi
   fi
 done
