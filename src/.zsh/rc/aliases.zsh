@@ -41,7 +41,7 @@ has sudoedit && alias se='sudoedit '
 has open && op='open' f='open .'
 alias m='mv'
 alias le='less'
-alias path='echo ${PATH//:/"\n"}' fpath='echo ${FPATH//:/"\n"}'
+alias path='echo ${(F)path}' fpath='echo ${(F)fpath}'
 alias jman="LANG='ja_JP.UTF-8' man"
 alias df='df -h'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
