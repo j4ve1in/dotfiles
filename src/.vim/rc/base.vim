@@ -33,7 +33,7 @@ elseif OSTYPE == 'MSYS_NT-10.0'
 endif
 
 " Completion
-set wildmenu wildmode=list,full
+set wildmenu wildignorecase wildmode=longest:full,full
 
 " Search
 set wrapscan ignorecase smartcase incsearch hlsearch
