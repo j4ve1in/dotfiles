@@ -6,4 +6,6 @@ elif [ "$1" = 'trans' ]; then
   trans ${*:2} | $PAGER
 elif [ "$1" = 'wifi' ]; then
   sudo wifi-menu -o
+elif [ "$1" = 'top' ]; then
+  vtop -t brew
 fi
