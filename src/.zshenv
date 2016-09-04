@@ -2,7 +2,7 @@
 # zmodload zsh/zprof && zprof
 
 export ZDOTDIR="$HOME/.zsh"
-fpath=( $fpath $ZDOTDIR/functions/Lib(N-/) )
+fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
 autoload -Uz vital && vital set
 
 export PAGER='less'
@@ -54,9 +54,9 @@ fi
 ## fpath
 fpath=(
   $fpath
+  $ZDOTDIR/autoload/*(N-/)
   $GOPATH/src/*/*/ghq/zsh(N-/)
   $ZDOTDIR/bundle/repos/mollifier/cd-gitroot(N-/)
-  $ZDOTDIR/functions/*
 )
 
 ## cdpath

@@ -4,8 +4,6 @@ if [ -z "$1" ]; then
   return 1
 elif [ "$1" = usb ]; then
   sudo umount /mnt/usb
-elif [ "$1" = nas ]; then
-  sudo umount /mnt/nas
 elif [ "$1" = hdd ]; then
   sudo umount /mnt/hdd
 else
