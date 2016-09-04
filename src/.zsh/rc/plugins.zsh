@@ -9,12 +9,12 @@
     ZPLUG="$ZPLUG_HOME/init.zsh"
     ZPLUG_PLUGINS=(
       'zplug/zplug'
-      'Tarrasch/zsh-bd'
-      'mollifier/cd-gitroot'
       'ytet5uy4/pctl'
+      'Tarrasch/zsh-bd'
+      'b4b4r07/zsh-gomi'
+      'mollifier/cd-gitroot'
       'zsh-users/zsh-completions'
       'zsh-users/zsh-syntax-highlighting, nice:10'
-      'b4b4r07/zsh-gomi, as:command, use:bin/gomi'
       'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
       'junegunn/fzf, use:shell'
