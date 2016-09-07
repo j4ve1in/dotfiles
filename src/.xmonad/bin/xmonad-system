@@ -32,9 +32,9 @@ main() {
   elif [ "$1" = 'screenshot' ]; then
     file=~/Pictures/Screenshots/screenshot_$(date +'%y-%m-%d_%I%M%S').png
     if [ -f /tmp/unclutter.pid ]; then
-      unclutter-toggle
+      mouse
       [ "$2" = "--select" ] && maim -s -b 1 -c 0,0,255,1 "$file" || maim "$file"
-      unclutter-toggle
+      mouse
     else
       [ "$2" = "--select" ] && maim -s -b 1 -c 0,0,255,1 "$file" || maim "$file"
     fi
