@@ -73,10 +73,10 @@ fi
 # Others
 is_msys && export MSYS='winsymlinks'
 
-# dotfiles
+## dctl
 export DROOT=~/.files
-export DDIR=$DROOT/src
-export DIGNORE=$DDIR/.ignore
+export DPATH="$DROOT/src"
+export DTARGET="$DPATH/.{,config/}*"
 
 ## zsh
 export HISTFILE="$ZDOTDIR/.zsh_history"

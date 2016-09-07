@@ -4,7 +4,7 @@
   ## Colors
   typeset -A fg
   fg=(
-    main "%{`echo '\e[0;34m'`%}"        # Blue
+    main "%{`echo '\e[0;38;05;21m'`%}"  # Blue
     sub1 "%{`echo '\e[0;38;05;75m'`%}"  # Skyblue
     sub2 "%{`echo '\e[0;38;05;243m'`%}" # Gray
     sub3 "%{`echo '\e[0;38;05;99m'`%}"  # Purple
