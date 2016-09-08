@@ -15,8 +15,10 @@
 </p>
 
 <p align='center'>
-<a href='//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md'><img src='https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square'></a>
-<img src='https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square'>
+  <a href='//github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md'>
+    <img src='https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square'>
+  </a>
+  <img src='https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin%20|%20MSYS2-lightgrey.svg?style=flat-square'>
 </p>
 
 
