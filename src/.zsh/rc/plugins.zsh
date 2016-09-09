@@ -10,6 +10,7 @@
     ZPLUG_PLUGINS=(
       'zplug/zplug'
       'ytet5uy4/pctl'
+      'ytet5uy4/dctl'
       'Tarrasch/zsh-bd'
       'b4b4r07/zsh-gomi'
       'mollifier/cd-gitroot'
