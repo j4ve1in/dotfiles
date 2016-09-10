@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-[ -f ~/.dmenurc ] && . ~/.dmenurc || DMENU=''
+[ -f ~/.config/dmenurc ] && . ~/.config/dmenurc || DMENU=''
 
 dmenu -p 'Dunst' ${=DMENU} $*

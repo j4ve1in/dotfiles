@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [ "$1" = 'select' ]; then
-  [ -f ~/.dmenurc ] && . ~/.dmenurc || DMENU=''
+  [ -f ~/.config/dmenurc ] && . ~/.config/dmenurc || DMENU=''
 
   RET=$(echo -e "halt\nreboot\nlogout" | dmenu -p 'Power' ${=DMENU})
 
