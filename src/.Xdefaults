@@ -31,9 +31,7 @@ URxvt.cursorColor: blue
 URxvt.cursorColor2: white
 
 !! Font
-URxvt.font: xft:Migu 1M:size=12:antialias=true, \
-            xft:Inconsolata for Powerline:size=12:antialias=true, \
-            xft:DejaVu Sans:pixelsize=12:antialias=true
-URxvt.boldFont: xft:Migu 1M:bold:size=12:antialias=true, \
-                xft:Inconsolata for Powerline:bold:size=12:antialias=true, \
-                xft:DejaVu Sans:bold:pixelsize=12:antialias=true
+URxvt.font: xft:Migu 1M:size=13:antialias=true:hinting=true, \
+            xft:InconsolataForPowerline Nerd Font:size=13:antialias=true:hinting=true
+URxvt.boldFont: xft:Migu 1M:bold:size=13:antialias=true:hinting=true, \
+                xft:InconsolataForPowerline Nerd Font:bold:size=13:antialias=true:hinting=true
