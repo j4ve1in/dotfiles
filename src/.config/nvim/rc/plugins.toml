@@ -357,9 +357,6 @@ hook_add = ''' " {{{
 repo = 'surround.vim'
 
 [[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]]
 repo = 'kana/vim-submode'
 hook_add = ''' " {{{
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
@@ -440,6 +437,7 @@ hook_add = ''' " {{{
   let g:indent_guides_color_change_percent=30
   let g:indent_guides_guide_size=1
   let g:indent_guides_exclude_filetypes = [
+        \ 'man',
         \ 'help',
         \ 'vimfiler',
         \ 'diff',
@@ -553,7 +551,9 @@ hook_add = ''' " {{{
   endfunction
 
   function! LightLineMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
+    return  &ft == 'unite' ? 'Unite' :
+          \ &ft == 'vimfiler' ? 'VimFiler' :
+          \ winwidth(0) > 60 ? lightline#mode() : ''
   endfunction
 
   set noshowmode
@@ -565,7 +565,16 @@ repo = 'deris/vim-shot-f'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
-hook_add = 'let g:precious_enable_switch_CursorMoved = { "*" : 1, "help" : 0 }'
+hook_add = '''
+let g:precious_enable_switchers = {
+      \ "*" : {
+      \  "setfiletype" : 0
+      \ },
+      \ "toml" : {
+      \  "setfiletype" : 1
+      \ },
+      \}
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

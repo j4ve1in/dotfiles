@@ -1,27 +1,11 @@
 set hidden
-set ttyfast
-set autoread
-set history=50
-set nrformats=
 set scrolloff=5
 set winheight=8
-set noequalalways
-set display=lastline
 set virtualedit=block
 set grepprg=grep\ -inH
 set whichwrap=b,~,[,],<,>
-set backspace=indent,eol,start
-set noerrorbells visualbell t_vb=
 autocmd QuickFixCmdPost *grep* cwindow
-set viminfo='30,\"100,<50,s100,n~/.vim/viminfo
-
-if !exists('loaded_matchit')
-  runtime macros/matchit.vim
-endif
-
-if has('conceal')
-  set conceallevel=0 concealcursor=
-endif
+set viminfo='30,\"100,<50,s100,n~/.config/nvim/nviminfo
 
 " clipboard
 let OSTYPE = substitute(system('uname'), '\n', '', '')
@@ -33,19 +17,13 @@ elseif OSTYPE == 'MSYS_NT-10.0'
 endif
 
 " Completion
-set wildmenu wildignorecase wildmode=longest:full,full
+set wildignorecase wildmode=longest:full,full
 
 " Search
-set wrapscan ignorecase smartcase incsearch hlsearch
+set ignorecase smartcase
 
-" Swapfile
-set swapfile directory=~/.vim/swap
-
-" Backupfile
-set backup backupdir=~/.vim/backup
-
-" Undofile
-set undofile undodir=~/.vim/undo
+" Backup and undo
+set backup backupdir=~/.config/nvim/backup undofile
 
 " File
 "" Indent

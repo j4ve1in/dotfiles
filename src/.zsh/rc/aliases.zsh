@@ -20,6 +20,7 @@ fi
 # Vi
 has vi && alias v='vi'
 has vim && alias v='vim -p'
+has nvim && alias v='nvim -p'
 
 # Others
 alias c='cd'
@@ -27,7 +28,7 @@ has git && alias g='git'
 has tmux && alias t='tmux'
 has docker && alias d='docker'
 has pacman && alias p='pacman'
-has yaourt && alias y='yaourt'
+has yaourt && alias p='yaourt'
 if has netctl-auto; then
   alias n='netctl-auto'
   alias ssid="netctl-auto list | grep '*' | sed 's/* //g'"

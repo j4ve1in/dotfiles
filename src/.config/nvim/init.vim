@@ -10,6 +10,7 @@ endif
 
 " Declare rc_vim_list and source_rc
 let rc_vim_list = [
+\   'local.before',
 \   'plugins',
 \   'apperance',
 \   'base',
@@ -19,13 +20,13 @@ let rc_vim_list = [
 \ ]
 
 function! s:source_rc(path)
-  if filereadable(expand('~/.vim/rc/' . a:path . '.vim'))
-    execute 'source' fnameescape(expand('~/.vim/rc/' . a:path . '.vim'))
+  if filereadable(expand('~/.config/nvim/rc/' . a:path . '.vim'))
+    execute 'source' fnameescape(expand('~/.config/nvim/rc/' . a:path . '.vim'))
   endif
 endfunction
 
 " Source settings
-" Location: ~/.vim/rc/
+" Location: ~/.config/nvim/rc/
 for rc_vim in rc_vim_list
   cal s:source_rc(rc_vim)
 endfor

@@ -1,10 +1,9 @@
-set wrap
 set ruler
 set number
 set showcmd
 set showmatch
 set matchtime=1
-set showbreak=↪
+let &showbreak="\u21aa "
 
 " Fileformat
 set fileformat=unix
@@ -19,12 +18,7 @@ set termencoding=utf-8
 set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
 
 " Statusline
-set laststatus=2
-"" Filename and fileencoding, fileformat, filetype
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y
-"" Git
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=%=%l/%L,%c%V\ %P
+set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
 
 " When insert mode, change statusline.
 let g:hi_insert = 'hi StatusLine cterm=None ctermfg=231 ctermbg=24'

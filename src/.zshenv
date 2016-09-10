@@ -20,7 +20,9 @@ has ruby && export KCODE='u' # RUBYGEMS_GEMDEPS='-'
 has go && [ -d "$HOME/.local" ] && export GOPATH="$HOME/.local"
 
 # Editor
-has vim && export EDITOR='vim -p' || export EDITOR='vi -p'
+has vi && export EDITOR='vi'
+has vim && export EDITOR='vim -p'
+has nvim && export EDITOR='nvim -p'
 
 # Less
 export LESS='-ciMR' LESS_TERMCAP_{mb,md,me,se,so,ue,us}

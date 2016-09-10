@@ -3,8 +3,6 @@
 " Credits: Inspiration from the dw_blue scheme.
 "--------------------------------------------------------------------
 
-set t_Co=256 " Enable 256 colors.
-set t_ut= " Disable Background Color Erase
 set background=light
 syntax enable " Switch on syntax highlighting
 augroup vimrc_change_cursorline_color

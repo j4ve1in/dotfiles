@@ -23,8 +23,8 @@ nnoremap gs :<C-u>%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
 
 " .vimrc
-nnoremap <silent> <Space>.  :<C-u>edit ~/.vim/rc<CR>
-nnoremap <silent> <Space>>  :<C-u>tabedit ~/.vim/rc<CR>
+nnoremap <silent> <Space>.  :<C-u>edit ~/.config/nvim/rc<CR>
+nnoremap <silent> <Space>>  :<C-u>tabedit ~/.config/nvim/rc<CR>
 nnoremap <silent> <Space>..  :<C-u>source $MYVIMRC<CR>
 
 " Search
@@ -68,7 +68,7 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 nnoremap <silent> <Space>s :call syntax#info()<CR>
-nnoremap <C-h> gT
+nnoremap <BS> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W

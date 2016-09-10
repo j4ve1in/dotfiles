@@ -3,4 +3,4 @@ swap/*
 undo/*
 backup/*
 tmp/*
-viminfo
+nviminfo
