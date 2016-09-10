@@ -232,3 +232,5 @@ EXEC 01;32
 
 # fonts
 .ttf 00;38;05;81
+
+# vim: set filetype=dircolors:

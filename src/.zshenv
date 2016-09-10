@@ -66,10 +66,10 @@ cdpath=(~)
 
 # LSCOLORS
 if is_linux || is_msys; then
-  has dircolors && eval `dircolors -b ~/.zsh/.dir_colors`
+  has dircolors && eval `dircolors -b ~/.config/dircolors`
 elif is_darwin; then
   export LSCOLORS='gxfxcxdxbxegedabagacad'
-  has gdircolors && eval `gdircolors -b ~/.zsh/.dircolors`
+  has gdircolors && eval `gdircolors -b ~/.config/dircolors`
 fi
 
 # Others
