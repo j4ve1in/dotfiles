@@ -1,11 +1,32 @@
 #!/bin/zsh
 
-if [ "$1" = 'lpass' ]; then
-  lpass login $LPASS_USERNAME
-elif [ "$1" = 'trans' ]; then
-  trans ${*:2} | $PAGER
-elif [ "$1" = 'wifi' ]; then
-  sudo wifi-menu -o
-elif [ "$1" = 'top' ]; then
-  vtop -t brew
-fi
+main() {
+  if [[ $1 = editor ]]; then
+    run "$2" "$EDITOR"
+  elif [[ $1 = filemanager ]]; then
+    run "$2" ranger
+  elif [[ $1 = passmanager ]]; then
+    run "$2" "lpass login $LPASS_USERNAME"
+  elif [[ $1 = trans ]]; then
+    run-prompt "$2" "trans %% | $PAGER" "$1"
+  elif [[ $1 = man ]]; then
+    run-prompt "$2" 'man %%' "$1"
+  elif [[ $1 = wifi ]]; then
+    run "$2" 'sudo wifi-menu -o'
+  elif [[ $1 = activity ]]; then
+    run "$2" 'vtop -t brew'
+  fi
+  exit 0
+}
+
+run() {
+  [[ $1 = new ]] && tmux new-window "$2"
+  [[ $1 = split ]] && tmux split-window -h "$2"
+}
+
+run-prompt() {
+  [[ $1 = new ]] && tmux command-prompt -p "$3:" "new-window '$2'"
+  [[ $1 = split ]] && tmux command-prompt -p "$3:" "split-window -h '$2'"
+}
+
+main $*
