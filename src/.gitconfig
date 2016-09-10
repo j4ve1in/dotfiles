@@ -1,5 +1,0 @@
-# vim: set filetype=gitconfig:
-[include]
-    path = ~/.git.global/conf/base.conf
-    path = ~/.git.global/conf/alias.conf
-    path = ~/.git.global/conf/local.conf
