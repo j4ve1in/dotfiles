@@ -1,11 +1,11 @@
 set hidden
+set undofile
 set scrolloff=5
 set winheight=8
 set virtualedit=block
 set grepprg=grep\ -inH
 set whichwrap=b,~,[,],<,>
 autocmd QuickFixCmdPost *grep* cwindow
-set viminfo='30,\"100,<50,s100,n~/.config/nvim/nviminfo
 
 " clipboard
 let OSTYPE = substitute(system('uname'), '\n', '', '')
@@ -21,9 +21,6 @@ set wildignorecase wildmode=longest:full,full
 
 " Search
 set ignorecase smartcase
-
-" Backup and undo
-set backup backupdir=~/.config/nvim/backup undofile
 
 " File
 "" Indent

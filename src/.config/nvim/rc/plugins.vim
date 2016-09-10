@@ -25,7 +25,7 @@ endif
 " Netrw
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
-let g:netrw_home=$HOME.'/.config/nvim/tmp'
+let g:netrw_home=$HOME.'/.local/share/nvim'
 "" Autostart
 autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | Explore | endif
 function! s:bufByte()
