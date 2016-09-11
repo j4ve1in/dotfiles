@@ -13,6 +13,12 @@ else
 fi
 has vagrant && has virtualbox && export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
+# XDG
+export XDG_{CONFIG,CACHE,DATA}_HOME
+XDG_CONFIG_HOME=~/.config
+XDG_CACHE_HOME=~/.cache
+XDG_DATA_HOME=~/.local/share
+
 # Ruby
 has ruby && export KCODE='u' # RUBYGEMS_GEMDEPS='-'
 
@@ -33,6 +39,8 @@ LESS_TERMCAP_se=`echo "\e[0m"`
 LESS_TERMCAP_so=`echo "\e[1;44m"`
 LESS_TERMCAP_ue=`echo "\e[0m"`
 LESS_TERMCAP_us=`echo "\e[1;36m"`
+[[ ! -d $XDG_CACHE_HOME/less/ ]] && mkdir "$XDG_CACHE_HOME/less/"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 
 # path
 ## Delete overlapping environment variable
@@ -74,6 +82,8 @@ fi
 
 # Others
 is_msys && export MSYS='winsymlinks'
+[[ ! -d $XDG_RUNTIME_DIR/urxvt ]] && mkdir "$XDG_RUNTIME_DIR/urxvt"
+export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
 
 ## dctl
 export DROOT=~/.files
@@ -81,8 +91,8 @@ export DPATH="$DROOT/src"
 export DTARGET="$DPATH/.{,config/}*"
 
 ## zsh
-[[ ! -d ~/.local/share/zsh ]] && mkdir ~/.local/share/zsh
-export HISTFILE=~/.local/share/zsh/history
+[[ ! -d $XDG_DATA_HOME/zsh ]] && mkdir "$XDG_DATA_HOME/zsh"
+export HISTFILE=$XDG_DATA_HOME/zsh/history
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
 

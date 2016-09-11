@@ -11,7 +11,7 @@ while (( $# > 0 )); do
       shift
       ;;
     compton)
-      compton -b --config ~/.compton.conf
+      compton -b
       shift
       ;;
     *) shift ;;
