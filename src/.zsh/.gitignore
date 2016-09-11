@@ -1,8 +1,4 @@
 *.zwc
 .zcompdump
-.zcompcache
-.zsh_history
-.zprof_result
-.chpwd-recent-dirs
 bundle/*
-functions/Local/*
+autoload/local/*

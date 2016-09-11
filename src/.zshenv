@@ -81,7 +81,8 @@ export DPATH="$DROOT/src"
 export DTARGET="$DPATH/.{,config/}*"
 
 ## zsh
-export HISTFILE="$ZDOTDIR/.zsh_history"
+[[ ! -d ~/.local/share/zsh ]] && mkdir ~/.local/share/zsh
+export HISTFILE=~/.local/share/zsh/history
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
 

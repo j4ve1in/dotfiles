@@ -24,5 +24,5 @@ vital unset
 
 # Profiling configuration files of zsh
 # if (which zprof > /dev/null) ;then
-#   zprof > ~/.zsh/.zprof_result | less ~/.zsh/.zprof_result
+#   zprof > ~/.local/share/zsh/prof_result | less ~/.local/share/zsh/prof_result
 # fi
