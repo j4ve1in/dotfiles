@@ -11,11 +11,12 @@ set wildignorecase wildmode=longest:full,full
 
 " clipboard
 let OSTYPE = substitute(system('uname'), '\n', '', '')
-set clipboard&
-if OSTYPE == 'Linux'
-  set clipboard^=unnamedplus
-elseif OSTYPE == 'MSYS_NT-10.0'
-  set clipboard^=unnamed
+if exists("$DISPLAY")
+  if OSTYPE == 'Linux'
+    set clipboard^=unnamedplus
+  elseif OSTYPE == 'MSYS_NT-10.0'
+    set clipboard^=unnamed
+  endif
 endif
 
 " File
