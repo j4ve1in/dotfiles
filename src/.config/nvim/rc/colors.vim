@@ -67,3 +67,4 @@ hi WildMenu                       ctermbg=231  ctermfg=17
 hi rubyBlock                      ctermbg=none ctermfg=161
 hi zshVariableDef                 ctermbg=none ctermfg=39
 hi zshFunction                    ctermbg=none ctermfg=44
+hi EndOfBuffer        cterm=none  ctermbg=none ctermfg=0

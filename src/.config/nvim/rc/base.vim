@@ -4,8 +4,10 @@ set scrolloff=5
 set winheight=8
 set virtualedit=block
 set grepprg=grep\ -inH
+set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
 autocmd QuickFixCmdPost *grep* cwindow
+set wildignorecase wildmode=longest:full,full
 
 " clipboard
 let OSTYPE = substitute(system('uname'), '\n', '', '')
@@ -15,12 +17,6 @@ if OSTYPE == 'Linux'
 elseif OSTYPE == 'MSYS_NT-10.0'
   set clipboard^=unnamed
 endif
-
-" Completion
-set wildignorecase wildmode=longest:full,full
-
-" Search
-set ignorecase smartcase
 
 " File
 "" Indent

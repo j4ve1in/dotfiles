@@ -15,17 +15,9 @@ cnoremap <C-f> <Right>
 nnoremap Y y$
 nnoremap s "_s
 
-" vimgrep
-nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
-
 " Substitute
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
-
-" .vimrc
-nnoremap <silent> <Space>.  :<C-u>edit ~/.config/nvim/rc<CR>
-nnoremap <silent> <Space>>  :<C-u>tabedit ~/.config/nvim/rc<CR>
-nnoremap <silent> <Space>..  :<C-u>source $MYVIMRC<CR>
 
 " Search
 " Current line at center of window and open the folding.
@@ -56,19 +48,19 @@ nnoremap <Space>M :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>
 vnoremap v $h
 noremap <Space>v 0v$h
-nnoremap <Space>e :<C-u>edit!<CR>
-nnoremap <Space>w! :w !sudo tee >/dev/null %<CR> :e!<CR>
-nnoremap <silent> _ :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent><Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <silent><Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <C-e> :<C-u>edit!<CR>
+nnoremap <Space>w :w !sudo tee >/dev/null %<CR> :e!<CR>
+nnoremap _ :<C-u>nohlsearch<CR><C-l>
+nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
-noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
-noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
-nnoremap <silent> <Space>s :call syntax#info()<CR>
+nnoremap <Space>s :call syntax#info()<CR>
+nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
 nnoremap <BS> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap <Space>.  :<C-u>source $MYVIMRC<CR>

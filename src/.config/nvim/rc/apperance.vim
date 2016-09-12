@@ -1,55 +1,16 @@
 set ruler
 set number
-set showcmd
 set showmatch
+set noshowmode
 set matchtime=1
-let &showbreak="\u21aa "
-
-" Fileformat
-set fileformat=unix
-set fileformats=unix,dos,mac
-
-" Encoding
-set encoding=utf-8
 scriptencoding utf-8
-set termencoding=utf-8
+let &showbreak="\u21aa "
 
 " List
 set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
 
 " Statusline
 set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
-
-" When insert mode, change statusline.
-let g:hi_insert = 'hi StatusLine cterm=None ctermfg=231 ctermbg=24'
-
-if has('syntax')
-  augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * call s:StatusLine('Enter')
-    autocmd InsertLeave * call s:StatusLine('Leave')
-  augroup END
-endif
-
-let s:slhlcmd = ''
-function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-  endif
-endfunction
-
-function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
-endfunction
 
 " Hilighting double-byte space
 function! ZenkakuSpace()
