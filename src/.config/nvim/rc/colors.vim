@@ -22,10 +22,13 @@ hi Constant                                    ctermfg=99
 hi Cursor                         ctermbg=240  ctermfg=231
 hi CursorLineNr   cterm=bold      ctermbg=0    ctermfg=none
 hi CursorColumn                   ctermbg=0
-hi DiffAdd                        ctermbg=none ctermfg=46
+hi DiffAdded                      ctermbg=none ctermfg=46
 hi DiffChange                     ctermbg=none ctermfg=255
 hi DiffDelete                     ctermbg=232  ctermfg=232
 hi DiffText                       ctermbg=none ctermfg=160
+hi DiffNewFile                    ctermbg=none ctermfg=75
+hi DiffFile                       ctermbg=none ctermfg=75
+hi DiffRemoved                    ctermbg=none ctermfg=160
 hi Directory                      ctermbg=none ctermfg=27
 hi ErrorMsg                       ctermbg=231  ctermfg=232
 hi FoldColumn                     ctermbg=none ctermfg=27

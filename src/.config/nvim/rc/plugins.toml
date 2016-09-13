@@ -186,6 +186,8 @@ hook_source = '''
 
   " libclang default compile flags
   let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
+
+  let g:deoplete#max_list = 5
 '''
 
 [[plugins]]
@@ -407,6 +409,9 @@ hook_add = ''' " {{{
   nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>merge<Space>--no-ff<CR>
   nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
 " }}} '''
+
+[[plugins]]
+repo = 'radenling/vim-dispatch-neovim'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
