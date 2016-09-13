@@ -135,6 +135,7 @@ myAdditionalKeysP =
   -- Others
   , ("M-r",                     spawn "xmonad-run launcher")
   , ("M-w",                     spawn "xmonad-run browser")
+  , ("M-f",                     spawn "xmonad-run filemanager")
   , ("M-<Return>",              spawn myTerminal)
   , ("M-C-r",                   spawn "xmonad-system screencast")
   , ("M-S-r",                   spawn "xmonad-system screencast --select")

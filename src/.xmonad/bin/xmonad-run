@@ -6,6 +6,8 @@ if [ "$1" = 'launcher' ]; then
   exe=`dmenu_run -p 'Launcher' ${=DMENU}` && exec $exe
 elif [ "$1" = 'browser' ]; then
   chromium
+elif [ "$1" = 'filemanager' ]; then
+  urxvt -e 'ranger'
 elif [ "$1" = 'terminal' ]; then
   [ -d "${HOME}/.local/bin" ] && PATH+=":${HOME}/.local/bin"
   [ -d "${HOME}/.tmux/bin" ] && PATH+=":${HOME}/.tmux/bin"
