@@ -85,7 +85,7 @@ brightness() {
   elif [ "$1" = '-' ]; then
     xbacklight - 1 -time 100 -steps 1
   elif [ "$1" = '=' ]; then
-    xbacklight = 1
+    xbacklight = 5
   fi
 }
 
