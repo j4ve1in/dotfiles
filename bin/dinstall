@@ -228,7 +228,7 @@ download() {
     typeset repo=('Shougo/dein.vim' 'zplug/zplug' 'tmux-plugins/tpm')
     typeset url='https://github.com/'
     typeset dir=(
-      "$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim"
+      "$HOME/.config/nvim/bundle/repos/github.com/Shougo/dein.vim"
       "$HOME/.zsh/bundle/zplug"
       "$HOME/.tmux/bundle/tpm"
     )
@@ -300,7 +300,10 @@ print-mark() {
 print-spinner() {
   private msg="$1" cmd="$2" space="$3"
   private -a spinner
-  spinner=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
+  spinner=(
+    '\u280b' '\u2819' '\u2839' '\u2838' '\u283c'
+    '\u2834' '\u2826' '\u2827' '\u2807' '\u280f'
+  )
 
   ${=cmd} >/dev/null 2>&1 &
   while :; do
