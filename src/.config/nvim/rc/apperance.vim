@@ -10,7 +10,11 @@ let &showbreak="\u21aa "
 set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
 
 " Statusline
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
+" set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
+" augroup statusline
+"   autocmd!
+"   autocmd VimEnter set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
+" augroup END
 
 " Hilighting double-byte space
 function! ZenkakuSpace()
@@ -48,4 +52,7 @@ function! s:my_tabline()
   let s .= '%#TabLineFill#%T%=%#TabLine#'
   return s
 endfunction
-let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+augroup tabline
+  autocmd!
+  autocmd VimEnter let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+augroup END

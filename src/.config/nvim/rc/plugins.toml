@@ -512,7 +512,10 @@ hook_add = ''' " {{{
   let g:lightline = {
         \ 'colorscheme': 'abisso',
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
+        \   'left': [['mode', 'paste'],['fugitive', 'filename']],
+        \ },
+        \ 'component': {
+        \   'lineinfo': '%3l[%L]:%-2v'
         \ },
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
@@ -520,6 +523,7 @@ hook_add = ''' " {{{
         \   'fileformat': 'LightLineFileformat',
         \   'filetype': 'LightLineFiletype',
         \   'fileencoding': 'LightLineFileencoding',
+        \   'filename': 'LightLineFilename',
         \   'mode': 'LightLineMode'
         \ },
         \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
@@ -538,6 +542,13 @@ hook_add = ''' " {{{
     endif
   endfunction
 
+  function! LightLineFilename()
+    return (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+          \ &ft == 'unite' ? substitute(unite#get_status_string(), ' | ', '', '') :
+          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+          \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  endfunction
+
   function! LightLineFugitive()
     try
       if exists('*fugitive#head')
@@ -551,15 +562,18 @@ hook_add = ''' " {{{
   endfunction
 
   function! LightLineFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+    return  &ft == 'unite' ? '' :
+          \ winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
   endfunction
 
   function! LightLineFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    return  &ft == 'unite' ? '' :
+          \ winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
   endfunction
 
   function! LightLineFileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return  &ft == 'unite' ? '' :
+          \ winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
 
   function! LightLineMode()
@@ -567,6 +581,9 @@ hook_add = ''' " {{{
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ winwidth(0) > 60 ? lightline#mode() : ''
   endfunction
+
+  let g:unite_force_overwrite_statusline = 0
+  let g:vimfiler_force_overwrite_statusline = 0
 " }}} '''
 
 [[plugins]]
