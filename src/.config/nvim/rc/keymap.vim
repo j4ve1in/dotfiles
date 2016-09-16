@@ -63,4 +63,5 @@ nnoremap <BS> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap <C-c> :<C-u>cd<Space>
 nnoremap <silent> <Space>.  :<C-u>source $MYVIMRC \| echo 'Source vimrc'<CR>
