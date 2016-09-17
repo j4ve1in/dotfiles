@@ -228,9 +228,9 @@ download() {
     typeset repo=('Shougo/dein.vim' 'zplug/zplug' 'tmux-plugins/tpm')
     typeset url='https://github.com/'
     typeset dir=(
-      "$HOME/.config/nvim/bundle/repos/github.com/Shougo/dein.vim"
-      "$HOME/.zsh/bundle/zplug"
-      "$HOME/.tmux/bundle/tpm"
+      "$HOME/.local/share/nvim/dein"
+      "$HOME/.local/share/zsh/zplug"
+      "$HOME/.local/share/tmux/tpm"
     )
     paste -d ' ' <(echo "${(F)repo}") <(echo "${(F)dir}") \
       | sed -e "s|^|$url|g" \

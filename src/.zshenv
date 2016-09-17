@@ -94,11 +94,11 @@ export DPATH="$DROOT/src"
 export DTARGET="$DPATH/.{,config/}*"
 
 ## zsh
-[[ ! -d $XDG_DATA_HOME/zsh ]] && mkdir "$XDG_DATA_HOME/zsh"
-export HISTFILE=$XDG_DATA_HOME/zsh/history
+[[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
 
-[ -f ~/.zshenv.local ] && . ~/.zshenv.local
+[[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
 
 vital unset

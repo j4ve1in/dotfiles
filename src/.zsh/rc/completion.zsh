@@ -1,9 +1,9 @@
 autoload -Uz compinit
-dumpfile=~/.local/share/zsh/compdump
-[[ ! -d ~/.local/share/zsh/ ]] && mkdir ~/.local/share/zsh/
+dumpfile=$XDG_CACHE_HOME/zsh/compdump
+[[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 ! is_msys && compinit -u -d $dumpfile || compinit -C -d $dumpfile
-[[ ! -d ~/.cache/zsh/ ]] && mkdir ~/.cache/zsh/
-zstyle ':completion:*:complete:*' cache-path ~/.cache/zsh/compcache/
+[[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
+zstyle ':completion:*:complete:*' cache-path $XDG_CACHE_HOME/zsh/compcache/
 
 setopt auto_pushd
 setopt pushd_ignore_dups

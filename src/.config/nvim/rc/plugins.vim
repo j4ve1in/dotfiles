@@ -1,8 +1,7 @@
 " Dein
-let s:dein_dir = expand('~/.config/nvim/bundle')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-if isdirectory(s:dein_repo_dir)
-  execute 'set runtimepath^=' . s:dein_repo_dir
+let s:dein_dir = expand('~/.local/share/nvim/dein')
+if isdirectory(s:dein_dir)
+  execute 'set runtimepath^=' . s:dein_dir
 
   " Load Plugins
   if dein#load_state(s:dein_dir)

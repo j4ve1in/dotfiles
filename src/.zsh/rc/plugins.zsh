@@ -1,12 +1,7 @@
 : "Plugin" && () {
-  if [ -d ~/.zsh/bundle/zplug ]; then
+  if [ -d $XDG_DATA_HOME/zsh/zplug ]; then
     # Zplug
-    local ZPLUG_BUNDLE ZPLUG_HOME ZPLUG_REPOS ZPLUG
     typeset -a ZPLUG_PLUGINS
-    ZSH_BUNDLE="$ZDOTDIR/bundle"
-    ZPLUG_HOME="$ZSH_BUNDLE/zplug"
-    ZPLUG_REPOS="$ZSH_BUNDLE/repos"
-    ZPLUG="$ZPLUG_HOME/init.zsh"
     ZPLUG_PLUGINS=(
       'zplug/zplug'
       'ytet5uy4/pctl'
@@ -21,7 +16,10 @@
       'junegunn/fzf, use:shell'
     )
 
-    . $ZPLUG
+    export ZPLUG_HOME="$XDG_DATA_HOME/zsh/zplug"
+    export ZPLUG_CACHE_FILE="$XDG_CACHE_HOME/zsh/zplug/cache"
+
+    . $ZPLUG_HOME/init.zsh
     for plugin in ${ZPLUG_PLUGINS[@]}; do
       zplug "$plugin" >/dev/null 2>&1
     done
