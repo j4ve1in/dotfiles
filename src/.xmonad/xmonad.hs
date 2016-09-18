@@ -132,6 +132,13 @@ myAdditionalKeysP =
   , ("M-S-h",                   shiftToPrev)
   , ("M-,",                     sendMessage Shrink)
   , ("M-.",                     sendMessage Expand)
+  -- mouse
+  , ("M-S-m",                   spawn "xmonad-system mouse")
+  , ("M-C-h",                   spawn "xmonad-system mouse left")
+  , ("M-C-j",                   spawn "xmonad-system mouse down")
+  , ("M-C-k",                   spawn "xmonad-system mouse up")
+  , ("M-C-l",                   spawn "xmonad-system mouse right")
+  , ("M-C-m",                   spawn "xmonad-system mouse click")
   -- Others
   , ("M-r",                     spawn "xmonad-run launcher")
   , ("M-w",                     spawn "xmonad-run browser")
@@ -141,8 +148,6 @@ myAdditionalKeysP =
   , ("M-S-r",                   spawn "xmonad-system screencast --select")
   , ("<Print>",                 spawn "xmonad-system screenshot")
   , ("S-<Print>",               spawn "xmonad-system screenshot --select")
-  , ("M-S-m",                   spawn "xmonad-system mouse")
   , ("M-p",                     spawn "xmonad-power select")
   , ("M-q",                     spawn "xmonad-power restart")
-  , ("M-C-l",                   spawn "xmonad-power lock")
   ]
