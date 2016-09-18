@@ -171,6 +171,7 @@ hook_source = '''
 
   let g:deoplete#omni#input_patterns = {}
   let g:deoplete#omni#input_patterns.python = ''
+  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '\h\w*::']
   let g:deoplete#omni#functions = {}
   let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
 
@@ -207,16 +208,16 @@ hook_add = ''' " {{{
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
 
-  " For conceal markers.
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
   let g:neosnippet#disable_runtime_snippets = {'_' : 1}
   let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 " }}} '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-monster'
+hook_add = 'let g:monster#completion#rcodetools#backend = "async_rct_complete"'
 # }}}
 
 # Git {{{
