@@ -19,6 +19,8 @@
     export ZPLUG_HOME="$XDG_DATA_HOME/zsh/zplug"
     export ZPLUG_CACHE_FILE="$XDG_CACHE_HOME/zsh/zplug/cache"
 
+    export GOMI_DIR=$XDG_DATA_HOME/gomi
+
     . $ZPLUG_HOME/init.zsh
     for plugin in ${ZPLUG_PLUGINS[@]}; do
       zplug "$plugin" >/dev/null 2>&1
@@ -42,7 +44,10 @@
     zplug load
 
     # cd-gitroot
-    zplug check 'mollifier/cd-gitroot' && alias cdu='cd-gitroot'
+    if zplug check 'mollifier/cd-gitroot'; then
+      fpath=( $fpath $ZPLUG_REPOS/mollifier/cd-gitroot(N-/) )
+      alias cdu='cd-gitroot'
+    fi
 
     # Syntax-highlighting
     if zplug check 'zsh-users/zsh-syntax-highlighting'; then

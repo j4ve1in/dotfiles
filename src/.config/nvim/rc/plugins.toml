@@ -47,8 +47,8 @@ hook_add = ''' " {{{
   endif
 
   " others
-  nnoremap <silent> [Unite]. :<C-u>Unite<Space>file_rec<Space>-path=~/.files/src<Space>-input=.<CR>
-  nnoremap <silent> [Unite]> :<C-u>Unite<Space>file_rec<Space>-path=~/.files/src<Space>-input=.<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Unite]. :<C-u>Unite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
+  nnoremap <silent> [Unite]> :<C-u>Unite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabopen<CR>
   hi uniteCandidateSourceName ctermfg=255
 " }}} '''
 hook_source = ''' " {{{

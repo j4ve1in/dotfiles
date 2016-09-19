@@ -22,10 +22,14 @@ XDG_CACHE_HOME=~/.cache
 XDG_DATA_HOME=~/.local/share
 
 # Ruby
-has ruby && export KCODE='u' # RUBYGEMS_GEMDEPS='-'
+has ruby && export KCODE='u'
 
 # Go
 has go && [ -d "$HOME/.local" ] && export GOPATH="$HOME/.local"
+
+# node
+[[ ! -d $XDG_CONFIG_HOME/npm/ ]] && mkdir "$XDG_CONFIG_HOME/npm/"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # Editor
 has vi && export EDITOR='vi'
@@ -55,11 +59,12 @@ path=(
 )
 
 ## Anyenv
-if [ -d "$HOME/.anyenv" ] ; then
-  path=($HOME/.anyenv/bin(N-/) $path)
+if [[ -d $XDG_DATA_HOME/anyenv ]] ; then
+  export ANYENV_ROOT="$XDG_DATA_HOME/anyenv"
+  path=($ANYENV_ROOT/bin(N-/) $path)
   eval "`anyenv init -`"
-  for D in `ls $HOME/.anyenv/envs`; do
-    path=($HOME/.anyenv/envs/$D/shims(N-/) $path)
+  for D in `ls $ANYENV_ROOT/envs`; do
+    path=($ANYENV_ROOT/envs/$D/shims(N-/) $path)
   done
 fi
 
@@ -68,7 +73,6 @@ fpath=(
   $fpath
   $ZDOTDIR/autoload/*(N-/)
   $GOPATH/src/*/*/ghq/zsh(N-/)
-  $ZDOTDIR/bundle/repos/mollifier/cd-gitroot(N-/)
 )
 
 ## cdpath
