@@ -7,7 +7,7 @@ typeset -g D{USER,AUTHOR,LICENSE}
 # dctl
 export D{REPO,ROOT,PATH,TARGET}
 : ${DREPO:=https://github.com/${DUSER}/dotfiles}
-: ${DROOT:=~/.files}
+: ${DROOT:=~/.config/dotfiles}
 : ${DPATH:="$DROOT/src"}
 : ${DTARGET:="$DPATH/.{,config/}*"}
 

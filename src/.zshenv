@@ -94,7 +94,7 @@ fi
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
 
 ## dctl
-export DROOT=~/.files
+export DROOT=~/.config/dotfiles
 export DPATH="$DROOT/src"
 export DTARGET="$DPATH/.{,config/}*"
 
