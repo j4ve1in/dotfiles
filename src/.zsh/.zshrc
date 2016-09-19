@@ -3,10 +3,8 @@ autoload -Uz vital && vital set
 : "Load ~/.zsh/rc/*.zsh" && () {
   typeset file
   typeset -a ZRC
-  # Plugin
-  [ "$OSTYPE" != "msys" ] && ZRC=("plugins")
-  # Others
-  ZRC+=(
+  ZRC=(
+    'plugins'
     'aliases'
     'base'
     'completion'

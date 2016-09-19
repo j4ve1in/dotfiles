@@ -43,21 +43,21 @@ if has('unix')
 endif
 
 " Others
-nnoremap <Space>m :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
-nnoremap <Space>M :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
+nnoremap gm :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
+nnoremap gM :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>
 vnoremap v $h
-noremap <Space>v 0v$h
+noremap gvv 0v$h
 nnoremap <C-e> :<C-u>edit!<CR>
-nnoremap <Space>w :w !sudo tee >/dev/null %<CR> :e!<CR>
+nnoremap gw :w !sudo tee >/dev/null %<CR> :e!<CR>
 nnoremap _ :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <silent> <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <silent> go :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <silent> gO :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 
-nnoremap <Space>s :call syntax#info()<CR>
+nnoremap gsi :call syntax#info()<CR>
 nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
 nnoremap <BS> gT
 nnoremap <C-l> gt

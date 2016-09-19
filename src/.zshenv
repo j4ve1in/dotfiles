@@ -11,7 +11,6 @@ if [ -n "$DISPLAY" ]; then
 else
   has w3m && export BROWSER='w3m'
 fi
-has vagrant && has virtualbox && export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
@@ -76,15 +75,21 @@ fpath=(
 cdpath=(~)
 
 # LSCOLORS
-if is_linux || is_msys; then
+if is_linux; then
   has dircolors && eval `dircolors -b ~/.config/dircolors`
 elif is_darwin; then
   export LSCOLORS='gxfxcxdxbxegedabagacad'
   has gdircolors && eval `gdircolors -b ~/.config/dircolors`
 fi
 
+# vagrant
+if has vagrant; then
+  [[ ! -d $XDG_DATA_HOME/vagrant ]] && mkdir "$XDG_DATA_HOME/vagrant"
+  export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+  export VAGRANT_DEFAULT_PROVIDER='virtualbox'
+fi
+
 # Others
-is_msys && export MSYS='winsymlinks'
 [[ ! -d $XDG_RUNTIME_DIR/urxvt ]] && mkdir "$XDG_RUNTIME_DIR/urxvt"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
 

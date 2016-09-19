@@ -11,14 +11,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 set wildignorecase wildmode=longest:full,full
 
 " clipboard
-let OSTYPE = substitute(system('uname'), '\n', '', '')
-if exists("$DISPLAY")
-  if OSTYPE == 'Linux'
-    set clipboard^=unnamedplus
-  elseif OSTYPE == 'MSYS_NT-10.0'
-    set clipboard^=unnamed
-  endif
-endif
+set clipboard^=unnamedplus
 
 " File
 "" Indent

@@ -1,5 +1,5 @@
 # ls
-is_gnu && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
+is_linux && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
 is_bsd && alias l{,s}='ls -FG' ll='l -hl'
 alias la='l -A' lla='ll -A'
 

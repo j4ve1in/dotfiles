@@ -1,10 +1,9 @@
 fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
 autoload -Uz vital && vital set
 
-is_arch || is_alpine || is_msys && . ~/.zshenv
+is_arch || is_alpine && . ~/.zshenv
 
 : "Display LastLogin and dotfiles status" && () {
-  is_msys && return 1
   cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
   # Display LastLogin
   if has lastlog; then
@@ -18,7 +17,6 @@ is_arch || is_alpine || is_msys && . ~/.zshenv
 }
 
 : "Launch tmux" && () {
-  is_msys && return 1
   # if not inside a tmux session, and if no session is started,
   # start a new session
   if has tmux && [ -z "$TMUX" ]; then

@@ -1,4 +1,3 @@
-[ "$OSTYPE" = "msys" ] && return 1
 [[ ! -r $PWD ]] && return
 
 local cmd_ls='ls'

@@ -1,8 +1,8 @@
 if [ "$1" = 'set' ]; then
-  autoload -Uz is_arch is_alpine is_msys is_linux is_darwin is_gnu is_bsd
+  autoload -Uz is_arch is_alpine is_linux is_darwin is_bsd
   autoload -Uz has
 elif [ "$1" = 'unset' ]; then
-  unset is_arch is_alpine is_msys is_linux is_darwin is_gnu is_bsd
+  unset is_arch is_alpine is_linux is_darwin is_bsd
   unset has
 fi
 # vim: ft=zsh sw=2 ts=2 et
