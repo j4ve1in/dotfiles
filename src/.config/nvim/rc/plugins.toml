@@ -123,8 +123,6 @@ hook_source = '''
   let g:deoplete#enable_at_startup = 1
   " <TAB>: completion.
   inoremap <expr> <TAB> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#mappings#manual_complete()
   function! s:check_back_space() abort
