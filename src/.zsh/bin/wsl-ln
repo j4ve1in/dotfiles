@@ -2,4 +2,7 @@
 
 cd ~
 ln -s /mnt/c/Users/$USER/Downloads Downloads
-ln -s /mnt/c/Users/$USER/OnlineStorage OnlineStorage
+
+cd ~/.local/share
+ln -s /mnt/c/Users/$USER/OnlineStorage/Dropbox dropbox
+ln -s /mnt/c/Users/$USER/OnlineStorage/OneDrive onedrive
