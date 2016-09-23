@@ -11,7 +11,9 @@ autocmd QuickFixCmdPost *grep* cwindow
 set wildignorecase wildmode=longest:full,full
 
 " clipboard
-set clipboard^=unnamedplus
+if exists("$DISPLAY")
+  set clipboard^=unnamedplus
+endif
 
 " File
 "" Indent
