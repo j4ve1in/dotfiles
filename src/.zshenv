@@ -94,8 +94,10 @@ if has vagrant; then
 fi
 
 # Others
-[[ ! -d $XDG_RUNTIME_DIR/urxvt ]] && mkdir "$XDG_RUNTIME_DIR/urxvt"
-export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
+if has urxvt; then
+  [[ ! -d $XDG_RUNTIME_DIR/urxvt ]] && mkdir "$XDG_RUNTIME_DIR/urxvt"
+  export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
+fi
 
 ## dctl
 export DROOT=~/.config/dotfiles

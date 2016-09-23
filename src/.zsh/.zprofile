@@ -3,10 +3,10 @@ autoload -Uz vital && vital set
 
 is_arch || is_alpine && . ~/.zshenv
 
-: "Display LastLogin and dotfiles status" && () {
+: "Display LastLogin" && () {
   cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
   # Display LastLogin
-  if has lastlog; then
+  if has lastlog && [[ -f /var/log/lastlog ]]; then
     local LASTLOG PORT DATE
     cprintf 'LastLogin: ' "1;38;05;75" # cyan
     LASTLOG=`last -R | sed -n 2p`
