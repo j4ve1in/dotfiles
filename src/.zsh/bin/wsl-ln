@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cd ~
+ln -s /mnt/c/Users/$USER/Downloads Downloads
+ln -s /mnt/c/Users/$USER/OnlineStorage OnlineStorage

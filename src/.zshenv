@@ -15,7 +15,7 @@ fi
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
 [[ ! -d ~/.cache ]] && mkdir ~/.cache
-[[ ! -d ~/.local/share ]] && mkdir ~/.local/share
+[[ ! -d ~/.local/share ]] && mkdir -p ~/.local/share
 export XDG_{CONFIG,CACHE,DATA}_HOME
 XDG_CONFIG_HOME=~/.config
 XDG_CACHE_HOME=~/.cache

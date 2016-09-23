@@ -1,4 +1,4 @@
-fpath=( $fpath $ZDOTDIR/autoloat/lib(N-/) )
+fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
 autoload -Uz vital && vital set
 : "Load ~/.zsh/rc/*.zsh" && () {
   typeset file
