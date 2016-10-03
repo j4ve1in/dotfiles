@@ -9,13 +9,6 @@ let &showbreak="\u21aa "
 " List
 set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
 
-" Statusline
-" set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
-" augroup statusline
-"   autocmd!
-"   autocmd VimEnter set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l/%L,%c%V\ %P
-" augroup END
-
 " Hilighting double-byte space
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=reverse ctermfg=blue
