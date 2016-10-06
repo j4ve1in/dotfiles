@@ -11,7 +11,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 set wildignorecase wildmode=longest:full,full
 
 " clipboard
-if exists("$DISPLAY")
+if $DISPLAY != ''
   set clipboard^=unnamedplus
 endif
 

@@ -10,14 +10,16 @@ build = 'make'
 # Unite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'vim-devicons']
+depends = ['neomru.vim']
 hook_add = ''' " {{{
   let g:unite_enable_auto_select = 0
+  let g:unite_source_rec_min_cache_files= 10000
   nnoremap [Unite] <Nop>
   nmap <C-Space> [Unite]
 
   nnoremap <silent> [Unite] :<C-u>Unite<CR>
   nnoremap <silent> [Unite]<C-t> :<C-u>Unite<Space>tab<CR>
+  nnoremap <silent> [Unite]<C-b> :<C-u>Unite<Space>buffer<CR>
 
   " file_rec
   if isdirectory(getcwd()."/.git")
@@ -413,7 +415,28 @@ hook_add = ''' " {{{
 repo = 'radenling/vim-dispatch-neovim'
 
 [[plugins]]
+repo = 'Shougo/vimfiler'
+depends = ['unite.vim']
+on_map = [['n', '<Plug>']]
+on_path = '.*'
+hook_add = ''' "{{{
+  let g:vimfiler_as_default_explorer = 1
+  autocmd FileType vimfiler 
+        \ nnoremap <buffer><silent>/ 
+        \ :<C-u>Unite file -default-action=vimfiler<CR>
+  autocmd FileType vimfiler setlocal statusline=VimFiler
+  autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | VimFiler | endif
+  function! s:bufByte()
+    return line2byte(line('$') + 1) == -1 ? 0 : -1
+  endfunction
+" }}} '''
+hook_source = ''' "{{{
+  call vimfiler#custom#profile('default', 'context', { 'auto_cd' : 1 })
+" }}} '''
+
+[[plugins]]
 repo = 'ryanoasis/vim-devicons'
+on_if = "$DISPLAY != ''"
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
@@ -468,66 +491,59 @@ hook_add = ''' " {{{
   let s:gray = 235
 
   let s:p = {
-        \ 'normal':   {},
-        \ 'inactive': {},
-        \ 'insert':   {},
-        \ 'replace':  {},
-        \ 'visual':   {},
-        \ 'tabline':  {}}
+  \   'normal':   {},
+  \   'inactive': {},
+  \   'insert':   {},
+  \   'replace':  {},
+  \   'visual':   {},
+  \   'tabline':  {}
+  \ }
 
   let s:p.normal.middle = [['', '', s:white, s:black]]
-  let s:p.normal.left = [
-        \ ['', '', s:white, s:blue],
-        \ ['', '', s:white, s:lightblue]]
-  let s:p.normal.right = [
-        \ ['', '', s:white, s:blue],
-        \ ['', '', s:white, s:lightblue]]
+  let s:p.normal.left = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
+  let s:p.normal.right = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
 
   let s:p.inactive.middle = [['', '', s:white, s:gray]]
-  let s:p.inactive.right = [
-        \ s:p.inactive.middle[0],
-        \ s:p.inactive.middle[0]]
-  let s:p.inactive.left = [
-        \ s:p.inactive.middle[0],
-        \ s:p.inactive.middle[0]]
+  let s:p.inactive.right = [s:p.inactive.middle[0], s:p.inactive.middle[0]]
+  let s:p.inactive.left = [s:p.inactive.middle[0], s:p.inactive.middle[0]]
 
-  let s:p.insert.left = [
-        \ ['', '', s:blue, s:white],
-        \ s:p.normal.left[1]]
-  let s:p.replace.left = [
-        \ ['', '', s:white, s:cyan],
-        \ s:p.normal.left[1]]
-  let s:p.visual.left = [
-        \ ['', '', s:white, s:purple],
-        \ s:p.normal.left[1]]
+  let s:p.insert.left = [['', '', s:blue, s:white], s:p.normal.left[1]]
+  let s:p.replace.left = [['', '', s:white, s:cyan], s:p.normal.left[1]]
+  let s:p.visual.left = [['', '', s:white, s:purple], s:p.normal.left[1]]
 
   let s:p.tabline.middle = [['', '', s:white, 'none']]
-  let s:p.tabline.right = [
-        \ ['', '', s:white, s:blue],
-        \ ['', '', s:blue, 'none']]
+  let s:p.tabline.right = [['', '', s:white, s:blue], ['', '', s:blue, 'none']]
   let s:p.tabline.left = [['', '', s:white, s:black]]
   let s:p.tabline.tabsel = [['', '', s:white, s:blue]]
   let g:lightline#colorscheme#abisso#palette = s:p
+
   let g:lightline = {
-        \ 'colorscheme': 'abisso',
-        \ 'active': {
-        \   'left': [['mode', 'paste'],['fugitive', 'filename']],
-        \ },
-        \ 'component': {
-        \   'lineinfo': '%3l[%L]:%-2v'
-        \ },
-        \ 'component_function': {
-        \   'fugitive': 'LightLineFugitive',
-        \   'modified': 'LightLineModified',
-        \   'fileformat': 'LightLineFileformat',
-        \   'filetype': 'LightLineFiletype',
-        \   'fileencoding': 'LightLineFileencoding',
-        \   'filename': 'LightLineFilename',
-        \   'mode': 'LightLineMode'
-        \ },
-        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-        \ }
+  \   'colorscheme': 'abisso',
+  \   'active': {
+  \     'left': [['mode', 'paste'],['git', 'filename', 'vimfiler']],
+  \   },
+  \   'component': {
+  \     'lineinfo': '%3l[%L]:%-2v'
+  \   },
+  \   'component_function': {
+  \     'vimfiler': 'LightLineVimFiler',
+  \     'git': 'LightLineFugitive',
+  \     'modified': 'LightLineModified',
+  \     'fileformat': 'LightLineFileformat',
+  \     'filetype': 'LightLineFiletype',
+  \     'fileencoding': 'LightLineFileencoding',
+  \     'filename': 'LightLineFilename',
+  \     'mode': 'LightLineMode'
+  \   }
+  \ }
+
+  if $DISPLAY == ''
+    let g:lightline.separator = { 'left': "", 'right': "" }
+    let g:lightline.subseparator = { 'left': "|", 'right': "|" }
+  else
+    let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+    let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+  endif
 
   function! LightLineModified()
     if &filetype == "help"
@@ -542,16 +558,31 @@ hook_add = ''' " {{{
   endfunction
 
   function! LightLineFilename()
-    return (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-          \ &ft == 'unite' ? substitute(unite#get_status_string(), ' | ', '', '') :
-          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-          \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+    if &ft == 'vimfiler'
+      return substitute(vimfiler#get_status_string(), ' \*safe\*', '','')
+    elseif &ft == 'unite'
+      return substitute(unite#get_status_string(), ' | ', '', '')
+    else
+      if '' != expand('%:t')
+        return expand('%:t') . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+      else
+        return '[No Name]' . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+      endif
+    endif
+  endfunction
+
+  function! LightLineVimFiler()
+    return &ft == 'vimfiler' ? matchstr(vimfiler#get_status_string(), 'safe') : ''
   endfunction
 
   function! LightLineFugitive()
     try
       if exists('*fugitive#head')
-        let mark = "\ue0a0 "
+        if $DISPLAY == ''
+          let mark = ''
+        else
+          let mark = "\ue0a0 "
+        endif
         let _ = fugitive#head()
         return strlen(_) ? mark._ : ''
       endif
@@ -561,18 +592,39 @@ hook_add = ''' " {{{
   endfunction
 
   function! LightLineFileformat()
-    return  &ft == 'unite' ? '' :
-          \ winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+    if $DISPLAY == ''
+      return  &ft == 'unite' ? '' : winwidth(0) > 70 ? &fileformat : ''
+    else
+      if &ft == 'unite'
+        return ''
+      else
+        return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+      endif
+    endif
   endfunction
 
   function! LightLineFiletype()
-    return  &ft == 'unite' ? '' :
-          \ winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    if $DISPLAY == ''
+      if &ft == 'unite'
+        return ''
+      else
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+      endif
+    else
+      if &ft == 'unite'
+        return ''
+      else
+        if winwidth(0) > 70
+          return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft'
+        else
+          return ''
+        endif
+      endif
+    endif
   endfunction
 
   function! LightLineFileencoding()
-    return  &ft == 'unite' ? '' :
-          \ winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return  &ft == 'unite' ? '' : winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
 
   function! LightLineMode()
