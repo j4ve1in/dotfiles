@@ -1,0 +1,4 @@
+! dzen2
+dzen2.font: -*-migu 1m-*-*-*--*-*-*-*-*-*-*-*
+dzen2.foreground: white
+dzen2.background: black
