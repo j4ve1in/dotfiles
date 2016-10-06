@@ -1,15 +1,9 @@
-FZF_WIDGETS=(
-  'edit-files'
-  'cd-dir'
-  'cd-ghq-repository'
-  'cdr'
-  'excute-history'
-  'git-add'
-  'checkout-git-branch'
-  'lpass-bookmark'
-  'switch-network'
+fzf_widgets=(
+  `ls .zsh/autoload/selector/ | \
+    sed -e 's/fzf-//g' -e 's/-widget//g' | \
+    egrep -v '^(select|selector-init)$'`
 )
-widget=$(echo $FZF_WIDGETS | tr ' ' '\n' | $SELECTOR)
+widget=$(echo ${(F)fzf_widgets} | $SELECTOR)
 [ -z "$widget" ] && return 1
 fzf-${widget}-widget
 

@@ -1,5 +1,5 @@
-fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
-autoload -Uz vital && vital set
+. $ZDOTDIR/autoload/init.zsh ${(%):-%N}
+
 : "Load ~/.zsh/rc/*.zsh" && () {
   typeset file
   typeset -a ZRC
@@ -17,8 +17,6 @@ autoload -Uz vital && vital set
     [ -r "$file" ] && [ -f "$file" ] && . "$file"
   done
 }
-
-vital unset
 
 # Profiling configuration files of zsh
 # if (which zprof > /dev/null) ;then

@@ -23,7 +23,6 @@ has vim && alias v='vim -p'
 has nvim && alias v='nvim -p'
 
 # Others
-alias c='cd'
 has git && alias g='git'
 has tmux && alias t='tmux'
 has docker && alias d='docker'

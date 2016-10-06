@@ -118,6 +118,8 @@
       bindkey '^@n' fzf-switch-network-widget
 
       bindkey '^@s' fzf-ssh-widget
+
+      bindkey '^@z' fzf-cd-zsh-plugin-dir-widget
     fi
   fi
 

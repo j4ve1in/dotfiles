@@ -1,4 +1,4 @@
-FILES=($(find * -type f | $SELECTOR))
+FILES=($(find . -type f | sed 's|\./||g' | $SELECTOR))
 [ -z "$FILES" ] && return 1
 for file in ${FILES[@]}; do
   [ ! -f "$file" ] && return 1

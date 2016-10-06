@@ -1,5 +1,4 @@
-fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
-autoload -Uz vital && vital set
+. $ZDOTDIR/autoload/init.zsh ${(%):-%N}
 
 is_arch || is_alpine && . ~/.zshenv
 
@@ -70,5 +69,3 @@ is_arch || is_alpine && . ~/.zshenv
     done
   fi
 }
-
-vital unset

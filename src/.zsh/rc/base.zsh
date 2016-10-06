@@ -1,6 +1,7 @@
 stty stop undef
 
 setopt no_beep
+setopt extended_glob
 setopt print_eight_bit
 setopt interactive_comments
 
@@ -41,33 +42,24 @@ add-zsh-hook chpwd chpwd_recent_dirs
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 
-# user-defined
-autoload -Uz mcd
-autoload -Uz search
-autoload -Uz ssh-add{,-with-lpass}
-autoload -Uz trash
-autoload -Uz xrandr-{extend,main,sub}
-autoload -Uz agit
-autoload -Uz {,u}mnt
-autoload -Uz rename-all
+## editor
+zle -N editor
+bindkey '^[e' editor
+
+## git
+zle -N git-tool
+bindkey '^[g' git-tool
 
 ## ctrl-z
-autoload -Uz fancy-ctrl-z
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 ## Abbreviation
-setopt extended_glob
-autoload -Uz magic-abbrev-expand
-autoload -Uz no-magic-abbrev-expand
 zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
 
 ## notify
-autoload -Uz add-zsh-hook
-autoload -Uz remember-cmd
-autoload -Uz behind-window-notify
 add-zsh-hook preexec remember-cmd
 add-zsh-hook precmd behind-window-notify

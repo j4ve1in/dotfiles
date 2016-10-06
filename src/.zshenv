@@ -2,8 +2,8 @@
 # zmodload zsh/zprof && zprof
 
 export ZDOTDIR="$HOME/.zsh"
-fpath=( $fpath $ZDOTDIR/autoload/lib(N-/) )
-autoload -Uz vital && vital set
+
+. $ZDOTDIR/autoload/init.zsh ${(%):-%N}
 
 export PAGER='less'
 if [ -n "$DISPLAY" ]; then
@@ -111,5 +111,3 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
 
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
-
-vital unset
