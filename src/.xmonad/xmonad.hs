@@ -102,6 +102,7 @@ wsPP = xmobarPP
 myRemoveKeysP =
   [ "M-S-p"
   , "M-n"
+  , "M-<Space>"
   ,"M-S-<Return>"
   ]
 
@@ -141,7 +142,8 @@ myAdditionalKeysP =
   , ("M-C-m",                   spawn "xmonad-system mouse click")
   -- Others
   , ("M-r",                     spawn "xmonad-run launcher")
-  , ("M-w",                     spawn "xmonad-run browser")
+  , ("M-b",                     spawn "xmonad-run browser")
+  , ("M-e",                     spawn "xmonad-run editor")
   , ("M-f",                     spawn "xmonad-run filemanager")
   , ("M-<Return>",              spawn myTerminal)
   , ("M-C-r",                   spawn "xmonad-system screencast")
