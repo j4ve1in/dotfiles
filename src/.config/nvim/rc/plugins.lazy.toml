@@ -36,6 +36,10 @@ on_ft = 'pug'
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
 on_ft = 'yaml'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
 # }}}
 
 # Others {{{

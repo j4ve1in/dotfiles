@@ -363,6 +363,10 @@ hook_add = ''' " {{{
 
 # Others {{{
 [[plugins]]
+repo = 'kassio/neoterm'
+hook_add = "let g:neoterm_position = 'vertical'"
+
+[[plugins]]
 repo = 'surround.vim'
 
 [[plugins]]
@@ -420,6 +424,11 @@ depends = ['unite.vim']
 on_map = [['n', '<Plug>']]
 on_path = '.*'
 hook_add = ''' "{{{
+  nnoremap [VimFiler] <Nop>
+  nmap <Space>f [VimFiler]
+
+  nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
+
   let g:vimfiler_as_default_explorer = 1
   autocmd FileType vimfiler 
         \ nnoremap <buffer><silent>/ 
@@ -547,13 +556,13 @@ hook_add = ''' " {{{
 
   function! LightLineModified()
     if &filetype == "help"
-      return ""
+      return ''
     elseif &modified
-      return "+"
+      return '+'
     elseif &modifiable
-      return ""
+      return ''
     else
-      return ""
+      return ''
     endif
   endfunction
 
@@ -566,7 +575,7 @@ hook_add = ''' " {{{
       if '' != expand('%:t')
         return expand('%:t') . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
       else
-        return '[No Name]' . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+        return '' != LightLineModified() ? ' ' . LightLineModified() : ''
       endif
     endif
   endfunction
@@ -608,14 +617,14 @@ hook_add = ''' " {{{
       if &ft == 'unite'
         return ''
       else
-        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
       endif
     else
       if &ft == 'unite'
         return ''
       else
         if winwidth(0) > 70
-          return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft'
+          return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : ''
         else
           return ''
         endif

@@ -14,7 +14,6 @@ cnoremap <C-d> <DEL>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
 " clipboard
-nnoremap Y y$
 nnoremap s "_s
 
 " Substitute
@@ -48,8 +47,6 @@ endif
 nnoremap gm :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
 nnoremap gM :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>
-vnoremap v $h
-noremap gvv 0v$h
 nnoremap <C-e> :<C-u>edit!<CR>
 nnoremap gw :w !sudo tee >/dev/null %<CR> :e!<CR>
 nnoremap _ :<C-u>nohlsearch<CR><C-l>
@@ -60,6 +57,7 @@ noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1     
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 
 nnoremap gsi :call syntax#info()<CR>
+nnoremap gsf :call symlink#follow()<CR>
 nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
 nnoremap <BS> gT
 nnoremap <C-l> gt

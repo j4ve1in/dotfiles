@@ -39,6 +39,7 @@ augroup fileTypeIndent
   " Shell Script
   autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType fish setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
   " Data Format
   autocmd FileType toml setlocal tabstop=2 softtabstop=2 shiftwidth=2
