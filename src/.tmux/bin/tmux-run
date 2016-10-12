@@ -3,8 +3,6 @@
 main() {
   if [[ $1 = editor ]]; then
     run "$2" "$EDITOR"
-  elif [[ $1 = filemanager ]]; then
-    run "$2" ranger
   elif [[ $1 = passmanager ]]; then
     run "$2" "lpass login $LPASS_USERNAME"
   elif [[ $1 = trans ]]; then
