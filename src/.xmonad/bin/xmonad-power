@@ -8,7 +8,18 @@ if [ "$1" = 'select' ]; then
   case $RET in
     halt) halt -p ;;
     reboot) reboot ;;
-    lock) systemctl suspend ;;
+    lock)
+      pidfile=/tmp/unclutter.pid
+      if [[ ! -f $pidfile ]]; then
+        light-locker-command -l
+      else
+        killall unclutter
+        rm "$pidfile"
+        light-locker-command -l
+        unclutter -idle 1 -root -grab &
+        echo $! > "$pidfile"
+      fi
+      ;;
     logout) xdotool key "super+shift+q" ;;
     *) ;;
   esac

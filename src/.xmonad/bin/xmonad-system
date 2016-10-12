@@ -111,7 +111,11 @@ wallpaper() { nitrogen --restore &; }
 
 im() { fcitx &; }
 
-lock-screen() { xss-lock -- dm-tool lock &; }
+lock-screen() {
+  light-locker &
+  xautolock -time 10 -locker 'light-locker-command -l' -notify 30 -notifier "notify-send 'xautolock' 'LOCKING screen in 30 seconds'" &
+  xss-lock -- light-locker-command -l &
+}
 
 screencast() {
   typeset size display file
