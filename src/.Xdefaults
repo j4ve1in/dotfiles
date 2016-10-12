@@ -11,10 +11,6 @@ URxvt.searchable-scrollback: false
 URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,selection,eval
 !!! fullscreen
 URxvt.keysym.F11: perl:fullscreen:switch
-!!! resize-font
-URxvt.keysym.C-minus: perl:resize-font:smaller
-URxvt.keysym.C-plus:  perl:resize-font:bigger
-URxvt.keysym.C-equal: perl:resize-font:reset
 !!! eval
 URxvt.keysym.C-S-C:  eval:selection_to_clipboard
 URxvt.keysym.C-S-V:  eval:paste_clipboard
