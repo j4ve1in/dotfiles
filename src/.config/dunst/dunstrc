@@ -24,7 +24,6 @@
     horizontal_padding = 5
     separator_color = frame
     startup_notification = false
-    dmenu = dmenu-dunst
     browser = chromium
     icon_position = off
 
@@ -35,8 +34,6 @@
 [shortcuts]
     close = mod4+n
     close_all = mod4+shift+n
-    # history = mod4+ctrl+n
-    context = mod4+ctrl+n
 
 [urgency_low]
     background = "#000000"
