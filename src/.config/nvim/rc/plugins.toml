@@ -370,6 +370,13 @@ hook_add = "let g:neoterm_position = 'vertical'"
 repo = 'surround.vim'
 
 [[plugins]]
+repo = 'soramugi/auto-ctags.vim'
+hook_add = ''' " {{{
+  let g:auto_ctags = 1
+  let g:auto_ctags_directory_list = '.git'
+" }}} '''
+
+[[plugins]]
 repo = 'kana/vim-submode'
 hook_source = ''' " {{{
   call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
