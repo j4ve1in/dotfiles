@@ -1,5 +1,5 @@
 [options]
-font = DejaVu Sans 13
+font = DejaVu Sans Mono 13
 font = InconsolataForPowerline Nerd Font 13
 font = Migu 1M 13
 cursor_blink = off
