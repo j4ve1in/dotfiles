@@ -75,8 +75,8 @@ main() {
 
 print-info() {
   clear
-  private color="\x1b[$attr[bold];$text[fg];5;$fg[main]m"
-  private reset="\x1b[$attr[default];$text[fg];5;$fg[default]m"
+  private color="\e[$attr[bold];$text[fg];5;$fg[main]m"
+  private reset="\e[0m"
 
   printf  "\n$color"
   echo    '          __        __   ____ __ __              '
@@ -115,8 +115,7 @@ print-prompt() {
   [[ $3 ]] && printf "$3\n$4  "
   printf "$1? %s " "`print-brackets Y/n`"
   read -q input
-  printf "\r$4"
-  [[ $3 ]] && printf "  "
+  [[ $3 ]] && printf "\r$4  " || printf-color-bold "\r$4? " "$fg[main]"
   printf "$1? %s " "`print-brackets Y/n`"
   case $input in
     y )
@@ -242,7 +241,7 @@ print() { printf "$@\n"; }
 
 print-color() {
   typeset string="$1"
-  typeset reset="\e[$attr[default];$text[fg];5;$fg[default];$text[bg];5;$bg[default]m"
+  typeset reset="\e[0m"
 
   typeset color
   if [[ -n $3 ]]; then
@@ -256,7 +255,7 @@ print-color() {
 
 printf-color() {
   typeset string="$1"
-  typeset reset="\e[$attr[default];$text[fg];5;$fg[default];$text[bg];5;$bg[default]m"
+  typeset reset="\e[0m"
 
   typeset color
   if [[ -n $3 ]]; then
