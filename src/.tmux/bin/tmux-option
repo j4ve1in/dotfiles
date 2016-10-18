@@ -51,7 +51,7 @@ set-statusline.left() {
   # Session
   STATUS_L='#[fg=colour231,bg=colour17,bold]#{?client_prefix,#[reverse],} #S '
   # separator
-  if is_x && is_patched_font;then
+  if is-x && is-patched-font;then
     STATUS_L+='#[fg=colour17,bg=black]'
     STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour231],}\ue0b0'
   fi
@@ -65,7 +65,7 @@ set-statusline.right() {
   STATUS_R="#[fg=colour231,bg=black]$(tmux show-options -g prefix | tr -d 'prefix ') "
   # Battery
   ## separator
-  {is_x && is_patched_font} && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
+  {is-x && is-patched-font} && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
   if has acpi;then
     Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
     STATUS_R+='#[fg=colour231,bg=colour21]'
@@ -74,13 +74,13 @@ set-statusline.right() {
   fi
   # Date
   ## separator
-  {is_x && is_patched_font} && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
+  {is-x && is-patched-font} && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
   STATUS_R+='#[fg=colour231,bg=colour17] %a '
   ## subseparator
-  {is_x && is_patched_font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  {is-x && is-patched-font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
   STATUS_R+=' %m/%d '
   ## subseparator
-  {is_x && is_patched_font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
+  {is-x && is-patched-font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
   STATUS_R+=' %H:%M:%S '
   tmux set -g status-right "`echo -e $STATUS_R`"
   tmux set -g status-right-length 50
@@ -91,7 +91,7 @@ set-statusline.window-format() {
   # window index and flag
   STATUS_WF='#[fg=colour244,bg=black]  #I#F '
   # separator
-  {is_x && is_patched_font} && STATUS_WF+='#[fg=colour240,bg=black]\ue0b1' || STATUS_WF+=':'
+  {is-x && is-patched-font} && STATUS_WF+='#[fg=colour240,bg=black]\ue0b1' || STATUS_WF+=':'
   # window name
   STATUS_WF+=' #[fg=colour33]#W  '
   tmux setw -g window-status-format "`echo -e $STATUS_WF`"
@@ -100,23 +100,23 @@ set-statusline.window-format() {
 set-statusline.window-current-format() {
   typeset STATUS_WCF
   # separator
-  {is_x && is_patched_font} && STATUS_WCF+='#[fg=black,bg=colour21]\ue0b0'
+  {is-x && is-patched-font} && STATUS_WCF+='#[fg=black,bg=colour21]\ue0b0'
   # Current window index and flag
   STATUS_WCF+='#[fg=colour231,bg=colour21] #I#F '
   # separator
-  {is_x && is_patched_font} && STATUS_WCF+='\ue0b1' || STATUS_WCF+=':'
+  {is-x && is-patched-font} && STATUS_WCF+='\ue0b1' || STATUS_WCF+=':'
   # Current window name
   STATUS_WCF+=' #[fg=colour231,bg=colour21]#W '
   # separator
-  {is_x && is_patched_font} && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
+  {is-x && is-patched-font} && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
   tmux setw -g window-status-current-format "`echo -e $STATUS_WCF`"
 }
 
 has() { type $1 >/dev/null 2>&1; }
 
-is_x() { [[ $DISPLAY ]] && return 0 || return 1; }
+is-x() { [[ $DISPLAY ]] && return 0 || return 1; }
 
-is_patched_font() {
+is-patched-font() {
   if [[ `fc-list | grep 'InconsolataForPowerline Nerd Font'` ]]; then
     return 0
   else
