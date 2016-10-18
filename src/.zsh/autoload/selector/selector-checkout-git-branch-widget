@@ -1,0 +1,10 @@
+private git_option branch
+git_option=("--list" "-v")
+branch=($(git branch $git_option | grep -v '^\*' | sed 's/^  *//' | $SELECTOR | awk '{print $1}'))
+[[ -z $branch ]] && return 1
+BUFFER="git checkout $branch"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

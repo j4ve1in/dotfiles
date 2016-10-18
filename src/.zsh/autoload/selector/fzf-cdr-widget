@@ -1,8 +1,0 @@
-DIR=($(cdr -l | sed 's/^[^ ][^ ]*  *//' | $SELECTOR))
-[ -z "$DIR" ] && return 1
-BUFFER="cd -- $DIR"
-CURSOR=$#BUFFER
-zle accept-line
-zle -R -c
-
-# vim: ft=zsh sw=2 ts=2 et

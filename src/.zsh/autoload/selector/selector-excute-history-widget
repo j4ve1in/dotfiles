@@ -1,0 +1,8 @@
+private cmd=($(history -n -r 1 | awk '!a[$0]++' | $SELECTOR))
+[[ -z $cmd ]] && return 1
+BUFFER="$cmd"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

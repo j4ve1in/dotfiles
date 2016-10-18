@@ -5,4 +5,5 @@ if [[ -n $TMUX ]] then
     notify-send -u low "Tmux" "\`$LASTCMD[1]\` has finished"
   fi
 fi
+
 # vim: ft=zsh sw=2 ts=2 et

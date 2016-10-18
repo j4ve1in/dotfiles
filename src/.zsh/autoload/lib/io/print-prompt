@@ -1,0 +1,19 @@
+print-color-bold "$4? " "$fg[main]"
+[[ $3 ]] && printf "$3\n$4  "
+printf "$1? %s " "`print-brackets Y/n`"
+read -q input
+[[ $3 ]] && printf "\r$4  " || print-color-bold "\r$4? " "$fg[main]"
+printf "$1? %s " "`print-brackets Y/n`"
+case $input in
+  y )
+    print-color 'Yes\n\n' "$fg[main]"
+    $=2
+    return 0
+    ;;
+  * )
+    print-color 'no\n\n' "$fg[main]"
+    return 1
+    ;;
+esac
+
+# vim: ft=zsh sw=2 ts=2 et

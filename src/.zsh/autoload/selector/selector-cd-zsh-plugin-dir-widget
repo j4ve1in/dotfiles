@@ -1,0 +1,10 @@
+private plugin
+plugin=$(zplug list | awk '{print $1}' | col -bx | sed -e 's/32m//g' -e 's/00m//g' | $SELECTOR)
+[[ -z $plugin ]] && return 1
+
+BUFFER="cd $ZPLUG_HOME/repos/$plugin"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

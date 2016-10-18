@@ -1,0 +1,3 @@
+print-color "$1" "$2" "$attr[bold]"
+
+# vim: ft=zsh sw=2 ts=2 et

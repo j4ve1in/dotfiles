@@ -1,0 +1,13 @@
+typeset string="$1"
+typeset reset="\e[0m"
+
+typeset color
+if [[ -n $3 ]]; then
+ color="\e[${3};$text[fg];5;${2}m"
+else
+ color="\e[$attr[default];$text[fg];5;${2}m"
+fi
+
+printf "%b%b%b" "$color" "$string" "$reset"
+
+# vim: ft=zsh sw=2 ts=2 et

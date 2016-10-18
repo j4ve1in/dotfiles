@@ -1,0 +1,13 @@
+if [[ $1 = Y/n ]]; then
+  print-color-bold '[' "$fg[sub]"
+  print-color 'Y' "$fg[main]" "$attr[underline]"
+  print-color '/' "$fg[main]"
+  print-color 'n' "$fg[main]" "$attr[underline]"
+  print-color-bold ']' "$fg[sub]"
+else
+  print-color-bold '[' "$fg[accent]"
+  printf '%s' "$1"
+  print-color-bold ']' "$fg[accent]"
+fi
+
+# vim: ft=zsh sw=2 ts=2 et

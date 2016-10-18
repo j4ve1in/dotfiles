@@ -1,3 +1,0 @@
-for w in `ls -F $ZDOTDIR/autoload/selector/ | grep -v /`; do zle -N $w; done
-
-# vim: ft=zsh sw=2 ts=2 et

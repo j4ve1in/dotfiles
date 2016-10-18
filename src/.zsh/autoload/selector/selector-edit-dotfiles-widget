@@ -1,0 +1,8 @@
+private file=($(find .* -maxdepth 0 | $SELECTOR))
+[[ -z $file ]] && return 1
+BUFFER="$EDITOR $file"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

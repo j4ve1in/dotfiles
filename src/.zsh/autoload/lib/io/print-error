@@ -1,0 +1,5 @@
+print-color-bold "$1: " "$fg[error]"
+echo "$2"
+print-color-bold "Try '$1 --help' for more information.\n" "$fg[default]"
+
+# vim: ft=zsh sw=2 ts=2 et

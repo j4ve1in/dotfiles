@@ -1,0 +1,9 @@
+private repo
+repo=($(ghq list --full-path | $SELECTOR))
+[[ ! -d $repo ]] && return 1
+BUFFER="cd -- $repo"
+CURSOR=$#BUFFER
+zle accept-line
+zle -R -c
+
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,60 +1,27 @@
-# ls
-is_linux && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
-is_bsd && alias l{,s}='ls -FG' ll='l -hl'
-alias la='l -A' lla='ll -A'
-
-# grep
-alias gr='grep --color=auto' fgr='fgrep --color=auto' egr='egrep --color=auto'
-
-# diff
-has colordiff && alias di='colordiff -u' || alias di='diff -u'
-
-# Vagrant
-if has vagrant; then
-  alias vah='vagrant halt'
-  alias vas='vagrant ssh'
-  alias vau='vagrant up' vaus='vagrant up && vagrant ssh'
-  alias var='vagrant reload' vars='vagrant reload && vagrant ssh'
-fi
-
-# Vi
-has vi && alias v='vi'
-has vim && alias v='vim -p'
-has nvim && alias v='nvim -p'
-
-# Others
 has git && alias g='git'
-has tmux && alias t='tmux'
+has nvim && alias v='nvim -p'
 has docker && alias d='docker'
+has docker-compose && alias dc='docker-compose'
 has pacman && alias p='pacman'
-has yaourt && alias p='yaourt'
-if has netctl-auto; then
-  alias n='netctl-auto'
-  alias ssid="netctl-auto list | grep '*' | sed 's/* //g'"
-fi
+has yaourt && alias y='yaourt'
 has thefuck && eval "`thefuck --alias`"
 has hub && eval "`hub alias -s`"
 has ranger && disable r && alias f='ranger' r='rifle'
-has start && alias st='start' f='start .'
-has sudo && alias s='sudo '
-has sudoedit && alias se='sudoedit '
-has open && op='open' f='open .'
-alias m='mv'
+has sudo && alias sudo='sudo ' s='sudo'
+has sudoedit && alias sudoedit='sudoedit ' se='sudoedit'
+is-linux && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
+is-bsd && alias l{,s}='ls -FG' ll='l -hl'
+has colordiff && alias di='colordiff -u' || alias di='diff -u'
+alias la='l -A' lla='ll -A'
+alias grep='grep --color=auto' fgrep='fgrep --color=auto' egrep='egrep --color=auto'
 alias le='less'
-alias path='echo ${(F)path}' fpath='echo ${(F)fpath}'
-alias jman="LANG='ja_JP.UTF-8' man"
-alias df='df -h'
+alias m='mv'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
-alias reload='exec $SHELL -l' rl='reload'
-alias a='alias | less'
-alias ts='trash'
-autoload -Uz zmv && alias zmv='noglob zmv -W'
 
-# Suffix
+# Suffix alias
 alias -s sh=sh bash=bash
 alias -s {md,txt}=cat
 has chromium && alias -s {html,css}=chromium
-
 has coffee && alias -s coffee=coffee
 has go && alias -s go='go run'
 has node && alias -s js=node
@@ -62,32 +29,6 @@ has python && alias -s py=python
 has ruby && alias -s rb=ruby
 has zsh && alias -s zsh=zsh
 has vim && alias -s vim=vim
-
-## C
-if has gcc; then
-  runc() { gcc $1 && shift && ./a.out $@ && rm -f a.out; }
-  alias -s c=runc
-fi
-
-## Image
+has gcc && alias -s c=runc
 has xdg-oepn && alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
-has start && alias -s {gif,jpg,jpeg,png,bmp}=start
-has open && alias -s {gif,jpg,jpeg,png,bmp}=open
-
-## Extract
-extract() {
-  case $1 in
-    *.tar.gz|*.tgz) tar xzvf $1;;
-    *.tar.xz) tar Jxvf $1;;
-    *.zip) unzip $1;;
-    *.lzh) lha e $1;;
-    *.tar.bz2|*.tbz) tar xjvf $1;;
-    *.tar.Z) tar zxvf $1;;
-    *.gz) gzip -d $1;;
-    *.bz2) bzip2 -dc $1;;
-    *.Z) uncompress $1;;
-    *.tar) tar xvf $1;;
-    *.arj) unarj $1;;
-  esac
-}
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract

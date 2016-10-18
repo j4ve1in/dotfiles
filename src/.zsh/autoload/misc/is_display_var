@@ -1,5 +1,0 @@
-if [ -z "$MAIN_DISPLAY" ] || [ -z "$SUB_DISPLAY" ]; then
-  echo 'Set `$MAIN_DISPLAY` and `$SUB_DISPLAY`'
-  return 1
-fi
-# vim: ft=zsh sw=2 ts=2 et

@@ -1,16 +1,17 @@
-typeset CMDNAME=${0##*/}
-if [ "$1" = help ]; then
+private cmd=${0##*/}
+if [[ $1 = help ]]; then
   echo 'rename-all: change file name in current dir'
   echo '  $ rename-all jpeg *.{jpg,jpeg}'
   return 0
-elif [ -z "$1" ] || [ -z "$2" ]; then
-  echo "$CMDNAME: missing argument"
+elif [[ -z $1 || -z $2 ]]; then
+  echo "$cmd: missing argument"
   return 1
 fi
 
-typeset i=0 N=`echo -n $# | wc -c`
+private i=0 N=`echo -n $# | wc -c`
 for f in ${@:2}; do
   mv $f $(printf %0${N}d $i).$1
   ((i=i+1))
 done
+
 # vim: ft=zsh sw=2 ts=2 et

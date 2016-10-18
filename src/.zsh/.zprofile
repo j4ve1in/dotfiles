@@ -1,69 +1,65 @@
 . $ZDOTDIR/autoload/init.zsh ${(%):-%N}
 
-is_arch || is_alpine && . ~/.zshenv
+is-arch || is-alpine && . ~/.zshenv
 
 : "Display LastLogin" && () {
-  cprintf() { printf "\e[${2}m${1}\e[0;39;49m"; }
-  # Display LastLogin
   if has lastlog && [[ -f /var/log/lastlog ]]; then
-    local LASTLOG PORT DATE
-    cprintf 'LastLogin: ' "1;38;05;75" # cyan
-    LASTLOG=`last -R | sed -n 2p`
-    set -- "${=LASTLOG}"
-    PORT="$2" DATE="$3 $4 $5 $6"
-    echo "$DATE on $PORT"
+    set -- `last -R | sed -n 2p`
+    private port="$2" date="$3 $4 $5 $6"
+    print-section 'LastLogin' "$date on $port"
   fi
 }
 
 : "Launch tmux" && () {
-  # if not inside a tmux session, and if no session is started,
-  # start a new session
-  if has tmux && [ -z "$TMUX" ]; then
-    tmux attach -d >/dev/null 2>&1 || tmux
+  if has tmux && [[ -z $TMUX ]]; then
+    if [[ $USER = wemux ]]; then
+      wemux
+    else
+      tmux attach -d >/dev/null 2>&1 || tmux
+    fi
   fi
 }
 
+: 'Catenate configuration files of zsh' && () {
+  private -a file
+  file=( $ZDOTDIR/rc/{init,plugins,base,aliases,completion,prompt,local}.zsh )
+
+  for f in $file; do
+    if [[ $f -nt $ZDOTDIR/.zshrc ]]; then
+      print-header 'Catenate configuration files of zsh'
+      print " $ZDOTDIR/rc/* > $ZDOTDIR/.zshrc"
+      cat $file > $ZDOTDIR/.zshrc
+      return 0
+    fi
+  done
+}
+
 : "Compile configuration files of zsh" && () {
-  typeset -a ZFILE
-  ZFILE=(
+  private -a file
+  file=(
     ~/.zshenv
-    ~/.zsh/.zprofile
-    ~/.zsh/.zshrc
-    ~/.zsh/rc/*.zsh
+    $ZDOTDIR/.z{profile,shrc}
   )
-  local BLUE="\e[1;34m"
-  local SKYBLUE="\e[1;38;05;75m"
-  cprintf() {
-    local color="$1"
-    local string="$2"
-    local reset="\e[0m"
-    printf "${color}${string}${reset}"
-  }
-  ## Check
-  local i N
+
+  # Check
+  private i N
   i=0
-  for file in ${ZFILE[@]}; do
-    if [ ! -f ${file}.zwc ] || [ ${file} -nt ${file}.zwc ]; then
+  for f in $file; do
+    if [[ ! -f $f.zwc || $f -nt $f.zwc ]]; then
       ((i=i+1))
     fi
   done
   N=$i
 
-  ## Start
-  if [ "$N" != "0" ]; then
+  # Start
+  if (( $N )); then
     i=1
-    cprintf $SKYBLUE "Compile configuration files of zsh\n"
-    for file in ${ZFILE[@]}; do
-      if [ ! -f ${file}.zwc ] || [ ${file} -nt ${file}.zwc ]; then
-        cprintf $BLUE " ["
-        printf "%2d/%2d" $i $N
-        cprintf $BLUE "] "
-        printf "Compile ${file}..."
-        if zcompile ${file}; then
-          cprintf $BLUE "done\n"
-        else
-          echo -e "\e[1;31merror\e[m"
-        fi
+    print-header 'Compile configuration files of zsh'
+    for f in $file; do
+      if [[ ! -f $f.zwc || $f -nt $f.zwc ]]; then
+        printf ' '
+        print-log "$i" "$N" 'Compile:' "$f"
+        zcompile $f
         ((i=i+1))
       fi
     done

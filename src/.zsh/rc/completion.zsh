@@ -13,11 +13,15 @@ setopt correct
 setopt complete_in_word
 
 : "Completion" && () {
-  local DEFAULT=$'%{\e[m%}'
-  local RED=$'%{\e[1;31m%}'
-  local COLOR_46_B=$'%{\e[1;38;5;46;49m%}'
-  local COLOR_75_B=$'%{\e[1;38;5;75;49m%}'
-  local COLOR_93_B=$'%{\e[1;38;5;93;49m%}'
+  private -A fg
+  fg=(
+    default $'%{\e[0m%}'
+    main    $'%{\e[1;38;5;75;49m%}'
+    sub     $'%{\e[1;38;5;93;49m%}'
+    accent  $'%{\e[1;38;5;46;49m%}'
+    error   $'%{\e[1;31m%}'
+    warning $'%{\e[1;31m%}'
+  )
 
   zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
   zstyle ':completion:*' group-name ''
@@ -29,10 +33,10 @@ setopt complete_in_word
   zstyle ':completion:*:default' menu select=2
   zstyle ':completion:*:manuals' separate-sections true
   zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=1;34'
-  zstyle ':completion:*:messages' format $COLOR_46_B'%d'$DEFAULT
-  zstyle ':completion:*:warnings' format $RED'No matches for:'$DEFAULT' %d'
-  zstyle ':completion:*:corrections' format $COLOR_93_B'%B%d '$RED'(errors: %e)%b'$DEFAULT
-  zstyle ':completion:*:descriptions' format $COLOR_75_B'Completing %B%d%b%f'$DEFAULT
+  zstyle ':completion:*:messages' format $fg[accent]'%d'$fg[default]
+  zstyle ':completion:*:warnings' format $fg[warning]'No matches for:'$fg[default]' %d'
+  zstyle ':completion:*:corrections' format $fg[sub]'%B%d '$fg[error]'(errors: %e)%b'$fg[default]
+  zstyle ':completion:*:descriptions' format $fg[main]'Completing %B%d%b%f'$fg[default]
 }
 
 zmodload -i zsh/complist
@@ -42,6 +46,4 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 setopt auto_cd
-autoload -Uz add-zsh-hook
-autoload -Uz ls_abbrev
 add-zsh-hook chpwd ls_abbrev

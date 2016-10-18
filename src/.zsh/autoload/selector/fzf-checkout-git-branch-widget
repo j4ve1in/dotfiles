@@ -1,9 +1,0 @@
-git_option=("--list" "-v")
-BRANCH=($(git branch $git_option | grep -v '^\*' | sed 's/^  *//' | $SELECTOR | awk '{print $1}'))
-[ -z "$BRANCH" ] && return 1
-BUFFER="git checkout $BRANCH"
-CURSOR=$#BUFFER
-zle accept-line
-zle -R -c
-
-# vim: ft=zsh sw=2 ts=2 et
