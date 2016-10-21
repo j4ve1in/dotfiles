@@ -4,12 +4,13 @@
   ## Colors
   private -A fg
   fg=(
-    main $'%{\e[0;38;05;27m%}'  # Blue
-    sub1 $'%{\e[0;38;05;75m%}'  # Skyblue
-    sub2 $'%{\e[0;38;05;243m%}' # Gray
-    sub3 $'%{\e[0;38;05;99m%}'  # Purple
-    sub4 $'%{\e[0;38;05;48m%}'  # Green
-    sub5 $'%{\e[1;38;05;75m%}'  # skyblue2
+    default $'%{\e[0m%}'
+    main    $'%{\e[0;38;05;27m%}'  # Blue
+    sub1    $'%{\e[0;38;05;75m%}'  # Skyblue
+    sub2    $'%{\e[0;38;05;243m%}' # Gray
+    sub3    $'%{\e[0;38;05;99m%}'  # Purple
+    sub4    $'%{\e[0;38;05;48m%}'  # Green
+    sub5    $'%{\e[1;38;05;75m%}'  # skyblue2
   )
 
   ## Separator
@@ -67,5 +68,5 @@
   PROMPT+="${fg[main]}]%f"
 
   # Others
-  PROMPT+=$'\n'"${fg[sub5]}%(!.#.%%)%f "
+  PROMPT+=$'\n'"${fg[sub5]}%(!.#.%%)$fg[default] "
 }

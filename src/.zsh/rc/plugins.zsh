@@ -1,6 +1,5 @@
 : "Plugin" && () {
-  if [[ -d $XDG_DATA_HOME/zsh/zplug ]]; then
-    # Zplug
+  zplug-init() {
     export ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug
     export ZPLUG_CACHE_FILE=$XDG_CACHE_HOME/zsh/zplug/cache
 
@@ -20,12 +19,30 @@
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
     )
     for arg in $zplug_args; do zplug $arg; done
+  }
+
+  if [[ ! -f $XDG_CACHE_HOME/zsh/plugin ]]; then
+    touch $XDG_CACHE_HOME/zsh/plugin
+    if prompt 'Would you like to install plugins of zsh'; then
+      private cmd="git clone https://github.com/zplug/zplug $XDG_DATA_HOME/zsh/zplug"
+      spinner 'Clone and init zplug' "$cmd" 1
+      zplug-init
+      private n=$(print-color-bold "$(zplug list | wc -l)" "$fg[main]")
+      spinner "Clone $n plugins with zplug" 'zplug install' 1
+    else
+      return 1
+    fi
+  fi
+
+  if [[ -d $XDG_DATA_HOME/zsh/zplug ]]; then
+    # Zplug
+    zplug-init
 
     if ! zplug check; then
       print-header 'Check plugin status of zsh'
       zplug check --verbose | sed -e 's/^/ /g'
-      if prompt 'Would you like to install'; then
-        spinner 'Installing plugins of zsh with zplug' 'zplug install' 1
+      if prompt 'Would you like to install plugins of zsh'; then
+        spinner 'Download plugins with zplug' 'zplug install' 1
       else
         return 1
       fi
