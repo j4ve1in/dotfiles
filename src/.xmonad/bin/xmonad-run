@@ -11,5 +11,5 @@ elif [[ $1 = editor ]]; then
 elif [[ $1 = filemanager ]]; then
   urxvt -e 'ranger'
 elif [[ $1 = terminal ]]; then
-  termite -e "zsh $HOME/.tmux/bin/tmux-exec"
+  termite -e "tmux-exec"
 fi
