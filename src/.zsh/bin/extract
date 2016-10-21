@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 case $1 in
   *.tar.gz|*.tgz) tar xzvf $1;;
   *.tar.xz) tar Jxvf $1;;
@@ -11,5 +13,3 @@ case $1 in
   *.tar) tar xvf $1;;
   *.arj) unarj $1;;
 esac
-
-# vim: ft=zsh sw=2 ts=2 et

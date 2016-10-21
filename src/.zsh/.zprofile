@@ -1,34 +1,39 @@
-. $ZDOTDIR/autoload/init.zsh ${(%):-%N}
+. $ZDOTDIR/lib/init.zsh set
 
-is-arch || is-alpine && . ~/.zshenv
-
-: "Display LastLogin" && () {
-  if has lastlog && [[ -f /var/log/lastlog ]]; then
-    set -- `last -R | sed -n 2p`
-    private port="$2" date="$3 $4 $5 $6"
-    print-section 'LastLogin' "$date on $port"
-  fi
-}
+if is-arch || is-alpine; then
+  . ~/.zshenv && . $ZDOTDIR/lib/init.zsh set
+fi
 
 : "Launch tmux" && () {
   if has tmux && [[ -z $TMUX ]]; then
     if [[ $USER = wemux ]]; then
       wemux
     else
-      tmux attach -d >/dev/null 2>&1 || tmux
+      exec tmux-exec
     fi
+  fi
+}
+
+: "Display LastLogin" && () {
+  if has lastlog && [[ -f /var/log/lastlog ]]; then
+    set -- `last -R | sed -n 2p`
+    private port="$2" date="$3 $4 $5 $6" on=`print-color-bold 'on' "$fg[accent]"`
+    print-section 'LastLogin' "$date $on $port"
   fi
 }
 
 : 'Catenate configuration files of zsh' && () {
   private -a file
-  file=( $ZDOTDIR/rc/{init,plugins,base,aliases,completion,prompt,local}.zsh )
+  file=( $ZDOTDIR/rc/{plugins,base,aliases,completion,prompt,local}.zsh )
 
   for f in $file; do
     if [[ $f -nt $ZDOTDIR/.zshrc ]]; then
       print-header 'Catenate configuration files of zsh'
-      print " $ZDOTDIR/rc/* > $ZDOTDIR/.zshrc"
-      cat $file > $ZDOTDIR/.zshrc
+      private mark=`print-color-bold '>' "$fg[accent]"`
+      print " $ZDOTDIR/rc/* $mark $ZDOTDIR/.zshrc"
+      private initialize='. $ZDOTDIR/lib/init.zsh set'
+      private finalize='. $ZDOTDIR/lib/init.zsh unset'
+      cat <(<<< $initialize) $file <(<<< $finalize) > $ZDOTDIR/.zshrc
       return 0
     fi
   done
@@ -36,10 +41,7 @@ is-arch || is-alpine && . ~/.zshenv
 
 : "Compile configuration files of zsh" && () {
   private -a file
-  file=(
-    ~/.zshenv
-    $ZDOTDIR/.z{profile,shrc}
-  )
+  file=( ~/.zshenv $ZDOTDIR/.z{profile,shrc} )
 
   # Check
   private i N
@@ -58,10 +60,12 @@ is-arch || is-alpine && . ~/.zshenv
     for f in $file; do
       if [[ ! -f $f.zwc || $f -nt $f.zwc ]]; then
         printf ' '
-        print-log "$i" "$N" 'Compile:' "$f"
+        print-log "$i" "$N" 'Compile' "$f"
         zcompile $f
         ((i=i+1))
       fi
     done
   fi
 }
+
+. $ZDOTDIR/lib/init.zsh unset

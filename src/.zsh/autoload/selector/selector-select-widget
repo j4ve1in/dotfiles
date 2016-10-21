@@ -1,5 +1,4 @@
-private -a selector_widgets
-selector_widgets=(
+private -a selector_widgets=(
   `ls .zsh/autoload/selector/ | \
     sed -e 's/selector-//g' -e 's/-widget//g' | \
     egrep -v '^select$'`

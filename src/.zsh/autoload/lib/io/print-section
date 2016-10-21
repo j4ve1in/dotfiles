@@ -1,6 +1,0 @@
-printf '%s' "$3"
-print-color-bold "$1" "$fg[main]"
-print-color-bold ': ' "$fg[accent]"
-printf '%s\n' "$2"
-
-# vim: ft=zsh sw=2 ts=2 et

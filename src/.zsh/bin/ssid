@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+netctl-auto list | grep '*' | sed 's/* wlp.s0-//g'

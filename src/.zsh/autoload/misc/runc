@@ -1,3 +1,0 @@
-gcc $1 && shift && ./a.out $@ && rm -f a.out
-
-# vim: ft=zsh sw=2 ts=2 et

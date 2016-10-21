@@ -1,7 +1,0 @@
-if [[ $1 = success ]]; then
-  print-color-bold '\u2713' "$fg[success]"
-elif [[ $1 = error ]]; then
-  print-color-bold '\u2715' "$fg[error]"
-fi
-
-# vim: ft=zsh sw=2 ts=2 et

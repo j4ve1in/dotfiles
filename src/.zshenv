@@ -1,5 +1,5 @@
 export ZDOTDIR="$HOME/.zsh"
-. $ZDOTDIR/autoload/init.zsh ${(%):-%N}
+. $ZDOTDIR/lib/init.zsh set
 
 # base
 export PAGER='less'
@@ -93,3 +93,5 @@ export {HISTSIZE,SAVEHIST}=1000
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
+
+. $ZDOTDIR/lib/init.zsh unset

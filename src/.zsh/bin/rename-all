@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 private cmd=${0##*/}
 if [[ $1 = help ]]; then
   echo 'rename-all: change file name in current dir'
@@ -13,5 +15,3 @@ for f in ${@:2}; do
   mv $f $(printf %0${N}d $i).$1
   ((i=i+1))
 done
-
-# vim: ft=zsh sw=2 ts=2 et

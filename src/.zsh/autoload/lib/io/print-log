@@ -1,5 +1,0 @@
-print-brackets "`printf "%2d/%2d" "$1" "$2"`"
-print-color-bold " $3" "$fg[main]"
-printf " %s\n" "$4"
-
-# vim: ft=zsh sw=2 ts=2 et

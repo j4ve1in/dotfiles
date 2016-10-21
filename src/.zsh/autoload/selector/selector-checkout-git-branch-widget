@@ -1,4 +1,4 @@
-private git_option branch
+private -a git_option branch
 git_option=("--list" "-v")
 branch=($(git branch $git_option | grep -v '^\*' | sed 's/^  *//' | $SELECTOR | awk '{print $1}'))
 [[ -z $branch ]] && return 1

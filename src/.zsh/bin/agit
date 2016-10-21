@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+[[ -z $1 ]] && nvim +Agit || nvim +AgitFile "$1"

@@ -1,4 +1,0 @@
-print-color-bold ":: " "$fg[accent]"
-print "$1"
-
-# vim: ft=zsh sw=2 ts=2 et

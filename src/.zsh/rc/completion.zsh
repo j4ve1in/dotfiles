@@ -1,7 +1,5 @@
-autoload -Uz compinit
-dumpfile=$XDG_CACHE_HOME/zsh/compdump
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
-compinit -u -d $dumpfile
+autoload -Uz compinit && compinit -u -d $XDG_CACHE_HOME/zsh/compdump
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 zstyle ':completion:*:complete:*' cache-path $XDG_CACHE_HOME/zsh/compcache/
 
@@ -46,4 +44,4 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 setopt auto_cd
-add-zsh-hook chpwd ls_abbrev
+add-zsh-hook chpwd ls-abbrev

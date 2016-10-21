@@ -1,7 +1,11 @@
+# autoload and widget
+. $ZDOTDIR/autoload/init.zsh
+
 # option
 setopt no_beep
 setopt print_eight_bit
 setopt interactive_comments
+setopt notify
 
 ## history
 setopt hist_expand

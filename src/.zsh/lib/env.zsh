@@ -27,5 +27,3 @@ typeset -gA attr=(
   underline '4'
   reverse   '7'
 )
-
-# vim: ft=zsh sw=2 ts=2 et

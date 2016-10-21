@@ -1,4 +1,4 @@
-private file=($(find .* -maxdepth 0 | $SELECTOR))
+private -a file=($(find .* -maxdepth 0 | $SELECTOR))
 [[ -z $file ]] && return 1
 BUFFER="$EDITOR $file"
 CURSOR=$#BUFFER

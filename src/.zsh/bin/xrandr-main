@@ -1,5 +1,5 @@
+#!/bin/zsh
+
 is-display-var || return 1
 xrandr --output $MAIN_DISPLAY --auto --output $SUB_DISPLAY --off
 nitrogen --restore
-
-# vim: ft=zsh sw=2 ts=2 et

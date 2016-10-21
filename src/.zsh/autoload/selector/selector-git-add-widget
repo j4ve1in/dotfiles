@@ -1,5 +1,5 @@
 private base_path="$(git rev-parse --show-cdup | sed 's%/%\\/%g')"
-private file=($(git status --porcelain | sed "s/^\(..\) /\1\t${base_path}/" | grep "^.[MD?]" | $SELECTOR | awk '{print $2}'))
+private -a file=($(git status --porcelain | sed "s/^\(..\) /\1\t${base_path}/" | grep "^.[MD?]" | $SELECTOR | awk '{print $2}'))
 [[ -z $file ]] && return 1
 for file in $file; do
   [[ ! -f $file ]] && return 1

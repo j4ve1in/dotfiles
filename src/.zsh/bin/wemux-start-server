@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 private pw
 print "Type password of $USER for sudo"
 printf 'password: '
@@ -27,5 +29,3 @@ fi
 
 echo 'Stop sshd'
 echo "$pw" | sudo -kS <<< "$pw" -p '' -- systemctl stop sshd
-
-# vim: ft=zsh sw=2 ts=2 et

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+gcc $1 && shift && ./a.out $@ && rm -f a.out

@@ -1,5 +1,4 @@
-private dir
-dir=($(cdr -l | sed 's/^[^ ][^ ]*  *//' | $SELECTOR))
+private -a dir=($(cdr -l | sed 's/^[^ ][^ ]*  *//' | $SELECTOR))
 [[ -z $dir ]] && return 1
 BUFFER="cd -- $dir"
 CURSOR=$#BUFFER

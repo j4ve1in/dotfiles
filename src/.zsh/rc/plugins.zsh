@@ -24,7 +24,11 @@
     if ! zplug check; then
       print-header 'Check plugin status of zsh'
       zplug check --verbose | sed -e 's/^/ /g'
-      print-prompt 'Would you like to install' 'zplug install' || return 1
+      if prompt 'Would you like to install'; then
+        spinner 'Installing plugins of zsh with zplug' 'zplug install' 1
+      else
+        return 1
+      fi
     fi
 
     zplug load

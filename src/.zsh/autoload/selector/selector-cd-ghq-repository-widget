@@ -1,5 +1,4 @@
-private repo
-repo=($(ghq list --full-path | $SELECTOR))
+private -a repo=($(ghq list --full-path | $SELECTOR))
 [[ ! -d $repo ]] && return 1
 BUFFER="cd -- $repo"
 CURSOR=$#BUFFER

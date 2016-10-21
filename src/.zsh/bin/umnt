@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 private cmd=${0##*/}
 if [[ -z $1 ]]; then
   echo "$cmd: missing device name"
@@ -10,5 +12,3 @@ else
   echo "$cmd: illegal argument"
   return 1
 fi
-
-# vim: ft=zsh sw=2 ts=2 et

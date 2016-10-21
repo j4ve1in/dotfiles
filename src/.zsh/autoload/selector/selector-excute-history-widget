@@ -1,4 +1,4 @@
-private cmd=($(history -n -r 1 | awk '!a[$0]++' | $SELECTOR))
+private -a cmd=($(history -n -r 1 | awk '!a[$0]++' | $SELECTOR))
 [[ -z $cmd ]] && return 1
 BUFFER="$cmd"
 CURSOR=$#BUFFER
