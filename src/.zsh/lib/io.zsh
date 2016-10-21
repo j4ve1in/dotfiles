@@ -1,8 +1,13 @@
-print-color() {
-  typeset string="$1"
-  typeset reset="\e[0m"
+print-space() { [[ $1 ]] && printf "%$1s" ' '; }
 
-  typeset color
+print-log() { print-brackets "$1/$2" && print-section " $3" "$4"; }
+
+print-header() { print-color-bold ":: " "$fg[accent]" && <<< "$1"; }
+
+print-color() {
+  private string="$1" reset="\e[$attr[default]m"
+
+  private color
   if [[ -n $3 ]]; then
    color="\e[${3};$text[fg];5;${2}m"
   else
@@ -14,36 +19,6 @@ print-color() {
 
 print-color-bold() { print-color "$1" "$2" "$attr[bold]"; }
 
-print-brackets() {
-  if [[ $1 = Y/n ]]; then
-    print-color-bold '[' "$fg[sub]"
-    print-color 'Y' "$fg[main]" "$attr[underline]"
-    print-color '/' "$fg[main]"
-    print-color 'n' "$fg[main]" "$attr[underline]"
-    print-color-bold ']' "$fg[sub]"
-  else
-    print-color-bold '[' "$fg[accent]"
-    printf '%s' "$1"
-    print-color-bold ']' "$fg[accent]"
-  fi
-}
-
-print-error() {
-  print-color-bold "$1: " "$fg[error]"
-  echo "$2"
-  print-color-bold "Try '$1 --help' for more information.\n" "$fg[default]"
-}
-
-print-header() {
-  print-color-bold ":: " "$fg[accent]"
-  print "$1"
-}
-
-print-log() {
-  print-brackets "`printf "%2d/%2d" "$1" "$2"`"
-  print-section " $3" "$4"
-}
-
 print-mark() {
   if [[ $1 = success ]]; then
     print-color-bold '\u2713' "$fg[success]"
@@ -53,10 +28,22 @@ print-mark() {
 }
 
 print-section() {
-  printf '%s' "$3"
+  printf "$3"
   print-color-bold "$1" "$fg[main]"
   print-color-bold ': ' "$fg[accent]"
-  printf '%s\n' "$2"
+  <<< "$2"
 }
 
-print-space() { [[ $1 ]] && printf "%$1s" ' '; }
+print-brackets() {
+  if [[ $1 = Y/n ]]; then
+    print-color-bold '[' "$fg[sub]"
+    print-color 'Y' "$fg[main]" "$attr[underline]"
+    print-color '/' "$fg[main]"
+    print-color 'n' "$fg[main]" "$attr[underline]"
+    print-color-bold ']' "$fg[sub]"
+  else
+    print-color-bold '[' "$fg[accent]"
+    printf "$1"
+    print-color-bold ']' "$fg[accent]"
+  fi
+}

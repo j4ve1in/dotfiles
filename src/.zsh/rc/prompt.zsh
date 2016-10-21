@@ -9,13 +9,14 @@
     sub2 $'%{\e[0;38;05;243m%}' # Gray
     sub3 $'%{\e[0;38;05;99m%}'  # Purple
     sub4 $'%{\e[0;38;05;48m%}'  # Green
+    sub5 $'%{\e[1;38;05;75m%}'  # skyblue2
   )
 
   ## Separator
   PROMPT="${fg[main]}[%f"
 
   ## Username and Hostname, Directoryname, sshinfo
-  PROMPT+="%n@%m"
+  PROMPT+="%n${fg[sub2]}@%f%m"
   [[ -n $SSH_CLIENT ]] && PROMPT+="${fg[sub2]}:ssh%f"
   PROMPT+=" %1~"
 
@@ -58,11 +59,13 @@
 
   ## Time
   zle -N accept-line re-prompt
-  PROMPT+="%D{%m/%d %H:%M:%S}"
+  PROMPT+="%D{%m}${fg[sub2]}/%f%D{%d}"
+  PROMPT+=" "
+  PROMPT+="%D{%H}${fg[sub2]}:%f%D{%M}${fg[sub2]}:%f%D{%S}"
 
   ## Separator
   PROMPT+="${fg[main]}]%f"
 
   # Others
-  PROMPT+=$'\n'"%(!.#.%%) "
+  PROMPT+=$'\n'"${fg[sub5]}%(!.#.%%)%f "
 }
