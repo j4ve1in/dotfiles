@@ -1,4 +1,4 @@
-has pkgfile || return 1
+type pkgfile >/dev/null 2>&1 || return 1
 
 private cmd
 private -a pkgs
