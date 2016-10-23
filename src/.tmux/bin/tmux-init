@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-[[ $1 = tpm ]] && ${TMUX_PLUGIN_MANAGER_PATH:h}/tpm

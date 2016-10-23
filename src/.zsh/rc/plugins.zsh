@@ -21,20 +21,42 @@
     for arg in $zplug_args; do zplug $arg; done
   }
 
+  private cmd
+
+  [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir $XDG_CACHE_HOME/zsh
   if [[ ! -f $XDG_CACHE_HOME/zsh/plugin ]]; then
     touch $XDG_CACHE_HOME/zsh/plugin
     if prompt 'Would you like to install plugins of zsh'; then
-      private cmd="git clone https://github.com/zplug/zplug $XDG_DATA_HOME/zsh/zplug"
+      cmd="git clone https://github.com/zplug/zplug $XDG_DATA_HOME/zsh/zplug"
       spinner 'Clone and init zplug' "$cmd" 1
       zplug-init
       private n=$(print-color-bold "$(zplug list | wc -l)" "$fg[main]")
       spinner "Clone $n plugins with zplug" 'zplug install' 1
-    else
-      return 1
     fi
   fi
 
-  if [[ -d $XDG_DATA_HOME/zsh/zplug ]]; then
+  [[ ! -d $XDG_CACHE_HOME/nvim ]] && mkdir $XDG_CACHE_HOME/nvim
+  if [[ ! -f $XDG_CACHE_HOME/nvim/plugin ]]; then
+    touch $XDG_CACHE_HOME/nvim/plugin
+    if prompt 'Would you like to install plugins of nvim'; then
+      cmd="git clone https://github.com/Shougo/dein.vim $XDG_DATA_HOME/nvim/dein"
+      spinner 'Clone dein.vim' "$cmd" 1
+      spinner "Clone plugins with dein.vim" 'nvim +q' 1
+    fi
+  fi
+
+  [[ ! -d $XDG_CACHE_HOME/tmux ]] && mkdir $XDG_CACHE_HOME/tmux
+  if [[ ! -f $XDG_CACHE_HOME/tmux/plugin ]]; then
+    touch $XDG_CACHE_HOME/tmux/plugin
+    if prompt 'Would you like to install plugins of tmux'; then
+      cmd="git clone https://github.com/tmux-plugins/tpm $XDG_DATA_HOME/tmux/tpm"
+      spinner 'Clone tpm' "$cmd" 1
+      spinner "Clone plugins with tpm" "$XDG_DATA_HOME/tmux/tpm/scripts/install_plugins.sh" 1
+      tpm-init
+    fi
+  fi
+
+  if [[ -f $XDG_CACHE_HOME/zsh/plugin && -d $XDG_DATA_HOME/zsh/zplug ]]; then
     # Zplug
     zplug-init
 

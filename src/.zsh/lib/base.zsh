@@ -38,7 +38,7 @@ spinner() {
   )
 
   set +m
-  ${=cmd} >/dev/null 2>&1 &
+  { $=cmd } >/dev/null 2>&1 &
   while :; do
     for s in $spinner; do
       printf "\r%s%s %s" "$space" "`print-color-bold "$s" "$fg[main]"`" "$msg"
