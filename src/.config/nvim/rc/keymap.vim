@@ -44,6 +44,8 @@ if has('unix')
 endif
 
 " Others
+cnoremap ; <CR>
+cnoremap : <C-u><C-h><ESC>
 nnoremap gm :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
 nnoremap gM :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>

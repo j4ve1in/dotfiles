@@ -5,12 +5,12 @@
 
 set background=light
 syntax enable " Switch on syntax highlighting
-augroup vimrc_change_cursorline_color
+augroup change_cursorline_color
   autocmd!
   " Set CursorLine highlighting.
-  autocmd InsertEnter,WinLeave * set cursorline | highlight CursorLine cterm=none ctermbg=17
+  autocmd InsertEnter * set cursorline | highlight CursorLine cterm=none ctermbg=17
   " Reset CursorLine highlighting to the defaults.
-  autocmd VimEnter,SourcePre,InsertLeave,WinEnter * set nocursorline | highlight clear CursorLine
+  autocmd InsertLeave * set nocursorline | highlight clear CursorLine
 augroup END
 
 "--------------------------------------------------------------------

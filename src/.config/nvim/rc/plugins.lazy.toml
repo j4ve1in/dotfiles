@@ -18,6 +18,11 @@ repo = 'slim-template/vim-slim'
 on_ft = 'slim'
 
 [[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+hook_add ='let g:vim_json_syntax_conceal = 0'
+
+[[plugins]]
 repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
 

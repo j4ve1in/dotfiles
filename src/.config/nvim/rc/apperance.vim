@@ -7,7 +7,7 @@ scriptencoding utf-8
 let &showbreak="\u21aa "
 
 " List
-set list listchars=tab:\ ,trail:_,eol:¬,extends:>,precedes:<,nbsp:%
+set list listchars=tab:\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
 
 " Hilighting double-byte space
 function! ZenkakuSpace()

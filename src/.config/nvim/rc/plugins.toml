@@ -455,16 +455,6 @@ repo = 'ryanoasis/vim-devicons'
 on_if = "$DISPLAY != ''"
 
 [[plugins]]
-repo = 'haya14busa/incsearch.vim'
-on_map = '<Plug>(incsearch-'
-hook_add = ''' " {{{
-  let g:incsearch#no_inc_hlsearch = 1
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-" }}} '''
-
-[[plugins]]
 repo = 'vim-scripts/vim-auto-save'
 hook_add = ''' " {{{
   let g:auto_save = 1
@@ -478,22 +468,13 @@ if = 'has("python3")'
 hook_add = 'let g:EditorConfig_exclude_patterns = ["gista:*", "scp://.*"]'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = ''' " {{{
-  let g:indent_guides_auto_colors=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=247
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=239
-  let g:indent_guides_enable_on_vim_startup=1
-  let g:indent_guides_color_change_percent=30
-  let g:indent_guides_guide_size=1
-  let g:indent_guides_exclude_filetypes = [
-        \ 'man',
-        \ 'help',
-        \ 'vimfiler',
-        \ 'diff',
-        \ 'agit_diff',
-        \ 'agit_stat']
-" }}} '''
+repo = 'Yggdroot/indentLine'
+hook_add ='''
+let g:indentLine_color_term = 240
+let g:indentLine_char = '¦'
+let g:indentLine_first_char = '¦'
+let g:indentLine_fileTypeExclude = ['help']
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -504,6 +485,7 @@ hook_add = ''' " {{{
   let s:lightblue = 21
   let s:cyan = 6
   let s:purple = 54
+  let s:lightgray = 240
   let s:gray = 235
 
   let s:p = {
@@ -519,9 +501,9 @@ hook_add = ''' " {{{
   let s:p.normal.left = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
   let s:p.normal.right = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
 
-  let s:p.inactive.middle = [['', '', s:white, s:gray]]
-  let s:p.inactive.right = [s:p.inactive.middle[0], s:p.inactive.middle[0]]
-  let s:p.inactive.left = [s:p.inactive.middle[0], s:p.inactive.middle[0]]
+  let s:p.inactive.middle = [['', '', s:white, s:black]]
+  let s:p.inactive.right = [['', '', s:white, s:gray], ['', '', s:white, s:lightgray]]
+  let s:p.inactive.left = [['', '', s:white, s:gray]]
 
   let s:p.insert.left = [['', '', s:blue, s:white], s:p.normal.left[1]]
   let s:p.replace.left = [['', '', s:white, s:cyan], s:p.normal.left[1]]
@@ -654,9 +636,6 @@ hook_add = ''' " {{{
 " }}} '''
 
 [[plugins]]
-repo = 'deris/vim-shot-f'
-
-[[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
 hook_add = '''
@@ -678,4 +657,35 @@ repo = 'jaxbot/github-issues.vim'
 
 [[plugins]]
 repo = 'b4b4r07/vim-shellutils'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_prompt = '{n}> '
+let g:EasyMotion_startofline = 0
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+map f <Plug>(easymotion-lineforward)
+map F <Plug>(easymotion-linebackward)
+
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap ; <CR>
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <Tab> <Over>(buffer-complete)
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
+
+hi EasyMotionIncSearch cterm=bold ctermbg=none ctermfg=75
+hi EasyMotionIncCursor ctermbg=27 ctermfg=15
+
+hi EasyMotionTarget cterm=bold ctermbg=none ctermfg=99
+hi EasyMotionTarget2First cterm=bold ctermbg=none ctermfg=99
+hi EasyMotionTarget2Second cterm=bold ctermbg=none ctermfg=27
+'''
 # }}}

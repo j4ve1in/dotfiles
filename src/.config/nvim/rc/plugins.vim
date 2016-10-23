@@ -1,5 +1,6 @@
 " Dein
 let s:dein_dir = expand('~/.local/share/nvim/dein')
+
 if isdirectory(s:dein_dir)
   execute 'set runtimepath^=' . s:dein_dir
 
