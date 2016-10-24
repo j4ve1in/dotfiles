@@ -42,8 +42,6 @@ You can install dotfiles by the following installation command.
 specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
-**NOTE2:** If you want to **provision**, specify the `-p` option.
-
 **Demo:**
 <a href="//asciinema.org/a/48340" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
 

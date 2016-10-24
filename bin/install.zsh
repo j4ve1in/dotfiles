@@ -46,7 +46,6 @@ while (( $# > 0 )); do
   case "$1" in
     -*)
       [[ "$1" =~ 'y' ]] && opt[yes]='1'
-      [[ "$1" =~ 'p' ]] && opt[provision]='1'
       shift
       ;;
     *) shift ;;
@@ -95,11 +94,6 @@ print-info() {
     print-section 'Assume yes' "       `print-enable`" '     '
   else
     print-section 'Assume yes' "       `print-disable`" '     '
-  fi
-  if (( $opt[provision] )); then
-    print-section 'Provisioning' "     `print-enable`" '     '
-  else
-    print-section 'Provisioning' "     `print-disable`" '     '
   fi
   echo
 }
@@ -154,9 +148,6 @@ printf-section() {
 }
 
 install() {
-  # Provisioning
-  (( $opt[provision] )) && provisioning
-
   # Download dctl
   download dctl
 
@@ -175,31 +166,10 @@ install() {
   fi
 }
 
-provisioning() {
-  download playbook
-  print-spinner 'Run an ansible playbook' "ansible-playbook $tempdir/site.yml" ' '
-  echo
-}
-
 restart() { clear; exec $SHELL -l; }
 
 download() {
-  if [[ $1 = playbook ]];then
-    private tempdir_playbook repo_playbook
-    repo_playbook="https://github.com/$DUSER/ansible-dotfiles/tarball/master"
-    tempdir_playbook="$TEMPDIR/playbook"
-    mkdir "$tempdir_playbook"
-
-    print-header 'Provision for installing dotfiles'
-    download-playbook() {
-      curl -sL $repo_playbook | tar xzC $tempdir_playbook --strip=1
-    }
-    print-spinner 'Downloading an ansible playbook' 'download-playbook' ' '
-    printf-color-bold '   -> ' "$fg[main]"
-    print-section 'Repository' "$repo_playbook"
-    printf-color-bold '   -> ' "$fg[main]"
-    print-section 'Directory' " $tempdir_playbook"
-  elif [[ $1 = dctl ]];then
+  if [[ $1 = dctl ]];then
     typeset repo_dctl="https://github.com/$DUSER/dctl"
     mkdir "$TEMPDIR_DCTL"
     print-header 'Download dctl'
