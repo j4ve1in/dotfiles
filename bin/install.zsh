@@ -70,6 +70,7 @@ main() {
 
   # Download, deploy and backup dotfiles
   dctl -i
+  echo
 
   # Restart
   if [[ $SHELL:t = zsh ]]; then
@@ -91,7 +92,7 @@ print-intro() {
   <<<     '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf  "$reset\n"
 
-  print-color-bold  "           $DREPO   \n" "$fg[sub]"
+  print-color-bold  "           $DREPO   \n\n" "$fg[sub]"
 
   print-section 'Author' "$DAUTHOR" '   '
   print-section 'License' "$DLICENSE\n" '     '
@@ -106,11 +107,11 @@ prompt() {
   printf '\b'
   case $input in
     y )
-      print-color 'Yes\n' "$fg[main]"
+      print-color 'Yes\n\n' "$fg[main]"
       return 0
       ;;
     * )
-      print-color 'no\n' "$fg[main]"
+      print-color 'no\n\n' "$fg[main]"
       return 1
       ;;
   esac
