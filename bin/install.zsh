@@ -89,12 +89,6 @@ print-info() {
   printf-section 'Author' "$DAUTHOR" '   '
   print-section 'License' "$DLICENSE" '     '
 
-  print-section 'Options' '' '   '
-  if (( $opt[yes] )); then
-    print-section 'Assume yes' "       `print-enable`" '     '
-  else
-    print-section 'Assume yes' "       `print-disable`" '     '
-  fi
   echo
 }
 
@@ -156,17 +150,10 @@ install() {
 
   # Restart
   if [[ $SHELL:t = zsh ]]; then
-    if (( $opt[yes] )); then
-      restart
-    else
-      private msg
-      msg='Do you want to restart shell'
-      print-prompt "$msg" 'restart'
-    fi
+    clear
+    $SHELL -l
   fi
 }
-
-restart() { clear; exec $SHELL -l; }
 
 download() {
   if [[ $1 = dctl ]];then
