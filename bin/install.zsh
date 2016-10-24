@@ -45,7 +45,6 @@ typeset -gA opt
 while (( $# > 0 )); do
   case "$1" in
     -*)
-      [[ "$1" =~ 'f' ]] && opt[full]='1'
       [[ "$1" =~ 'y' ]] && opt[yes]='1'
       [[ "$1" =~ 'p' ]] && opt[provision]='1'
       shift
@@ -101,11 +100,6 @@ print-info() {
     print-section 'Provisioning' "     `print-enable`" '     '
   else
     print-section 'Provisioning' "     `print-disable`" '     '
-  fi
-  if (( $opt[full] )); then
-    print-section 'Full Installation' "`print-enable`" '     '
-  else
-    print-section 'Full Installation' "`print-disable`" '     '
   fi
   echo
 }
@@ -169,14 +163,6 @@ install() {
   # Source dctl and install dotfiles with dctl
   . "$TEMPDIR_DCTL/init.zsh" && dctl -i
 
-  # Install plugin
-  if (( $opt[full] )); then
-    print-header 'Install plugin'
-    typeset plugin=('Dein' 'Zplug' 'TPM')
-    print-spinner "Downloading $plugin" 'download plugin' ' '
-    echo
-  fi
-
   # Restart
   if [[ $SHELL:t = zsh ]]; then
     if (( $opt[yes] )); then
@@ -223,17 +209,6 @@ download() {
     printf-color-bold '   -> ' "$fg[main]"
     print-section 'Directory' " $TEMPDIR_DCTL"
     echo
-  elif [[ $1 = plugin ]];then
-    typeset repo=('Shougo/dein.vim' 'zplug/zplug' 'tmux-plugins/tpm')
-    typeset url='https://github.com/'
-    typeset dir=(
-      "$HOME/.local/share/nvim/dein"
-      "$HOME/.local/share/zsh/zplug"
-      "$HOME/.local/share/tmux/tpm"
-    )
-    paste -d ' ' <(echo "${(F)repo}") <(echo "${(F)dir}") \
-      | sed -e "s|^|$url|g" \
-      | xargs -L 1 -n 2 -P "${#repo[*]}" git clone >/dev/null 2>&1
   fi
 }
 

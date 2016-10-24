@@ -38,14 +38,11 @@ You can install dotfiles by the following installation command.
 * Git
 * Zsh
 
-**NOTE:** If you want to use **full installation**, specify the `-f` option.
-When you use full installation, install shell, editor and multiplexer plugin, too.
-
-**NOTE2:** If you want to use **automatic installation**,
+**NOTE:** If you want to use **automatic installation**,
 specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
-**NOTE3:** If you want to **provision**, specify the `-p` option.
+**NOTE2:** If you want to **provision**, specify the `-p` option.
 
 **Demo:**
 <a href="//asciinema.org/a/48340" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
