@@ -125,14 +125,14 @@ print-prompt() {
   str+=`print-color-underline 'Y' "$fg[main]"`
   str+=`print-color '/' "$fg[main]"`
   str+=`print-color-underline 'n' "$fg[main]"`
-  print-brackets "$str"
+  print-brackets "$str" "$fg[sub]"
   printf ' '
 }
 
 print-brackets() {
-  print-color-bold '[' "$fg[accent]"
+  print-color-bold '[' "$2"
   printf '%s' "$1"
-  print-color-bold ']' "$fg[accent]"
+  print-color-bold ']' "$2"
 }
 
 print-section() {
