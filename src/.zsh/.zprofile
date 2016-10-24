@@ -27,7 +27,7 @@ fi
   file=( $ZDOTDIR/rc/{plugins,base,aliases,completion,prompt,local}.zsh )
 
   for f in $file; do
-    if [[ $f -nt $ZDOTDIR/.zshrc ]]; then
+    if [[ ! -f $ZDOTDIR/.zshrc || $f -nt $ZDOTDIR/.zshrc ]]; then
       print-header 'Catenate configuration files of zsh'
       private mark=`print-color-bold '>' "$fg[accent]"`
       print " $ZDOTDIR/rc/* $mark $ZDOTDIR/.zshrc"
