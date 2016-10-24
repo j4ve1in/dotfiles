@@ -9,9 +9,9 @@ print-color() {
 
   private color
   if [[ -n $3 ]]; then
-   color="\e[${3};$text[fg];5;${2}m"
+    color="\e[${3};$text[fg];5;${2}m"
   else
-   color="\e[$attr[default];$text[fg];5;${2}m"
+    color="\e[$attr[default];$text[fg];5;${2}m"
   fi
 
   printf "%b%b%b" "$color" "$string" "$reset"

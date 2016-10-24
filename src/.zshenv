@@ -44,13 +44,15 @@ cdpath=(~)
 # Programming
 has ruby && export KCODE='u'
 has go && [[ -d $HOME/.local ]] && export GOPATH="$HOME/.local"
-[[ ! -d $XDG_CONFIG_HOME/npm/ ]] && mkdir "$XDG_CONFIG_HOME/npm/"
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_HOME=$XDG_CONFIG_HOME/npm
+[[ ! -d $NPM_CONFIG_HOME ]] && mkdir $NPM_CONFIG_HOME
+export NPM_CONFIG_USERCONFIG=$NPM_CONFIG_HOME/npmrc
 
 # urxvt
 if has urxvt && [[ $DISPLAY ]]; then
-  [[ ! -d $XDG_RUNTIME_DIR/urxvt ]] && mkdir "$XDG_RUNTIME_DIR/urxvt"
-  export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-`hostname`"
+  export URXVT_RUNTIME_DIR=$XDG_RUNTIME_DIR/urxvt
+  [[ ! -d $URXVT_RUNTIME_DIR ]] && mkdir $URXVT_RUNTIME_DIR
+  export RXVT_SOCKET="$URXVT_RUNTIME_DIR/urxvt-`hostname`"
 fi
 
 # Less
@@ -62,8 +64,9 @@ LESS_TERMCAP_se=$'\e[0m'
 LESS_TERMCAP_so=$'\e[1;44m'
 LESS_TERMCAP_ue=$'\e[0m'
 LESS_TERMCAP_us=$'\e[1;36m'
-[[ ! -d $XDG_CACHE_HOME/less/ ]] && mkdir "$XDG_CACHE_HOME/less/"
-export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
+[[ ! -d $LESS_CACHE_HOME ]] && mkdir $LESS_CACHE_HOME
+export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
 # LSCOLORS
 if is-linux; then
@@ -75,21 +78,65 @@ fi
 
 # vagrant
 if has vagrant; then
-  [[ ! -d $XDG_DATA_HOME/vagrant ]] && mkdir "$XDG_DATA_HOME/vagrant"
   export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+  [[ ! -d $VAGRANT_HOME ]] && mkdir $VAGRANT_HOME
   export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 fi
+
+# nvim
+export NVIM_CACHE_HOME=$XDG_CACHE_HOME/nvim
+[[ ! -d $NVIM_CACHE_HOME ]] && mkdir $NVIM_CACHE_HOME
+export NVIM_DATA_HOME=$XDG_DATA_HOME/nvim
+[[ ! -d $NVIM_DATA_HOME ]] && mkdir $NVIM_DATA_HOME
+
+## dein
+export DEIN_HOME=$NVIM_DATA_HOME/dein
+[[ ! -d $DEIN_HOME ]] && mkdir $DEIN_HOME
+
+# tmux
+export TMUX_CACHE_HOME=$XDG_CACHE_HOME/tmux
+[[ ! -d $TMUX_CACHE_HOME ]] && mkdir $TMUX_CACHE_HOME
+export TMUX_DATA_HOME=$XDG_DATA_HOME/tmux
+[[ ! -d $TMUX_DATA_HOME ]] && mkdir $TMUX_DATA_HOME
+
+## tpm
+export TPM_HOME=$TMUX_DATA_HOME/tpm
+[[ ! -d $TPM_HOME ]] && mkdir $TPM_HOME
+
+# zsh
+export ZSH_CACHE_HOME=$XDG_CACHE_HOME/zsh
+[[ ! -d $ZSH_CACHE_HOME ]] && mkdir $ZSH_CACHE_HOME
+export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
+[[ ! -d $ZSH_DATA_HOME ]] && mkdir $ZSH_DATA_HOME
+export HISTFILE="$ZSH_CACHE_HOME/history"
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export {HISTSIZE,SAVEHIST}=1000
+
+## zplug
+export ZPLUG_HOME=$ZSH_DATA_HOME/zplug
+export ZPLUG_CACHE_FILE=$ZSH_CACHE_HOME/zplug/cache
 
 # dctl
 export DROOT=~/.config/dotfiles
 export DPATH="$DROOT/src"
 export DTARGET="$DPATH/.{,config/}*"
 
-# zsh
-[[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
-export HISTFILE="$XDG_CACHE_HOME/zsh/history"
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export {HISTSIZE,SAVEHIST}=1000
+# gomi
+export GOMI_DIR=$XDG_DATA_HOME/gomi
+
+# fzf
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --select-1
+  --exit-0
+  --extended
+  --cycle
+  --multi
+  --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
+  --color info:69,prompt:75,spinner:69,pointer:69,marker:69
+'
+has tmux && export SELECTOR='fzf-tmux'
+[[ -z $TMUX ]] && export SELECTOR='fzf'
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local

@@ -1,45 +1,38 @@
 #!/bin/zsh
 
 typeset -g D{USER,AUTHOR,LICENSE}
-: ${DUSER:=ytet5uy4}
-: ${DAUTHOR:=${DUSER}} ${DLICENSE:=MIT}
+DAUTHOR=ytet5uy4 DLICENSE=MIT
 
 # dctl
 export D{REPO,ROOT,PATH,TARGET}
-: ${DREPO:=https://github.com/${DUSER}/dotfiles}
-: ${DROOT:=~/.config/dotfiles}
-: ${DPATH:="$DROOT/src"}
-: ${DTARGET:="$DPATH/.{,config/}*"}
+DREPO=https://github.com/ytet5uy4/dotfiles
+DROOT=~/.config/dotfiles
+DPATH="$DROOT/src"
+DTARGET="$DPATH/.{,config/}*"
 
 # color
 typeset -gA fg=(
-  default   ''
-  main      "${DMAINCOLOR:=75}"
-  sub       "${DSUBCOLOR:=240}"
-  accent    "${DACCENTCOLOR:=21}"
-  success   "${DSUCCESSCOLOR:=32}"
-  error     "${DERRORCOLOR:=129}"
-)
-
-typeset -gA bg=(
   default ''
+  main    '75'
+  sub     '240'
+  accent  '27'
+  success '33'
+  error   '196'
 )
 
 typeset -gA text=(
   fg '38'
-  bg '48'
 )
 
 typeset -gA attr=(
   default   '0'
   bold      '1'
   underline '4'
-  reverse   '7'
 )
 
 # others
-typeset -g TEMPDIR="`mktemp -d /tmp/dotfiles-XXXXXX`"
-typeset -g TEMPDIR_DCTL="$TEMPDIR/dctl"
+export XDG_DATA_HOME=~/.local/share
+export ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug
 
 typeset -gA opt
 while (( $# > 0 )); do
@@ -53,7 +46,7 @@ while (( $# > 0 )); do
 done
 
 main() {
-  print-info
+  print-intro
 
   # check git command
   if ! type git >/dev/null 2>&1; then
@@ -61,92 +54,22 @@ main() {
     exit 1
   fi
 
-  if (( $opt[yes] )); then
-    install
-  else
-    private comment msg
-    comment='If the file exists, it will be ruthlessly clobbered'
-    msg='Are you sure you want to continue'
-    print-prompt "$msg" 'install' "$comment" '   '
+  if ! (( $opt[yes] )); then
+    prompt "Are you sure you want to continue" '   ' || exit 0
   fi
-}
 
-print-info() {
-  clear
-  private color="\e[$attr[bold];$text[fg];5;$fg[main]m"
-  private reset="\e[0m"
-
-  printf  "\n$color"
-  echo    '          __        __   ____ __ __              '
-  echo    '     ____/ /____   / /_ / __//_// /___   _____   '
-  echo    '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
-  echo    '   / /_/ // /_/ // /_ / __// // //  __//__  /    '
-  echo    '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
-  printf  "$reset\n"
-
-  print-color-bold  "           $DREPO   \n" "$fg[sub]"
-
-  printf-section 'Author' "$DAUTHOR" '   '
-  print-section 'License' "$DLICENSE" '     '
-
+  # Download zplug and dctl
+  print-header 'Download dctl and zplug'
+  cmd="git clone https://github.com/zplug/zplug $ZPLUG_HOME"
+  spinner 'Clone and init zplug' "$cmd" ' '
+  . $ZPLUG_HOME/init.zsh
+  zplug 'ytet5uy4/dctl'
+  spinner "Clone dctl with zplug" 'zplug install' ' '
+  zplug load
   echo
-}
 
-print-prompt() {
-  printf-color-bold "$4? " "$fg[main]"
-  [[ $3 ]] && printf "$3\n$4  "
-  printf "$1? %s " "`print-brackets Y/n`"
-  read -q input
-  [[ $3 ]] && printf "\r$4  " || printf-color-bold "\r$4? " "$fg[main]"
-  printf "$1? %s " "`print-brackets Y/n`"
-  case $input in
-    y )
-      print-color 'Yes\n' "$fg[main]"
-      $=2
-      ;;
-    * )
-      print-color 'no\n' "$fg[main]"
-      exit 0
-      ;;
-  esac
-}
-
-print-brackets() {
-  if [[ $1 = Y/n ]]; then
-    printf-color-bold '[' "$fg[sub]"
-    printf-color 'Y' "$fg[main]" "$attr[underline]"
-    printf-color '/' "$fg[main]"
-    printf-color 'n' "$fg[main]" "$attr[underline]"
-    printf-color-bold ']' "$fg[sub]"
-  else
-    printf-color-bold '[' "$fg[accent]"
-    printf '%s' "$1"
-    printf-color-bold ']' "$fg[accent]"
-  fi
-}
-
-print-section() {
-  printf '%s' "$3"
-  printf-color-bold "${(r:1:)1}" "$fg[main]"
-  printf-color "${(l:(($#1-1)):)1}" "$fg[main]"
-  printf-color-bold ': ' "$fg[sub]"
-  printf '%s\n' "$2"
-}
-
-printf-section() {
-  printf '%s' "$3"
-  printf-color-bold "${(r:1:)1}" "$fg[main]"
-  printf-color "${(l:(($#1-1)):)1}" "$fg[main]"
-  printf-color-bold ': ' "$fg[sub]"
-  printf '%s' "$2"
-}
-
-install() {
-  # Download dctl
-  download dctl
-
-  # Source dctl and install dotfiles with dctl
-  . "$TEMPDIR_DCTL/init.zsh" && dctl -i
+  # Download, deploy and backup dotfiles
+  dctl -i
 
   # Restart
   if [[ $SHELL:t = zsh ]]; then
@@ -155,46 +78,75 @@ install() {
   fi
 }
 
-download() {
-  if [[ $1 = dctl ]];then
-    typeset repo_dctl="https://github.com/$DUSER/dctl"
-    mkdir "$TEMPDIR_DCTL"
-    print-header 'Download dctl'
-    print-spinner 'Downloading dctl' "git clone --depth 1 $repo_dctl $TEMPDIR_DCTL" ' '
-    printf-color-bold '   -> ' "$fg[main]"
-    print-section 'Repository' "$repo_dctl"
-    printf-color-bold '   -> ' "$fg[main]"
-    print-section 'Directory' " $TEMPDIR_DCTL"
-    echo
-  fi
+print-intro() {
+  clear
+  private color="\e[$attr[bold];$text[fg];5;$fg[main]m"
+  private reset="\e[0m"
+
+  printf  "\n$color"
+  <<<     '          __        __   ____ __ __              '
+  <<<     '     ____/ /____   / /_ / __//_// /___   _____   '
+  <<<     '    / __  // __ \ / __// /_ / // // _ \ / ___/   '
+  <<<     '   / /_/ // /_/ // /_ / __// // //  __//__  /    '
+  <<<     '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
+  printf  "$reset\n"
+
+  print-color-bold  "           $DREPO   \n" "$fg[sub]"
+
+  print-section 'Author' "$DAUTHOR" '   '
+  print-section 'License' "$DLICENSE\n" '     '
+
+  echo
 }
 
-print() { printf "$@\n"; }
+prompt() {
+  private msg="$1" space="$2"
+  print-prompt "$msg" "$space"
+  read -q input
+  printf '\b'
+  case $input in
+    y )
+      print-color 'Yes\n' "$fg[main]"
+      return 0
+      ;;
+    * )
+      print-color 'no\n' "$fg[main]"
+      return 1
+      ;;
+  esac
+}
+
+print-prompt() {
+  private msg="$1" space="$2"
+  print-color-bold "$space? " "$fg[main]"
+  printf "$msg? "
+  private str=''
+  str+=`print-color-underline 'Y' "$fg[main]"`
+  str+=`print-color '/' "$fg[main]"`
+  str+=`print-color-underline 'n' "$fg[main]"`
+  print-brackets "$str"
+  printf ' '
+}
+
+print-brackets() {
+  print-color-bold '[' "$fg[accent]"
+  printf '%s' "$1"
+  print-color-bold ']' "$fg[accent]"
+}
+
+print-section() {
+  printf "$3"
+  print-color-bold "$1" "$fg[main]"
+  print-color-bold ': ' "$fg[accent]"
+  printf "$2"
+}
 
 print-color() {
-  typeset string="$1"
-  typeset reset="\e[0m"
+  private string="$1" reset="\e[$attr[default]m"
 
-  typeset color
-  if [[ -n $3 ]]; then
-   color="\e[${3};$text[fg];5;${2}m"
-  else
-   color="\e[$attr[default];$text[fg];5;${2}m"
-  fi
-
-  print "%b%b%b" "$color" "$string" "$reset"
-}
-
-printf-color() {
-  typeset string="$1"
-  typeset reset="\e[0m"
-
-  typeset color
-  if [[ -n $3 ]]; then
-   color="\e[${3};$text[fg];5;${2}m"
-  else
-   color="\e[$attr[default];$text[fg];5;${2}m"
-  fi
+  private color="\e["
+  [[ -n $3 ]] && color+="$3" || color+="$attr[default]"
+  color+=";$text[fg];5;${2}m"
 
   printf "%b%b%b" "$color" "$string" "$reset"
 }
@@ -203,21 +155,13 @@ print-color-bold() {
   print-color "$1" "$2" "$attr[bold]"
 }
 
-printf-color-bold() {
-  printf-color "$1" "$2" "$attr[bold]"
+print-color-underline() {
+  print-color "$1" "$2" "$attr[underline]"
 }
 
 print-header() {
-  printf-color-bold ":: " "$fg[accent]"
-  print "$1"
-}
-
-print-enable() {
-  print-color-bold 'enable' "$fg[main]"
-}
-
-print-disable() {
-  print 'disable'
+  print-color-bold ":: " "$fg[accent]"
+  <<< "$1"
 }
 
 print-mark() {
@@ -228,7 +172,7 @@ print-mark() {
   fi
 }
 
-print-spinner() {
+spinner() {
   private msg="$1" cmd="$2" space="$3"
   private -a spinner
   spinner=(

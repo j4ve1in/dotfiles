@@ -1,10 +1,27 @@
 : "Plugin" && () {
-  zplug-init() {
-    export ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug
-    export ZPLUG_CACHE_FILE=$XDG_CACHE_HOME/zsh/zplug/cache
+  private cmd
 
-    export GOMI_DIR=$XDG_DATA_HOME/gomi
+  if [[ ! -f $NVIM_CACHE_HOME/plugin ]]; then
+    touch $NVIM_CACHE_HOME/plugin
+    if prompt 'Would you like to install plugins of nvim'; then
+      cmd="git clone https://github.com/Shougo/dein.vim $DEIN_HOME"
+      spinner 'Clone dein.vim' "$cmd" 1
+      spinner "Clone plugins with dein.vim" 'nvim +q' 1
+    fi
+  fi
 
+  if [[ ! -f $TMUX_CACHE_HOME/plugin ]]; then
+    touch $TMUX_CACHE_HOME/plugin
+    if prompt 'Would you like to install plugins of tmux'; then
+      cmd="git clone https://github.com/tmux-plugins/tpm $TPM_HOME"
+      spinner 'Clone tpm' "$cmd" 1
+      spinner "Clone plugins with tpm" "$TPM_HOME/scripts/install_plugins.sh" 1
+      tpm-init
+    fi
+  fi
+
+  if [[ -d $ZPLUG_HOME ]]; then
+    # Zplug
     . $ZPLUG_HOME/init.zsh
 
     private -a zplug_args
@@ -19,54 +36,11 @@
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
     )
     for arg in $zplug_args; do zplug $arg; done
-  }
-
-  private cmd
-
-  [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir $XDG_CACHE_HOME/zsh
-  if [[ ! -f $XDG_CACHE_HOME/zsh/plugin ]]; then
-    touch $XDG_CACHE_HOME/zsh/plugin
-    if prompt 'Would you like to install plugins of zsh'; then
-      cmd="git clone https://github.com/zplug/zplug $XDG_DATA_HOME/zsh/zplug"
-      spinner 'Clone and init zplug' "$cmd" 1
-      zplug-init
-      private n=$(print-color-bold "$(zplug list | wc -l)" "$fg[main]")
-      spinner "Clone $n plugins with zplug" 'zplug install' 1
-    fi
-  fi
-
-  [[ ! -d $XDG_CACHE_HOME/nvim ]] && mkdir $XDG_CACHE_HOME/nvim
-  if [[ ! -f $XDG_CACHE_HOME/nvim/plugin ]]; then
-    touch $XDG_CACHE_HOME/nvim/plugin
-    if prompt 'Would you like to install plugins of nvim'; then
-      cmd="git clone https://github.com/Shougo/dein.vim $XDG_DATA_HOME/nvim/dein"
-      spinner 'Clone dein.vim' "$cmd" 1
-      spinner "Clone plugins with dein.vim" 'nvim +q' 1
-    fi
-  fi
-
-  [[ ! -d $XDG_CACHE_HOME/tmux ]] && mkdir $XDG_CACHE_HOME/tmux
-  if [[ ! -f $XDG_CACHE_HOME/tmux/plugin ]]; then
-    touch $XDG_CACHE_HOME/tmux/plugin
-    if prompt 'Would you like to install plugins of tmux'; then
-      cmd="git clone https://github.com/tmux-plugins/tpm $XDG_DATA_HOME/tmux/tpm"
-      spinner 'Clone tpm' "$cmd" 1
-      spinner "Clone plugins with tpm" "$XDG_DATA_HOME/tmux/tpm/scripts/install_plugins.sh" 1
-      tpm-init
-    fi
-  fi
-
-  if [[ -f $XDG_CACHE_HOME/zsh/plugin && -d $XDG_DATA_HOME/zsh/zplug ]]; then
-    # Zplug
-    zplug-init
 
     if ! zplug check; then
-      print-header 'Check plugin status of zsh'
-      zplug check --verbose | sed -e 's/^/ /g'
       if prompt 'Would you like to install plugins of zsh'; then
-        spinner 'Download plugins with zplug' 'zplug install' 1
-      else
-        return 1
+        private n=$(print-color-bold "$(zplug list | wc -l)" "$fg[main]")
+        spinner "Clone $n plugins with zplug" 'zplug install' 1
       fi
     fi
 
@@ -102,20 +76,6 @@
     zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
 
     if zplug check 'junegunn/fzf-bin'; then
-      export FZF_DEFAULT_OPTS='
-        --ansi
-        --select-1
-        --exit-0
-        --extended
-        --cycle
-        --multi
-        --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
-        --color info:69,prompt:75,spinner:69,pointer:69,marker:69
-      '
-
-      has tmux && export SELECTOR='fzf-tmux'
-      [[ -z $TMUX ]] && export SELECTOR='fzf'
-
       bindkey '^@' selector-select-widget
       bindkey '^@c' selector-cd-dir-widget
       bindkey '^@e' selector-edit-files-widget
