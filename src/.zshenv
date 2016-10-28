@@ -117,9 +117,7 @@ export ZPLUG_HOME=$ZSH_DATA_HOME/zplug
 export ZPLUG_CACHE_FILE=$ZSH_CACHE_HOME/zplug/cache
 
 # dctl
-export DROOT=~/.config/dotfiles
-export DPATH="$DROOT/src"
-export DTARGET="$DPATH/.{,config/}*"
+export DCTL_PATH=$XDG_CONFIG_HOME/dotfiles/src
 
 # gomi
 export GOMI_DIR=$XDG_DATA_HOME/gomi
