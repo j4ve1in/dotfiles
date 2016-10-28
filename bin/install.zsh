@@ -1,14 +1,12 @@
 #!/bin/zsh
 
-typeset -g D{USER,AUTHOR,LICENSE}
-DAUTHOR=ytet5uy4 DLICENSE=MIT
+typeset -g AUTHOR=ytet5uy4 LICENSE=MIT
+export XDG_DATA_HOME=~/.local/share XDG_CONFIG_HOME=~/.config
 
 # dctl
-export D{REPO,ROOT,PATH,TARGET}
-DREPO=https://github.com/ytet5uy4/dotfiles
-DROOT=~/.config/dotfiles
-DPATH="$DROOT/src"
-DTARGET="$DPATH/.{,config/}*"
+export DOT_REPO=https://github.com/ytet5uy4/dotfiles
+export DOT_ROOT=$XDG_CONFIG_HOME/dotfiles
+export DCTL_PATH=$DOT_ROOT/src
 
 # color
 typeset -gA fg=(
@@ -31,7 +29,6 @@ typeset -gA attr=(
 )
 
 # others
-export XDG_DATA_HOME=~/.local/share
 export ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug
 
 typeset -gA opt
@@ -47,6 +44,12 @@ done
 
 main() {
   print-intro
+
+  # check dotfiles
+  if [[ -d $DOT_ROOT ]]; then
+    echo "   destination path '$DOT_ROOT' already exists"
+    exit 1
+  fi
 
   # check git command
   if ! type git >/dev/null 2>&1; then
@@ -69,7 +72,7 @@ main() {
   echo
 
   # Download, deploy and backup dotfiles
-  dctl -i
+  dctl -i $DOT_REPO
   echo
 
   # Restart
@@ -92,10 +95,10 @@ print-intro() {
   <<<     '   \__,_/ \____/ \__//_/  /_//_/ \___//____/     '
   printf  "$reset\n"
 
-  print-color-bold  "           $DREPO   \n\n" "$fg[sub]"
+  print-color-bold  "           $DOT_REPO   \n\n" "$fg[sub]"
 
-  print-section 'Author' "$DAUTHOR" '   '
-  print-section 'License' "$DLICENSE\n" '     '
+  print-section 'Author' "$AUTHOR" '   '
+  print-section 'License' "$LICENSE\n" '     '
 
   echo
 }
