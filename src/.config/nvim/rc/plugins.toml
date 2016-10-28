@@ -432,7 +432,7 @@ on_map = [['n', '<Plug>']]
 on_path = '.*'
 hook_add = ''' "{{{
   nnoremap [VimFiler] <Nop>
-  nmap <Space>f [VimFiler]
+  nmap <Space><C-f> [VimFiler]
 
   nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
 
@@ -664,14 +664,15 @@ hook_add = '''
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_prompt = '{n}> '
 let g:EasyMotion_startofline = 0
+let g:EasyMotion_enter_jump_first = 1
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-map f <Plug>(easymotion-lineforward)
-map F <Plug>(easymotion-linebackward)
+map <Space>f <Plug>(easymotion-lineforward)
+map <Space>F <Plug>(easymotion-linebackward)
 
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
@@ -687,5 +688,12 @@ hi EasyMotionIncCursor ctermbg=27 ctermfg=15
 hi EasyMotionTarget cterm=bold ctermbg=none ctermfg=99
 hi EasyMotionTarget2First cterm=bold ctermbg=none ctermfg=99
 hi EasyMotionTarget2Second cterm=bold ctermbg=none ctermfg=27
+'''
+
+[[plugins]]
+repo = 'deris/vim-shot-f'
+hook_add = '''
+highlight ShotFGraph ctermfg=27 ctermbg=NONE cterm=bold
+highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
 '''
 # }}}
