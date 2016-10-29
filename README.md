@@ -41,7 +41,7 @@ specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
-<a href="//asciinema.org/a/48340" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
+<a href="//asciinema.org/a/asz75pk2aqxwy5ttp1zvyxnxx" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
 
 # Trial
 Before running installation command to setup dotfiles, you can pull
