@@ -4,7 +4,7 @@ MAINTAINER ytet5uy4
 # Update and Install packages
 RUN apk update && apk upgrade && \
     apk add --no-cache curl git zsh tmux gcc make coreutils \
-    python py-pip
+    python py-pip && pip install neovim
 
 # Ceate user
 RUN adduser -s /bin/zsh -D docker
