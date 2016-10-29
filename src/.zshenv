@@ -88,20 +88,14 @@ export NVIM_CACHE_HOME=$XDG_CACHE_HOME/nvim
 [[ ! -d $NVIM_CACHE_HOME ]] && mkdir $NVIM_CACHE_HOME
 export NVIM_DATA_HOME=$XDG_DATA_HOME/nvim
 [[ ! -d $NVIM_DATA_HOME ]] && mkdir $NVIM_DATA_HOME
-
-## dein
 export DEIN_HOME=$NVIM_DATA_HOME/dein
-[[ ! -d $DEIN_HOME ]] && mkdir $DEIN_HOME
 
 # tmux
 export TMUX_CACHE_HOME=$XDG_CACHE_HOME/tmux
 [[ ! -d $TMUX_CACHE_HOME ]] && mkdir $TMUX_CACHE_HOME
 export TMUX_DATA_HOME=$XDG_DATA_HOME/tmux
 [[ ! -d $TMUX_DATA_HOME ]] && mkdir $TMUX_DATA_HOME
-
-## tpm
 export TPM_HOME=$TMUX_DATA_HOME/tpm
-[[ ! -d $TPM_HOME ]] && mkdir $TPM_HOME
 
 # zsh
 export ZSH_CACHE_HOME=$XDG_CACHE_HOME/zsh
@@ -111,8 +105,6 @@ export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
 export HISTFILE="$ZSH_CACHE_HOME/history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
-
-## zplug
 export ZPLUG_HOME=$ZSH_DATA_HOME/zplug
 export ZPLUG_CACHE_FILE=$ZSH_CACHE_HOME/zplug/cache
 
