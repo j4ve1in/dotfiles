@@ -39,7 +39,7 @@
 
     if ! zplug check; then
       if prompt 'Would you like to install plugins of zsh'; then
-        private n=$(print-color-bold "$(zplug list | wc -l)" "$fg[main]")
+        private n=$(print-color-bold "$(zplug check --verbose | wc -l)" "$fg[main]")
         spinner "Clone $n plugins with zplug" 'zplug install' 1
       fi
     fi
