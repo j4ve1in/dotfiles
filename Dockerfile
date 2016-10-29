@@ -3,8 +3,8 @@ MAINTAINER ytet5uy4
 
 # Update and Install packages
 RUN apk update && apk upgrade && \
-    apk add --no-cache curl git zsh vim tmux gcc make coreutils \
-    python py-pip && pip install powerline-status
+    apk add --no-cache curl git zsh tmux gcc make coreutils \
+    python py-pip
 
 # Ceate user
 RUN adduser -s /bin/zsh -D docker
