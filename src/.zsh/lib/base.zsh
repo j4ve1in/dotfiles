@@ -12,9 +12,9 @@ prompt() {
   print-color-bold "$3? " "$fg[main]"
   [[ $2 ]] && printf "$2\n$3  "
   printf "$1? %s " "`print-brackets Y/n`"
-  tput cnorm
+  echoti cnorm
   read -q input
-  tput civis
+  echoti civis
   [[ $2 ]] && printf "\r$3  " || print-color-bold "\r$3? " "$fg[main]"
   printf "$1? %s " "`print-brackets Y/n`"
   case $input in
