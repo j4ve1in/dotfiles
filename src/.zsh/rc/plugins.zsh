@@ -31,6 +31,7 @@
       'ytet5uy4/dctl'
       'b4b4r07/zsh-gomi'
       'zsh-users/zsh-completions'
+      'zsh-users/zsh-autosuggestions'
       'zsh-users/zsh-syntax-highlighting, nice:10'
       'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
@@ -46,7 +47,11 @@
 
     zplug load
 
-    # Syntax-highlighting
+    if zplug check 'zsh-users/zsh-autosuggestions'; then
+      unset ZSH_AUTOSUGGEST_ACCEPT_WIDGETS
+      bindkey '^Y' autosuggest-accept
+    fi
+
     if zplug check 'zsh-users/zsh-syntax-highlighting'; then
       ZSH_HIGHLIGHT_STYLES[default]=none
       ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
