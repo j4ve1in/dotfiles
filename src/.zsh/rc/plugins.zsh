@@ -35,6 +35,8 @@
       'zsh-users/zsh-syntax-highlighting, nice:10'
       'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
+      'stedolan/jq, from:gh-r, as:command, rename-to:jq'
+      'ytet5uy4/feedly-zsh, on:stedolan/jq'
     )
     for arg in $zplug_args; do zplug $arg; done
 
