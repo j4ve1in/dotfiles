@@ -6,6 +6,7 @@ setopt no_beep
 setopt print_eight_bit
 setopt interactive_comments
 setopt notify
+setopt noclobber
 
 ## history
 setopt hist_expand
