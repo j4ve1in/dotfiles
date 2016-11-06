@@ -5,6 +5,7 @@ export ZDOTDIR="$HOME/.zsh"
 export PAGER='less'
 has nvim && export EDITOR='nvim -p'
 has chromium && export BROWSER='chromium'
+[[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
