@@ -7,6 +7,27 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_source = '''
+call denite#custom#option('default', 'prompt', '>')
+call denite#custom#option('default', 'statusline', 0)
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [
+      \ '.git/', '.ropeproject/', '__pycache__/',
+      \ 'venv/',
+      \ 'images/',
+      \ '*.min.*',
+      \ 'img/', 'fonts/'])
+call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+hi CursorLine cterm=none ctermbg=17
+hi deniteMatched cterm=none ctermfg=27
+" deniteMode
+" deniteStatusLinePath
+" deniteStatusLineNumber
+'''
+
 # Unite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -518,10 +539,8 @@ hook_add = ''' " {{{
   let g:lightline = {
   \   'colorscheme': 'abisso',
   \   'active': {
-  \     'left': [['mode', 'paste'],['git', 'filename', 'vimfiler']],
-  \   },
-  \   'component': {
-  \     'lineinfo': '%3l[%L]:%-2v'
+  \     'left': [['mode', 'paste'],['git', 'filename', 'denite', 'vimfiler']],
+  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
   \   },
   \   'component_function': {
   \     'vimfiler': 'LightLineVimFiler',
@@ -531,7 +550,10 @@ hook_add = ''' " {{{
   \     'filetype': 'LightLineFiletype',
   \     'fileencoding': 'LightLineFileencoding',
   \     'filename': 'LightLineFilename',
-  \     'mode': 'LightLineMode'
+  \     'mode': 'LightLineMode',
+  \     'denite': 'LightLineDenite',
+  \     'lineinfo': 'LightLineLineinfo',
+  \     'percent': 'LightLinePercent'
   \   }
   \ }
 
@@ -542,6 +564,27 @@ hook_add = ''' " {{{
     let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
     let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
   endif
+
+  function! LightLinePercent()
+    if &ft == 'denite'
+      return ''
+    else
+      let line = line('.')
+      let max_line = line('$')
+      return printf('%3d%s', (line * 100 / max_line), '%')
+    endif
+  endfunction
+
+  function! LightLineLineinfo()
+    if &ft == 'denite'
+      return denite#get_status_linenr()
+    else
+      let line = line('.')
+      let max_line = line('$')
+      let col = col('.')
+      return printf('%3d[%d]:%-2d', line, max_line, col)
+    endif
+  endfunction
 
   function! LightLineModified()
     if &filetype == "help"
@@ -557,9 +600,12 @@ hook_add = ''' " {{{
 
   function! LightLineFilename()
     if &ft == 'vimfiler'
-      return substitute(vimfiler#get_status_string(), ' \*safe\*', '','')
+      let filepath = resolve(expand(substitute(vimfiler#get_status_string(), ' \*safe\*', '','')))
+      return fnamemodify(filepath, ":t")
     elseif &ft == 'unite'
       return substitute(unite#get_status_string(), ' | ', '', '')
+    elseif &ft == 'denite'
+      return substitute(denite#get_status_mode(), ' *-- ', '', 'g')
     else
       if '' != expand('%:t')
         return expand('%:t') . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
@@ -573,27 +619,37 @@ hook_add = ''' " {{{
     return &ft == 'vimfiler' ? matchstr(vimfiler#get_status_string(), 'safe') : ''
   endfunction
 
+  function! LightLineDenite()
+    return &ft == 'denite' ? denite#get_status_sources() : ''
+  endfunction
+
   function! LightLineFugitive()
-    try
-      if exists('*fugitive#head')
-        if $DISPLAY == ''
-          let mark = ''
-        else
-          let mark = "\ue0a0 "
+    if ! &ft == 'denite'
+      try
+        if exists('*fugitive#head')
+          if $DISPLAY == ''
+            let mark = ''
+          else
+            let mark = "\ue0a0 "
+          endif
+          let _ = fugitive#head()
+          return strlen(_) ? mark._ : ''
         endif
-        let _ = fugitive#head()
-        return strlen(_) ? mark._ : ''
-      endif
-    catch
-    endtry
+      catch
+      endtry
+    endif
     return ''
   endfunction
 
   function! LightLineFileformat()
     if $DISPLAY == ''
-      return  &ft == 'unite' ? '' : winwidth(0) > 70 ? &fileformat : ''
+      if &ft == 'unite' || &ft == 'denite'
+        return ''
+      else
+        return winwidth(0) > 70 ? (strlen(&fileformat) ? &fileformat : '') : ''
+      endif
     else
-      if &ft == 'unite'
+      if &ft == 'unite' || &ft == 'denite'
         return ''
       else
         return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
@@ -603,13 +659,13 @@ hook_add = ''' " {{{
 
   function! LightLineFiletype()
     if $DISPLAY == ''
-      if &ft == 'unite'
+      if &ft == 'unite' || &ft == 'denite'
         return ''
       else
         return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
       endif
     else
-      if &ft == 'unite'
+      if &ft == 'unite' || &ft == 'denite'
         return ''
       else
         if winwidth(0) > 70
@@ -622,11 +678,16 @@ hook_add = ''' " {{{
   endfunction
 
   function! LightLineFileencoding()
-    return  &ft == 'unite' ? '' : winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    if &ft == 'unite' || &ft == 'denite'
+      return ''
+    else
+      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endif
   endfunction
 
   function! LightLineMode()
     return  &ft == 'unite' ? 'Unite' :
+          \ &ft == 'denite' ? 'Denite' :
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ winwidth(0) > 60 ? lightline#mode() : ''
   endfunction
