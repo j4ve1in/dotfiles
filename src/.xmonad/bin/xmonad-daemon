@@ -10,6 +10,10 @@ while (( $# > 0 )); do
       compton -b
       shift
       ;;
+    mopidy)
+      mopidy &
+      shift
+      ;;
     *) shift ;;
   esac
 done

@@ -67,7 +67,7 @@ myLayout = avoidStruts
 myStartupHook = do
   spawnOnce "xmonad-system brightness ="
   spawnOnce "xmonad-system wallpaper"
-  spawnOnce "xmonad-daemon {compton,tmux}"
+  spawnOnce "xmonad-daemon {compton,tmux,mopidy}"
   spawnOnce "xmonad-system mouse"
   spawnOnce "xmonad-system lock-screen"
   spawnOnce "xmonad-system im"
