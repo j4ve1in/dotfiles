@@ -11,6 +11,8 @@ main() {
     run-prompt "$2" 'man %%' "$1"
   elif [[ $1 = wifi ]]; then
     run "$2" 'sudo wifi-menu -o'
+  elif [[ $1 = MusicPlayer ]]; then
+    run "$2" 'ncmpcpp'
   elif [[ $1 = activity ]]; then
     run "$2" 'vtop -t brew'
   fi

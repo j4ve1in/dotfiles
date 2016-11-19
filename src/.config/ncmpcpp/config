@@ -1,0 +1,28 @@
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+mpd_music_dir = "~/Music/"
+ncmpcpp_directory = ~/.config/ncmpcpp
+
+mouse_support = "yes"
+autocenter_mode = "yes"
+titles_visibility = "no"
+display_volume_level = "no"
+playlist_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+
+progressbar_look = "━━─"
+now_playing_prefix = "$b▶  "
+now_playing_suffix = "$8$/b"
+browser_playlist_prefix = "$(253)[playlist]$9 "
+song_columns_list_format   = "(3)[]{} (67)[253]{t} (25)[253]{a} (5)[253]{l}"
+
+color1 = 253
+color2 = 253
+empty_tag_color = 253
+active_column_color = 253
+window_border_color = 28
+state_line_color = 21
+main_window_color = 253
+main_window_highlight_color = 253
+progressbar_color = 240
+progressbar_elapsed_color = 28

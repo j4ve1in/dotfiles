@@ -8,8 +8,10 @@ elif [[ $1 = browser ]]; then
   chromium
 elif [[ $1 = editor ]]; then
   termite -e 'nvim'
-elif [[ $1 = filemanager ]]; then
+elif [[ $1 = FileManager ]]; then
   urxvt -e 'ranger'
+elif [[ $1 = MusicPlayer ]]; then
+  termite -e 'ncmpcpp'
 elif [[ $1 = terminal ]]; then
   termite -e "tmux-exec"
 fi
