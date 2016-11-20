@@ -1,5 +1,5 @@
 <p align='center'>
-<img width=20% src='https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/dotfiles.png'>
+<img width=20% src='https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/dotfiles.png'>
 </p>
 
 <p align='center'>
@@ -22,8 +22,10 @@
 
 # Overview
 This repository manage configuration files on Unix-type operating systems.
+For see all screenshot, check out the wiki page.
 
-![screenshot]
+![screenshot1]
+![screenshot2]
 
 # Installation
 You can install dotfiles by the following installation command.
@@ -41,7 +43,7 @@ specify the `-y` option. When you use automatic installation,
 assume `yes` as answer to all prompts and run non-interactively.
 
 **Demo:**
-<a href="//asciinema.org/a/asz75pk2aqxwy5ttp1zvyxnxx" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/demo.png"></a>
+<a href="//asciinema.org/a/asz75pk2aqxwy5ttp1zvyxnxx" target="_blank"><img src="https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/demo.png"></a>
 
 # Trial
 Before running installation command to setup dotfiles, you can pull
@@ -55,6 +57,7 @@ an **[image]** and try my dotfiles in a Docker container as follows.
 Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
-[screenshot]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/screenshot.png
+[screenshot1]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/tmux.png
+[screenshot2]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/xmonad.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles
 [LICENSE.md]: //github.com/ytet5uy4/dotfiles/blob/master/LICENSE.md
