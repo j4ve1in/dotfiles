@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+screencast-box() {
+  typeset size display file
+  size=$1
+  display="$2"
+  file=~/Videos/Screencasts/screencast_$(date +'%y-%m-%d_%I%M%S').mkv
+  ffmpeg -f x11grab -s "$size" -i "$display" -f alsa -i default -c:v libx264 -c:a aac "$file"
+  notify-send 'Recorded screen' "Saved to $file"
+}
+
+screencast-full() {
+  typeset size
+  size=`xwininfo -root | awk '/-geo/{print $2}' | grep -Eo '^[0-9]*x[0-9]*'`
+  screencast-box "$size" "$DISPLAY"
+}
+
+screencast-select() {
+  eval $(slop -b 1 -c 0,0,255,1)
+  screencast-box "$W"x"$H" :0.0+$X,$Y
+}
+
+if type ffmpeg; then
+  notify-send 'screencast' 'ffmpeg not found'
+  return 1
+fi
+
+if ! killall ffmpeg; then
+  if [[ $1 = --select ]]; then
+    if [[ -f /tmp/unclutter.pid ]]; then
+      mouse
+      screencast-select
+      mouse
+    else
+      screencast-select
+    fi
+  else
+    screencast-full
+  fi
+fi

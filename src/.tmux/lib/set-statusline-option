@@ -1,45 +1,6 @@
 #!/bin/zsh
 
 main() {
-  if [[ $1 = mouse ]]; then
-    set-mouse-option $2
-  elif [[ $1 = statusline ]]; then
-    set-statusline
-  fi
-}
-
-set-mouse-option() {
-  if check-version '^.+2\.[12]$'; then
-    tmux bind -n WheelUpPane if -Ft= '#{mouse_any_flag}' 'send -M' \
-      "if -Ft= '#{pane_in_mode}' 'send -M' 'copy-mode -e'"
-    if [[ $1 = on ]]; then
-      tmux set-option -g mouse on
-      tmux display 'Mouse: ON'
-    elif [[ $1 = off ]]; then
-      tmux set-option -g mouse off
-      tmux display 'Mouse: OFF'
-    fi
-  elif check-version '^.+(2\.0|1\.9a?)$'; then
-    ## versions earlier than 2.1
-    if [[ $1 = on ]]; then
-      tmux set-window-option -g mode-mouse on
-      tmux set-option -g mouse-select-pane on
-      tmux set-option -g mouse-resize-pane on
-      tmux set-option -g mouse-select-window on
-      tmux display 'Mouse: ON'
-    elif [[ $1 = off ]]; then
-      tmux set-window-option -g mode-mouse off
-      tmux set-option -g mouse-select-pane off
-      tmux set-option -g mouse-resize-pane off
-      tmux set-option -g mouse-select-window off
-      tmux display 'Mouse: OFF'
-    fi
-  fi
-}
-
-check-version() { [[ `tmux -V` =~ $1 ]] && return 0 || return 1; }
-
-set-statusline() {
   set-statusline.left
   set-statusline.right
   set-statusline.window-format
@@ -124,6 +85,4 @@ is-patched-font() {
   fi
 }
 
-main $@
-
-exit 0
+main

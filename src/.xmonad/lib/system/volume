@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+file="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+
+case $1 in
+  m )
+    pamixer --toggle-mute
+    ;;
+  + )
+    pamixer --increase 1 && paplay $file
+    ;;
+  - )
+    pamixer --decrease 1 && paplay $file
+    ;;
+esac

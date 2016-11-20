@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+case $1 in
+  + )
+    xbacklight + 5 -time 100 -steps 1
+    ;;
+  - )
+    xbacklight - 5 -time 100 -steps 1
+    ;;
+  = )
+    xbacklight = 5
+    ;;
+esac

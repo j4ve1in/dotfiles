@@ -44,7 +44,7 @@ accentColor2  = "#00008b"
 
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "xmonad-run terminal"
+myTerminal = "xmonad-run Terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
@@ -65,13 +65,7 @@ myLayout = avoidStruts
 
 -- startup
 myStartupHook = do
-  spawnOnce "xmonad-system brightness ="
-  spawnOnce "xmonad-system wallpaper"
-  spawnOnce "xmonad-daemon {compton,tmux,mopidy}"
-  spawnOnce "xmonad-system mouse"
-  spawnOnce "xmonad-system lock-screen"
-  spawnOnce "xmonad-system im"
-  spawnOnce "xmonad-system xcape"
+  spawnOnce "xmonad-run startup"
 
 -- loghook
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
@@ -114,18 +108,29 @@ myAdditionalKeys =
   ]
 
 myAdditionalKeysP =
-  -- Volume setting media keys
-  [ ("<XF86AudioRaiseVolume>",  spawn "xmonad-system volume +")
-  , ("<XF86AudioLowerVolume>",  spawn "xmonad-system volume -")
-  , ("<XF86AudioMute>",         spawn "xmonad-system volume m")
-  , ("M-S-s",                   spawn "xmonad-system volume +")
-  , ("M-S-a",                   spawn "xmonad-system volume -")
-  , ("M-S-d",                   spawn "xmonad-system volume m")
-  -- Brightness Keys
-  , ("<XF86MonBrightnessUp>",   spawn "xmonad-system brightness +")
-  , ("<XF86MonBrightnessDown>", spawn "xmonad-system brightness -")
-  , ("M-S-e",                   spawn "xmonad-system brightness +")
-  , ("M-S-w",                   spawn "xmonad-system brightness -")
+  -- system
+  [ ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
+  , ("<XF86AudioLowerVolume>",  spawn "xmonad-run volume -")
+  , ("<XF86AudioMute>",         spawn "xmonad-run volume m")
+  , ("M-S-s",                   spawn "xmonad-run volume +")
+  , ("M-S-a",                   spawn "xmonad-run volume -")
+  , ("M-S-d",                   spawn "xmonad-run volume m")
+  , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
+  , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
+  , ("M-S-e",                   spawn "xmonad-run brightness +")
+  , ("M-S-w",                   spawn "xmonad-run brightness -")
+  , ("M-S-m",                   spawn "xmonad-run mouse toggle")
+  , ("M-C-h",                   spawn "xmonad-run mouse left")
+  , ("M-C-j",                   spawn "xmonad-run mouse down")
+  , ("M-C-k",                   spawn "xmonad-run mouse up")
+  , ("M-C-l",                   spawn "xmonad-run mouse right")
+  , ("M-C-m",                   spawn "xmonad-run mouse click")
+  , ("M-C-r",                   spawn "xmonad-run screencast")
+  , ("M-S-r",                   spawn "xmonad-run screencast --select")
+  , ("<Print>",                 spawn "xmonad-run screenshot")
+  , ("S-<Print>",               spawn "xmonad-run screenshot --select")
+  , ("M-p",                     spawn "xmonad-run power")
+  , ("M-q",                     spawn "xmonad-run restart")
   -- window operations
   , ("M-l",                     nextWS)
   , ("M-h",                     prevWS)
@@ -133,24 +138,11 @@ myAdditionalKeysP =
   , ("M-S-h",                   shiftToPrev)
   , ("M-,",                     sendMessage Shrink)
   , ("M-.",                     sendMessage Expand)
-  -- mouse
-  , ("M-S-m",                   spawn "xmonad-system mouse")
-  , ("M-C-h",                   spawn "xmonad-system mouse left")
-  , ("M-C-j",                   spawn "xmonad-system mouse down")
-  , ("M-C-k",                   spawn "xmonad-system mouse up")
-  , ("M-C-l",                   spawn "xmonad-system mouse right")
-  , ("M-C-m",                   spawn "xmonad-system mouse click")
-  -- Others
-  , ("M-r",                     spawn "xmonad-run launcher")
-  , ("M-b",                     spawn "xmonad-run browser")
-  , ("M-e",                     spawn "xmonad-run editor")
+  -- launch app
+  , ("M-<Return>",              spawn myTerminal)
+  , ("M-r",                     spawn "xmonad-run Launcher")
+  , ("M-b",                     spawn "xmonad-run Browser")
+  , ("M-e",                     spawn "xmonad-run Editor")
   , ("M-f",                     spawn "xmonad-run FileManager")
   , ("M-m",                     spawn "xmonad-run MusicPlayer")
-  , ("M-<Return>",              spawn myTerminal)
-  , ("M-C-r",                   spawn "xmonad-system screencast")
-  , ("M-S-r",                   spawn "xmonad-system screencast --select")
-  , ("<Print>",                 spawn "xmonad-system screenshot")
-  , ("S-<Print>",               spawn "xmonad-system screenshot --select")
-  , ("M-p",                     spawn "xmonad-power select")
-  , ("M-q",                     spawn "xmonad-power restart")
   ]

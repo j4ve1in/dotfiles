@@ -1,3 +1,3 @@
-#!/bin/zsh
+export DMENU="-sb #00008b -nb black -fn Migu1M:size=13.5"
 
-DMENU="-sb #00008b -nb black -fn Migu1M:size=13.5"
+# vim: ft=zsh sw=2 ts=2 et

@@ -3,7 +3,13 @@ export ZDOTDIR="$HOME/.zsh"
 
 # base
 export PAGER='less'
+export MANUAL='man'
 has nvim && export EDITOR='nvim -p'
+has vtop && export ACTIVITY='vtop -t brew'
+has ncmpcpp && export MUSICPLAYER='ncmpcpp'
+has wifi-menu && export NETWORKMANAGER='sudo wifi-menu -o'
+has lpass && export PASSWORDMANAGER='lpass login "$LPASS_USERNAME"'
+has trans && export TRANSLATION='trans -pager $PAGER'
 has chromium && export BROWSER='chromium'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 
@@ -21,7 +27,7 @@ typeset -U path fpath cdpath
 
 path=(
   $path
-  $HOME/.{local,tmux,zsh,config/git}/bin(N-/)
+  $HOME/.{local,zsh}/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
 
@@ -128,6 +134,10 @@ export FZF_DEFAULT_OPTS='
 '
 has tmux && export SELECTOR='fzf-tmux'
 [[ -z $TMUX ]] && export SELECTOR='fzf'
+
+# dmenu
+export DMENU_CONFIG_FILE=$XDG_CONFIG_HOME/dmenurc
+[[ -f $DMENU_CONFIG_FILE ]] && . $DMENU_CONFIG_FILE || export DMENU=''
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local

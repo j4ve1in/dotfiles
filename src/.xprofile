@@ -1,6 +1,7 @@
 if type fcitx; then
   export GTK_IM_MODULE='fcitx' QT_IM_MODULE='fcitx' XMODIFIERS='@im=fcitx'
 fi
-[ -d $HOME/.tmux/bin ] && export PATH="$PATH:$HOME/.tmux/bin"
-[ -d $HOME/.xmonad/bin ] && export PATH="$PATH:$HOME/.xmonad/bin"
+
+[[ -d $HOME/.zsh/bin ]] && export PATH="$PATH:$HOME/.zsh/bin"
+
 # vim: ft=sh sw=2 ts=2 et

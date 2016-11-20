@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+brightness =
+wallpaper
+
+compton -b
+tmux new-session -s 0 -d
+mopidy &
+
+mouse toggle
+lock-screen
+input-method
+xcape
