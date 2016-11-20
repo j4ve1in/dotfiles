@@ -22,7 +22,7 @@
 
 # Overview
 This repository manage configuration files on Unix-type operating systems.
-For see all screenshot, check out the wiki page.
+For see all screenshot, check out the [wiki page].
 
 ![screenshot1]
 ![screenshot2]
@@ -57,6 +57,7 @@ an **[image]** and try my dotfiles in a Docker container as follows.
 Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
+[wiki page]: //github.com/ytet5uy4/dotfiles/wiki
 [screenshot1]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/tmux.png
 [screenshot2]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/xmonad.png
 [image]: //hub.docker.com/r/ytet5uy4/dotfiles
