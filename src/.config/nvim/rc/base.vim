@@ -7,7 +7,7 @@ set virtualedit=block
 set grepprg=grep\ -inH
 set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
-autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost make,*grep* cwindow
 set wildignorecase wildmode=longest:full,full
 
 " clipboard

@@ -9,9 +9,35 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-hook_source = '''
+depends = ['neomru.vim']
+hook_add = ''' " {{{
+  nnoremap [Denite] <Nop>
+  nmap <C-Space> [Denite]
+
+  nnoremap <silent> [Denite]<C-b> :<C-u>Denite<Space>buffer<CR>
+  nnoremap <silent> [Denite]<C-t> :<C-u>Denite<Space>unite:tab<CR>
+  nnoremap <silent> [Denite]f     :<C-u>Denite<Space>file_rec<CR>
+  nnoremap <silent> [Denite]F     :<C-u>Denite<Space>file_rec<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Denite]m     :<C-u>Denite<Space>file_mru<CR>
+  nnoremap <silent> [Denite]M     :<C-u>Denite<Space>file_mru<Space>-default-action=tabopen<CR>
+  nnoremap <silent> [Denite]/     :<C-u>Denite<Space>grep<CR>
+  nnoremap <silent> [Denite]?     :<C-u>Denite<Space>grep<Space>-default-action=tabopen<CR>
+
+  " others
+  nnoremap <silent> [Denite]. :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
+  nnoremap <silent> [Denite]> :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabopen<CR>
+" }}} '''
+hook_source = ''' " {{{
 call denite#custom#option('default', 'prompt', '>')
 call denite#custom#option('default', 'statusline', 0)
+call denite#custom#var('file_rec', 'command',
+      \ ['rg', '--files', '-uuu', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'default_opts',
+      \ ['--vimgrep', '-uuu', '--no-heading'])
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', '.ropeproject/', '__pycache__/',
@@ -26,52 +52,22 @@ hi deniteMatched cterm=none ctermfg=27
 " deniteMode
 " deniteStatusLinePath
 " deniteStatusLineNumber
-'''
+" }}} '''
 
 # Unite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['neomru.vim']
 hook_add = ''' " {{{
   let g:unite_enable_auto_select = 0
   let g:unite_source_rec_min_cache_files= 10000
   nnoremap [Unite] <Nop>
-  nmap <C-Space> [Unite]
+  nmap <Space>u [Unite]
 
   nnoremap <silent> [Unite] :<C-u>Unite<CR>
-  nnoremap <silent> [Unite]<C-t> :<C-u>Unite<Space>tab<CR>
-  nnoremap <silent> [Unite]<C-b> :<C-u>Unite<Space>buffer<CR>
-
-  " file_rec
-  if isdirectory(getcwd()."/.git")
-    nnoremap <silent> [Unite]f :Unite<Space>file_rec/git<CR>
-    nnoremap <silent> [Unite]F :Unite<Space>file_rec/git<Space>-default-action=tabopen<CR>
-  else
-    nnoremap <silent> [Unite]f :Unite<Space>file_rec/async<CR>
-    nnoremap <silent> [Unite]F :Unite<Space>file_rec/async<Space>-default-action=tabopen<CR>
-  endif
-
-  " file_mru
-  nnoremap <silent> [Unite]m :<C-u>Unite<Space>file_mru<CR>
-  nnoremap <silent> [Unite]M :<C-u>Unite<Space>file_mru<Space>-default-action=tabopen<CR>
 
   " find
   nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
   nnoremap <silent> [Unite]fI :Unite<Space>find:.<Space>-default-action=tabopen<CR>
-
-  " grep
-  nnoremap <silent> [Unite]/ :<C-u>Unite<Space>grep:.<CR>
-  nnoremap <silent> [Unite]? :<C-u>Unite<Space>grep:.<Space>-default-action=tabopen<CR>
-
-  if executable('hw')
-    let g:unite_source_grep_command = 'hw'
-    let g:unite_source_grep_default_opts = '--no-group --no-color'
-    let g:unite_source_grep_recursive_opt = ''
-  endif
-
-  " others
-  nnoremap <silent> [Unite]. :<C-u>Unite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
-  nnoremap <silent> [Unite]> :<C-u>Unite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabopen<CR>
   hi uniteCandidateSourceName ctermfg=255
 " }}} '''
 hook_source = ''' " {{{
@@ -81,11 +77,6 @@ hook_source = ''' " {{{
     \ 'prompt': '> ',
     \ 'candidate_icon': '- ',
     \ 'hide_icon': 0 })
-
-  " ignore patterns
-  let s:unite_ignore_patterns='\.\(gif\|jpe\?g\|png\|webp\)$'
-  call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_patterns)
-  call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_patterns)
 " }}} '''
 
 [[plugins]]
