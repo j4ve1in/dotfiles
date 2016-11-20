@@ -4,29 +4,10 @@ root = true
     end_of_line = lf
     insert_final_newline = true
 
-# style: space, size: 2
-[{*.bash,*.vim,*.sh,*.zsh,*.hs,*.xbm}]
+[{*.{vim,zsh,hs,xbm},.tmux.conf,.{x,z}*,dircolors}]
     indent_style = space
     indent_size = 2
 
-[{.minttyrc,.tmux.conf,.x*,viminfo}]
-    indent_style = space
-    indent_size = 2
-
-[{.bash*,.dir_colors,.hushlogin,.inputrc,.zsh*,zlogin,zprofile}]
-    indent_style = space
-    indent_size = 2
-
-# style: tab, size: 4
-[.toprc,viminfo]
-    indent_style = tab
-    indent_size = 4
-
-# style: space, size: 4
-[{*.conf,.X*,.zompdump,.chpwd-recent-dirs}]
-    indent_style = space
-    indent_size = 4
-
-[{Dockerfile,*.md,.gitignore,.dockerignore,.editorconfig}]
+[{*.{md,conf},.X*,Dockerfile,.*ignore}]
     indent_style = space
     indent_size = 4
