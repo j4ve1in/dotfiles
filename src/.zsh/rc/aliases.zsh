@@ -13,7 +13,9 @@ is-linux && alias l{,s}='ls -F --color=always' ll='l -hl --time-style=long-iso'
 is-darwin && alias l{,s}='ls -FG' ll='l -hl'
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
 alias la='l -A' lla='ll -A'
-alias grep='grep --color=auto' fgrep='fgrep --color=auto' egrep='egrep --color=auto'
+if ! is-alpine; then
+  alias grep='grep --color=auto' fgrep='fgrep --color=auto' egrep='egrep --color=auto'
+fi
 alias le='less'
 alias m='mv'
 alias rm='rm -iv' cp='cp -iv' mv='mv -iv'
