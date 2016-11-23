@@ -4,7 +4,6 @@ mpd_music_dir = "~/Music/"
 ncmpcpp_directory = ~/.config/ncmpcpp
 
 mouse_support = "yes"
-autocenter_mode = "yes"
 titles_visibility = "no"
 display_volume_level = "no"
 playlist_display_mode = "columns"

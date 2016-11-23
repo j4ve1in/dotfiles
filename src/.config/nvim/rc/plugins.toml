@@ -748,4 +748,10 @@ hook_add = '''
 highlight ShotFGraph ctermfg=27 ctermbg=NONE cterm=bold
 highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
 '''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
 # }}}
