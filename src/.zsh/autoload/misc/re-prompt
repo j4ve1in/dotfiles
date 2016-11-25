@@ -1,4 +1,6 @@
-zle .reset-prompt
-zle .accept-line
+if [[ -n $BUFFER ]]; then
+  zle .reset-prompt
+  zle .accept-line
+fi
 
 # vim: ft=zsh sw=2 ts=2 et
