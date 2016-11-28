@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-file=~/Pictures/Screenshots/screenshot_$(date +'%y-%m-%d_%I%M%S').png
+file=~/Pictures/Screenshots/$(date +'%y-%m-%d_%I%M%S').png
 if [[ -f /tmp/unclutter.pid ]]; then
   mouse
   [[ $1 = --select ]] && maim -s -b 1 -c 0,0,255,1 "$file" || maim "$file"
