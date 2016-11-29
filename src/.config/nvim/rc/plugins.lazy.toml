@@ -27,8 +27,10 @@ repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
 
 [[plugins]]
-repo = 'fatih/vim-go'
+repo = 'zchee/nvim-go'
+build = 'make'
 on_ft = 'go'
+hook_add = 'autocmd BufWritePre *.go Gofmt'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -48,6 +50,11 @@ on_ft = 'fish'
 # }}}
 
 # Others {{{
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = 'open-browser.vim'

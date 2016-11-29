@@ -346,7 +346,7 @@ depends = [
   'vim-quickrun',
   'vimproc.vim',
   'shabadou.vim',
-  'vim-qfsigns',
+  'vim-hier',
   'quickfixstatus'
 ]
 hook_add = ''' " {{{
@@ -357,8 +357,12 @@ let g:watchdogs_check_CursorHold_enable = 1
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = ''' " {{{
+if !exists("g:quickrun_config")
+    let g:quickrun_config = {}
+endif
 let g:quickrun_config = {
 \  'watchdogs_checker/_' : {
+\    'outputter/quickfix/open_cmd' : '',
 \    'hook/qfsigns_update/enable_exit':   1,
 \    'hook/qfsigns_update/priority_exit': 3,
 \  },
@@ -372,12 +376,7 @@ repo = 'osyo-manga/shabadou.vim'
 repo = 'dannyob/quickfixstatus'
 
 [[plugins]]
-repo = 'KazuakiM/vim-qfsigns'
-hook_add = ''' " {{{
-  highlight Signs cterm=bold ctermfg=196 ctermbg=0
-  let g:qfsigns#Config = {'id': '5051', 'name': 'QFSigns'}
-  sign define QFSigns linehl=NONE texthl=Signs text=>>
-" }}} '''
+repo = 'cohama/vim-hier'
 # }}}
 
 # Others {{{

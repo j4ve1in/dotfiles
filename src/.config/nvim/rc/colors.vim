@@ -5,12 +5,12 @@
 
 set background=light
 syntax enable " Switch on syntax highlighting
-augroup change_cursorline_color
+augroup toggle_cursorline_color
   autocmd!
   " Set CursorLine highlighting.
-  autocmd InsertEnter * set cursorline | highlight CursorLine cterm=none ctermbg=17
+  autocmd InsertEnter * set cursorline
   " Reset CursorLine highlighting to the defaults.
-  autocmd InsertLeave * set nocursorline | highlight clear CursorLine
+  autocmd InsertLeave * set nocursorline
 augroup END
 
 "--------------------------------------------------------------------
