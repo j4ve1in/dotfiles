@@ -19,7 +19,8 @@ hi cDefine                                     ctermfg=69
 hi cInclude                                    ctermfg=31
 hi Comment                                     ctermfg=245
 hi Constant                                    ctermfg=99
-hi Cursor                         ctermbg=240  ctermfg=231
+hi Cursor                         ctermbg=17
+hi CursorLine     cterm=none      ctermbg=17
 hi CursorLineNr   cterm=bold      ctermbg=0    ctermfg=none
 hi CursorColumn                   ctermbg=0
 hi DiffAdded                      ctermbg=none ctermfg=46

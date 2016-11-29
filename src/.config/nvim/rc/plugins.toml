@@ -7,6 +7,7 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+# Denite {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
@@ -26,33 +27,42 @@ hook_add = ''' " {{{
   " others
   nnoremap <silent> [Denite]. :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
   nnoremap <silent> [Denite]> :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabopen<CR>
+
+  hi deniteMatched cterm=none ctermfg=27
 " }}} '''
 hook_source = ''' " {{{
-call denite#custom#option('default', 'prompt', '>')
-call denite#custom#option('default', 'statusline', 0)
-call denite#custom#var('file_rec', 'command',
-      \ ['rg', '--files', '-uuu', '-S', '--glob', '!.git'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'default_opts',
-      \ ['--vimgrep', '-uuu', '-S', '--no-heading'])
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-      \ [
-      \ '.git/', '.ropeproject/', '__pycache__/',
-      \ 'venv/',
-      \ 'images/',
-      \ '*.min.*',
-      \ 'img/', 'fonts/'])
-call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
-hi CursorLine cterm=none ctermbg=17
-hi deniteMatched cterm=none ctermfg=27
-" deniteMode
-" deniteStatusLinePath
-" deniteStatusLineNumber
+  call denite#custom#option('default', 'winheight', 10)
+  call denite#custom#option('default', 'prompt', '>')
+  call denite#custom#option('default', 'statusline', 0)
+  call denite#custom#var('file_rec', 'command',
+        \ ['rg', '--files', '-uuu', '-S', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'default_opts',
+        \ ['--vimgrep', '-uuu', '-S', '--no-heading'])
+  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+        \ [
+        \ '.git/', '.ropeproject/', '__pycache__/',
+        \ 'venv/',
+        \ 'images/',
+        \ '*.min.*',
+        \ 'img/', 'fonts/'])
+  call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+  call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 " }}} '''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Jagua/vim-denite-ghq'
+depends = 'denite.vim'
+hook_add = ''' " {{{
+  nnoremap <silent> [Denite]gh :<C-u>Denite<Space>ghq<CR>
+" }}} '''
+# }}}
 
 # Unite {{{
 [[plugins]]
@@ -78,9 +88,6 @@ hook_source = ''' " {{{
     \ 'candidate_icon': '- ',
     \ 'hide_icon': 0 })
 " }}} '''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
@@ -449,8 +456,8 @@ hook_add = ''' "{{{
   nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
 
   let g:vimfiler_as_default_explorer = 1
-  autocmd FileType vimfiler 
-        \ nnoremap <buffer><silent>/ 
+  autocmd FileType vimfiler
+        \ nnoremap <buffer><silent>/
         \ :<C-u>Unite file -default-action=vimfiler<CR>
   autocmd FileType vimfiler setlocal statusline=VimFiler
   autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | VimFiler | endif
