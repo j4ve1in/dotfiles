@@ -1,7 +1,7 @@
 private -A abbreviations
 abbreviations=(
   'F'   '| fzf-tmux'
-  'G'   '| grep'
+  'G'   '| rg'
   'X'   '| xargs'
   'T'   '| tail'
   'H'   '| head'
