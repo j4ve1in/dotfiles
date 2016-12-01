@@ -30,7 +30,9 @@ on_ft = 'coffee'
 repo = 'zchee/nvim-go'
 build = 'make'
 on_ft = 'go'
-hook_add = 'nnoremap <C-c> :<C-u>Gorun<space>'
+hook_add = '''
+nnoremap <C-c> :<C-u>Gofmt<CR>:<C-u>Gorun<space>
+'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'

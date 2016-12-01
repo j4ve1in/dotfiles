@@ -343,24 +343,30 @@ repo = 'wellle/targets.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
 depends = [
-  'vim-quickrun',
   'vimproc.vim',
+  'vim-quickrun',
   'shabadou.vim',
-  'vim-hier',
-  'quickfixstatus'
+  'quickfixstatus',
+  'vim-hier'
 ]
 hook_add = ''' " {{{
 let g:watchdogs_check_BufWritePost_enable = 1
 let g:watchdogs_check_CursorHold_enable = 1
 " }}} '''
+hook_source = 'call watchdogs#setup(g:quickrun_config)'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = ''' " {{{
 let g:quickrun_config = {
 \  'watchdogs_checker/_' : {
-\    'outputter/quickfix/open_cmd' : '',
+\    'outputter/quickfix/open_cmd': '',
+\    'hook/qfstatusline_update/enable_exit' : 1,
+\    'hook/qfstatusline_update/priority_exit' : 4
 \  },
+\  'ansible/watchdogs_checker' : {
+\    'type': 'watchdogs_checker/yaml-lint'
+\  }
 \}
 " }}} '''
 
@@ -369,6 +375,13 @@ repo = 'osyo-manga/shabadou.vim'
 
 [[plugins]]
 repo = 'dannyob/quickfixstatus'
+
+[[plugins]]
+repo = 'KazuakiM/vim-qfstatusline'
+hook_add = ''' " {{{
+let g:Qfstatusline#UpdateCmd = function('lightline#update')
+let g:Qfstatusline#Text = 0
+" }}} '''
 
 [[plugins]]
 repo = 'cohama/vim-hier'
@@ -386,7 +399,7 @@ repo = 'surround.vim'
 repo = 'soramugi/auto-ctags.vim'
 hook_add = ''' " {{{
   let g:auto_ctags = 1
-  let g:auto_ctags_directory_list = '.git'
+  let g:auto_ctags_directory_list = ['.git']
 " }}} '''
 
 [[plugins]]
@@ -494,6 +507,7 @@ repo = 'itchyny/lightline.vim'
 hook_add = ''' " {{{
   let s:white  = 255
   let s:black  = 0
+  let s:red  = 196
   let s:blue   = 17
   let s:lightblue = 21
   let s:cyan = 6
@@ -514,6 +528,8 @@ hook_add = ''' " {{{
   let s:p.normal.left = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
   let s:p.normal.right = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
 
+  let s:p.normal.error = [[ '', '', s:red, s:black ]]
+
   let s:p.inactive.middle = [['', '', s:white, s:black]]
   let s:p.inactive.right = [['', '', s:white, s:gray], ['', '', s:white, s:lightgray]]
   let s:p.inactive.left = [['', '', s:white, s:gray]]
@@ -532,7 +548,13 @@ hook_add = ''' " {{{
   \   'colorscheme': 'abisso',
   \   'active': {
   \     'left': [['mode', 'paste'],['git', 'filename', 'denite', 'vimfiler']],
-  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'syntaxcheck']]
+  \   },
+  \   'component_expand': {
+  \     'syntaxcheck': 'qfstatusline#Update',
+  \   },
+  \   'component_type': {
+  \     'syntaxcheck': 'error',
   \   },
   \   'component_function': {
   \     'vimfiler': 'LightLineVimFiler',
