@@ -1,5 +1,51 @@
 # vim: foldmethod=marker:
 
+# Base {{{
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = 'open-browser.vim'
+on_ft = 'md'
+on_map = '<Plug>'
+hook_add = ''' "{{{
+  nnoremap [Previm] <Nop>
+  nmap <C-p> [Previm]
+
+  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+" }}} '''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = '<Plug>(openbrowser-smart-search)'
+hook_add = ''' " {{{
+  let g:netrw_nogx = 1
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+" }}} '''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = '<Plug>(caw:hatpos:toggle)'
+hook_add = ''' " {{{
+  nmap <C-_> <Plug>(caw:hatpos:toggle)
+  vmap <C-_> <Plug>(caw:hatpos:toggle)
+" }}} '''
+# }}}
+
+# Completion {{{
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'fishbullet/deoplete-ruby'
+on_ft = 'ruby'
+# }}}
+
 # Syntax {{{
 [[plugins]]
 repo = 'othree/html5.vim'
@@ -31,7 +77,8 @@ repo = 'zchee/nvim-go'
 build = 'make'
 on_ft = 'go'
 hook_add = '''
-nnoremap <C-c> :<C-u>Gofmt<CR>:<C-u>Gorun<space>
+nnoremap <C-c> :<C-u>Gorun<space>
+nnoremap = :<C-u>Gofmt<CR>
 '''
 
 [[plugins]]
@@ -49,40 +96,4 @@ on_ft = 'yaml'
 [[plugins]]
 repo = 'dag/vim-fish'
 on_ft = 'fish'
-# }}}
-
-# Others {{{
-[[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'kannokanno/previm'
-depends = 'open-browser.vim'
-on_ft = 'md'
-on_map = '<Plug>'
-hook_add = ''' "{{{
-  nnoremap [Previm] <Nop>
-  nmap <Space>pv [Previm]
-
-  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
-" }}} '''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-on_map = '<Plug>(openbrowser-smart-search)'
-hook_add = ''' " {{{
-  let g:netrw_nogx = 1
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-" }}} '''
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-on_map = '<Plug>(caw:hatpos:toggle)'
-hook_add = ''' " {{{
-  nmap <C-_> <Plug>(caw:hatpos:toggle)
-  vmap <C-_> <Plug>(caw:hatpos:toggle)
-" }}} '''
 # }}}

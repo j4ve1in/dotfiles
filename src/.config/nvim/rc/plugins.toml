@@ -1,13 +1,229 @@
 # vim: foldmethod=marker:
 
+# Base {{{
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
+repo = 'surround.vim'
 
-# Denite {{{
+[[plugins]]
+repo = 'soramugi/auto-ctags.vim'
+hook_add = ''' " {{{
+  let g:auto_ctags = 1
+  let g:auto_ctags_directory_list = ['.git']
+" }}} '''
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_source = ''' " {{{
+  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+  call submode#map('winsize', 'n', '', '>', '<C-w>>')
+  call submode#map('winsize', 'n', '', '<', '<C-w><')
+  call submode#map('winsize', 'n', '', '+', '<C-w>+')
+  call submode#map('winsize', 'n', '', '-', '<C-w>-')
+  call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
+  call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
+  call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
+  call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
+" }}} '''
+
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
+hook_add = ''' " {{{
+  nnoremap <silent> <Space><C-f> :<C-u>Dirvish<CR>
+  autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+  autocmd FileType dirvish xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+  autocmd FileType dirvish nmap <silent><buffer> h -
+  autocmd FileType dirvish nmap <silent><buffer> l <CR>
+  autocmd FileType dirvish nnoremap <buffer> +f :Touch<Space>%
+  autocmd FileType dirvish nnoremap <buffer> +d :Mkdir<Space>%
+  autocmd FileType dirvish nnoremap <silent><buffer> ~ :<C-u>Dirvish ~<CR>
+  autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d
+  autocmd FileType dirvish
+  \ map <buffer> <Space>j $T/<Plug>(easymotion-j) |
+  \ map <buffer> <Space>j $T/<Plug>(easymotion-j)
+  autocmd FileType dirvish
+  \ map <buffer> <Space>k $T/<Plug>(easymotion-k) |
+  \ map <buffer> <Space>k $T/<Plug>(easymotion-k)
+
+  autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | Dirvish | endif
+  function! s:bufByte()
+    return line2byte(line('$') + 1) == -1 ? 0 : -1
+  endfunction
+" }}} '''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+on_if = "$DISPLAY != ''"
+
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+hook_add = ''' " {{{
+  let g:auto_save = 1
+  let g:auto_save_silent = 1
+  let g:auto_save_in_insert_mode = 0
+" }}} '''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+if = 'has("python3")'
+hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+if = "&l:filetype ==# 'yaml'"
+hook_add ='''
+let g:indentLine_color_term = 240
+let g:indentLine_char = '¦'
+let g:indentLine_first_char = '¦'
+let g:indentLine_fileTypeExclude = ['help', 'tutor', 'yaml', 'ansible.yaml']
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = ''' " {{{
+  let s:white  = 255
+  let s:black  = 0
+  let s:red  = 196
+  let s:blue   = 17
+  let s:lightblue = 21
+  let s:cyan = 6
+  let s:purple = 54
+  let s:lightgray = 240
+  let s:gray = 235
+
+  let s:p = {
+  \   'normal':   {},
+  \   'inactive': {},
+  \   'insert':   {},
+  \   'replace':  {},
+  \   'visual':   {},
+  \   'tabline':  {}
+  \ }
+
+  let s:p.normal.middle = [['', '', s:white, s:black]]
+  let s:p.normal.left = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
+  let s:p.normal.right = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
+
+  let s:p.normal.error = [[ '', '', s:red, s:black ]]
+
+  let s:p.inactive.middle = [['', '', s:white, s:black]]
+  let s:p.inactive.right = [['', '', s:white, s:gray], ['', '', s:white, s:lightgray]]
+  let s:p.inactive.left = [['', '', s:white, s:gray]]
+
+  let s:p.insert.left = [['', '', s:blue, s:white], s:p.normal.left[1]]
+  let s:p.replace.left = [['', '', s:white, s:cyan], s:p.normal.left[1]]
+  let s:p.visual.left = [['', '', s:white, s:purple], s:p.normal.left[1]]
+
+  let s:p.tabline.middle = [['', '', s:white, 'none']]
+  let s:p.tabline.right = [['', '', s:white, s:blue], ['', '', s:blue, 'none']]
+  let s:p.tabline.left = [['', '', s:white, s:black]]
+  let s:p.tabline.tabsel = [['', '', s:white, s:blue]]
+  let g:lightline#colorscheme#abisso#palette = s:p
+
+  let g:lightline = {
+  \   'colorscheme': 'abisso',
+  \   'active': {
+  \     'left': [['mode', 'paste'],['vcs', 'filename', 'selector']],
+  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'syntaxcheck']]
+  \   },
+  \   'component_expand': {
+  \     'syntaxcheck': 'plugin#lightline#syntaxcheck',
+  \   },
+  \   'component_type': {
+  \     'syntaxcheck': 'error',
+  \   },
+  \   'component_function': {
+  \     'vcs': 'plugin#lightline#vcs',
+  \     'modified': 'plugin#lightline#modified',
+  \     'fileformat': 'plugin#lightline#fileformat',
+  \     'filetype': 'plugin#lightline#filetype',
+  \     'fileencoding': 'plugin#lightline#fileencoding',
+  \     'filename': 'plugin#lightline#filename',
+  \     'mode': 'plugin#lightline#mode',
+  \     'selector': 'plugin#lightline#selector',
+  \     'lineinfo': 'plugin#lightline#lineinfo',
+  \     'percent':  'plugin#lightline#percent'
+  \   }
+  \ }
+
+  if $DISPLAY == ''
+    let g:lightline.separator = { 'left': "", 'right': "" }
+    let g:lightline.subseparator = { 'left': "|", 'right': "|" }
+  else
+    let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+    let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+  endif
+" }}} '''
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'Shougo/context_filetype.vim'
+hook_add = '''
+let g:precious_enable_switchers = {
+      \ "*" : {
+      \  "setfiletype" : 0
+      \ },
+      \ "toml" : {
+      \  "setfiletype" : 1
+      \ },
+      \}
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'jaxbot/github-issues.vim'
+
+[[plugins]]
+repo = 'b4b4r07/vim-shellutils'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_prompt = '{n}> '
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_enter_jump_first = 1
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+map <Space>l <Plug>(easymotion-lineforward)
+map <Space>h <Plug>(easymotion-linebackward)
+
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap ; <CR>
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <Tab> <Over>(buffer-complete)
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
+autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
+
+hi EasyMotionIncSearch cterm=bold ctermbg=none ctermfg=75
+hi EasyMotionIncCursor ctermbg=27 ctermfg=15
+
+hi EasyMotionTarget cterm=bold ctermbg=none ctermfg=99
+hi EasyMotionTarget2First cterm=bold ctermbg=none ctermfg=99
+hi EasyMotionTarget2Second cterm=bold ctermbg=none ctermfg=27
+'''
+
+[[plugins]]
+repo = 'deris/vim-shot-f'
+hook_add = '''
+highlight ShotFGraph ctermfg=27 ctermbg=NONE cterm=bold
+highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
+'''
+# }}}
+
+# Selector {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
@@ -15,8 +231,6 @@ hook_add = ''' " {{{
   nnoremap [Denite] <Nop>
   nmap <C-Space> [Denite]
 
-  nnoremap <silent> [Denite]<C-b> :<C-u>Denite<Space>buffer<CR>
-  nnoremap <silent> [Denite]<C-t> :<C-u>Denite<Space>unite:tab<CR>
   nnoremap <silent> [Denite]f     :<C-u>Denite<Space>file_rec<CR>
   nnoremap <silent> [Denite]F     :<C-u>Denite<Space>file_rec<Space>-default-action=tabopen<CR>
   nnoremap <silent> [Denite]m     :<C-u>Denite<Space>file_mru<CR>
@@ -35,13 +249,13 @@ hook_source = ''' " {{{
   call denite#custom#option('default', 'prompt', '>')
   call denite#custom#option('default', 'statusline', 0)
   call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '-uuu', '-S', '--glob', '!.git'])
+        \ ['rg', '--files', '-uu', '-S', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'default_opts',
-        \ ['--vimgrep', '-uuu', '-S', '--no-heading'])
+        \ ['--vimgrep', '-uu', '-S', '--no-heading'])
   call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
         \ [
         \ '.git/', '.ropeproject/', '__pycache__/',
@@ -49,8 +263,8 @@ hook_source = ''' " {{{
         \ 'images/',
         \ '*.min.*',
         \ 'img/', 'fonts/'])
-  call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-  call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
+  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
 " }}} '''
 
 [[plugins]]
@@ -64,150 +278,23 @@ hook_add = ''' " {{{
 " }}} '''
 # }}}
 
-# Unite {{{
-[[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = ''' " {{{
-  let g:unite_enable_auto_select = 0
-  let g:unite_source_rec_min_cache_files= 10000
-  nnoremap [Unite] <Nop>
-  nmap <Space>u [Unite]
-
-  nnoremap <silent> [Unite] :<C-u>Unite<CR>
-
-  " find
-  nnoremap <silent> [Unite]fi :Unite<Space>find:.<CR>
-  nnoremap <silent> [Unite]fI :Unite<Space>find:.<Space>-default-action=tabopen<CR>
-  hi uniteCandidateSourceName ctermfg=255
-" }}} '''
-hook_source = ''' " {{{
-  call unite#custom#profile('default', 'context', {
-    \ 'start_insert': '1',
-    \ 'prompt_direction': 'top',
-    \ 'prompt': '> ',
-    \ 'candidate_icon': '- ',
-    \ 'hide_icon': 0 })
-" }}} '''
-
-[[plugins]]
-repo = 'basyura/unite-rails'
-depends = 'unite.vim'
-hook_add = ''' " {{{
-  nnoremap <silent> [Unite]r :<C-u>Unite<CR>rails/
-  nnoremap <silent> [Unite]ra :<C-u>Unite<Space>rails/asset<CR>
-  nnoremap <silent> [Unite]rA :<C-u>Unite<Space>rails/asset<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rm :<C-u>Unite<Space>rails/model<CR>
-  nnoremap <silent> [Unite]rM :<C-u>Unite<Space>rails/model<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rd :<C-u>Unite<Space>rails/db<CR>
-  nnoremap <silent> [Unite]rD :<C-u>Unite<Space>rails/db<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rv :<C-u>Unite<Space>rails/view<CR>
-  nnoremap <silent> [Unite]rV :<C-u>Unite<Space>rails/view<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rc :<C-u>Unite<Space>rails/controller<CR>
-  nnoremap <silent> [Unite]rC :<C-u>Unite<Space>rails/controller<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rco :<C-u>Unite<Space>rails/config<CR>
-  nnoremap <silent> [Unite]rcO :<C-u>Unite<Space>rails/config<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Unite]rh :<C-u>Unite<Space>rails/helper<CR>
-  nnoremap <silent> [Unite]rH :<C-u>Unite<Space>rails/helper<Space>-default-action=tabopen<CR>
-" }}} '''
-
-[[plugins]]
-repo = 'kmnk/vim-unite-giti'
-depends = 'unite.vim'
-hook_add = ''' " {{{
-  nnoremap <silent> [Unite]g :<C-u>Unite<Space>giti<CR>
-  nnoremap <silent> [Unite]gb :<C-u>Unite<Space>giti/branch<CR>
-  nnoremap <silent> [Unite]gB :<C-u>Unite<Space>giti/branch_all<CR>
-  nnoremap <silent> [Unite]gl :<C-u>Unite<Space>giti/log<CR>
-  nnoremap <silent> [Unite]gs :<C-u>Unite<Space>giti/status<CR>
-" }}} '''
-
-[[plugins]]
-repo = 'sorah/unite-ghq'
-depends = 'unite.vim'
-hook_add = ''' " {{{
-  nnoremap <silent> [Unite]gh :<C-u>Unite<Space>ghq<Space>-default-action=rec/async<CR>
-" }}} '''
-
-[[plugins]]
-repo = 'lambdalisue/vim-gista-unite'
-depends = 'unite.vim'
-on_source = 'lambdalisue/vim-gista'
-hook_add = 'nnoremap <silent> [Unite]gi :<C-u>Unite<Space>gista<CR>'
-# }}}
-
 # Completion {{{
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_i = 1
 hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  " <TAB>: completion.
-  inoremap <expr> <TAB> pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#mappings#manual_complete()
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#max_list = 5
 
-  " <S-TAB>: completion back.
-  inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
-
-  inoremap <expr><C-g> deoplete#mappings#undo_completion()
-  " <C-l>: redraw candidates
-  inoremap <expr><C-l>       deoplete#mappings#refresh()
-
-  " <CR>: close popup and save indent.
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function() abort
-    return deoplete#mappings#close_popup() . "\<CR>"
-  endfunction
-
-  inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
-
-  call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
-
-  " Use auto delimiter
-  call deoplete#custom#set('_', 'converters', [
-        \ 'converter_remove_paren',
-        \ 'converter_remove_overlap',
-        \ 'converter_truncate_abbr',
-        \ 'converter_truncate_menu',
-        \ 'converter_auto_delimiter',
-        \ ])
-
-  call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-  call deoplete#custom#set('clang', 'max_pattern_length', -1)
-
-  let g:deoplete#keyword_patterns = {}
-  let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-  let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
-
-  let g:deoplete#omni#input_patterns = {}
-  let g:deoplete#omni#input_patterns.python = ''
-  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '\h\w*::']
-  let g:deoplete#omni#functions = {}
-  let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
-
-  let g:deoplete#enable_refresh_always = 1
-  let g:deoplete#enable_camel_case = 1
-
-  " deoplete-clang
-  " libclang shared library path
-  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-
-  " clang builtin header path
-  let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
-
-  " libclang default compile flags
-  let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
-
-  let g:deoplete#max_list = 5
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
 '''
 
 [[plugins]]
@@ -233,13 +320,9 @@ hook_add = ''' " {{{
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-monster'
-hook_add = 'let g:monster#completion#rcodetools#backend = "async_rct_complete"'
 # }}}
 
-# Git {{{
+# VCS {{{
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = ''' " {{{
@@ -264,21 +347,6 @@ hook_add = ''' " {{{
   nnoremap [git]r :<C-u>Gread
   nnoremap [git]rm :<C-u>Gremove
   nnoremap [git]m :<C-u>Gmove
-" }}} '''
-
-[[plugins]]
-repo = 'lambdalisue/vim-gista'
-if = 'has("python3")'
-hook_add = ''' " {{{
-  nnoremap [git] <Nop>
-  nmap <Space>g [git]
-
-  nnoremap [git]i :<C-u>Gista<Space>--post<Space>--description<Space>''<Left>
-  nnoremap [git]ip :<C-u>Gista<Space>--post<Space>--public<Space>--description<Space>''<Left>
-  nnoremap [git]il :<C-u>Gista<Space>--list<CR>
-  nnoremap [git]ic :<C-u>tabedit<Space><Space>\|<Space>:set<Space>ro
-              \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-  let g:gista#post_private = '1'
 " }}} '''
 
 [[plugins]]
@@ -341,440 +409,18 @@ repo = 'wellle/targets.vim'
 
 # Syntax Check {{{
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-depends = [
-  'vimproc.vim',
-  'vim-quickrun',
-  'shabadou.vim',
-  'quickfixstatus',
-  'vim-hier'
-]
-hook_add = ''' " {{{
-let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_CursorHold_enable = 1
-" }}} '''
-hook_source = 'call watchdogs#setup(g:quickrun_config)'
+repo = 'neomake/neomake'
+hook_add = '''
+let g:neomake_place_signs = 0
 
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = ''' " {{{
-let g:quickrun_config = {
-\  'watchdogs_checker/_' : {
-\    'outputter/quickfix/open_cmd': '',
-\    'hook/qfstatusline_update/enable_exit' : 1,
-\    'hook/qfstatusline_update/priority_exit' : 4
-\  },
-\  'ansible/watchdogs_checker' : {
-\    'type': 'watchdogs_checker/yaml-lint'
-\  }
-\}
-" }}} '''
-
-[[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
-repo = 'dannyob/quickfixstatus'
-
-[[plugins]]
-repo = 'KazuakiM/vim-qfstatusline'
-hook_add = ''' " {{{
-let g:Qfstatusline#UpdateCmd = function('lightline#update')
-let g:Qfstatusline#Text = 0
-" }}} '''
+autocmd VimEnter,BufWritePost * Neomake
+augroup my_neomake
+    aut!
+    autocmd User NeomakeFinished HierStart
+    autocmd User NeomakeFinished call lightline#update()
+augroup END
+'''
 
 [[plugins]]
 repo = 'cohama/vim-hier'
-# }}}
-
-# Others {{{
-[[plugins]]
-repo = 'kassio/neoterm'
-hook_add = "let g:neoterm_position = 'vertical'"
-
-[[plugins]]
-repo = 'surround.vim'
-
-[[plugins]]
-repo = 'soramugi/auto-ctags.vim'
-hook_add = ''' " {{{
-  let g:auto_ctags = 1
-  let g:auto_ctags_directory_list = ['.git']
-" }}} '''
-
-[[plugins]]
-repo = 'kana/vim-submode'
-hook_source = ''' " {{{
-  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-  call submode#map('winsize', 'n', '', '>', '<C-w>>')
-  call submode#map('winsize', 'n', '', '<', '<C-w><')
-  call submode#map('winsize', 'n', '', '+', '<C-w>+')
-  call submode#map('winsize', 'n', '', '-', '<C-w>-')
-  call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
-  call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
-  call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
-  call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
-  call submode#enter_with('ex-move', 'nv', '', '<Space><Space>', '<Nop>')
-  call submode#leave_with('ex-move', 'nv', '', '<Space>')
-  call submode#map('ex-move', 'nv', '', 'j', '<C-f>zz')
-  call submode#map('ex-move', 'nv', '', 'k', '<C-b>zz')
-  call submode#map('ex-move', 'nv', '', 'n', '5jzz')
-  call submode#map('ex-move', 'nv', '', 'm', '5kzz')
-  call submode#map('ex-move', 'nv', '', 'l', '}zz')
-  call submode#map('ex-move', 'nv', '', 'h', '{zz')
-" }}} '''
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
-hook_add = ''' " {{{
-  nnoremap [dispatch] <Nop>
-  nmap <Space>dp [dispatch]
-  nnoremap [dispatch] :<C-u>Dispatch<Space>
-  nnoremap [dispatch]c :<C-u>Copen<CR>
-  nnoremap [dispatch]r :<C-u>Start<Space>irb<CR>
-  nnoremap [dispatch]h :<C-u>Start<Space>ghci<CR>
-
-  nnoremap [git] <Nop>
-  nmap <Space>g [git]
-
-  nnoremap [git]f :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>fetch<Space>--prune<CR>
-  nnoremap [git]p :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>pull<Space>--prune<CR>
-  nnoremap [git]ps :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>push<CR>
-  nnoremap [git]cl :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>clone<Space>
-  nnoremap [git]m :<C-u>Dispatch<Space>git<Space>-C<Space>%:p:h<Space>merge<Space>--no-ff<CR>
-  nnoremap [git]h :<C-u>Dispatch<Space>ghq<Space>get<Space>
-" }}} '''
-
-[[plugins]]
-repo = 'radenling/vim-dispatch-neovim'
-
-[[plugins]]
-repo = 'Shougo/vimfiler'
-depends = ['unite.vim']
-on_map = [['n', '<Plug>']]
-on_path = '.*'
-hook_add = ''' "{{{
-  nnoremap [VimFiler] <Nop>
-  nmap <Space><C-f> [VimFiler]
-
-  nnoremap <silent> [VimFiler] :<C-u>VimFiler<CR>
-
-  let g:vimfiler_as_default_explorer = 1
-  autocmd FileType vimfiler
-        \ nnoremap <buffer><silent>/
-        \ :<C-u>Unite file -default-action=vimfiler<CR>
-  autocmd FileType vimfiler setlocal statusline=VimFiler
-  autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | VimFiler | endif
-  function! s:bufByte()
-    return line2byte(line('$') + 1) == -1 ? 0 : -1
-  endfunction
-" }}} '''
-hook_source = ''' "{{{
-  call vimfiler#custom#profile('default', 'context', { 'auto_cd' : 1 })
-" }}} '''
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-on_if = "$DISPLAY != ''"
-
-[[plugins]]
-repo = 'vim-scripts/vim-auto-save'
-hook_add = ''' " {{{
-  let g:auto_save = 1
-  let g:auto_save_silent = 1
-  let g:auto_save_in_insert_mode = 0
-" }}} '''
-
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-if = 'has("python3")'
-hook_add = 'let g:EditorConfig_exclude_patterns = ["gista:*", "scp://.*"]'
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-hook_add ='''
-let g:indentLine_color_term = 240
-let g:indentLine_char = '¦'
-let g:indentLine_first_char = '¦'
-let g:indentLine_fileTypeExclude = ['help', 'tutor']
-'''
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = ''' " {{{
-  let s:white  = 255
-  let s:black  = 0
-  let s:red  = 196
-  let s:blue   = 17
-  let s:lightblue = 21
-  let s:cyan = 6
-  let s:purple = 54
-  let s:lightgray = 240
-  let s:gray = 235
-
-  let s:p = {
-  \   'normal':   {},
-  \   'inactive': {},
-  \   'insert':   {},
-  \   'replace':  {},
-  \   'visual':   {},
-  \   'tabline':  {}
-  \ }
-
-  let s:p.normal.middle = [['', '', s:white, s:black]]
-  let s:p.normal.left = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
-  let s:p.normal.right = [['', '', s:white, s:blue], ['', '', s:white, s:lightblue]]
-
-  let s:p.normal.error = [[ '', '', s:red, s:black ]]
-
-  let s:p.inactive.middle = [['', '', s:white, s:black]]
-  let s:p.inactive.right = [['', '', s:white, s:gray], ['', '', s:white, s:lightgray]]
-  let s:p.inactive.left = [['', '', s:white, s:gray]]
-
-  let s:p.insert.left = [['', '', s:blue, s:white], s:p.normal.left[1]]
-  let s:p.replace.left = [['', '', s:white, s:cyan], s:p.normal.left[1]]
-  let s:p.visual.left = [['', '', s:white, s:purple], s:p.normal.left[1]]
-
-  let s:p.tabline.middle = [['', '', s:white, 'none']]
-  let s:p.tabline.right = [['', '', s:white, s:blue], ['', '', s:blue, 'none']]
-  let s:p.tabline.left = [['', '', s:white, s:black]]
-  let s:p.tabline.tabsel = [['', '', s:white, s:blue]]
-  let g:lightline#colorscheme#abisso#palette = s:p
-
-  let g:lightline = {
-  \   'colorscheme': 'abisso',
-  \   'active': {
-  \     'left': [['mode', 'paste'],['git', 'filename', 'denite', 'vimfiler']],
-  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'syntaxcheck']]
-  \   },
-  \   'component_expand': {
-  \     'syntaxcheck': 'qfstatusline#Update',
-  \   },
-  \   'component_type': {
-  \     'syntaxcheck': 'error',
-  \   },
-  \   'component_function': {
-  \     'vimfiler': 'LightLineVimFiler',
-  \     'git': 'LightLineFugitive',
-  \     'modified': 'LightLineModified',
-  \     'fileformat': 'LightLineFileformat',
-  \     'filetype': 'LightLineFiletype',
-  \     'fileencoding': 'LightLineFileencoding',
-  \     'filename': 'LightLineFilename',
-  \     'mode': 'LightLineMode',
-  \     'denite': 'LightLineDenite',
-  \     'lineinfo': 'LightLineLineinfo',
-  \     'percent': 'LightLinePercent'
-  \   }
-  \ }
-
-  if $DISPLAY == ''
-    let g:lightline.separator = { 'left': "", 'right': "" }
-    let g:lightline.subseparator = { 'left': "|", 'right': "|" }
-  else
-    let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-    let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
-  endif
-
-  function! LightLinePercent()
-    if &ft == 'denite'
-      return ''
-    else
-      let line = line('.')
-      let max_line = line('$')
-      return printf('%3d%s', (line * 100 / max_line), '%')
-    endif
-  endfunction
-
-  function! LightLineLineinfo()
-    if &ft == 'denite'
-      return denite#get_status_linenr()
-    else
-      let line = line('.')
-      let max_line = line('$')
-      let col = col('.')
-      return printf('%3d[%d]:%-2d', line, max_line, col)
-    endif
-  endfunction
-
-  function! LightLineModified()
-    if &filetype == "help"
-      return ''
-    elseif &modified
-      return '+'
-    elseif &modifiable
-      return ''
-    else
-      return ''
-    endif
-  endfunction
-
-  function! LightLineFilename()
-    if &ft == 'vimfiler'
-      let filepath = resolve(expand(substitute(vimfiler#get_status_string(), ' \*safe\*', '','')))
-      return fnamemodify(filepath, ":t")
-    elseif &ft == 'unite'
-      return substitute(unite#get_status_string(), ' | ', '', '')
-    elseif &ft == 'denite'
-      return substitute(denite#get_status_mode(), ' *-- ', '', 'g')
-    else
-      if '' != expand('%:t')
-        return expand('%:t') . ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-      else
-        return '' != LightLineModified() ? ' ' . LightLineModified() : ''
-      endif
-    endif
-  endfunction
-
-  function! LightLineVimFiler()
-    return &ft == 'vimfiler' ? matchstr(vimfiler#get_status_string(), 'safe') : ''
-  endfunction
-
-  function! LightLineDenite()
-    return &ft == 'denite' ? denite#get_status_sources() : ''
-  endfunction
-
-  function! LightLineFugitive()
-    if ! &ft == 'denite'
-      try
-        if exists('*fugitive#head')
-          if $DISPLAY == ''
-            let mark = ''
-          else
-            let mark = "\ue0a0 "
-          endif
-          let _ = fugitive#head()
-          return strlen(_) ? mark._ : ''
-        endif
-      catch
-      endtry
-    endif
-    return ''
-  endfunction
-
-  function! LightLineFileformat()
-    if $DISPLAY == ''
-      if &ft == 'unite' || &ft == 'denite'
-        return ''
-      else
-        return winwidth(0) > 70 ? (strlen(&fileformat) ? &fileformat : '') : ''
-      endif
-    else
-      if &ft == 'unite' || &ft == 'denite'
-        return ''
-      else
-        return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-      endif
-    endif
-  endfunction
-
-  function! LightLineFiletype()
-    if $DISPLAY == ''
-      if &ft == 'unite' || &ft == 'denite'
-        return ''
-      else
-        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
-      endif
-    else
-      if &ft == 'unite' || &ft == 'denite'
-        return ''
-      else
-        if winwidth(0) > 70
-          return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : ''
-        else
-          return ''
-        endif
-      endif
-    endif
-  endfunction
-
-  function! LightLineFileencoding()
-    if &ft == 'unite' || &ft == 'denite'
-      return ''
-    else
-      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-    endif
-  endfunction
-
-  function! LightLineMode()
-    return  &ft == 'unite' ? 'Unite' :
-          \ &ft == 'denite' ? 'Denite' :
-          \ &ft == 'vimfiler' ? 'VimFiler' :
-          \ winwidth(0) > 60 ? lightline#mode() : ''
-  endfunction
-
-  let g:unite_force_overwrite_statusline = 0
-  let g:vimfiler_force_overwrite_statusline = 0
-" }}} '''
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = 'Shougo/context_filetype.vim'
-hook_add = '''
-let g:precious_enable_switchers = {
-      \ "*" : {
-      \  "setfiletype" : 0
-      \ },
-      \ "toml" : {
-      \  "setfiletype" : 1
-      \ },
-      \}
-'''
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'jaxbot/github-issues.vim'
-
-[[plugins]]
-repo = 'b4b4r07/vim-shellutils'
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-hook_add = '''
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_prompt = '{n}> '
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_enter_jump_first = 1
-
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-map <Space>f <Plug>(easymotion-lineforward)
-map <Space>F <Plug>(easymotion-linebackward)
-
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
-
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap ; <CR>
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <Tab> <Over>(buffer-complete)
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
-
-hi EasyMotionIncSearch cterm=bold ctermbg=none ctermfg=75
-hi EasyMotionIncCursor ctermbg=27 ctermfg=15
-
-hi EasyMotionTarget cterm=bold ctermbg=none ctermfg=99
-hi EasyMotionTarget2First cterm=bold ctermbg=none ctermfg=99
-hi EasyMotionTarget2Second cterm=bold ctermbg=none ctermfg=27
-'''
-
-[[plugins]]
-repo = 'deris/vim-shot-f'
-hook_add = '''
-highlight ShotFGraph ctermfg=27 ctermbg=NONE cterm=bold
-highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-
-[[plugins]]
-repo = 'dhruvasagar/vim-table-mode'
 # }}}

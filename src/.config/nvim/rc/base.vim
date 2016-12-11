@@ -6,6 +6,7 @@ set winheight=8
 set tags+=.git/tags
 set virtualedit=block
 set grepprg=grep\ -inH
+set completeopt=menuone
 set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
 autocmd QuickFixCmdPost make,*grep* cwindow
