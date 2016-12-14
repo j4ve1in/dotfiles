@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+case "$1" in
+  '-h' )
+      printf "Usage: %s dir\n" "$0:t"
+      ;;
+  '' )
+    printf '%s: missing argument\n' "$0:t"
+    ;;
+  * )
+    if [[ -d $1 ]]; then
+      if git -C "$1" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        for f in `git -C "$1" ls-files` ; do
+         diff /dev/null "$f" | tail -1 | grep '^\\ No newline at end of file' >/dev/null
+         if ! (( $? )); then
+           printf '%s\n' "$f"
+           echo >> "$f"
+         fi
+        done
+      else
+        printf '%s: Not a git repository\n' "$0:t"
+      fi
+    else
+      printf "%s: cannot access '%s': No such directory\n" "$0:t" "$1"
+    fi
+    ;;
+esac
