@@ -26,17 +26,16 @@
 
     private -a zplug_args
     zplug_args=(
-      'zplug/zplug'
       'ytet5uy4/pctl'
       'ytet5uy4/dctl'
       'b4b4r07/zsh-gomi'
       'zsh-users/zsh-completions'
       'zsh-users/zsh-autosuggestions'
-      'zsh-users/zsh-syntax-highlighting, nice:10'
+      'zsh-users/zsh-syntax-highlighting, defer:2'
       'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
       'junegunn/fzf, as:command, use:bin/fzf-tmux'
-      'stedolan/jq, from:gh-r, as:command, rename-to:jq'
       'ytet5uy4/feedly-zsh, on:stedolan/jq'
+      'stedolan/jq, from:gh-r, as:command, rename-to:jq'
     )
     for arg in $zplug_args; do zplug $arg; done
 
@@ -47,7 +46,7 @@
       fi
     fi
 
-    zplug load
+    zplug load >/dev/null 2>&1
 
     if zplug check 'zsh-users/zsh-autosuggestions'; then
       unset ZSH_AUTOSUGGEST_ACCEPT_WIDGETS
