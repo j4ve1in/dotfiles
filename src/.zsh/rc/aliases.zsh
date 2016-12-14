@@ -15,6 +15,7 @@ is-darwin && alias l{,s}='ls -FG' ll='l -hl'
 has colordiff && alias di='colordiff -u' || alias di='diff -u'
 has screenfetch && alias info='screenfetch -c 27,255'
 has inxi && alias info-full='inxi -Fz'
+has impressive && alias presen='impressive --nologo --mousedelay 500 --transition crossfade --transtime 100 -E ~/.config/impressive/keybind.conf'
 alias la='l -A' lla='ll -A'
 if ! is-alpine; then
   alias grep='grep --color=auto' fgrep='fgrep --color=auto' egrep='egrep --color=auto'
