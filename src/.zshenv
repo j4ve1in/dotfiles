@@ -12,6 +12,7 @@ has lpass && export PASSWORDMANAGER='lpass login "$LPASS_USERNAME"'
 has trans && export TRANSLATION='trans -pager $PAGER'
 has chromium && export BROWSER='chromium'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
+has tmux && export TERM=tmux-256color
 
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
@@ -91,18 +92,21 @@ if has vagrant; then
 fi
 
 # nvim
+export NVIM_CONFIG_HOME=$XDG_CONFIG_HOME/nvim
 export NVIM_CACHE_HOME=$XDG_CACHE_HOME/nvim
 [[ ! -d $NVIM_CACHE_HOME ]] && mkdir $NVIM_CACHE_HOME
 export NVIM_DATA_HOME=$XDG_DATA_HOME/nvim
 [[ ! -d $NVIM_DATA_HOME ]] && mkdir $NVIM_DATA_HOME
-export DEIN_HOME=$NVIM_DATA_HOME/dein
+export DEIN_HOME=$NVIM_DATA_HOME/plugins/github.com/Shougo/dein.vim
 
 # tmux
 export TMUX_CACHE_HOME=$XDG_CACHE_HOME/tmux
 [[ ! -d $TMUX_CACHE_HOME ]] && mkdir $TMUX_CACHE_HOME
 export TMUX_DATA_HOME=$XDG_DATA_HOME/tmux
 [[ ! -d $TMUX_DATA_HOME ]] && mkdir $TMUX_DATA_HOME
-export TPM_HOME=$TMUX_DATA_HOME/tpm
+export TMUX_PLUGIN_MANAGER_PATH=$TMUX_DATA_HOME/plugins
+[[ ! -d $TMUX_PLUGIN_MANAGER_PATH ]] && mkdir $TMUX_PLUGIN_MANAGER_PATH
+export TPM_HOME=$TMUX_PLUGIN_MANAGER_PATH/tpm
 
 # zsh
 export ZSH_CACHE_HOME=$XDG_CACHE_HOME/zsh
@@ -112,8 +116,9 @@ export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
 export HISTFILE="$ZSH_CACHE_HOME/history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=1000
-export ZPLUG_HOME=$ZSH_DATA_HOME/zplug
-export ZPLUG_CACHE_FILE=$ZSH_CACHE_HOME/zplug/cache
+export ZPLUG_HOME=$ZSH_DATA_HOME/plugins
+export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
+[[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir $ZPLUG_CACHE_DIR
 
 # dctl
 export DCTL_PATH=$XDG_CONFIG_HOME/dotfiles/src
