@@ -22,7 +22,6 @@ stty stop undef
 bindkey -v
 
 ## emacs like
-bindkey -v '^G' send-break
 bindkey -v '^H' backward-delete-char
 bindkey -v '^W' backward-kill-word
 bindkey -v '^U' backward-kill-line
