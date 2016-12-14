@@ -1,6 +1,6 @@
-private -a repo=($(ghq list --full-path | $SELECTOR))
-[[ ! -d $repo ]] && return 1
-BUFFER="cd -- $repo"
+private dir="`ghq list -p | sort | $SELECTOR`"
+[[ ! -d $dir ]] && return 1
+BUFFER="cd $dir"
 CURSOR=$#BUFFER
 zle accept-line
 zle -R -c
