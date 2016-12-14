@@ -1,3 +1,4 @@
+alias -- -='cd -'
 has git && alias g='git'
 has nvim && alias v='nvim -p'
 has docker && alias d='docker'
