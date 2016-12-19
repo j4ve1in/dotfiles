@@ -12,7 +12,9 @@ has lpass && export PASSWORDMANAGER='lpass login "$LPASS_USERNAME"'
 has trans && export TRANSLATION='trans -pager $PAGER'
 has chromium && export BROWSER='chromium'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
-has tmux && export TERM=tmux-256color
+if has tmux && [[ $DISPLAY ]]; then
+  export TERM=screen-256color
+fi
 
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
