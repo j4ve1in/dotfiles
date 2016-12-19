@@ -11,6 +11,7 @@ set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
 autocmd QuickFixCmdPost make,*grep* cwindow
 set wildignorecase wildmode=longest:full,full
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " clipboard
 if $DISPLAY != ''

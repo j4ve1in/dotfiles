@@ -3,6 +3,7 @@
 " Credits: Inspiration from the dw_blue scheme.
 "--------------------------------------------------------------------
 
+set termguicolors
 set background=light
 syntax enable " Switch on syntax highlighting
 augroup toggle_cursorline_color
@@ -14,61 +15,92 @@ augroup toggle_cursorline_color
 augroup END
 
 "--------------------------------------------------------------------
-hi Boolean                                     ctermfg=27
-hi cDefine                                     ctermfg=69
-hi cInclude                                    ctermfg=31
-hi Comment                                     ctermfg=245
-hi Constant                                    ctermfg=99
-hi Cursor                         ctermbg=17
-hi CursorLine     cterm=none      ctermbg=17
-hi CursorLineNr   cterm=bold      ctermbg=0    ctermfg=none
-hi CursorColumn                   ctermbg=0
-hi DiffAdded                      ctermbg=none ctermfg=46
-hi DiffChange                     ctermbg=none ctermfg=255
-hi DiffDelete                     ctermbg=232  ctermfg=232
-hi DiffText                       ctermbg=none ctermfg=160
-hi DiffNewFile                    ctermbg=none ctermfg=75
-hi DiffFile                       ctermbg=none ctermfg=75
-hi DiffRemoved                    ctermbg=none ctermfg=160
-hi Directory                      ctermbg=none ctermfg=27
-hi ErrorMsg                       ctermbg=231  ctermfg=232
-hi FoldColumn                     ctermbg=none ctermfg=27
-hi Folded                         ctermbg=236  ctermfg=27
-hi Function                       ctermbg=none ctermfg=27
-hi Identifier                     ctermbg=none ctermfg=51
-hi IncSearch      cterm=none      ctermbg=20   ctermfg=232
-hi LineNr                         ctermbg=none ctermfg=27
-hi MatchParen     cterm=none      ctermbg=none ctermfg=27
-hi ModeMsg                        ctermbg=none ctermfg=27
-hi MoreMsg                        ctermbg=none ctermfg=27
-hi NonText                        ctermbg=none ctermfg=239
-hi Normal         cterm=none      ctermbg=none ctermfg=251
-hi Operator       cterm=none                   ctermfg=239
-hi Pmenu                          ctermbg=232  ctermfg=255
-hi PmenuSel                       ctermbg=17   ctermfg=255
-hi PmenuSbar                      ctermbg=17   ctermfg=255
-hi PreProc        cterm=none                   ctermfg=69
-hi Question                                    ctermfg=27
-hi Search         cterm=none      ctermbg=27   ctermfg=15
-hi SignColumn                     ctermbg=none ctermfg=231
-hi Special        cterm=none      ctermbg=none ctermfg=231
-hi SpecialKey                     ctermbg=none ctermfg=245
-hi SpellBad                       ctermbg=none ctermfg=196
-hi Statement      cterm=bold                   ctermfg=75
-hi StatusLine     cterm=bold      ctermbg=17   ctermfg=231
-hi StatusLineNC   cterm=none      ctermbg=240  ctermfg=232
-hi String         cterm=none                   ctermfg=39
-hi TabLine        cterm=none      ctermbg=240  ctermfg=231
-hi TabLineFill    cterm=underline ctermbg=none ctermfg=240
-hi TabLineSel     cterm=none      ctermbg=19   ctermfg=231
-hi Title          cterm=none                   ctermfg=27
-hi Todo           cterm=none      ctermbg=none ctermfg=196
-hi Type           cterm=none                   ctermfg=75
-hi VertSplit      cterm=none      ctermbg=none ctermfg=231
-hi Visual                         ctermbg=26   ctermfg=231
-hi WarningMsg                     ctermbg=244  ctermfg=232
-hi WildMenu                       ctermbg=231  ctermfg=17
-hi rubyBlock                      ctermbg=none ctermfg=161
-hi zshVariableDef                 ctermbg=none ctermfg=39
-hi zshFunction                    ctermbg=none ctermfg=44
-hi EndOfBuffer        cterm=none  ctermbg=none ctermfg=0
+
+function! s:hi(name, fg, bg, attr) abort
+  let attr = type(a:attr) != type(0) ? ('gui=' . a:attr) : ''
+  let fg   = type(a:fg) != type(0) ? ('guifg=' . a:fg) : ''
+  let bg   = type(a:bg) != type(0) ? ('guibg=' . a:bg) : ''
+
+  exe 'hi' a:name attr fg bg
+endfunction
+
+let s:fg  = '#DDDDDD'
+let s:bg  = '#000000'
+
+let s:red = '#C40000' " 160
+
+let s:lightgreen = '#00FFFF' " 51
+let s:green      = '#00FF00' " 46
+
+let s:lightblue = '#5FAFFF' " 75
+let s:blue      = '#0000C8' " 21
+let s:darkblue  = '#00014E' " 17
+
+let s:cyan     = '#00AFFF' " 39
+let s:darkcyan = '#005FFF' " 27
+
+let s:lightpurple = '#5F87FF' " 69
+let s:purple      = '#875FFF' " 99
+
+let s:lightgray  = '#4C4C4C' " 240
+let s:gray       = '#808080' " 245
+let s:darkgray   = '#303030' " 236
+
+call s:hi('Comment',        s:gray,        0,          0)
+call s:hi('Boolean',        s:darkcyan,    0,          0)
+call s:hi('LineNr',         s:darkcyan,    0,          0)
+call s:hi('Constant',       s:cyan,        0,          0)
+call s:hi('Statement',      s:lightblue,   0,          'bold')
+call s:hi('PreProc',        s:lightpurple, 0,          0)
+call s:hi('Type',           s:lightblue,   0,          0)
+call s:hi('Cursor',         0,             s:darkblue, 0)
+call s:hi('CursorLine',     0,             s:darkblue, 0)
+call s:hi('CursorLineNr',   'NONE',        s:bg,       'bold')
+call s:hi('CursorColumn',   0,             s:bg,       0)
+call s:hi('DiffAdd',        s:green,       'NONE',     0)
+call s:hi('DiffChange',     s:fg,          'NONE',     0)
+call s:hi('DiffDelete',     s:bg,          s:bg,       0)
+call s:hi('DiffText',       s:red,         'NONE',     0)
+call s:hi('DiffNewFile',    s:lightblue,   'NONE',     0)
+call s:hi('DiffFile',       s:lightblue,   'NONE',     0)
+call s:hi('diffAdded',      s:green,       'NONE',     0)
+call s:hi('diffChanged',    s:fg,          'NONE',     0)
+call s:hi('diffRemoved',    s:red,         'NONE',     0)
+call s:hi('FoldColumn',     s:darkcyan,    0,          0)
+call s:hi('Folded',         s:darkcyan,    s:darkgray, 0)
+call s:hi('Directory',      s:darkcyan,    0,          0)
+call s:hi('ErrorMsg',       s:red,         'NONE',     0)
+call s:hi('Function',       s:darkcyan,    0,          0)
+call s:hi('Identifier',     s:lightgreen,  0,          0)
+call s:hi('IncSearch',      s:darkcyan,    0,          0)
+call s:hi('MatchParen',     s:darkcyan,    0,          0)
+call s:hi('ModeMsg',        s:darkcyan,    0,          0)
+call s:hi('MoreMsg',        s:darkcyan,    0,          0)
+call s:hi('NonText',        s:gray,        'NONE',     0)
+call s:hi('Normal',         s:fg,          0,          0)
+call s:hi('Operator',       s:gray,        'NONE',     0)
+call s:hi('Pmenu',          s:fg,          s:bg,       0)
+call s:hi('PmenuSel',       s:fg,          s:darkblue, 0)
+call s:hi('PmenuSbar',      s:fg,          s:darkblue, 0)
+call s:hi('Question',       s:darkcyan,    0,          0)
+call s:hi('Search',         s:fg,          s:darkcyan, 0)
+call s:hi('SignColumn',     s:fg,          'NONE',     0)
+call s:hi('Special',        s:fg,          'NONE',     0)
+call s:hi('SpecialKey',     s:gray,        'NONE',     0)
+call s:hi('SpellBad',       s:red,         'NONE',     0)
+call s:hi('StatusLine',     s:fg,          s:darkblue, 0)
+call s:hi('StatusLineNC',   s:bg,          s:gray,     0)
+call s:hi('String',         s:cyan,        0,          0)
+call s:hi('TabLine',        s:fg,          s:gray,     0)
+call s:hi('TabLineFill',    s:gray,        'NONE',     'underline')
+call s:hi('TabLineSel',     s:fg,          s:darkblue, 0)
+call s:hi('Title',          s:darkcyan,    0,          0)
+call s:hi('Todo',           s:red,         'NONE',     0)
+call s:hi('VertSplit',      s:fg,          'NONE',     0)
+call s:hi('Visual',         s:fg,          s:darkcyan, 0)
+call s:hi('WarningMsg',     s:bg,          s:gray,     0)
+call s:hi('WildMenu',       s:fg,          s:darkblue, 0)
+call s:hi('EndOfBuffer',    s:bg,          'NONE',     0)
+call s:hi('rubyBlock',      s:red,         'NONE',     0)
+call s:hi('zshVariableDef', s:cyan,        'NONE',     0)
+call s:hi('zshFunction',    s:cyan,        'NONE',     0)
