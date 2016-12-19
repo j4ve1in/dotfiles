@@ -61,7 +61,7 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 nnoremap gsi :call syntax#info()<CR>
 nnoremap gsf :call symlink#follow()<CR>
 nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
-nnoremap <BS> gT
+nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W

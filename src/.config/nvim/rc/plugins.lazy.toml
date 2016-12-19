@@ -77,8 +77,8 @@ repo = 'zchee/nvim-go'
 build = 'make'
 on_ft = 'go'
 hook_add = '''
-nnoremap <C-c> :<C-u>Gorun<space>
-nnoremap = :<C-u>Gofmt<CR>
+autocmd FileType go nnoremap <C-c> :<C-u>Gorun<space>
+autocmd FileType go nnoremap = :<C-u>Gofmt<CR>
 '''
 
 [[plugins]]
