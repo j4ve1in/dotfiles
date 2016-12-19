@@ -80,7 +80,9 @@ function! plugin#lightline#selector()
 endfunction
 
 function! plugin#lightline#vcs()
-  if ! &ft == 'denite'
+  if &ft == 'denite'
+    return ''
+  else
     try
       if exists('*fugitive#head')
         if $DISPLAY == ''
@@ -94,7 +96,6 @@ function! plugin#lightline#vcs()
     catch
     endtry
   endif
-  return ''
 endfunction
 
 function! plugin#lightline#fileformat()
