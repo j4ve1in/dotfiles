@@ -45,7 +45,6 @@ fi
 
 fpath=(
   $fpath
-  $GOPATH/src/*/*/ghq/zsh(N-/)
   $ZDOTDIR/autoload/**/*(N-/)
 )
 
