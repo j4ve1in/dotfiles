@@ -1,8 +1,0 @@
-private dir="`ghq list -p | sort | $SELECTOR`"
-[[ ! -d $dir ]] && return 1
-BUFFER="cd $dir"
-CURSOR=$#BUFFER
-zle accept-line
-zle -R -c
-
-# vim: ft=zsh sw=2 ts=2 et
