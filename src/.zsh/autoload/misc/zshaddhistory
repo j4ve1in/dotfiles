@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+private line=${1%%$'\n'}
+private cmd=${line%% *}
+[[ $cmd != (rm) ]]
