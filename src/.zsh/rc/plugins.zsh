@@ -29,6 +29,7 @@
     zplug 'ytet5uy4/dctl'
     zplug 'b4b4r07/zsh-gomi'
     zplug 'ytet5uy4/feedly-zsh'
+    zplug 'ytet5uy4/fzf-widgets'
     zplug 'zsh-users/zsh-completions'
     zplug 'zsh-users/zsh-autosuggestions'
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2

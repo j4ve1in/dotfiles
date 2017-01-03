@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-RBUFFER="`cat /tmp/selector`"
-CURSOR=$#RBUFFER
-zle -R -c
-zle accept-line
