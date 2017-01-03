@@ -24,20 +24,14 @@
     # Zplug
     . $ZPLUG_HOME/init.zsh
 
-    private -a zplug_args
-    zplug_args=(
-      'ytet5uy4/pctl'
-      'ytet5uy4/dctl'
-      'b4b4r07/zsh-gomi'
-      'zsh-users/zsh-completions'
-      'zsh-users/zsh-autosuggestions'
-      'zsh-users/zsh-syntax-highlighting, defer:2'
-      'junegunn/fzf-bin, as:command, from:gh-r, rename-to:fzf'
-      'junegunn/fzf, as:command, use:bin/fzf-tmux'
-      'ytet5uy4/feedly-zsh, on:stedolan/jq'
-      'stedolan/jq, from:gh-r, as:command, rename-to:jq'
-    )
-    for arg in $zplug_args; do zplug $arg; done
+    zplug 'zplug/zplug'
+    zplug 'ytet5uy4/pctl'
+    zplug 'ytet5uy4/dctl'
+    zplug 'b4b4r07/zsh-gomi'
+    zplug 'ytet5uy4/feedly-zsh'
+    zplug 'zsh-users/zsh-completions'
+    zplug 'zsh-users/zsh-autosuggestions'
+    zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
     if ! zplug check; then
       if prompt 'Would you like to install plugins of zsh'; then
@@ -80,21 +74,5 @@
     fi
 
     zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
-
-    if zplug check 'junegunn/fzf-bin'; then
-      bindkey '^@' selector-select-widget
-      bindkey '^@c' selector-cd-dir-widget
-      bindkey '^@e' selector-edit-files-widget
-      bindkey '^@d' selector-edit-dotfiles-widget
-      bindkey '^@g' selector-cd-ghq-repository-widget
-      bindkey '^\' selector-cdr-widget
-      bindkey '^r' selector-excute-history-widget
-      bindkey '^@ga' selector-git-add-widget
-      bindkey '^@gb' selector-checkout-git-branch-widget
-      bindkey '^@p' selector-copy-password-widget
-      bindkey '^@n' selector-switch-network-widget
-      bindkey '^@s' selector-ssh-widget
-      bindkey '^@z' selector-cd-zsh-plugin-dir-widget
-    fi
   fi
 }
