@@ -98,7 +98,9 @@ export NVIM_CACHE_HOME=$XDG_CACHE_HOME/nvim
 [[ ! -d $NVIM_CACHE_HOME ]] && mkdir $NVIM_CACHE_HOME
 export NVIM_DATA_HOME=$XDG_DATA_HOME/nvim
 [[ ! -d $NVIM_DATA_HOME ]] && mkdir $NVIM_DATA_HOME
-export DEIN_HOME=$NVIM_DATA_HOME/plugins/github.com/Shougo/dein.vim
+export NVIM_PLUGIN_HOME=$NVIM_DATA_HOME/plugins
+[[ ! -d $NVIM_PLUGIN_HOME ]] && mkdir $NVIM_PLUGIN_HOME
+export DEIN_HOME=$NVIM_PLUGIN_HOME/repos/github.com/Shougo/dein.vim
 
 # tmux
 export TMUX_CACHE_HOME=$XDG_CACHE_HOME/tmux
@@ -119,7 +121,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export {HISTSIZE,SAVEHIST}=10000
 export ZPLUG_HOME=$ZSH_DATA_HOME/plugins
 export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
-[[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir $ZPLUG_CACHE_DIR
+[[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir -p $ZPLUG_CACHE_DIR
 
 # dctl
 export DCTL_PATH=$XDG_CONFIG_HOME/dotfiles/src
@@ -144,6 +146,9 @@ has tmux && export SELECTOR='fzf-tmux'
 # dmenu
 export DMENU_CONFIG_FILE=$XDG_CONFIG_HOME/dmenurc
 [[ -f $DMENU_CONFIG_FILE ]] && . $DMENU_CONFIG_FILE || export DMENU=''
+
+# aws
+export AWS_SDK_LOAD_CONFIG=1
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
