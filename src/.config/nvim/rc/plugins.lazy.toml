@@ -8,7 +8,7 @@ on_ft = 'md'
 on_map = '<Plug>'
 hook_add = ''' "{{{
   nnoremap [Previm] <Nop>
-  nmap <C-p> [Previm]
+  nmap <Space><C-p> [Previm]
 
   nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
 " }}} '''

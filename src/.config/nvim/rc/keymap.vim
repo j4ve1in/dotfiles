@@ -73,4 +73,8 @@ nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap <C-n> "zdd"zp
+nnoremap <C-p> "zdd<Up>"zP
+vnoremap <C-n> "zx"zp`[V`]
+vnoremap <C-p> "zx<Up>"zP`[V`]
 nnoremap <silent> <Space>.  :<C-u>source $MYVIMRC \| echo 'Source vimrc'<CR>
