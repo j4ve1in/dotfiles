@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 [[ ! -r $PWD ]] && return
 
 private cmd_ls='ls'
@@ -20,5 +22,3 @@ if [ $ls_lines -gt 10 ]; then
 else
   echo "$ls_result"
 fi
-
-# vim: ft=zsh sw=2 ts=2 et

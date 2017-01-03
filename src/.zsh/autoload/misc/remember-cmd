@@ -1,3 +1,3 @@
-export LASTCMD=(${(s: :)${1}})
+#!/bin/zsh
 
-# vim: ft=zsh sw=2 ts=2 et
+export LASTCMD=(${(s: :)${1}})

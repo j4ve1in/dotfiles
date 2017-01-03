@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 private -A abbreviations
 abbreviations=(
   'F'   '| fzf-tmux'
@@ -18,5 +20,3 @@ local MATCH
 LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
 LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
 zle self-insert
-
-# vim: ft=zsh sw=2 ts=2 et
