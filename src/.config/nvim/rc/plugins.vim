@@ -4,7 +4,7 @@ if isdirectory($DEIN_HOME)
 
   " Load Plugins
   if dein#load_state($DEIN_HOME)
-    call dein#begin($DEIN_HOME)
+    call dein#begin($NVIM_PLUGIN_HOME)
     call dein#load_toml($NVIM_CONFIG_HOME . '/rc/plugins.toml',      {'lazy': 0})
     call dein#load_toml($NVIM_CONFIG_HOME . '/rc/plugins.lazy.toml', {'lazy': 1})
     call dein#end()

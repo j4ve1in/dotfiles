@@ -1,50 +1,50 @@
-function! plugin#lightline#syntaxcheck()
+function! plugin#lightline#syntaxcheck() abort
   if !exists('*neomake#statusline#LoclistCounts')
     return ''
   endif
 
-  let total = 0
+  let l:total = 0
 
-  for v in values(neomake#statusline#LoclistCounts())
-    let total += v
+  for l:v in values(neomake#statusline#LoclistCounts())
+    let l:total += l:v
   endfor
 
-  for v in items(neomake#statusline#QflistCounts())
-    let total += v
+  for l:v in items(neomake#statusline#QflistCounts())
+    let l:total += l:v
   endfor
 
-  if total == 0
+  if l:total == 0
     return ''
   endif
 
-  return 'line '.getloclist(0)[0].lnum. ', 1 of '.total
+  return 'line '.getloclist(0)[0].lnum. ', 1 of '.l:total
 endfunction
 
-function! plugin#lightline#percent()
-  if &ft == 'dirvish' || &ft == 'denite'
+function! plugin#lightline#percent() abort
+  if &filetype ==# 'dirvish' || &filetype ==# 'denite'
     return ''
   else
-    let line = line('.')
-    let max_line = line('$')
-    return printf('%3d%s', (line * 100 / max_line), '%')
+    let l:line = line('.')
+    let l:max_line = line('$')
+    return printf('%3d%s', (l:line * 100 / l:max_line), '%')
   endif
 endfunction
 
-function! plugin#lightline#lineinfo()
-  if &ft == 'dirvish'
+function! plugin#lightline#lineinfo() abort
+  if &filetype ==# 'dirvish'
     return ''
-  elseif &ft == 'denite'
+  elseif &filetype ==# 'denite'
     return denite#get_status_linenr()
   else
-    let line = line('.')
-    let max_line = line('$')
-    let col = col('.')
-    return printf('%3d[%d]:%-2d', line, max_line, col)
+    let l:line = line('.')
+    let l:max_line = line('$')
+    let l:col = col('.')
+    return printf('%3d[%d]:%-2d', l:line, l:max_line, l:col)
   endif
 endfunction
 
-function! plugin#lightline#modified()
-  if &filetype == "help"
+function! plugin#lightline#modified() abort
+  if &filetype ==# 'help'
     return ''
   elseif &modified
     return '+'
@@ -55,58 +55,58 @@ function! plugin#lightline#modified()
   endif
 endfunction
 
-function! plugin#lightline#filename()
-  if &ft == 'denite'
+function! plugin#lightline#filename() abort
+  if &filetype ==# 'denite'
     return substitute(denite#get_status_mode(), ' *-- ', '', 'g')
   else
-    if '' != expand('%:t')
-      return expand('%:t') . ('' != plugin#lightline#modified() ? ' ' . plugin#lightline#modified() : '')
+    if '' !=# expand('%:t')
+      return expand('%:t') . ('' !=# plugin#lightline#modified() ? ' ' . plugin#lightline#modified() : '')
     else
-      return '' != plugin#lightline#modified() ? ' ' . plugin#lightline#modified() : ''
+      return '' !=# plugin#lightline#modified() ? ' ' . plugin#lightline#modified() : ''
     endif
   endif
 endfunction
 
-function! plugin#lightline#fileencoding()
-  if &ft == 'dirvish' || &ft == 'denite'
+function! plugin#lightline#fileencoding() abort
+  if &filetype ==# 'dirvish' || &filetype ==# 'denite'
     return ''
   else
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
   endif
 endfunction
 
-function! plugin#lightline#selector()
-  return &ft == 'denite' ? denite#get_status_sources() : ''
+function! plugin#lightline#selector() abort
+  return &filetype ==# 'denite' ? denite#get_status_sources() : ''
 endfunction
 
-function! plugin#lightline#vcs()
-  if &ft == 'denite'
+function! plugin#lightline#vcs() abort
+  if &filetype ==# 'denite'
     return ''
   else
     try
       if exists('*fugitive#head')
-        if $DISPLAY == ''
-          let mark = ''
+        if $DISPLAY ==# ''
+          let l:mark = ''
         else
-          let mark = "\ue0a0 "
+          let l:mark = "\ue0a0 "
         endif
-        let _ = fugitive#head()
-        return strlen(_) ? mark._ : ''
+        let l:branch = fugitive#head()
+        return strlen(l:branch) ? l:mark.l:branch : ''
       endif
     catch
     endtry
   endif
 endfunction
 
-function! plugin#lightline#fileformat()
-  if $DISPLAY == ''
-    if &ft == 'dirvish' || &ft == 'denite'
+function! plugin#lightline#fileformat() abort
+  if $DISPLAY ==# ''
+    if &filetype ==# 'dirvish' || &filetype ==# 'denite'
       return ''
     else
       return winwidth(0) > 70 ? (strlen(&fileformat) ? &fileformat : '') : ''
     endif
   else
-    if &ft == 'dirvish' || &ft == 'denite'
+    if &filetype ==# 'dirvish' || &filetype ==# 'denite'
       return ''
     else
       return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
@@ -114,15 +114,15 @@ function! plugin#lightline#fileformat()
   endif
 endfunction
 
-function! plugin#lightline#filetype()
-  if $DISPLAY == ''
-    if &ft == 'dirvish' || &ft == 'denite'
+function! plugin#lightline#filetype() abort
+  if $DISPLAY ==# ''
+    if &filetype ==# 'dirvish' || &filetype ==# 'denite'
       return ''
     else
       return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
     endif
   else
-    if &ft == 'dirvish' || &ft == 'denite'
+    if &filetype ==# 'dirvish' || &filetype ==# 'denite'
       return ''
     else
       if winwidth(0) > 70
@@ -134,8 +134,8 @@ function! plugin#lightline#filetype()
   endif
 endfunction
 
-function! plugin#lightline#mode()
-  return  &ft == 'dirvish' ? 'Dirvish' :
-        \ &ft == 'denite' ? 'Denite' :
+function! plugin#lightline#mode() abort
+  return  &filetype ==# 'dirvish' ? 'Dirvish' :
+        \ &filetype ==# 'denite' ? 'Denite' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction

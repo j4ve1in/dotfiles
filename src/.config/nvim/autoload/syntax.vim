@@ -1,31 +1,31 @@
-function! syntax#info()
-  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
-  echo "name: " . baseSyn.name .
-    \ " guifg: " . baseSyn.guifg .
-    \ " guibg: " . baseSyn.guibg
-  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
-  echo "link to"
-  echo "name: " . linkedSyn.name .
-    \ " guifg: " . linkedSyn.guifg .
-    \ " guibg: " . linkedSyn.guibg
+function! syntax#info() abort
+  let l:baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo 'name: ' . l:baseSyn.name .
+    \ ' guifg: ' . l:baseSyn.guifg .
+    \ ' guibg: ' . l:baseSyn.guibg
+  let l:linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo 'link to'
+  echo 'name: ' . l:linkedSyn.name .
+    \ ' guifg: ' . l:linkedSyn.guifg .
+    \ ' guibg: ' . l:linkedSyn.guibg
 endfunction
 
-function! s:get_syn_id(transparent)
-  let synid = synID(line("."), col("."), 1)
+function! s:get_syn_id(transparent) abort
+  let l:synid = synID(line('.'), col('.'), 1)
   if a:transparent
-    return synIDtrans(synid)
+    return synIDtrans(l:synid)
   else
-    return synid
+    return l:synid
   endif
 endfunction
 
-function! s:get_syn_attr(synid)
-  let name = synIDattr(a:synid, "name")
-  let guifg = synIDattr(a:synid, "fg", "gui")
-  let guibg = synIDattr(a:synid, "bg", "gui")
+function! s:get_syn_attr(synid) abort
+  let l:name = synIDattr(a:synid, 'name')
+  let l:guifg = synIDattr(a:synid, 'fg', 'gui')
+  let l:guibg = synIDattr(a:synid, 'bg', 'gui')
   return {
-  \   "name": name,
-  \   "guifg": guifg,
-  \   "guibg": guibg
+  \   'name': l:name,
+  \   'guifg': l:guifg,
+  \   'guibg': l:guibg
   \ }
 endfunction

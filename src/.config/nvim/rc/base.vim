@@ -9,19 +9,39 @@ set grepprg=grep\ -inH
 set completeopt=menuone
 set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
-autocmd QuickFixCmdPost make,*grep* cwindow
 set wildignorecase wildmode=longest:full,full
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost make,*grep* cwindow
+augroup END
+
+" apperance
+set ruler
+set number
+set showmatch
+set noshowmode
+set matchtime=1
+colorscheme abyss
+scriptencoding utf-8
+let &showbreak="\u21aa "
+set list listchars=tab:\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
+augroup tabline
+  autocmd!
+  autocmd VimEnter let &tabline = '%!'. tabline#sid() . 'tabline#name()'
+augroup END
+
 " clipboard
-if $DISPLAY != ''
+if $DISPLAY !=# ''
+  set clipboard&
   set clipboard^=unnamedplus
 endif
 
 " File
 "" Indent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
-augroup fileTypeIndent
+augroup file_type_indent
   autocmd!
   autocmd FileType go setlocal noexpandtab
   autocmd FileType php setlocal noexpandtab
@@ -55,5 +75,8 @@ augroup fileTypeIndent
 augroup END
 
 "" Others
-autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable
+augroup file_type_settings
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable
+augroup END

@@ -3,6 +3,7 @@
 # Base {{{
 [[plugins]]
 repo = 'Shougo/dein.vim'
+hook_add = 'let g:dein#types#git#clone_depth = 1'
 
 [[plugins]]
 repo = 'surround.vim'
@@ -10,31 +11,33 @@ repo = 'surround.vim'
 [[plugins]]
 repo = 'soramugi/auto-ctags.vim'
 hook_add = ''' " {{{
-  let g:auto_ctags = 1
-  let g:auto_ctags_directory_list = ['.git']
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git']
 " }}} '''
 
 [[plugins]]
 repo = 'kana/vim-submode'
 hook_source = ''' " {{{
-  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-  call submode#map('winsize', 'n', '', '>', '<C-w>>')
-  call submode#map('winsize', 'n', '', '<', '<C-w><')
-  call submode#map('winsize', 'n', '', '+', '<C-w>+')
-  call submode#map('winsize', 'n', '', '-', '<C-w>-')
-  call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
-  call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
-  call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
-  call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove<Space>+1<CR>')
+call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove<Space>-1<CR>')
+call submode#map('tabmove', 'n', '', '>', ':tabmove<Space>+1<CR>')
+call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
 " }}} '''
 
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
 hook_add = ''' " {{{
-  nnoremap <silent> <Space><C-f> :<C-u>Dirvish<CR>
+nnoremap <silent> <Space><C-f> :<C-u>Dirvish<CR>
+augroup dirvish
+  autocmd!
   autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
   autocmd FileType dirvish xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
   autocmd FileType dirvish nmap <silent><buffer> h -
@@ -42,18 +45,16 @@ hook_add = ''' " {{{
   autocmd FileType dirvish nnoremap <buffer> +f :Touch<Space>%
   autocmd FileType dirvish nnoremap <buffer> +d :Mkdir<Space>%
   autocmd FileType dirvish nnoremap <silent><buffer> ~ :<C-u>Dirvish ~<CR>
-  autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d
+  autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d_
   autocmd FileType dirvish
-  \ map <buffer> <Space>j $T/<Plug>(easymotion-j) |
-  \ map <buffer> <Space>j $T/<Plug>(easymotion-j)
+        \ map <buffer> <Space>j $T/<Plug>(easymotion-j) |
+        \ map <buffer> <Space>j $T/<Plug>(easymotion-j)
   autocmd FileType dirvish
-  \ map <buffer> <Space>k $T/<Plug>(easymotion-k) |
-  \ map <buffer> <Space>k $T/<Plug>(easymotion-k)
+        \ map <buffer> <Space>k $T/<Plug>(easymotion-k) |
+        \ map <buffer> <Space>k $T/<Plug>(easymotion-k)
 
-  autocmd VimEnter * nested if @% == '' && s:bufByte() == 0 | Dirvish | endif
-  function! s:bufByte()
-    return line2byte(line('$') + 1) == -1 ? 0 : -1
-  endfunction
+  autocmd VimEnter * nested if @% == '' && buf#byte() == 0 | Dirvish | endif
+augroup END
 " }}} '''
 
 [[plugins]]
@@ -63,9 +64,9 @@ on_if = "$DISPLAY != ''"
 [[plugins]]
 repo = 'vim-scripts/vim-auto-save'
 hook_add = ''' " {{{
-  let g:auto_save = 1
-  let g:auto_save_silent = 1
-  let g:auto_save_in_insert_mode = 0
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_in_insert_mode = 0
 " }}} '''
 
 [[plugins]]
@@ -76,98 +77,55 @@ hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 if = "&l:filetype ==# 'yaml'"
-hook_add ='''
+hook_add =''' " {{{
 let g:indentLine_color_term = 240
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_fileTypeExclude = ['help', 'tutor', 'yaml', 'ansible.yaml']
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = ''' " {{{
-  let s:white  = [ '#DDDDDD', 255 ]
-  let s:black  = [ '#000000', 0 ]
-  let s:red  = [ '#FE0000', 196 ]
-  let s:cyan  = [ '#00AFFF', 39 ]
-  let s:darkpurple  = [ '#5F0087', 54 ]
+let g:lightline = {
+      \   'colorscheme': 'abyss',
+      \   'active': {
+      \     'left': [['mode', 'paste'],['vcs', 'filename', 'selector']],
+      \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'syntaxcheck']]
+      \   },
+      \   'component_expand': {
+      \     'syntaxcheck': 'plugin#lightline#syntaxcheck',
+      \   },
+      \   'component_type': {
+      \     'syntaxcheck': 'error',
+      \   },
+      \   'component_function': {
+      \     'vcs': 'plugin#lightline#vcs',
+      \     'modified': 'plugin#lightline#modified',
+      \     'fileformat': 'plugin#lightline#fileformat',
+      \     'filetype': 'plugin#lightline#filetype',
+      \     'fileencoding': 'plugin#lightline#fileencoding',
+      \     'filename': 'plugin#lightline#filename',
+      \     'mode': 'plugin#lightline#mode',
+      \     'selector': 'plugin#lightline#selector',
+      \     'lineinfo': 'plugin#lightline#lineinfo',
+      \     'percent':  'plugin#lightline#percent'
+      \   }
+      \ }
 
-  let s:blue  = [ '#0000C8', 21 ]
-  let s:darkblue  = [ '#00014E', 17 ]
-
-  let s:gray  = [ '#808080', 235 ]
-  let s:lightgray  = [ '#4C4C4C', 240 ]
-
-  let s:none  = [ 'NONE', 'NONE' ]
-
-  let s:p = {
-  \   'normal':   {},
-  \   'inactive': {},
-  \   'insert':   {},
-  \   'replace':  {},
-  \   'visual':   {},
-  \   'tabline':  {}
-  \ }
-
-  let s:p.normal.middle = [[s:white, s:black]]
-  let s:p.normal.left = [[s:white, s:darkblue], [s:white, s:blue]]
-  let s:p.normal.right = [[s:white, s:darkblue], [s:white, s:blue]]
-
-  let s:p.normal.error = [[ s:red, s:black ]]
-
-  let s:p.inactive.middle = [[s:white, s:black]]
-  let s:p.inactive.right = [[s:white, s:gray], [s:white, s:lightgray]]
-  let s:p.inactive.left = [[s:white, s:gray]]
-
-  let s:p.insert.left = [[s:darkblue, s:white], s:p.normal.left[1]]
-  let s:p.replace.left = [[s:white, s:cyan], s:p.normal.left[1]]
-  let s:p.visual.left = [[s:white, s:darkpurple], s:p.normal.left[1]]
-
-  let s:p.tabline.middle = [[s:white, s:none]]
-  let s:p.tabline.right = [[s:white, s:darkblue], [s:darkblue, s:none]]
-  let s:p.tabline.left = [[s:white, s:black]]
-  let s:p.tabline.tabsel = [[s:white, s:darkblue]]
-  let g:lightline#colorscheme#abisso#palette = lightline#colorscheme#flatten(s:p)
-
-  let g:lightline = {
-  \   'colorscheme': 'abisso',
-  \   'active': {
-  \     'left': [['mode', 'paste'],['vcs', 'filename', 'selector']],
-  \     'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'syntaxcheck']]
-  \   },
-  \   'component_expand': {
-  \     'syntaxcheck': 'plugin#lightline#syntaxcheck',
-  \   },
-  \   'component_type': {
-  \     'syntaxcheck': 'error',
-  \   },
-  \   'component_function': {
-  \     'vcs': 'plugin#lightline#vcs',
-  \     'modified': 'plugin#lightline#modified',
-  \     'fileformat': 'plugin#lightline#fileformat',
-  \     'filetype': 'plugin#lightline#filetype',
-  \     'fileencoding': 'plugin#lightline#fileencoding',
-  \     'filename': 'plugin#lightline#filename',
-  \     'mode': 'plugin#lightline#mode',
-  \     'selector': 'plugin#lightline#selector',
-  \     'lineinfo': 'plugin#lightline#lineinfo',
-  \     'percent':  'plugin#lightline#percent'
-  \   }
-  \ }
-
-  if $DISPLAY == ''
-    let g:lightline.separator = { 'left': "", 'right': "" }
-    let g:lightline.subseparator = { 'left': "|", 'right': "|" }
-  else
-    let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-    let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
-  endif
+if $DISPLAY == ''
+  let g:lightline.separator = { 'left': "", 'right': "" }
+  let g:lightline.subseparator = { 'left': "|", 'right': "|" }
+else
+  let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+  let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+endif
 " }}} '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
-hook_add = '''
+hook_add = ''' " {{{
 let g:precious_enable_switchers = {
       \ "*" : {
       \  "setfiletype" : 0
@@ -176,7 +134,7 @@ let g:precious_enable_switchers = {
       \  "setfiletype" : 1
       \ },
       \}
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -189,7 +147,7 @@ repo = 'b4b4r07/vim-shellutils'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
-hook_add = '''
+hook_add = ''' " {{{
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_prompt = '{n}> '
 let g:EasyMotion_startofline = 0
@@ -197,8 +155,8 @@ let g:EasyMotion_enter_jump_first = 1
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+map  n <Plug>(easymotion-next)zzzv
+map  N <Plug>(easymotion-prev)zzzv
 
 map <Space>l <Plug>(easymotion-lineforward)
 map <Space>h <Plug>(easymotion-linebackward)
@@ -206,25 +164,17 @@ map <Space>h <Plug>(easymotion-linebackward)
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap ; <CR>
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <Tab> <Over>(buffer-complete)
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
-autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
-
-hi EasyMotionIncSearch cterm=bold ctermbg=none ctermfg=75
-hi EasyMotionIncCursor ctermbg=27 ctermfg=15
-
-hi EasyMotionTarget cterm=bold ctermbg=none ctermfg=99
-hi EasyMotionTarget2First cterm=bold ctermbg=none ctermfg=99
-hi EasyMotionTarget2Second cterm=bold ctermbg=none ctermfg=27
-'''
+augroup easymotion
+  autocmd!
+  autocmd VimEnter,BufEnter * :EMCommandLineNoreMap ; <CR>
+  autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <Tab> <Over>(buffer-complete)
+  autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
+  autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
+augroup END
+" }}} '''
 
 [[plugins]]
 repo = 'deris/vim-shot-f'
-hook_add = '''
-highlight ShotFGraph ctermfg=27 ctermbg=NONE cterm=bold
-highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
-'''
 # }}}
 
 # Selector {{{
@@ -232,43 +182,42 @@ highlight ShotFBlank ctermfg=NONE ctermbg=21 cterm=NONE
 repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
 hook_add = ''' " {{{
-  nnoremap [Denite] <Nop>
-  nmap <C-Space> [Denite]
+nnoremap [Denite] <Nop>
+nmap <C-Space> [Denite]
 
-  nnoremap <silent> [Denite]f     :<C-u>Denite<Space>file_rec<CR>
-  nnoremap <silent> [Denite]F     :<C-u>Denite<Space>file_rec<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Denite]m     :<C-u>Denite<Space>file_mru<CR>
-  nnoremap <silent> [Denite]M     :<C-u>Denite<Space>file_mru<Space>-default-action=tabopen<CR>
-  nnoremap <silent> [Denite]/     :<C-u>Denite<Space>grep<CR>
-  nnoremap <silent> [Denite]?     :<C-u>Denite<Space>grep<Space>-default-action=tabopen<CR>
+nnoremap <silent> [Denite]b :<C-u>Denite<Space>buffer<Space>-default-action=tabswitch<CR>
+nnoremap <silent> [Denite]f :<C-u>Denite<Space>file_rec<CR>
+nnoremap <silent> [Denite]F :<C-u>Denite<Space>file_rec<Space>-default-action=tabswitch<CR>
+nnoremap <silent> [Denite]m :<C-u>Denite<Space>file_mru<CR>
+nnoremap <silent> [Denite]M :<C-u>Denite<Space>file_mru<Space>-default-action=tabswitch<CR>
+nnoremap <silent> [Denite]/ :<C-u>Denite<Space>grep<CR>
+nnoremap <silent> [Denite]? :<C-u>Denite<Space>grep<Space>-default-action=tabswitch<CR>
 
-  " others
-  nnoremap <silent> [Denite]. :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
-  nnoremap <silent> [Denite]> :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabopen<CR>
-
-  hi deniteMatched cterm=none ctermfg=27
+" others
+nnoremap <silent> [Denite]. :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<CR>
+nnoremap <silent> [Denite]> :<C-u>Denite<Space>file_rec<Space>-path=~/.config/dotfiles/src<Space>-input=.<Space>-default-action=tabswitch<CR>
 " }}} '''
 hook_source = ''' " {{{
-  call denite#custom#option('default', 'winheight', 10)
-  call denite#custom#option('default', 'prompt', '>')
-  call denite#custom#option('default', 'statusline', 0)
-  call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '-uu', '-S', '--glob', '!.git'])
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'final_opts', [])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'default_opts',
-        \ ['--vimgrep', '-uu', '-S', '--no-heading'])
-  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-        \ [
-        \ '.git/', '.ropeproject/', '__pycache__/',
-        \ 'venv/',
-        \ 'images/',
-        \ '*.min.*',
-        \ 'img/', 'fonts/'])
-  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
-  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
+call denite#custom#option('default', 'winheight', 10)
+call denite#custom#option('default', 'prompt', '>')
+call denite#custom#option('default', 'statusline', 0)
+call denite#custom#var('file_rec', 'command',
+      \ ['rg', '--files', '-uu', '-S', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'default_opts',
+      \ ['--vimgrep', '-uu', '-S', '--no-heading'])
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [
+      \ '.git/', '.ropeproject/', '__pycache__/',
+      \ 'venv/',
+      \ 'images/',
+      \ '*.min.*',
+      \ 'img/', 'fonts/'])
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
 " }}} '''
 
 [[plugins]]
@@ -278,7 +227,7 @@ repo = 'Shougo/neomru.vim'
 repo = 'Jagua/vim-denite-ghq'
 depends = 'denite.vim'
 hook_add = ''' " {{{
-  nnoremap <silent> [Denite]gh :<C-u>Denite<Space>ghq<CR>
+nnoremap <silent> [Denite]gh :<C-u>Denite<Space>ghq<CR>
 " }}} '''
 # }}}
 
@@ -287,7 +236,7 @@ hook_add = ''' " {{{
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_i = 1
-hook_source = '''
+hook_source = ''' " {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#max_list = 5
@@ -299,27 +248,27 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
   return deoplete#close_popup() . "\<CR>"
 endfunction
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
 on_map = '<Plug>(neosnippet_expand_'
 hook_add = ''' " {{{
-  " Plugin key-mappings.
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-  " SuperTab like snippets behavior.
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
-  let g:neosnippet#disable_runtime_snippets = {'_' : 1}
-  let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 " }}} '''
 
 [[plugins]]
@@ -330,49 +279,36 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = ''' " {{{
-  nnoremap [git] <Nop>
-  nmap <Space>g [git]
+nnoremap [git] <Nop>
+nmap <Space>g [git]
 
-  nnoremap [git]a :<C-u>Git<Space>add<Space>%:p<CR>
-  nnoremap [git]aa :<C-u>Git<Space>add<Space>-A<CR>
-  nnoremap [git]b :<C-u>Gbrowse<CR>
-  nnoremap [git]c :<C-u>Gcommit<CR>
-  nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>''<Left>
-  nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>''<Left>
-  nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
-  nnoremap [git]cd :<C-u>Gcd<CR>
-  nnoremap [git]in :<C-u>Git<Space>init<CR>
-  nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>stash<Space>list<CR>
-  nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>show<CR>
-  nnoremap [git]st :<C-u>Git<Space>stash<CR>
-  nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
-  nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
-  nnoremap [git]w :<C-u>Gwrite
-  nnoremap [git]r :<C-u>Gread
-  nnoremap [git]rm :<C-u>Gremove
-  nnoremap [git]m :<C-u>Gmove
+nnoremap [git]a :<C-u>Git<Space>add<Space>%:p<CR>
+nnoremap [git]aa :<C-u>Git<Space>add<Space>-A<CR>
+nnoremap [git]b :<C-u>Gbrowse<CR>
+nnoremap [git]c :<C-u>Gcommit<CR>
+nnoremap [git]cm :<C-u>Gcommit<Space>-m<Space>''<Left>
+nnoremap [git]cam :<C-u>Gcommit<Space>-am<Space>''<Left>
+nnoremap [git]ch :<C-u>Git<Space>checkout<Space>
+nnoremap [git]cd :<C-u>Gcd<CR>
+nnoremap [git]in :<C-u>Git<Space>init<CR>
+nnoremap [git]s :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>status<Space>-s<Space>-b<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>stash<Space>list<CR>
+nnoremap [git]sw :<C-u>!clear<Space>&&<Space>git<Space>-C<Space>%:p:h<Space>show<CR>
+nnoremap [git]st :<C-u>Git<Space>stash<CR>
+nnoremap [git]stl :<C-u>Git<Space>stash<Space>list<CR>
+nnoremap [git]stp :<C-u>Git<Space>stash<Space>pop<CR>
+nnoremap [git]w :<C-u>Gwrite
+nnoremap [git]r :<C-u>Gread
+nnoremap [git]rm :<C-u>Gremove
+nnoremap [git]m :<C-u>Gmove
 " }}} '''
 
 [[plugins]]
 repo = 'cohama/agit.vim'
 hook_add = ''' " {{{
-  nnoremap [git] <Nop>
-  nmap <Space><C-g> [Agit]
+nnoremap [git] <Nop>
+nmap <Space><C-g> [Agit]
 
-  nnoremap [Agit] :<C-u>AgitFile<CR>
-
-  hi agitDiffAdd                          ctermbg=none  ctermfg=46
-  hi agitDiffRemove                       ctermbg=none  ctermfg=160
-  hi agitStatAdded                        ctermbg=none  ctermfg=46
-  hi agitStatRemoved                      ctermbg=none  ctermfg=160
-  hi agitStatMessage           cterm=bold ctermbg=none  ctermfg=75
-  hi agitStatFile                         ctermbg=none  ctermfg=251
-  hi agitDiffHeader            cterm=bold ctermbg=none  ctermfg=75
-  hi agitDiffIndex             cterm=bold ctermbg=none  ctermfg=75
-  hi agitDiffFileName                     ctermbg=none  ctermfg=251
-  hi agitTree                  cterm=bold ctermbg=none  ctermfg=75
-  hi agitDate                             ctermbg=none  ctermfg=245
-  hi agitAuthor                           ctermbg=none  ctermfg=99
+nnoremap [Agit] :<C-u>AgitFile<CR>
 " }}} '''
 # }}}
 
@@ -385,9 +321,8 @@ repo = 'haya14busa/vim-operator-flashy'
 on_map = '<Plug>(operator-flashy'
 depends = 'vim-operator-user'
 hook_add = ''' " {{{
-  map y <Plug>(operator-flashy)
-  nmap Y <Plug>(operator-flashy)$
-  highlight Flashy ctermfg=0 ctermbg=26
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
 " }}} '''
 # }}}
 
@@ -414,16 +349,16 @@ repo = 'wellle/targets.vim'
 # Syntax Check {{{
 [[plugins]]
 repo = 'neomake/neomake'
-hook_add = '''
+hook_add = ''' " {{{
 let g:neomake_place_signs = 0
 
-autocmd VimEnter,BufWritePost * Neomake
-augroup my_neomake
-    aut!
-    autocmd User NeomakeFinished HierStart
-    autocmd User NeomakeFinished call lightline#update()
+augroup neomake_settings
+  autocmd!
+  autocmd BufEnter,BufWritePost * Neomake
+  autocmd User NeomakeFinished HierStart
+  autocmd User NeomakeFinished call lightline#update()
 augroup END
-'''
+" }}} '''
 
 [[plugins]]
 repo = 'cohama/vim-hier'

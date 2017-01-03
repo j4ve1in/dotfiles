@@ -9,26 +9,18 @@ if !isdirectory(expand($CACHE))
 endif
 
 " Declare rc_vim_list and source_rc
-let rc_vim_list = [
+let s:rc_vim_list = [
 \   'local.before',
 \   'plugins',
-\   'apperance',
 \   'base',
-\   'colors',
 \   'keymap',
 \   'local'
 \ ]
 
-function! s:source_rc(path)
-  if filereadable(expand('~/.config/nvim/rc/' . a:path . '.vim'))
-    execute 'source' fnameescape(expand('~/.config/nvim/rc/' . a:path . '.vim'))
-  endif
-endfunction
-
 " Source settings
 " Location: ~/.config/nvim/rc/
-for rc_vim in rc_vim_list
-  cal s:source_rc(rc_vim)
+for s:rc_vim in s:rc_vim_list
+  cal source#rc(s:rc_vim)
 endfor
 
 filetype plugin indent on
