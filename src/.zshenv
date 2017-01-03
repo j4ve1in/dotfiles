@@ -116,7 +116,7 @@ export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
 [[ ! -d $ZSH_DATA_HOME ]] && mkdir $ZSH_DATA_HOME
 export HISTFILE="$ZSH_CACHE_HOME/history"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export {HISTSIZE,SAVEHIST}=1000
+export {HISTSIZE,SAVEHIST}=10000
 export ZPLUG_HOME=$ZSH_DATA_HOME/plugins
 export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 [[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir $ZPLUG_CACHE_DIR
