@@ -64,8 +64,7 @@ myLayout = avoidStruts
     gwR = 0
 
 -- startup
-myStartupHook = do
-  spawnOnce "xmonad-run startup"
+myStartupHook = spawnOnce "xmonad-run startup"
 
 -- loghook
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
