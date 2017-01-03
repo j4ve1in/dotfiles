@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 type pkgfile >/dev/null 2>&1 || return 1
 
 private cmd
@@ -8,8 +10,8 @@ if [[ -n $pkgs ]]; then
   printf '%s may be found in the following packages:\n' "$cmd"
   printf '  %s\n' $pkgs
   return 0
+else
+  printf 'zsh: command not found: %s\n' "$cmd"
 fi
 
 return 127
-
-# vim: ft=zsh sw=2 ts=2 et
