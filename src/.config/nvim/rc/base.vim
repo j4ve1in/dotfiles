@@ -34,8 +34,7 @@ augroup END
 
 " clipboard
 if $DISPLAY !=# ''
-  set clipboard&
-  set clipboard^=unnamedplus
+  set clipboard=unnamedplus
 endif
 
 " File
