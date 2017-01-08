@@ -100,4 +100,8 @@ on_ft = 'yaml'
 [[plugins]]
 repo = 'dag/vim-fish'
 on_ft = 'fish'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'tf'
 # }}}
