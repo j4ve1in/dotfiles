@@ -140,8 +140,6 @@ export FZF_DEFAULT_OPTS='
   --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
   --color info:69,prompt:75,spinner:69,pointer:69,marker:69
 '
-has tmux && export SELECTOR='fzf-tmux'
-[[ -z $TMUX ]] && export SELECTOR='fzf'
 
 # dmenu
 export DMENU_CONFIG_FILE=$XDG_CONFIG_HOME/dmenurc
