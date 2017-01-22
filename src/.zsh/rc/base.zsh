@@ -21,6 +21,16 @@ setopt inc_append_history
 stty stop undef
 bindkey -v
 
+## base
+bindkey -v '^[[Z' reverse-menu-complete
+bindkey -v '^[e' exec-editor
+bindkey -v '^[g' exec-git
+bindkey -v '^[f' exec-fuck
+bindkey -v '^_' reload
+bindkey -v '^Z' extend-ctrl-z
+bindkey -v ' ' abbrev-expand
+bindkey -v '^x ' no-abbrev-expand
+
 ## emacs like
 bindkey -v '^H' backward-delete-char
 bindkey -v '^W' backward-kill-word
@@ -38,16 +48,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
-
-## others
-bindkey -v '^[[Z' reverse-menu-complete
-bindkey -v '^[e' editor-widget
-bindkey -v '^[g' git-widget
-bindkey -v '^[f' fuck-widget
-bindkey -v '^_' reload-widget
-bindkey -v '^Z' ctrl-z-widget
-bindkey -v ' ' abbrev-expand-widget
-bindkey -v '^x ' no-abbrev-expand-widget
 
 # cdr
 autoload -Uz chpwd_recent_dirs cdr
