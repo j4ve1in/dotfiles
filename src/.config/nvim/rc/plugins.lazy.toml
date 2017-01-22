@@ -7,27 +7,27 @@ depends = 'open-browser.vim'
 on_ft = 'md'
 on_map = '<Plug>'
 hook_add = ''' "{{{
-  nnoremap [Previm] <Nop>
-  nmap <Space><C-p> [Previm]
+nnoremap [Previm] <Nop>
+nmap <Space><C-p> [Previm]
 
-  nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
 " }}} '''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = '<Plug>(openbrowser-smart-search)'
 hook_add = ''' " {{{
-  let g:netrw_nogx = 1
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 " }}} '''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
 on_map = '<Plug>(caw:hatpos:toggle)'
 hook_add = ''' " {{{
-  nmap <C-_> <Plug>(caw:hatpos:toggle)
-  vmap <C-_> <Plug>(caw:hatpos:toggle)
+nmap <C-_> <Plug>(caw:hatpos:toggle)
+vmap <C-_> <Plug>(caw:hatpos:toggle)
 " }}} '''
 # }}}
 
@@ -77,12 +77,9 @@ repo = 'zchee/nvim-go'
 build = 'make'
 on_ft = 'go'
 hook_add = '''
-augroup nvim-go
-  autocmd!
-  autocmd FileType go nnoremap <C-c> :<C-u>Gorun<CR>
-  autocmd FileType go nnoremap g<C-c> :<C-u>Gorun<space>
-  autocmd FileType go nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
-augroup END
+nmap <C-c> <Plug>(nvim-go-run)
+nnoremap g<C-c> :<C-u>Gorun<space>
+nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
 '''
 
 [[plugins]]

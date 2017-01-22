@@ -178,6 +178,12 @@ augroup END
 
 [[plugins]]
 repo = 'deris/vim-shot-f'
+
+[[plugins]]
+repo = 'kassio/neoterm'
+hook_add = ''' " {{{
+let g:neoterm_position = 'vertical'
+" }}} '''
 # }}}
 
 # Selector {{{
@@ -354,10 +360,11 @@ repo = 'wellle/targets.vim'
 repo = 'neomake/neomake'
 hook_add = ''' " {{{
 let g:neomake_place_signs = 0
+nnoremap <silent> <C-m> :<C-u>Neomake<CR>
 
 augroup neomake_settings
   autocmd!
-  autocmd BufEnter,BufWritePost * Neomake
+  autocmd BufWritePost * Neomake
   autocmd User NeomakeFinished HierStart
   autocmd User NeomakeFinished call lightline#update()
 augroup END

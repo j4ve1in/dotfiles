@@ -49,12 +49,11 @@ nnoremap <silent> <C-q>gg :<C-u>cfirst<CR>
 nnoremap <silent> <C-q>G  :<C-u>clast<CR>
 augroup quickfix_keymap
   autocmd!
-  autocmd BufReadPost quickfix nnoremap <buffer> q :<C-u>q<CR>
+  autocmd BufReadPost quickfix nnoremap <silent> <buffer> q :<C-u>q<CR>
 augroup END
 
 " Others
 cnoremap ; <CR>
-cnoremap : <C-u><C-h><ESC>
 nnoremap gm :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
 nnoremap gM :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
 nnoremap <C-g> 1<C-g>

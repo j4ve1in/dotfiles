@@ -38,6 +38,13 @@ if $DISPLAY !=# ''
 endif
 
 " File
+"" Base
+augroup file_type_base
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable
+augroup END
+
 "" Indent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
 augroup file_type_indent
@@ -73,9 +80,15 @@ augroup file_type_indent
   autocmd FileType man setlocal tabstop=8
 augroup END
 
-"" Others
-augroup file_type_settings
+"" Terminal
+augroup file_type_term_run
   autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable
+  autocmd FileType zsh nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('zsh')<CR>
+  autocmd FileType bash nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('bash')<CR>
+augroup END
+
+"" Template
+augroup file_type_template
+  autocmd!
+  autocmd BufNewFile *.* silent! execute '0r $NVIM_CONFIG_HOME/templates/skel.' . expand("<afile>:e") . ' | $normal ddgg'
 augroup END
