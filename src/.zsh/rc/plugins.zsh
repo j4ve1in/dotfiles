@@ -27,9 +27,10 @@
     zplug 'zplug/zplug'
     zplug 'ytet5uy4/pctl'
     zplug 'ytet5uy4/dctl'
-    zplug 'b4b4r07/zsh-gomi'
     zplug 'ytet5uy4/feedly-zsh'
     zplug 'ytet5uy4/fzf-widgets'
+    zplug 'b4b4r07/zsh-gomi'
+    zplug 'b4b4r07/ssh-keyreg'
     zplug 'zsh-users/zsh-completions'
     zplug 'zsh-users/zsh-autosuggestions'
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2
@@ -52,12 +53,12 @@
       ZSH_HIGHLIGHT_STYLES[default]=none
       ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
       ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=blue
-      ZSH_HIGHLIGHT_STYLES[alias]=fg=129,bold
+      ZSH_HIGHLIGHT_STYLES[alias]=fg=39,bold
       ZSH_HIGHLIGHT_STYLES[builtin]=fg=111,bold
       ZSH_HIGHLIGHT_STYLES[function]=fg=87,bold
       ZSH_HIGHLIGHT_STYLES[command]=fg=27
       ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
-      ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+      ZSH_HIGHLIGHT_STYLES[commandseparator]=129
       ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=cyan
       ZSH_HIGHLIGHT_STYLES[path]=fg=$fg[main],bold
       ZSH_HIGHLIGHT_STYLES[path_prefix]=none
@@ -75,5 +76,20 @@
     fi
 
     zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
+
+    if zplug check 'ytet5uy4/fzf-widgets'; then
+      bindkey '^@'   fzf-select-widget
+      bindkey '^@c'  fzf-change-dir
+      bindkey '^\'   fzf-change-recent-dir
+      bindkey '^@g'  fzf-change-repository
+      bindkey '^@f'  fzf-edit-files
+      bindkey '^@.'  fzf-edit-dotfiles
+      bindkey '^r'   fzf-exec-history
+      bindkey '^@s'  fzf-exec-ssh
+      bindkey '^@ga' fzf-git-add
+      bindkey '^@gb' fzf-git-checkout
+      bindkey '^@p'  fzf-copy-password
+      bindkey '^@n'  fzf-switch-network
+    fi
   fi
 }
