@@ -37,7 +37,7 @@ path=(
 if [[ -d $XDG_DATA_HOME/anyenv ]] ; then
   export ANYENV_ROOT="$XDG_DATA_HOME/anyenv"
   path=($ANYENV_ROOT/bin(N-/) $path)
-  eval "`anyenv init -`"
+  eval "`anyenv init - --no-rehash`"
   for D in `ls $ANYENV_ROOT/envs`; do
     path=($ANYENV_ROOT/envs/$D/shims(N-/) $path)
   done

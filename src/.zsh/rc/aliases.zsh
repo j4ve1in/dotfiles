@@ -5,8 +5,6 @@ has docker && alias d='docker'
 has docker-compose && alias dc='docker-compose'
 has pacman && alias p='pacman'
 has yaourt && alias y='yaourt'
-has thefuck && eval "`thefuck --alias`"
-has hub && eval "`hub alias -s`"
 has ranger && disable r && alias f='ranger' r='rifle'
 has sudo && alias sudo='sudo ' s='sudo'
 has sudoedit && alias sudoedit='sudoedit ' se='sudoedit'

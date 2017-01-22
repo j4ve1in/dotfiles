@@ -1,6 +1,4 @@
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
-autoload -Uz compinit && compinit -u -d $XDG_CACHE_HOME/zsh/compdump
-[[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 zstyle ':completion:*:complete:*' cache-path $XDG_CACHE_HOME/zsh/compcache/
 
 setopt auto_pushd
