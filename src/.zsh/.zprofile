@@ -24,7 +24,7 @@ fi
 
 : 'Catenate configuration files of zsh' && () {
   private -a file
-  file=( $ZDOTDIR/rc/{plugins,base,aliases,completion,prompt}.zsh )
+  file=( $ZDOTDIR/rc/{plugins,base,aliases,completion}.zsh )
   [[ -f $ZDOTDIR/rc/local.zsh ]] && file+=$ZDOTDIR/rc/local.zsh
 
   for f in $file; do

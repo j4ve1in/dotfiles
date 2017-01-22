@@ -29,6 +29,7 @@
     zplug 'ytet5uy4/dctl'
     zplug 'ytet5uy4/feedly-zsh'
     zplug 'ytet5uy4/fzf-widgets'
+    zplug 'ytet5uy4/abyss.zsh', as:theme
     zplug 'b4b4r07/zsh-gomi'
     zplug 'b4b4r07/ssh-keyreg'
     zplug 'zsh-users/zsh-completions'
