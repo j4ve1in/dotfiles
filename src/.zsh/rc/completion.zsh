@@ -44,4 +44,4 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 setopt auto_cd
-add-zsh-hook chpwd ls-abbrev
+add-zsh-hook chpwd cd-extend

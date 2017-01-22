@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+[[ ! -r $PWD ]] && return
+
+private result=`COLUMNS=$COLUMNS ls -ACF --color=always`
+private lines=`echo "$result" | wc -l | tr -d ' '`
+
+if (( $lines > 10 )); then
+  echo "$result" | head -n 5
+  echo '...'
+  echo "$result" | tail -n 5
+  echo "`ls -1 -A | wc -l | tr -d ' '` files exist"
+else
+  echo "$result"
+fi
