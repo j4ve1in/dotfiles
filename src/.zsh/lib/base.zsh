@@ -4,8 +4,6 @@ is-alpine() { [ -e /etc/alpine-release ]; }
 
 is-arch() { [ -e /etc/arch-release ]; }
 
-is-darwin() { [[ $OSTYPE =~ darwin ]]; }
-
 is-linux() { [[ $OSTYPE =~ linux ]]; }
 
 prompt() {

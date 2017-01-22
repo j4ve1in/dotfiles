@@ -54,7 +54,7 @@ Released under the MIT License, see **[LICENSE.md][license-link]**.
 [demo]: https://raw.githubusercontent.com/wiki/ytet5uy4/dotfiles/img/demo.png
 [release-badge]: https://img.shields.io/github/release/ytet5uy4/dotfiles.svg?style=flat-square
 [license-badge]: https://img.shields.io/github/license/ytet5uy4/dotfiles.svg?style=flat-square
-[platform-badge]: https://img.shields.io/badge/platform-GNU%2FLinux%20|%20Darwin-lightgrey.svg?style=flat-square
+[platform-badge]: https://img.shields.io/badge/platform-GNU%2FLinux-lightgrey.svg?style=flat-square
 
 [release-link]: //github.com/ytet5uy4/dotfiles/releases/latest
 [license-link]: LICENSE.md

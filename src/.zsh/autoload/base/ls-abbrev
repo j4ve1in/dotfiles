@@ -5,9 +5,6 @@
 private cmd_ls='ls'
 private -a opt_ls
 opt_ls=('-ACF' '--color=always')
-if [ "`uname -s`" = 'Darwin' ]; then
-  type gls > /dev/null 2>&1 && cmd_ls='gls' || opt_ls=('-ACFG')
-fi
 
 private ls_result
 ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')

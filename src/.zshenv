@@ -78,12 +78,7 @@ export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
 # LSCOLORS
-if is-linux; then
-  has dircolors && eval `dircolors -b ~/.config/dircolors`
-elif is-darwin; then
-  export LSCOLORS='gxfxcxdxbxegedabagacad'
-  has gdircolors && eval `gdircolors -b ~/.config/dircolors`
-fi
+has dircolors && eval `dircolors -b ~/.config/dircolors`
 
 # vagrant
 if has vagrant; then
