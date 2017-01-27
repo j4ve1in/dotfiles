@@ -46,37 +46,11 @@ augroup file_type_base
 augroup END
 
 "" Indent
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smartindent
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smartindent
 augroup file_type_indent
   autocmd!
-  autocmd FileType go setlocal noexpandtab
-  autocmd FileType php setlocal noexpandtab
-  autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType coffee setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-  " Markup Language
-  autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType eruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType slim setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType pug setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-  " Style Sheet
-  autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-  " Shell Script
-  autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType fish setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-  " Data Format
-  autocmd FileType toml setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-  " Others
-  autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType man setlocal tabstop=8
 augroup END
 
