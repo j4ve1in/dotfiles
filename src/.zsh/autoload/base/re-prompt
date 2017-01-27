@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-if [[ -n $BUFFER ]]; then
-  zle .reset-prompt
-  zle .accept-line
-fi
