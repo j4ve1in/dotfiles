@@ -36,27 +36,15 @@ call submode#map('tabmove', 'n', '', '<', ':tabmove<Space>-1<CR>')
 " }}} '''
 
 [[plugins]]
-repo = 'justinmk/vim-dirvish'
+repo = 'cocopon/vaffle.vim'
 hook_add = ''' " {{{
-nnoremap <silent> <Space><C-f> :<C-u>Dirvish<CR>
-augroup dirvish
-  autocmd!
-  autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
-  autocmd FileType dirvish xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
-  autocmd FileType dirvish nmap <silent><buffer> h -
-  autocmd FileType dirvish nmap <silent><buffer> l <CR>
-  autocmd FileType dirvish nnoremap <buffer> +f :Touch<Space>%
-  autocmd FileType dirvish nnoremap <buffer> +d :Mkdir<Space>%
-  autocmd FileType dirvish nnoremap <silent><buffer> ~ :<C-u>Dirvish ~<CR>
-  autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d_
-  autocmd FileType dirvish
-        \ map <buffer> <Space>j $T/<Plug>(easymotion-j) |
-        \ map <buffer> <Space>j $T/<Plug>(easymotion-j)
-  autocmd FileType dirvish
-        \ map <buffer> <Space>k $T/<Plug>(easymotion-k) |
-        \ map <buffer> <Space>k $T/<Plug>(easymotion-k)
+nnoremap <silent> <Space><C-f> :<C-u>Vaffle<CR>
 
-  autocmd VimEnter * nested if @% == '' && buf#byte() == 0 | Dirvish | endif
+augroup vaffle
+  autocmd!
+  autocmd VimEnter * nested if @% == '' && buf#byte() == 0 | call vaffle#init() | endif
+  " autocmd VimEnter * nested if @% == '' && buf#byte() == 0 | Vaffle | endif
+  autocmd FileType vaffle nnoremap <silent> <buffer> ~ :<C-u>Vaffle ~<CR>
 augroup END
 " }}} '''
 
