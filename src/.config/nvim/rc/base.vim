@@ -48,7 +48,7 @@ augroup END
 "" Indent
 augroup file_type_indent
   autocmd!
-  autocmd FileType * set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smartindent
+  autocmd FileType * setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smartindent
   autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
   autocmd FileType man setlocal tabstop=8

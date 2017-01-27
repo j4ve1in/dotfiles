@@ -80,6 +80,11 @@ hook_add = '''
 nmap <C-c> <Plug>(nvim-go-run)
 nnoremap g<C-c> :<C-u>Gorun<space>
 nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
+nnoremap <Space>d :<C-u>DlvDebug<CR>
+nnoremap <Space>gd :<C-u>DlvDebug<space>--<space>
+nnoremap <Space>b :<C-u>DlvBreakpoint<CR>
+nnoremap <Space>c :<C-u>DlvContinue<CR>
+nnoremap <Space>n :<C-u>DlvNext<CR>
 '''
 
 [[plugins]]
