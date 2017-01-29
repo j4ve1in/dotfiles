@@ -269,6 +269,12 @@ let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'Shougo/neopairs.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
 # }}}
 
 # VCS {{{
