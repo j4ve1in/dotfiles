@@ -1,7 +1,5 @@
 has() { type $1 >/dev/null 2>&1; }
 
-is-alpine() { [ -e /etc/alpine-release ]; }
-
 is-arch() { [ -e /etc/arch-release ]; }
 
 is-linux() { [[ $OSTYPE =~ linux ]]; }

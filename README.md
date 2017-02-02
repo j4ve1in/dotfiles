@@ -39,8 +39,7 @@ an **[image][docker-image-link]** and try my dotfiles in a Docker container
 as follows.
 
 ```zsh
-% docker pull ytet5uy4/dotfiles
-% docker run -it --rm ytet5uy4/dotfiles
+% docker pull ytet5uy4/dotfiles && docker run -it --rm ytet5uy4/dotfiles
 ```
 
 ## License

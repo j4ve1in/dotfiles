@@ -1,6 +1,6 @@
 . $ZDOTDIR/lib/init.zsh set
 
-if is-arch || is-alpine; then
+if is-arch; then
   . ~/.zshenv && . $ZDOTDIR/lib/init.zsh set
 fi
 
