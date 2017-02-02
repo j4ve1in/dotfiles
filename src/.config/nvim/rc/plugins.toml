@@ -7,6 +7,7 @@ hook_add = 'let g:dein#types#git#clone_depth = 1'
 
 [[plugins]]
 repo = 'ytet5uy4/abyss.vim'
+hook_source = 'colorscheme abyss'
 
 [[plugins]]
 repo = 'surround.vim'
