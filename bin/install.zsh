@@ -29,7 +29,7 @@ typeset -gA attr=(
 )
 
 # others
-export ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug
+export ZPLUG_HOME=$XDG_DATA_HOME/zsh/plugins
 
 typeset -gA opt
 while (( $# > 0 )); do
