@@ -1,13 +1,17 @@
 #!/bin/zsh
 
+private MIN=5.5 MAX=50
+private DEFAULT=2 AMOUNT=5
+private current=`xbacklight -get`
+
 case $1 in
   + )
-    xbacklight + 5 -time 100 -steps 1
+    (( $current < $MAX )) && xbacklight + $AMOUNT
     ;;
   - )
-    xbacklight - 5 -time 100 -steps 1
+    (( $current > $MIN )) && xbacklight - $AMOUNT
     ;;
   = )
-    xbacklight = 5
+    xbacklight = $DEFAULT
     ;;
 esac

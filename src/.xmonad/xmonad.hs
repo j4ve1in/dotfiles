@@ -13,8 +13,6 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 import qualified XMonad.StackSet as W
 
-main :: IO ()
-
 main = do
   wsbar <- spawnPipe myWsBar
   xmonad $ ewmh defaultConfig
@@ -32,8 +30,17 @@ main = do
     , modMask            = myModMask
     }
     `removeKeysP` myRemoveKeysP
-    `additionalKeys` myAdditionalKeys
     `additionalKeysP` myAdditionalKeysP
+
+-- base
+myBorderWidth = 1
+myModMask = mod4Mask
+myTerminal = "xmonad-run terminal"
+myWorkspaces = map show [1..3]
+myFocusFollowsMouse = False
+myNormalBorderColor = mainColor
+myFocusedBorderColor = accentColor1
+myEventHook = fullscreenEventHook
 
 -- color
 mainColor = "black"
@@ -41,15 +48,6 @@ subColor1 = "white"
 subColor2  = "gray"
 accentColor1  = "blue"
 accentColor2  = "#00008b"
-
-myBorderWidth = 1
-myModMask = mod4Mask
-myTerminal = "xmonad-run Terminal"
-myWorkspaces = map show [1..3]
-myFocusFollowsMouse = False
-myNormalBorderColor = mainColor
-myFocusedBorderColor = accentColor1
-myEventHook = fullscreenEventHook
 
 -- layout
 myLayout = avoidStruts
@@ -67,7 +65,7 @@ myLayout = avoidStruts
 myStartupHook = spawnOnce "xmonad-run startup"
 
 -- loghook
-myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
+myLogHook h = dynamicLogWithPP $ myWsPP { ppOutput = hPutStrLn h }
 
 -- managehook
 myManageHook = composeAll
@@ -78,7 +76,7 @@ myManageHook = composeAll
 
 -- xmobar
 myWsBar = "xmobar -i ~/.xmonad/icons/ ~/.xmonad/xmobar.hs"
-wsPP = xmobarPP
+myWsPP = xmobarPP
   { ppOrder           = \(ws:l:t:_)  -> [ws]
   , ppCurrent         = xmobarColor subColor1 accentColor2 . wrap " " "* "
   , ppUrgent          = xmobarColor subColor2 mainColor    . wrap " " " "
@@ -97,13 +95,6 @@ myRemoveKeysP =
   , "M-n"
   , "M-<Space>"
   ,"M-S-<Return>"
-  ]
-
-myAdditionalKeys =
-  -- moving workspace by number
-  [ ((myModMask .|. m, k), windows $ f i)
-    | (i, k) <- zip myWorkspaces [xK_1 .. xK_3]
-  , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
   ]
 
 myAdditionalKeysP =
@@ -139,10 +130,10 @@ myAdditionalKeysP =
   , ("M-.",                     sendMessage Expand)
   -- launch app
   , ("M-<Return>",              spawn myTerminal)
-  , ("M-r",                     spawn "xmonad-run Launcher")
-  , ("M-b",                     spawn "xmonad-run Browser")
-  , ("M-e",                     spawn "xmonad-run Editor")
-  , ("M-f",                     spawn "xmonad-run FileManager")
-  , ("M-m",                     spawn "xmonad-run MusicPlayer")
-  , ("M-a",                     spawn "xmonad-run SystemActivity")
+  , ("M-r",                     spawn "xmonad-run launcher")
+  , ("M-b",                     spawn "xmonad-run browser")
+  , ("M-e",                     spawn "xmonad-run editor")
+  , ("M-f",                     spawn "xmonad-run file-manager")
+  , ("M-m",                     spawn "xmonad-run music-player")
+  , ("M-a",                     spawn "xmonad-run system-activity")
   ]
