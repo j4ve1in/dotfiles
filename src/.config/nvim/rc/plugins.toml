@@ -172,6 +172,9 @@ repo = 'kassio/neoterm'
 hook_add = ''' " {{{
 let g:neoterm_position = 'vertical'
 " }}} '''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
 # }}}
 
 # Selector {{{
