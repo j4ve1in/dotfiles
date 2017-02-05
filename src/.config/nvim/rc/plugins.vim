@@ -1,4 +1,12 @@
 " Dein
+if !isdirectory($DEIN_HOME) && !filereadable($NVIM_CACHE_HOME . '/plugin')
+  execute '!touch ' . $NVIM_CACHE_HOME . '/plugin'
+  let s:result = confirm('Install neovim plugins?', "&Yes\n&No", '2')
+  if s:result == 1
+    execute '!git clone https://github.com/Shougo/dein.vim ' . $DEIN_HOME
+  endif
+endif
+
 if isdirectory($DEIN_HOME)
   execute 'set runtimepath^=' . $DEIN_HOME
 

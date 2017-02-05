@@ -1,15 +1,4 @@
 : "Plugin" && () {
-  private cmd
-
-  if [[ ! -f $NVIM_CACHE_HOME/plugin ]]; then
-    touch $NVIM_CACHE_HOME/plugin
-    if prompt 'Would you like to install plugins of nvim'; then
-      cmd="git clone https://github.com/Shougo/dein.vim $DEIN_HOME"
-      spinner 'Clone dein.vim' "$cmd" 1
-      spinner "Clone plugins with dein.vim" 'nvim +q' 1
-    fi
-  fi
-
   if [[ -d $ZPLUG_HOME ]]; then
     # Zplug
     . $ZPLUG_HOME/init.zsh
