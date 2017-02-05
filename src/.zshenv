@@ -119,7 +119,8 @@ export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 [[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir -p $ZPLUG_CACHE_DIR
 
 # dctl
-export DCTL_PATH=$XDG_CONFIG_HOME/dotfiles/src
+export DOT_ROOT=~/.local/src/dotfiles
+export DCTL_PATH=$DOT_ROOT/src
 
 # gomi
 export GOMI_DIR=$XDG_DATA_HOME/gomi

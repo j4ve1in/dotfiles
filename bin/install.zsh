@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 typeset -g AUTHOR=ytet5uy4 LICENSE=MIT
-export XDG_DATA_HOME=~/.local/share XDG_CONFIG_HOME=~/.config
+export XDG_DATA_HOME=~/.local/share
 
 # dctl
 export DOT_REPO=https://github.com/ytet5uy4/dotfiles
-export DOT_ROOT=$XDG_CONFIG_HOME/dotfiles
+export DOT_ROOT=~/.local/src/dotfiles
 export DCTL_PATH=$DOT_ROOT/src
 
 # color
