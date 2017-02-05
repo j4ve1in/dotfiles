@@ -1,9 +1,3 @@
 #!/bin/zsh
 
-if [[ ! -f $TMUX_CACHE_HOME/plugin ]]; then
-  touch $TMUX_CACHE_HOME/plugin
-  tmux confirm-before -p 'Do you install tmux plugins?' "run-shell 'tmux-plugin-init'"
-  tmux display "Installed tmux plugins"
-fi
-
 ${TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm

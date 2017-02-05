@@ -14,6 +14,14 @@ fi
   fi
 }
 
+: "Install tmux plugins" && () {
+  if [[ ! -d $TPM_HOME ]] && [[ ! -f $TMUX_CACHE_HOME/plugin ]]; then
+    touch $TMUX_CACHE_HOME/plugin
+    tmux confirm-before -p 'Do you install tmux plugins?' "run-shell 'tmux-plugin-init'"
+    tpm-init
+  fi
+}
+
 : "Display LastLogin" && () {
   if has lastlog && [[ -f /var/log/lastlog ]]; then
     set -- `last -R | sed -n 2p`
