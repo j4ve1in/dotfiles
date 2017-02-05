@@ -10,16 +10,6 @@
     fi
   fi
 
-  if [[ ! -f $TMUX_CACHE_HOME/plugin ]]; then
-    touch $TMUX_CACHE_HOME/plugin
-    if prompt 'Would you like to install plugins of tmux'; then
-      cmd="git clone https://github.com/tmux-plugins/tpm $TPM_HOME"
-      spinner 'Clone tpm' "$cmd" 1
-      spinner "Clone plugins with tpm" "$TPM_HOME/scripts/install_plugins.sh" 1
-      tpm-init
-    fi
-  fi
-
   if [[ -d $ZPLUG_HOME ]]; then
     # Zplug
     . $ZPLUG_HOME/init.zsh

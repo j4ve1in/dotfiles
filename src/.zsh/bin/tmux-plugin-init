@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+git clone https://github.com/tmux-plugins/tpm $TPM_HOME >/dev/null 2>&1
+
+$TPM_HOME/scripts/install_plugins.sh >/dev/null 2>&1
