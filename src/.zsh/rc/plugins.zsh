@@ -57,6 +57,10 @@
 
     zplug check 'b4b4r07/zsh-gomi' && alias gm=gomi
 
+    if zplug check 'ytet5uy4/pctl'; then
+      [[ $HOST = griffin ]] && pctl -s | head -1
+    fi
+
     if zplug check 'ytet5uy4/fzf-widgets'; then
       bindkey '^@'   fzf-select-widget
       bindkey '^@c'  fzf-change-dir

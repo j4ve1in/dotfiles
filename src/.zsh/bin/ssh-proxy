@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+corkscrew $PROXY_ADDRESS $PROXY_PORT $@

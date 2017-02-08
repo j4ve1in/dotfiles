@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if type impressive >/dev/null 2>&1; then
+  impressive \
+    --nologo \
+    --transtime 100 \
+    --mousedelay 500 \
+    --transition crossfade \
+    -E ~/.config/impressive/keybind.conf \
+    $@
+fi

@@ -15,6 +15,10 @@ has chromium && export BROWSER='chromium'
 if has tmux && [[ $DISPLAY ]]; then
   export TERM=screen-256color
 fi
+if [[ $HOST = localhost ]]; then
+  export MAIN_DISPLAY=eDP1 SUB_DISPLAY=HDMI1
+  export MOUSE='SynPS/2 Synaptics TouchPad'
+fi
 
 # XDG
 [[ ! -d ~/.config ]] && mkdir ~/.config
@@ -31,6 +35,7 @@ typeset -U path fpath cdpath
 path=(
   $path
   $HOME/.{local,zsh}/bin(N-/)
+  $HOME/.gem/ruby/*/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
 
@@ -144,6 +149,9 @@ export DMENU_CONFIG_FILE=$XDG_CONFIG_HOME/dmenurc
 
 # aws
 export AWS_SDK_LOAD_CONFIG=1
+
+# lpass
+export LPASS_USERNAME=ytet5uy4@outlook.com
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
