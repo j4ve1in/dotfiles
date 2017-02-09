@@ -50,4 +50,4 @@
     foreground = "#ffffff"
     timeout = 0
 
-# vim: ft=cfg
+# vim: filetype=cfg

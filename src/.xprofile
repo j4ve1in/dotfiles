@@ -4,4 +4,4 @@ fi
 
 [[ -d $HOME/.zsh/bin ]] && export PATH="$PATH:$HOME/.zsh/bin"
 
-# vim: ft=sh sw=2 ts=2 et
+# vim: filetype=sh
