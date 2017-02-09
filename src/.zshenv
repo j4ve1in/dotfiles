@@ -144,8 +144,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 # dmenu
-export DMENU_CONFIG_FILE=$XDG_CONFIG_HOME/dmenurc
-[[ -f $DMENU_CONFIG_FILE ]] && . $DMENU_CONFIG_FILE || export DMENU=''
+export DMENU='-sb #00008b -nb black -fn Migu1M:size=13.5'
 
 # aws
 export AWS_SDK_LOAD_CONFIG=1
