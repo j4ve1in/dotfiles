@@ -37,4 +37,4 @@ has zsh && alias -s zsh=zsh
 has nvim && alias -s vim=nvim
 has gcc && alias -s c=runc
 has xdg-oepn && alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
-alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+has aunpack && alias -s {gz,tgz,zip,tar,rar,7z}=aunpack
