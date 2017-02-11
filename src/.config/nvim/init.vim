@@ -1,13 +1,6 @@
 filetype off
 filetype plugin indent off
 
-" Cache
-let $CACHE = expand('~/.cache')
-
-if !isdirectory(expand($CACHE))
-  call mkdir(expand($CACHE), 'p')
-endif
-
 " Declare rc_vim_list and source_rc
 let s:rc_vim_list = [
 \   'local.before',

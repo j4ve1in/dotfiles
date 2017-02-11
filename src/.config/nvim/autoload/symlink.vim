@@ -7,4 +7,5 @@ function! symlink#follow() abort
   exec 'bwipeout ' . l:buf
   exec 'edit ' . l:file
   call setpos('.', l:pos)
+  edit!
 endfunction

@@ -1,4 +1,32 @@
-" emacs like
+" init {{{
+nnoremap <silent> <Autoload>(sudo-write)  :<C-u>call sudo#write()<CR>
+nnoremap <silent> <Autoload>(symlink-follow) :<C-u>call symlink#follow()<CR>
+nnoremap <silent> <Autoload>(append-line-up) :<C-u>call append#line('up')<CR>
+nnoremap <silent> <Autoload>(append-line-down) :<C-u>call append#line('down')<CR>
+nnoremap <silent> <Autoload>(mouse-mode-on) :<C-u>call mouse#mode('on')<CR>
+nnoremap <silent> <Autoload>(mouse-mode-off) :<C-u>call mouse#mode('off')<CR>
+nnoremap <silent> <Autoload>(syntax-info) :<C-u>call syntax#info()<CR>
+nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
+" }}}
+
+" base {{{
+cnoremap ; <CR>
+nnoremap s "_s
+nnoremap <C-g> 1<C-g>
+nnoremap _ :<C-u>nohlsearch<CR><C-l>
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
+nnoremap <C-n> "zdd"zp
+nnoremap <C-p> "zdd<Up>"zP
+vnoremap <C-n> "zx"zp`[V`]
+vnoremap <C-p> "zx<Up>"zP`[V`]
+noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
+noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
+" }}}
+
+" emacs like {{{
 inoremap <C-j> <CR><TAB>
 inoremap <C-a> <ESC>I
 inoremap <C-e> <ESC>A
@@ -12,36 +40,37 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-d> <DEL>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+" }}}
 
-" clipboard
-nnoremap s "_s
-
-" Substitute
+" Substitute {{{
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
+" }}}
 
-" Search
-" Current line at center of window and open the folding.
+" Search {{{
 nnoremap * *zzzv
 nnoremap # #zzzv
 nnoremap g* g*zzzv
 nnoremap g# g#zzzv
+" }}}
 
-" TextObject
+" TextObject {{{
 onoremap aa a>
 onoremap ia i>
 onoremap ar a]
 onoremap ir i]
 onoremap ad a"
 onoremap id i"
+" }}}
 
-" C-Space
+" C-Space {{{
 if has('unix')
   map <NUL> <C-Space>
   map! <NUL> <C-Space>
 endif
+" }}}
 
-" quickfix
+" quickfix {{{
 nnoremap <silent> <C-q> :<C-u>copen<CR>
 nnoremap <silent> <C-q>j :<C-u>cnext<CR>
 nnoremap <silent> <C-q>k :<C-u>cprevious<CR>
@@ -51,29 +80,15 @@ augroup quickfix_keymap
   autocmd!
   autocmd BufReadPost quickfix nnoremap <silent> <buffer> q :<C-u>q<CR>
 augroup END
+" }}}
 
-" Others
-cnoremap ; <CR>
-nnoremap gm :<C-u>set mouse=a ttymouse=xterm2 \| echo 'Mouse: ON'<CR>
-nnoremap gM :<C-u>set mouse= \| echo 'Mouse: OFF'<CR>
-nnoremap <C-g> 1<C-g>
-nnoremap <C-e> :call<Space>symlink#follow()<CR>:<C-u>edit!<CR>
-nnoremap gw :w !sudo tee >/dev/null %<CR> :e!<CR>
-nnoremap _ :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> go :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <silent> gO :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
-
-noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
-noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
-
-nnoremap gsi :call syntax#info()<CR>
-nnoremap gvg :<C-u>vimgrep<Space><Space>**<Left><Left><Left>
-nnoremap <C-h> gT
-nnoremap <C-l> gt
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
-nnoremap <C-n> "zdd"zp
-nnoremap <C-p> "zdd<Up>"zP
-vnoremap <C-n> "zx"zp`[V`]
-vnoremap <C-p> "zx<Up>"zP`[V`]
-nnoremap <silent> <Space>.  :<C-u>source $MYVIMRC \| echo 'Source vimrc'<CR>
+" autoload {{{
+nmap gm <Autoload>(mouse-mode-on)
+nmap gM <Autoload>(mouse-mode-off)
+nmap gw <Autoload>(sudo-write)
+nmap go <Autoload>(append-line-up)
+nmap gO <Autoload>(append-line-down)
+nmap gsi <Autoload>(syntax-info)
+nmap <C-e> <Autoload>(symlink-follow)
+nmap <Space>.  <Autoload>(source-init)
+" }}}

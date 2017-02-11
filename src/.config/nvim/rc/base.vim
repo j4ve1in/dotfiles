@@ -1,3 +1,20 @@
+" base {{{
+let g:loaded_gzip              = 1
+let g:loaded_tar               = 1
+let g:loaded_tarPlugin         = 1
+let g:loaded_zip               = 1
+let g:loaded_zipPlugin         = 1
+let g:loaded_rrhelper          = 1
+let g:loaded_2html_plugin      = 1
+let g:loaded_vimball           = 1
+let g:loaded_vimballPlugin     = 1
+let g:loaded_getscript         = 1
+let g:loaded_getscriptPlugin   = 1
+let g:loaded_netrw             = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_netrwSettings     = 1
+let g:loaded_netrwFileHandlers = 1
+
 set hidden
 set mouse=
 set undofile
@@ -12,12 +29,17 @@ set whichwrap=b,~,[,],<,>
 set wildignorecase wildmode=longest:full,full
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+if $DISPLAY !=# ''
+  set clipboard=unnamedplus
+endif
+
 augroup quickfix
   autocmd!
   autocmd QuickFixCmdPost make,*grep* cwindow
 augroup END
+" }}}
 
-" apperance
+" apperance {{{
 set ruler
 set number
 set showmatch
@@ -30,18 +52,13 @@ augroup tabline
   autocmd!
   autocmd VimEnter let &tabline = '%!'. tabline#sid() . 'tabline#name()'
 augroup END
+" }}}
 
-" clipboard
-if $DISPLAY !=# ''
-  set clipboard=unnamedplus
-endif
-
-" File
+" File {{{
 "" Base
 augroup file_type_base
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType man setlocal nospell nolist readonly nomodified nomodifiable
 augroup END
 
 "" Indent
@@ -63,5 +80,6 @@ augroup END
 "" Template
 augroup file_type_template
   autocmd!
-  autocmd BufNewFile *.* silent! execute '0r $NVIM_CONFIG_HOME/templates/skel.' . expand("<afile>:e") . ' | $normal ddgg'
+  autocmd BufNewFile *.* silent! call skel#load()
 augroup END
+" }}}
