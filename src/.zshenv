@@ -34,7 +34,7 @@ typeset -U path fpath cdpath
 
 path=(
   $path
-  $HOME/.{local,zsh,tmux,config/git}/bin(N-/)
+  $HOME/.{local,zsh,tmux,xmonad,config/git}/bin(N-/)
   $HOME/.gem/ruby/*/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
