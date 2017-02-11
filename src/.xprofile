@@ -2,6 +2,6 @@ if type fcitx; then
   export GTK_IM_MODULE='fcitx' QT_IM_MODULE='fcitx' XMODIFIERS='@im=fcitx'
 fi
 
-[[ -d $HOME/.zsh/bin ]] && export PATH="$PATH:$HOME/.zsh/bin"
+[[ -d $HOME/.xmonad/bin ]] && export PATH="$PATH:$HOME/.xmonad/bin"
 
 # vim: filetype=sh
