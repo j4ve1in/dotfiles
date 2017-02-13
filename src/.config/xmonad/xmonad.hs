@@ -15,7 +15,7 @@ import qualified XMonad.StackSet as W
 
 main = do
   wsbar <- spawnPipe myWsBar
-  xmonad $ ewmh defaultConfig
+  xmonad $ docks $ ewmh defaultConfig
     { borderWidth        = myBorderWidth
     , terminal           = myTerminal
     , focusFollowsMouse  = myFocusFollowsMouse
@@ -75,7 +75,7 @@ myManageHook = composeAll
   ]
 
 -- xmobar
-myWsBar = "xmobar -i ~/.xmonad/icons/ ~/.xmonad/xmobar.hs"
+myWsBar = "xmobar -i $XDG_CONFIG_HOME/xmonad/icons/ $XDG_CONFIG_HOME/xmonad/xmobar.hs"
 myWsPP = xmobarPP
   { ppOrder           = \(ws:l:t:_)  -> [ws]
   , ppCurrent         = xmobarColor subColor1 accentColor2 . wrap " " "* "

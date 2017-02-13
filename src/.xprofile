@@ -1,7 +1,23 @@
+# XDG
+[[ ! -d ~/.config ]] && mkdir ~/.config
+[[ ! -d ~/.cache ]] && mkdir ~/.cache
+[[ ! -d ~/.local/share ]] && mkdir -p ~/.local/share
+export XDG_{CONFIG,CACHE,DATA}_HOME
+XDG_CONFIG_HOME=~/.config
+XDG_CACHE_HOME=~/.cache
+XDG_DATA_HOME=~/.local/share
+
+# fcitx
 if type fcitx; then
   export GTK_IM_MODULE='fcitx' QT_IM_MODULE='fcitx' XMODIFIERS='@im=fcitx'
 fi
 
-[[ -d $HOME/.xmonad/bin ]] && export PATH="$PATH:$HOME/.xmonad/bin"
+# xmonad
+[[ ! -d $XDG_CACHE_HOME/xmonad ]] && mkdir $XDG_CACHE_HOME/xmonad
+[[ ! -d $XDG_DATA_HOME/xmonad ]] && mkdir $XDG_DATA_HOME/xmonad
+
+if [[ -d $XDG_CONFIG_HOME/xmonad/bin ]]; then
+  export PATH="$PATH:$XDG_CONFIG_HOME/xmonad/bin"
+fi
 
 # vim: filetype=sh

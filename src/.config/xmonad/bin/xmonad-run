@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+path=( $path $XDG_CONFIG_HOME/xmonad/lib/*(N-/) )
+${=@}
