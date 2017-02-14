@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+private -a playlist
+playlist=(`cat $XDG_CONFIG_HOME/youtube/playlist.conf`)
+private num=`printf '%s\n' {1..$#playlist} | dmenu -p 'Youtube' ${=DMENU}`
+
+notify-send 'Youtube' 'Downloading playlist...'
+
+mpv --shuffle ytdl://$playlist[$num]

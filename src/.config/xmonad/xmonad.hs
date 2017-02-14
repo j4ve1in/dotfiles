@@ -136,4 +136,5 @@ myAdditionalKeysP =
   , ("M-f",                     spawn "xmonad-run file-manager")
   , ("M-m",                     spawn "xmonad-run music-player")
   , ("M-a",                     spawn "xmonad-run system-activity")
+  , ("M-y",                     spawn "xmonad-run youtube")
   ]
