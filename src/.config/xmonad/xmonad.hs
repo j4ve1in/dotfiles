@@ -70,8 +70,9 @@ myLogHook h = dynamicLogWithPP $ myWsPP { ppOutput = hPutStrLn h }
 -- managehook
 myManageHook = composeAll
   [ manageDocks
-  , isFullscreen            --> doFullFloat
-  , className =? "feh"      --> doCenterFloat
+  , isDialog           --> doFloat
+  , isFullscreen       --> doFullFloat
+  , className =? "feh" --> doCenterFloat
   ]
 
 -- xmobar
