@@ -1,9 +1,37 @@
 #!/bin/zsh
 
+if type notify-send; then
+  if ! type jq; then
+    notify-send 'Youtube' 'command not found: jq'
+    exit 1
+  elif ! type mpv; then
+    notify-send 'Youtube' 'command not found: mpv'
+    exit 1
+  elif ! type jq && ! type mpv; then
+    notify-send 'Youtube' 'command not found: jq and mpv'
+    exit 1
+  fi
+fi
+
+private file=$XDG_CONFIG_HOME/youtube/playlists.json
+
+if ! [[ -f $file ]]; then
+  if type notify-send; then
+    notify-send 'Youtube' "config file not found: $file"
+    exit 1
+  fi
+fi
+
 private -a playlist
-playlist=(`cat $XDG_CONFIG_HOME/youtube/playlist.conf`)
-private num=`printf '%s\n' {1..$#playlist} | dmenu -p 'Youtube' ${=DMENU}`
+playlist=(`jq -r '.playlists[].title' $file`)
 
-notify-send 'Youtube' 'Downloading playlist...'
+private title=`printf '%s\n' $playlist | dmenu -p 'Youtube' ${=DMENU}`
 
-mpv --shuffle ytdl://$playlist[$num]
+private id=`jq -r ".playlists[]|select(.title==\"$title\").id" $file`
+
+if [[ -n $id ]]; then
+  if type notify-send; then
+    notify-send 'Youtube' 'Downloading playlist...'
+  fi
+  mpv --shuffle ytdl://$id
+fi
