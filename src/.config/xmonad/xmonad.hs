@@ -37,7 +37,7 @@ myBorderWidth = 1
 myModMask = mod4Mask
 myTerminal = "xmonad-run terminal"
 myWorkspaces = map show [1..3]
-myFocusFollowsMouse = False
+myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
 myFocusedBorderColor = accentColor1
 myEventHook = fullscreenEventHook
@@ -103,13 +103,8 @@ myAdditionalKeysP =
   [ ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
   , ("<XF86AudioLowerVolume>",  spawn "xmonad-run volume -")
   , ("<XF86AudioMute>",         spawn "xmonad-run volume m")
-  , ("M-S-s",                   spawn "xmonad-run volume +")
-  , ("M-S-a",                   spawn "xmonad-run volume -")
-  , ("M-S-d",                   spawn "xmonad-run volume m")
   , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
   , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
-  , ("M-S-e",                   spawn "xmonad-run brightness +")
-  , ("M-S-w",                   spawn "xmonad-run brightness -")
   , ("M-S-m",                   spawn "xmonad-run mouse toggle")
   , ("M-C-h",                   spawn "xmonad-run mouse left")
   , ("M-C-j",                   spawn "xmonad-run mouse down")
@@ -133,9 +128,12 @@ myAdditionalKeysP =
   , ("M-<Return>",              spawn myTerminal)
   , ("M-r",                     spawn "xmonad-run launcher")
   , ("M-b",                     spawn "xmonad-run browser")
+  , ("M-c",                     spawn "xmonad-run color-picker")
   , ("M-e",                     spawn "xmonad-run editor")
+  , ("M-S-e",                   spawn "xmonad-run email")
   , ("M-f",                     spawn "xmonad-run file-manager")
   , ("M-m",                     spawn "xmonad-run music-player")
   , ("M-a",                     spawn "xmonad-run system-activity")
   , ("M-y",                     spawn "xmonad-run youtube")
+  , ("M-v",                     spawn "xmonad-run volume-manager")
   ]
