@@ -17,7 +17,7 @@ has ranger && disable r && alias f=ranger r=rifle
 has sudo && alias sudo='sudo ' s=sudo
 has sudoedit && alias sudoedit='sudoedit ' se=sudoedit
 has colordiff && alias di='colordiff -u'
-has screenfetch && alias info='screenfetch -c 27,255'
+has screenfetch && alias info='neofetch --color_blocks off --ascii_colors 27 12'
 has inxi && alias info-full='inxi -Fz'
 
 if has envchain; then
