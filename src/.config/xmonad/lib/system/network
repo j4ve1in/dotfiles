@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+profile=`
+  netctl-auto list | \
+    grep -v '*' | \
+    sed 's/ //g' | \
+    dmenu -p 'Network' ${=DMENU}
+`
+
+sudo netctl-auto switch-to $profile
