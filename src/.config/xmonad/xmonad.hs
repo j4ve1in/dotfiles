@@ -116,6 +116,7 @@ myAdditionalKeysP =
   , ("<Print>",                 spawn "xmonad-run screenshot")
   , ("S-<Print>",               spawn "xmonad-run screenshot --select")
   , ("M-C-n",                   spawn "xmonad-run network")
+  , ("M-C-p",                   spawn "xmonad-run password-manager")
   , ("M-p",                     spawn "xmonad-run power")
   , ("M-q",                     spawn "xmonad-run restart")
   -- window operations
