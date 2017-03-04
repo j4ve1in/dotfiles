@@ -125,7 +125,7 @@ export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 
 # dctl
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
-export DOT_DIRS=src
+export DOT_BASE_DIR=$DOT_HOME/src
 
 # gomi
 export GOMI_DIR=$XDG_DATA_HOME/gomi

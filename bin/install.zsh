@@ -6,7 +6,7 @@ export XDG_DATA_HOME=~/.local/share
 # dctl
 export DOT_REPO=https://github.com/ytet5uy4/dotfiles
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
-export DOT_DIRS=src
+export DOT_BASE_DIR=$DOT_HOME/src
 
 # color
 typeset -gA fg=(
