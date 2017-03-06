@@ -72,8 +72,6 @@
       bindkey '^@s'  fzf-exec-ssh
       bindkey '^@ga' fzf-git-add
       bindkey '^@gb' fzf-git-checkout
-      bindkey '^@p'  fzf-copy-password
-      bindkey '^@n'  fzf-switch-network
     fi
   fi
 }
