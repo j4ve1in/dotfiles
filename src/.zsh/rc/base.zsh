@@ -26,7 +26,6 @@ bindkey -v '^[[Z' reverse-menu-complete
 bindkey -v '^[e' exec-editor
 bindkey -v '^[g' exec-git
 bindkey -v '^_' reload
-bindkey -v '^Z' extend-ctrl-z
 bindkey -v ' ' abbrev-expand
 bindkey -v '^x ' no-abbrev-expand
 
