@@ -141,11 +141,10 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_prompt = '{n}> '
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_verbose = 0
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)zzzv
-map  N <Plug>(easymotion-prev)zzzv
 
 map <Space>l <Plug>(easymotion-lineforward)
 map <Space>h <Plug>(easymotion-linebackward)
@@ -190,6 +189,8 @@ nnoremap <silent> <denite>m :<C-u>Denite file_mru<CR>
 nnoremap <silent> <denite>M :<C-u>Denite file_mru -default-action=tabswitch<CR>
 nnoremap <silent> <denite>/ :<C-u>Denite grep<CR>
 nnoremap <silent> <denite>? :<C-u>Denite grep -default-action=tabswitch<CR>
+nnoremap <silent> <denite>. :<C-u>Denite file_rec -path=$DOT_BASE_DIR -input=.<CR>
+nnoremap <silent> <denite>> :<C-u>Denite file_rec -path=$DOT_BASE_DIR -input=. -default-action=tabswitch<CR>
 " }}} '''
 hook_source = ''' " {{{
 call denite#custom#option('default', 'winheight', 10)
@@ -343,7 +344,10 @@ repo = 'rhysd/vim-textobj-ruby'
 depends = 'vim-textobj-user'
 
 [[plugins]]
-repo = 'wellle/targets.vim'
+repo = 'vimtaku/vim-textobj-sigil'
+
+[[plugins]]
+repo = 'jasonlong/vim-textobj-css'
 # }}}
 
 # Syntax Check {{{

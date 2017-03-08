@@ -5,10 +5,12 @@ depends = 'open-browser.vim'
 on_ft = 'md'
 on_map = '<Plug>'
 hook_add = ''' "{{{
-nnoremap [Previm] <Nop>
-nmap <Space><C-p> [Previm]
-
-nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+augroup previm
+  autocmd!
+  autocmd FileType md nnoremap [Previm] <Nop>
+  autocmd FileType md nmap <Space><C-p> [Previm]
+  autocmd FileType md nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+augroup END
 " }}} '''
 
 [[plugins]]
@@ -76,7 +78,12 @@ on_ft = 'slim'
 [[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
-hook_add ='let g:vim_json_syntax_conceal = 0'
+hook_add ='''
+augroup vim-json
+  autocmd!
+  autocmd FileType json let g:vim_json_syntax_conceal = 0
+augroup END
+'''
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
@@ -87,14 +94,17 @@ repo = 'zchee/nvim-go'
 build = 'make'
 on_ft = 'go'
 hook_add = '''
-nmap <C-c> <Plug>(nvim-go-run)
-nnoremap g<C-c> :<C-u>Gorun<space>
-nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
-nnoremap <Space>d :<C-u>DlvDebug<CR>
-nnoremap <Space>gd :<C-u>DlvDebug --<space>
-nnoremap <Space>b :<C-u>DlvBreakpoint<CR>
-nnoremap <Space>c :<C-u>DlvContinue<CR>
-nnoremap <Space>n :<C-u>DlvNext<CR>
+augroup nvim-go
+  autocmd!
+  autocmd FileType go nmap <C-c> <Plug>(nvim-go-run)
+  autocmd FileType go nnoremap g<C-c> :<C-u>Gorun<space>
+  autocmd FileType go nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
+  autocmd FileType go nnoremap <Space>d :<C-u>DlvDebug<CR>
+  autocmd FileType go nnoremap <Space>gd :<C-u>DlvDebug --<space>
+  autocmd FileType go nnoremap <Space>b :<C-u>DlvBreakpoint<CR>
+  autocmd FileType go nnoremap <Space>c :<C-u>DlvContinue<CR>
+  autocmd FileType go nnoremap <Space>n :<C-u>DlvNext<CR>
+augroup END
 '''
 
 [[plugins]]
