@@ -12,8 +12,8 @@ abbreviations=(
   'L'   '| less'
   'A'   '| awk'
   'S'   '| sed'
-  'E'   '2>&1 > /dev/null'
-  'N'   '> /dev/null'
+  'E'   '2>&1 >/dev/null'
+  'N'   '>/dev/null'
 )
 
 local MATCH
