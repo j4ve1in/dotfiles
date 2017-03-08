@@ -1,3 +1,5 @@
 #!/bin/zsh
 
-${TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm
+private init_script=$TMUX_PLUGIN_MANAGER_PATH/tpm/tpm
+
+[[ -f $init_script ]] && $init_script
