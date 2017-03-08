@@ -12,8 +12,7 @@ nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
 " base {{{
 cnoremap ; <CR>
 nnoremap s "_s
-nnoremap <C-g> 1<C-g>
-nnoremap _ :<C-u>nohlsearch<CR><C-l>
+nnoremap <ESC> :<C-u>nohlsearch<CR><C-l>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w
@@ -24,6 +23,9 @@ vnoremap <C-n> "zx"zp`[V`]
 vnoremap <C-p> "zx<Up>"zP`[V`]
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
+vnoremap <silent> y y`]
+vnoremap <silent> p "0p`]
+nnoremap <silent> p "0p`]
 " }}}
 
 " emacs like {{{
@@ -48,19 +50,12 @@ vnoremap gs :s///g<Left><Left><Left>
 " }}}
 
 " Search {{{
-nnoremap * *zzzv
-nnoremap # #zzzv
-nnoremap g* g*zzzv
-nnoremap g# g#zzzv
-" }}}
-
-" TextObject {{{
-onoremap aa a>
-onoremap ia i>
-onoremap ar a]
-onoremap ir i]
-onoremap ad a"
-onoremap id i"
+nnorema <silent> n nzzzv
+nnorema <silent> N Nzzzv
+nnorema <silent> * *zzzv
+nnorema <silent> # #zzzv
+nnorema <silent> g* g*zzzv
+nnorema <silent> g# g#zzzv
 " }}}
 
 " C-Space {{{
