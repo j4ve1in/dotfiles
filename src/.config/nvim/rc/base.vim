@@ -49,9 +49,16 @@ set matchtime=1
 scriptencoding utf-8
 let &showbreak="\u21aa "
 set list listchars=tab:\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
+
 augroup tabline
   autocmd!
   autocmd VimEnter let &tabline = '%!'. tabline#sid() . 'tabline#name()'
+augroup END
+
+augroup nohlsearch
+  autocmd!
+  autocmd InsertEnter * let b:_search=@/|let @/=''
+  autocmd InsertLeave * let @/=get(b:,'_search','')
 augroup END
 " }}}
 
