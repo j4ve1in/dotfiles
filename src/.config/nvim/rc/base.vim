@@ -20,6 +20,7 @@ set mouse=
 set undofile
 set scrolloff=5
 set winheight=8
+set iskeyword+=.,#,-
 set tags+=.git/tags
 set virtualedit=block
 set grepprg=grep\ -inH
