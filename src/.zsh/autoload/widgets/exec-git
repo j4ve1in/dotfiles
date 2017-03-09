@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-BUFFER=tig
-CURSOR=$#BUFFER
-zle accept-line
-zle -R -c
