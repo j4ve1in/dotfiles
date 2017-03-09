@@ -24,8 +24,8 @@ vnoremap <C-p> "zx<Up>"zP`[V`]
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 vnoremap <silent> y y`]
-vnoremap <silent> p "0p`]
-nnoremap <silent> p "0p`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " }}}
 
 " emacs like {{{
