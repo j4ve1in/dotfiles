@@ -2,14 +2,14 @@
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = 'open-browser.vim'
-on_ft = 'md'
+on_ft = 'markdown'
 on_map = '<Plug>'
 hook_add = ''' "{{{
 augroup previm
   autocmd!
-  autocmd FileType md nnoremap [Previm] <Nop>
-  autocmd FileType md nmap <Space><C-p> [Previm]
-  autocmd FileType md nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+  autocmd FileType markdown nnoremap [Previm] <Nop>
+  autocmd FileType markdown nmap <Space><C-p> [Previm]
+  autocmd FileType markdown nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
 augroup END
 " }}} '''
 
