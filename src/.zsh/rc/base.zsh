@@ -55,3 +55,6 @@ zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 # notify
 add-zsh-hook preexec remember-cmd
 add-zsh-hook precmd behind-window-notify
+
+# direnv
+eval "`direnv hook zsh`"
