@@ -1,11 +1,19 @@
 #!/bin/zsh
 
-file=~/Pictures/Screenshots/$(date +'%y-%m-%d_%I%M%S').png
+take-screenshot() {
+  file=$HOME/Pictures/Screenshots/$(date +'%y-%m-%d_%I%M%S').png
+  if [[ $1 = --select ]]; then
+    maim -s -b 1 -c 0,0,255,1 "$file"
+  else
+    maim "$file"
+  fi
+  notify-send 'Take a screenshot' "Saved to $file"
+}
+
 if [[ -f /tmp/unclutter.pid ]]; then
   mouse
-  [[ $1 = --select ]] && maim -s -b 1 -c 0,0,255,1 "$file" || maim "$file"
+  take-screenshot $1
   mouse
 else
-  [[ $1 = --select ]] && maim -s -b 1 -c 0,0,255,1 "$file" || maim "$file"
+  take-screenshot $1
 fi
-notify-send 'Take a screenshot' "Saved to $file"

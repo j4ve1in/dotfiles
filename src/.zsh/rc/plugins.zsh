@@ -62,13 +62,13 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
+      . /usr/share/fzf/key-bindings.zsh
       bindkey '^@'   fzf-select-widget
       bindkey '^@c'  fzf-change-dir
       bindkey '^\'   fzf-change-recent-dir
       bindkey '^@g'  fzf-change-repository
       bindkey '^@f'  fzf-edit-files
       bindkey '^@.'  fzf-edit-dotfiles
-      bindkey '^r'   fzf-exec-history
       bindkey '^@s'  fzf-exec-ssh
       bindkey '^@ga' fzf-git-add
       bindkey '^@gb' fzf-git-checkout
