@@ -12,7 +12,7 @@ nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
 " base {{{
 cnoremap ; <CR>
 nnoremap s "_s
-nnoremap <silent> <ESC> :<C-u>nohlsearch<CR>
+nnoremap <silent> <ESC> <C-l>:<C-u>nohlsearch<CR>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap <C-j> <C-w>w

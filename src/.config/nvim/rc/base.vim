@@ -23,6 +23,7 @@ set winheight=8
 set iskeyword+=.,#,-
 set tags+=.git/tags
 set virtualedit=block
+set inccommand=nosplit
 set grepprg=grep\ -inH
 set completeopt=menuone
 set ignorecase smartcase
