@@ -141,6 +141,7 @@ export FZF_DEFAULT_OPTS='
   --extended
   --cycle
   --multi
+  --height 40%
   --color fg:15,bg:16,hl:27,fg+:15,bg+:21,hl+:75
   --color info:69,prompt:75,spinner:69,pointer:69,marker:69
   --bind ctrl-j:jump-accept

@@ -62,7 +62,9 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
-      . /usr/share/fzf/key-bindings.zsh
+      if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+        . /usr/share/fzf/key-bindings.zsh
+      fi
       bindkey '^@'   fzf-select-widget
       bindkey '^@c'  fzf-change-dir
       bindkey '^\'   fzf-change-recent-dir
