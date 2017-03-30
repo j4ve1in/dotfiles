@@ -57,4 +57,4 @@ add-zsh-hook preexec remember-cmd
 add-zsh-hook precmd behind-window-notify
 
 # direnv
-eval "`direnv hook zsh`"
+has direnv && eval "`direnv hook zsh`"
