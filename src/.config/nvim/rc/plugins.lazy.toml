@@ -116,7 +116,7 @@ repo = 'digitaltoad/vim-pug'
 on_ft = 'pug'
 
 [[plugins]]
-repo = 'chase/vim-ansible-yaml'
+repo = 'pearofducks/ansible-vim'
 on_ft = 'yaml'
 
 [[plugins]]
