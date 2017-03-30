@@ -29,6 +29,15 @@ hook_add = ''' " {{{
 nmap <C-_> <Plug>(caw:hatpos:toggle)
 vmap <C-_> <Plug>(caw:hatpos:toggle)
 " }}} '''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+on_if = 'has("python3")'
+hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+on_if = "$DISPLAY != ''"
 # }}}
 
 # Completion {{{

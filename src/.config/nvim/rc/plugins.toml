@@ -47,21 +47,12 @@ augroup END
 " }}} '''
 
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
-on_if = "$DISPLAY != ''"
-
-[[plugins]]
 repo = 'vim-scripts/vim-auto-save'
 hook_add = ''' " {{{
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_in_insert_mode = 0
 " }}} '''
-
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-if = 'has("python3")'
-hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
