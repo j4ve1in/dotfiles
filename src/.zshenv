@@ -35,9 +35,12 @@ typeset -U path fpath cdpath
 path=(
   $path
   $HOME/.{local,zsh,tmux,config/{git,xmonad}}/bin(N-/)
-  $HOME/.gem/ruby/*/bin(N-/)
   /usr/local/heroku/bin(N-/)
 )
+
+if has ruby && has gem; then
+  path=($path `ruby -rubygems -e 'puts Gem.user_dir'`/bin(N-/))
+fi
 
 if [[ -d $XDG_DATA_HOME/anyenv ]] ; then
   export ANYENV_ROOT="$XDG_DATA_HOME/anyenv"
