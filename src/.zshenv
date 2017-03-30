@@ -12,9 +12,6 @@ has lpass && export PASSWORDMANAGER='lpass login --trust "$LPASS_USERNAME"'
 has trans && export TRANSLATION='trans -pager $PAGER'
 has chromium && export BROWSER='chromium'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
-if has tmux && [[ $DISPLAY ]]; then
-  export TERM=screen-256color
-fi
 if [[ $HOST = localhost ]]; then
   export MAIN_DISPLAY=eDP1 SUB_DISPLAY=HDMI1
   export MOUSE='SynPS/2 Synaptics TouchPad'

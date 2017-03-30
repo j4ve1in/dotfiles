@@ -19,6 +19,7 @@ has sudoedit && alias sudoedit='sudoedit ' se=sudoedit
 has colordiff && alias di='colordiff -u'
 has screenfetch && alias info='neofetch --color_blocks off --ascii_colors 27 12'
 has inxi && alias info-full='inxi -Fz'
+has ssh && alias ssh='TERM=xterm-256color ssh'
 
 if has envchain; then
   alias ec='envchain'
