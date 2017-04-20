@@ -124,6 +124,7 @@ myAdditionalKeysP =
   -- launch app
   , ("M-<Return>",              spawn myTerminal)
   , ("M-r",                     spawn "xmonad-run launcher")
+  , ("M-S-r",                   spawn "xmonad-run rss-reader")
   , ("M-b",                     spawn "xmonad-run browser")
   , ("M-c",                     spawn "xmonad-run chat")
   , ("M-C-c",                   spawn "xmonad-run color-picker")
