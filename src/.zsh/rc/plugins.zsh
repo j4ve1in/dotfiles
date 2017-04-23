@@ -70,8 +70,10 @@
       bindkey '^@.'  fzf-edit-dotfiles
       bindkey '^r'   fzf-insert-history
       bindkey '^@s'  fzf-exec-ssh
-      bindkey '^@ga' fzf-git-add
-      bindkey '^@gb' fzf-git-checkout
+      bindkey '^@ga' fzf-git-add-files
+      bindkey '^@gc' fzf-git-checkout-branch
+      bindkey '^@gd' fzf-git-delete-branches
+      bindkey '^@k'  fzf-kill-processes
     fi
   fi
 }
