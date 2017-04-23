@@ -15,7 +15,7 @@ Config {
     ] 10,
     Run Memory [
       "-t", "<fc=royalblue><icon=mem.xbm/></fc> <usedratio>%",
-      "-H", "90",
+      "-H", "80",
       "--normal", "white",
       "--high" , "mediumpurple"
     ] 10,
