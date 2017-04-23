@@ -35,7 +35,7 @@ main = do
 -- base
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "xmonad-run terminal"
+myTerminal = "app-run terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
@@ -62,7 +62,7 @@ myLayout = avoidStruts
     gwR = 0
 
 -- startup
-myStartupHook = spawnOnce "xmonad-run startup"
+myStartupHook = spawnOnce "system-run startup"
 
 -- loghook
 myLogHook h = dynamicLogWithPP $ myWsPP { ppOutput = hPutStrLn h }
@@ -99,41 +99,41 @@ myRemoveKeysP =
   ]
 
 myAdditionalKeysP =
-  -- system
-  [ ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
-  , ("<XF86AudioLowerVolume>",  spawn "xmonad-run volume -")
-  , ("<XF86AudioMute>",         spawn "xmonad-run volume m")
-  , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
-  , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
-  , ("M-S-m",                   spawn "xmonad-run mouse toggle")
-  , ("M-C-s",                   spawn "xmonad-run screencast")
-  , ("M-S-s",                   spawn "xmonad-run screencast --select")
-  , ("<Print>",                 spawn "xmonad-run screenshot")
-  , ("S-<Print>",               spawn "xmonad-run screenshot --select")
-  , ("M-C-n",                   spawn "xmonad-run network")
-  , ("M-C-p",                   spawn "xmonad-run password-manager")
-  , ("M-p",                     spawn "xmonad-run power")
-  , ("M-q",                     spawn "xmonad-run restart")
   -- window operations
-  , ("M-l",                     nextWS)
-  , ("M-h",                     prevWS)
-  , ("M-S-l",                   shiftToNext)
-  , ("M-S-h",                   shiftToPrev)
-  , ("M-,",                     sendMessage Shrink)
+  [ ("M-,",                     sendMessage Shrink)
   , ("M-.",                     sendMessage Expand)
-  -- launch app
+  , ("M-S-h",                   shiftToPrev)
+  , ("M-S-l",                   shiftToNext)
+  , ("M-h",                     prevWS)
+  , ("M-l",                     nextWS)
+  -- system operations
+  , ("<Print>",                 spawn "system-run screenshot")
+  , ("<XF86AudioLowerVolume>",  spawn "system-run volume -")
+  , ("<XF86AudioMute>",         spawn "system-run volume m")
+  , ("<XF86AudioRaiseVolume>",  spawn "system-run volume +")
+  , ("<XF86MonBrightnessDown>", spawn "system-run brightness -")
+  , ("<XF86MonBrightnessUp>",   spawn "system-run brightness +")
+  , ("M-C-s",                   spawn "system-run screencast")
+  , ("M-S-m",                   spawn "system-run mouse")
+  , ("M-S-s",                   spawn "system-run screencast --select")
+  , ("M-q",                     spawn "system-run restart")
+  , ("S-<Print>",               spawn "system-run screenshot --select")
+  -- launch applications
   , ("M-<Return>",              spawn myTerminal)
-  , ("M-r",                     spawn "xmonad-run launcher")
-  , ("M-S-r",                   spawn "xmonad-run rss-reader")
-  , ("M-b",                     spawn "xmonad-run browser")
-  , ("M-c",                     spawn "xmonad-run chat")
-  , ("M-C-c",                   spawn "xmonad-run color-picker")
-  , ("M-e",                     spawn "xmonad-run editor")
-  , ("M-i",                     spawn "xmonad-run irc")
-  , ("M-S-e",                   spawn "xmonad-run email")
-  , ("M-f",                     spawn "xmonad-run file-manager")
-  , ("M-m",                     spawn "xmonad-run music-player")
-  , ("M-a",                     spawn "xmonad-run system-activity")
-  , ("M-y",                     spawn "xmonad-run youtube")
-  , ("M-v",                     spawn "xmonad-run volume-manager")
+  , ("M-C-c",                   spawn "app-run calendar")
+  , ("M-C-n",                   spawn "app-run network-manager")
+  , ("M-C-p",                   spawn "app-run password-manager")
+  , ("M-S-a",                   spawn "app-run system-activity")
+  , ("M-S-e",                   spawn "app-run email")
+  , ("M-S-v",                   spawn "app-run volume-manager")
+  , ("M-a",                     spawn "app-run aggregator")
+  , ("M-b",                     spawn "app-run browser")
+  , ("M-c",                     spawn "app-run chat-tool")
+  , ("M-e",                     spawn "app-run editor")
+  , ("M-f",                     spawn "app-run file-manager")
+  , ("M-i",                     spawn "app-run irc")
+  , ("M-m",                     spawn "app-run music-player")
+  , ("M-p",                     spawn "app-run power-manager")
+  , ("M-r",                     spawn "app-run launcher")
+  , ("M-v",                     spawn "app-run video")
   ]

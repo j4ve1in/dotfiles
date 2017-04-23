@@ -18,21 +18,19 @@ if [[ $HOST =~ (localhost|localhost.localdomain) ]]; then
 fi
 
 # XDG
-[[ ! -d ~/.config ]] && mkdir ~/.config
-[[ ! -d ~/.cache ]] && mkdir ~/.cache
-[[ ! -d ~/.local/share ]] && mkdir -p ~/.local/share
 export XDG_{CONFIG,CACHE,DATA}_HOME
 XDG_CONFIG_HOME=~/.config
 XDG_CACHE_HOME=~/.cache
 XDG_DATA_HOME=~/.local/share
+[[ ! -d $XDG_CACHE_HOME ]] && mkdir -p $XDG_CACHE_HOME
+[[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
 # path
 typeset -U path fpath cdpath
 
 path=(
   $path
-  $HOME/.{local,zsh,tmux,config/{git,xmonad}}/bin(N-/)
-  /usr/local/heroku/bin(N-/)
+  $HOME/.{local,zsh,tmux,config/git}/bin(N-/)
 )
 
 if has ruby && has gem; then

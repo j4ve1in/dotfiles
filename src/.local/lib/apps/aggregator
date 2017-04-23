@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+private -a aggregators
+aggregators=(feedly reddit hatena)
+
+private aggregator=`printf '%s\n' $aggregator | dmenu -p 'Aggregator' ${=DMENU}`
+
+if [[ $aggregator = feedly ]]; then
+  termite -e feedlish
+elif [[ $aggregator = reddit ]]; then
+  chromium --app="https://www.reddit.com/"
+elif [[ $aggregator = hatena ]]; then
+  chromium --app="http://b.hatena.ne.jp/" --incognito
+fi

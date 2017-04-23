@@ -7,7 +7,7 @@ compton -b
 tmux new-session -s 0 -d
 mopidy &
 
-mouse toggle
+mouse
 lock-screen
 input-method
 xcape

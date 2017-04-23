@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+path=( $path ~/.local/lib/apps(N-/) )
+${=@}

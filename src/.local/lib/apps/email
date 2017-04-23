@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+chromium --app="https://inbox.google.com"
