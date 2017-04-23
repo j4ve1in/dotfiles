@@ -9,7 +9,7 @@ fi
     if [[ $USER = wemux ]]; then
       wemux
     else
-      exec tmux-exec
+      exec mux-loader
     fi
   fi
 }
