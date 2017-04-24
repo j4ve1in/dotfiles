@@ -3,7 +3,7 @@
 private -a aggregators
 aggregators=(feedly reddit hatena)
 
-private aggregator=`printf '%s\n' $aggregator | dmenu -p 'Aggregator' ${=DMENU}`
+private aggregator=`printf '%s\n' $aggregators | dmenu -p 'Aggregator' ${=DMENU}`
 
 if [[ $aggregator = feedly ]]; then
   termite -e feedlish
