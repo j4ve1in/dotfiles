@@ -62,18 +62,30 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
-      bindkey '^@'   fzf-select-widget
-      bindkey '^@c'  fzf-change-dir
-      bindkey '^\'   fzf-change-recent-dir
-      bindkey '^@g'  fzf-change-repository
-      bindkey '^@f'  fzf-edit-files
-      bindkey '^@.'  fzf-edit-dotfiles
-      bindkey '^r'   fzf-insert-history
-      bindkey '^@s'  fzf-exec-ssh
-      bindkey '^@ga' fzf-git-add-files
-      bindkey '^@gc' fzf-git-checkout-branch
-      bindkey '^@gd' fzf-git-delete-branches
-      bindkey '^@k'  fzf-kill-processes
+      bindkey '^@'    fzf-select-widget
+      bindkey '^@.'   fzf-edit-dotfiles
+      bindkey '^@c'   fzf-change-directory
+      bindkey '^@f'   fzf-edit-files
+      bindkey '^@k'   fzf-kill-processes
+      bindkey '^@s'   fzf-exec-ssh
+      bindkey '^\'    fzf-change-recent-directory
+      bindkey '^r'    fzf-insert-history
+
+      # Git
+      bindkey '^@g'   fzf-git-change-repository
+      bindkey '^@ga'  fzf-git-add-files
+      bindkey '^@gc'  fzf-git-checkout-branch
+      bindkey '^@gd'  fzf-git-delete-branches
+
+      # Docker
+      bindkey '^@d'   fzf-select-docker-widget
+      bindkey '^@dk'  fzf-docker-kill-containers
+      bindkey '^@dl'  fzf-docker-logs-container
+      bindkey '^@dr'  fzf-docker-remove-containers
+      bindkey '^@dri' fzf-docker-remove-images
+      bindkey '^@drv' fzf-docker-remove-volumes
+      bindkey '^@dsa' fzf-docker-start-containers
+      bindkey '^@dso' fzf-docker-stop-containers
     fi
   fi
 }
