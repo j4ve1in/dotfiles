@@ -121,6 +121,7 @@ myAdditionalKeysP =
   -- launch applications
   , ("M-<Return>",              spawn myTerminal)
   , ("M-C-c",                   spawn "app-run calendar")
+  , ("M-C-m",                   spawn "app-run map")
   , ("M-C-n",                   spawn "app-run network-manager")
   , ("M-C-p",                   spawn "app-run password-manager")
   , ("M-S-a",                   spawn "app-run system-activity")
