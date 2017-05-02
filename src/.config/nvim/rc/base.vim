@@ -29,7 +29,6 @@ set completeopt=menuone
 set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
 set wildignorecase wildmode=longest:full,full
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 if $DISPLAY !=# ''
   set clipboard=unnamedplus
