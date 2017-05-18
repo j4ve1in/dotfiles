@@ -1,0 +1,3 @@
+color_blocks='off'
+colors=(33 250 12 75 27 250)
+ascii_colors=(27 27)
