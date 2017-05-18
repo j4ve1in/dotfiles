@@ -10,9 +10,9 @@ elif [[ -z $2 ]]; then
 elif [[ $1 = usb ]]; then
   [ ! -e /mnt/usb ] && sudo mkdir /mnt/usb
   if [[ $3 = '' ]]; then
-    sudo mount -w -o uid=`id -u`,gid=`id -u`,iocharset=utf8 /dev/$2 /mnt/usb
+    sudo mount -w -o nodev,nosuid,noexec,uid=`id -u`,gid=`id -u`,iocharset=utf8 /dev/$2 /mnt/usb
   else
-    sudo mount -t $3 -w -o uid=`id -u`,gid=`id -u`,iocharset=utf8 /dev/$2 /mnt/usb
+    sudo mount -t $3 -w -o nodev,nosuid,noexec,uid=`id -u`,gid=`id -u`,iocharset=utf8 /dev/$2 /mnt/usb
   fi
   ranger --cmd='cd /mnt/usb'
 elif [[ $1 = hdd ]]; then
