@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-[[ $2 = new ]] && tmux new-window "${(P)${(U)1}}"
-[[ $2 = split ]] && tmux split-window -h "${(P)${(U)1}}"
-
-exit 0
