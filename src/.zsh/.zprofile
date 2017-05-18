@@ -6,11 +6,7 @@ fi
 
 : "Launch tmux" && () {
   if has tmux && [[ -z $TMUX ]]; then
-    if [[ $USER = wemux ]]; then
-      wemux
-    else
-      exec mux-loader
-    fi
+    exec mux-loader
   fi
 }
 
