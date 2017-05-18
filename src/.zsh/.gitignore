@@ -2,3 +2,4 @@
 .zcompdump
 autoload/local/*
 .zshrc
+rc/local.zsh
