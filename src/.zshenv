@@ -2,20 +2,10 @@ export ZDOTDIR="$HOME/.zsh"
 . $ZDOTDIR/lib/init.zsh set
 
 # base
-export PAGER='less'
-export MANUAL='man'
+has less && export PAGER='less'
 has nvim && export EDITOR='nvim -p'
-has vtop && export SYSTEMACTIVITY='vtop -t brew'
-has ncmpcpp && export MUSICPLAYER='ncmpcpp'
-has wifi-menu && export NETWORKMANAGER='sudo wifi-menu -o'
-has lpass && export PASSWORDMANAGER='lpass login --trust "$LPASS_USERNAME"'
-has trans && export TRANSLATION='trans -pager $PAGER'
 has chromium && export BROWSER='chromium'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
-if [[ $HOST =~ (localhost|localhost.localdomain) ]]; then
-  export MAIN_DISPLAY=eDP1 SUB_DISPLAY=HDMI1
-  export MOUSE='SynPS/2 Synaptics TouchPad'
-fi
 
 # XDG
 export XDG_{CONFIG,CACHE,DATA}_HOME
@@ -125,9 +115,6 @@ export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
 
-# gomi
-export GOMI_DIR=$XDG_DATA_HOME/gomi
-
 # fzf
 export FZF_DEFAULT_OPTS='
   --ansi
@@ -149,7 +136,7 @@ export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
 export AWS_SDK_LOAD_CONFIG=1
 
 # lpass
-export LPASS_USERNAME=ytet5uy4@outlook.com
+export LPASS_USERNAME=ytet5uy4@gmail.com
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
