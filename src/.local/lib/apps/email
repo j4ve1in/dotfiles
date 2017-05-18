@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-chromium --app="https://inbox.google.com"
+if ! type chromium >/dev/null 2>&1; then
+  notify-send Email 'Command not found: chromium'
+  exit 1
+fi
+
+chromium --app='https://inbox.google.com'

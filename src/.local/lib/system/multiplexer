@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if ! type tmux >/dev/null 2>&1; then
+  notify-send Multiplexer 'command not found: tmux'
+  exit 1
+fi
+
+tmux new-session -s 0 -d

@@ -32,7 +32,6 @@
     color = "#0000ff"
 
 [shortcuts]
-    close = mod4+n
     close_all = mod4+shift+n
 
 [urgency_low]

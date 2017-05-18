@@ -1,6 +1,16 @@
 #!/bin/zsh
 
-power=( halt reboot lock logout )
+if ! type light-locker-command >/dev/null 2>&1; then
+  notify-send PowerManager 'Command not found: light-locker-command'
+  exit 1
+fi
+
+if ! type unclutter >/dev/null 2>&1; then
+  notify-send PowerManager 'Command not found: unclutter'
+  exit 1
+fi
+
+power=( halt reboot lock )
 
 input=`<<< ${(F)power} | dmenu -p 'Power' ${=DMENU}`
 
@@ -19,6 +29,5 @@ case $input in
       echo $! > "$pidfile"
     fi
     ;;
-  logout) xdotool key "super+shift+q" ;;
   *) ;;
 esac

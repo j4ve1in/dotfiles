@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-termite -e "$SYSTEMACTIVITY"
+if ! type vtop >/dev/null 2>&1; then
+  notify-send SystemActivity 'Command not found: vtop'
+  exit 1
+fi
+
+termite -e 'vtop -t brew'

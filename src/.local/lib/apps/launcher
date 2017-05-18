@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-dmenu_run -p 'Launcher' ${=DMENU}

@@ -1,0 +1,10 @@
+Config
+  { font = "xft:Migu 1M:size=13"
+  , commands =
+      [ Run Date "%m/%d %T" "date" 10
+      , Run StdinReader
+      ]
+  , template = " %StdinReader% }{ %date% "
+  }
+
+-- vim: filetype=haskell

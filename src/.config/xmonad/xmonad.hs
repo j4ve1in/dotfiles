@@ -1,21 +1,35 @@
+import System.IO (hPutStrLn)
 import XMonad
-import System.IO
-import XMonad.Actions.CycleWS
+import XMonad.Actions.CycleWS (shiftToPrev, shiftToNext, prevWS, nextWS)
+import XMonad.Config.Desktop (desktopConfig, desktopLayoutModifiers)
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Layout.Gaps
-import XMonad.Layout.Spacing
-import XMonad.Layout.ResizableTile
-import XMonad.Util.EZConfig
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.SpawnOnce
-import qualified XMonad.StackSet as W
+  ( dynamicLogWithPP
+  , xmobarPP
+  , ppOutput
+  , ppOrder
+  , ppCurrent
+  , ppUrgent
+  , ppVisible
+  , ppHidden
+  , ppHiddenNoWindows
+  , ppOutput
+  , ppWsSep
+  , xmobarColor
+  , wrap
+  )
+import XMonad.Layout.Gaps (gaps)
+import XMonad.Layout.NoBorders (noBorders)
+import XMonad.Layout.ResizableTile (ResizableTall(..))
+import XMonad.Layout.Spacing (spacing)
+import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
+import XMonad.Util.EZConfig (removeKeysP, additionalKeysP)
+import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Util.Types (Direction2D(..))
 
 main = do
   wsbar <- spawnPipe myWsBar
-  xmonad $ docks $ ewmh defaultConfig
+  xmonad $ desktopConfig
     { borderWidth        = myBorderWidth
     , terminal           = myTerminal
     , focusFollowsMouse  = myFocusFollowsMouse
@@ -23,9 +37,9 @@ main = do
     , focusedBorderColor = myFocusedBorderColor
     , startupHook        = myStartupHook
     , manageHook         = myManageHook
-    , layoutHook         = myLayout
+    , layoutHook         = myLayoutHook
     , logHook            = myLogHook wsbar
-    , handleEventHook    = myEventHook
+    , handleEventHook    = myHandleEventHook
     , workspaces         = myWorkspaces
     , modMask            = myModMask
     }
@@ -35,12 +49,13 @@ main = do
 -- base
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "app-run terminal"
+myTerminal = "launcher terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
 myFocusedBorderColor = accentColor1
-myEventHook = fullscreenEventHook
+myHandleEventHook = handleEventHook desktopConfig
+myManageHook = manageHook desktopConfig
 
 -- color
 mainColor = "black"
@@ -50,7 +65,8 @@ accentColor1  = "blue"
 accentColor2  = "#00008b"
 
 -- layout
-myLayout = avoidStruts
+myLayoutHook = toggleLayouts (noBorders Full)
+  $ desktopLayoutModifiers
   $ spacing gwW
   $ gaps [(U, gwU),(D, gwD),(L, gwL),(R, gwR)]
   $ (ResizableTall 1 (1/40) (1/2) [])
@@ -62,32 +78,34 @@ myLayout = avoidStruts
     gwR = 0
 
 -- startup
-myStartupHook = spawnOnce "system-run startup"
+myStartupHook = do
+  spawnOnce "launcher brightness"
+  spawnOnce "launcher wallpaper"
+  spawnOnce "launcher compositor"
+  spawnOnce "launcher multiplexer"
+  spawnOnce "launcher screen-locker"
+  spawnOnce "launcher mouse"
+  spawnOnce "launcher input-method-framework"
+  spawnOnce "launcher keyboard"
+  spawnOnce "launcher music-server"
+  startupHook desktopConfig
 
 -- loghook
-myLogHook h = dynamicLogWithPP $ myWsPP { ppOutput = hPutStrLn h }
-
--- managehook
-myManageHook = composeAll
-  [ manageDocks
-  , isDialog           --> doFloat
-  , isFullscreen       --> doFullFloat
-  , className =? "feh" --> doCenterFloat
-  ]
+myLogHook h = do
+  dynamicLogWithPP $ myWsPP {ppOutput = hPutStrLn h}
+  logHook desktopConfig
 
 -- xmobar
-myWsBar = "xmobar -i $XDG_CONFIG_HOME/xmonad/icons/ $XDG_CONFIG_HOME/xmonad/xmobar.hs"
+myWsBar = "xmobar"
 myWsPP = xmobarPP
-  { ppOrder           = \(ws:l:t:_)  -> [ws]
-  , ppCurrent         = xmobarColor subColor1 accentColor2 . wrap " " "* "
+  { ppOrder           = \(ws:l:t:_) -> [ws]
+  , ppCurrent         = xmobarColor subColor1 accentColor2 . wrap " " " "
   , ppUrgent          = xmobarColor subColor2 mainColor    . wrap " " " "
   , ppVisible         = xmobarColor subColor2 mainColor    . wrap " " " "
   , ppHidden          = xmobarColor subColor2 mainColor    . wrap " " " "
-  , ppHiddenNoWindows = xmobarColor subColor2 mainColor    . wrap " " "- "
-  , ppTitle           = xmobarColor subColor1 mainColor
+  , ppHiddenNoWindows = xmobarColor subColor2 mainColor    . wrap " " " "
   , ppOutput          = putStrLn
   , ppWsSep           = ""
-  , ppSep             = " "
   }
 
 -- keybind
@@ -102,39 +120,40 @@ myAdditionalKeysP =
   -- window operations
   [ ("M-,",                     sendMessage Shrink)
   , ("M-.",                     sendMessage Expand)
+  , ("M-S-f",                   sendMessage ToggleLayout)
   , ("M-S-h",                   shiftToPrev)
   , ("M-S-l",                   shiftToNext)
   , ("M-h",                     prevWS)
   , ("M-l",                     nextWS)
   -- system operations
-  , ("<Print>",                 spawn "system-run screenshot")
-  , ("<XF86AudioLowerVolume>",  spawn "system-run volume -")
-  , ("<XF86AudioMute>",         spawn "system-run volume m")
-  , ("<XF86AudioRaiseVolume>",  spawn "system-run volume +")
-  , ("<XF86MonBrightnessDown>", spawn "system-run brightness -")
-  , ("<XF86MonBrightnessUp>",   spawn "system-run brightness +")
-  , ("M-C-s",                   spawn "system-run screencast")
-  , ("M-S-m",                   spawn "system-run mouse")
-  , ("M-S-s",                   spawn "system-run screencast --select")
-  , ("M-q",                     spawn "system-run restart")
-  , ("S-<Print>",               spawn "system-run screenshot --select")
+  , ("<Print>",                 spawn "launcher screenshot")
+  , ("<XF86AudioLowerVolume>",  spawn "launcher volume -")
+  , ("<XF86AudioMute>",         spawn "launcher volume m")
+  , ("<XF86AudioRaiseVolume>",  spawn "launcher volume +")
+  , ("<XF86MonBrightnessDown>", spawn "launcher brightness -")
+  , ("<XF86MonBrightnessUp>",   spawn "launcher brightness +")
+  , ("M-C-s",                   spawn "launcher screencast")
+  , ("M-S-m",                   spawn "launcher mouse")
+  , ("M-S-s",                   spawn "launcher screencast --select")
+  , ("M-q",                     spawn "launcher restart")
+  , ("S-<Print>",               spawn "launcher screenshot --select")
   -- launch applications
   , ("M-<Return>",              spawn myTerminal)
-  , ("M-C-c",                   spawn "app-run calendar")
-  , ("M-C-m",                   spawn "app-run map")
-  , ("M-C-n",                   spawn "app-run network-manager")
-  , ("M-C-p",                   spawn "app-run password-manager")
-  , ("M-S-a",                   spawn "app-run system-activity")
-  , ("M-S-e",                   spawn "app-run email")
-  , ("M-S-v",                   spawn "app-run volume-manager")
-  , ("M-a",                     spawn "app-run aggregator")
-  , ("M-b",                     spawn "app-run browser")
-  , ("M-c",                     spawn "app-run chat-tool")
-  , ("M-e",                     spawn "app-run editor")
-  , ("M-f",                     spawn "app-run file-manager")
-  , ("M-i",                     spawn "app-run irc")
-  , ("M-m",                     spawn "app-run music-player")
-  , ("M-p",                     spawn "app-run power-manager")
-  , ("M-r",                     spawn "app-run launcher")
-  , ("M-v",                     spawn "app-run video")
+  , ("M-C-c",                   spawn "launcher calendar")
+  , ("M-C-m",                   spawn "launcher map")
+  , ("M-C-n",                   spawn "launcher network-manager")
+  , ("M-C-p",                   spawn "launcher password-manager")
+  , ("M-S-a",                   spawn "launcher system-activity")
+  , ("M-S-e",                   spawn "launcher email")
+  , ("M-S-v",                   spawn "launcher volume-manager")
+  , ("M-a",                     spawn "launcher aggregator")
+  , ("M-b",                     spawn "launcher browser")
+  , ("M-c",                     spawn "launcher chat-tool")
+  , ("M-e",                     spawn "launcher editor")
+  , ("M-f",                     spawn "launcher file-manager")
+  , ("M-m",                     spawn "launcher music-player")
+  , ("M-n",                     spawn "launcher network-switcher")
+  , ("M-p",                     spawn "launcher power-manager")
+  , ("M-r",                     spawn "launcher")
+  , ("M-v",                     spawn "launcher video")
   ]

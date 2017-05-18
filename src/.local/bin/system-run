@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-path=( $path ~/.local/lib/system(N-/) )
-${=@}

@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+if ! type xbacklight >/dev/null 2>&1; then
+  notify-send Brightness 'command not found: xbacklight'
+  exit 1
+fi
+
 private MIN=5.5 MAX=50
 private DEFAULT=2 AMOUNT=5
 private current=`xbacklight -get`
@@ -11,7 +16,7 @@ case $1 in
   - )
     (( $current > $MIN )) && xbacklight - $AMOUNT
     ;;
-  = )
+  '' )
     xbacklight = $DEFAULT
     ;;
 esac

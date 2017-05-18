@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-nitrogen --restore &
+if ! type nitrogen >/dev/null 2>&1; then
+  notify-send Wallpaper 'command not found: nitrogen'
+  exit 1
+fi
+
+nitrogen --restore

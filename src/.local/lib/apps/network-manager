@@ -1,10 +1,8 @@
 #!/bin/zsh
 
-profile=`
-  netctl-auto list | \
-    grep -v '*' | \
-    sed 's/ //g' | \
-    dmenu -p 'Network' ${=DMENU}
-`
+if ! type wifi-menu >/dev/null 2>&1; then
+  notify-send NetworkManager 'command not found: wifi-menu'
+  exit 1
+fi
 
-sudo netctl-auto switch-to $profile
+termite -e 'sudo wifi-menu -o'

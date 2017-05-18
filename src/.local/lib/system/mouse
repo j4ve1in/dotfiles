@@ -1,5 +1,15 @@
 #!/bin/zsh
 
+if ! type xte >/dev/null 2>&1; then
+  notify-send Mouse 'command not found: xte'
+  exit 1
+fi
+
+if ! type unclutter >/dev/null 2>&1; then
+  notify-send Mouse 'command not found: unclutter'
+  exit 1
+fi
+
 # xautomation
 xte 'mousemove 0 0'
 

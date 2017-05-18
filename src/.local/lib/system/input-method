@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-if type fcitx; then
-  fcitx &
-else
-  notify-send xmonad ''
-fi

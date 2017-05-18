@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-slack &
+if ! type slack >/dev/null 2>&1; then
+  notify-send Chat 'command not found: slack'
+  exit 1
+fi
+
+slack

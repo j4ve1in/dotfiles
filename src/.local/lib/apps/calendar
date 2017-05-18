@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-chromium --app="https://www.google.com/calendar"
+if ! type chromium >/dev/null 2>&1; then
+  notify-send Calendar 'Command not found: chromium'
+  exit 1
+fi
+
+chromium --app='https://www.google.com/calendar'

@@ -1,4 +1,9 @@
 #!/bin/zsh
 
-xmonad --recompile && xmonad --restart
-notify-send "xmonad" "Compiled and Restarted xmonad"
+if xmonad --recompile >/dev/null 2>&1; then
+  xmonad --restart >/dev/null 2>&1
+  notify-send "xmonad" "Compiled and Restarted"
+else
+  notify-send "xmonad" "Error detected while loading configuration file"
+  exit 1
+fi

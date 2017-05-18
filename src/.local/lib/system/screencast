@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+if ! type ffmpeg >/dev/null 2>&1; then
+  notify-send Screencast 'command not found: ffmpeg'
+  exit 1
+fi
+
 screencast-box() {
   typeset size display file
   size=$1
@@ -19,11 +24,6 @@ screencast-select() {
   eval $(slop -b 1 -c 0,0,255,1)
   screencast-box "$W"x"$H" :0.0+$X,$Y
 }
-
-if type ffmpeg; then
-  notify-send 'screencast' 'ffmpeg not found'
-  return 1
-fi
 
 if ! killall ffmpeg; then
   if [[ $1 = --select ]]; then
