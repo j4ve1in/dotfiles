@@ -22,14 +22,6 @@ fi
   fi
 }
 
-: "Display LastLogin" && () {
-  if has lastlog && [[ -f /var/log/lastlog ]]; then
-    set -- `last -R | sed -n 2p`
-    private port="$2" date="$3 $4 $5 $6" on=`print-color-bold 'on' "$fg[accent]"`
-    print-section 'LastLogin' "$date $on $port"
-  fi
-}
-
 : 'Catenate configuration files of zsh' && () {
   private -a file
   file=( $ZDOTDIR/rc/{plugins,base,aliases,completion}.zsh )
