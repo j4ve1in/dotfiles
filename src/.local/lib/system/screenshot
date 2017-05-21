@@ -7,7 +7,9 @@ take-screenshot() {
   else
     maim "$file"
   fi
-  notify-send 'Take a screenshot' "Saved to $file"
+  if [[ $? != 1 ]]; then
+    notify-send 'Take a screenshot' "Saved to $file"
+  fi
 }
 
 if [[ -f /tmp/unclutter.pid ]]; then
