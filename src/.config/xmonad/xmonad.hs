@@ -140,13 +140,13 @@ myAdditionalKeysP =
   -- launch applications
   , ("M-<Return>",              spawn myTerminal)
   , ("M-C-c",                   spawn "launcher calendar")
+  , ("M-C-l",                   spawn "launcher")
   , ("M-C-m",                   spawn "launcher map")
   , ("M-C-n",                   spawn "launcher network-manager")
   , ("M-C-p",                   spawn "launcher password-manager")
-  , ("M-S-a",                   spawn "launcher system-activity")
   , ("M-S-e",                   spawn "launcher email")
   , ("M-S-v",                   spawn "launcher volume-manager")
-  , ("M-a",                     spawn "launcher aggregator")
+  , ("M-a",                     spawn "launcher system-activity")
   , ("M-b",                     spawn "launcher browser")
   , ("M-c",                     spawn "launcher chat-tool")
   , ("M-e",                     spawn "launcher editor")
@@ -154,6 +154,6 @@ myAdditionalKeysP =
   , ("M-m",                     spawn "launcher music-player")
   , ("M-n",                     spawn "launcher network-switcher")
   , ("M-p",                     spawn "launcher power-manager")
-  , ("M-r",                     spawn "launcher")
+  , ("M-r",                     spawn "launcher rss-reader")
   , ("M-v",                     spawn "launcher video")
   ]
