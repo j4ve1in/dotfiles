@@ -53,20 +53,20 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
-      bindkey '^@'    fzf-select-widget
-      bindkey '^@.'   fzf-edit-dotfiles
-      bindkey '^@c'   fzf-change-directory
-      bindkey '^@f'   fzf-edit-files
-      bindkey '^@k'   fzf-kill-processes
-      bindkey '^@s'   fzf-exec-ssh
-      bindkey '^\'    fzf-change-recent-directory
-      bindkey '^r'    fzf-insert-history
+      bindkey '^@'  fzf-select-widget
+      bindkey '^@.' fzf-edit-dotfiles
+      bindkey '^@c' fzf-change-directory
+      bindkey '^@f' fzf-edit-files
+      bindkey '^@k' fzf-kill-processes
+      bindkey '^@s' fzf-exec-ssh
+      bindkey '^\'  fzf-change-recent-directory
+      bindkey '^r'  fzf-insert-history
 
       # Git
-      bindkey '^@g'   fzf-git-change-repository
-      bindkey '^@ga'  fzf-git-add-files
-      bindkey '^@gc'  fzf-git-checkout-branch
-      bindkey '^@gd'  fzf-git-delete-branches
+      bindkey '^@g'  fzf-git-change-repository
+      bindkey '^@ga' fzf-git-add-files
+      bindkey '^@gc' fzf-git-checkout-branch
+      bindkey '^@gd' fzf-git-delete-branches
 
       # Docker
       bindkey '^@d'   fzf-select-docker-widget
