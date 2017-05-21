@@ -8,7 +8,7 @@ repo = 'ytet5uy4/abyss.vim'
 hook_source = 'colorscheme abyss'
 
 [[plugins]]
-repo = 'surround.vim'
+repo = 'vim-scripts/surround.vim'
 
 [[plugins]]
 repo = 'soramugi/auto-ctags.vim'
