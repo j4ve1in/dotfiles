@@ -18,18 +18,18 @@ fi
 private file=$XDG_CONFIG_HOME/youtube/playlists.json
 
 if ! [[ -f $file ]]; then
-  notify-send 'Youtube' "config file not found: $file"
+  notify-send 'Video' "config file not found: $file"
   exit 1
 fi
 
 private -a playlist
 playlist=(`jq -r '.playlists[].title' $file`)
 
-private title=`printf '%s\n' $playlist | dmenu -p 'Youtube' ${=DMENU}`
+private title=`printf '%s\n' $playlist | dmenu -p 'Video' ${=DMENU}`
 
 private id=`jq -r ".playlists[]|select(.title==\"$title\").id" $file`
 
 if [[ -n $id ]]; then
-  notify-send 'Youtube' 'Downloading playlist...'
+  notify-send 'Video' 'Downloading playlist...'
   mpv --shuffle ytdl://$id
 fi
