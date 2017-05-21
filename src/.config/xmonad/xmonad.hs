@@ -49,7 +49,7 @@ main = do
 -- base
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "launcher terminal"
+myTerminal = "xmonad-run terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
@@ -79,15 +79,15 @@ myLayoutHook = toggleLayouts (noBorders Full)
 
 -- startup
 myStartupHook = do
-  spawnOnce "launcher brightness"
-  spawnOnce "launcher wallpaper"
-  spawnOnce "launcher compositor"
-  spawnOnce "launcher multiplexer"
-  spawnOnce "launcher screen-locker"
-  spawnOnce "launcher mouse"
-  spawnOnce "launcher input-method-framework"
-  spawnOnce "launcher keyboard"
-  spawnOnce "launcher music-server"
+  spawnOnce "xmonad-run brightness"
+  spawnOnce "xmonad-run wallpaper"
+  spawnOnce "xmonad-run compositor"
+  spawnOnce "xmonad-run multiplexer"
+  spawnOnce "xmonad-run screen-locker"
+  spawnOnce "xmonad-run mouse"
+  spawnOnce "xmonad-run input-method-framework"
+  spawnOnce "xmonad-run keyboard"
+  spawnOnce "xmonad-run music-server"
   startupHook desktopConfig
 
 -- loghook
@@ -126,34 +126,34 @@ myAdditionalKeysP =
   , ("M-h",                     prevWS)
   , ("M-l",                     nextWS)
   -- system operations
-  , ("<Print>",                 spawn "launcher screenshot")
-  , ("<XF86AudioLowerVolume>",  spawn "launcher volume -")
-  , ("<XF86AudioMute>",         spawn "launcher volume m")
-  , ("<XF86AudioRaiseVolume>",  spawn "launcher volume +")
-  , ("<XF86MonBrightnessDown>", spawn "launcher brightness -")
-  , ("<XF86MonBrightnessUp>",   spawn "launcher brightness +")
-  , ("M-C-s",                   spawn "launcher screencast")
-  , ("M-S-m",                   spawn "launcher mouse")
-  , ("M-S-s",                   spawn "launcher screencast --select")
-  , ("M-q",                     spawn "launcher restart")
-  , ("S-<Print>",               spawn "launcher screenshot --select")
+  , ("<Print>",                 spawn "xmonad-run screenshot")
+  , ("<XF86AudioLowerVolume>",  spawn "xmonad-run volume -")
+  , ("<XF86AudioMute>",         spawn "xmonad-run volume m")
+  , ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
+  , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
+  , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
+  , ("M-C-s",                   spawn "xmonad-run screencast")
+  , ("M-S-m",                   spawn "xmonad-run mouse")
+  , ("M-S-s",                   spawn "xmonad-run screencast --select")
+  , ("M-q",                     spawn "xmonad-run restart")
+  , ("S-<Print>",               spawn "xmonad-run screenshot --select")
   -- launch applications
   , ("M-<Return>",              spawn myTerminal)
-  , ("M-C-c",                   spawn "launcher calendar")
-  , ("M-C-l",                   spawn "launcher")
-  , ("M-C-m",                   spawn "launcher map")
-  , ("M-C-n",                   spawn "launcher network-manager")
-  , ("M-C-p",                   spawn "launcher password-manager")
-  , ("M-S-e",                   spawn "launcher email")
-  , ("M-S-v",                   spawn "launcher volume-manager")
-  , ("M-a",                     spawn "launcher system-activity")
-  , ("M-b",                     spawn "launcher browser")
-  , ("M-c",                     spawn "launcher chat-tool")
-  , ("M-e",                     spawn "launcher editor")
-  , ("M-f",                     spawn "launcher file-manager")
-  , ("M-m",                     spawn "launcher music-player")
-  , ("M-n",                     spawn "launcher network-switcher")
-  , ("M-p",                     spawn "launcher power-manager")
-  , ("M-r",                     spawn "launcher rss-reader")
-  , ("M-v",                     spawn "launcher video")
+  , ("M-C-c",                   spawn "xmonad-run calendar")
+  , ("M-C-l",                   spawn "xmonad-run launcher")
+  , ("M-C-m",                   spawn "xmonad-run map")
+  , ("M-C-n",                   spawn "xmonad-run network-manager")
+  , ("M-C-p",                   spawn "xmonad-run password-manager")
+  , ("M-S-e",                   spawn "xmonad-run email")
+  , ("M-S-v",                   spawn "xmonad-run volume-manager")
+  , ("M-a",                     spawn "xmonad-run system-activity")
+  , ("M-b",                     spawn "xmonad-run browser")
+  , ("M-c",                     spawn "xmonad-run chat-tool")
+  , ("M-e",                     spawn "xmonad-run editor")
+  , ("M-f",                     spawn "xmonad-run file-manager")
+  , ("M-m",                     spawn "xmonad-run music-player")
+  , ("M-n",                     spawn "xmonad-run network-switcher")
+  , ("M-p",                     spawn "xmonad-run power-manager")
+  , ("M-r",                     spawn "xmonad-run rss-reader")
+  , ("M-v",                     spawn "xmonad-run video")
   ]
