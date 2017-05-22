@@ -5,7 +5,7 @@ has cd && alias -- -='cd -'
 has rm && alias rm='rm -iv'
 has ls && alias l='ls -F --color=always' ll='l -hl --time-style=long-iso'
 has ls && alias la='l -A' lla='ll -A'
-has git && alias g=git
+has hub && alias g=hub
 has nvim && alias n='nvim -p'
 has docker && alias d=docker
 has docker-compose && alias dc=docker-compose
