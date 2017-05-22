@@ -61,6 +61,8 @@
       bindkey '^@s' fzf-exec-ssh
       bindkey '^\'  fzf-change-recent-directory
       bindkey '^r'  fzf-insert-history
+      bindkey '^xf' fzf-insert-files
+      bindkey '^xd' fzf-insert-directory
 
       # Git
       bindkey '^@g'  fzf-git-change-repository
