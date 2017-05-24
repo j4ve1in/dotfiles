@@ -2,8 +2,6 @@ has() { type $1 >/dev/null 2>&1; }
 
 is-arch() { [ -e /etc/arch-release ]; }
 
-is-linux() { [[ $OSTYPE =~ linux ]]; }
-
 prompt() {
   print-color-bold "$3? " "$fg[main]"
   [[ $2 ]] && printf "$2\n$3  "

@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-trap '[[ -f ./a.out ]] && rm -f ./a.out' 0 1 2 3 15
-
-gcc $1
-shift
-./a.out $@

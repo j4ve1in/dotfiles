@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-for dir in {Documents,Pictures,Videos}; do
-  if [ ! -d "$HOME/$dir" ] && [ ! -L "$HOME/$dir" ]; then
-    ln -s "$HOME/.local/share/Dropbox/$dir" "$dir"
-  else
-    echo "$dir already exists."
-  fi
-done

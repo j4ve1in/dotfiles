@@ -1,6 +1,7 @@
 # regular alias
 has cp && alias c='cp -iv'
 has mv && alias m='mv -iv'
+has mkdir && alias mk='mkdir'
 has cd && alias -- -='cd -'
 has rm && alias rm='rm -iv'
 has ls && alias l='ls -F --color=always' ll='l -hl --time-style=long-iso'
@@ -27,6 +28,5 @@ has python && alias -s py=python
 has ruby && alias -s rb=ruby
 has zsh && alias -s zsh=zsh
 has nvim && alias -s vim=nvim
-has gcc && alias -s c=runc
 has xdg-oepn && alias -s {gif,jpg,jpeg,png,bmp}=xdg-open
 has aunpack && alias -s {gz,tgz,zip,tar,rar,7z}=aunpack
