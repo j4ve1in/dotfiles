@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-# ffmpeg -i "$1"  -vcodec copy -acodec aac -strict experimental -ab 128k -aprofile aac_low -ac 2 -ar 44100 "${1%.mkv}.mp4"
-ffmpeg -i "$1" -c:v copy -c:a copy "${1%.mkv}.mp4"
