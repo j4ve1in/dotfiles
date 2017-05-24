@@ -2,7 +2,6 @@
 
 main() {
   set-statusline.left
-  set-statusline.right
   set-statusline.window-format
   set-statusline.window-current-format
 }
@@ -13,46 +12,18 @@ set-statusline.left() {
   STATUS_L='#[fg=colour231,bg=colour17,bold]#{?client_prefix,#[reverse],} #S '
   # separator
   if is-x && is-patched-font;then
-    STATUS_L+='#[fg=colour17,bg=black]'
+    STATUS_L+='#[fg=colour17,bg=default]'
     STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour231],}\ue0b0'
   fi
   tmux set -g status-left "`echo -e $STATUS_L`"
-  tmux set -g status-left-length 50
-}
-
-set-statusline.right() {
-  typeset STATUS_R
-  # Prefixkey
-  STATUS_R="#[fg=colour231,bg=black]$(tmux show-options -g prefix | tr -d 'prefix ') "
-  # Battery
-  ## separator
-  {is-x && is-patched-font} && STATUS_R+='#[fg=colour21,bg=black]\ue0b2'
-  if has acpi;then
-    Battery="`acpi -b | grep -oE '[0-9]+%' | tr -d '%'`"
-    STATUS_R+='#[fg=colour231,bg=colour21]'
-    (( "$Battery" <= 20 )) && STATUS_R+='#[bold]'
-    STATUS_R+=" #(acpi -b | grep -oE '[0-9]+%') #[default]"
-  fi
-  # Date
-  ## separator
-  {is-x && is-patched-font} && STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
-  STATUS_R+='#[fg=colour231,bg=colour17] %a '
-  ## subseparator
-  {is-x && is-patched-font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
-  STATUS_R+=' %m/%d '
-  ## subseparator
-  {is-x && is-patched-font} && STATUS_R+='\ue0b3' || STATUS_R+='|'
-  STATUS_R+=' %H:%M:%S '
-  tmux set -g status-right "`echo -e $STATUS_R`"
-  tmux set -g status-right-length 50
 }
 
 set-statusline.window-format() {
   typeset STATUS_WF
   # window index and flag
-  STATUS_WF='#[fg=colour244,bg=black]  #I#F '
+  STATUS_WF='#[fg=colour244,bg=default]  #I#F '
   # separator
-  {is-x && is-patched-font} && STATUS_WF+='#[fg=colour240,bg=black]\ue0b1' || STATUS_WF+=':'
+  {is-x && is-patched-font} && STATUS_WF+='#[fg=colour240,bg=default]\ue0b1' || STATUS_WF+=':'
   # window name
   STATUS_WF+=' #[fg=colour33]#W  '
   tmux setw -g window-status-format "`echo -e $STATUS_WF`"
@@ -72,8 +43,6 @@ set-statusline.window-current-format() {
   {is-x && is-patched-font} && STATUS_WCF+='#[fg=colour21,bg=black]\ue0b0'
   tmux setw -g window-status-current-format "`echo -e $STATUS_WCF`"
 }
-
-has() { type $1 >/dev/null 2>&1; }
 
 is-x() { [[ $DISPLAY ]] && return 0 || return 1; }
 
