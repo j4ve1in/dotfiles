@@ -1,8 +1,27 @@
 #!/bin/zsh
 
-if ! type slack >/dev/null 2>&1; then
-  notify-send Chat 'command not found: slack'
+if ! type jq >/dev/null 2>&1; then
+  notify-send Chat 'command not found: jq'
   exit 1
 fi
 
-slack
+if ! type mpv >/dev/null 2>&1; then
+  notify-send Chat 'command not found: chromium'
+  exit 1
+fi
+
+private file=$XDG_CONFIG_HOME/slack/team.json
+
+if ! [[ -f $file ]]; then
+  notify-send Chat "config file not found: $file"
+  exit 1
+fi
+
+private -a team
+team=(`jq -r '.team[].name' $file`)
+
+private name=`printf '%s\n' $team | dmenu -p 'Chat' ${=DMENU}`
+
+private url=`jq -r ".team[]|select(.name==\"$name\").url" $file`
+
+[[ -n $url ]] && chromium --app="$url"
