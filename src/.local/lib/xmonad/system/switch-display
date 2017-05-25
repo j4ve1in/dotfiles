@@ -1,0 +1,37 @@
+#!/bin/zsh
+
+if ! type xrandr >/dev/null 2>&1; then
+  notify-send Display 'command not found: xrandr'
+  exit 1
+fi
+
+if ! type nitrogen >/dev/null 2>&1; then
+  notify-send Display 'command not found: nitrogen'
+  exit 1
+fi
+
+if [[ -z $MAIN_DISPLAY || -z $SUB_DISPLAY ]]; then
+  notify-send Display 'Set `$MAIN_DISPLAY` and `$SUB_DISPLAY`'
+  exit 1
+fi
+
+local -a displays
+displays=(main sub extend)
+
+local display=`printf '%s\n' $displays | dmenu -p 'Display' ${=DMENU}`
+
+if [[ -n $display ]]; then
+  case "$display" in
+    main )
+      xrandr --output $MAIN_DISPLAY --auto --output $SUB_DISPLAY --off
+      ;;
+    sub )
+      xrandr --output $MAIN_DISPLAY --off --output $SUB_DISPLAY --auto
+      ;;
+    extend )
+      xrandr --output $MAIN_DISPLAY --auto --primary \
+        --output $SUB_DISPLAY --auto --left-of $MAIN_DISPLAY
+      ;;
+  esac
+  nitrogen --restore
+fi

@@ -132,6 +132,7 @@ myAdditionalKeysP =
   , ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
   , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
   , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
+  , ("M-C-d",                   spawn "xmonad-run switch-display")
   , ("M-C-s",                   spawn "xmonad-run screencast")
   , ("M-S-m",                   spawn "xmonad-run mouse")
   , ("M-S-s",                   spawn "xmonad-run screencast --select")

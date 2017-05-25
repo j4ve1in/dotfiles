@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [[ -z $MAIN_DISPLAY || -z $SUB_DISPLAY ]]; then
-  echo 'Set `$MAIN_DISPLAY` and `$SUB_DISPLAY`'
-  return 1
-fi
-
-xrandr --output $MAIN_DISPLAY --auto --primary --output $SUB_DISPLAY --auto --left-of $MAIN_DISPLAY
-nitrogen --restore
