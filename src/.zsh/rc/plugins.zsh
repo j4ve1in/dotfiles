@@ -19,7 +19,7 @@
       fi
     fi
 
-    zplug load >/dev/null 2>&1
+    zplug load
 
     if zplug check 'zsh-users/zsh-autosuggestions'; then
       unset ZSH_AUTOSUGGEST_ACCEPT_WIDGETS
@@ -53,32 +53,20 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
-      bindkey '^@'  fzf-select-widget
-      bindkey '^@.' fzf-edit-dotfiles
-      bindkey '^@c' fzf-change-directory
-      bindkey '^@f' fzf-edit-files
-      bindkey '^@k' fzf-kill-processes
-      bindkey '^@s' fzf-exec-ssh
-      bindkey '^\'  fzf-change-recent-directory
-      bindkey '^r'  fzf-insert-history
-      bindkey '^xf' fzf-insert-files
-      bindkey '^xd' fzf-insert-directory
-
-      # Git
-      bindkey '^@g'  fzf-git-change-repository
-      bindkey '^@ga' fzf-git-add-files
-      bindkey '^@gc' fzf-git-checkout-branch
-      bindkey '^@gd' fzf-git-delete-branches
-
-      # Docker
-      bindkey '^@d'   fzf-select-docker-widget
-      bindkey '^@dk'  fzf-docker-kill-containers
-      bindkey '^@dl'  fzf-docker-logs-container
-      bindkey '^@dr'  fzf-docker-remove-containers
-      bindkey '^@dri' fzf-docker-remove-images
-      bindkey '^@drv' fzf-docker-remove-volumes
-      bindkey '^@dsa' fzf-docker-start-containers
-      bindkey '^@dso' fzf-docker-stop-containers
+      bindkey '^@'   fzf-select-widget
+      bindkey '^@.'  fzf-edit-dotfiles
+      bindkey '^@c'  fzf-change-directory
+      bindkey '^@d'  fzf-select-docker-widget
+      bindkey '^@f'  fzf-edit-files
+      bindkey '^@g'  fzf-select-git-widget
+      bindkey '^@gc' fzf-git-change-repository
+      bindkey '^@gh' fzf-select-github-widget
+      bindkey '^@k'  fzf-kill-processes
+      bindkey '^@s'  fzf-exec-ssh
+      bindkey '^\'   fzf-change-recent-directory
+      bindkey '^r'   fzf-insert-history
+      bindkey '^xd'  fzf-insert-directory
+      bindkey '^xf'  fzf-insert-files
     fi
   fi
 }
