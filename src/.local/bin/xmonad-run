@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-path=( $path ~/.local/lib/xmonad/*(N-/) )
+path=( ~/.local/lib/xmonad/*(N-/) $path )
 
 ${=@}
