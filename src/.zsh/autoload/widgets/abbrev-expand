@@ -2,18 +2,14 @@
 
 private -A abbreviations
 abbreviations=(
-  'F'   '| fzf-tmux'
-  'G'   '| rg'
-  'X'   '| xargs'
-  'T'   '| tail'
-  'H'   '| head'
-  'C'   '| cat'
-  'W'   '| wc'
-  'L'   '| less'
-  'A'   '| awk'
-  'S'   '| sed'
-  'E'   '2>&1 >/dev/null'
-  'N'   '>/dev/null'
+  'G' '| rg'
+  'X' '| xargs'
+  'T' '| tail'
+  'H' '| head'
+  'W' '| wc'
+  'L' '| less'
+  'A' '| awk'
+  'S' '| sed'
 )
 
 local MATCH
