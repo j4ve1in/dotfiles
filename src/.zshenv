@@ -116,7 +116,7 @@ export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
 
 # fzf
-export FZF_DEFAULT_OPTS='
+export FZF_DEFAULT_OPTS="
   --ansi
   --select-1
   --exit-0
@@ -125,10 +125,11 @@ export FZF_DEFAULT_OPTS='
   --multi
   --height 40%
   --reverse
+  --prompt=`echo '\uf04b'`' '
   --color hl:27,bg+:21,hl+:75
   --color info:69,prompt:75,spinner:69,pointer:69,marker:69
   --bind ctrl-j:jump-accept
-'
+"
 
 # dmenu
 export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
