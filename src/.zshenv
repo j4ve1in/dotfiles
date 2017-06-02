@@ -18,10 +18,7 @@ XDG_DATA_HOME=~/.local/share
 # path
 typeset -U path fpath cdpath
 
-path=(
-  $path
-  $HOME/.{local,tmux,config/git}/bin(N-/)
-)
+path=($path $HOME/.local/bin(N-/))
 
 if has ruby && has gem; then
   path=($path `ruby -rubygems -e 'puts Gem.user_dir'`/bin(N-/))
@@ -40,8 +37,6 @@ fpath=(
   $fpath
   $ZDOTDIR/autoload/**/*(N-/)
 )
-
-cdpath=(~)
 
 # Programming
 has ruby && export KCODE='u'
