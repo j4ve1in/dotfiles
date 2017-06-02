@@ -10,7 +10,7 @@ has hub && alias g=hub
 has nvim && alias n='nvim -p'
 has docker && alias d=docker
 has docker-compose && alias dc=docker-compose
-has yaourt && alias y=yaourt
+has pacaur && alias p=pacaur
 has sudo && alias sudo='sudo ' s=sudo
 has sudoedit && alias sudoedit='sudoedit ' se=sudoedit
 has colordiff && alias di='colordiff -u'
