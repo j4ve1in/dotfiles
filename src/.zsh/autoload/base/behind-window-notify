@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [[ -n $TMUX ]] then
-  current_panes=(${(@f)"$(tmux list-panes -F'#{pane_id}')"})
-
-  if [[ -z ${(M)current_panes#$TMUX_PANE} ]] then
-    notify-send -u low "Tmux" "\`$LASTCMD[1]\` has finished"
-  fi
-fi

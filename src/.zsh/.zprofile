@@ -1,7 +1,7 @@
-. $ZDOTDIR/lib/init.zsh set
+. $ZDOTDIR/lib/init.zsh
 
 if is-arch; then
-  . ~/.zshenv && . $ZDOTDIR/lib/init.zsh set
+  . ~/.zshenv && . $ZDOTDIR/lib/init.zsh
 fi
 
 : "Launch tmux" && () {
@@ -64,5 +64,3 @@ fi
     done
   fi
 }
-
-. $ZDOTDIR/lib/init.zsh unset

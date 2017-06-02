@@ -1,5 +1,5 @@
 export ZDOTDIR="$HOME/.zsh"
-. $ZDOTDIR/lib/init.zsh set
+. $ZDOTDIR/lib/init.zsh
 
 # base
 has less && export PAGER='less'
@@ -20,7 +20,7 @@ typeset -U path fpath cdpath
 
 path=(
   $path
-  $HOME/.{local,zsh,tmux,config/git}/bin(N-/)
+  $HOME/.{local,tmux,config/git}/bin(N-/)
 )
 
 if has ruby && has gem; then
@@ -142,5 +142,3 @@ export LPASS_USERNAME=ytet5uy4@gmail.com
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
-
-. $ZDOTDIR/lib/init.zsh unset
