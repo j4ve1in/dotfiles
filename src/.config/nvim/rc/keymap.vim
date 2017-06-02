@@ -3,8 +3,6 @@ nnoremap <silent> <Autoload>(sudo-write)  :<C-u>call sudo#write()<CR>
 nnoremap <silent> <Autoload>(symlink-follow) :<C-u>call symlink#follow()<CR>
 nnoremap <silent> <Autoload>(append-line-up) :<C-u>call append#line('up')<CR>
 nnoremap <silent> <Autoload>(append-line-down) :<C-u>call append#line('down')<CR>
-nnoremap <silent> <Autoload>(mouse-mode-on) :<C-u>call mouse#mode('on')<CR>
-nnoremap <silent> <Autoload>(mouse-mode-off) :<C-u>call mouse#mode('off')<CR>
 nnoremap <silent> <Autoload>(syntax-info) :<C-u>call syntax#info()<CR>
 nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
 " }}}
@@ -78,8 +76,6 @@ augroup END
 " }}}
 
 " autoload {{{
-nmap gm <Autoload>(mouse-mode-on)
-nmap gM <Autoload>(mouse-mode-off)
 nmap gw <Autoload>(sudo-write)
 nmap go <Autoload>(append-line-up)
 nmap gO <Autoload>(append-line-down)

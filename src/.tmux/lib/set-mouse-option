@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [[ $1 = on ]]; then
-  tmux set-option -g mouse on
-  tmux display 'Mouse: ON'
-elif [[ $1 = off ]]; then
-  tmux set-option -g mouse off
-  tmux display 'Mouse: OFF'
-fi

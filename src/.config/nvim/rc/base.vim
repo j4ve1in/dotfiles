@@ -16,7 +16,6 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 
 set hidden
-set mouse=
 set undofile
 set scrolloff=5
 set winheight=8
