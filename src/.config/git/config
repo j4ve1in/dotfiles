@@ -1,5 +1,98 @@
-# vim: set filetype=gitconfig:
+[core]
+    editor = nvim
+    pager = less
+    quotepath = off
+
+[init]
+    templatedir = ~/.config/git/template
+
+[user]
+    name = ytet5uy4
+    email = ytet5uy4@ytet5uy4.com
+
+[credential]
+    helper = gnome-keyring
+
+[color]
+    ui = true
+
+[color "diff"]
+    meta = white bold
+    frag = cyan
+    old = red
+    new = green
+
+[pager]
+    stash = false
+
+[diff]
+    algorithm = histogram
+
+[push]
+    default = simple
+
+[help]
+    autocorrect = 30
+
+[url "https://"]
+    insteadOf = git://
+
+[url "https://github.com/"]
+    insteadOf = git@github.com:
+
+[url "https://gitlab.com/"]
+    insteadOf = git@gitlab.com:
+
+[url "https://bitbucket.org/"]
+    insteadOf = git@bitbucket.org:
+
+[rebase]
+    autostash = true
+
+[fetch]
+    prune = true
+
+[ghq]
+    root = ~/.local/src
+    root = ~/.local/share/tmux/plugins
+    root = ~/.local/share/nvim/plugins/repos
+    root = ~/.local/share/zsh/plugins/repos
+
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+
+[github]
+    user = ytet5uy4
+
+[ghi]
+    pager = less -ciMR
+
+[alias]
+    al = alias-list
+    b = branch
+    ch = checkout
+    cl = clone
+    i = init
+    l = log-custom
+    p = pull
+    ps = push
+    s = status-custom
+
+    # add
+    a = add
+    aa = add -A
+    ap = add -p
+
+    # commit
+    c = commit
+    cm = commit -m
+    cam = commit -am
+
+    # diff
+    d = diff
+    dc = diff --cached
+
 [include]
-    path = ~/.config/git/conf/base.conf
-    path = ~/.config/git/conf/alias.conf
-    path = ~/.config/git/conf/local.conf
+    path = ~/.config/git/config.local
