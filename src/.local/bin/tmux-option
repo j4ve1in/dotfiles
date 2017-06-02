@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-path=( ~/.tmux/lib/ $path )
-set-${1}-option $2
-
-exit 0
