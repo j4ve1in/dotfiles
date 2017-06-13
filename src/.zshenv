@@ -4,7 +4,9 @@ export ZDOTDIR="$HOME/.zsh"
 # base
 has less && export PAGER='less'
 has nvim && export EDITOR='nvim -p'
-has chromium && export BROWSER='chromium'
+if has chromium && [[ -z $DISPLAY ]]; then
+  export BROWSER='w3m'
+fi
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 
 # XDG
