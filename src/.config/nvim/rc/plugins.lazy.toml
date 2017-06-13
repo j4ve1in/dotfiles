@@ -135,6 +135,12 @@ on_ft = 'fish'
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = 'tf'
+hook_add = '''
+augroup vim-terraform
+  autocmd!
+  autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>:<C-u>Neomake<CR>
+augroup END
+'''
 # }}}
 
 # vim: foldmethod=marker:
