@@ -65,5 +65,5 @@ if test $last_status -ne 0
   set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
 end
 
-echo -n -s (set_color 0066ff) [ $normal $USER @ $__fish_prompt_hostname ' ' (prompt_pwd) (__fish_vcs_prompt) (set_color 0066ff) ] $normal \n $prompt_status "> "
+echo -n -s (prompt_pwd) ' ' (__fish_vcs_prompt) (set_color 0066ff) "> " $normal
 end
