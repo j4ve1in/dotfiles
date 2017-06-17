@@ -1,5 +1,4 @@
-export ZDOTDIR="$HOME/.zsh"
-. $ZDOTDIR/lib/init.zsh
+. ~/.local/lib/zsh/init.zsh
 
 # base
 has less && export PAGER='less'

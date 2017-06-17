@@ -1,7 +1,7 @@
-. $ZDOTDIR/lib/init.zsh
+. ~/.local/lib/zsh/init.zsh
 
 if is-arch; then
-  . ~/.zshenv && . $ZDOTDIR/lib/init.zsh
+  . ~/.zshenv && . ~/.local/lib/zsh/init.zsh
 fi
 
 : "Launch tmux" && () {
@@ -28,8 +28,8 @@ fi
       print-header 'Catenate configuration files of zsh'
       private mark=`print-color-bold '>' "$fg[accent]"`
       print " $ZDOTDIR/rc/* $mark $ZDOTDIR/.zshrc"
-      private initialize='. $ZDOTDIR/lib/init.zsh set'
-      private finalize='. $ZDOTDIR/lib/init.zsh unset'
+      private initialize='. ~/.local/lib/zsh/init.zsh set'
+      private finalize='. ~/.local/lib/zsh/init.zsh unset'
       cat <(<<< $initialize) $file <(<<< $finalize) > $ZDOTDIR/.zshrc
       return 0
     fi
