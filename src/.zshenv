@@ -134,7 +134,7 @@ export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
 export AWS_SDK_LOAD_CONFIG=1
 
 # lpass
-export LPASS_USERNAME=ytet5uy4@gmail.com
+export LPASS_USERNAME=ytet5uy4@ytet5uy4.com
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
