@@ -1,5 +1,16 @@
 #!/bin/zsh
 
-private init_script=$TMUX_PLUGIN_MANAGER_PATH/tpm/tpm
+if [[ ! -d $TPM_HOME ]] && [[ ! -f $TMUX_CACHE_HOME/plugin ]]; then
+  touch $TMUX_CACHE_HOME/plugin
+  tmux confirm-before -p 'Do you install tmux plugins?' 'run-shell "
+    git clone https://github.com/tmux-plugins/tpm $TPM_HOME >/dev/null 2>&1
+    $TPM_HOME/scripts/install_plugins.sh >/dev/null 2>&1
+    tmux display \"Installed tmux plugins\"
+  "'
+fi
 
-[[ -f $init_script ]] && $init_script
+if [[ -d $TPM_HOME ]]; then
+  private init_script=$TMUX_PLUGIN_MANAGER_PATH/tpm/tpm
+
+  [[ -f $init_script ]] && $init_script
+fi

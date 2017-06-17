@@ -3,12 +3,9 @@
 # base
 has less && export PAGER='less'
 has nvim && export EDITOR='nvim -p'
-if has chromium && [[ -z $DISPLAY ]]; then
-  export BROWSER='w3m'
-fi
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 
-# XDG
+## XDG
 export XDG_{CONFIG,CACHE,DATA}_HOME
 XDG_CONFIG_HOME=~/.config
 XDG_CACHE_HOME=~/.cache
@@ -16,8 +13,21 @@ XDG_DATA_HOME=~/.local/share
 [[ ! -d $XDG_CACHE_HOME ]] && mkdir -p $XDG_CACHE_HOME
 [[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
+## zsh
+export ZDOTDIR=~/.zsh
+export ZSH_CACHE_HOME=$XDG_CACHE_HOME/zsh
+[[ ! -d $ZSH_CACHE_HOME ]] && mkdir $ZSH_CACHE_HOME
+export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
+[[ ! -d $ZSH_DATA_HOME ]] && mkdir $ZSH_DATA_HOME
+export SAVEHIST="$HISTSIZE"
+export HISTFILE="$ZSH_CACHE_HOME/history"
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export ZPLUG_HOME=$ZSH_DATA_HOME/plugins
+export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
+[[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir -p $ZPLUG_CACHE_DIR
+
 # path
-typeset -U path fpath cdpath
+typeset -U path fpath
 
 path=($path $HOME/.local/bin(N-/))
 
@@ -95,23 +105,12 @@ export TMUX_PLUGIN_MANAGER_PATH=$TMUX_DATA_HOME/plugins
 [[ ! -d $TMUX_PLUGIN_MANAGER_PATH ]] && mkdir $TMUX_PLUGIN_MANAGER_PATH
 export TPM_HOME=$TMUX_PLUGIN_MANAGER_PATH/tpm
 
-# zsh
-export ZSH_CACHE_HOME=$XDG_CACHE_HOME/zsh
-[[ ! -d $ZSH_CACHE_HOME ]] && mkdir $ZSH_CACHE_HOME
-export ZSH_DATA_HOME=$XDG_DATA_HOME/zsh
-[[ ! -d $ZSH_DATA_HOME ]] && mkdir $ZSH_DATA_HOME
-export HISTFILE="$ZSH_CACHE_HOME/history"
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export {HISTSIZE,SAVEHIST}=10000
-export ZPLUG_HOME=$ZSH_DATA_HOME/plugins
-export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
-[[ ! -d $ZPLUG_CACHE_DIR ]] && mkdir -p $ZPLUG_CACHE_DIR
-
 # dctl
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
 
 # fzf
+[[ $DISPLAY ]] && fzf_prompt="`echo '\uf04b'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
   --ansi
   --select-1
@@ -121,7 +120,7 @@ export FZF_DEFAULT_OPTS="
   --multi
   --height 40%
   --reverse
-  --prompt=`echo '\uf04b'`' '
+  --prompt=\"$fzf_prompt \"
   --color hl:27,bg+:21,hl+:75
   --color info:69,prompt:75,spinner:69,pointer:69,marker:69
   --bind ctrl-j:jump-accept

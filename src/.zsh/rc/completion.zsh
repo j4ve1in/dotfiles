@@ -1,12 +1,13 @@
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 zstyle ':completion:*:complete:*' cache-path $XDG_CACHE_HOME/zsh/compcache/
 
+setopt auto_cd
 setopt auto_pushd
-setopt pushd_ignore_dups
+setopt complete_in_word
+setopt correct
 setopt list_packed
 setopt list_types
-setopt correct
-setopt complete_in_word
+setopt pushd_ignore_dups
 
 : "Completion" && () {
   private -A fg
@@ -40,6 +41,3 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-
-setopt auto_cd
-add-zsh-hook chpwd cd-extend

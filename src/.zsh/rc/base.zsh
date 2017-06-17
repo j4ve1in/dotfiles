@@ -2,20 +2,16 @@
 . $ZDOTDIR/autoload/init.zsh
 
 # option
-setopt no_beep
-setopt print_eight_bit
 setopt interactive_comments
-setopt notify
+setopt no_beep
 setopt noclobber
+setopt notify
 
 ## history
-setopt hist_expand
 setopt share_history
 setopt hist_no_store
-setopt extended_history
 setopt hist_ignore_space
 setopt hist_reduce_blanks
-setopt inc_append_history
 
 # keybind
 stty stop undef
@@ -46,9 +42,10 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
 
-# cdr
+# cd
 autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
+add-zsh-hook chpwd cd-extend
 [[ ! -d $XDG_CACHE_HOME/zsh ]] && mkdir "$XDG_CACHE_HOME/zsh"
 zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 
