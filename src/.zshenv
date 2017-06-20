@@ -96,15 +96,6 @@ export NVIM_PLUGIN_HOME=$NVIM_DATA_HOME/plugins
 [[ ! -d $NVIM_PLUGIN_HOME ]] && mkdir $NVIM_PLUGIN_HOME
 export DEIN_HOME=$NVIM_PLUGIN_HOME/repos/github.com/Shougo/dein.vim
 
-# tmux
-export TMUX_CACHE_HOME=$XDG_CACHE_HOME/tmux
-[[ ! -d $TMUX_CACHE_HOME ]] && mkdir $TMUX_CACHE_HOME
-export TMUX_DATA_HOME=$XDG_DATA_HOME/tmux
-[[ ! -d $TMUX_DATA_HOME ]] && mkdir $TMUX_DATA_HOME
-export TMUX_PLUGIN_MANAGER_PATH=$TMUX_DATA_HOME/plugins
-[[ ! -d $TMUX_PLUGIN_MANAGER_PATH ]] && mkdir $TMUX_PLUGIN_MANAGER_PATH
-export TPM_HOME=$TMUX_PLUGIN_MANAGER_PATH/tpm
-
 # dctl
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
