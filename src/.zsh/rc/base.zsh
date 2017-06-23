@@ -8,10 +8,11 @@ setopt noclobber
 setopt notify
 
 ## history
-setopt share_history
-setopt hist_no_store
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
+setopt hist_no_store
 setopt hist_reduce_blanks
+setopt share_history
 
 # keybind
 stty stop undef
@@ -51,3 +52,9 @@ zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 
 # direnv
 has direnv && eval "`direnv hook zsh`"
+
+# wrapper
+aws() { envchain aws aws $@ }
+doctl() { envchain do doctl $@ }
+feedlish() { envchain feedly feedlish $@ }
+ghi() { envchain gh ghi $@ }
