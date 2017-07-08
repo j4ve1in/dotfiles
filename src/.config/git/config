@@ -9,6 +9,10 @@
 [user]
     name = ytet5uy4
     email = ytet5uy4@ytet5uy4.com
+    signingkey = 6485DFABAFF4EF9E
+
+[commit]
+    gpgsign = true
 
 [credential]
     helper = gnome-keyring
