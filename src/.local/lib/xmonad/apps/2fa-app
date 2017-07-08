@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-chromium --profile-directory=Default --app-id=gaedmjdfmmahhbjefcbgaolhhanlaolb

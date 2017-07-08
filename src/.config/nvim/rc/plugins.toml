@@ -201,7 +201,7 @@ repo = 'Shougo/neomru.vim'
 repo = 'Jagua/vim-denite-ghq'
 depends = 'denite.vim'
 hook_add = ''' " {{{
-nnoremap <silent> [Denite]gh :<C-u>Denite ghq<CR>
+nnoremap <silent> <denite>h :<C-u>Denite ghq<CR>
 " }}} '''
 # }}}
 
