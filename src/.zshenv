@@ -13,7 +13,7 @@ has nvim && export EDITOR='nvim -p'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 has dircolors && eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 has dmenu && export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
-has lpass && export LPASS_USERNAME=ytet5uy4@ytet5uy4.com
+has gpg && export GPG_TTY=`tty`
 
 ## zsh
 export ZDOTDIR=~/.zsh
@@ -51,10 +51,8 @@ fpath=(
 
 # Programming
 has ruby && export KCODE='u'
-has go && [[ -d $HOME/.local ]] && export GOPATH="$HOME/.local"
-export NPM_CONFIG_HOME=$XDG_CONFIG_HOME/npm
-[[ ! -d $NPM_CONFIG_HOME ]] && mkdir $NPM_CONFIG_HOME
-export NPM_CONFIG_USERCONFIG=$NPM_CONFIG_HOME/npmrc
+has go && export GOPATH="$HOME/.local"
+has npm && export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # urxvt
 if has urxvt && [[ $DISPLAY ]]; then
@@ -83,16 +81,6 @@ if has vagrant; then
   export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 fi
 
-# nvim
-export NVIM_CONFIG_HOME=$XDG_CONFIG_HOME/nvim
-export NVIM_CACHE_HOME=$XDG_CACHE_HOME/nvim
-[[ ! -d $NVIM_CACHE_HOME ]] && mkdir $NVIM_CACHE_HOME
-export NVIM_DATA_HOME=$XDG_DATA_HOME/nvim
-[[ ! -d $NVIM_DATA_HOME ]] && mkdir $NVIM_DATA_HOME
-export NVIM_PLUGIN_HOME=$NVIM_DATA_HOME/plugins
-[[ ! -d $NVIM_PLUGIN_HOME ]] && mkdir $NVIM_PLUGIN_HOME
-export DEIN_HOME=$NVIM_PLUGIN_HOME/repos/github.com/Shougo/dein.vim
-
 # dctl
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
@@ -101,7 +89,6 @@ export DOT_BASE_DIR=$DOT_HOME/src
 [[ $DISPLAY ]] && fzf_prompt="`echo '\uf04b'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
   --ansi
-  --select-1
   --exit-0
   --extended
   --cycle
