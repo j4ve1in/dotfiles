@@ -1,0 +1,29 @@
+[[snippets]]
+  description = "Update known_hosts file"
+  command = "fillin \"ssh-keygen -R {{ssh:host}} && ssh-keyscan -Hp {{ssh:port}} {{ssh:host}} >>~/.ssh/known_hosts\""
+  tag = ["ssh"]
+  output = ""
+
+[[snippets]]
+  description = "Remove dangling images"
+  command = "docker image ls -qf dangling=true | xargs -tr docker image rm"
+  tag = ["docker"]
+  output = ""
+
+[[snippets]]
+  description = "Remove dangling volumes"
+  command = "docker volume ls -qf dangling=true | xargs -tr docker volume rm"
+  tag = ["docker"]
+  output = ""
+
+[[snippets]]
+  description = "Show 256 color"
+  command = "for n in {000..255}; do print -nP \"%F{$n}$n %f\"; (( $n % 16 == 15 )) && echo; done"
+  tag = ["shell", "color"]
+  output = ""
+
+[[snippets]]
+  description = "Check http status code"
+  command = "fillin curl -LI {{url}} -w '%{http_code}\\n' -o /dev/null -s"
+  tag = ["http", "status"]
+  output = ""

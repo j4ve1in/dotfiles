@@ -1,0 +1,5 @@
+[General]
+  snippetfile = "$HOME/.config/pet/snippet.toml"
+  editor = "nvim -p"
+  column = 40
+  selectcmd = "fzf"
