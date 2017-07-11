@@ -1,20 +1,16 @@
 # regular alias
-has cp && alias c{,p}='cp -iv'
-has mv && alias m{,v}='mv -iv'
-has mkdir && alias mkd='mkdir'
+has cp && alias c=cp
+has mv && alias m=mv
+has mkdir && alias mkd=mkdir
 has cd && alias -- -='cd -'
-has rm && alias rm='rm -iv'
-has ls && alias l='ls -F --color=always' ll='l -hl --time-style=long-iso'
-has ls && alias la='l -A' lla='ll -A'
+has ls && alias l=ls la='l -A' ll='l -l' lla='ll -A'
 has hub && alias g=hub
-has nvim && alias n='nvim -p'
+has nvim && alias n=nvim
 has docker && alias d=docker
 has docker-compose && alias dc=docker-compose
 has pacaur && alias p=pacaur
-has sudo && alias sudo='sudo ' s=sudo
-has sudoedit && alias sudoedit='sudoedit ' se=sudoedit
-has colordiff && alias di='colordiff -u'
-has ssh && alias ssh='TERM=xterm-256color ssh'
+has sudo && alias s='sudo '
+has sudoedit && alias se=sudoedit
 has gomi && alias gm=gomi
 
 # Suffix alias

@@ -54,6 +54,15 @@ zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 has direnv && eval "`direnv hook zsh`"
 
 # wrapper
+## Base
+cp() { command cp -iv $@ }
+ls() { command ls -hF --color=always --time-style=long-iso $@ }
+mv() { command mv -iv $@ }
+nvim() { command nvim -p $@ }
+rm() { command rm -iv $@ }
+ssh() { TERM=xterm-256color command ssh $@ }
+
+## for envchain
 aws() { envchain aws aws $@ }
 doctl() { envchain do doctl $@ }
 feedlish() { envchain feedly feedlish $@ }
