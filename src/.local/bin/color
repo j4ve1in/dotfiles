@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-for n in {000..255}; do
-  print -nP "%F{$n}$n %f"
-  (( $n % 16 == 15 )) && echo
-done
