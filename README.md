@@ -2,7 +2,6 @@
 
 [Overview](#overview) |
 [Installation](#installation) |
-[Trial](#trial) |
 [License](#license)
 
 [![license-badge]][license-link]
@@ -32,16 +31,6 @@ assume `yes` as answer to all prompts and run non-interactively.
 **Demo:**
 [![demo]][demo-link]
 
-## Trial
-
-Before running installation command to setup dotfiles, you can pull
-an **[image][docker-image-link]** and try my dotfiles in a Docker container
-as follows.
-
-```zsh
-% docker pull ytet5uy4/dotfiles && docker run -it --rm ytet5uy4/dotfiles
-```
-
 ## License
 
 Copyright (c) 2015 ytet5uy4
@@ -59,4 +48,3 @@ Released under the MIT License, see **[LICENSE.md][license-link]**.
 [license-link]: LICENSE.md
 [demo-link]: //asciinema.org/a/asz75pk2aqxwy5ttp1zvyxnxx
 [wiki-page-link]: //github.com/ytet5uy4/dotfiles/wiki
-[docker-image-link]: //hub.docker.com/r/ytet5uy4/dotfiles
