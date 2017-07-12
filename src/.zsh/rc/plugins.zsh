@@ -53,11 +53,6 @@
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
-      fpath=(~/.zsh/autoload/widgets/fzf(N-/) $fpath)
-      zle -N fzf-insert-snippet
-      zle -N fzf-exec-snippet
-      zle -N fzf-copy-snippet
-
       bindkey '^@'   fzf-select-widget
       bindkey '^@.'  fzf-edit-dotfiles
       bindkey '^@c'  fzf-change-directory

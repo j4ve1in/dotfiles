@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+envchain do doctl $@
