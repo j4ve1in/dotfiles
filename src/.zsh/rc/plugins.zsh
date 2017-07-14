@@ -13,9 +13,11 @@
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
     if ! zplug check; then
-      if prompt 'Would you like to install plugins of zsh'; then
-        private n=$(print-color-bold "$(zplug check --verbose | wc -l)" "$fg[main]")
-        spinner "Clone $n plugins with zplug" 'zplug install' 1
+      if __lib::prompt 'Would you like to install plugins of zsh'; then
+        private n=$(
+          __lib::print-color-bold "$(zplug check --verbose | wc -l)" "$fg[main]"
+        )
+        __lib::spinner "Clone $n plugins with zplug" 'zplug install' 1
       fi
     fi
 
