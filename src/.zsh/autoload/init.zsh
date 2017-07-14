@@ -1,13 +1,11 @@
-: 'Autoload functions and Create user-defined widget' && () {
-  private dir="$ZDOTDIR/autoload"
+autoload -Uz `ls -F $ZDOTDIR/autoload/**/* | grep -v /`
 
-  autoload -Uz `ls -F $dir/**/* | grep -v /`
-
+: 'Create user-defined widget' && () {
   private w
-  for w in `ls $dir/widgets/`; do; zle -N $w; done
+  for w in `ls $ZDOTDIR/autoload/widgets/`; do; zle -N $w; done
 }
 
-# Support zsh-autosuggestions
+## Support zsh-autosuggestions
 if [[ -n ZSH_AUTOSUGGEST_IGNORE_WIDGETS ]]; then
   ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(
     $ZSH_AUTOSUGGEST_IGNORE_WIDGETS

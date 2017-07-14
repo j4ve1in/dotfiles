@@ -1,5 +1,3 @@
-. ~/.local/lib/zsh/init.zsh
-
 # XDG
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
@@ -8,12 +6,12 @@ export XDG_DATA_HOME=~/.local/share
 [[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
 # base
-has less && export PAGER='less'
-has nvim && export EDITOR='nvim -p'
+export PAGER='less'
+export EDITOR='nvim -p'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
-has dircolors && eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
-has dmenu && export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
-has gpg && export GPG_TTY=`tty`
+eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
+export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
+export GPG_TTY=`tty`
 
 ## zsh
 export ZDOTDIR=~/.zsh
@@ -30,10 +28,7 @@ export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 
 # path
 path=($path $HOME/.local/bin(N-/))
-
-if has ruby && has gem; then
-  path=($path `ruby -rubygems -e 'puts Gem.user_dir'`/bin(N-/))
-fi
+path=($path `ruby -rubygems -e 'puts Gem.user_dir'`/bin(N-/))
 
 if [[ -d $XDG_DATA_HOME/anyenv ]] ; then
   export ANYENV_ROOT="$XDG_DATA_HOME/anyenv"
@@ -50,12 +45,12 @@ fpath=(
 )
 
 # Programming
-has ruby && export KCODE='u'
-has go && export GOPATH="$HOME/.local"
-has npm && export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export KCODE='u'
+export GOPATH="$HOME/.local"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # urxvt
-if has urxvt && [[ $DISPLAY ]]; then
+if [[ $DISPLAY ]]; then
   export URXVT_RUNTIME_DIR=$XDG_RUNTIME_DIR/urxvt
   [[ ! -d $URXVT_RUNTIME_DIR ]] && mkdir $URXVT_RUNTIME_DIR
   export RXVT_SOCKET="$URXVT_RUNTIME_DIR/urxvt-`hostname`"
@@ -75,11 +70,9 @@ export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
 # vagrant
-if has vagrant; then
-  export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
-  [[ ! -d $VAGRANT_HOME ]] && mkdir $VAGRANT_HOME
-  export VAGRANT_DEFAULT_PROVIDER='virtualbox'
-fi
+export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+[[ ! -d $VAGRANT_HOME ]] && mkdir $VAGRANT_HOME
+export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # dctl
 export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
@@ -103,10 +96,8 @@ export FZF_DEFAULT_OPTS="
 unset fzf_prompt
 
 # AWS
-if has aws; then
-  export AWS_SDK_LOAD_CONFIG=1
-  export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
-fi
+export AWS_SDK_LOAD_CONFIG=1
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 
 # local
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
