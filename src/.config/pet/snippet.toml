@@ -33,3 +33,9 @@
   command = "pacaur -Syu && needrestart"
   tag = ["archlinux"]
   output = ""
+
+[[snippets]]
+  description = "Check zsh load time"
+  command = "repeat 10 time zsh -i -c exit"
+  tag = ["zsh"]
+  output = ""
