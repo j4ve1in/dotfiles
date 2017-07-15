@@ -19,7 +19,7 @@
 [[snippets]]
   description = "Show 256 color"
   command = "for n in {000..255}; do print -nP \"%F{$n}$n %f\"; (( $n % 16 == 15 )) && echo; done"
-  tag = ["shell", "color"]
+  tag = ["zsh", "color"]
   output = ""
 
 [[snippets]]
