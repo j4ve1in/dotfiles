@@ -80,16 +80,13 @@
     b = branch
     c = commit
     cam = commit -am
-    ch = checkout
-    cl = clone
     cm = commit -m
     d = diff
     dc = diff --cached
-    i = init
     l = log-custom
-    p = pull
     ps = push
-    s = status-custom
+    pu = pull
+    s = status -bs
 
 [include]
     path = ~/.config/git/config.local

@@ -1,11 +1,16 @@
 #!/bin/zsh
 
-COMMIT_ID='%C(blue)[%C(reset)%h%C(blue)]%C(reset)'
-DATE='%C(blue)[%C(reset)%ad%C(blue)]%C(reset)'
-COMMIT_MESSAGE='%s'
-REF_NAME='%C(cyan)%d%C(reset)'
-AUTHOR_NAME='%C(black bold)%an'
+private hash='%C(blue)[%C(reset)%h%C(blue)]%C(reset)'
+private date='%C(blue)[%C(reset)%ad%C(blue)]%C(reset)'
+private subject='%s'
+private ref_name='%C(cyan)%d%C(reset)'
+private author_name='%C(black bold)%an'
 
-CUSTOM_FORMAT="${COMMIT_ID}$DATE $COMMIT_MESSAGE $REF_NAME $AUTHOR_NAME"
+private custom_format="$hash$date $subject $ref_name $author_name"
 
-git log --graph --date=short --decorate=short --pretty=format:"$CUSTOM_FORMAT" $*
+git log \
+  --graph \
+  --date=short \
+  --decorate=short \
+  --pretty=format:"$custom_format" \
+  $*

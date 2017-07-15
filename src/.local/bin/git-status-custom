@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-git status -s -b && git stash list
