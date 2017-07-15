@@ -74,29 +74,22 @@
     pager = less -ciMR
 
 [alias]
-    al = alias-list
+    a = add
+    aa = add -A
+    ap = add -p
     b = branch
+    c = commit
+    cam = commit -am
     ch = checkout
     cl = clone
+    cm = commit -m
+    d = diff
+    dc = diff --cached
     i = init
     l = log-custom
     p = pull
     ps = push
     s = status-custom
-
-    # add
-    a = add
-    aa = add -A
-    ap = add -p
-
-    # commit
-    c = commit
-    cm = commit -m
-    cam = commit -am
-
-    # diff
-    d = diff
-    dc = diff --cached
 
 [include]
     path = ~/.config/git/config.local

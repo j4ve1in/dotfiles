@@ -39,3 +39,9 @@
   command = "repeat 10 time zsh -i -c exit"
   tag = ["zsh"]
   output = ""
+
+[[snippets]]
+  description = "Show git alias"
+  command = "git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t -> \\2/'"
+  tag = ["git"]
+  output = ""
