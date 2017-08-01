@@ -10,13 +10,14 @@ if ! type unclutter >/dev/null 2>&1; then
   exit 1
 fi
 
-power=( halt reboot lock )
+power=( poweroff reboot suspend lock )
 
 input=`<<< ${(F)power} | dmenu -p 'Power' ${=DMENU}`
 
 case $input in
-  halt) halt -p ;;
-  reboot) reboot ;;
+  poweroff) systemctl poweroff ;;
+  reboot) systemctl reboot ;;
+  suspend) systemctl suspend ;;
   lock)
     pidfile=/tmp/unclutter.pid
     if [[ ! -f $pidfile ]]; then
