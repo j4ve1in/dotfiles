@@ -10,7 +10,7 @@
     zplug 'ytet5uy4/abyss.zsh', as:theme
     zplug 'zsh-users/zsh-completions'
     zplug 'zsh-users/zsh-autosuggestions'
-    zplug 'zdharma/fast-syntax-highlighting', defer:2
+    zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
     if ! zplug check; then
       if __lib::prompt 'Would you like to install plugins of zsh'; then
@@ -28,30 +28,30 @@
       bindkey '^Y' autosuggest-accept
     fi
 
-    if zplug check 'zdharma/fast-syntax-highlighting'; then
-      FAST_HIGHLIGHT_STYLES[default]=none
-      FAST_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
-      FAST_HIGHLIGHT_STYLES[reserved-word]=fg=blue
-      FAST_HIGHLIGHT_STYLES[alias]=fg=39,bold
-      FAST_HIGHLIGHT_STYLES[builtin]=fg=111,bold
-      FAST_HIGHLIGHT_STYLES[function]=fg=87,bold
-      FAST_HIGHLIGHT_STYLES[command]=fg=27
-      FAST_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
-      FAST_HIGHLIGHT_STYLES[commandseparator]=129
-      FAST_HIGHLIGHT_STYLES[hashed-command]=fg=cyan
-      FAST_HIGHLIGHT_STYLES[path]=fg=$fg[main],bold
-      FAST_HIGHLIGHT_STYLES[path_prefix]=none
-      FAST_HIGHLIGHT_STYLES[path_approx]=none
-      FAST_HIGHLIGHT_STYLES[globbing]=fg=51
-      FAST_HIGHLIGHT_STYLES[history-expansion]=fg=blue
-      FAST_HIGHLIGHT_STYLES[single-hyphen-option]=none
-      FAST_HIGHLIGHT_STYLES[double-hyphen-option]=none
-      FAST_HIGHLIGHT_STYLES[back-quoted-argument]=none
-      FAST_HIGHLIGHT_STYLES[single-quoted-argument]=fg=250
-      FAST_HIGHLIGHT_STYLES[double-quoted-argument]=fg=245
-      FAST_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
-      FAST_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-      FAST_HIGHLIGHT_STYLES[assign]=none
+    if zplug check 'zsh-users/zsh-syntax-highlighting'; then
+      ZSH_HIGHLIGHT_STYLES[default]=none
+      ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
+      ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=blue
+      ZSH_HIGHLIGHT_STYLES[alias]=fg=39,bold
+      ZSH_HIGHLIGHT_STYLES[builtin]=fg=111,bold
+      ZSH_HIGHLIGHT_STYLES[function]=fg=87,bold
+      ZSH_HIGHLIGHT_STYLES[command]=fg=27
+      ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
+      ZSH_HIGHLIGHT_STYLES[commandseparator]=129
+      ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=cyan
+      ZSH_HIGHLIGHT_STYLES[path]=fg=$fg[main],bold
+      ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+      ZSH_HIGHLIGHT_STYLES[path_approx]=none
+      ZSH_HIGHLIGHT_STYLES[globbing]=fg=51
+      ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=blue
+      ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
+      ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
+      ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+      ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=250
+      ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=245
+      ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
+      ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
+      ZSH_HIGHLIGHT_STYLES[assign]=none
     fi
 
     if zplug check 'ytet5uy4/fzf-widgets'; then
