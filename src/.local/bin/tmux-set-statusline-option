@@ -2,6 +2,7 @@
 
 main() {
   set-statusline.left
+  set-statusline.right
   set-statusline.window-format
   set-statusline.window-current-format
 }
@@ -16,6 +17,19 @@ set-statusline.left() {
     STATUS_L+='#{?client_prefix,#[fg=colour233]#[bg=colour231],}\ue0b0'
   fi
   tmux set -g status-left "`echo -e $STATUS_L`"
+}
+
+set-statusline.right() {
+  typeset STATUS_R
+  if is-x && is-patched-font;then
+    STATUS_R+='#[fg=colour21,bg=default]\ue0b2'
+  fi
+  STATUS_R+='#[fg=colour231,bg=colour21] #T '
+  if is-x && is-patched-font;then
+    STATUS_R+='#[fg=colour17,bg=colour21]\ue0b2'
+  fi
+  STATUS_R+='#[fg=colour231,bg=colour17] #P '
+  tmux set -g status-right "`echo -e $STATUS_R`"
 }
 
 set-statusline.window-format() {
