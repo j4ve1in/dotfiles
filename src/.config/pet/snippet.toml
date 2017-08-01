@@ -24,7 +24,7 @@
 
 [[snippets]]
   description = "Check http status code"
-  command = "fillin curl -LI {{url}} -w '%{http_code}\\n' -o /dev/null -s"
+  command = "fillin curl -LI {{http_code:url}} -w '%{http_code}\\n' -o /dev/null -s"
   tag = ["http", "status"]
   output = ""
 
@@ -43,5 +43,17 @@
 [[snippets]]
   description = "Show git alias"
   command = "git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t -> \\2/'"
+  tag = ["git"]
+  output = ""
+
+[[snippets]]
+  description = "Show DigitalOcean API"
+  command = "fillin 'curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer `envchain do printenv DIGITALOCEAN_ACCESS_TOKEN`\" \"https://api.digitalocean.com/v2/{{do:object}}\"'"
+  tag = ["api", "do"]
+  output = ""
+
+[[snippets]]
+  description = "Create git repository"
+  command = "fillin 'mkdir `ghq root`/github.com/$USER/{{ghq:dir}} && git -C $_ init'"
   tag = ["git"]
   output = ""
