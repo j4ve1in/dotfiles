@@ -155,6 +155,8 @@ myAdditionalKeysP =
   , ("M-m",                     spawn "xmonad-run music-player")
   , ("M-n",                     spawn "xmonad-run network-switcher")
   , ("M-p",                     spawn "xmonad-run power-manager")
+  , ("M-s",                     spawn "xmonad-run web-search")
+  , ("M-t",                     spawn "xmonad-run translate")
   , ("M-r",                     spawn "xmonad-run rss-reader")
   , ("M-v",                     spawn "xmonad-run video")
   ]

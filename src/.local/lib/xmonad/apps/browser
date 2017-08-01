@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-if ! type chromium >/dev/null 2>&1; then
-  notify-send Browser 'Command not found: chromium'
+if ! type luakit >/dev/null 2>&1; then
+  notify-send Browser 'Command not found: luakit'
   exit 1
 fi
 
-chromium
+luakit

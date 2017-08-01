@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+private keywords="`printf '' | dmenu -p 'Search' ${=DMENU}`"
+[[ $keywords ]] && luakit --uri="https://google.com/search?q=$keywords"
