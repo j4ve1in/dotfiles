@@ -80,6 +80,7 @@
     b = branch
     c = commit
     cam = commit -am
+    ch = checkout
     cm = commit -m
     d = diff
     dc = diff --cached
