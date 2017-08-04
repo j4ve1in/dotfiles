@@ -1,5 +1,6 @@
 copy_buffer
 history
 bookmarks
+tagged
 colorschemes/__init__.py
 colorschemes/__pycache__/
