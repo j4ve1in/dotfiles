@@ -24,7 +24,7 @@
     horizontal_padding = 5
     separator_color = frame
     startup_notification = false
-    browser = chromium
+    browser = luakit
     icon_position = off
 
 [frame]
