@@ -12,7 +12,13 @@
     signingkey = 6485DFABAFF4EF9E
 
 [commit]
-    gpgsign = true
+    gpgSign = true
+
+[gpg]
+    program = /usr/bin/krgpg
+
+[tag]
+    forceSignAnnotated = true
 
 [credential]
     helper = gnome-keyring
