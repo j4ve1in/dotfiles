@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if ! type wifi-menu >/dev/null 2>&1; then
-  notify-send NetworkManager 'command not found: wifi-menu'
-  exit 1
-fi
-
-termite -e 'sudo wifi-menu -o'

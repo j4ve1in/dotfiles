@@ -11,6 +11,8 @@ if type fcitx; then
   export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
 fi
 
+sxhkd &
+
 [[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
 
 # vim: filetype=sh

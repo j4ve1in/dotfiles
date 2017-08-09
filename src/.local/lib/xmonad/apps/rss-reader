@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if ! type feedlish >/dev/null 2>&1; then
-  notify-send Aggregator 'Command not found: feedlish'
-  exit 1
-fi
-
-termite -e feedlish

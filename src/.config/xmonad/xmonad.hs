@@ -31,7 +31,6 @@ main = do
   wsbar <- spawnPipe myWsBar
   xmonad $ desktopConfig
     { borderWidth        = myBorderWidth
-    , terminal           = myTerminal
     , focusFollowsMouse  = myFocusFollowsMouse
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
@@ -49,7 +48,6 @@ main = do
 -- base
 myBorderWidth = 1
 myModMask = mod4Mask
-myTerminal = "xmonad-run terminal"
 myWorkspaces = map show [1..3]
 myFocusFollowsMouse = True
 myNormalBorderColor = mainColor
@@ -125,38 +123,4 @@ myAdditionalKeysP =
   , ("M-S-l",                   shiftToNext)
   , ("M-h",                     prevWS)
   , ("M-l",                     nextWS)
-  -- system operations
-  , ("<Print>",                 spawn "xmonad-run screenshot")
-  , ("<XF86AudioLowerVolume>",  spawn "xmonad-run volume -")
-  , ("<XF86AudioMute>",         spawn "xmonad-run volume m")
-  , ("<XF86AudioRaiseVolume>",  spawn "xmonad-run volume +")
-  , ("<XF86MonBrightnessDown>", spawn "xmonad-run brightness -")
-  , ("<XF86MonBrightnessUp>",   spawn "xmonad-run brightness +")
-  , ("M-C-d",                   spawn "xmonad-run display")
-  , ("M-C-s",                   spawn "xmonad-run screencast")
-  , ("M-S-m",                   spawn "xmonad-run mouse")
-  , ("M-S-s",                   spawn "xmonad-run screencast --select")
-  , ("M-q",                     spawn "xmonad-run restart")
-  , ("S-<Print>",               spawn "xmonad-run screenshot --select")
-  -- launch applications
-  , ("M-<Return>",              spawn myTerminal)
-  , ("M-C-c",                   spawn "xmonad-run calendar")
-  , ("M-C-l",                   spawn "xmonad-run launcher")
-  , ("M-C-m",                   spawn "xmonad-run map")
-  , ("M-C-n",                   spawn "xmonad-run network-manager")
-  , ("M-C-p",                   spawn "xmonad-run password-manager")
-  , ("M-S-e",                   spawn "xmonad-run email")
-  , ("M-S-v",                   spawn "xmonad-run volume-manager")
-  , ("M-a",                     spawn "xmonad-run system-activity")
-  , ("M-b",                     spawn "xmonad-run browser")
-  , ("M-c",                     spawn "xmonad-run chat")
-  , ("M-e",                     spawn "xmonad-run editor")
-  , ("M-f",                     spawn "xmonad-run file-manager")
-  , ("M-m",                     spawn "xmonad-run music-player")
-  , ("M-n",                     spawn "xmonad-run network-switcher")
-  , ("M-p",                     spawn "xmonad-run power-manager")
-  , ("M-s",                     spawn "xmonad-run web-search")
-  , ("M-t",                     spawn "xmonad-run translate")
-  , ("M-r",                     spawn "xmonad-run rss-reader")
-  , ("M-v",                     spawn "xmonad-run video")
   ]

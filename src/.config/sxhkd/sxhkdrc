@@ -1,0 +1,121 @@
+# Restart window manager
+super + q
+	xmonad-run restart
+
+# Volume
+XF86Audio{LowerVolume,Mute,RaiseVolume}
+	xmonad-run volume {-,m,+}
+
+# Brightness
+XF86MonBrightness{Up,Down}
+  xmonad-run brightness {+,-}
+
+# Mouse
+super + shift + m
+	xmonad-run mouse
+
+# Screen Manager
+super + s
+	xmonad-run screen-manager
+
+# Screencast
+super + ctrl + s
+	xmonad-run screencast
+
+super + shift + s
+	xmonad-run screencast --select
+
+# Screenshot
+Print
+	xmonad-run screenshot
+
+shift + Print
+	xmonad-run screenshot --select
+
+# Terminal
+super + Return
+	termite -e mux-loader
+
+# Calendar
+super + ctrl + c
+	chromium --app='https://www.google.com/calendar'
+
+# Launcher
+super + ctrl + l
+	dmenu_run -p 'Launcher' ${=DMENU}
+
+# Map
+super + ctrl + m
+	chromium --app='http://maps.google.com/'
+
+# Network Manager
+super + ctrl + n
+	termite -e 'sudo wifi-menu -o'
+
+# Password Manager
+super + ctrl + p
+	xmonad-run password-manager
+
+super + shift + p
+	chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
+
+# Email
+super + shift + e
+	chromium --app='https://inbox.google.com'
+
+# Volume Manager
+super + shift + v
+	termite -e alsamixer
+
+# System Activity
+super + a
+	termite -e 'vtop -t brew'
+
+# Browser
+super + b
+	luakit
+
+# Chat
+super + c
+	xmonad-run chat
+
+# Editor
+super + e
+	termite -e "$EDITOR"
+
+# File Manager
+super + f
+	urxvt -e 'ranger'
+
+# Music Player
+super + m
+	termite -e ncmpcpp
+
+# Network Switcher
+super + n
+	xmonad-run network-switcher
+
+# Power Manager
+super + p
+	xmonad-run power-manager
+
+# Web Search
+super + w
+	xmonad-run web-search
+
+# Translate
+super + t
+	chromium --app='https://translate.google.com'
+
+# RSS Reader
+super + r
+	termite -e feedlish
+
+# Video
+super + v
+	xmonad-run youtube
+
+super + ctrl + v
+	chromium --app='https://www.netflix.com'
+
+# vim: set ft=sxhkdrc:

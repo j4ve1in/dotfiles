@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if ! type ranger >/dev/null 2>&1; then
-  notify-send FileManager 'Command not found: ranger'
-  exit 1
-fi
-
-urxvt -e 'ranger'

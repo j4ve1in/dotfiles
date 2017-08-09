@@ -113,6 +113,10 @@ augroup vim-terraform
   autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>:<C-u>Neomake<CR>
 augroup END
 '''
+
+[[plugins]]
+repo = 'baskerville/vim-sxhkdrc'
+on_ft = 'sxhkdrc'
 # }}}
 
 # vim: foldmethod=marker:

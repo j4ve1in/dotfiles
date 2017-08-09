@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if ! type nvim >/dev/null 2>&1; then
-  notify-send Editor 'command not found: nvim'
-  exit 1
-fi
-
-termite -e "$EDITOR"
