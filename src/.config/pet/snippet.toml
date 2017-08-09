@@ -57,3 +57,9 @@
   command = "fillin 'mkdir `ghq root`/github.com/$USER/{{ghq:dir}} && git -C $_ init'"
   tag = ["git"]
   output = ""
+
+[[snippets]]
+  description = "Measure the amount of time elapsed"
+  command = "bash -c 'time read' 2>&1 | awk 'NR==2{print $2}'"
+  tag = ["stopwatch"]
+  output = ""
