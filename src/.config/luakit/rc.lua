@@ -1,22 +1,10 @@
--- luakit configuration file
+----------------------------------------------------------------------------------------
+-- luakit configuration file, more information at http://luakit.org/ --
+----------------------------------------------------------------------------------------
 
 require "lfs"
 
-if unique then
-    unique.new("org.luakit")
-    -- Check for a running luakit instance
-    if unique.is_running() then
-        if uris[1] then
-            for _, uri in ipairs(uris) do
-                if lfs.attributes(uri) then uri = os.abspath(uri) end
-                unique.send_message("tabopen " .. uri)
-            end
-        else
-            unique.send_message("winopen")
-        end
-        luakit.quit()
-    end
-end
+require "unique_instance"
 
 -- Set the number of web processes to use. A value of 0 means 'no limit'.
 luakit.process_limit = 4
@@ -26,7 +14,7 @@ local lousy = require "lousy"
 
 -- Load users global config
 -- ("$XDG_CONFIG_HOME/luakit/globals.lua" or "/etc/xdg/luakit/globals.lua")
-require "globals"
+local globals = require "globals"
 
 -- Load users theme
 -- ("$XDG_CONFIG_HOME/luakit/theme.lua" or "/etc/xdg/luakit/theme.lua")
@@ -41,6 +29,9 @@ local window = require "window"
 -- ("$XDG_CONFIG_HOME/luakit/webview.lua" or "/etc/xdg/luakit/webview.lua")
 local webview = require "webview"
 
+-- Add luakit;//log/ chrome page
+local log_chrome = require "log_chrome"
+
 window.add_signal("build", function (w)
     local widgets, l, r = require "lousy.widget", w.sbar.l, w.sbar.r
 
@@ -51,63 +42,98 @@ window.add_signal("build", function (w)
 
     -- Right-aligned status bar widgets
     r.layout:pack(widgets.buf())
+    r.layout:pack(log_chrome.widget())
     r.layout:pack(widgets.ssl())
     r.layout:pack(widgets.tabi())
     r.layout:pack(widgets.scroll())
 end)
 
--- Load users mode configuration
--- ("$XDG_CONFIG_HOME/luakit/modes.lua" or "/etc/xdg/luakit/modes.lua")
-require "modes"
+-- Load luakit binds and modes
+local modes = require "modes"
+local binds = require "binds"
 
--- Load users keybindings
--- ("$XDG_CONFIG_HOME/luakit/binds.lua" or "/etc/xdg/luakit/binds.lua")
-require "binds"
+modes.add_binds("normal", {
+    -- Yanking
+    { "yy", "Yank current URI to clipboard.", function (w)
+        local uri = string.gsub(w.view.uri or "", " ", "%%20")
+        luakit.selection.clipboard = uri
+        w:notify("Yanked uri: " .. uri)
+    end },
+    -- Tab
+    { "<Control-h>", "Go to previous tab.", function (w) w:prev_tab() end },
+    { "<Control-l>", "Go to next tab (or `[count]` nth tab).",
+        function (w, _, m)
+            if not w:goto_tab(m.count) then w:next_tab() end
+    end, {count=0} },
+    { "x", "Close current tab (or `[count]` tabs).",
+        function (w, m) for _=1,m.count do w:close_tab() end end, {count=1} },
+    { "<Control-s>", "Stop loading the current tab.", function (w) w.view:stop() end },
+    -- Window
+    { "<Control-n>", "Open one or more URLs in a new window.", {
+        func = function (w, o) window.new{w:search_open(o.arg)} end,
+        format = "{uri}",
+    }},
+    -- Clipboard
+    { "<Control-c>", "Copy",
+        function (w) luakit.selection.clipboard = luakit.selection.primary end },
+    -- Status bar
+    { "gs", "Toggle status bar",
+        function (w)
+            if true == w.sbar.hidden then
+                w.sbar.ebox:show() w.sbar.hidden = false
+            else
+                w.sbar.ebox:hide() w.sbar.hidden = true
+            end
+        end},
+})
+modes.remove_binds("normal", { "y", "Y", "d" })
+
+modes.add_cmds({
+    { ":qa[ll]", "Close all window.", function (w, o)
+        local force = o.bang
+        if not force and not w:can_quit() then return end
+        for _, ww in pairs(window.bywidget) do
+            ww:close_win(true)
+        end
+    end },
+})
 
 ----------------------------------
 -- Optional user script loading --
 ----------------------------------
 
-require "adblock"
-require "adblock_chrome"
-require "webinspector"
-require "formfiller"
-require "proxy"
-require "quickmarks"
-require "undoclose"
-require "tabhistory"
-require "userscripts"
-require "bookmarks"
-require "bookmarks_chrome"
-require "viewpdf"
-require "cmdhist"
-require "search"
-require "taborder"
-require "history"
-require "history_chrome"
-require "help_chrome"
-require "introspector_chrome"
-require "open_editor"
-require "noscript"
-require "follow_selected"
-require "go_input"
-require "go_next_prev"
-require "go_up"
-require "error_page"
-require "domain_props"
-require "image_css"
-require "newtab_chrome"
-require "tab_favicons"
-require "view_source"
+local webinspector = require "webinspector"
 
-require_web_module("referer_control_wm")
+-- Add uzbl-like form filling
+local formfiller = require "formfiller"
+
+-- Add proxy support & manager
+local proxy = require "proxy"
+
+-- Add quickmarks support & manager
+local quickmarks = require "quickmarks"
 
 -- Add session saving/loading support
 local session = require "session"
 
--- Set download location
+-- Add command to list closed tabs & bind to open closed tabs
+local undoclose = require "undoclose"
+
+-- Add command to list tab history items
+local tabhistory = require "tabhistory"
+
+-- Add greasemonkey-like javascript userscript support
+local userscripts = require "userscripts"
+
+-- Add bookmarks support
+local bookmarks = require "bookmarks"
+local bookmarks_chrome = require "bookmarks_chrome"
+
+-- Add download support
 local downloads = require "downloads"
-require "downloads_chrome"
+local downloads_chrome = require "downloads_chrome"
+
+-- Set download location
 downloads.default_dir = os.getenv("HOME") .. "/Downloads"
 downloads.add_signal("download-location", function (uri, file)
     if not file or file == "" then
@@ -125,55 +151,130 @@ downloads.add_signal("open-file", function (file)
     return true
 end)
 
+-- Add automatic PDF downloading and opening
+local viewpdf = require "viewpdf"
+
+-- Example using xdg-open for opening downloads / showing download folders
+downloads.add_signal("open-file", function (file)
+    luakit.spawn(string.format("xdg-open %q", file))
+    return true
+end)
+
 -- Add vimperator-like link hinting & following
 local select = require "select"
 select.label_maker = function (s)
     return s.sort(s.reverse(s.charset("asdfghjkl;")))
 end
 
+-- Add vimperator-like link hinting & following
 local follow = require "follow"
-follow.stylesheet = follow.stylesheet .. [===[
-  #luakit_select_overlay {
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 2147483647; /* Maximum allowable on WebKit */
-  }
-  #luakit_select_overlay .hint_overlay {
+
+follow.stylesheet = [===[
+    #luakit_select_overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2147483647; /* Maximum allowable on WebKit */
+    }
+    #luakit_select_overlay .hint_overlay {
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        border: 1px none #000;
+        opacity: 0.3;
+    }
+    #luakit_select_overlay .hint_label {
       display: block;
       position: absolute;
-      background-color: transparent;
-      border: 1px none #000;
-      opacity: 0.3;
-  }
-  #luakit_select_overlay .hint_label {
-    display: block;
-    position: absolute;
-    background-color: #1b1d1e;
-    border: 1px solid #0000ff;
-    border-radius: 2px;
-    color: #ddd;
-    font-size: 11px;
-    font-weight: 700;
-    box-shadow: 2px 2px 1px rgba(0,0,0,0.25);
-    padding: 0.8px;
-    opacity: 1;
-    text-transform: uppercase;
-  }
-  #luakit_select_overlay .hint_overlay_body {
-      background-color: #ff0000;
-  }
-  #luakit_select_overlay .hint_selected {
-      background-color: blue !important;
-  }
+      background-color: #1b1d1e;
+      border: 1px solid #0000ff;
+      border-radius: 2px;
+      color: #ddd;
+      font-size: 11px;
+      font-family: "Migu 1M";
+      font-weight: 700;
+      box-shadow: 2px 2px 1px rgba(0,0,0,0.25);
+      padding: 0.8px;
+      opacity: 1;
+      text-transform: uppercase;
+    }
+    #luakit_select_overlay .hint_overlay_body {
+        background-color: #ff0000;
+    }
+    #luakit_select_overlay .hint_selected {
+        background-color: blue !important;
+    }
 ]===]
 
+-- Add command history
+local cmdhist = require "cmdhist"
+
+-- Add search mode & binds
+local search = require "search"
+
+-- Add ordering of new tabs
+local taborder = require "taborder"
+
+-- Save web history
+local history = require "history"
+local history_chrome = require "history_chrome"
+
+local help_chrome = require "help_chrome"
+local introspector_chrome = require "introspector_chrome"
+
+-- Add command completion
 local completion = require "completion"
-completion.order = {
-    completion.funcs.command,
-    completion.funcs.bookmarks,
-    completion.funcs.history,
-}
+
+-- completion.order = {
+--     completion.funcs.command,
+--     completion.funcs.bookmarks,
+--     completion.funcs.history,
+-- }
+
+-- completion.uri = {
+--     func = function () return { { format = "{bookmarks}" }, { format = "{history}" }, } end,
+-- }
+
+-- Press Control-E while in insert mode to edit the contents of the currently
+-- focused <textarea> or <input> element, using `xdg-open`
+local open_editor = require "open_editor"
+
+-- NoScript plugin, toggle scripts and or plugins on a per-domain basis.
+-- `,ts` to toggle scripts, `,tp` to toggle plugins, `,tr` to reset.
+-- Remove all "enable_scripts" & "enable_plugins" lines from your
+-- domain_props table (in config/globals.lua) as this module will conflict.
+--require "noscript"
+
+local follow_selected = require "follow_selected"
+local go_input = require "go_input"
+local go_next_prev = require "go_next_prev"
+local go_up = require "go_up"
+
+-- Filter Referer HTTP header if page domain does not match Referer domain
+require_web_module("referer_control_wm")
+
+local error_page = require "error_page"
+
+-- Add userstyles loader
+local styles = require "styles"
+
+-- Hide scrollbars on all pages
+local hide_scrollbars = require "hide_scrollbars"
+
+-- Automatically apply per-domain webview properties
+local domain_props = require "domain_props"
+
+-- Add a stylesheet when showing images
+local image_css = require "image_css"
+
+-- Add a new tab page
+local newtab_chrome = require "newtab_chrome"
+
+-- Add tab favicons mod
+local tab_favicons = require "tab_favicons"
+
+-- Add :view-source command
+local view_source = require "view_source"
 
 -----------------------------
 -- End user script loading --
@@ -188,24 +289,6 @@ if w then
 else
     -- Or open new window
     window.new(uris)
-end
-
--------------------------------------------
--- Open URIs from other luakit instances --
--------------------------------------------
-
-if unique then
-    unique.add_signal("message", function (msg, screen)
-        local cmd, arg = string.match(msg, "^(%S+)%s*(.*)")
-        local ww = lousy.util.table.values(window.bywidget)[1]
-        if cmd == "tabopen" then
-            ww:new_tab(arg)
-        elseif cmd == "winopen" then
-            ww = window.new((arg ~= "") and { arg } or {})
-        end
-        ww.win.screen = screen
-        ww.win.urgency_hint = true
-    end)
 end
 
 -- vim: et:sw=4:ts=8:sts=4:tw=80

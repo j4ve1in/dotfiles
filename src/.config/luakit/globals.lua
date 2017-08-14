@@ -8,9 +8,7 @@ local globals = {
     max_srch_history    = 100,
     default_window_size = "800x600",
     vertical_tab_width  = 200,
-
- -- Disables checking if a filepath exists in search_open function
- -- check_filepath      = false,
+    default_zoom_level  = 100,
 }
 
 -- List of search engines. Each item must contain a single %s which is
@@ -26,22 +24,31 @@ globals.search_engines = {
 
 -- Set google as fallback search engine
 globals.search_engines.default = globals.search_engines.g
+-- Use this instead to disable auto-searching
+--search_engines.default = "%s"
 
 -- Per-domain webview properties
 -- https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html
 -- https://webkitgtk.org/reference/webkit2gtk/stable/WebKitSettings.html
 globals.domain_props = {
     ["all"] = {
-        default_font_family = "Migu 1C",
-        sans_serif_font_family = "Migu 1C",
-        serif_font_family = "Migu 1C",
-        monospace_font_family = "Migu 1M",
-        cursive_font_family = "Migu 1C",
-        fantasy_font_family = "Migu 1C",
-        pictograph_font_family = "Migu 1C",
-        default_font_size = 16,
+        default_font_family        = "Migu 1C",
+        sans_serif_font_family     = "Migu 1C",
+        serif_font_family          = "Migu 1C",
+        monospace_font_family      = "Migu 1M",
+        cursive_font_family        = "Migu 1C",
+        fantasy_font_family        = "Migu 1C",
+        pictograph_font_family     = "Migu 1C",
+        default_font_size          = 16,
         enable_webgl               = true,
-    },
+        -- enable_scripts          = false,
+        -- enable_plugins          = false,
+        -- zoom_text_only          = true,
+    }, --[[
+    ["youtube.com"] = {
+        enable_scripts = true,
+        enable_plugins = true,
+    }, ]]
 }
 
 -- Cookie acceptance policy
