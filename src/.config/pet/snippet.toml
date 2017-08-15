@@ -63,3 +63,15 @@
   command = "bash -c 'time read' 2>&1 | awk 'NR==2{print $2}'"
   tag = ["stopwatch"]
   output = ""
+
+[[snippets]]
+  description = "Flush DNS cache"
+  command = "sudo pdnsd-ctl empty-cache"
+  tag = ["dns", "cache"]
+  output = ""
+
+[[snippets]]
+  description = "Remove cache and optimize database"
+  command = "sudo pacman -Sc && sudo pacman-optimize"
+  tag = ["archlinux"]
+  output = ""
