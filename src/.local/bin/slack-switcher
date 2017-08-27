@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+private file=$XDG_CONFIG_HOME/slack-switcher/team.json
+
+if ! [[ -f $file ]]; then
+  notify-send slack-switcher "config file not found: $file"
+  exit 1
+fi
+
+private -a team
+team=(`jq -r '.team[].name' $file`)
+
+private name=`printf '%s\n' $team | dmenu -p slack-switcher ${=DMENU}`
+
+private url=`jq -r ".team[]|select(.name==\"$name\").url" $file`
+
+[[ -n $url ]] && chromium --app="$url"

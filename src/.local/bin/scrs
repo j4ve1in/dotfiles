@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+private file="$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%I%M%S'`.png"
+
+if [[ $1 = --select ]]; then
+  private opts='-s -c 0,0,255,1'
+  maim() {
+    private touchpad="`tpctl status`"
+    (( ! $touchpad )) && tpctl enable
+    command maim "$@"
+    private maim_status="$?"
+    (( ! $touchpad )) && tpctl disable
+    return $maim_status
+  }
+fi
+
+if [[ -z $opts ]]; then
+  maim -u "$file"
+else
+  maim -u "$=opts" "$file"
+fi
+
+if [[ $? != 1 ]]; then
+  notify-send 'Take a screenshot' "Saved to $file"
+fi

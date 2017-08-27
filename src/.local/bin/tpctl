@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+private name="`xinput list --name-only | grep -i Touchpad`"
+case $1 in
+  status )
+    xinput list-props "$name" | \
+      grep 'Device Enabled' | \
+      awk '{print $4}'
+    ;;
+  enable )
+    killall unclutter
+    xinput enable "$name"
+    if [[ $2 = --notify ]]; then
+      notify-send tpctl "Enabled Touchpad"
+    fi
+    private x y
+    xrandr | \
+      fgrep '*' | \
+      awk '{print $1}' | \
+      sed 's/x/ /g' | \
+      read x y
+    xte "mousemove $((x/2)) $((y/2))"
+    ;;
+  disable )
+    unclutter -idle 0 -root -grab &
+    xinput disable "$name"
+    if [[ $2 = --notify ]]; then
+      notify-send tpctl "Disabled touchpad"
+    fi
+    ;;
+esac

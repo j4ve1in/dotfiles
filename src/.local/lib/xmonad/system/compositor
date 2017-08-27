@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if ! type compton >/dev/null 2>&1; then
-  notify-send Compositor 'command not found: compton'
-  exit 1
-fi
-
-compton -b

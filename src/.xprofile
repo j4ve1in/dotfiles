@@ -6,13 +6,27 @@ XDG_DATA_HOME=~/.local/share
 [[ ! -d $XDG_CACHE_HOME ]] && mkdir -p $XDG_CACHE_HOME
 [[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
-# fcitx
-if type fcitx; then
-  export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
-fi
-
-sxhkd &
-
 [[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
+xbacklight = 2 &           # Brightness
+nitrogen --restore &       # Wallpaper
+compton -b &               # Compositor
+tmux new-session -s 0 -d & # Multiplexer
+tpctl disable &            # Touchpad
+mopidy &                   # Music server
+
+# Keyboard
+export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
+fcitx & # Imput Method Framework
+xcape & # utility for a modifier key
+sxhkd & # hotkey daemon
+
+# Screen locker
+light-locker --lock-on-suspend --late-locking &
+xautolock \
+  -time 10 \
+  -locker 'light-locker-command -l' \
+  -notify 30 \
+  -notifier "notify-send xautolock 'LOCKING screen in 30 seconds'" &
 
 # vim: filetype=sh

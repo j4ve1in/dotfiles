@@ -1,121 +1,135 @@
-# Restart window manager
+# system operations
+## Restart window manager
 super + q
-	xmonad-run restart
+  xmonad-run restart
 
-# Volume
-XF86Audio{LowerVolume,Mute,RaiseVolume}
-	xmonad-run volume {-,m,+}
+## Reload configuration file
+super + Escape
+  pkill -USR1 -x sxhkd
 
-# Brightness
-XF86MonBrightness{Up,Down}
-  xmonad-run brightness {+,-}
+## Volume
+XF86Audio{Lower,Raise}Volume
+  pamixer --{decrease,increase} 1 && \
+    paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
-# Mouse
-super + shift + m
-	xmonad-run mouse
+XF86AudioMute
+  pamixer --toggle-mute && \
+    pamixer --get-mute && \
+    notify-send pamixer 'Set mute' || \
+    notify-send pamixer 'Set unmute'
 
-# Screen Manager
+## Brightness
+XF86MonBrightnessUp
+  (( `xbacklight -get` < 15.5 )) && xbacklight + 5
+
+XF86MonBrightnessDown
+  (( `xbacklight -get` > 5.5  )) && xbacklight - 5
+
+## Touchpad
+super + shift + t
+  tpctl {enable,disable} --notify
+
+## Screen Manager
 super + s
-	xmonad-run screen-manager
+  scrm
 
-# Screencast
-super + ctrl + s
-	xmonad-run screencast
+## Screencast
+super + {ctrl,shift} + s
+  scrc {_,--select}
 
-super + shift + s
-	xmonad-run screencast --select
+## Screenshot
+{_,shift + }Print
+  scrs {_,--select}
 
-# Screenshot
-Print
-	xmonad-run screenshot
-
-shift + Print
-	xmonad-run screenshot --select
-
-# Terminal
+# launch applications
+## Terminal
 super + Return
-	termite -e mux-loader
+  termite -e mux-loader
 
-# Calendar
+## Calendar
+super + c
+  chromium --app='https://www.google.com/calendar'
+
+## Color picker
 super + ctrl + c
-	chromium --app='https://www.google.com/calendar'
+  gpick --pick
 
-# Launcher
+## Launcher
 super + ctrl + l
-	dmenu_run -p 'Launcher' ${=DMENU}
+  dmenu_run -p 'Launcher' ${=DMENU}
 
-# Map
+## Map
 super + ctrl + m
-	chromium --app='http://maps.google.com/'
+  chromium --app='http://maps.google.com/'
 
-# Network Manager
+## Network Manager
 super + ctrl + n
-	termite -e 'sudo wifi-menu -o'
+  termite -e 'sudo wifi-menu -o'
 
-# Password Manager
+## Password Manager
 super + ctrl + p
-	xmonad-run password-manager
+  dmenu-lpass
 
 super + shift + p
-	chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
+  chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
 
-# Email
+## Email
 super + shift + e
-	chromium --app='https://inbox.google.com'
+  chromium --app='https://inbox.google.com'
 
-# Volume Manager
+## Volume Manager
 super + shift + v
-	termite -e alsamixer
+  termite -e alsamixer
 
-# System Activity
+## System Activity
 super + a
-	termite -e 'vtop -t brew'
+  termite -e 'vtop -t abyss'
 
-# Browser
+## Browser
 super + b
-	luakit
+  luakit
 
-# Chat
-super + c
-	xmonad-run chat
+## Instant Messenger
+super + i
+  slack-switcher
 
-# Editor
+## Editor
 super + e
-	termite -e "$EDITOR"
+  termite -e "$EDITOR"
 
-# File Manager
+## File Manager
 super + f
-	urxvt -e 'ranger'
+  urxvt -e 'ranger'
 
-# Music Player
+## Music Player
 super + m
-	termite -e ncmpcpp
+  termite -e ncmpcpp
 
-# Network Switcher
+## Network Switcher
 super + n
-	xmonad-run network-switcher
+  netctl-switcher
 
-# Power Manager
+## Power Manager
 super + p
-	xmonad-run power-manager
+  dmenu-power
 
-# Web Search
+## Web Search
 super + w
-	xmonad-run web-search
+  dmenu-search
 
-# Translate
+## Translate
 super + t
-	chromium --app='https://translate.google.com'
+  chromium --app='https://translate.google.com'
 
-# RSS Reader
+## RSS Reader
 super + r
-	termite -e feedlish
+  termite -e feedlish
 
-# Video
+## Video
 super + v
-	xmonad-run youtube
+  youtube-pl
 
 super + ctrl + v
-	chromium --app='https://www.netflix.com'
+  chromium --app='https://www.netflix.com'
 
 # vim: set ft=sxhkdrc:

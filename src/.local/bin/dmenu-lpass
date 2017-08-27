@@ -1,10 +1,5 @@
 #!/bin/zsh
 
-if ! type lpass >/dev/null 2>&1; then
-  notify-send PasswordManager 'Command not found: lpass'
-  exit 1
-fi
-
 if ! lpass status -q; then
   termite -e "lpass login $LPASS_USERNAME"
 fi
@@ -12,10 +7,10 @@ fi
 name=`
   lpass ls | \
     sed -E 's/ \[id: ([0-9]+)\]//' | \
-    dmenu -p 'Password Manager' ${=DMENU}
+    dmenu -p dmenu-lpass ${=DMENU}
 `
 
 if [[ $name ]]; then
   lpass show --password -c $name
-  notify-send PasswordManager "Copied password: $name"
+  notify-send dmenu-lpass "Copied password: $name"
 fi
