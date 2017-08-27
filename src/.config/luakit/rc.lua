@@ -1,6 +1,6 @@
-----------------------------------------------------------------------------------------
--- luakit configuration file, more information at http://luakit.org/ --
-----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+-- luakit configuration file, more information at https://luakit.github.io/ --
+------------------------------------------------------------------------------
 
 require "lfs"
 
@@ -8,13 +8,11 @@ require "unique_instance"
 
 -- Set the number of web processes to use. A value of 0 means 'no limit'.
 luakit.process_limit = 4
+-- Set the cookie storage location
+soup.cookies_storage = luakit.data_dir .. "/cookies.db"
 
 -- Load library of useful functions for luakit
 local lousy = require "lousy"
-
--- Load users global config
--- ("$XDG_CONFIG_HOME/luakit/globals.lua" or "/etc/xdg/luakit/globals.lua")
-local globals = require "globals"
 
 -- Load users theme
 -- ("$XDG_CONFIG_HOME/luakit/theme.lua" or "/etc/xdg/luakit/theme.lua")
@@ -24,6 +22,16 @@ assert(lousy.theme.get(), "failed to load theme")
 -- Load users window class
 -- ("$XDG_CONFIG_HOME/luakit/window.lua" or "/etc/xdg/luakit/window.lua")
 local window = require "window"
+
+-- Hide status bar
+window.methods.update_sbar_visibility = function (w)
+    if w.ibar.prompt_text or w.ibar.input_text then
+        w.ibar.ebox:show()
+    else
+        w.ibar.ebox:hide()
+    end
+    w.sbar.ebox:hide() w.sbar.hidden = true
+end
 
 -- Load users webview class
 -- ("$XDG_CONFIG_HOME/luakit/webview.lua" or "/etc/xdg/luakit/webview.lua")
@@ -98,6 +106,22 @@ modes.add_cmds({
     end },
 })
 
+local settings = require "settings"
+
+settings.window.home_page = "luakit://newtab/"
+settings.window.search_engines["default"] = "https://www.google.com/search?q=%s"
+settings.window.search_engines["i"] = "https://www.google.com/images?q=%s"
+settings.window.search_engines["h"] = "https://github.com/search?q=%s"
+settings.on["all"].webview.serif_font_family = "Migu 1C"
+settings.on["all"].webview.pictograph_font_family = "Migu 1C"
+settings.on["all"].webview.fantasy_font_family = "Migu 1C"
+settings.on["all"].webview.cursive_font_family = "Migu 1C"
+settings.on["all"].webview.default_font_size = 16
+settings.on["all"].webview.sans_serif_font_family = "Migu 1C"
+settings.on["all"].webview.enable_webgl = true
+settings.on["all"].webview.monospace_font_family = "Migu 1M"
+settings.on["all"].webview.default_font_family = "Migu 1C"
+
 ----------------------------------
 -- Optional user script loading --
 ----------------------------------
@@ -145,12 +169,6 @@ downloads.add_signal("download-location", function (uri, file)
     return downloads.default_dir .. "/" .. file
 end)
 
--- Example using xdg-open for opening downloads / showing download folders
-downloads.add_signal("open-file", function (file)
-    luakit.spawn(string.format("xdg-open %q", file))
-    return true
-end)
-
 -- Add automatic PDF downloading and opening
 local viewpdf = require "viewpdf"
 
@@ -159,12 +177,6 @@ downloads.add_signal("open-file", function (file)
     luakit.spawn(string.format("xdg-open %q", file))
     return true
 end)
-
--- Add vimperator-like link hinting & following
-local select = require "select"
-select.label_maker = function (s)
-    return s.sort(s.reverse(s.charset("asdfghjkl;")))
-end
 
 -- Add vimperator-like link hinting & following
 local follow = require "follow"
@@ -206,6 +218,11 @@ follow.stylesheet = [===[
     }
 ]===]
 
+local select = require "select"
+select.label_maker = function (s)
+    return s.sort(s.reverse(s.charset("asdfghjkl;")))
+end
+
 -- Add command history
 local cmdhist = require "cmdhist"
 
@@ -225,24 +242,14 @@ local introspector_chrome = require "introspector_chrome"
 -- Add command completion
 local completion = require "completion"
 
--- completion.order = {
---     completion.funcs.command,
---     completion.funcs.bookmarks,
---     completion.funcs.history,
--- }
-
--- completion.uri = {
---     func = function () return { { format = "{bookmarks}" }, { format = "{history}" }, } end,
--- }
-
 -- Press Control-E while in insert mode to edit the contents of the currently
 -- focused <textarea> or <input> element, using `xdg-open`
 local open_editor = require "open_editor"
 
 -- NoScript plugin, toggle scripts and or plugins on a per-domain basis.
 -- `,ts` to toggle scripts, `,tp` to toggle plugins, `,tr` to reset.
--- Remove all "enable_scripts" & "enable_plugins" lines from your
--- domain_props table (in config/globals.lua) as this module will conflict.
+-- If you use this module, don't use any site-specific `enable_scripts` or
+-- `enable_plugins` settings, as these will conflict.
 --require "noscript"
 
 local follow_selected = require "follow_selected"
@@ -260,9 +267,6 @@ local styles = require "styles"
 
 -- Hide scrollbars on all pages
 local hide_scrollbars = require "hide_scrollbars"
-
--- Automatically apply per-domain webview properties
-local domain_props = require "domain_props"
 
 -- Add a stylesheet when showing images
 local image_css = require "image_css"
