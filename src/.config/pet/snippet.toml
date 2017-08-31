@@ -75,3 +75,8 @@
   command = "sudo pacman -Sc && sudo pacman-optimize"
   tag = ["archlinux"]
   output = ""
+
+[[snippets]]
+  description = "Analyze system boot-up performance"
+  command = "sudo systemd-analyze"
+  output = ""
