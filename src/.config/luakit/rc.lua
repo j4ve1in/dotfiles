@@ -112,15 +112,15 @@ settings.window.home_page = "luakit://newtab/"
 settings.window.search_engines["default"] = "https://www.google.com/search?q=%s"
 settings.window.search_engines["i"] = "https://www.google.com/images?q=%s"
 settings.window.search_engines["h"] = "https://github.com/search?q=%s"
-settings.on["all"].webview.serif_font_family = "Migu 1C"
-settings.on["all"].webview.pictograph_font_family = "Migu 1C"
-settings.on["all"].webview.fantasy_font_family = "Migu 1C"
-settings.on["all"].webview.cursive_font_family = "Migu 1C"
-settings.on["all"].webview.default_font_size = 16
-settings.on["all"].webview.sans_serif_font_family = "Migu 1C"
-settings.on["all"].webview.enable_webgl = true
-settings.on["all"].webview.monospace_font_family = "Migu 1M"
-settings.on["all"].webview.default_font_family = "Migu 1C"
+settings.webview.serif_font_family = "Migu 1C"
+settings.webview.pictograph_font_family = "Migu 1C"
+settings.webview.fantasy_font_family = "Migu 1C"
+settings.webview.cursive_font_family = "Migu 1C"
+settings.webview.default_font_size = 16
+settings.webview.sans_serif_font_family = "Migu 1C"
+settings.webview.enable_webgl = true
+settings.webview.monospace_font_family = "Migu 1M"
+settings.webview.default_font_family = "Migu 1C"
 
 ----------------------------------
 -- Optional user script loading --
