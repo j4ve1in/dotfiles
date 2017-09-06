@@ -4,7 +4,7 @@
     quotepath = off
 
 [init]
-    templatedir = ~/.config/git/template
+    templatedir = ~/.local/share/git/template
 
 [user]
     name = ytet5uy4
