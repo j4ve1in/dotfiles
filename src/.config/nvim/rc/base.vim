@@ -37,6 +37,11 @@ augroup quickfix
   autocmd!
   autocmd QuickFixCmdPost make,*grep* cwindow
 augroup END
+
+augroup im
+  autocmd!
+  autocmd InsertLeave * call im#fcitx()
+augroup END
 " }}}
 
 " apperance {{{
