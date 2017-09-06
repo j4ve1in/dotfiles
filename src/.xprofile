@@ -7,7 +7,9 @@ XDG_DATA_HOME=~/.local/share
 [[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
 [[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
+# autostart
 xbacklight = 2 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
 compton -b &               # Compositor
