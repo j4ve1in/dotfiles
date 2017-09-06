@@ -9,7 +9,7 @@ XDG_DATA_HOME=~/.local/share
 [[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
 
 xbacklight = 2 &           # Brightness
-nitrogen --restore &       # Wallpaper
+sh ~/.fehbg &              # Wallpaper
 compton -b &               # Compositor
 tmux new-session -s 0 -d & # Multiplexer
 tpctl disable &            # Touchpad

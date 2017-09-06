@@ -26,5 +26,5 @@ if [[ -n $display ]]; then
         --output $SUB_DISPLAY --auto --left-of $MAIN_DISPLAY
       ;;
   esac
-  nitrogen --restore
+  sh ~/.fehbg &
 fi
