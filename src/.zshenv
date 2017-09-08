@@ -11,7 +11,6 @@ export EDITOR='nvim -p'
 export TERMINAL='termite'
 [[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
-export DMENU='-i -sb #00008b -nb black -fn Migu1M:size=13.5'
 export GPG_TTY=`tty`
 
 ## zsh

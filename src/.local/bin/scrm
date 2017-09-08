@@ -8,7 +8,7 @@ fi
 local -a displays
 displays=('PC screen only' Duplicate 'Second screen only' Extend)
 
-local display=`printf '%s\n' $displays | dmenu -p 'Display' ${=DMENU}`
+local display=`printf '%s\n' $displays | dmenu-wrapper -p Display`
 
 if [[ -n $display ]]; then
   case "$display" in

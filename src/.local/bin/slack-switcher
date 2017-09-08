@@ -10,7 +10,7 @@ fi
 private -a team
 team=(`jq -r '.team[].name' $file`)
 
-private name=`printf '%s\n' $team | dmenu -p slack-switcher ${=DMENU}`
+private name=`printf '%s\n' $team | dmenu-wrapper -p Slack`
 
 private url=`jq -r ".team[]|select(.name==\"$name\").url" $file`
 

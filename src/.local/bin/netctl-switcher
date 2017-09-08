@@ -4,7 +4,7 @@ profile=`
   netctl-auto list | \
     grep -v '*' | \
     sed 's/ //g' | \
-    dmenu -p netctl-switcher ${=DMENU}
+    dmenu-wrapper -p Netctl
 `
 
 sudo netctl-auto switch-to $profile

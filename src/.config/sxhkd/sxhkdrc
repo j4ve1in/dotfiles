@@ -56,7 +56,7 @@ super + ctrl + c
 
 ## Launcher
 super + ctrl + l
-  dmenu_run -p 'Launcher' ${=DMENU}
+  dmenu_path | dmenu-wrapper -p Launcher | bash
 
 ## Map
 super + ctrl + m

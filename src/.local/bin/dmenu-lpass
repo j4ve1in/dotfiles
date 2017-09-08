@@ -7,7 +7,7 @@ fi
 name=`
   lpass ls | \
     sed -E 's/ \[id: ([0-9]+)\]//' | \
-    dmenu -p dmenu-lpass ${=DMENU}
+    dmenu-wrapper -p Lastpass
 `
 
 if [[ $name ]]; then

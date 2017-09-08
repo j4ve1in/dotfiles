@@ -2,7 +2,7 @@
 
 power=( poweroff reboot suspend lock )
 
-input=`<<< ${(F)power} | dmenu -p dmenu-power ${=DMENU}`
+input=`<<< ${(F)power} | dmenu-wrapper -p Power`
 
 case $input in
   poweroff) systemctl poweroff ;;

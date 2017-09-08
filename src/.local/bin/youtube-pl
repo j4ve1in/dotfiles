@@ -5,7 +5,7 @@ private file=$XDG_CONFIG_HOME/youtube-pl/playlists.json
 private -a playlist
 playlist=(`jq -r '.playlists[].title' $file`)
 
-private title=`printf '%s\n' $playlist | dmenu -p youtube-pl ${=DMENU}`
+private title=`printf '%s\n' $playlist | dmenu-wrapper -p Youtube`
 
 private id=`jq -r ".playlists[]|select(.title==\"$title\").id" $file`
 
