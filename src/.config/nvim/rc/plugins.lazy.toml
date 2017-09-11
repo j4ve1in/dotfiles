@@ -65,6 +65,10 @@ repo = 'slim-template/vim-slim'
 on_ft = 'slim'
 
 [[plugins]]
+repo = 'yosssi/vim-ace'
+on_ft = 'ace'
+
+[[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
 hook_add ='''
