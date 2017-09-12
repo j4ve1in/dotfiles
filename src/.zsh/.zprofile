@@ -9,7 +9,7 @@ fi
   private -A dir
   dir=(
     plugin "$TMUX_PLUGIN_MANAGER_PATH"
-    cache  "$HOME/.cache/tmux/plugins"
+    cache  "$XDG_DATA_HOME/tmux/plugins"
   )
   if [[ ! -d $dir[plugin] ]] && [[ ! -f $dir[cache]/confirmed ]]; then
     mkdir -p "$dir[cache]"
