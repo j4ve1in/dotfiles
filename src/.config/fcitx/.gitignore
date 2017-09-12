@@ -1,5 +1,5 @@
 cached_layout
-profile_*
+profile*
 clipboard/*
 data/*
 dbus/*
