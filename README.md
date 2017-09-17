@@ -21,7 +21,7 @@ For see all screenshot, check out the [wiki page][wiki-page-link].
 You can install dotfiles by the following installation command.
 
 ```zsh
-% zsh <(curl -L script.ytet5uy4.com/dotfiles/install.zsh)
+% zsh <(curl https://script.ytet5uy4.com/dotfiles/install.zsh)
 ```
 
 **NOTE:** If you want to use **automatic installation**,
