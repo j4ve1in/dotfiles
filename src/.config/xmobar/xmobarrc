@@ -1,5 +1,5 @@
 Config
-  { font = "xft:Hack:size=13"
+  { font = "xft:Noto Sans Mono CJK JP:size=13"
   , commands =
       [ Run Date "%m/%d %T" "date" 10
       , Run StdinReader

@@ -119,7 +119,7 @@ settings.webview.cursive_font_family = "Noto Sans CJK JP"
 settings.webview.default_font_size = 16
 settings.webview.sans_serif_font_family = "Noto Serif CJK JP"
 settings.webview.enable_webgl = true
-settings.webview.monospace_font_family = "Hack"
+settings.webview.monospace_font_family = "Noto Sans Mono CJK JP"
 settings.webview.default_font_family = "Noto Sans CJK JP"
 
 ----------------------------------
