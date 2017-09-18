@@ -61,7 +61,7 @@ set-statusline.window-current-format() {
 is-x() { [[ $DISPLAY ]] && return 0 || return 1; }
 
 is-patched-font() {
-  if [[ `fc-list | grep 'Inconsolata Nerd Font'` ]]; then
+  if [[ `fc-list | grep 'Hack'` ]]; then
     return 0
   else
     return 1

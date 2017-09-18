@@ -1,5 +1,5 @@
 [global]
-    font = Migu 1C 9
+    font = Noto Sans CJK JP 9
     allow_markup = yes
     format = "<b>%s</b>\n%b"
     sort = yes

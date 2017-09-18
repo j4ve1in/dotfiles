@@ -1,7 +1,6 @@
 [options]
-font = DejaVu Sans Mono 13
-font = Inconsolata Nerd Font 13
-font = Migu 1M 13
+font = Hack 13
+# font = Noto Sans Mono CJK JP 13
 
 [colors]
 foreground = #ddd

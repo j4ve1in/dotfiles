@@ -112,15 +112,15 @@ settings.window.home_page = "luakit://newtab/"
 settings.window.search_engines["default"] = "https://www.google.com/search?q=%s"
 settings.window.search_engines["i"] = "https://www.google.com/images?q=%s"
 settings.window.search_engines["h"] = "https://github.com/search?q=%s"
-settings.webview.serif_font_family = "Migu 1C"
-settings.webview.pictograph_font_family = "Migu 1C"
-settings.webview.fantasy_font_family = "Migu 1C"
-settings.webview.cursive_font_family = "Migu 1C"
+settings.webview.serif_font_family = "Noto Sans CJK JP"
+settings.webview.pictograph_font_family = "Noto Sans CJK JP"
+settings.webview.fantasy_font_family = "Noto Sans CJK JP"
+settings.webview.cursive_font_family = "Noto Sans CJK JP"
 settings.webview.default_font_size = 16
-settings.webview.sans_serif_font_family = "Migu 1C"
+settings.webview.sans_serif_font_family = "Noto Serif CJK JP"
 settings.webview.enable_webgl = true
-settings.webview.monospace_font_family = "Migu 1M"
-settings.webview.default_font_family = "Migu 1C"
+settings.webview.monospace_font_family = "Hack"
+settings.webview.default_font_family = "Noto Sans CJK JP"
 
 ----------------------------------
 -- Optional user script loading --
@@ -203,7 +203,7 @@ follow.stylesheet = [===[
       border-radius: 2px;
       color: #ddd;
       font-size: 11px;
-      font-family: "Migu 1M";
+      font-family: "Noto Sans CJK JP";
       font-weight: 700;
       box-shadow: 2px 2px 1px rgba(0,0,0,0.25);
       padding: 0.8px;

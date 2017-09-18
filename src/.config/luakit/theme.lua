@@ -15,7 +15,7 @@ color.purple     = '#3d295b'
 
 -- Base
 local theme = {}
-theme.font       = "Migu 1M 14"
+theme.font       = "Noto Sans CJK JP 14"
 theme.fg         = color.white
 theme.bg         = color.black
 theme.success_fg = color.darkblue
