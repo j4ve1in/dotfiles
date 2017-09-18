@@ -109,7 +109,7 @@ function! plugin#lightline#fileformat() abort
     if &filetype ==# 'dirvish' || &filetype ==# 'denite'
       return ''
     else
-      return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+      return winwidth(0) > 70 ? &fileformat : ''
     endif
   endif
 endfunction
@@ -126,7 +126,7 @@ function! plugin#lightline#filetype() abort
       return ''
     else
       if winwidth(0) > 70
-        return strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : ''
+        return strlen(&filetype) ? &filetype : ''
       else
         return ''
       endif

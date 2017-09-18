@@ -34,10 +34,6 @@ vmap <C-_> <Plug>(caw:hatpos:toggle)
 repo = 'editorconfig/editorconfig-vim'
 on_if = 'has("python3")'
 hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-on_if = "$DISPLAY != ''"
 # }}}
 
 # Completion {{{
