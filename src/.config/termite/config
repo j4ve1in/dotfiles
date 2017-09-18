@@ -1,6 +1,5 @@
 [options]
 font = Hack 13
-# font = Noto Sans Mono CJK JP 13
 
 [colors]
 foreground = #ddd
