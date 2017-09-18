@@ -79,7 +79,7 @@ export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
 export DOT_BASE_DIR=$DOT_HOME/src
 
 # fzf
-[[ $DISPLAY ]] && fzf_prompt="`echo '\uf04b'`" || fzf_prompt='>'
+[[ $DISPLAY ]] && fzf_prompt="`echo '\u25b6'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
   --ansi
   --exit-0
