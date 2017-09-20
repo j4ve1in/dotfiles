@@ -80,3 +80,9 @@
   description = "Analyze system boot-up performance"
   command = "sudo systemd-analyze"
   output = ""
+
+[[snippets]]
+  description = "Upload image to s3://image.ytet5uy4.com"
+  command = "envchain aws fillin aws s3 cp {{s3:name}}.{{s3:ext}} s3://image.ytet5uy4.com/`date +'%y%m%d%k%M%S'`.{{s3:ext}}"
+  tag = ["s3"]
+  output = ""
