@@ -20,7 +20,7 @@ if ! killall ffmpeg; then
   fi
 
   private file
-  file="$HOME/Videos/Screencasts/`date +'%y-%m-%d_%I%M%S'`.mp4"
+  file="$HOME/Videos/Screencasts/`date +'%y-%m-%d_%k%M%S'`.mp4"
   ffmpeg -f x11grab \
     -s "$size" \
     -i "$displayname" \

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-private file="$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%I%M%S'`.png"
+private file="$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%k%M%S'`.png"
 
 if [[ $1 = --select ]]; then
   private opts='-s -c 0,0,255,1'
