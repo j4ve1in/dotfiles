@@ -72,7 +72,7 @@
 
 [[snippets]]
   description = "Remove cache and optimize database"
-  command = "sudo pacman -Sc && sudo pacman-optimize"
+  command = "sudo pacman -Sc --noconfirm && sudo pacman-optimize"
   tag = ["archlinux"]
   output = ""
 
