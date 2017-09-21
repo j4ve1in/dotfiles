@@ -34,8 +34,11 @@ super + s
   scrm
 
 ## Screencast
-super + {ctrl,shift} + s
-  scrc {_,--select}
+super + ctrl + s
+  scrc {start,stop}
+
+super + shift + s
+  scrc {start,stop} --select
 
 ## Screenshot
 {_,shift + }Print

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-if ! killall ffmpeg; then
-  if [[ $1 = --select ]]; then
+if [[ $1 = start ]]; then
+  if [[ $2 = --select ]]; then
     slop() {
       private touchpad="`tpctl status`"
       (( ! $touchpad )) && tpctl enable
@@ -33,4 +33,6 @@ if ! killall ffmpeg; then
   if [[ $? != 1 ]]; then
     notify-send 'Recorded screen' "Saved to $file"
   fi
+elif [[ $1 = stop ]]; then
+  killall ffmpeg
 fi
