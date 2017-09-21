@@ -1,7 +1,7 @@
 # system operations
 ## Restart window manager
 super + q
-  xmonad-run restart
+  xmonad-restart
 
 ## Reload configuration file
 super + Escape
