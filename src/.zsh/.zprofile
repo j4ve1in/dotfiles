@@ -2,7 +2,7 @@
 
 # Launch xmonad
 if [[ $XDG_VTNR = 1 ]] && [[ -z $DISPLAY ]]; then
- exec startx >/dev/null 2>&1
+  exec startx >/dev/null 2>&1
 fi
 
 # Launch tmux
