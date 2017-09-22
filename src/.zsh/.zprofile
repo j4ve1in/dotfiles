@@ -1,5 +1,10 @@
 [ -e /etc/arch-release ] && . ~/.zshenv
 
+# Launch xmonad
+if [[ $XDG_VTNR = 1 ]] && [[ -z $DISPLAY ]]; then
+ exec startx >/dev/null 2>&1
+fi
+
 # Launch tmux
 if type tmux >/dev/null 2>&1 && [[ -z $TMUX ]]; then
   exec mux-loader
