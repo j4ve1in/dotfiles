@@ -12,8 +12,7 @@
 
 This repository manage configuration files on Unix-type operating systems.
 
-![screenshot1]
-![screenshot2]
+![screenshot]
 
 ## Installation
 
@@ -36,8 +35,7 @@ Copyright (c) 2015 ytet5uy4
 
 Released under the MIT License, see **[LICENSE.md][license-link]**.
 
-[screenshot1]: https://image.ytet5uy4.com/170920161710.png
-[screenshot2]: https://image.ytet5uy4.com/170920165022.png
+[screenshot]: https://image.ytet5uy4.com/170922171900.png
 [demo]: https://image.ytet5uy4.com/170920164937.png
 [release-badge]: https://img.shields.io/github/release/ytet5uy4/dotfiles.svg?style=flat-square
 [license-badge]: https://img.shields.io/github/license/ytet5uy4/dotfiles.svg?style=flat-square
