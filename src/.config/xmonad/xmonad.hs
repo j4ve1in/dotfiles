@@ -24,7 +24,6 @@ import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
 import XMonad.Util.EZConfig (removeKeysP, additionalKeysP)
 import XMonad.Util.Run (spawnPipe)
-import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Types (Direction2D(..))
 
 main = do
@@ -34,7 +33,6 @@ main = do
     , focusFollowsMouse  = myFocusFollowsMouse
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
-    , startupHook        = myStartupHook
     , manageHook         = myManageHook
     , layoutHook         = myLayoutHook
     , logHook            = myLogHook wsbar
@@ -74,11 +72,6 @@ myLayoutHook = toggleLayouts (noBorders Full)
     gwD = 7
     gwL = 0
     gwR = 0
-
---- startup
-myStartupHook = do
-  spawnOnce "xcape"
-  startupHook desktopConfig
 
 -- loghook
 myLogHook h = do
