@@ -1,6 +1,6 @@
 [global]
     font = Noto Sans CJK JP 9
-    allow_markup = yes
+    markup = yes
     format = "<b>%s</b>\n%b"
     sort = yes
     indicate_hidden = yes
@@ -26,8 +26,6 @@
     startup_notification = false
     browser = luakit
     icon_position = off
-
-[frame]
     width = 1
     color = "#0000ff"
 

@@ -1,8 +1,12 @@
 #!/bin/bash
 
-revert() { xset dpms 0 0 0; }
+revert() {
+  xset dpms 0 0 0
+  nohup dunst &
+}
 
 trap revert HUP INT TERM
+killall dunst
 xset +dpms dpms 5 5 5
 xset dpms force off
 if [[ $1 = --suspend ]]; then
