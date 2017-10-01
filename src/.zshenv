@@ -9,7 +9,6 @@ export XDG_DATA_HOME=~/.local/share
 export PAGER='less'
 export EDITOR='nvim -p'
 export TERMINAL='termite'
-[[ -z $DISPLAY ]] && export TMOUT="$(( 60*10 ))"
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 export GPG_TTY=`tty`
 
