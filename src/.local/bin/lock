@@ -1,18 +1,25 @@
 #!/bin/bash
 
+touchpad="`~/.local/bin/tpctl status`"
+
+if [[ $1 = --dpms ]]; then
+  dpms=on
+fi
+
 revert() {
-  xset dpms 0 0 0
+  if [[ $dpms = on ]]; then
+    xset dpms 0 0 0
+  fi
   nohup dunst &
+  (( ! $touchpad )) && ~/.local/bin/tpctl disable
 }
 
 trap revert HUP INT TERM
 killall dunst
-xset +dpms dpms 5 5 5
-xset dpms force off
-if [[ $1 = --suspend ]]; then
-  LC_ALL=en_US.UTF-8 i3lock -ui ~/.local/share/i3/lockscreen.png
-  systemctl suspend
-else
-  LC_ALL=en_US.UTF-8 i3lock -uni ~/.local/share/i3/lockscreen.png
+~/.local/bin/tpctl enable
+if [[ $dpms = on ]]; then
+  xset +dpms dpms 5 5 5
+  xset dpms force off
 fi
+LC_ALL=en_US.UTF-8 i3lock -euni ~/.local/share/i3/lockscreen.png
 revert

@@ -7,7 +7,7 @@ input=`<<< ${(F)power} | dmenu-wrapper -p Power`
 case $input in
   poweroff) systemctl poweroff ;;
   reboot) systemctl reboot ;;
-  suspend) lock --suspend ;;
-  lock) lock ;;
+  suspend) systemctl suspend ;;
+  lock) lock --dpms ;;
   *) ;;
 esac
