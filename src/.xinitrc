@@ -25,7 +25,12 @@ xautolock \
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+# Load .xinitrc.local
+[[ -f $HOME/.xinitrc.local ]] && . $HOME/.xinitrc.local
+
 # Window Manager
+[[ -d $XDG_CACHE_HOME/xmonad/ ]] && mkdir -p $XDG_CACHE_HOME/xmonad/
+[[ -d $XDG_DATA_HOME/xmonad/ ]] && mkdir -p $XDG_DATA_HOME/xmonad/
 exec xmonad
 
 # vim: filetype=sh
