@@ -11,6 +11,7 @@ alias md=mkdir
 alias n=nvim
 alias s='sudo '
 alias se=sudoedit
+alias p='xsel >'
 
 # Suffix alias
 alias -s bash=bash
