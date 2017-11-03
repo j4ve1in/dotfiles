@@ -81,6 +81,9 @@ super + shift + p
 super + shift + e
   chromium --app='https://inbox.google.com'
 
+super + ctrl + e
+  termite -e mutt
+
 ## Volume Manager
 super + shift + v
   termite -e alsamixer

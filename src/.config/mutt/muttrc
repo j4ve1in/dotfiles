@@ -1,0 +1,15 @@
+source $XDG_CONFIG_HOME/mutt/muttrc.local
+source $XDG_DATA_HOME/mutt/mailboxes
+
+set folder = $HOME/Mail
+set spoolfile = +INBOX
+set record = +Sent
+set postponed = +Drafts
+
+set realname = ytet5uy4
+set use_from = yes
+
+set header_cache = $XDG_CACHE_HOME/mutt/
+set message_cachedir = $XDG_CACHE_HOME/mutt/
+
+set sort = reverse-date-sent
