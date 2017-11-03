@@ -7,7 +7,6 @@ tmux new-session -s 0 -d & # Multiplexer
 tpctl disable &            # Touchpad
 mopidy &                   # Music server
 dunst &                    # Notification daemon
-dropbox-cli start &        # File sharing system
 sxhkd &                    # Hotkey daemon
 
 # Imput Method
