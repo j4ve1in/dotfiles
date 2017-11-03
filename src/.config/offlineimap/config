@@ -1,33 +1,33 @@
 [general]
-accounts = main
-pythonfile = ~/.config/offlineimap/config.local
+accounts = personal
+pythonfile = ~/.config/offlineimap/offlineimap.py
 maxsyncaccounts = 1
 fsync = false
 
 [mbnames]
 enabled = yes
-filename = ~/.local/share/mutt/mailboxes
+filename = ~/.config/mutt/mailboxes
 header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
 footer = "\n"
 
-[Account main]
+[Account personal]
 autorefresh = 0.5
 quick = 10
-localrepository = Local
-remoterepository = Remote
+localrepository = personal-local
+remoterepository = personal-remote
 
-[Repository Local]
+[Repository personal-local]
 type = Maildir
 localfolders = ~/Mail/
 
-[Repository Remote]
+[Repository personal-remote]
 type = IMAP
 keepalive = 60
 holdconnectionopen = yes
-remotehosteval = get_host()
-remoteporteval = get_port()
-remoteusereval = get_username()
-remotepasseval = get_password()
+remotehosteval = get_host("personal")
+remoteporteval = get_port("personal")
+remoteusereval = get_username("personal")
+remotepasseval = get_password("personal")
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
