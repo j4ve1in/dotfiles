@@ -94,7 +94,10 @@ super + a
 
 ## Browser
 super + b
-  luakit
+  chromium
+
+super + shift + b
+  chromium --incognito
 
 ## Instant Messenger
 super + i
