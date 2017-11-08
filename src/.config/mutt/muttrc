@@ -1,8 +1,8 @@
 # smtp
-set my_username = `envchain mail/personal/smtp printenv SMTP_USERNAME`
-set my_pass = `envchain mail/personal/smtp printenv SMTP_PASSWORD`
-set my_host = `envchain mail/personal/smtp printenv SMTP_HOST`
-set my_port = `envchain mail/personal/smtp printenv SMTP_PORT`
+set my_username = `envchain mail/personal printenv SMTP_USERNAME`
+set my_pass = `envchain mail/personal printenv SMTP_PASSWORD`
+set my_host = `envchain mail/personal printenv SMTP_HOST`
+set my_port = `envchain mail/personal printenv SMTP_PORT`
 
 set from = $my_username
 set smtp_pass = $my_pass

@@ -4,7 +4,7 @@ import subprocess
 
 def get_credential(account, env):
   return subprocess.check_output(
-    ["envchain", "mail/" + account + "/imap", "printenv", "IMAP_" + env],
+    ["envchain", "mail/" + account, "printenv", "IMAP_" + env],
     universal_newlines=True
   ).strip("\n")
 
