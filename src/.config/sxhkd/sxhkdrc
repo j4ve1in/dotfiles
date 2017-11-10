@@ -79,7 +79,7 @@ super + shift + p
 
 ## Email
 super + shift + e
-  chromium --app='https://inbox.google.com'
+  chromium --app='https://mail.zoho.com'
 
 super + ctrl + e
   termite -e mutt
