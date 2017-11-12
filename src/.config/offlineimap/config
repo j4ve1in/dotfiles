@@ -1,7 +1,6 @@
 [general]
-accounts = personal
+accounts = personal,school
 pythonfile = ~/.config/offlineimap/offlineimap.py
-maxsyncaccounts = 1
 fsync = false
 
 [mbnames]
@@ -13,21 +12,31 @@ sep = " "
 footer = "\n"
 
 [Account personal]
-autorefresh = 0.5
-quick = 10
 localrepository = personal-local
 remoterepository = personal-remote
 
 [Repository personal-local]
 type = Maildir
-localfolders = ~/Mail/
+localfolders = ~/Mail/personal/
 
 [Repository personal-remote]
 type = IMAP
-keepalive = 60
-holdconnectionopen = yes
 remotehosteval = get_host("personal")
 remoteporteval = get_port("personal")
 remoteusereval = get_username("personal")
 remotepasseval = get_password("personal")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Account school]
+localrepository = school-local
+remoterepository = school-remote
+
+[Repository school-local]
+type = Maildir
+localfolders = ~/Mail/school/
+
+[Repository school-remote]
+type = Gmail
+remoteusereval = get_username("school")
+remotepasseval = get_password("school")
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt

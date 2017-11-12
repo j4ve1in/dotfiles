@@ -11,9 +11,9 @@ set smtp_url = smtps://$my_username@$my_host:$my_port
 # imap
 source $XDG_CONFIG_HOME/mutt/mailboxes
 set folder = $HOME/Mail
-set spoolfile = +INBOX
-set record = +Sent
-set postponed = +Drafts
+set spoolfile = +personal/INBOX
+set record = +personal/Sent
+set postponed = +personal/Drafts
 
 set realname = ytet5uy4
 set use_from = yes
