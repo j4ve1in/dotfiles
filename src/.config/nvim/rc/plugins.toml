@@ -47,14 +47,6 @@ augroup END
 " }}} '''
 
 [[plugins]]
-repo = 'vim-scripts/vim-auto-save'
-hook_add = ''' " {{{
-let g:auto_save = 1
-let g:auto_save_silent = 1
-let g:auto_save_in_insert_mode = 0
-" }}} '''
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = ''' " {{{
 let g:lightline = {
