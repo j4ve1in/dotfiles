@@ -8,6 +8,7 @@ export XDG_DATA_HOME=~/.local/share
 # base
 export PAGER='less'
 export EDITOR='nvim -p'
+export DIFFPROG='nvim -d'
 export TERMINAL='termite'
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 export GPG_TTY=`tty`
