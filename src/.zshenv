@@ -12,6 +12,7 @@ export DIFFPROG='nvim -d'
 export TERMINAL='termite'
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 export GPG_TTY=`tty`
+export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
 
 ## zsh
 export ZDOTDIR=~/.zsh
