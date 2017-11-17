@@ -5,7 +5,6 @@ sh ~/.fehbg &              # Wallpaper
 compton -b &               # Compositor
 tmux new-session -s 0 -d & # Multiplexer
 tpctl disable &            # Touchpad
-mopidy &                   # Music server
 dunst &                    # Notification daemon
 sxhkd &                    # Hotkey daemon
 
