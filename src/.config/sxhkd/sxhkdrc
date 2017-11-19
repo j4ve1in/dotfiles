@@ -70,6 +70,10 @@ super + ctrl + m
 super + ctrl + n
   termite -e 'sudo wifi-menu -o'
 
+## Two-factor Authentication App
+super + shift + o
+  chromium  --app-id='gaedmjdfmmahhbjefcbgaolhhanlaolb'
+
 ## Password Manager
 super + ctrl + p
   dmenu-lpass
