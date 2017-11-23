@@ -1,9 +1,6 @@
-# smtp
-set my_username = `envchain mail/personal printenv SMTP_USERNAME`
-set my_pass = `envchain mail/personal printenv SMTP_PASSWORD`
-set my_host = `envchain mail/personal printenv SMTP_HOST`
-set my_port = `envchain mail/personal printenv SMTP_PORT`
+source ~/.config/mutt/muttrc.local
 
+# smtp
 set from = $my_username
 set smtp_pass = $my_pass
 set smtp_url = smtps://$my_username@$my_host:$my_port
