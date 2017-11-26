@@ -93,7 +93,7 @@
     l = log-custom
     ps = push
     pu = pull
-    s = status -bs
+    st = status -bs
     sh = show
 
 [include]
