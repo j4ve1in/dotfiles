@@ -94,6 +94,7 @@
     ps = push
     pu = pull
     s = status -bs
+    sh = show
 
 [include]
     path = ~/.config/git/config.local
