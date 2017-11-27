@@ -30,6 +30,7 @@ export ZPLUG_CACHE_DIR=$ZSH_CACHE_HOME/plugins/zplug/cache
 # path
 path=($path $HOME/.local/bin(N-/))
 path=($path `ruby -rubygems -e 'puts Gem.user_dir'`/bin(N-/))
+path=($path `yarn global bin`(N-/))
 
 if [[ -d $XDG_DATA_HOME/anyenv ]] ; then
   export ANYENV_ROOT="$XDG_DATA_HOME/anyenv"
