@@ -2,6 +2,9 @@
 
 # Launch xmonad
 if [[ $XDG_VTNR = 1 ]] && [[ -z $DISPLAY ]]; then
+  [[ ! -d $XDG_CONFIG_HOME/xmonad ]] && mkdir -p "$XDG_CONFIG_HOME/xmonad"
+  [[ ! -d $XDG_CACHE_HOME/xmonad ]] && mkdir -p "$XDG_CACHE_HOME/xmonad"
+  [[ ! -d $XDG_DATA_HOME/xmonad ]] && mkdir -p "$XDG_DATA_HOME/xmonad"
   exec startx >/dev/null 2>&1
 fi
 
