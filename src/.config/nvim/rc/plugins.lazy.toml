@@ -51,6 +51,10 @@ augroup END
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft = 'tex'
+
+[[plugins]]
+repo = 'juliosueiras/vim-terraform-completion'
+on_ft = 'tf'
 # }}}
 
 # Completion {{{
@@ -125,6 +129,7 @@ on_ft = 'yaml'
 repo = 'hashivim/vim-terraform'
 on_ft = 'tf'
 hook_add = '''
+let g:terraform_fmt_on_save = 1
 augroup vim-terraform
   autocmd!
   autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>:<C-u>Neomake<CR>
