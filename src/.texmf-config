@@ -1,0 +1,1 @@
+shell_escape_commands = extractbb, bibtex,bibtex8,extractbb,gregorio,kpsewhich,makeindex,repstopdf,texosquery-jre8,
