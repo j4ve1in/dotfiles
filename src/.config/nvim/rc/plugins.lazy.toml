@@ -51,10 +51,6 @@ augroup END
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft = 'tex'
-
-[[plugins]]
-repo = 'juliosueiras/vim-terraform-completion'
-on_ft = 'tf'
 # }}}
 
 # Completion {{{
