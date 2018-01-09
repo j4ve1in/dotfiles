@@ -8,6 +8,10 @@ super + Escape
   pkill -USR1 -x sxhkd && \
     notify-send sxhkd 'Reload configuration file'
 
+## Display
+super + ctrl + d
+  dmenu-display
+
 ## Volume
 XF86Audio{Lower,Raise}Volume
   pamixer --{decrease,increase} 1 && \

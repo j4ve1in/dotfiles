@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+if ! type xrandr >/dev/null 2>&1; then
+  notify-send Display 'command not found: xrandr'
+  exit 1
+fi
+
+if [[ -z $MAIN_DISPLAY || -z $SUB_DISPLAY ]]; then
+  notify-send Display 'Set `$MAIN_DISPLAY` and `$SUB_DISPLAY`'
+  exit 1
+fi
+
+local -a displays
+displays=('PC screen only' Duplicate Extend 'Second screen only')
+
+local display=`printf '%s\n' $displays | dmenu-wrapper -p Display`
+
+if [[ -n $display ]]; then
+  case "$display" in
+    'PC screen only' )
+      xrandr --output $MAIN_DISPLAY --auto --output $SUB_DISPLAY --off
+      ;;
+    Duplicate )
+      xrandr-mirror
+      ;;
+    'Second screen only' )
+      xrandr --output $MAIN_DISPLAY --off --output $SUB_DISPLAY --auto
+      ;;
+    Extend )
+      xrandr --output $MAIN_DISPLAY --auto --primary \
+        --output $SUB_DISPLAY --auto --left-of $MAIN_DISPLAY
+      ;;
+  esac
+fi
