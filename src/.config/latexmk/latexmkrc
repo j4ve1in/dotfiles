@@ -1,14 +1,12 @@
 #!/usr/bin/env perl
-$latex  = 'platex -halt-on-error -file-line-error -src-specials';
-$latex_silent = 'platex -halt-on-error -file-line-error -src-specials -interaction=batchmode';
-$bibtex = 'pbibtex';
-$dvips  = 'pdvips';
+
+$bibtex        = 'pbibtex';
+$clean_ext     = "lol mtc maf";
 $dvi_previewer ='pxdvi';
-# $cleanup_mode = 1;
-$clean_ext = "lol mtc maf";
+$dvipdf        = 'dvipdfmx %O -o %D %S';
+$dvips         = 'pdvips';
+$latex         = 'platex -halt-on-error -file-line-error -src-specials';
+$latex_silent  = 'platex -halt-on-error -file-line-error -src-specials -interaction=batchmode';
+$pdf_mode      = 3;
+$sleep_time    = 1;
 @default_files = 'main.tex';
-$sleep_time = 1;
-$dvipdf           = 'dvipdfmx %O -o %D %S';
-$pdf_mode         = 3;
-$pdf_previewer    = xreader;
-$preview_mode     = 1;
