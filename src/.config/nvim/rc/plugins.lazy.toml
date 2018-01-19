@@ -92,22 +92,8 @@ augroup END
 '''
 
 [[plugins]]
-repo = 'zchee/nvim-go'
-build = 'make'
+repo = 'fatih/vim-go'
 on_ft = 'go'
-hook_add = '''
-augroup nvim-go
-  autocmd!
-  autocmd FileType go nmap <C-c> <Plug>(nvim-go-run)
-  autocmd FileType go nnoremap g<C-c> :<C-u>Gorun<space>
-  autocmd FileType go nnoremap = :<C-u>Gofmt<CR>:<C-u>Neomake<CR>
-  autocmd FileType go nnoremap <Space>d :<C-u>DlvDebug<CR>
-  autocmd FileType go nnoremap <Space>gd :<C-u>DlvDebug --<space>
-  autocmd FileType go nnoremap <Space>b :<C-u>DlvBreakpoint<CR>
-  autocmd FileType go nnoremap <Space>c :<C-u>DlvContinue<CR>
-  autocmd FileType go nnoremap <Space>n :<C-u>DlvNext<CR>
-augroup END
-'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
