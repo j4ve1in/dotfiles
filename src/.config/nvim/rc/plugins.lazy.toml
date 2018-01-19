@@ -135,6 +135,10 @@ augroup END
 [[plugins]]
 repo = 'baskerville/vim-sxhkdrc'
 on_ft = 'sxhkdrc'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = 'vue'
 # }}}
 
 # vim: foldmethod=marker:
