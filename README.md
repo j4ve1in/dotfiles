@@ -35,7 +35,7 @@ Copyright (c) 2015 ytet5uy4
 
 Released under the MIT License, see **[LICENSE.md][license-link]**.
 
-[screenshot]: https://image.ytet5uy4.com/170922171900.png
+[screenshot]: https://image.ytet5uy4.com/180204192155.png
 [demo]: https://image.ytet5uy4.com/170920164937.png
 [release-badge]: https://img.shields.io/github/release/ytet5uy4/dotfiles.svg?style=flat-square
 [license-badge]: https://img.shields.io/github/license/ytet5uy4/dotfiles.svg?style=flat-square
