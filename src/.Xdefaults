@@ -5,7 +5,7 @@ URxvt.termName: rxvt-unicode-256color
 URxvt.saveLines: 20000
 URxvt.scrollBar: false
 URxvt.matcher.button: 1
-URxvt.url-launcher: luakit
+URxvt.url-launcher: chromium
 
 !! perl-ext
 URxvt.perl-ext-common: default,matcher,resize-font,selection,eval

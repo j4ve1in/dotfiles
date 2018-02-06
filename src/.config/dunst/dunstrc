@@ -24,7 +24,7 @@
     horizontal_padding = 5
     separator_color = frame
     startup_notification = false
-    browser = luakit
+    browser = chromium
     icon_position = off
     width = 1
     color = "#0000ff"

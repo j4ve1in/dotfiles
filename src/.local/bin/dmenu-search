@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 private keywords="`printf '' | dmenu-wrapper -p Search`"
-[[ $keywords ]] && luakit --uri="https://google.com/search?q=$keywords"
+[[ $keywords ]] && chromium --uri="https://google.com/search?q=$keywords"
