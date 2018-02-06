@@ -3,9 +3,6 @@
     pager = less
     quotepath = off
 
-[init]
-    templatedir = ~/.local/share/git/template
-
 [user]
     name = ytet5uy4
     email = ytet5uy4@ytet5uy4.com
