@@ -29,12 +29,6 @@
   output = ""
 
 [[snippets]]
-  description = "Start system upgrade"
-  command = "pacaur -Syu --noconfirm --noedit && needrestart"
-  tag = ["archlinux"]
-  output = ""
-
-[[snippets]]
   description = "Check zsh load time"
   command = "repeat 10 time zsh -i -c exit"
   tag = ["zsh"]
