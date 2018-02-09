@@ -7,6 +7,7 @@ tmux new-session -s 0 -d & # Multiplexer
 tpctl disable &            # Touchpad
 dunst &                    # Notification daemon
 sxhkd &                    # Hotkey daemon
+xcape &                    # Utility for a modifier key
 
 # Imput Method
 export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
