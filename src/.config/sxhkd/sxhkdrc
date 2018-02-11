@@ -70,6 +70,10 @@ super + ctrl + l
 super + ctrl + m
   chromium --app='https://www.google.co.jp/maps'
 
+## Microblogging client
+super + shift + m
+  chromium --app='https://twitter.com/ytet5uy4/lists/home'
+
 ## Network Manager
 super + ctrl + n
   termite -e 'sudo wifi-menu -o'
