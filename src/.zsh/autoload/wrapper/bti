@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+trap 'rm -f ~/.bti >/dev/null 2>&1' 2
+cat ~/.bti.tpl | envchain ytet5uy4/twitter envsubst >!~/.bti
+command bti $@
+rm -f ~/.bti >/dev/null 2>&1
