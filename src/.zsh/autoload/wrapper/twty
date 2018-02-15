@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+trap 'rm -f ~/.config/twty/settings.json >/dev/null 2>&1' 2
+cat ~/.config/twty/settings.json.tpl | \
+  envchain ytet5uy4/twitter envsubst >~/.config/twty/settings.json
+command twty $@
+rm -f ~/.config/twty/settings.json >/dev/null 2>&1
