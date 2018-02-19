@@ -132,8 +132,8 @@ super + n
   netctl-switcher
 
 ## Power Manager
-super + p
-  dmenu-power
+super + p ; {p,r,s,l}
+  {systemctl poweroff, systemctl reboot, systemctl suspend, lock --dpms}
 
 ## Web Search
 super + w
