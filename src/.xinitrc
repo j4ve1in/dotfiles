@@ -23,8 +23,10 @@ xautolock \
   -locker lock \
   -notify 30 \
   -notifier "notify-send xautolock 'LOCKING screen in 30 seconds'" &
+xss-lock -- lock &
 
 # Password Manager
+dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
