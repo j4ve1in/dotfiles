@@ -1,6 +1,6 @@
 #!/bin/bash
 
-touchpad="`~/.local/bin/tpctl status`"
+touchpad="`tpctl status`"
 
 if [[ $1 = --dpms ]]; then
   dpms=on
@@ -11,12 +11,12 @@ revert() {
     xset dpms 0 0 0
   fi
   nohup dunst &
-  (( ! $touchpad )) && ~/.local/bin/tpctl disable
+  (( ! $touchpad )) && tpctl disable
 }
 
 trap revert HUP INT TERM
 killall dunst
-~/.local/bin/tpctl enable
+tpctl enable
 if [[ $dpms = on ]]; then
   xset +dpms dpms 5 5 5
   xset dpms force off
