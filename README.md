@@ -19,7 +19,7 @@ This repository manage configuration files on Unix-type operating systems.
 You can install dotfiles by the following installation command.
 
 ```zsh
-% zsh <(curl https://script.ytet5uy4.com/dotfiles/install)
+% zsh <(curl https://raw.githubusercontent.com/ytet5uy4/dotfiles/master/bin/install)
 ```
 
 **NOTE:** If you want to use **automatic installation**,
