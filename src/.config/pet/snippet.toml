@@ -48,7 +48,7 @@
 
 [[snippets]]
   description = "Create git repository"
-  command = "fillin 'mkdir `ghq root`/github.com/$USER/{{ghq:dir}} && git -C $_ init'"
+  command = "fillin 'mkdir `ghq root`/{{git:host}}/$USER/{{git:dir}} && git -C $_ init'"
   tag = ["git"]
   output = ""
 
@@ -77,6 +77,6 @@
 
 [[snippets]]
   description = "Upload image to s3://image.ytet5uy4.com"
-  command = "envchain ytet5uy4/aws fillin aws s3 cp {{s3:name}}.{{s3:ext}} s3://image.ytet5uy4.com/`date +'%y%m%d%02k%M%S'`.{{s3:ext}}"
+  command = "envchain ytet5uy4/aws fillin aws s3 cp --cache-control max-age=604800 {{s3:name}}.{{s3:ext}} s3://image.ytet5uy4.com/`date +'%y%m%d%02k%M%S'`.{{s3:ext}}"
   tag = ["s3"]
   output = ""
