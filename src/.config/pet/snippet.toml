@@ -41,12 +41,6 @@
   output = ""
 
 [[snippets]]
-  description = "Show DigitalOcean API"
-  command = "fillin 'curl -X GET -H \"Content-Type: application/json\" -H \"Authorization: Bearer `envchain do printenv DIGITALOCEAN_ACCESS_TOKEN`\" \"https://api.digitalocean.com/v2/{{do:object}}\"'"
-  tag = ["api", "do"]
-  output = ""
-
-[[snippets]]
   description = "Create git repository"
   command = "fillin 'mkdir `ghq root`/{{git:host}}/$USER/{{git:dir}} && git -C $_ init'"
   tag = ["git"]
