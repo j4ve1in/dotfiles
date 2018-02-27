@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for env in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
+  if ! envchain ytet5uy4/aws printenv $env >/dev/null 2>&1; then
+    envchain --set ytet5uy4/aws $env
+  fi
+done
+
+for f in $@; do
+  envchain ytet5uy4/aws aws s3 cp \
+    --cache-control max-age=604800 \
+    $f \
+    s3://image.ytet5uy4.com/`date +'%y%m%d%02k%M%S'`.${f##*.}
+done
