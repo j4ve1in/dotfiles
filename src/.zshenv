@@ -71,11 +71,6 @@ export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
 [[ ! -d $LESS_CACHE_HOME ]] && mkdir $LESS_CACHE_HOME
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
-# vagrant
-export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
-[[ ! -d $VAGRANT_HOME ]] && mkdir $VAGRANT_HOME
-export VAGRANT_DEFAULT_PROVIDER='virtualbox'
-
 # fzf
 [[ $DISPLAY ]] && fzf_prompt="`echo '\u25b6'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
