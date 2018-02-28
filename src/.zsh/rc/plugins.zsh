@@ -1,11 +1,16 @@
 : "Plugin" && () {
+  if [[ ! -d $ZPLUG_HOME ]]; then
+    if __lib::prompt 'Would you like to install zplug'; then
+      private cmd="git clone https://github.com/zplug/zplug $ZPLUG_HOME"
+      __lib::spinner 'Clone zplug' "$cmd" 1
+    fi
+  fi
   if [[ -d $ZPLUG_HOME ]]; then
     # Zplug
     . $ZPLUG_HOME/init.zsh
 
     zplug 'zplug/zplug'
     zplug 'ytet5uy4/pctl'
-    zplug 'ytet5uy4/dctl'
     zplug 'ytet5uy4/fzf-widgets'
     zplug 'ytet5uy4/abyss.zsh', as:theme
     zplug 'zsh-users/zsh-completions'

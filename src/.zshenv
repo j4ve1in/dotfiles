@@ -76,10 +76,6 @@ export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 [[ ! -d $VAGRANT_HOME ]] && mkdir $VAGRANT_HOME
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
-# dctl
-export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
-export DOT_BASE_DIR=$DOT_HOME/src
-
 # fzf
 [[ $DISPLAY ]] && fzf_prompt="`echo '\u25b6'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
