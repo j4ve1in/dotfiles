@@ -1,7 +1,0 @@
-# Problem Summary
-
-## Why
-
-## What
-
-- [ ]
