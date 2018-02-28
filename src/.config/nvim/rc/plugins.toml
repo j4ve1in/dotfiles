@@ -328,7 +328,6 @@ repo = 'jasonlong/vim-textobj-css'
 repo = 'neomake/neomake'
 hook_add = ''' " {{{
 let g:neomake_place_signs = 0
-let g:neomake_tex_enabled_makers = []
 nnoremap <silent> <C-m> :<C-u>Neomake<CR>
 
 augroup neomake_settings

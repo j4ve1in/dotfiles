@@ -47,10 +47,6 @@ augroup hclfmt
   autocmd FileType hcl nnoremap = :<C-u>HclFmt<CR>:<C-u>Neomake<CR>
 augroup END
 '''
-
-[[plugins]]
-repo = 'lervag/vimtex'
-on_ft = 'tex'
 # }}}
 
 # Completion {{{
