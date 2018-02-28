@@ -62,10 +62,6 @@ on_ft = 'vim'
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = 'zsh'
-
-[[plugins]]
-repo = 'zchee/deoplete-docker'
-on_ft = 'dockerfile'
 # }}}
 
 # Syntax {{{
