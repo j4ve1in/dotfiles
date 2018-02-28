@@ -10,7 +10,6 @@
     . $ZPLUG_HOME/init.zsh
 
     zplug 'zplug/zplug'
-    zplug 'ytet5uy4/pctl'
     zplug 'ytet5uy4/fzf-widgets'
     zplug 'ytet5uy4/abyss.zsh', as:theme
     zplug 'zsh-users/zsh-completions'
