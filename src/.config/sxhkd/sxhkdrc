@@ -58,10 +58,6 @@ super + Return
 super + c
   chromium --app='https://www.google.com/calendar'
 
-## Color picker
-super + ctrl + c
-  gpick --pick
-
 ## Launcher
 super + ctrl + l
   dmenu_path | dmenu-wrapper -p Launcher | bash
@@ -78,10 +74,6 @@ super + shift + m
 super + ctrl + n
   termite -e 'sudo wifi-menu -o'
 
-## Two-factor Authentication App
-super + shift + o
-  chromium  --app-id='gaedmjdfmmahhbjefcbgaolhhanlaolb'
-
 ## Password Manager
 super + ctrl + p
   dmenu-lpass
@@ -92,9 +84,6 @@ super + shift + p
 ## Email
 super + shift + e
   chromium --app='https://mail.zoho.com'
-
-super + ctrl + e
-  termite -e mutt
 
 ## Volume Manager
 super + shift + v
@@ -123,10 +112,6 @@ super + e
 super + f
   urxvt -e 'ranger'
 
-## Music Player
-super + m
-  termite -e ncmpcpp
-
 ## Network Switcher
 super + n
   netctl-switcher
@@ -134,10 +119,6 @@ super + n
 ## Power Manager
 super + p ; {p,r,l}
   {systemctl poweroff, systemctl reboot, lock --dpms}
-
-## Web Search
-super + w
-  dmenu-search
 
 ## Translate
 super + t
@@ -149,9 +130,6 @@ super + r
 
 ## Video
 super + v
-  youtube-pl
-
-super + ctrl + v
   chromium --app='https://www.netflix.com'
 
 # vim: set ft=sxhkdrc:

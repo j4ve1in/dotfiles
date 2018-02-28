@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-private keywords="`printf '' | dmenu-wrapper -p Search`"
-[[ $keywords ]] && chromium --uri="https://google.com/search?q=$keywords"
