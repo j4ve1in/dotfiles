@@ -12,6 +12,7 @@ revert() {
   fi
   nohup dunst &
   (( ! $touchpad )) && tpctl disable
+  xautolock -enable
 }
 
 trap revert HUP INT TERM
@@ -21,5 +22,6 @@ if [[ $dpms = on ]]; then
   xset +dpms dpms 5 5 5
   xset dpms force off
 fi
+xautolock -disable
 LC_ALL=en_US.UTF-8 i3lock -euni ~/.local/share/i3/lockscreen.png
 revert
