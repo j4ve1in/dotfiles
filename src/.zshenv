@@ -71,6 +71,10 @@ export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
 [[ ! -d $LESS_CACHE_HOME ]] && mkdir $LESS_CACHE_HOME
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
+# fzf-widgets
+export DOT_HOME=~/.local/src/github.com/ytet5uy4/dotfiles
+export DOT_BASE_DIR=$DOT_HOME/src
+
 # fzf
 [[ $DISPLAY ]] && fzf_prompt="`echo '\u25b6'`" || fzf_prompt='>'
 export FZF_DEFAULT_OPTS="
