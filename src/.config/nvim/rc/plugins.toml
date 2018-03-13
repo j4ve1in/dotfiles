@@ -38,12 +38,6 @@ call submode#map('tabmove', 'n', '', '<', ':tabmove -1<CR>')
 repo = 'cocopon/vaffle.vim'
 hook_add = ''' " {{{
 nnoremap <silent> <Space><C-f> :<C-u>Vaffle<CR>
-
-augroup vaffle
-  autocmd!
-  autocmd VimEnter * nested if @% == '' && buf#byte() == 0 | Vaffle | endif
-  autocmd FileType vaffle nnoremap <silent> <buffer> ~ :<C-u>Vaffle ~<CR>
-augroup END
 " }}} '''
 
 [[plugins]]

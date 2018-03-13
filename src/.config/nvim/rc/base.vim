@@ -19,6 +19,7 @@ set hidden
 set undofile
 set scrolloff=5
 set winheight=8
+set shortmess+=I
 set iskeyword+=.,#,-
 set tags+=.git/tags
 set virtualedit=block
