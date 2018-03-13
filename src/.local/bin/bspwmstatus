@@ -1,0 +1,17 @@
+#!/bin/bash
+
+bspc subscribe report | while read events; do
+  bar=''
+  IFS=':'
+  for event in $events; do
+    case $event in
+      O*|F*)
+        bar+="<fc=white,#00008b> ${event#?} </fc>"
+        ;;
+      o*|f*)
+        bar+=" ${event#?} "
+        ;;
+    esac
+  done
+  echo "$bar"
+done

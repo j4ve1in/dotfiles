@@ -1,15 +1,13 @@
 # Base
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 xbacklight = 2 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
 compton -b &               # Compositor
 tmux new-session -s 0 -d & # Multiplexer
 tpctl disable &            # Touchpad
 dunst &                    # Notification daemon
-sxhkd &                    # Hotkey daemon
+sxhkd -m -1 &              # Hotkey daemon
 
 # Imput Method
-export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
 fcitx &
 ## Override fcitx settings
 setxkbmap -option ctrl:nocaps
@@ -34,8 +32,7 @@ export SSH_AUTH_SOCK
 [[ -f $HOME/.xinitrc.local ]] && . $HOME/.xinitrc.local
 
 # Window Manager
-[[ -d $XDG_CACHE_HOME/xmonad/ ]] && mkdir -p $XDG_CACHE_HOME/xmonad/
-[[ -d $XDG_DATA_HOME/xmonad/ ]] && mkdir -p $XDG_DATA_HOME/xmonad/
-exec xmonad
+xsetroot -cursor_name left_ptr # for bspwm
+exec bspwm
 
 # vim: filetype=sh

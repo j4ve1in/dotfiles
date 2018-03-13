@@ -54,7 +54,7 @@ SwitchKey=Disabled
 # Interval of Two Key Input
 #TimeInterval=250
 # Switching Virtual Keyboard
-#VKSwitchKey=CTRL_ALT_B
+VKSwitchKey=
 # Switching Remind Mode
 #RemindSwitchKey=
 # Switching Full Width Character Mode
@@ -68,9 +68,9 @@ SwitchKey=Disabled
 # Choose Second and Third Candidate Word
 #SecondThirdCandWordKey=
 # Saving All Config and Input History
-#SaveAllKey=CTRL_ALT_S
-# Switch Embeded Preedit
-#SwitchPreedit=CTRL_ALT_P
+SaveAllKey=
+# Switch Embedded Preedit
+SwitchPreedit=
 # Previous Candidate Word
 #PrevWord=SHIFT_TAB
 # Next Candidate Word

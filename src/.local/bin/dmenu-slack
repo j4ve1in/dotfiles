@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-private file=$XDG_CONFIG_HOME/slack-switcher/team.json
+private file=$XDG_CONFIG_HOME/dmenu-slack/team.json
 
 if ! [[ -f $file ]]; then
-  notify-send slack-switcher "config file not found: $file"
+  notify-send dmenu-slack "config file not found: $file"
   exit 1
 fi
 

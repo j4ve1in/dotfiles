@@ -12,6 +12,7 @@ export DIFFPROG='nvim -d'
 export TERMINAL='termite'
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 export GPG_TTY=`tty`
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
 
 ## zsh
@@ -47,7 +48,6 @@ fpath=(
 )
 
 # Programming
-export KCODE='u'
 export GOPATH="$HOME/.local"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 

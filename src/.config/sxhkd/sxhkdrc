@@ -1,135 +1,159 @@
 # system operations
-## Restart window manager
-super + q
-  xmonad-restart
-
-## Reload configuration file
+## make sxhkd reload its configuration files
 super + Escape
-  pkill -USR1 -x sxhkd && \
-    notify-send sxhkd 'Reload configuration file'
+	pkill -USR1 -x sxhkd && \
+		notify-send sxhkd 'Reload configuration file'
+
+## quit bspwm normally
+super + alt + Escape
+	bspc quit
+
+## close and kill window
+super + {_,shift + }w
+	bspc node -{c,k}
+
+## set the window state
+super + ctrl + {t,f}
+	bspc node -t {tiled,floating}
+
+## focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+## focus or send to the next/previous desktop in the current monitor
+super + ctrl + {_,shift + }{h,l}
+	bspc {desktop -f,node -d} {prev,next}.local
+
+## expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+## contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+## move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ## Display
 super + ctrl + d
-  dmenu-display
+	dmenu-xrandr
 
 ## Volume
 XF86Audio{Lower,Raise}Volume
-  pamixer --{decrease,increase} 1 && \
-    paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+	pamixer --{decrease,increase} 1 && \
+		paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 XF86AudioMute
-  pamixer --toggle-mute && \
-    pamixer --get-mute && \
-    notify-send pamixer 'Set mute' || \
-    notify-send pamixer 'Set unmute'
+	pamixer --toggle-mute && \
+		pamixer --get-mute && \
+		notify-send pamixer 'Set mute' || \
+		notify-send pamixer 'Set unmute'
 
 ## Brightness
 XF86MonBrightnessUp
-  (( `xbacklight -get` < 15.5 )) && xbacklight + 5
+	(( `xbacklight -get` < 15.5 )) && xbacklight + 5
 
 XF86MonBrightnessDown
-  (( `xbacklight -get` > 5.5  )) && xbacklight - 5
+	(( `xbacklight -get` > 5.5  )) && xbacklight - 5
 
 ## Touchpad
 super + shift + t
-  tpctl {enable,disable} --notify
-
-## Screen Manager
-super + s
-  scrm
+	tpctl {enable,disable} --notify
 
 ## Screencast
 super + ctrl + s
-  scrc {start,stop}
+	scrc {start,stop}
 
 super + shift + s
-  scrc {start,stop} --select
+	scrc {start,stop} --select
 
 ## Screenshot
 {_,shift + }Print
-  scrs {_,--select}
+	scrs {_,--select}
 
 # launch applications
 ## Terminal
 super + Return
-  termite -e mux-loader
+	termite -e mux-loader
 
 ## Calendar
 super + c
-  chromium --app='https://www.google.com/calendar'
+	chromium --app='https://www.google.com/calendar'
 
 ## Launcher
-super + ctrl + l
-  dmenu_path | dmenu-wrapper -p Launcher | bash
+super + shift + @space
+	dmenu_path | dmenu-wrapper -p Launcher | bash
 
 ## Map
 super + ctrl + m
-  chromium --app='https://www.google.co.jp/maps'
+	chromium --app='https://www.google.co.jp/maps'
 
 ## Microblogging client
 super + shift + m
-  chromium --app='https://twitter.com/ytet5uy4/lists/home'
+	chromium --app='https://twitter.com/ytet5uy4/lists/home'
 
 ## Network Manager
 super + ctrl + n
-  termite -e 'sudo wifi-menu -o'
+	termite -e 'sudo wifi-menu -o'
 
 ## Password Manager
 super + ctrl + p
-  dmenu-lpass
+	dmenu-lpass
 
 super + shift + p
-  chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
+	chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
 
 ## Email
 super + shift + e
-  chromium --app='https://mail.zoho.com'
+	chromium --app='https://mail.zoho.com'
 
 ## Volume Manager
 super + shift + v
-  termite -e alsamixer
+	termite -e alsamixer
 
 ## System Activity
 super + a
-  termite -e 'vtop -t abyss'
+	termite -e 'vtop -t abyss'
 
 ## Browser
 super + b
-  chromium
+	chromium
 
 super + shift + b
-  chromium --incognito
+	chromium --incognito
 
 ## Instant Messenger
 super + i
-  slack-switcher
+	dmenu-slack
 
 ## Editor
 super + e
-  termite -e "$EDITOR"
+	termite -e "$EDITOR"
 
 ## File Manager
 super + f
-  urxvt -e 'ranger'
+	urxvt -e 'ranger'
 
 ## Network Switcher
 super + n
-  netctl-switcher
+	dmenu-netctl
 
 ## Power Manager
 super + p ; {p,r,l}
-  {systemctl poweroff, systemctl reboot, lock --dpms}
+	{systemctl poweroff, systemctl reboot, lock --dpms}
 
 ## Translate
 super + t
-  chromium --app='https://translate.google.com'
+	chromium --app='https://translate.google.com'
 
 ## RSS Reader
 super + r
-  termite -e feedlish
+	termite -e feedlish
 
 ## Video
 super + v
-  chromium --app='https://www.netflix.com'
+	chromium --app='https://www.netflix.com'
 
-# vim: set ft=sxhkdrc:
+# vim: set ft=sxhkdrc noexpandtab:
