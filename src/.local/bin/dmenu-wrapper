@@ -1,3 +1,15 @@
 #!/bin/bash
 
-cat - | command -p dmenu -i -sb '#00008b' -nb black -fn NotoSansMonoCJKJP:size=13.5 "$@"
+declare -A color
+color["nf"]='#a9a9a9' # Dark gray
+color["sb"]='#0018a8' # Blue (Pantone)
+color["sf"]='#f5f5f5' # White smoke
+cat - | \
+  command \
+    -p dmenu \
+    -i \
+    -nf "${color["nf"]}" \
+    -sf "${color["sf"]}" \
+    -sb "${color["sb"]}" \
+    -nb black \
+    -fn NotoSansMonoCJKJP:size=13.5 "$@"

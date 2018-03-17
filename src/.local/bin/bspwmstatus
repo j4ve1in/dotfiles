@@ -1,12 +1,15 @@
 #!/bin/bash
 
+declare -A color
+color["fg"]='#f5f5f5' # White smoke
+color["bg"]='#0018a8' # Blue (Pantone)
 bspc subscribe report | while read events; do
   bar=''
   IFS=':'
   for event in $events; do
     case $event in
       O*|F*)
-        bar+="<fc=white,#00008b> ${event#?} </fc>"
+        bar+="<fc=${color["fg"]},${color["bg"]}> ${event#?} </fc>"
         ;;
       o*|f*)
         bar+=" ${event#?} "

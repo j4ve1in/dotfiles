@@ -20,6 +20,10 @@ super + ctrl + {t,f}
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+# focus the next/previous node in the current desktop
+super + ctrl + {j,k}
+	bspc node -f {next,prev}.local
+
 ## focus or send to the next/previous desktop in the current monitor
 super + ctrl + {_,shift + }{h,l}
 	bspc {desktop -f,node -d} {prev,next}.local
