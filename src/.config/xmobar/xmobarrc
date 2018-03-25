@@ -1,0 +1,28 @@
+Config { font = "xft:Noto Sans Mono CJK JP:size=13"
+       , additionalFonts = ["xft:FontAwesome:size=13"]
+       , overrideRedirect = False
+       , commands = [ Run StdinReader
+                    , Run Com "echo" ["\xf00a"] "i-workspace" 0
+                    , Run Com "echo" ["\xf240"] "i-battery" 0
+                    , Run Com "echo" ["\xf133"] "i-cal" 0
+                    , Run Com "echo" ["\xf017"] "i-clock" 0
+                    , Run Battery [ "-t" , "<acstatus>"
+                                  , "-L", "20"
+                                  , "--low", "mediumpurple"
+                                  , "--"
+                                  , "-o", "<left>%"
+                                  , "-O", "<left>%"
+                                  , "-i", "<left>%"
+                    ] 10
+                    , Run Date "%m/%d" "date" 10
+                    , Run Date "%T" "time" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " <fc=#2196f3><fn=1>%i-workspace%</fn></fc> %StdinReader% }\
+                    \{ <fc=#2196f3><fn=1>%i-battery%</fn></fc> %battery% \
+                    \<fc=#2196f3><fn=1>%i-cal%</fn></fc> %date% \
+                    \<fc=#2196f3><fn=1>%i-clock%</fn></fc> %time% "
+       }
+
+-- vim: filetype=haskell

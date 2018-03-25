@@ -1,11 +1,6 @@
 #! /bin/sh
 
-bspwmstatus | \
-  xmobar \
-    -d \
-    -f 'xft:Noto Sans Mono CJK JP:size=13' \
-    -c '[Run Date "%m/%d %T" "date" 10, Run StdinReader]' \
-    -t ' %StdinReader% }{ %date% ' &
+bspwmstatus | xmobar &
 
 bspc monitor -d 1 2 3
 
