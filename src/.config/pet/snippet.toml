@@ -68,3 +68,9 @@
   description = "Analyze system boot-up performance"
   command = "sudo systemd-analyze"
   output = ""
+
+[[snippets]]
+  description = "Show true color"
+  command = "fillin 'hex={{color:hex}}; printf \"$hex: \\e[48;2;%d;%d;%dm     \\e[0m\\n\" \"0x${hex:1:2}\" \"0x${hex:3:2}\" \"0x${hex:5:2}\"'"
+  tag = ["color"]
+  output = ""
