@@ -7,8 +7,8 @@ bspc monitor -d 1 2 3
 bspc config border_width  2
 bspc config window_gap   12
 
-bspc config normal_border_color  '#343434' # Jet
-bspc config active_border_color  '#343434' # Jet
-bspc config focused_border_color '#1034a6' # Egyptian Blue
+bspc config normal_border_color  '#343434'
+bspc config active_border_color  '#343434'
+bspc config focused_border_color '#1034a6'
 
 bspc rule -a Zathura state=tiled
