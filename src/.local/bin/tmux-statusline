@@ -1,0 +1,10 @@
+#!/bin/bash
+
+tmux set-option -g status-left \
+  "#[fg=#e0e0e0,bg=#000099,bold]#{?client_prefix,#[reverse],} #S #{?client_prefix,#[fg=#000000]#[bg=#e0e0e0],#[fg=#000099]#[bg=#000000]}`printf '\ue0b0'`"
+tmux set-option -g status-right \
+  "#[fg=#0404ed,bg=#000000]`printf '\ue0b2'`#[fg=#e0e0e0,bg=#0404ed] #T #[fg=#000099,bg=#0404ed]`printf '\ue0b2'`#[fg=#e0e0e0,bg=#000099] #P "
+tmux set-window-option -g window-status-format \
+  "  #[fg=#585858,bg=#000000]#I #[fg=#585858,bg=#000000]`printf '\ue0b1'` #[fg=#0087FF]#W  "
+tmux set-window-option -g window-status-current-format \
+  "#[fg=#000000,bg=#0404ed]`printf '\ue0b0'`#[fg=#e0e0e0,bg=#0404ed] #I `printf '\ue0b1'` #[fg=#e0e0e0,bg=#0404ed]#W #[fg=#0404ed,bg=#000000]`printf '\ue0b0'`"
