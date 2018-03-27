@@ -51,13 +51,6 @@ fpath=(
 export GOPATH="$HOME/.local"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
-# urxvt
-if [[ $DISPLAY ]]; then
-  export URXVT_RUNTIME_DIR=$XDG_RUNTIME_DIR/urxvt
-  [[ ! -d $URXVT_RUNTIME_DIR ]] && mkdir $URXVT_RUNTIME_DIR
-  export RXVT_SOCKET="$URXVT_RUNTIME_DIR/urxvt-`hostname`"
-fi
-
 # Less
 export LESS='-ciMR' LESS_TERMCAP_{mb,md,me,se,so,ue,us}
 LESS_TERMCAP_mb=$'\e[1;31m'

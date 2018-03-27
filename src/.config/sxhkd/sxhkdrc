@@ -144,7 +144,7 @@ super + e
 
 ## File Manager
 super + f
-	urxvt -e 'ranger'
+	termite -e 'ranger'
 
 ## Network Switcher
 super + n

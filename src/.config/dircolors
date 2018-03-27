@@ -18,7 +18,6 @@ STICKY 37;44
 EXEC 01;32
 
 TERM linux
-TERM rxvt-unicode-256color
 TERM xterm-256color
 TERM xterm-termite
 TERM screen-256color
