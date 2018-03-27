@@ -1,8 +1,10 @@
 : "Plugin" && () {
   if [[ ! -d $ZPLUG_HOME ]]; then
-    if __lib::prompt 'Would you like to install zplug'; then
-      private cmd="git clone https://github.com/zplug/zplug $ZPLUG_HOME"
-      __lib::spinner 'Clone zplug' "$cmd" 1
+    if printf '? Would you like to clone zplug [Y/n] '; read -q; then
+      echo
+      git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    else
+      echo
     fi
   fi
   if [[ -d $ZPLUG_HOME ]]; then
@@ -11,17 +13,16 @@
 
     zplug 'zplug/zplug'
     zplug 'ytet5uy4/fzf-widgets'
-    zplug 'ytet5uy4/abyss.zsh', as:theme
     zplug 'zsh-users/zsh-completions'
     zplug 'zsh-users/zsh-autosuggestions'
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
     if ! zplug check; then
-      if __lib::prompt 'Would you like to install plugins of zsh'; then
-        private n=$(
-          __lib::print-color-bold "$(zplug check --verbose | wc -l)" "$fg[main]"
-        )
-        __lib::spinner "Clone $n plugins with zplug" 'zplug install' 1
+      if printf '? Would you like to install plugins of zsh [Y/n] '; read -q; then
+        echo
+        zplug install
+      else
+        echo
       fi
     fi
 
