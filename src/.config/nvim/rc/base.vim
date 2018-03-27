@@ -51,6 +51,7 @@ set number
 set showmatch
 set noshowmode
 set matchtime=1
+colorscheme abyss
 scriptencoding utf-8
 let &showbreak="\u21aa "
 set list listchars=tab:▸\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
