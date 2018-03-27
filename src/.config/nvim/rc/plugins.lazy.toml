@@ -66,14 +66,6 @@ on_ft = 'zsh'
 
 # Syntax {{{
 [[plugins]]
-repo = 'slim-template/vim-slim'
-on_ft = 'slim'
-
-[[plugins]]
-repo = 'yosssi/vim-ace'
-on_ft = 'ace'
-
-[[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
 hook_add ='''
@@ -96,10 +88,6 @@ repo = 'digitaltoad/vim-pug'
 on_ft = 'pug'
 
 [[plugins]]
-repo = 'pearofducks/ansible-vim'
-on_ft = 'yaml'
-
-[[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = 'tf'
 hook_add = '''
@@ -117,6 +105,10 @@ on_ft = 'sxhkdrc'
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
 # }}}
 
 # vim: foldmethod=marker:
