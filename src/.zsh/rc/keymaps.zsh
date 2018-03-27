@@ -2,10 +2,7 @@
 stty stop undef
 bindkey -v
 bindkey -v '^[[Z' reverse-menu-complete
-bindkey -v '^[e' exec-editor
 bindkey -v '^_' reload
-bindkey -v ' ' abbrev-expand
-bindkey -v '^x ' no-abbrev-expand
 
 # emacs like
 bindkey -v '^H' backward-delete-char
