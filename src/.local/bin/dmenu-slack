@@ -1,17 +1,16 @@
-#!/bin/zsh
+#!/bin/bash
 
-private file=$XDG_CONFIG_HOME/dmenu-slack/team.json
+declare file="$XDG_CONFIG_HOME/dmenu-slack/team.json"
 
 if ! [[ -f $file ]]; then
   notify-send dmenu-slack "config file not found: $file"
   exit 1
 fi
 
-private -a team
-team=(`jq -r '.team[].name' $file`)
+declare name=$(
+  printf '%s\n' $(jq -r '.team[].name' $file) | \
+    dmenu-wrapper -p Slack
+)
 
-private name=`printf '%s\n' $team | dmenu-wrapper -p Slack`
-
-private url=`jq -r ".team[]|select(.name==\"$name\").url" $file`
-
-[[ -n $url ]] && chromium --app="$url"
+jq -r ".team[]|select(.name==\"$name\").url" $file | \
+  xargs -I {} chromium --app={}

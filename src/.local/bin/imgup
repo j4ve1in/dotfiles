@@ -7,6 +7,11 @@ for env in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
 done
 
 for f in $@; do
+  case ${f##*.} in
+    jpg|jpeg ) jpegoptim -s $f ;;
+    png ) optipng -o 7 -strip all $f ;;
+    svg ) svgcleaner $f $f ;;
+  esac
   envchain ytet5uy4/aws aws s3 cp \
     --cache-control max-age=604800 \
     $f \

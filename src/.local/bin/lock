@@ -1,9 +1,7 @@
 #!/bin/bash
 
-touchpad="`tpctl status`"
-
 if [[ $1 = --dpms ]]; then
-  dpms=on
+  declare dpms=on
 fi
 
 revert() {
@@ -11,7 +9,7 @@ revert() {
     xset dpms 0 0 0
   fi
   nohup dunst &
-  (( ! $touchpad )) && tpctl disable
+  tpctl disable
   xautolock -enable
 }
 

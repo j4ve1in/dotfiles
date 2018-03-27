@@ -1,16 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 
-if ! lpass status -q; then
-  termite -e "lpass login $LPASS_USERNAME"
-fi
+lpass status -q || termite -e "lpass login $LPASS_USERNAME"
 
-name=`
+declare name=`
   lpass ls | \
     sed -E 's/ \[id: ([0-9]+)\]//' | \
     dmenu-wrapper -p Lastpass
 `
 
-if [[ $name ]]; then
-  lpass show --password -c $name
-  notify-send dmenu-lpass "Copied password: $name"
-fi
+[[ $name ]] && lpass show --password -c $name

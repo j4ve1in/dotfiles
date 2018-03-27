@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bspc subscribe report | while read events; do
-  bar=''
+  declare bar=''
   IFS=':'
   for event in $events; do
     case $event in

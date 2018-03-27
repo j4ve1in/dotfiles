@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tpm_repos="`tmux show-option -gqv @tpm_repos`"
+declare tpm_repos="`tmux show-option -gqv @tpm_repos`"
 tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "$tpm_repos"
 
 [[ -f $tpm_repos/tpm/tpm ]] && $tpm_repos/tpm/tpm

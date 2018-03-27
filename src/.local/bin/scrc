@@ -1,38 +1,31 @@
-#!/bin/zsh
+#!/bin/bash
 
-if [[ $1 = start ]]; then
-  if [[ $2 = --select ]]; then
-    slop() {
-      private touchpad="`tpctl status`"
-      (( ! $touchpad )) && tpctl enable
-      command slop "$@"
-      (( ! $touchpad )) && tpctl disable
-    }
+case $1 in
+  start )
+    declare size screennumber displayname
 
-    private size screennumber displayname
-    slop -b 1 -c 0,0,255,1 -f "%wx%h 0+%x,%y" | \
-      read size screennumber
-    displayname="$DISPLAY.$screennumber"
-  else
-    private size displayname
-    size="`xrandr | fgrep '*' | awk '{print $1}'`"
-    displayname="$DISPLAY"
-  fi
+    case $2 in
+      --select )
+        tpctl enable
+        read -r size screennumber < <(slop -b 1 -c 0,0,255,1 -f "%wx%h 0+%x,%y")
+        displayname="$DISPLAY.$screennumber"
+        tpctl disable
+        ;;
+      * )
+        size="`xrandr | fgrep '*' | awk '{print $1}'`"
+        displayname="$DISPLAY"
+        ;;
+    esac
 
-  private file
-  file="$HOME/Videos/Screencasts/`date +'%y-%m-%d_%02k%M%S'`.mp4"
-  ffmpeg -f x11grab \
-    -s "$size" \
-    -i "$displayname" \
-    -f alsa \
-    -i default \
-    -c:v libx264 \
-    -c:a aac \
-    -qp 0 \
-    "$file"
-  if [[ $? != 1 ]]; then
-    notify-send 'Recorded screen' "Saved to $file"
-  fi
-elif [[ $1 = stop ]]; then
-  killall ffmpeg
-fi
+    ffmpeg -f x11grab \
+      -s "$size" \
+      -i "$displayname" \
+      -f alsa \
+      -i default \
+      -c:v libx264 \
+      -c:a aac \
+      -qp 0 \
+      "$HOME/Videos/Screencasts/`date +'%y-%m-%d_%02k%M%S'`.mp4"
+    ;;
+  stop ) killall ffmpeg ;;
+esac

@@ -1,12 +1,12 @@
-#!/bin/zsh
+#!/bin/bash
 
-private hash='%C(blue)[%C(reset)%h%C(blue)]%C(reset)'
-private date='%C(blue)[%C(reset)%ad%C(blue)]%C(reset)'
-private subject='%s'
-private ref_name='%C(cyan)%d%C(reset)'
-private author_name='%C(black bold)%an'
+declare hash='%C(blue)[%C(reset)%h%C(blue)]%C(reset)'
+declare date='%C(blue)[%C(reset)%ad%C(blue)]%C(reset)'
+declare subject='%s'
+declare ref_name='%C(cyan)%d%C(reset)'
+declare author_name='%C(black bold)%an'
 
-private custom_format="$hash$date $subject $ref_name $author_name"
+declare custom_format="$hash$date $subject $ref_name $author_name"
 
 git log \
   --graph \
