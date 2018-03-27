@@ -129,9 +129,6 @@ repo = 'deris/vim-shot-f'
 
 [[plugins]]
 repo = 'kassio/neoterm'
-hook_add = ''' " {{{
-let g:neoterm_position = 'vertical'
-" }}} '''
 
 [[plugins]]
 repo = 'b4b4r07/vim-hcl'
