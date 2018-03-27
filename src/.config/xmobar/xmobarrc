@@ -24,5 +24,3 @@ Config { font = "xft:Noto Sans Mono CJK JP:size=13"
                     \<fc=#2196f3><fn=1>%i-cal%</fn></fc> %date% \
                     \<fc=#2196f3><fn=1>%i-clock%</fn></fc> %time% "
        }
-
--- vim: filetype=haskell

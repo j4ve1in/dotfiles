@@ -165,5 +165,3 @@ super + r
 ## Video
 super + v
 	chromium --app='https://www.netflix.com'
-
-# vim: set ft=sxhkdrc noexpandtab:

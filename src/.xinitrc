@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Base
 xbacklight = 3 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
@@ -34,5 +36,3 @@ export SSH_AUTH_SOCK
 # Window Manager
 xsetroot -cursor_name left_ptr # for bspwm
 exec bspwm
-
-# vim: filetype=sh

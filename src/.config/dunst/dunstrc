@@ -46,5 +46,3 @@
     background = "#000000"
     foreground = "#ffffff"
     timeout = 0
-
-# vim: filetype=cfg

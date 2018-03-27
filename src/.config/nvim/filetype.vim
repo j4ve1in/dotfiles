@@ -1,9 +1,6 @@
 augroup fileTypeDetect
   autocmd!
-  autocmd BufNewFile,BufRead *.go setfiletype go
-  autocmd BufNewFile,BufRead *.md setfiletype markdown
-  autocmd BufNewFile,BufRead *.slim setfiletype slim
-  autocmd BufNewFile,BufRead *.coffee setfiletype coffee
-  autocmd BufNewFile,BufRead *.jbuilder setfiletype ruby
-  autocmd BufNewFile,BufRead Dockerfile* set filetype=dockerfile
+  autocmd BufNewFile,BufRead dunstrc setfiletype cfg
+  autocmd BufNewFile,BufRead xmobarrc setfiletype haskell
+  autocmd BufNewFile,BufRead rifle.conf setfiletype cfg
 augroup END
