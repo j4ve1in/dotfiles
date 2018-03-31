@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-__fzf::widget::init || return 1
-
-pet search --query "$LBUFFER" | xsel -bi
-
-__fzf::widget::clear

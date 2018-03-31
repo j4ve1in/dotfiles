@@ -1,4 +1,0 @@
-*.zwc
-.zcompdump
-autoload/local/*
-rc/local.zsh

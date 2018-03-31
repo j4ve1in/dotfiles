@@ -1,21 +1,21 @@
 # Base
 RESET 0
-DIR 01;38;05;27
-LINK 01;36
-MULTIHARDLINK 00
+DIR 1;38;5;27
+LINK 1;36
+MULTIHARDLINK 0
 FIFO 40;33
-SOCK 01;35
-DOOR 01;35
-BLK 40;33;01
-CHR 40;33;01
-ORPHAN 40;31;01
+SOCK 1;35
+DOOR 1;35
+BLK 40;33;1
+CHR 40;33;1
+ORPHAN 40;31;1
 SETUID 37;41
 SETGID 30;43
 CAPABILITY 30;41
 STICKY_OTHER_WRITABLE 30;42
 OTHER_WRITABLE 34;42
 STICKY 37;44
-EXEC 01;32
+EXEC 1;32
 
 TERM linux
 TERM xterm-256color
@@ -23,34 +23,34 @@ TERM xterm-termite
 TERM screen-256color
 
 # ShellScript
-.sh  01;32
-.bash  01;32
-.zsh  01;32
+.sh  1;32
+.bash  1;32
+.zsh  1;32
 
 # archives or compressed
-.tar 01;31
-.tgz 01;31
-.zip 01;31
-.gz  01;31
-.rar 01;31
-.7z  01;31
+.tar 1;31
+.tgz 1;31
+.zip 1;31
+.gz  1;31
+.rar 1;31
+.7z  1;31
 
 # image formats
-.jpg 01;35
-.jpeg 01;35
-.gif 01;35
-.bmp 01;35
-.png 01;35
-.svg 01;35
+.jpg 1;35
+.jpeg 1;35
+.gif 1;35
+.bmp 1;35
+.png 1;35
+.svg 1;35
 
 # development Files
-.c 01;38;05;180
+.c 1;38;5;180
 
 # disk/disc images
-.iso 01;38;05;209
+.iso 1;38;5;209
 
 # fonts
-.ttf 00;38;05;81
-.otf 00;38;05;81
+.ttf 0;38;5;81
+.otf 0;38;5;81
 
 # vim: set filetype=dircolors:

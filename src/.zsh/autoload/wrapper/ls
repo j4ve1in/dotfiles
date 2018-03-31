@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-command ls -hF --color=always --time-style=long-iso $@

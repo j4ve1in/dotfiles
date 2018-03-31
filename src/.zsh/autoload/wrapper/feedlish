@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-envchain ytet5uy4/feedly feedlish $@

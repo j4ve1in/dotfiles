@@ -1,0 +1,10 @@
+alias cp 'cp -iv'
+alias exa 'exa -F --time-style long-iso'
+alias feedlish 'envchain ytet5uy4/feedly feedlish'
+alias ghi 'envchain ytet5uy4/gh ghi'
+alias git hub
+alias hub 'envchain ytet5uy4/gh hub'
+alias mv 'mv -iv'
+alias nvim 'nvim -p'
+alias rm 'rm -iv'
+alias ssh 'TERM=xterm-256color command ssh'
