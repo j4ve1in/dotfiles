@@ -4,10 +4,10 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
 # base
-export PAGER='less'
-export EDITOR='nvim -p'
+export PAGER=less
+export EDITOR=nvim
 export DIFFPROG='nvim -d'
-export TERMINAL='termite'
+export TERMINAL=termite
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
 export EXA_COLORS="$LS_COLORS"
 export GPG_TTY=`tty`
@@ -22,7 +22,7 @@ path=($path $HOME/.yarn/bin(N-/))
 
 # Programming
 export GOPATH="$HOME/.local"
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # Less
 export LESS='-ciMR' LESS_TERMCAP_{mb,md,me,se,so,ue,us}
@@ -33,7 +33,7 @@ LESS_TERMCAP_se=$'\e[0m'
 LESS_TERMCAP_so=$'\e[1;44m'
 LESS_TERMCAP_ue=$'\e[0m'
 LESS_TERMCAP_us=$'\e[1;36m'
-export LESS_CACHE_HOME=$XDG_CACHE_HOME/less
+export LESS_CACHE_HOME="$XDG_CACHE_HOME/less"
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
 # fzf
