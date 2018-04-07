@@ -85,7 +85,7 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'digitaltoad/vim-pug'
-on_ft = 'pug'
+on_ft = ['pug', 'vue']
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'

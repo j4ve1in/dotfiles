@@ -16,14 +16,6 @@ let g:auto_ctags_directory_list = ['.git']
 [[plugins]]
 repo = 'kana/vim-submode'
 hook_source = ''' " {{{
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>+')
-call submode#map('winsize', 'n', '', '-', '<C-w>-')
 call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove +1<CR>')
 call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove -1<CR>')
 call submode#map('tabmove', 'n', '', '>', ':tabmove +1<CR>')
@@ -93,9 +85,6 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'jaxbot/github-issues.vim'
-
-[[plugins]]
-repo = 'b4b4r07/vim-shellutils'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -297,10 +286,6 @@ depends = 'vim-textobj-user'
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
-depends = 'vim-textobj-user'
-
-[[plugins]]
-repo = 'rhysd/vim-textobj-ruby'
 depends = 'vim-textobj-user'
 
 [[plugins]]
