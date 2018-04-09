@@ -61,7 +61,6 @@
 
 [ghq]
     root = ~/.local/src
-    root = ~/.local/share/nvim/plugins/repos
 
 [filter "lfs"]
     clean = git-lfs clean %f
