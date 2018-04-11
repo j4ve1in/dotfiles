@@ -1,5 +1,7 @@
 #!/bin/sh
 
+lock
+
 # Base
 xbacklight = 3 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
@@ -19,10 +21,9 @@ xcape &
 
 # Screen locker
 xautolock \
-  -time 10 \
   -locker lock \
   -notify 30 \
-  -notifier "notify-send xautolock 'LOCKING screen in 30 seconds'" &
+  -notifier "notify-send -t 10000 xautolock 'LOCKING screen in 30 seconds'" &
 xss-lock -- lock &
 
 # Password Manager

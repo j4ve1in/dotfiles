@@ -1,25 +1,12 @@
 #!/bin/bash
 
-if [[ $1 = --dpms ]]; then
-  declare dpms=on
-fi
-
 revert() {
-  if [[ $dpms = on ]]; then
-    xset dpms 0 0 0
-  fi
-  nohup dunst &
+  killall -SIGUSR2 dunst
   tpctl disable
-  xautolock -enable
 }
 
 trap revert HUP INT TERM
-killall dunst
+killall -SIGUSR1 dunst
 tpctl enable
-if [[ $dpms = on ]]; then
-  xset +dpms dpms 5 5 5
-  xset dpms force off
-fi
-xautolock -disable
 LC_ALL=en_US.UTF-8 i3lock -euni ~/.local/share/i3/lockscreen.png
 revert

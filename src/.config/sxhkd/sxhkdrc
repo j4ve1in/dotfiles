@@ -152,7 +152,7 @@ super + n
 
 ## Power Manager
 super + p ; {p,r,l}
-	{systemctl poweroff, systemctl reboot, lock --dpms}
+	{systemctl poweroff, systemctl reboot, xautolock -locknow}
 
 ## Translate
 super + t
