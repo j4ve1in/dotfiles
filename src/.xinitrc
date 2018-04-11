@@ -1,7 +1,5 @@
 #!/bin/sh
 
-lock
-
 # Base
 xbacklight = 3 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
