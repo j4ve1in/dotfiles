@@ -6,7 +6,7 @@ set fish_color_autosuggestion  '#767676'
 set fish_color_cancel          '#767676'
 set fish_color_command         '#005fd7'
 set fish_color_comment         '#767676'
-set fish_color_end             '#885ead' --bold
+set fish_color_end             '#00afff' --bold
 set fish_color_error           '#ff0000'
 set fish_color_escape          '#00afff' --bold
 set fish_color_history_current --bold
