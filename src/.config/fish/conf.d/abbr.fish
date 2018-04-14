@@ -10,5 +10,6 @@ abbr -a m mv
 abbr -a md mkdir
 abbr -a n nvim
 abbr -a p 'xsel >'
-abbr -a r ripgrep
+abbr -a r rg
+abbr -a s sudo
 abbr -a se sudoedit
