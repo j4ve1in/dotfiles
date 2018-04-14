@@ -12,7 +12,7 @@ set fish_color_escape          '#00afff' --bold
 set fish_color_history_current --bold
 set fish_color_match           --background='#005FFF'
 set fish_color_normal          normal
-set fish_color_operator        '#885ead'
+set fish_color_operator        '#00afff'
 set fish_color_param           '#00afff'
 set fish_color_quote           '#767676'
 set fish_color_redirection     '#00afff'
