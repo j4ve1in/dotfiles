@@ -17,24 +17,6 @@
   output = ""
 
 [[snippets]]
-  description = "Show 256 color"
-  command = "for n in {000..255}; do print -nP \"%F{$n}$n %f\"; (( $n % 16 == 15 )) && echo; done"
-  tag = ["zsh", "color"]
-  output = ""
-
-[[snippets]]
-  description = "Check http status code"
-  command = "fillin curl -LI {{http_code:url}} -w '%{http_code}\\n' -o /dev/null -s"
-  tag = ["http", "status"]
-  output = ""
-
-[[snippets]]
-  description = "Check zsh load time"
-  command = "repeat 10 time zsh -i -c exit"
-  tag = ["zsh"]
-  output = ""
-
-[[snippets]]
   description = "Show git alias"
   command = "git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t -> \\2/'"
   tag = ["git"]
