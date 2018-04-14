@@ -2,12 +2,31 @@ set fish_greeting
 set -g fish_key_bindings fish_hybrid_key_bindings
 
 # color
-set fish_color_end          '#885ead' '--bold'
-set fish_color_search_match 'white' '--background=#005FFF'
+set fish_color_autosuggestion  '#767676'
+set fish_color_cancel          '#767676'
+set fish_color_command         '#005fd7'
+set fish_color_comment         '#767676'
+set fish_color_end             '#885ead' --bold
+set fish_color_error           '#ff0000'
+set fish_color_escape          '#00afff' --bold
+set fish_color_history_current --bold
+set fish_color_match           --background='#005FFF'
+set fish_color_normal          normal
+set fish_color_operator        '#885ead'
+set fish_color_param           '#00afff'
+set fish_color_quote           '#767676'
+set fish_color_redirection     '#00afff'
+set fish_color_search_match    white --background='#005FFF'
+set fish_color_valid_path      --underline
 
 set fish_pager_color_description '#767676'
-set fish_pager_color_prefix      '#00AFFF' '--bold'
+set fish_pager_color_prefix      '#00AFFF' --bold
 set fish_pager_color_progress    '#00AFFF'
+
+# prompt
+set fish_color_cwd    '#767676'
+set fish_color_git    '#767676'
+set fish_color_prompt '#005FFF'
 
 # git prompt
 set __fish_git_prompt_showdirtystate yes
@@ -20,7 +39,7 @@ set __fish_git_prompt_color_stagedstate '#5FAFFF'
 set __fish_git_prompt_color_stashstate  '#5FAFFF'
 
 set __fish_git_prompt_char_untrackedfiles  '?'
-set __fish_git_prompt_char_stashstate      \u254d
-set __fish_git_prompt_char_upstream_ahead  \u2191
-set __fish_git_prompt_char_upstream_behind \u2193
+set __fish_git_prompt_char_stashstate      '╍'
+set __fish_git_prompt_char_upstream_ahead  '↑'
+set __fish_git_prompt_char_upstream_behind '↓'
 set __fish_git_prompt_char_upstream_equal  ''
