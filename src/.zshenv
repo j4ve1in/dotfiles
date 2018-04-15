@@ -9,7 +9,7 @@ export EDITOR=nvim
 export DIFFPROG='nvim -d'
 export TERMINAL=termite
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
-export EXA_COLORS="$LS_COLORS"
+export EXA_COLORS="ur=1;38;5;27:uw=1;38;5;75:gr=;38;5;27:gw=38;5;75:tr=;38;5;27:tw=38;5;75:$LS_COLORS:da=1;38;5;27:sn=1;38;5;75:sb=38;5;75:uu=38;5;245:gm=1;38;5;27:lp=38;5;245"
 export GPG_TTY=`tty`
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'

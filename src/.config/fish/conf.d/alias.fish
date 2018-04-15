@@ -1,5 +1,5 @@
 alias cp 'cp -iv'
-alias exa 'exa -F --time-style long-iso'
+alias exa 'exa -F --time-style long-iso --git'
 alias feedlish 'envchain ytet5uy4/feedly feedlish'
 alias ghi 'envchain ytet5uy4/gh ghi'
 alias git hub

@@ -22,35 +22,4 @@ TERM xterm-256color
 TERM xterm-termite
 TERM screen-256color
 
-# ShellScript
-.sh  1;32
-.bash  1;32
-.zsh  1;32
-
-# archives or compressed
-.tar 1;31
-.tgz 1;31
-.zip 1;31
-.gz  1;31
-.rar 1;31
-.7z  1;31
-
-# image formats
-.jpg 1;35
-.jpeg 1;35
-.gif 1;35
-.bmp 1;35
-.png 1;35
-.svg 1;35
-
-# development Files
-.c 1;38;5;180
-
-# disk/disc images
-.iso 1;38;5;209
-
-# fonts
-.ttf 0;38;5;81
-.otf 0;38;5;81
-
 # vim: set filetype=dircolors:
