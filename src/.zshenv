@@ -42,6 +42,7 @@ export LESS_CACHE_HOME="$XDG_CACHE_HOME/less"
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
 # fzf
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_DEFAULT_OPTS="
   --ansi
   --exit-0

@@ -1,6 +1,5 @@
 function __fzf_insert_files
-  fd -H | \
-    fzf -m | \
+  fzf -m | \
     while read -l file
       set files $files $file
     end
