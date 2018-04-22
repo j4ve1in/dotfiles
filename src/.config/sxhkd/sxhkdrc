@@ -154,10 +154,6 @@ super + n
 super + p ; {p,r,l}
 	{systemctl poweroff, systemctl reboot, xautolock -locknow}
 
-## Translate
-super + t
-	chromium --app='https://translate.google.com'
-
 ## RSS Reader
 super + r
 	termite -e feedlish
