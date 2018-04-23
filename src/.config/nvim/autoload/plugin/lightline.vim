@@ -42,25 +42,16 @@ let s:p.tabline.tabsel = [[s:white, s:darkblue]]
 let g:lightline#colorscheme#abyss#palette = lightline#colorscheme#flatten(s:p)
 
 function! plugin#lightline#syntaxcheck() abort
-  if !exists('*neomake#statusline#LoclistCounts')
-    return ''
-  endif
+  let l:counts = ale#statusline#Count(bufnr(''))
 
-  let l:total = 0
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
 
-  for l:v in values(neomake#statusline#LoclistCounts())
-    let l:total += l:v
-  endfor
-
-  for l:v in items(neomake#statusline#QflistCounts())
-    let l:total += l:v
-  endfor
-
-  if l:total == 0
-    return ''
-  endif
-
-  return 'line '.getloclist(0)[0].lnum. ', 1 of '.l:total
+  return l:counts.total == 0 ? '' : printf(
+  \   "\uf05e %d \uf071 %d",
+  \   all_non_errors,
+  \   all_errors
+  \)
 endfunction
 
 function! plugin#lightline#percent() abort

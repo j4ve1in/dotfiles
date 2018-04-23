@@ -295,23 +295,28 @@ repo = 'vimtaku/vim-textobj-sigil'
 repo = 'jasonlong/vim-textobj-css'
 # }}}
 
-# Syntax Check {{{
+# Lint {{{
 [[plugins]]
-repo = 'neomake/neomake'
+repo = 'w0rp/ale'
 hook_add = ''' " {{{
-let g:neomake_place_signs = 0
-nnoremap <silent> <C-m> :<C-u>Neomake<CR>
+let g:ale_lint_on_text_changed = 0
+let g:ale_set_highlights = 0
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+highlight ALEErrorSign guifg='#FE0000'
+highlight ALEWarningSign guifg='#FE0000'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-augroup neomake_settings
+nmap <silent> <Space><C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <Space><C-j> <Plug>(ale_next_wrap)
+
+augroup ale_settings
   autocmd!
-  autocmd BufWritePost * Neomake
-  autocmd User NeomakeFinished HierStart
-  autocmd User NeomakeFinished call lightline#update()
+  autocmd User ALELint call lightline#update()
 augroup END
 " }}} '''
-
-[[plugins]]
-repo = 'cohama/vim-hier'
 # }}}
 
 # vim: foldmethod=marker:
