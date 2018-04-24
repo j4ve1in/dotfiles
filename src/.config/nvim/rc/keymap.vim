@@ -57,21 +57,9 @@ if has('unix')
   map! <NUL> <C-Space>
 endif
 
-" quickfix
-nnoremap <silent> <C-q> :<C-u>copen<CR>
-nnoremap <silent> <C-q>j :<C-u>cnext<CR>
-nnoremap <silent> <C-q>k :<C-u>cprevious<CR>
-nnoremap <silent> <C-q>gg :<C-u>cfirst<CR>
-nnoremap <silent> <C-q>G  :<C-u>clast<CR>
-augroup quickfix_keymap
-  autocmd!
-  autocmd BufReadPost quickfix nnoremap <silent> <buffer> q :<C-u>q<CR>
-augroup END
-
 " autoload
 nmap gw <Autoload>(sudo-write)
 nmap go <Autoload>(append-line-up)
 nmap gO <Autoload>(append-line-down)
-nmap gsi <Autoload>(syntax-info)
 nmap <C-e> <Autoload>(symlink-follow)
 nmap <Space>.  <Autoload>(source-init)

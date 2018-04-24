@@ -31,11 +31,6 @@ vmap <C-_> <Plug>(caw:hatpos:toggle)
 '''
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-on_if = 'has("python3")'
-hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
-
-[[plugins]]
 repo = 'fatih/vim-hclfmt'
 on_ft = 'hcl'
 hook_add = '''
@@ -44,7 +39,7 @@ let g:tf_fmt_autosave = 0
 let g:nomad_fmt_autosave = 0
 augroup hclfmt
   autocmd!
-  autocmd FileType hcl nnoremap = :<C-u>HclFmt<CR>:<C-u>Neomake<CR>
+  autocmd FileType hcl nnoremap = :<C-u>HclFmt<CR>
 augroup END
 '''
 
@@ -53,14 +48,6 @@ augroup END
 repo = 'zchee/deoplete-go'
 build = 'make'
 on_ft = 'go'
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = 'vim'
-
-[[plugins]]
-repo = 'zchee/deoplete-zsh'
-on_ft = 'zsh'
 
 # Syntax
 [[plugins]]
@@ -92,7 +79,7 @@ hook_add = '''
 let g:terraform_fmt_on_save = 1
 augroup vim-terraform
   autocmd!
-  autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>:<C-u>Neomake<CR>
+  autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>
 augroup END
 '''
 
@@ -107,3 +94,6 @@ on_ft = 'vue'
 [[plugins]]
 repo = 'dag/vim-fish'
 on_ft = 'fish'
+
+[[plugins]]
+repo = 'b4b4r07/vim-hcl'

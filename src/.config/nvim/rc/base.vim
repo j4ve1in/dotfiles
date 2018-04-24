@@ -44,6 +44,11 @@ augroup im
   autocmd InsertLeave * call im#fcitx()
 augroup END
 
+augroup term
+  autocmd!
+  autocmd TermOpen * setlocal nonumber
+augroup END
+
 " apperance
 set ruler
 set number
@@ -78,9 +83,8 @@ augroup file_type_indent
 augroup END
 
 "" Terminal
-augroup file_type_term_run
+augroup file_type_term
   autocmd!
-  autocmd FileType zsh nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('zsh')<CR>
   autocmd FileType bash nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('bash')<CR>
 augroup END
 
