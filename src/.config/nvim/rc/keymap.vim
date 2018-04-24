@@ -1,13 +1,12 @@
-" init {{{
+" init
 nnoremap <silent> <Autoload>(sudo-write)  :<C-u>call sudo#write()<CR>
 nnoremap <silent> <Autoload>(symlink-follow) :<C-u>call symlink#follow()<CR>
 nnoremap <silent> <Autoload>(append-line-up) :<C-u>call append#line('up')<CR>
 nnoremap <silent> <Autoload>(append-line-down) :<C-u>call append#line('down')<CR>
 nnoremap <silent> <Autoload>(syntax-info) :<C-u>call syntax#info()<CR>
 nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
-" }}}
 
-" base {{{
+" base
 cnoremap ; <CR>
 nnoremap s "_s
 nnoremap <silent> <ESC> <C-l>:<C-u>nohlsearch<CR>
@@ -24,9 +23,8 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-" }}}
 
-" emacs like {{{
+" emacs like
 inoremap <C-j> <CR><TAB>
 inoremap <C-a> <ESC>I
 inoremap <C-e> <ESC>A
@@ -40,30 +38,26 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-d> <DEL>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
-" }}}
 
-" Substitute {{{
+" Substitute
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
-" }}}
 
-" Search {{{
+" Search
 nnorema <silent> n nzzzv
 nnorema <silent> N Nzzzv
 nnorema <silent> * *zzzv
 nnorema <silent> # #zzzv
 nnorema <silent> g* g*zzzv
 nnorema <silent> g# g#zzzv
-" }}}
 
-" C-Space {{{
+" C-Space
 if has('unix')
   map <NUL> <C-Space>
   map! <NUL> <C-Space>
 endif
-" }}}
 
-" quickfix {{{
+" quickfix
 nnoremap <silent> <C-q> :<C-u>copen<CR>
 nnoremap <silent> <C-q>j :<C-u>cnext<CR>
 nnoremap <silent> <C-q>k :<C-u>cprevious<CR>
@@ -73,13 +67,11 @@ augroup quickfix_keymap
   autocmd!
   autocmd BufReadPost quickfix nnoremap <silent> <buffer> q :<C-u>q<CR>
 augroup END
-" }}}
 
-" autoload {{{
+" autoload
 nmap gw <Autoload>(sudo-write)
 nmap go <Autoload>(append-line-up)
 nmap gO <Autoload>(append-line-down)
 nmap gsi <Autoload>(syntax-info)
 nmap <C-e> <Autoload>(symlink-follow)
 nmap <Space>.  <Autoload>(source-init)
-" }}}

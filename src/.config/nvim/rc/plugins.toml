@@ -1,4 +1,4 @@
-# Base {{{
+# Base
 [[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = 'let g:dein#types#git#clone_depth = 1'
@@ -8,29 +8,29 @@ repo = 'vim-scripts/surround.vim'
 
 [[plugins]]
 repo = 'soramugi/auto-ctags.vim'
-hook_add = ''' " {{{
+hook_add = '''
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git']
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'kana/vim-submode'
-hook_source = ''' " {{{
+hook_source = '''
 call submode#enter_with('tabmove', 'n', '', '<Space>t>', ':tabmove +1<CR>')
 call submode#enter_with('tabmove', 'n', '', '<Space>t<', ':tabmove -1<CR>')
 call submode#map('tabmove', 'n', '', '>', ':tabmove +1<CR>')
 call submode#map('tabmove', 'n', '', '<', ':tabmove -1<CR>')
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'cocopon/vaffle.vim'
-hook_add = ''' " {{{
+hook_add = '''
 nnoremap <silent> <Space><C-f> :<C-u>Vaffle<CR>
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = ''' " {{{
+hook_add = '''
 let g:lightline = {
       \   'colorscheme': 'abyss',
       \   'active': {
@@ -64,12 +64,12 @@ else
   let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
   let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 endif
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
-hook_add = ''' " {{{
+hook_add = '''
 let g:precious_enable_switchers = {
       \ "*" : {
       \  "setfiletype" : 0
@@ -78,7 +78,7 @@ let g:precious_enable_switchers = {
       \  "setfiletype" : 1
       \ },
       \}
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -88,7 +88,7 @@ repo = 'jaxbot/github-issues.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
-hook_add = ''' " {{{
+hook_add = '''
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_prompt = '{n}> '
 let g:EasyMotion_startofline = 0
@@ -111,7 +111,7 @@ augroup easymotion
   autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-j> <Over>(em-scroll-f)
   autocmd VimEnter,BufEnter * :EMCommandLineNoreMap <C-k> <Over>(em-scroll-b)
 augroup END
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'deris/vim-shot-f'
@@ -121,13 +121,12 @@ repo = 'kassio/neoterm'
 
 [[plugins]]
 repo = 'b4b4r07/vim-hcl'
-# }}}
 
-# Selector {{{
+# Selector
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
-hook_add = ''' " {{{
+hook_add = '''
 nnoremap <denite> <Nop>
 nmap <C-Space> <denite>
 
@@ -140,8 +139,8 @@ nnoremap <silent> <denite>/ :<C-u>Denite grep<CR>
 nnoremap <silent> <denite>? :<C-u>Denite grep -default-action=tabswitch<CR>
 nnoremap <silent> <denite>. :<C-u>Denite file_rec -path=$DOT_BASE_DIR -input=.<CR>
 nnoremap <silent> <denite>> :<C-u>Denite file_rec -path=$DOT_BASE_DIR -input=. -default-action=tabswitch<CR>
-" }}} '''
-hook_source = ''' " {{{
+'''
+hook_source = '''
 call denite#custom#option('default', 'winheight', 10)
 call denite#custom#option('default', 'prompt', '>')
 call denite#custom#option('default', 'statusline', 0)
@@ -162,7 +161,7 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ 'img/', 'fonts/'])
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -170,17 +169,16 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'Jagua/vim-denite-ghq'
 depends = 'denite.vim'
-hook_add = ''' " {{{
+hook_add = '''
 nnoremap <silent> <denite>h :<C-u>Denite ghq<CR>
-" }}} '''
-# }}}
+'''
 
-# Completion {{{
+# Completion
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_i = 1
-hook_source = ''' " {{{
+hook_source = '''
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#max_list = 5
@@ -192,12 +190,12 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
   return deoplete#close_popup() . "\<CR>"
 endfunction
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
 on_map = '<Plug>(neosnippet_expand_'
-hook_add = ''' " {{{
+hook_add = '''
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -213,7 +211,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
@@ -223,12 +221,11 @@ repo = 'Shougo/neopairs.vim'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
-# }}}
 
-# VCS {{{
+# VCS
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-hook_add = ''' " {{{
+hook_add = '''
 nnoremap [git] <Nop>
 nmap <Space>g [git]
 
@@ -250,19 +247,18 @@ nnoremap [git]w :<C-u>Gwrite
 nnoremap [git]r :<C-u>Gread
 nnoremap [git]rm :<C-u>Gremove
 nnoremap [git]m :<C-u>Gmove
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'cohama/agit.vim'
-hook_add = ''' " {{{
+hook_add = '''
 nnoremap [git] <Nop>
 nmap <Space><C-g> [Agit]
 
 nnoremap [Agit] :<C-u>AgitFile<CR>
-" }}} '''
-# }}}
+'''
 
-# Operator {{{
+# Operator
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
@@ -270,13 +266,12 @@ repo = 'kana/vim-operator-user'
 repo = 'haya14busa/vim-operator-flashy'
 on_map = '<Plug>(operator-flashy'
 depends = 'vim-operator-user'
-hook_add = ''' " {{{
+hook_add = '''
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
-" }}} '''
-# }}}
+'''
 
-# Textobj {{{
+# Textobj
 [[plugins]]
 repo = 'kana/vim-textobj-user'
 
@@ -293,12 +288,11 @@ repo = 'vimtaku/vim-textobj-sigil'
 
 [[plugins]]
 repo = 'jasonlong/vim-textobj-css'
-# }}}
 
-# Lint {{{
+# Lint
 [[plugins]]
 repo = 'w0rp/ale'
-hook_add = ''' " {{{
+hook_add = '''
 let g:ale_lint_on_text_changed = 0
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
@@ -316,7 +310,4 @@ augroup ale_settings
   autocmd!
   autocmd User ALELint call lightline#update()
 augroup END
-" }}} '''
-# }}}
-
-# vim: foldmethod=marker:
+'''

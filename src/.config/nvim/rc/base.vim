@@ -1,4 +1,4 @@
-" base {{{
+" base
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
 let g:loaded_tarPlugin         = 1
@@ -43,9 +43,8 @@ augroup im
   autocmd!
   autocmd InsertLeave * call im#fcitx()
 augroup END
-" }}}
 
-" apperance {{{
+" apperance
 set ruler
 set number
 set showmatch
@@ -66,15 +65,8 @@ augroup nohlsearch
   autocmd InsertEnter * let b:_search=@/|let @/=''
   autocmd InsertLeave * let @/=get(b:,'_search','')
 augroup END
-" }}}
 
-" File {{{
-"" Base
-augroup file_type_base
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
+" File
 "" Indent
 augroup file_type_indent
   autocmd!
@@ -97,4 +89,3 @@ augroup file_type_template
   autocmd!
   autocmd BufNewFile *.* silent! call skel#load()
 augroup END
-" }}}

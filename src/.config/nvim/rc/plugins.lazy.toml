@@ -1,34 +1,34 @@
-# Base {{{
+# Base
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = 'open-browser.vim'
 on_ft = 'markdown'
 on_map = '<Plug>'
-hook_add = ''' "{{{
+hook_add = '''
 augroup previm
   autocmd!
   autocmd FileType markdown nnoremap [Previm] <Nop>
   autocmd FileType markdown nmap <Space><C-p> [Previm]
   autocmd FileType markdown nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
 augroup END
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = '<Plug>(openbrowser-smart-search)'
-hook_add = ''' " {{{
+hook_add = '''
 let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
 on_map = '<Plug>(caw:hatpos:toggle)'
-hook_add = ''' " {{{
+hook_add = '''
 nmap <C-_> <Plug>(caw:hatpos:toggle)
 vmap <C-_> <Plug>(caw:hatpos:toggle)
-" }}} '''
+'''
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
@@ -47,9 +47,8 @@ augroup hclfmt
   autocmd FileType hcl nnoremap = :<C-u>HclFmt<CR>:<C-u>Neomake<CR>
 augroup END
 '''
-# }}}
 
-# Completion {{{
+# Completion
 [[plugins]]
 repo = 'zchee/deoplete-go'
 build = 'make'
@@ -62,9 +61,8 @@ on_ft = 'vim'
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = 'zsh'
-# }}}
 
-# Syntax {{{
+# Syntax
 [[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
@@ -109,6 +107,3 @@ on_ft = 'vue'
 [[plugins]]
 repo = 'dag/vim-fish'
 on_ft = 'fish'
-# }}}
-
-# vim: foldmethod=marker:
