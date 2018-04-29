@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ `systemctl is-active openvpn-client@expressvpn.service` = active ]]; then
+  echo -e '\uf084'
+fi

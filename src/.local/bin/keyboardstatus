@@ -1,0 +1,3 @@
+#!/bin/bash
+
+[[ `fcitx-remote` != 2 ]] && echo en || echo jp

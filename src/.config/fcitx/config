@@ -119,7 +119,7 @@ ShareStateAmongWindow=All
 # Show Input Method Hint After Input method changed
 # Available Value:
 # True False
-#ShowInputWindowAfterTriggering=True
+ShowInputWindowAfterTriggering=False
 # Show Input Method Hint After Input method changed and Focus in
 # Available Value:
 # True False
@@ -127,7 +127,7 @@ ShareStateAmongWindow=All
 # Input Method Hint will be only shown when state is active
 # Available Value:
 # True False
-#ShowInputWindowOnlyWhenActive=True
+ShowInputWindowOnlyWhenActive=False
 # Show Input Speed
 # Available Value:
 # True False

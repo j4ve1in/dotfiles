@@ -2,24 +2,23 @@ Config { font = "xft:Noto Sans Mono CJK JP:size=13"
        , additionalFonts = ["xft:FontAwesome:size=13"]
        , overrideRedirect = False
        , commands = [ Run StdinReader
-                    , Run Com "echo" ["\xf240"] "i-battery" 0
-                    , Run Com "echo" ["\xf133"] "i-cal" 0
-                    , Run Com "echo" ["\xf017"] "i-clock" 0
+                    , Run Com "keyboardstatus" [""] "keyboard" 5
+                    , Run Com "vpnstatus" [""] "vpn" 10
                     , Run Battery [ "-t" , "<acstatus>"
                                   , "-L", "20"
                                   , "--low", "mediumpurple"
                                   , "--"
-                                  , "-o", "<left>%"
-                                  , "-O", "<left>%"
-                                  , "-i", "<left>%"
+                                  , "-o", "<left>% <fc=#2196f3><fn=1></fn></fc>"
+                                  , "-O", "<left>% <fc=#2196f3><fn=1></fn></fc>"
+                                  , "-i", "<left>% <fc=#2196f3><fn=1></fn></fc>"
                     ] 10
-                    , Run Date "%m/%d" "date" 10
-                    , Run Date "%T" "time" 10
+                    , Run Date "%m/%d %R" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{\
-                    \<fc=#2196f3><fn=1>%i-battery%</fn></fc> %battery% \
-                    \<fc=#2196f3><fn=1>%i-cal%</fn></fc> %date% \
-                    \<fc=#2196f3><fn=1>%i-clock%</fn></fc> %time% "
+       , template = " %StdinReader% }{ \
+                    \%keyboard% \
+                    \<fc=#2196f3><fn=1>%vpn%</fn></fc> \
+                    \%battery% \
+                    \%date% "
        }
