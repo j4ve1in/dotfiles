@@ -1,14 +1,10 @@
-" init
-nnoremap <silent> <Autoload>(sudo-write)  :<C-u>call sudo#write()<CR>
-nnoremap <silent> <Autoload>(symlink-follow) :<C-u>call symlink#follow()<CR>
-nnoremap <silent> <Autoload>(append-line-up) :<C-u>call append#line('up')<CR>
-nnoremap <silent> <Autoload>(append-line-down) :<C-u>call append#line('down')<CR>
-nnoremap <silent> <Autoload>(syntax-info) :<C-u>call syntax#info()<CR>
-nnoremap <silent> <Autoload>(source-init) :<C-u>call source#init()<CR>
-
 " base
-cnoremap ; <CR>
+nmap <silent> go :<C-u>call append#line('up')<CR>
+nmap <silent> gO :<C-u>call append#line('down')<CR>
+nmap <silent> <Space>. :<C-u>call source#init()<CR>
+nnoremap Y y$
 nnoremap s "_s
+nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <silent> <ESC> <C-l>:<C-u>nohlsearch<CR>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
@@ -39,10 +35,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <DEL>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
-" Substitute
-nnoremap gs :<C-u>%s///g<Left><Left><Left>
-vnoremap gs :s///g<Left><Left><Left>
-
 " Search
 nnorema <silent> n nzzzv
 nnorema <silent> N Nzzzv
@@ -50,16 +42,3 @@ nnorema <silent> * *zzzv
 nnorema <silent> # #zzzv
 nnorema <silent> g* g*zzzv
 nnorema <silent> g# g#zzzv
-
-" C-Space
-if has('unix')
-  map <NUL> <C-Space>
-  map! <NUL> <C-Space>
-endif
-
-" autoload
-nmap gw <Autoload>(sudo-write)
-nmap go <Autoload>(append-line-up)
-nmap gO <Autoload>(append-line-down)
-nmap <C-e> <Autoload>(symlink-follow)
-nmap <Space>.  <Autoload>(source-init)

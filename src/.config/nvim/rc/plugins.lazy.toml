@@ -1,15 +1,10 @@
-# Base
 [[plugins]]
-repo = 'kannokanno/previm'
-depends = 'open-browser.vim'
+repo = 'shime/vim-livedown'
 on_ft = 'markdown'
-on_map = '<Plug>'
 hook_add = '''
-augroup previm
+augroup livedown
   autocmd!
-  autocmd FileType markdown nnoremap [Previm] <Nop>
-  autocmd FileType markdown nmap <Space><C-p> [Previm]
-  autocmd FileType markdown nnoremap <silent> [Previm] :<C-u>PrevimOpen<CR>
+  autocmd FileType markdown nmap <silent> gm :<C-u>LivedownToggle<CR>
 augroup END
 '''
 
@@ -20,6 +15,49 @@ hook_add = '''
 let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_i = 1
+hook_source = '''
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#max_list = 5
+
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+on_map = '<Plug>(neosnippet_expand_'
+hook_add = '''
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 '''
 
 [[plugins]]
@@ -43,13 +81,6 @@ augroup hclfmt
 augroup END
 '''
 
-# Completion
-[[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = 'go'
-
-# Syntax
 [[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'

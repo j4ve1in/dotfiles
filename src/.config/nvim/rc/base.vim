@@ -17,7 +17,6 @@ let g:loaded_netrwFileHandlers = 1
 
 set hidden
 set undofile
-set scrolloff=5
 set winheight=8
 set shortmess+=I
 set iskeyword+=.,#,-
@@ -44,11 +43,6 @@ augroup im
   autocmd InsertLeave * call im#fcitx()
 augroup END
 
-augroup term
-  autocmd!
-  autocmd TermOpen * setlocal nonumber
-augroup END
-
 " apperance
 set ruler
 set number
@@ -72,7 +66,6 @@ augroup nohlsearch
 augroup END
 
 " File
-"" Indent
 augroup file_type_indent
   autocmd!
   autocmd FileType * setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smartindent
@@ -82,13 +75,11 @@ augroup file_type_indent
   autocmd FileType man setlocal tabstop=8
 augroup END
 
-"" Terminal
 augroup file_type_term
   autocmd!
   autocmd FileType bash nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('bash')<CR>
 augroup END
 
-"" Template
 augroup file_type_template
   autocmd!
   autocmd BufNewFile *.* silent! call skel#load()
