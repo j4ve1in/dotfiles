@@ -18,7 +18,6 @@ hook_add = '''
 let g:lightline = {
       \   'colorscheme': 'abyss',
       \   'active': {
-      \     'left': [['mode', 'paste'],['readonly', 'vcs', 'filename', 'modified']],
       \     'right': [['lineinfo'], ['filetype'], ['fileformat', 'fileencoding', 'syntaxcheck']],
       \   },
       \   'component': {
@@ -31,10 +30,7 @@ let g:lightline = {
       \     'syntaxcheck': 'error',
       \   },
       \   'component_function': {
-      \     'vcs': 'plugin#lightline#vcs',
-      \     'fileformat': 'plugin#lightline#fileformat',
       \     'filetype': 'plugin#lightline#filetype',
-      \     'fileencoding': 'plugin#lightline#fileencoding',
       \     'filename': 'plugin#lightline#filename',
       \   },
       \   'mode_map': {
@@ -42,12 +38,12 @@ let g:lightline = {
       \     'i' : 'I',
       \     'R' : 'R',
       \     'v' : 'V',
-      \     'V' : 'VL',
-      \     "\<C-v>": 'VB',
+      \     'V' : 'V-L',
+      \     "\<C-v>": 'V-B',
       \     'c' : 'C',
       \     's' : 'S',
-      \     'S' : 'SL',
-      \     "\<C-s>": 'SB',
+      \     'S' : 'S-L',
+      \     "\<C-s>": 'S-B',
       \     't': 'T',
       \   },
       \   'separator': {
@@ -83,9 +79,6 @@ hook_add = 'let g:EditorConfig_exclude_patterns = ["scp://.*"]'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'

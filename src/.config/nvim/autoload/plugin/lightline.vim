@@ -56,26 +56,12 @@ endfunction
 
 function! plugin#lightline#filename() abort
   if '' ==# expand('%:t')
-    return '[No Name]'
+    return '[N]' " No Name
   elseif &filetype ==# 'fzf'
-    return '[Plugin]'
+    return '[P]' " Plugin
   else
     return expand('%:t')
   endif
-endfunction
-
-function! plugin#lightline#fileencoding() abort
-  return winwidth(0) > 60 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
-endfunction
-
-function! plugin#lightline#vcs() abort
-  let l:mark = "\ue0a0 "
-  let l:branch = fugitive#head()
-  return winwidth(0) > 60 ? (strlen(l:branch) ? l:mark.l:branch : '') : ''
-endfunction
-
-function! plugin#lightline#fileformat() abort
-  return winwidth(0) > 60 ? &fileformat : ''
 endfunction
 
 function! plugin#lightline#filetype() abort
