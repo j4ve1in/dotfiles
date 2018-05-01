@@ -47,11 +47,15 @@ function! plugin#lightline#syntaxcheck() abort
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
 
-  return l:counts.total == 0 ? '' : printf(
-  \   "\uf05e %d \uf071 %d",
-  \   all_errors,
-  \   all_non_errors
-  \)
+  let l:errors = ''
+  if l:all_errors > 0
+    let l:errors = l:errors . "E:". l:all_errors
+  endif
+  if l:all_non_errors > 0
+    let l:errors = l:errors . " W:" . l:all_non_errors
+  endif
+
+  return l:errors
 endfunction
 
 function! plugin#lightline#filename() abort
@@ -62,8 +66,4 @@ function! plugin#lightline#filename() abort
   else
     return expand('%:t')
   endif
-endfunction
-
-function! plugin#lightline#filetype() abort
-  return strlen(&filetype) ? &filetype : '-'
 endfunction
