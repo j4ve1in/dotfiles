@@ -1,16 +1,29 @@
 #!/bin/bash
 
-declare file="$XDG_CONFIG_HOME/dmenu-slack/team.json"
-
-if ! [[ -f $file ]]; then
-  notify-send dmenu-slack "config file not found: $file"
-  exit 1
-fi
+declare json="`cat <<EOF
+{
+  "team": [
+    {
+      "name": "archlinuxjp",
+      "url": "https://archlinuxjp.slack.com"
+    },
+    {
+      "name": "vim-jp",
+      "url": "https://vim-jp.slack.com"
+    },
+    {
+      "name": "kubernetes",
+      "url": "https://kubernetes.slack.com"
+    }
+  ]
+}
+EOF`"
 
 declare name=$(
-  printf '%s\n' $(jq -r '.team[].name' $file) | \
+  printf '%s\n' $(echo $json | jq -r '.team[].name') | \
     dmenu-wrapper -p Slack
 )
 
-jq -r ".team[]|select(.name==\"$name\").url" $file | \
+echo $json |
+  jq -r ".team[]|select(.name==\"$name\").url" | \
   xargs -I {} chromium --app={}
