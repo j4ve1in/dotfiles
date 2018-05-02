@@ -6,10 +6,8 @@ case $1 in
 
     case $2 in
       --select )
-        tpctl enable
         read -r size screennumber < <(slop -b 1 -c 0,0,255,1 -f "%wx%h 0+%x,%y")
         displayname="$DISPLAY.$screennumber"
-        tpctl disable
         ;;
       * )
         size="`xrandr | fgrep '*' | awk '{print $1}'`"

@@ -62,10 +62,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	(( `xbacklight -get` > 5.5  )) && xbacklight - 5
 
-## Touchpad
-super + shift + t
-	tpctl {enable,disable}
-
 ## Screencast
 super + ctrl + s
 	scrc {start,stop}
@@ -78,10 +74,8 @@ Print
 	maim -u "$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
 shift + Print
-	tpctl enable && \
-		maim -u -s -c 0,0,255,1 \
-			"$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%02k%M%S'`.png" && \
-		tpctl disable
+	maim -u -s -c 0,0,255,1 \
+		"$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
 # launch applications
 ## Terminal

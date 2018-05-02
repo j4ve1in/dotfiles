@@ -5,7 +5,6 @@ xbacklight = 3 &           # Brightness
 sh ~/.fehbg &              # Wallpaper
 compton -b &               # Compositor
 tmux new-session -s 0 -d & # Multiplexer
-tpctl disable &            # Touchpad
 dunst &                    # Notification daemon
 sxhkd -m -1 &              # Hotkey daemon
 

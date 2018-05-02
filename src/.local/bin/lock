@@ -2,11 +2,9 @@
 
 revert() {
   killall -SIGUSR2 dunst
-  tpctl disable
 }
 
 trap revert HUP INT TERM
 killall -SIGUSR1 dunst
-tpctl enable
 LC_ALL=en_US.UTF-8 i3lock -euni ~/.local/share/i3/lockscreen.png
 revert
