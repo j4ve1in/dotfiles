@@ -5,7 +5,6 @@
 
 [user]
     name = ytet5uy4
-    email = ytet5uy4@ytet5uy4.com
     signingkey = 6485DFABAFF4EF9E
 
 [commit]
@@ -41,18 +40,6 @@
 [help]
     autocorrect = 30
 
-[url "https://"]
-    insteadOf = git://
-
-[url "https://github.com/"]
-    insteadOf = git@github.com:
-
-[url "https://gitlab.com/"]
-    insteadOf = git@gitlab.com:
-
-[url "https://bitbucket.org/"]
-    insteadOf = git@bitbucket.org:
-
 [rebase]
     autostash = true
 
@@ -61,11 +48,6 @@
 
 [ghq]
     root = ~/.local/src
-
-[filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
-    required = true
 
 [github]
     user = ytet5uy4

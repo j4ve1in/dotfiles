@@ -1,8 +1,6 @@
 #!/bin/bash
 
-username=`envchain ytet5uy4/lastpass printenv LPASS_USERNAME`
-
-lpass status -q || termite -e "lpass login $username"
+lpass status -q || termite -e "lpass login $LPASS_USERNAME"
 
 declare name=`
   lpass ls | \
