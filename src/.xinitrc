@@ -7,6 +7,7 @@ compton -b &               # Compositor
 tmux new-session -s 0 -d & # Multiplexer
 dunst &                    # Notification daemon
 sxhkd -m -1 &              # Hotkey daemon
+unclutter &                # Utility for cursor
 
 # Imput Method
 fcitx &
