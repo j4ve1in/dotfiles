@@ -21,7 +21,7 @@ export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
 
 # path
 typeset -U path PATH
-path=($path $HOME/.local/bin(N-/))
+path=($HOME/.local/bin(N-/) $path)
 path=($path $HOME/.gem/ruby/*/bin(N-/))
 path=($path $HOME/.yarn/bin(N-/))
 

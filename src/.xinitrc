@@ -19,10 +19,10 @@ xcape &
 
 # Screen locker
 xautolock \
-  -locker lock \
+  -locker 'i3lock -euni $XDG_DATA_HOME/i3/lockscreen.png -c 000000' \
   -notify 30 \
   -notifier "notify-send -t 10000 xautolock 'LOCKING screen in 30 seconds'" &
-xss-lock -- lock &
+xss-lock -- i3lock -euni $XDG_DATA_HOME/i3/lockscreen.png -c 000000 &
 
 # Password Manager
 dbus-update-activation-environment --systemd DISPLAY

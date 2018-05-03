@@ -1,0 +1,9 @@
+#!/bin/bash
+
+revert() {
+  killall -SIGUSR2 dunst
+}
+
+trap revert HUP INT TERM EXIT
+killall -SIGUSR1 dunst
+/usr/bin/i3lock $@
