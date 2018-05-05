@@ -1,4 +1,5 @@
 function __fzf_insert_history
+  history merge
   history -z | \
     fzf \
       --read0 \
