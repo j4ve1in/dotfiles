@@ -18,19 +18,18 @@ if exists('*minpac#init')
   call minpac#add('Shougo/neosnippet')
   call minpac#add('tyru/caw.vim')
   call minpac#add('b4b4r07/vim-hcl')
+  call minpac#add('dag/vim-fish')
 
   call minpac#add('shime/vim-livedown', {'type': 'opt'})
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
   call minpac#add('zchee/deoplete-go', {'type': 'opt'}, {'do': {-> system('make')}})
   call minpac#add('fatih/vim-hclfmt', {'type': 'opt'})
   call minpac#add('elzr/vim-json', {'type': 'opt'})
-  call minpac#add('fatih/vim-go', {'type': 'opt'})
   call minpac#add('cespare/vim-toml', {'type': 'opt'})
   call minpac#add('digitaltoad/vim-pug', {'type': 'opt'})
   call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
   call minpac#add('baskerville/vim-sxhkdrc', {'type': 'opt'})
   call minpac#add('posva/vim-vue', {'type': 'opt'})
-  call minpac#add('dag/vim-fish', {'type': 'opt'})
 endif
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
@@ -120,6 +119,10 @@ nmap <C-_> <Plug>(caw:hatpos:toggle)
 vmap <C-_> <Plug>(caw:hatpos:toggle)
 
 " ale
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['go'] = ['goimports']
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
@@ -143,15 +146,12 @@ augroup livedown
 augroup END
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#max_list = 5
-
 augroup deoplete
   autocmd!
   autocmd InsertEnter * call plugin#deoplete#init()
 augroup END
 
+let g:deoplete#sources#go#package_dot = 1
 augroup deoplete-go
   autocmd!
   autocmd FileType go packadd deoplete-go
@@ -173,12 +173,6 @@ augroup vim-json
   autocmd!
   autocmd FileType json packadd vim-json
   autocmd FileType json let g:vim_json_syntax_conceal = 0
-augroup END
-
-" go
-augroup vim-go
-  autocmd!
-  autocmd FileType go packadd vim-go
 augroup END
 
 " toml
@@ -212,10 +206,4 @@ augroup END
 augroup vim-vue
   autocmd!
   autocmd FileType vue packadd vim-vue
-augroup END
-
-" fish
-augroup vim-fish
-  autocmd!
-  autocmd FileType vue packadd vim-fish
 augroup END

@@ -25,6 +25,7 @@ set virtualedit=block
 set inccommand=nosplit
 set grepprg=grep\ -inH
 set completeopt=menuone
+set completeopt+=noinsert
 set ignorecase smartcase
 set whichwrap=b,~,[,],<,>
 set wildignorecase wildmode=longest:full,full
