@@ -1,1 +1,3 @@
 fishd.localhost
+completions/*
+!.gitkeep
