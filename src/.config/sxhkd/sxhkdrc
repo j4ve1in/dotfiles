@@ -86,17 +86,9 @@ shift + Print
 super + Return
 	termite -e mux-loader
 
-## Calendar
-super + c
-	chromium --app='https://www.google.com/calendar'
-
 ## Launcher
 super + shift + @space
 	dmenu_path | dmenu-wrapper -p Launcher | bash
-
-## Map
-super + ctrl + m
-	chromium --app='https://www.google.co.jp/maps'
 
 ## Microblogging client
 super + shift + m
@@ -113,10 +105,6 @@ super + ctrl + p
 super + shift + p
 	chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
 
-## Email
-super + shift + e
-	chromium --app='https://mail.zoho.com'
-
 ## Volume Manager
 super + shift + v
 	termite -e alsamixer
@@ -131,14 +119,6 @@ super + b
 
 super + shift + b
 	chromium --incognito
-
-## Instant Messenger
-super + i
-	dmenu-slack
-
-## Editor
-super + e
-	termite -e "$EDITOR"
 
 ## File Manager
 super + f
@@ -155,7 +135,3 @@ super + p ; {p,r,l}
 ## RSS Reader
 super + r
 	termite -e feedlish
-
-## Video
-super + v
-	chromium --app='https://www.netflix.com'

@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # Base
-xbacklight = 3 &           # Brightness
-sh ~/.fehbg &              # Wallpaper
-compton -b &               # Compositor
-tmux new-session -s 0 -d & # Multiplexer
-dunst &                    # Notification daemon
-sxhkd -m -1 &              # Hotkey daemon
-unclutter &                # Utility for cursor
+xbacklight = 3 &                         # Brightness
+sh ~/.fehbg &                            # Wallpaper
+compton -b &                             # Compositor
+tmux new-session -s 0 -d &               # Multiplexer
+dunst &                                  # Notification daemon
+unclutter &                              # Utility for cursor
+sxhkd -m -1 \
+  $XDG_CONFIG_HOME/sxhkd/sxhkdrc.local & # Hotkey daemon
 
 # Imput Method
 fcitx &
