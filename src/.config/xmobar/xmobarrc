@@ -12,7 +12,7 @@ Config { font = "xft:Noto Sans Mono CJK JP:size=13"
                                   , "-O", "<left>% <fc=#2196f3><fn=1></fn></fc>"
                                   , "-i", "<left>% <fc=#2196f3><fn=1></fn></fc>"
                     ] 10
-                    , Run Date "%m/%d %R" "date" 10
+                    , Run Date "%m/%d %a %R" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
