@@ -5,6 +5,7 @@ bspc subscribe report | while read events; do
   IFS=':'
   for event in $events; do
     case $event in
+      *0) ;;
       O*|F*)
         bar+="<fc=#f5f5f5,#0018a8> ${event#?} </fc>"
         ;;
