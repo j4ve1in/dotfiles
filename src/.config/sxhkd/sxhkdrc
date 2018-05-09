@@ -28,6 +28,10 @@ super + ctrl + {j,k}
 super + ctrl + {_,shift + }{h,l}
 	bspc {desktop -f,node -d} {prev,next}.local
 
+# focus or send to the given desktop
+super + {_,shift + }{0-3}
+	bspc {desktop -f,node -d} '^{0-3}'
+
 ## expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
