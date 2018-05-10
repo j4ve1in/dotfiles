@@ -30,7 +30,7 @@ super + ctrl + {_,shift + }{h,l}
 
 # focus or send to the given desktop
 super + {_,shift + }{0-3}
-	bspc {desktop -f,node -d} '^{0-3}'
+	bspc {desktop -f,node -d} '{0-3}'
 
 ## expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
