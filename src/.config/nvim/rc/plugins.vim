@@ -44,6 +44,9 @@ let g:lightline = {
       \   'active': {
       \     'right': [['lineinfo'], ['filetype'], ['fileformat', 'fileencoding', 'syntaxcheck']],
       \   },
+      \   'tabline': {
+      \     'right': [[]],
+      \   },
       \   'component': {
       \     'lineinfo': '%-2v',
       \     'filetype': '%{&ft!=#""?&ft:"-"}',
