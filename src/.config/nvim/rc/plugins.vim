@@ -42,6 +42,7 @@ let g:auto_ctags_directory_list = ['.git']
 let g:lightline = {
       \   'colorscheme': 'abyss',
       \   'active': {
+      \     'left': [ [ 'mode', 'paste' ] ],
       \     'right': [['lineinfo'], ['filetype'], ['fileformat', 'fileencoding', 'syntaxcheck']],
       \   },
       \   'tabline': {
@@ -57,9 +58,6 @@ let g:lightline = {
       \   },
       \   'component_type': {
       \     'syntaxcheck': 'error',
-      \   },
-      \   'component_function': {
-      \     'filename': 'plugin#lightline#filename',
       \   },
       \   'mode_map': {
       \     'n' : 'N',

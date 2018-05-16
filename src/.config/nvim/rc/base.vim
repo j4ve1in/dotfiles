@@ -50,15 +50,11 @@ set number
 set showmatch
 set noshowmode
 set matchtime=1
+set showtabline=2
 colorscheme abyss
 scriptencoding utf-8
 let &showbreak="\u21aa "
 set list listchars=tab:▸\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
-
-augroup tabline
-  autocmd!
-  autocmd VimEnter let &tabline = '%!'. tabline#sid() . 'tabline#name()'
-augroup END
 
 augroup nohlsearch
   autocmd!
@@ -74,11 +70,6 @@ augroup file_type_indent
   autocmd FileType sxhkdrc setlocal noexpandtab
 
   autocmd FileType man setlocal tabstop=8
-augroup END
-
-augroup file_type_term
-  autocmd!
-  autocmd FileType bash nnoremap <silent> <buffer> <C-c> :<C-u>call term#run('bash')<CR>
 augroup END
 
 augroup file_type_template
