@@ -6,13 +6,7 @@
 set termguicolors
 set background=light
 syntax enable " Switch on syntax highlighting
-augroup toggle_cursorline_color
-  autocmd!
-  " Set CursorLine highlighting.
-  autocmd InsertEnter * set cursorline
-  " Reset CursorLine highlighting to the defaults.
-  autocmd InsertLeave * set nocursorline
-augroup END
+set cursorline
 
 " Hilighting double-byte space
 scriptencoding utf-8
@@ -55,14 +49,14 @@ let s:darkgray   = '#303030'
 
 call s:hi('Comment',                 s:gray,        0,          0)
 call s:hi('Boolean',                 s:darkcyan,    0,          0)
-call s:hi('LineNr',                  s:darkcyan,    0,          0)
+call s:hi('LineNr',                  s:lightgray,   0,          0)
 call s:hi('Constant',                s:cyan,        0,          0)
 call s:hi('Statement',               s:lightblue,   0,          'bold')
 call s:hi('PreProc',                 s:lightpurple, 0,          0)
 call s:hi('Type',                    s:lightblue,   0,          0)
 call s:hi('Cursor',                  0,             s:darkblue, 0)
-call s:hi('CursorLine',              0,             s:darkblue, 0)
-call s:hi('CursorLineNr',            'NONE',        s:bg,       'bold')
+call s:hi('CursorLine',              0,             s:darkblue,     0)
+call s:hi('CursorLineNr',            s:darkcyan,    s:bg,       'bold')
 call s:hi('CursorColumn',            0,             s:bg,       0)
 call s:hi('DiffAdd',                 s:green,       'NONE',     0)
 call s:hi('DiffChange',              s:fg,          'NONE',     0)
@@ -80,7 +74,6 @@ call s:hi('ErrorMsg',                s:red,         'NONE',     0)
 call s:hi('Function',                s:darkcyan,    0,          0)
 call s:hi('Identifier',              s:lightgreen,  0,          0)
 call s:hi('IncSearch',               s:darkcyan,    0,          0)
-call s:hi('MatchParen',              s:darkcyan,    0,          0)
 call s:hi('ModeMsg',                 s:darkcyan,    0,          0)
 call s:hi('MoreMsg',                 s:darkcyan,    0,          0)
 call s:hi('NonText',                 s:gray,        'NONE',     0)
@@ -109,6 +102,12 @@ call s:hi('WarningMsg',              s:bg,          s:gray,     0)
 call s:hi('WildMenu',                s:fg,          s:bg,       'bold')
 call s:hi('EndOfBuffer',             s:bg,          'NONE',     0)
 call s:hi('DoubleByteSpace',         s:darkcyan,    0,          'reverse')
+
+augroup toggle_match_paren
+  autocmd!
+  autocmd InsertEnter * call s:hi('MatchParen', 0, 'NONE', 0)
+  autocmd InsertLeave * call s:hi('MatchParen', s:darkcyan, 0, 0)
+augroup END
 
 " Plugin
 call s:hi('ALEErrorSign',   s:red, 0, 0)
