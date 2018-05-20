@@ -17,27 +17,29 @@ EXA_COLORS+="sn=1;38;5;75:sb=38;5;75:"
 EXA_COLORS+="uu=38;5;245:gm=1;38;5;27:lp=38;5;245"
 export GPG_TTY=`tty`
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-export GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS='@im=fcitx'
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS='@im=fcitx'
 
 # path
 typeset -U path PATH
 path=($HOME/.local/bin(N-/) $path)
 path=($path $HOME/.gem/ruby/*/bin(N-/))
-path=($path $HOME/.yarn/bin(N-/))
+path=($path $XDG_DATA_HOME/npm/bin(N-/))
 
 # Programming
 export GOPATH="$HOME/.local"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # Less
-export LESS='-ciMR' LESS_TERMCAP_{mb,md,me,se,so,ue,us}
-LESS_TERMCAP_mb=$'\e[1;31m'
-LESS_TERMCAP_md=$'\e[1;38;05;75m'
-LESS_TERMCAP_me=$'\e[0m'
-LESS_TERMCAP_se=$'\e[0m'
-LESS_TERMCAP_so=$'\e[1;44m'
-LESS_TERMCAP_ue=$'\e[0m'
-LESS_TERMCAP_us=$'\e[1;36m'
+export LESS='-ciMR'
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;38;05;75m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;44m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;36m'
 export LESS_CACHE_HOME="$XDG_CACHE_HOME/less"
 export LESSHISTFILE="$LESS_CACHE_HOME/history"
 
@@ -62,4 +64,4 @@ export AWS_SDK_LOAD_CONFIG=1
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 
 # local
-[[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

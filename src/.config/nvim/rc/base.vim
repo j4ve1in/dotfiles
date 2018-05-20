@@ -1,4 +1,3 @@
-" base
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
 let g:loaded_tarPlugin         = 1
@@ -26,9 +25,17 @@ set inccommand=nosplit
 set grepprg=grep\ -inH
 set completeopt=menuone
 set completeopt+=noinsert
-set ignorecase smartcase
+set ignorecase
+set smartcase
 set whichwrap=b,~,[,],<,>
-set wildignorecase wildmode=longest:full,full
+set wildignorecase
+set wildmode=longest:full,full
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
 
 if $DISPLAY !=# ''
   set clipboard=unnamedplus
@@ -44,35 +51,7 @@ augroup im
   autocmd InsertLeave * call im#fcitx()
 augroup END
 
-" apperance
-set ruler
-set number
-set showmatch
-set noshowmode
-set matchtime=1
-set showtabline=2
-colorscheme abyss
-scriptencoding utf-8
-let &showbreak="\u21aa "
-set list listchars=tab:▸\ ,trail:˽,eol:¬,extends:>,precedes:<,nbsp:%
-
-augroup nohlsearch
-  autocmd!
-  autocmd InsertEnter * let b:_search=@/|let @/=''
-  autocmd InsertLeave * let @/=get(b:,'_search','')
-augroup END
-
-" File
-augroup file_type_indent
-  autocmd!
-  autocmd FileType * setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smartindent
-  autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-  autocmd FileType sxhkdrc setlocal noexpandtab
-
-  autocmd FileType man setlocal tabstop=8
-augroup END
-
-augroup file_type_template
+augroup template
   autocmd!
   autocmd BufNewFile *.* silent! call skel#load()
 augroup END

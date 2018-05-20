@@ -1,5 +1,5 @@
 set fish_greeting
-set -g fish_key_bindings fish_hybrid_key_bindings
+set --global fish_key_bindings fish_hybrid_key_bindings
 
 # color
 set fish_color_autosuggestion  '#767676'

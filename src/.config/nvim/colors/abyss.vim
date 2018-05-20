@@ -1,21 +1,6 @@
-" -------------------------------------------------------------------
-"  Name:        abyss.vim
-"  Description: dark colorscheme for NeoVim
-" -------------------------------------------------------------------
-
 set termguicolors
+highlight clear
 set background=light
-syntax enable " Switch on syntax highlighting
-set cursorline
-
-" Hilighting double-byte space
-scriptencoding utf-8
-augroup doublebyte_space
-  autocmd!
-  autocmd VimEnter,WinEnter * match DoubleByteSpace /　/
-augroup END
-
-" -------------------------------------------------------------------
 
 function! s:hi(name, fg, bg, attr) abort
   let l:attr = type(a:attr) != type(0) ? ('gui=' . a:attr) : ''
@@ -109,6 +94,5 @@ augroup toggle_match_paren
   autocmd InsertLeave * call s:hi('MatchParen', s:darkcyan, 0, 0)
 augroup END
 
-" Plugin
 call s:hi('ALEErrorSign',   s:red, 0, 0)
 call s:hi('ALEWarningSign', s:red, 0, 0)

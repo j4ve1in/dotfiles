@@ -1,0 +1,8 @@
+#!/bin/bash
+
+i3lock \
+  --ignore-empty-password \
+  --no-unlock-indicator \
+  --nofork \
+  --image "$XDG_DATA_HOME/i3/lockscreen.png" \
+  --color 000000

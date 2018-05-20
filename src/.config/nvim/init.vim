@@ -1,11 +1,14 @@
 filetype off
 filetype plugin indent off
 
+scriptencoding utf-8
+
 " Declare rc_vim_list and source_rc
 let s:rc_vim_list = [
 \   'local.before',
 \   'plugins',
 \   'base',
+\   'apperance',
 \   'keymap',
 \   'local'
 \ ]
@@ -17,3 +20,4 @@ for s:rc_vim in s:rc_vim_list
 endfor
 
 filetype plugin indent on
+syntax enable

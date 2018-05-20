@@ -17,19 +17,18 @@ if exists('*minpac#init')
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('Shougo/neosnippet')
   call minpac#add('tyru/caw.vim')
-  call minpac#add('b4b4r07/vim-hcl')
-  call minpac#add('dag/vim-fish')
 
   call minpac#add('shime/vim-livedown', {'type': 'opt'})
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
   call minpac#add('zchee/deoplete-go', {'type': 'opt'}, {'do': {-> system('make')}})
-  call minpac#add('fatih/vim-hclfmt', {'type': 'opt'})
+  call minpac#add('b4b4r07/vim-hcl', {'type': 'opt'})
   call minpac#add('elzr/vim-json', {'type': 'opt'})
   call minpac#add('cespare/vim-toml', {'type': 'opt'})
   call minpac#add('digitaltoad/vim-pug', {'type': 'opt'})
   call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
   call minpac#add('baskerville/vim-sxhkdrc', {'type': 'opt'})
   call minpac#add('posva/vim-vue', {'type': 'opt'})
+  call minpac#add('dag/vim-fish', {'type': 'opt'})
 endif
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
@@ -93,7 +92,10 @@ command! -bang -nargs=* FZFRg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 nnoremap <silent> <Space>g :<C-u>FZFRg<CR>
-autocmd! User FzfStatusLine silent
+augroup fzf
+  autocmd!
+  autocmd User FzfStatusLine silent
+augroup END
 
 " openbrowser
 let g:netrw_nogx = 1
@@ -123,6 +125,12 @@ vmap <C-_> <Plug>(caw:hatpos:toggle)
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['go'] = ['goimports']
+let g:ale_fixers['hcl'] = [
+      \   {buffer, lines -> {'command': 'hclfmt -w %t', 'read_temporary_file': 1}}
+      \   ]
+let g:ale_fixers['terraform'] = [
+      \   {buffer, lines -> {'command': 'terraform fmt %t', 'read_temporary_file': 1}}
+      \   ]
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_set_highlights = 0
@@ -135,9 +143,10 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap <silent> <Space><C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <Space><C-j> <Plug>(ale_next_wrap)
 
-augroup ale_settings
+augroup ale
   autocmd!
   autocmd User ALELint call lightline#update()
+  autocmd FileType zsh let g:ale_sh_shell_default_shell = 'zsh'
 augroup END
 
 " livedown
@@ -159,14 +168,9 @@ augroup deoplete-go
 augroup END
 
 " hcl
-let g:hcl_fmt_autosave = 0
-let g:tf_fmt_autosave = 0
-let g:nomad_fmt_autosave = 0
-
-augroup hclfmt
+augroup vim-hcl
   autocmd!
-  autocmd FileType hcl packadd hclfmt
-  autocmd FileType hcl nnoremap = :<C-u>HclFmt<CR>
+  autocmd FileType hcl packadd vim-hcl
 augroup END
 
 " json
@@ -190,11 +194,9 @@ augroup vim-pug
 augroup END
 
 " terraform
-let g:terraform_fmt_on_save = 1
 augroup vim-terraform
   autocmd!
   autocmd FileType terraform packadd vim-terraform
-  autocmd FileType terraform nnoremap = :<C-u>TerraformFmt<CR>
 augroup END
 
 " sxhkd
@@ -207,4 +209,10 @@ augroup END
 augroup vim-vue
   autocmd!
   autocmd FileType vue packadd vim-vue
+augroup END
+
+" fish
+augroup vim-fish
+  autocmd!
+  autocmd FileType fish packadd vim-fish
 augroup END
