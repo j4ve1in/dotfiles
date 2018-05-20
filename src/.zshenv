@@ -63,5 +63,12 @@ export FZF_DEFAULT_OPTS="
 export AWS_SDK_LOAD_CONFIG=1
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 
+# Minikube
+export MINIKUBE_WANTUPDATENOTIFICATION=false
+export MINIKUBE_WANTREPORTERRORPROMPT=false
+export MINIKUBE_HOME="$HOME"
+export CHANGE_MINIKUBE_NONE_USER=true
+export KUBECONFIG="$XDG_CONFIG_HOME/kubernetes/minikube"
+
 # local
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
