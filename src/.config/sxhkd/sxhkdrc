@@ -84,7 +84,7 @@ shift + Print
 # launch applications
 ## Terminal
 super + Return
-	termite -e mux-loader
+	termite -e "$SHELL -l"
 
 ## Launcher
 super + shift + @space

@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-if tmux has-session >/dev/null 2>&1; then
-  exec tmux attach -d >/dev/null 2>&1
-else
-  exec tmux
-fi
