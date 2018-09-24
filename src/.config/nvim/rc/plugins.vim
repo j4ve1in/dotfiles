@@ -123,7 +123,10 @@ vmap <C-_> <Plug>(caw:hatpos:toggle)
 
 " ale
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_fixers['json'] = ['prettier']
+let g:ale_fixers['vue'] = ['prettier', 'eslint', 'stylelint']
+let g:ale_fixers['css'] = ['prettier', 'stylelint']
 let g:ale_fixers['go'] = ['goimports']
 let g:ale_fixers['hcl'] = [
       \   {buffer, lines -> {'command': 'hclfmt -w %t', 'read_temporary_file': 1}}
