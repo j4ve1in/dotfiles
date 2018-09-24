@@ -29,6 +29,7 @@ path=($path $XDG_DATA_HOME/npm/bin(N-/))
 
 # Programming
 export GOPATH="$HOME/.local"
+export NODE_PATH="$XDG_DATA_HOME/yarn/global/node_modules/"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # Less
