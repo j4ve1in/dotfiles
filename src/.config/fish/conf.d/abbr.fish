@@ -20,5 +20,5 @@ if status --is-interactive
   abbr --add st stern
   abbr --add t terraform
   abbr --add ta trash
-  abbr --add note "$EDITOR ~/Documents/Notes/(date +%y%m%d).md"
+  abbr --add note "$EDITOR ~/Documents/notes/(date +%y%m%d).md"
 end

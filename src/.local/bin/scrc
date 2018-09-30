@@ -23,7 +23,7 @@ case $1 in
       -c:v libx264 \
       -c:a aac \
       -qp 0 \
-      "$HOME/Videos/Screencasts/`date +'%y-%m-%d_%02k%M%S'`.mp4"
+      "$HOME/Videos/screencasts/`date +'%y-%m-%d_%02k%M%S'`.mp4"
     ;;
   stop ) killall ffmpeg ;;
 esac

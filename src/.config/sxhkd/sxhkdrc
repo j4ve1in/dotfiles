@@ -75,11 +75,11 @@ super + shift + s
 
 ## Screenshot
 Print
-	maim -u "$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
+	maim -u "$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
 shift + Print
 	maim -u -s -c 0,0,255,1 \
-		"$HOME/Pictures/Screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
+		"$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
 # launch applications
 ## Terminal
