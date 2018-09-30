@@ -6,13 +6,13 @@
 
 [[snippets]]
   description = "Remove dangling images"
-  command = "docker image ls -qf dangling=true | xargs -tr docker image rm"
+  command = "docker image prune --filter dangling=true"
   tag = ["docker"]
   output = ""
 
 [[snippets]]
   description = "Remove dangling volumes"
-  command = "docker volume ls -qf dangling=true | xargs -tr docker volume rm"
+  command = "docker volume prune --filter dangling=true"
   tag = ["docker"]
   output = ""
 
