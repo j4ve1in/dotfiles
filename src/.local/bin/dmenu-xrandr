@@ -8,7 +8,7 @@ fi
 declare -a displays
 displays=('PC screen only' Duplicate Extend 'Second screen only')
 
-declare display=`printf '%s\n' ${displays[@]} | dmenu-wrapper -p Display`
+declare display=`printf '%s\n' "${displays[@]}" | dmenu-wrapper -p Display`
 
 if [[ -n $display ]]; then
   case "$display" in

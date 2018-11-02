@@ -1,8 +1,13 @@
-#! /bin/sh
+#!/bin/bash
 
 bspwmstatus | xmobar &
 
 bspc monitor --reset-desktops 1 2 3
+if [[ $DISPLAY_MODE = duplicate ]]; then
+  bspc monitor "$SUB_DISPLAY" --reset-desktops ''
+elif [[ $DISPLAY_MODE = extend ]]; then
+  bspc monitor "$SUB_DISPLAY" --reset-desktops 0
+fi
 
 bspc config border_width  2
 bspc config window_gap   12
