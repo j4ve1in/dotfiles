@@ -11,8 +11,8 @@
   output = ""
 
 [[snippets]]
-  description = "Remove dangling volumes"
-  command = "docker volume prune --filter dangling=true"
+  description = "Remove volumes"
+  command = "docker volume prune"
   tag = ["docker"]
   output = ""
 
@@ -41,9 +41,9 @@
   output = ""
 
 [[snippets]]
-  description = "Remove cache and optimize database"
-  command = "sudo pacman -Sc --noconfirm && sudo pacman-optimize"
-  tag = ["archlinux"]
+  description = "Remove cache of pacman"
+  command = "sudo pacman -Sc --noconfirm"
+  tag = ["archlinux", "pacman"]
   output = ""
 
 [[snippets]]
