@@ -4,8 +4,7 @@
     quotepath = off
 
 [user]
-    name = ytet5uy4
-    signingkey = 6485DFABAFF4EF9E
+    signingkey = 94B4884AF3AF5C3B
 
 [commit]
     gpgSign = true
