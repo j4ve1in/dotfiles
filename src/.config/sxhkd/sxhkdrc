@@ -45,7 +45,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # add desktop
-super + n
+super + ctrl + n
 	bspc query --desktops --names | \
 		tail -n 1 | \
 		xargs -I \{\} expr \{\} + 1 | \
@@ -108,7 +108,7 @@ super + shift + m
 	chromium --app='https://twitter.com/ytet5uy4/lists/home'
 
 ## Network Manager
-super + ctrl + n
+super + shift + n
 	termite -e 'sudo wifi-menu -o'
 
 ## Password Manager
@@ -138,7 +138,7 @@ super + f
 	termite -e 'ranger'
 
 ## Network Switcher
-super + shift + n
+super + n
 	dmenu-netctl
 
 ## Power Manager
