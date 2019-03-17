@@ -7,8 +7,14 @@ compton -b &                             # Compositor
 tmux new-session -s 0 -d &               # Multiplexer
 dunst &                                  # Notification daemon
 unclutter &                              # Utility for cursor
-sxhkd -m -1 \
-  "$XDG_CONFIG_HOME/sxhkd/local.sxhkd" & # Hotkey daemon
+
+# Hotkey daemon
+if [[ -f $XDG_CONFIG_HOME/sxhkd/local.sxhkd ]]; then
+  sxhkd -m -1 \
+    "$XDG_CONFIG_HOME/sxhkd/local.sxhkd" &
+else
+  sxhkd &
+fi
 
 # Imput Method
 fcitx &
