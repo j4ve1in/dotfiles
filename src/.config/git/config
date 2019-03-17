@@ -4,13 +4,13 @@
     quotepath = off
 
 [user]
-    signingkey = 94B4884AF3AF5C3B
+    signingkey = 9A13B0C4C060E104
 
 [commit]
     gpgSign = true
 
 [gpg]
-    program = /usr/bin/krgpg
+    program = gpg
 
 [tag]
     forceSignAnnotated = true
