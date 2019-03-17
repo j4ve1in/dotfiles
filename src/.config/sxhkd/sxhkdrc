@@ -44,6 +44,19 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# add desktop
+super + n
+	bspc query --desktops --names | \
+		tail -n 1 | \
+		xargs -I \{\} expr \{\} + 1 | \
+		xargs -I \{\} bspc monitor --add-desktops \{\}
+
+# remove desktop
+super + ctrl + w
+	bspc query --desktops --names | \
+		sed '$d' | \
+		xargs bspc monitor --reset-desktops
+
 ## Display
 super + ctrl + d
 	dmenu-xrandr
@@ -125,7 +138,7 @@ super + f
 	termite -e 'ranger'
 
 ## Network Switcher
-super + n
+super + shift + n
 	dmenu-netctl
 
 ## Power Manager
