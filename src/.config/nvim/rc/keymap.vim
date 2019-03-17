@@ -1,5 +1,3 @@
-nmap <silent> go :<C-u>call append#line('up')<CR>
-nmap <silent> gO :<C-u>call append#line('down')<CR>
 nmap <silent> <Space>. :<C-u>call source#init()<CR>
 nnoremap Y y$
 nnoremap s "_s
