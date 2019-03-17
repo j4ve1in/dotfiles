@@ -1,6 +1,6 @@
-set ruler
 set number
 set showmatch
+set noshowcmd
 set noshowmode
 set matchtime=1
 set showtabline=2

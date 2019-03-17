@@ -18,16 +18,12 @@ set hidden
 set undofile
 set winheight=8
 set shortmess+=I
-set iskeyword+=.,#,-
 set tags+=.git/tags
-set virtualedit=block
 set inccommand=nosplit
-set grepprg=grep\ -inH
 set completeopt=menuone
 set completeopt+=noinsert
 set ignorecase
 set smartcase
-set whichwrap=b,~,[,],<,>
 set wildignorecase
 set wildmode=longest:full,full
 
