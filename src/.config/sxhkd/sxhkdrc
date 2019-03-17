@@ -135,3 +135,7 @@ super + p ; {p,r,l}
 ## RSS Reader
 super + r
 	termite -e feedlish
+
+## Instant Messenger
+super + i
+	slack
