@@ -1,6 +1,6 @@
 # system operations
 ## make sxhkd reload its configuration files
-super + Escape
+super + shift + Escape
 	pkill -USR1 -x sxhkd && \
 		notify-send sxhkd 'Reload configuration file'
 
