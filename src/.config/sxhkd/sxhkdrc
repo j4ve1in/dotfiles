@@ -97,7 +97,7 @@ shift + Print
 # launch applications
 ## Terminal
 super + Return
-	termite -e "$SHELL -l"
+	alacritty
 
 ## Launcher
 super + shift + @space
@@ -109,7 +109,7 @@ super + shift + m
 
 ## Network Manager
 super + shift + n
-	termite -e 'sudo wifi-menu -o'
+	alacritty -e 'sudo wifi-menu -o'
 
 ## Password Manager
 super + ctrl + p
@@ -120,11 +120,11 @@ super + shift + p
 
 ## Volume Manager
 super + shift + v
-	termite -e alsamixer
+	alacritty -e alsamixer
 
 ## System Activity
 super + a
-	termite -e 'vtop -t abyss'
+	alacritty -e 'vtop -t abyss'
 
 ## Browser
 super + b
@@ -135,7 +135,7 @@ super + shift + b
 
 ## File Manager
 super + f
-	termite -e 'ranger'
+	alacritty -e 'ranger'
 
 ## Network Switcher
 super + n
@@ -147,7 +147,7 @@ super + p ; {p,r,l}
 
 ## RSS Reader
 super + r
-	termite -e feedlish
+	alacritty -e feedlish
 
 ## Instant Messenger
 super + i

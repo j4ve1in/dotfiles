@@ -14,13 +14,4 @@ augroup nohlsearch
   autocmd InsertLeave * let @/=get(b:,'_search','')
 augroup END
 
-" colorscheme
-set cursorline
-
-" Hilighting double-byte space
-augroup doublebyte_space
-  autocmd!
-  autocmd VimEnter,WinEnter * match DoubleByteSpace /　/
-augroup END
-
 colorscheme abyss

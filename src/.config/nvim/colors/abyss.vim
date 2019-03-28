@@ -88,6 +88,12 @@ call s:hi('WildMenu',                s:fg,          s:bg,       'bold')
 call s:hi('EndOfBuffer',             s:bg,          'NONE',     0)
 call s:hi('DoubleByteSpace',         s:darkcyan,    0,          'reverse')
 
+" Hilighting double-byte space
+augroup doublebyte_space
+  autocmd!
+  autocmd VimEnter,WinEnter * match DoubleByteSpace /　/
+augroup END
+
 augroup toggle_match_paren
   autocmd!
   autocmd InsertEnter * call s:hi('MatchParen', 0, 'NONE', 0)
