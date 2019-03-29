@@ -53,9 +53,7 @@ super + ctrl + n
 
 # remove desktop
 super + ctrl + w
-	bspc query --desktops --names | \
-		sed '$d' | \
-		xargs bspc monitor --reset-desktops
+	bspc desktop --remove
 
 ## Display
 super + ctrl + d
