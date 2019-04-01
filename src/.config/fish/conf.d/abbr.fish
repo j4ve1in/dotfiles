@@ -21,4 +21,5 @@ if status --is-interactive
   abbr --add t terraform
   abbr --add ta trash
   abbr --add note "$EDITOR ~/Documents/notes/(date +%y%m%d).md"
+  abbr --add z 'zsh --no-rcs'
 end
