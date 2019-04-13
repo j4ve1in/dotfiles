@@ -107,7 +107,7 @@ super + shift + m
 
 ## Network Manager
 super + shift + n
-	alacritty -e 'sudo wifi-menu -o'
+	alacritty -e sudo wifi-menu -o
 
 ## Password Manager
 super + ctrl + p
@@ -122,7 +122,7 @@ super + shift + v
 
 ## System Activity
 super + a
-	alacritty -e 'vtop -t abyss'
+	alacritty -e vtop -t abyss
 
 ## Browser
 super + b
@@ -133,7 +133,7 @@ super + shift + b
 
 ## File Manager
 super + f
-	alacritty -e 'ranger'
+	alacritty -e ranger
 
 ## Network Switcher
 super + n
