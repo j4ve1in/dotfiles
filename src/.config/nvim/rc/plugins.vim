@@ -40,7 +40,6 @@ if exists('*minpac#init')
   call minpac#add('b4b4r07/vim-hcl', {'type': 'opt'})
   call minpac#add('elzr/vim-json', {'type': 'opt'})
   call minpac#add('cespare/vim-toml', {'type': 'opt'})
-  call minpac#add('digitaltoad/vim-pug', {'type': 'opt'})
   call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
   call minpac#add('baskerville/vim-sxhkdrc', {'type': 'opt'})
   call minpac#add('posva/vim-vue', {'type': 'opt'})
@@ -209,13 +208,6 @@ augroup END
 augroup vim-toml
   autocmd!
   autocmd FileType toml packadd vim-toml
-augroup END
-
-" pug
-augroup vim-pug
-  autocmd!
-  autocmd FileType pug packadd vim-pug
-  autocmd FileType vue packadd vim-pug
 augroup END
 
 " terraform
