@@ -14,7 +14,7 @@ let s:rc_vim_list = [
 \ ]
 
 " Source settings
-" Location: ~/.config/nvim/rc/
+" Location: $XDG_CONFIG_HOME/nvim/rc/
 for s:rc_vim in s:rc_vim_list
   cal source#rc(s:rc_vim)
 endfor

@@ -4,7 +4,7 @@ function! source#init() abort
 endfunction
 
 function! source#rc(path) abort
-  if filereadable(expand('~/.config/nvim/rc/' . a:path . '.vim'))
-    execute 'source' fnameescape(expand('~/.config/nvim/rc/' . a:path . '.vim'))
+  if filereadable(expand($XDG_CONFIG_HOME . '/nvim/rc/' . a:path . '.vim'))
+    execute 'source' fnameescape(expand($XDG_CONFIG_HOME . '/nvim/rc/' . a:path . '.vim'))
   endif
 endfunction

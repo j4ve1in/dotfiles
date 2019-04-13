@@ -134,7 +134,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \: "\<TAB>"
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
-let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+let g:neosnippet#snippets_directory = $XDG_CONFIG_HOME . '/nvim/snippets'
 
 " caw
 nmap <C-_> <Plug>(caw:hatpos:toggle)
