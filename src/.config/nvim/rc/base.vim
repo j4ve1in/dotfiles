@@ -2,7 +2,7 @@ set hidden
 set undofile
 set winheight=8
 set shortmess+=I
-set tags+=.git/tags
+set tags=.git/tags;~
 set inccommand=nosplit
 set completeopt=menuone
 set completeopt+=noinsert

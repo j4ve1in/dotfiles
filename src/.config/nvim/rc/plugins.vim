@@ -51,7 +51,11 @@ command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 
 " auto-ctags
 let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git']
+if !isdirectory(expand($XDG_DATA_HOME . '/nvim/tags/'))
+  execute system('mkdir -p ' . expand($XDG_DATA_HOME . '/nvim/tags/'))
+endif
+let g:auto_ctags_directory_list = ['.git/', expand($XDG_DATA_HOME . '/nvim/tags/')]
+let g:auto_ctags_filetype_mode = 1
 
 " lightline
 let g:lightline = {
