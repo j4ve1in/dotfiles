@@ -1,16 +1,9 @@
-nmap <silent> <Space>. :<C-u>call source#init()<CR>
 nnoremap Y y$
 nnoremap s "_s
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
 nnoremap <silent> <ESC> <C-l>:<C-u>nohlsearch<CR>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
-nnoremap <C-n> "zdd"zp
-nnoremap <C-p> "zdd<Up>"zP
-vnoremap <C-n> "zx"zp`[V`]
-vnoremap <C-p> "zx<Up>"zP`[V`]
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 vnoremap <silent> y y`]
