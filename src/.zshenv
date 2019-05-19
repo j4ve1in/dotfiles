@@ -20,6 +20,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # path
 typeset -U path PATH
