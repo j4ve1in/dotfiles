@@ -15,7 +15,6 @@ EXA_COLORS+="tr=;38;5;27:tw=38;5;75:"
 EXA_COLORS+="da=1;38;5;27:"
 EXA_COLORS+="sn=1;38;5;75:sb=38;5;75:"
 EXA_COLORS+="uu=38;5;245:gm=1;38;5;27:lp=38;5;245"
-export GPG_TTY=`tty`
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
