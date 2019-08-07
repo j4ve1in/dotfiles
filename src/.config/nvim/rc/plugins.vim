@@ -33,6 +33,7 @@ if exists('*minpac#init')
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('Shougo/neosnippet')
   call minpac#add('tyru/caw.vim')
+  call minpac#add('raghur/vim-ghost', {'do': 'GhostInstall'})
 
   call minpac#add('shime/vim-livedown', {'type': 'opt'})
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
