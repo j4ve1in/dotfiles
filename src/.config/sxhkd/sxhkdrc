@@ -5,7 +5,7 @@ super + shift + Escape
 		notify-send sxhkd 'Reload configuration file'
 
 ## quit bspwm normally
-super + alt + Escape
+super + alt + shift + Escape
 	bspc quit
 
 ## close and kill window
@@ -95,7 +95,7 @@ super + shift + @space
 
 ## Microblogging client
 super + shift + m
-	chromium --app='https://twitter.com/ytet5uy4/lists/home'
+	chromium --enable-features=WebUIDarkMode --force-dark-mode --app='https://twitter.com/ytet5uy4/lists/home'
 
 ## Network Manager
 super + shift + n
@@ -106,7 +106,7 @@ super + ctrl + p
 	dmenu-lpass
 
 super + shift + p
-	chromium --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
+	chromium --enable-features=WebUIDarkMode --force-dark-mode --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
 
 ## Volume Manager
 super + shift + v
@@ -118,10 +118,10 @@ super + a
 
 ## Browser
 super + b
-	chromium
+	chromium --enable-features=WebUIDarkMode --force-dark-mode
 
 super + shift + b
-	chromium --incognito
+	chromium --enable-features=WebUIDarkMode --force-dark-mode --incognito
 
 ## File Manager
 super + f
