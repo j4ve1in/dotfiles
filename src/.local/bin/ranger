@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -n $DISPLAY ]] && [[ $# = 0 ]]; then
+  alacritty -e /usr/bin/ranger
+else
+  /usr/bin/ranger "$@"
+fi

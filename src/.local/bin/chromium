@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -n $DISPLAY ]] && [[ $# = 0 ]]; then
+  /usr/bin/chromium --enable-features=WebUIDarkMode --force-dark-mode
+else
+  /usr/bin/chromium "$@"
+fi

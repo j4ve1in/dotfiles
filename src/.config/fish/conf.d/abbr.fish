@@ -20,6 +20,9 @@ if status --is-interactive
   abbr --add st stern
   abbr --add t terraform
   abbr --add ta trash
-  abbr --add note "$EDITOR ~/Documents/notes/(date +%y%m%d).md"
-  abbr --add z 'zsh --no-rcs'
+  abbr --add note "$EDITOR ~/Documents/note.md"
+  abbr --add task "$EDITOR ~/Documents/task.md"
+  abbr --add b bat
+  abbr --add \
+    bs "set f (mktemp XXXXXXXXXX.bash); $EDITOR \$f && bat --paging=never \$f; bash \$f; rm -f \$f"
 end

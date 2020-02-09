@@ -25,7 +25,7 @@ super + ctrl + {j,k}
 	bspc node -f {next,prev}.local
 
 ## focus or send to the next/previous desktop in the current monitor
-super + {alt,ctrl} + shift + {h,l}
+super + alt + {_, shift} + {h,l}
 	bspc {desktop -f,node -d} {prev,next}.local
 
 # focus or send to the given desktop
@@ -46,10 +46,6 @@ super + ctrl + shift + n
 ## remove desktop
 super + ctrl + shift + w
 	bspc desktop --remove
-
-## Display
-super + d
-	dmenu-xrandr
 
 ## Volume
 XF86Audio{Lower,Raise}Volume
@@ -84,47 +80,16 @@ shift + Print
 	maim -u -s -c 0,0,255,1 \
 		"$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
-## Launcher
+## dmenu
 super + shift + @space
-	dmenu_path | dmenu-wrapper -p Launcher | bash
+	dmenu_path | dmenu -p Launcher | bash
 
-# launch applications
-## Terminal
-super + ctrl + alt + shift + Return
+super + d; {d, n, p}
+	{dmenu-xrandr, dmenu-netctl, dmenu-lpass}
+
+## Launch applications
+super + Return
 	alacritty
 
-## Network Manager
-super + ctrl + alt + shift + n
-	alacritty -e sudo wifi-menu -o
-
-## Password Manager
-super + ctrl + alt + shift + p
-	dmenu-lpass
-
-## Volume Manager
-super + ctrl + alt + shift + v
-	alacritty -e alsamixer
-
-## System Activity
-super + ctrl + alt + shift + a
-	alacritty -e vtop -t abyss
-
-## Browser
-super + ctrl + alt + shift + b
-	chromium --enable-features=WebUIDarkMode --force-dark-mode
-
-## File Manager
-super + ctrl + alt + shift + f
-	alacritty -e ranger
-
-## Network Switcher
-super + ctrl + alt + shift + n
-	dmenu-netctl
-
-## RSS Reader
-super + ctrl + alt + shift + r
-	alacritty -e feedlish
-
-## Instant Messenger
-super + ctrl + alt + shift + i
-	slack
+super + o; {b, i}
+	{chromium,slack}
