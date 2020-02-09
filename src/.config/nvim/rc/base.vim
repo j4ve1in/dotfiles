@@ -10,6 +10,7 @@ set ignorecase
 set smartcase
 set wildignorecase
 set wildmode=longest:full,full
+set nostartofline
 
 set tabstop=2
 set softtabstop=2
@@ -34,4 +35,10 @@ augroup END
 augroup template
   autocmd!
   autocmd BufNewFile *.* silent! call skel#load()
+augroup END
+
+autocmd BufWinEnter,WinEnter term://* startinsert
+augroup terminal
+  autocmd!
+  autocmd TermOpen term://* startinsert
 augroup END

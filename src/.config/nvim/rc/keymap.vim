@@ -10,7 +10,7 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 " Yank and Paste
 nnoremap Y y$
 vnoremap <silent> y y`]
-vnoremap <silent> p "_dP`]
+vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
 " Search
