@@ -1,11 +1,11 @@
 # system operations
 ## make sxhkd reload its configuration files
-super + alt + shift + Escape
+super + shift + Escape
 	pkill -USR1 -x sxhkd && \
 		notify-send sxhkd 'Reload configuration file'
 
 ## Power Manager
-super + alt + shift + p ; {p,r,l,q}
+super + p; {p,r,l,q}
 	{systemctl poweroff, systemctl reboot, xautolock -locknow, bspc quit}
 
 ## close and kill window
@@ -13,7 +13,7 @@ super + {_,shift + }w
 	bspc node -{c,k}
 
 ## set the window state
-super + ctrl + shift + {t,f}
+super + ctrl + {t,f}
 	bspc node -t {tiled,floating}
 
 ## focus the node in the given direction
@@ -25,7 +25,7 @@ super + ctrl + {j,k}
 	bspc node -f {next,prev}.local
 
 ## focus or send to the next/previous desktop in the current monitor
-super + alt + {_, shift} + {h,l}
+super + alt + {_,shift} + {h,l}
 	bspc {desktop -f,node -d} {prev,next}.local
 
 # focus or send to the given desktop
@@ -37,14 +37,14 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ## add desktop
-super + ctrl + shift + n
+super + ctrl + n
 	bspc query --desktops --names | \
 		tail -n 1 | \
 		xargs -I \{\} expr \{\} + 1 | \
 		xargs -I \{\} bspc monitor --add-desktops \{\}
 
 ## remove desktop
-super + ctrl + shift + w
+super + ctrl + w
 	bspc desktop --remove
 
 ## Volume
@@ -84,7 +84,7 @@ shift + Print
 super + shift + @space
 	dmenu_path | dmenu -p Launcher | bash
 
-super + d; {d, n, p}
+super + d; {d,n,p}
 	{dmenu-xrandr, dmenu-netctl, dmenu-lpass}
 
 ## Launch applications
