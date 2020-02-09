@@ -7,7 +7,6 @@ export XDG_DATA_HOME=~/.local/share
 export PAGER=less
 export EDITOR=nvim
 export DIFFPROG='nvim -d'
-export TERMINAL=termite
 eval `dircolors -b $XDG_CONFIG_HOME/dircolors | sed 's/LS_COLORS/EXA_COLORS/g'`
 EXA_COLORS+="ur=1;38;5;27:uw=1;38;5;75:"
 EXA_COLORS+="gr=;38;5;27:gw=38;5;75:"
