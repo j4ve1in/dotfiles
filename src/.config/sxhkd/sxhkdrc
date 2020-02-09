@@ -1,19 +1,19 @@
 # system operations
 ## make sxhkd reload its configuration files
-super + shift + Escape
+super + alt + shift + Escape
 	pkill -USR1 -x sxhkd && \
 		notify-send sxhkd 'Reload configuration file'
 
-## quit bspwm normally
-super + alt + shift + Escape
-	bspc quit
+## Power Manager
+super + alt + shift + p ; {p,r,l,q}
+	{systemctl poweroff, systemctl reboot, xautolock -locknow, bspc quit}
 
 ## close and kill window
 super + {_,shift + }w
 	bspc node -{c,k}
 
 ## set the window state
-super + ctrl + {t,f}
+super + ctrl + shift + {t,f}
 	bspc node -t {tiled,floating}
 
 ## focus the node in the given direction
@@ -25,7 +25,7 @@ super + ctrl + {j,k}
 	bspc node -f {next,prev}.local
 
 ## focus or send to the next/previous desktop in the current monitor
-super + alt + {_,shift} + {h,l}
+super + {alt,ctrl} + shift + {h,l}
 	bspc {desktop -f,node -d} {prev,next}.local
 
 # focus or send to the given desktop
@@ -36,19 +36,19 @@ super + {_,shift + }{0-3}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# add desktop
-super + ctrl + n
+## add desktop
+super + ctrl + shift + n
 	bspc query --desktops --names | \
 		tail -n 1 | \
 		xargs -I \{\} expr \{\} + 1 | \
 		xargs -I \{\} bspc monitor --add-desktops \{\}
 
-# remove desktop
-super + ctrl + w
+## remove desktop
+super + ctrl + shift + w
 	bspc desktop --remove
 
 ## Display
-super + ctrl + d
+super + d
 	dmenu-xrandr
 
 ## Volume
@@ -84,61 +84,47 @@ shift + Print
 	maim -u -s -c 0,0,255,1 \
 		"$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
-# launch applications
-## Terminal
-super + Return
-	alacritty
-
 ## Launcher
 super + shift + @space
 	dmenu_path | dmenu-wrapper -p Launcher | bash
 
-## Microblogging client
-super + shift + m
-	chromium --enable-features=WebUIDarkMode --force-dark-mode --app='https://twitter.com/ytet5uy4/lists/home'
+# launch applications
+## Terminal
+super + ctrl + alt + shift + Return
+	alacritty
 
 ## Network Manager
-super + shift + n
+super + ctrl + alt + shift + n
 	alacritty -e sudo wifi-menu -o
 
 ## Password Manager
-super + ctrl + p
+super + ctrl + alt + shift + p
 	dmenu-lpass
 
-super + shift + p
-	chromium --enable-features=WebUIDarkMode --force-dark-mode --app='chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html'
-
 ## Volume Manager
-super + shift + v
+super + ctrl + alt + shift + v
 	alacritty -e alsamixer
 
 ## System Activity
-super + a
+super + ctrl + alt + shift + a
 	alacritty -e vtop -t abyss
 
 ## Browser
-super + b
+super + ctrl + alt + shift + b
 	chromium --enable-features=WebUIDarkMode --force-dark-mode
 
-super + shift + b
-	chromium --enable-features=WebUIDarkMode --force-dark-mode --incognito
-
 ## File Manager
-super + f
+super + ctrl + alt + shift + f
 	alacritty -e ranger
 
 ## Network Switcher
-super + n
+super + ctrl + alt + shift + n
 	dmenu-netctl
 
-## Power Manager
-super + p ; {p,r,l}
-	{systemctl poweroff, systemctl reboot, xautolock -locknow}
-
 ## RSS Reader
-super + r
+super + ctrl + alt + shift + r
 	alacritty -e feedlish
 
 ## Instant Messenger
-super + i
+super + ctrl + alt + shift + i
 	slack
