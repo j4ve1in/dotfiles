@@ -8,43 +8,35 @@ super + shift + Escape
 super + p; {p,r,l,q}
 	{systemctl poweroff, systemctl reboot, xautolock -locknow, bspc quit}
 
-## close and kill window
-super + {_,shift + }w
-	bspc node -{c,k}
+## close window
+super + w
+	bspc node -c
 
 ## set the window state
-super + ctrl + {t,f}
+super + {t,f}
 	bspc node -t {tiled,floating}
 
 ## focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the next/previous node in the current desktop
-super + ctrl + {j,k}
-	bspc node -f {next,prev}.local
-
-## focus or send to the next/previous desktop in the current monitor
-super + alt + {_,shift} + {h,l}
-	bspc {desktop -f,node -d} {prev,next}.local
-
 # focus or send to the given desktop
-super + {_,shift + }{0-3}
-	bspc {desktop -f,node -d} '{0-3}'
+super + {_,shift + }{0-5}
+	bspc {desktop -f,node -d} '{0-5}'
 
 ## move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ## add desktop
-super + ctrl + n
+super + n
 	bspc query --desktops --names | \
 		tail -n 1 | \
 		xargs -I \{\} expr \{\} + 1 | \
 		xargs -I \{\} bspc monitor --add-desktops \{\}
 
 ## remove desktop
-super + ctrl + w
+super + shift + w
 	bspc desktop --remove
 
 ## Volume
@@ -66,7 +58,7 @@ XF86MonBrightnessDown
 	(( `xbacklight -get` > 5.5  )) && xbacklight - 5
 
 ## Screencast
-super + ctrl + s
+super + s
 	scrc {start,stop}
 
 super + shift + s
