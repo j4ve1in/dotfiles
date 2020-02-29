@@ -25,6 +25,7 @@ typeset -U path PATH
 path=($HOME/.local/bin(N-/) $path)
 path=($path $HOME/.gem/ruby/*/bin(N-/))
 path=($path $XDG_DATA_HOME/npm/bin(N-/))
+path=($path $HOME/.krew/bin(N-/))
 
 # Programming
 export GOPATH="$HOME/.local"
