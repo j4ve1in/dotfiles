@@ -4,3 +4,7 @@ bookmarks
 tagged
 colorschemes/__init__.py
 colorschemes/__pycache__/
+plugins/__init__.py
+plugins/__pycache__/
+plugins/*
+!.gitkeep
