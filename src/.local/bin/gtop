@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -n $DISPLAY ]] && [[ $# = 0 ]]; then
+  env TERM=xterm-256color alacritty -e /usr/bin/gtop
+else
+  env TERM=xterm-256color /usr/bin/gtop "$@"
+fi

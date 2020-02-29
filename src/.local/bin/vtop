@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ -n $DISPLAY ]] && [[ $# = 0 ]]; then
-  alacritty -e /usr/bin/vtop -t abyss
-else
-  /usr/bin/vtop "$@"
-fi
