@@ -70,6 +70,12 @@
     pu = pull
     st = status -bs
     sh = show
+    open = !git remote -v | \
+      rg 'https://' | \
+      awk '{print $2}' | \
+      sort -u | \
+      fzf --select-1 | \
+      xargs xdg-open
 
 [include]
     path = ~/.config/git/config.local
