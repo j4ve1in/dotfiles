@@ -1,7 +1,5 @@
-function __fzf_git_change_repository
-  ghq list -p | \
-    sort | \
-    sed "s|$HOME|~|g" | \
+function __fzf_change_directory
+  fd --type directory | \
     fzf +m | \
     read -l dir
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path=$(echo "$1" | sed -e 's|https://||g' -e 's/.git$//g')
+
+git clone {https://,~/Workspaces/}"$path"
