@@ -39,7 +39,7 @@ super + n
 super + shift + w
 	bspc desktop --remove
 
-## Volume
+## Audio
 XF86Audio{Lower,Raise}Volume
 	pamixer --{decrease,increase} 1 && \
 		paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
@@ -58,17 +58,18 @@ XF86MonBrightnessDown
 	(( `xbacklight -get` > 5.5  )) && xbacklight - 5
 
 ## Screencast
-super + s
+super + s; c
 	scrc {start,stop}
 
-super + shift + s
+super + s; c + shift
 	scrc {start,stop} --select
 
 ## Screenshot
-Print
+
+super + s; s
 	maim -u "$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
-shift + Print
+super + s; s + shift
 	maim -u -s -c 0,0,255,1 \
 		"$HOME/Pictures/screenshots/`date +'%y-%m-%d_%02k%M%S'`.png"
 
@@ -83,5 +84,5 @@ super + d; {d,n,p}
 super + Return
 	alacritty
 
-super + o; {b, i}
-	{chromium,slack}
+super + o; {b,f,i}
+	{chromium,ranger,slack}
