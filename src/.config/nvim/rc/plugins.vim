@@ -33,7 +33,7 @@ if exists('*minpac#init')
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('Shougo/neosnippet')
   call minpac#add('tyru/caw.vim')
-  call minpac#add('raghur/vim-ghost', {'do': 'GhostInstall'})
+  call minpac#add('glacambre/firenvim')
 
   call minpac#add('shime/vim-livedown', {'type': 'opt'})
   call minpac#add('Shougo/deoplete.nvim', {'type': 'opt'})
@@ -234,3 +234,27 @@ augroup vim-fish
   autocmd!
   autocmd FileType fish packadd vim-fish
 augroup END
+
+" firenvim
+function! OnUIEnter(event)
+    let l:ui = nvim_get_chan_info(a:event.chan)
+    if has_key(l:ui, 'client') && has_key(l:ui.client, "name")
+        if l:ui.client.name == "Firenvim"
+            set background=dark
+        endif
+    endif
+endfunction
+autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+
+let g:firenvim_config = {
+  \ 'localSettings': {
+      \ '.*': {
+          \ 'priority': 0,
+          \ 'selector': 'textarea',
+          \ 'takeover': 'always',
+      \ },
+      \ 'mail.google.com*': {
+          \ 'selector': 'div[role="textbox"]',
+      \ },
+  \ }
+\ }
